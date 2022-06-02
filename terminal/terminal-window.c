@@ -1820,7 +1820,7 @@ terminal_window_action_prefs (TerminalWindow *window)
 {
   if (window->priv->preferences_dialog == NULL)
     {
-      window->priv->preferences_dialog = terminal_preferences_dialog_new (GTK_WINDOW (window));
+      window->priv->preferences_dialog = terminal_preferences_dialog_new (TRUE, TRUE);
       if (G_LIKELY (window->priv->preferences_dialog != NULL))
         {
           window->priv->n_child_windows++;
@@ -2844,7 +2844,7 @@ terminal_window_get_notebook (TerminalWindow *window)
 GtkWidget*
 terminal_window_get_preferences_dialog (TerminalWindow *window)
 {
-  return terminal_preferences_dialog_new(GTK_WINDOW (window));
+  return terminal_preferences_dialog_new (TRUE, TRUE);
 }
 
 

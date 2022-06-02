@@ -66,8 +66,8 @@ static void      terminal_preferences_dialog_background_set              (GtkFil
                                                                           TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_encoding_changed            (GtkComboBox               *combobox,
                                                                           TerminalPreferencesDialog *dialog);
-gint             terminal_preferences_dialog_geometry_get_rows           (TerminalPreferencesDialog  *dialog);
-gint             terminal_preferences_dialog_geometry_get_columns        (TerminalPreferencesDialog  *dialog);
+static gint      terminal_preferences_dialog_geometry_get_rows           (TerminalPreferencesDialog  *dialog);
+static gint      terminal_preferences_dialog_geometry_get_columns        (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_geometry_rows_changed       (GtkSpinButton              *button,
                                                                           TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_geometry_columns_changed    (GtkSpinButton              *button,
@@ -84,7 +84,7 @@ static void      terminal_preferences_dialog_palette_changed             (GtkCol
                                                                           TerminalPreferencesDialog  *dialog);
 static void      terminal_gtk_label_set_a11y_relation                    (GtkLabel                   *label,
                                                                           GtkWidget                  *widget);
-PangoAttrList   *terminal_pango_attr_list_bold                           (void);
+static PangoAttrList   *terminal_pango_attr_list_bold                           (void);
 
 
 
@@ -99,6 +99,9 @@ struct _TerminalPreferencesDialog
   TerminalPreferences *preferences;
 
   GtkColorButton      *buttons[16];
+  GtkLabel            *dropdown_label;
+  GtkBox              *dropdown_vbox;
+  GtkNotebook         *dropdown_notebook;
 
   gulong               bg_image_signal_id;
   gulong               palette_signal_id;
@@ -182,26 +185,31 @@ terminal_preferences_dialog_reset_double_click_select (GtkWidget                
 
 
 
-#define COMBO_SHOW_OPTIONS(id, src_value, dst_value) \
-  G_STMT_START { \
-  gint     active_id; \
-  gboolean show = FALSE; \
-  active_id = g_value_get_int (src_value); \
-  if (G_UNLIKELY (active_id == id)) \
-    show = TRUE; \
-  g_value_set_boolean (dst_value, show); \
-  return TRUE; \
-  } G_STMT_END \
+static gboolean
+terminal_preferences_dialog_combo_show_options (gint          id,
+                                                const GValue *src_value,
+                                                GValue       *dst_value)
+{
+  gint     active_id;
+  gboolean show = FALSE;
+
+  active_id = g_value_get_int (src_value);
+  if (G_UNLIKELY (active_id == id))
+    show = TRUE;
+
+  g_value_set_boolean (dst_value, show);
+  return TRUE;
+}
 
 
 
 static gboolean
 transform_combo_show_image_options (GBinding     *binding,
-                                      const GValue *src_value,
-                                      GValue       *dst_value,
-                                      gpointer      user_data)
+                                    const GValue *src_value,
+                                    GValue       *dst_value,
+                                    gpointer      user_data)
 {
-  COMBO_SHOW_OPTIONS(1, src_value, dst_value);
+  return terminal_preferences_dialog_combo_show_options (1, src_value, dst_value);
 }
 
 
@@ -211,7 +219,7 @@ transform_combo_show_opacity_options (GBinding     *binding,
                                       GValue       *dst_value,
                                       gpointer      user_data)
 {
-  COMBO_SHOW_OPTIONS(2, src_value, dst_value);
+  return terminal_preferences_dialog_combo_show_options (2, src_value, dst_value);
 }
 
 
@@ -227,19 +235,19 @@ transform_combo_show_opacity_options (GBinding     *binding,
 
 
 static void
-terminal_preferences_dialog_image_shading_changed (GtkScale                  *button,
+terminal_preferences_dialog_image_shading_changed (GtkScale                  *scale,
                                                    TerminalPreferencesDialog *dialog)
 {
-  SAVE_SCALE_VALUE(button, dialog, "background-image-shading");
+  SAVE_SCALE_VALUE(scale, dialog, "background-image-shading");
 }
 
 
 
 static void
-terminal_preferences_dialog_opacity_changed (GtkScale                  *button,
+terminal_preferences_dialog_opacity_changed (GtkScale                  *scale,
                                              TerminalPreferencesDialog *dialog)
 {
-  SAVE_SCALE_VALUE(button, dialog, "background-darkness");
+  SAVE_SCALE_VALUE(scale, dialog, "background-darkness");
 }
 
 
@@ -313,25 +321,27 @@ terminal_preferences_dialog_encoding_changed (GtkComboBox               *combobo
 
 
 
-#define GET_GEOMETRY(axis, value) \
-  G_STMT_START { \
-  gchar   *geometry; \
-  gchar  **split; \
-  g_object_get (G_OBJECT (dialog->preferences), "misc-default-geometry", &geometry, NULL); \
-  split = g_strsplit (geometry, "x", -1); \
-  *value = atoi (split[axis]); \
-  g_strfreev (split); \
-  g_free (geometry); \
-  } G_STMT_END 
+static gint
+terminal_preferences_dialog_get_geometry (gint axis, TerminalPreferencesDialog *dialog)
+{
+  gint    value;
+  gchar  *geometry;
+  gchar **split;
+
+  g_object_get (G_OBJECT (dialog->preferences), "misc-default-geometry", &geometry, NULL);
+  split = g_strsplit (geometry, "x", -1);
+  value = atoi (split[axis]);
+
+  g_free (geometry);
+  return value;
+}
 
 
 
 gint
 terminal_preferences_dialog_geometry_get_rows (TerminalPreferencesDialog *dialog)
 {
-  gint value;
-  GET_GEOMETRY(1, &value);
-  return value;
+  return terminal_preferences_dialog_get_geometry (1, dialog);
 }
 
 
@@ -339,9 +349,7 @@ terminal_preferences_dialog_geometry_get_rows (TerminalPreferencesDialog *dialog
 gint
 terminal_preferences_dialog_geometry_get_columns (TerminalPreferencesDialog *dialog)
 {
-  gint value;
-  GET_GEOMETRY(0, &value);
-  return value;
+  return terminal_preferences_dialog_get_geometry (0, dialog);
 }
 
 
@@ -355,7 +363,7 @@ terminal_preferences_dialog_geometry_rows_changed (GtkSpinButton             *bu
   gchar *geo;
 
   rows = gtk_spin_button_get_value_as_int (button);
-  GET_GEOMETRY(0, &cols);
+  cols = terminal_preferences_dialog_get_geometry (0, dialog);
 
   geo = g_strdup_printf ("%dx%d", cols, rows);
 
@@ -376,7 +384,7 @@ terminal_preferences_dialog_geometry_columns_changed (GtkSpinButton             
   gchar *geo;
 
   cols = gtk_spin_button_get_value_as_int (button);
-  GET_GEOMETRY(1, &rows);
+  rows = terminal_preferences_dialog_get_geometry (1, dialog);
 
   geo = g_strdup_printf ("%dx%d", cols, rows);
 
@@ -559,7 +567,7 @@ terminal_preferences_dialog_presets_load (GtkComboBox               *button,
 
       /* default item + separator */
       gtk_list_store_insert_with_values (store, &iter, 0,
-                                         PRESET_COLUMN_TITLE, _("Load Presets..."),
+                                         PRESET_COLUMN_TITLE, _("Switch Preset"),
                                          -1);
       gtk_list_store_insert_with_values (store, NULL, 1,
                                          PRESET_COLUMN_IS_SEPARATOR, TRUE,
@@ -650,7 +658,7 @@ terminal_preferences_dialog_palette_changed (GtkColorButton            *button,
 
 
 
-PangoAttrList*
+static PangoAttrList*
 terminal_pango_attr_list_bold (void)
 {
   static PangoAttrList *attr_list = NULL;
@@ -664,7 +672,7 @@ terminal_pango_attr_list_bold (void)
 
 
 
-void
+static void
 terminal_preferences_dialog_new_section (GtkWidget   **frame,
                                          GtkWidget   **vbox,
                                          GtkWidget   **grid,
@@ -696,7 +704,7 @@ terminal_preferences_dialog_new_section (GtkWidget   **frame,
 
 
 
-void
+static void
 terminal_gtk_label_set_a11y_relation (GtkLabel  *label,
                                       GtkWidget *widget)
 {
@@ -772,8 +780,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /*
-    General
-  */
+   * General
+   */
   label = gtk_label_new (_("General"));
   vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
   gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
@@ -1032,8 +1040,246 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /*
-    Appearance
-  */
+   * Drop-down
+   */
+  label = gtk_label_new (_("Drop-down"));
+  vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
+  gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
+  // gtk_widget_show (label);
+  // gtk_widget_show (vbox);
+  dialog->dropdown_label = GTK_LABEL (label);
+  dialog->dropdown_vbox = GTK_BOX (vbox);
+  dialog->dropdown_notebook = GTK_NOTEBOOK (notebook);
+
+  /* section: Behavior */
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Behavior");
+  
+  button = gtk_check_button_new_with_mnemonic (_("_Keep window open when it loses focus"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-keep-open-default",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
+  gtk_widget_show (button);
+
+  /* next row */
+  row++;
+
+  button = gtk_check_button_new_with_mnemonic (_("_Always keep window on top"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-keep-above",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
+  gtk_widget_show (button);
+
+  /* next row */
+  row++;
+
+  button = gtk_check_button_new_with_mnemonic (_("_Use shortcut to focus visible window"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-toggle-focus",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_tooltip_text (button, _("If enabled, the shortcut to open and retract the window will give focus\n"
+                                         ", rather than close it, if it had previously lost focus."));
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
+  gtk_widget_show (button);
+  
+  /* next row */
+  row++;
+
+  button = gtk_check_button_new_with_mnemonic (_("_Show status icon in notification area"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-status-icon",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
+  gtk_widget_show (button);
+
+
+  /* section: Appearance & Animation */
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Appearance and Animation");
+
+  label = gtk_label_new_with_mnemonic (_("Width:"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
+  gtk_widget_show (label);
+
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
+  g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-width", &value);
+  gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
+  // g_signal_connect (button, "value-changed",
+  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_hexpand (button, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
+  gtk_widget_show (button);
+
+  label = gtk_label_new ("%");
+  gtk_widget_set_halign (label, GTK_ALIGN_START);
+  gtk_grid_attach (GTK_GRID (grid), label, 2, row, 1, 1);
+  gtk_widget_show (label);
+
+  g_value_unset (&value);
+
+  /* next row */
+  row++;
+
+  label = gtk_label_new_with_mnemonic (_("Height:"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
+  gtk_widget_show (label);
+
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
+  g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-height", &value);
+  gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
+  // g_signal_connect (button, "value-changed",
+  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_hexpand (button, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
+  gtk_widget_show (button);
+
+  label = gtk_label_new ("%");
+  gtk_widget_set_halign (label, GTK_ALIGN_START);
+  gtk_grid_attach (GTK_GRID (grid), label, 2, row, 1, 1);
+  gtk_widget_show (label);
+
+  g_value_unset (&value);
+
+  /* next row */
+  row++;
+
+  label = gtk_label_new_with_mnemonic (_("Opacity:"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
+  gtk_widget_show (label);
+
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
+  g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-opacity", &value);
+  gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
+  // g_signal_connect (button, "value-changed",
+  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_hexpand (button, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
+  gtk_widget_show (button);
+
+  label = gtk_label_new ("%");
+  gtk_widget_set_halign (label, GTK_ALIGN_START);
+  gtk_grid_attach (GTK_GRID (grid), label, 2, row, 1, 1);
+  gtk_widget_show (label);
+
+  g_value_unset (&value);
+
+  /* next row */
+  row++;
+
+  label = gtk_label_new_with_mnemonic (_("Duration:"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
+  gtk_widget_show (label);
+
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
+  g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-animation-time", &value);
+  gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
+  // g_signal_connect (button, "value-changed",
+  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_hexpand (button, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
+  gtk_widget_show (button);
+
+  label = gtk_label_new ("ms");
+  gtk_widget_set_halign (label, GTK_ALIGN_START);
+  gtk_grid_attach (GTK_GRID (grid), label, 2, row, 1, 1);
+  gtk_widget_show (label);
+
+  g_value_unset (&value);
+
+  /* next row */
+  row++;
+
+  button = gtk_check_button_new_with_mnemonic (_("_Always show tabs"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-always-show-tabs",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 3, 1);
+  gtk_widget_show (button);
+
+  /* next row */
+  row++;
+
+  button = gtk_check_button_new_with_mnemonic (_("_Show window borders"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-show-borders",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 3, 1);
+  gtk_widget_show (button);
+
+  
+  /* section: Position */
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Position");
+
+  label = gtk_label_new_with_mnemonic (_("Left"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
+  gtk_widget_show (label);
+
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
+  g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-position", &value);
+  gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
+  // g_signal_connect (button, "value-changed",
+  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_hexpand (button, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
+  gtk_widget_show (button);
+
+  label = gtk_label_new_with_mnemonic (_("Right"));
+  gtk_widget_set_halign (label, GTK_ALIGN_START);
+  gtk_grid_attach (GTK_GRID (grid), label, 2, row, 1, 1);
+  gtk_widget_show (label);
+
+  g_value_unset (&value);
+
+  /* next row */
+  row++;
+
+  label = gtk_label_new_with_mnemonic (_("Up"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
+  gtk_widget_show (label);
+
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
+  g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-position-vertical", &value);
+  gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
+  // g_signal_connect (button, "value-changed",
+  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_hexpand (button, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
+  gtk_widget_show (button);
+
+  label = gtk_label_new_with_mnemonic (_("Down"));
+  gtk_widget_set_halign (label, GTK_ALIGN_START);
+  gtk_grid_attach (GTK_GRID (grid), label, 2, row, 1, 1);
+  gtk_widget_show (label);
+
+  g_value_unset (&value);
+
+  /* next row */
+  row++;
+
+  button = gtk_check_button_new_with_mnemonic (_("_Move to monitor with pointer"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-move-to-active",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 3, 1);
+  gtk_widget_show (button);
+
+
+
+  /*
+   * Appearance
+   */
   label = gtk_label_new (_("Appearance"));
   vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
   gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
@@ -1390,8 +1636,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /*
-    Colors
-  */
+   * Colors
+   */
   label = gtk_label_new (_("Colors"));
   vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
   gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
@@ -1596,7 +1842,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_object_bind_property (G_OBJECT (dialog->preferences), "color-bold-is-bright",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  gtk_widget_set_tooltip_text (button, _("Enable this option to allow escape sequences such as '\e[1;35m' to switch text "
+  gtk_widget_set_tooltip_text (button, _("Enable this option to allow escape sequences such as '\\e[1;35m' to switch text "
                                          "bright colors in addition to bold. If disabled, text color will remain intact."));
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 8, 1);
   gtk_widget_show (button);
@@ -1613,8 +1859,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /*
-    Compatibility
-  */
+   * Compatibility
+   */
   label = gtk_label_new (_("Compatibility"));
   vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
   gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
@@ -1735,8 +1981,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /*
-    Advanced
-  */
+   * Advanced
+   */
   label = gtk_label_new (_("Advanced"));
   vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
   gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
@@ -1911,8 +2157,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /*
-   Shortcuts
-  */
+   * Shortcuts
+   */
   label = gtk_label_new (_("Shortcuts"));
   vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
   gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
@@ -1938,6 +2184,12 @@ terminal_preferences_dialog_finalize (GObject *object)
 {
   TerminalPreferencesDialog *dialog = TERMINAL_PREFERENCES_DIALOG (object);
 
+  /* disconnect signals */
+  if (G_LIKELY (dialog->bg_image_signal_id != 0))
+    g_signal_handler_disconnect (dialog->preferences, dialog->bg_image_signal_id);
+  if (G_LIKELY (dialog->palette_signal_id != 0))
+    g_signal_handler_disconnect (dialog->preferences, dialog->palette_signal_id);
+
   /* release our reference on the preferences */
   g_object_unref (G_OBJECT (dialog->preferences));
 
@@ -1948,7 +2200,7 @@ terminal_preferences_dialog_finalize (GObject *object)
 
 static void
 terminal_preferences_dialog_response (GtkDialog *dialog,
-                                    gint       response)
+                                      gint       response)
 {
   if (G_UNLIKELY (response == GTK_RESPONSE_HELP))
     {
@@ -1966,7 +2218,22 @@ terminal_preferences_dialog_response (GtkDialog *dialog,
 
 
 GtkWidget*
-terminal_preferences_dialog_new (GtkWindow *parent)
+terminal_preferences_dialog_new (gboolean show_drop_down,
+                                 gboolean drop_down_mode)
 {
-  return g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
+  static TerminalPreferencesDialog *dialog = NULL;
+
+  if (G_LIKELY (dialog == NULL))
+  {
+    dialog = g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL); 
+    g_object_add_weak_pointer (G_OBJECT (dialog), (gpointer) &dialog);
+  }
+
+  gtk_widget_set_visible (GTK_WIDGET (dialog->dropdown_label), show_drop_down);
+  gtk_widget_set_visible (GTK_WIDGET (dialog->dropdown_vbox), show_drop_down);
+
+  if (drop_down_mode)
+    gtk_notebook_set_current_page (GTK_NOTEBOOK (dialog->dropdown_notebook), 1);
+
+  return GTK_WIDGET (dialog);
 }
