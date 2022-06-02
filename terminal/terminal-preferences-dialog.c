@@ -225,32 +225,26 @@ transform_combo_show_opacity_options (GBinding     *binding,
 
 
 static void
-terminal_preferences_dialog_save_scale_value (GtkScale                  *button,
-                                              TerminalPreferencesDialog *dialog,
-                                              const gchar               *property)
+terminal_preferences_dialog_scale_value_changed (GtkScale                  *scale,
+                                                 TerminalPreferencesDialog *dialog)
 {
-  gdouble value;
-  value = gtk_range_get_value (GTK_RANGE (button));
-  g_object_set (G_OBJECT (dialog->preferences), property,
-                value, NULL);
-}
+  GValue value = { 0, };
+  const gchar *property;
 
+  property = gtk_widget_get_name (GTK_WIDGET (scale));
 
+  if (g_str_has_prefix (property, "dropdown"))
+    {
+      g_value_init (&value, G_TYPE_UINT);
+      g_value_set_uint (&value, gtk_range_get_value (GTK_RANGE (scale)));
+    }
+  else
+    {
+      g_value_init (&value, G_TYPE_DOUBLE);
+      g_value_set_double (&value, gtk_range_get_value (GTK_RANGE (scale)));
+    }
 
-static void
-terminal_preferences_dialog_image_shading_changed (GtkScale                  *scale,
-                                                   TerminalPreferencesDialog *dialog)
-{
-  terminal_preferences_dialog_save_scale_value (scale, dialog, "background-image-shading");
-}
-
-
-
-static void
-terminal_preferences_dialog_opacity_changed (GtkScale                  *scale,
-                                             TerminalPreferencesDialog *dialog)
-{
-  terminal_preferences_dialog_save_scale_value (scale, dialog, "background-darkness");
+  g_object_set_property (G_OBJECT (dialog->preferences), property, &value);
 }
 
 
@@ -1106,12 +1100,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
-  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 10, 100, 1);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
   g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-width", &value);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
-  // g_signal_connect (button, "value-changed",
-  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_name (button, "dropdown-width");
+  g_signal_connect (button, "value-changed",
+                    G_CALLBACK (terminal_preferences_dialog_scale_value_changed), dialog);
   gtk_widget_set_hexpand (button, TRUE);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
@@ -1131,12 +1126,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
-  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 10, 100, 1);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
   g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-height", &value);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
-  // g_signal_connect (button, "value-changed",
-  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_name (button, "dropdown-height");
+  g_signal_connect (button, "value-changed",
+                    G_CALLBACK (terminal_preferences_dialog_scale_value_changed), dialog);
   gtk_widget_set_hexpand (button, TRUE);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
@@ -1160,8 +1156,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
   g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-opacity", &value);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
-  // g_signal_connect (button, "value-changed",
-  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_name (button, "dropdown-opacity");
+  g_signal_connect (button, "value-changed",
+                    G_CALLBACK (terminal_preferences_dialog_scale_value_changed), dialog);
   gtk_widget_set_hexpand (button, TRUE);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
@@ -1181,12 +1178,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
-  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 500, 1);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
   g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-animation-time", &value);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
-  // g_signal_connect (button, "value-changed",
-  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_name (button, "dropdown-animation-time");
+  g_signal_connect (button, "value-changed",
+                    G_CALLBACK (terminal_preferences_dialog_scale_value_changed), dialog);
   gtk_widget_set_hexpand (button, TRUE);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
@@ -1228,11 +1226,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
-  gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
   g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-position", &value);
+  gtk_scale_add_mark (GTK_SCALE (button), 0, GTK_POS_BOTTOM, NULL);
+  gtk_scale_add_mark (GTK_SCALE (button), 25, GTK_POS_BOTTOM, NULL);
+  gtk_scale_add_mark (GTK_SCALE (button), 50, GTK_POS_BOTTOM, NULL);
+  gtk_scale_add_mark (GTK_SCALE (button), 75, GTK_POS_BOTTOM, NULL);
+  gtk_scale_add_mark (GTK_SCALE (button), 100, GTK_POS_BOTTOM, NULL);
+  gtk_scale_set_draw_value (GTK_SCALE (button), FALSE);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
-  // g_signal_connect (button, "value-changed",
-  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_name (button, "dropdown-position");
+  g_signal_connect (button, "value-changed",
+                    G_CALLBACK (terminal_preferences_dialog_scale_value_changed), dialog);
   gtk_widget_set_hexpand (button, TRUE);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
@@ -1253,11 +1257,12 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
-  gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
+  gtk_scale_set_draw_value (GTK_SCALE (button), FALSE);
   g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-position-vertical", &value);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
-  // g_signal_connect (button, "value-changed",
-  //                   G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+  gtk_widget_set_name (button, "dropdown-position-vertical");
+  g_signal_connect (button, "value-changed",
+                    G_CALLBACK (terminal_preferences_dialog_scale_value_changed), dialog);
   gtk_widget_set_hexpand (button, TRUE);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
@@ -1437,8 +1442,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
   g_object_get_property (G_OBJECT (dialog->preferences), "background-darkness", &value);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_double (&value));
+  gtk_widget_set_name (button, "background-darkness");
   g_signal_connect (button, "value-changed",
-                    G_CALLBACK (terminal_preferences_dialog_opacity_changed), dialog);
+                    G_CALLBACK (terminal_preferences_dialog_scale_value_changed), dialog);
   gtk_widget_set_hexpand (button, TRUE);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
@@ -1528,8 +1534,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
   g_object_get_property (G_OBJECT (dialog->preferences), "background-image-shading", &value);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_double (&value));
+  gtk_widget_set_name (button, "background-image-shading");
   g_signal_connect (button, "value-changed",
-                    G_CALLBACK (terminal_preferences_dialog_image_shading_changed), dialog);
+                    G_CALLBACK (terminal_preferences_dialog_scale_value_changed), dialog);
   gtk_widget_set_hexpand (button, TRUE);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
