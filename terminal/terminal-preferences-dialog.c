@@ -82,12 +82,9 @@ static void      terminal_preferences_dialog_dropdown_position_vertical_changed 
 
 
 
-static gint      terminal_preferences_dialog_get_geometry                         (TerminalPreferencesDialog  *dialog,
-                                                                                   gint                        axis);
-static void      terminal_preferences_dialog_geometry_rows_changed                (TerminalPreferencesDialog  *dialog,
-                                                                                   GtkWidget                  *widget);
-static void      terminal_preferences_dialog_geometry_columns_changed             (TerminalPreferencesDialog  *dialog,
-                                                                                   GtkWidget                  *widget);
+static void      terminal_preferences_dialog_geometry_notify                      (TerminalPreferencesDialog *dialog);
+static void      terminal_preferences_dialog_geometry_changed                     (TerminalPreferencesDialog *dialog,
+                                                                                   GtkWidget                 *widget);
 
 
 
@@ -134,10 +131,13 @@ struct _TerminalPreferencesDialog
   GtkLabel            *dropdown_label;
   GtkBox              *dropdown_vbox;
   GtkNotebook         *dropdown_notebook;
+  GtkSpinButton       *geometry_columns_button;
+  GtkSpinButton       *geometry_rows_button;
   gint                 n_presets;
 
   gulong               bg_image_signal_id;
   gulong               palette_signal_id;
+  gulong               geometry_signal_id;
 };
 
 enum
@@ -1075,12 +1075,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (10, 4000, 1);
-  gtk_spin_button_set_value (GTK_SPIN_BUTTON (button), terminal_preferences_dialog_get_geometry (dialog, GEOMETRY_GET_COLUMNS));
   g_signal_connect_swapped (button, "value-changed",
-                            G_CALLBACK (terminal_preferences_dialog_geometry_columns_changed), dialog);
+                            G_CALLBACK (terminal_preferences_dialog_geometry_changed), dialog);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
+
+  dialog->geometry_columns_button = GTK_SPIN_BUTTON (button);
 
   label = gtk_label_new_with_mnemonic(_("columns"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
@@ -1088,17 +1089,22 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (10, 3000, 1);
-  gtk_spin_button_set_value (GTK_SPIN_BUTTON (button), terminal_preferences_dialog_get_geometry (dialog, GEOMETRY_GET_ROWS));
   g_signal_connect_swapped (button, "value-changed",
-                            G_CALLBACK (terminal_preferences_dialog_geometry_rows_changed), dialog);
+                            G_CALLBACK (terminal_preferences_dialog_geometry_changed), dialog);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
   gtk_grid_attach (GTK_GRID (grid), button, 3, row, 1, 1);
   gtk_widget_show (button);
+
+  dialog->geometry_rows_button = GTK_SPIN_BUTTON (button);
 
   label = gtk_label_new_with_mnemonic(_("rows"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 4, row, 1, 1);
   gtk_widget_show (label);
+
+  dialog->geometry_signal_id = g_signal_connect_swapped (G_OBJECT (dialog->preferences), "notify::misc-default-geometry",
+                                                         G_CALLBACK (terminal_preferences_dialog_geometry_notify), dialog);
+  terminal_preferences_dialog_geometry_notify (dialog);
 
 
   /* section: Tabs */
@@ -1860,74 +1866,61 @@ terminal_preferences_dialog_dropdown_position_vertical_changed (TerminalPreferen
 
 
 
-static gint
-terminal_preferences_dialog_get_geometry (TerminalPreferencesDialog *dialog,
-                                          gint                       axis)
+static void
+terminal_preferences_dialog_geometry_notify (TerminalPreferencesDialog *dialog)
 {
-  gint    value;
-  gchar  *geometry;
-  gchar **split;
+  gint    cols;
+  gint    rows;
+  gchar  *geometry = NULL;
+  gchar **split = NULL;
+
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
 
   g_object_get (G_OBJECT (dialog->preferences), "misc-default-geometry", &geometry, NULL);
-  split = g_strsplit (geometry, "x", -1);
-  value = atoi (split[axis]);
+
+  if (G_LIKELY (geometry != NULL))
+    {
+      split = g_strsplit (geometry, "x", -1);
+
+      if (G_LIKELY (split != NULL))
+        {
+          /* parse integers from strings */
+          cols = atoi (split [GEOMETRY_GET_COLUMNS]);
+          rows = atoi (split [GEOMETRY_GET_ROWS]);
+
+          /* apply values to buttons */
+          gtk_spin_button_set_value (dialog->geometry_columns_button, cols);
+          gtk_spin_button_set_value (dialog->geometry_rows_button, rows);
+        }
+    }
 
   g_free (geometry);
-  return value;
+  g_strfreev (split);
 }
 
 
 
 static void
-terminal_preferences_dialog_geometry_rows_changed (TerminalPreferencesDialog *dialog,
-                                                   GtkWidget                 *widget)
+terminal_preferences_dialog_geometry_changed (TerminalPreferencesDialog *dialog,
+                                              GtkWidget                 *widget)
 {
-  gint           rows;
-  gint           cols;
-  gchar         *geo;
-  GtkSpinButton *button;
+  gint   rows;
+  gint   cols;
+  gchar *geometry;
 
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
   terminal_return_if_fail (GTK_IS_SPIN_BUTTON (widget));
 
-  button = GTK_SPIN_BUTTON (widget);
+  cols = gtk_spin_button_get_value_as_int (dialog->geometry_columns_button);
+  rows = gtk_spin_button_get_value_as_int (dialog->geometry_rows_button);
 
-  rows = gtk_spin_button_get_value_as_int (button);
-  cols = terminal_preferences_dialog_get_geometry (dialog, GEOMETRY_GET_COLUMNS);
+  geometry = g_strdup_printf ("%dx%d", cols, rows);
 
-  geo = g_strdup_printf ("%dx%d", cols, rows);
-
-  g_object_set (G_OBJECT (dialog->preferences), "misc-default-geometry",
-                geo, NULL);
-
-  g_free (geo);
-}
-
-
-
-static void
-terminal_preferences_dialog_geometry_columns_changed (TerminalPreferencesDialog *dialog,
-                                                      GtkWidget                 *widget)
-{
-  gint           rows;
-  gint           cols;
-  gchar         *geo;
-  GtkSpinButton *button;
-
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  terminal_return_if_fail (GTK_IS_SPIN_BUTTON (widget));
-
-  button = GTK_SPIN_BUTTON (widget);
-
-  cols = gtk_spin_button_get_value_as_int (button);
-  rows = terminal_preferences_dialog_get_geometry (dialog, GEOMETRY_GET_ROWS);
-
-  geo = g_strdup_printf ("%dx%d", cols, rows);
-
-  g_object_set (G_OBJECT (dialog->preferences), "misc-default-geometry",
-                geo, NULL);
-
-  g_free (geo);
+  /* set property */
+  g_signal_handler_block (dialog->preferences, dialog->geometry_signal_id);
+  g_object_set (G_OBJECT (dialog->preferences), "misc-default-geometry", geometry, NULL);
+  g_signal_handler_unblock (dialog->preferences, dialog->geometry_signal_id);
+  g_free (geometry);
 }
 
 
@@ -1937,15 +1930,17 @@ terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
 {
   guint     i;
   GdkRGBA   color;
-  gchar    *color_str;
-  gchar   **colors;
+  gchar    *color_str = NULL;
+  gchar   **colors = NULL;
+
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
 
   g_object_get (dialog->preferences, "color-palette", &color_str, NULL);
+
   if (G_LIKELY (color_str != NULL))
     {
       /* make array */
       colors = g_strsplit (color_str, ";", -1);
-      g_free (color_str);
 
       /* apply values to buttons */
       if (colors != NULL)
@@ -1955,8 +1950,10 @@ terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
               gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (dialog->buttons[i]), &color);
           }
 
-      g_strfreev (colors);
     }
+
+  g_free (color_str);
+  g_strfreev (colors);
 }
 
 
