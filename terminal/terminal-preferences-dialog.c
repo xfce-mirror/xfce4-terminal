@@ -1878,23 +1878,23 @@ terminal_preferences_dialog_geometry_notify (TerminalPreferencesDialog *dialog)
 
   g_object_get (G_OBJECT (dialog->preferences), "misc-default-geometry", &geometry, NULL);
 
-  if (G_LIKELY (geometry != NULL))
-    {
-      split = g_strsplit (geometry, "x", -1);
+  if (G_UNLIKELY (geometry == NULL))
+    return;
 
-      if (G_LIKELY (split != NULL))
-        {
-          /* parse integers from strings */
-          cols = atoi (split [GEOMETRY_GET_COLUMNS]);
-          rows = atoi (split [GEOMETRY_GET_ROWS]);
-
-          /* apply values to buttons */
-          gtk_spin_button_set_value (dialog->geometry_columns_button, cols);
-          gtk_spin_button_set_value (dialog->geometry_rows_button, rows);
-        }
-    }
-
+  split = g_strsplit (geometry, "x", -1);
   g_free (geometry);
+
+  if (G_UNLIKELY (split == NULL))
+    return;
+
+  /* parse integers from strings */
+  cols = atoi (split [GEOMETRY_GET_COLUMNS]);
+  rows = atoi (split [GEOMETRY_GET_ROWS]);
+
+  /* apply values to buttons */
+  gtk_spin_button_set_value (dialog->geometry_columns_button, cols);
+  gtk_spin_button_set_value (dialog->geometry_rows_button, rows);
+
   g_strfreev (split);
 }
 
@@ -1937,22 +1937,23 @@ terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
 
   g_object_get (dialog->preferences, "color-palette", &color_str, NULL);
 
-  if (G_LIKELY (color_str != NULL))
+  if (G_UNLIKELY (color_str == NULL))
+    return;
+
+  /* make array */
+  colors = g_strsplit (color_str, ";", -1);
+  g_free (color_str);
+
+  if (G_UNLIKELY (colors == NULL))
+    return;
+
+  /* apply values to buttons */
+  for (i = 0; i < 16 && colors[i] != NULL; i++)
     {
-      /* make array */
-      colors = g_strsplit (color_str, ";", -1);
-
-      /* apply values to buttons */
-      if (colors != NULL)
-        for (i = 0; i < 16 && colors[i] != NULL; i++)
-          {
-            if (gdk_rgba_parse (&color, colors[i]))
-              gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (dialog->buttons[i]), &color);
-          }
-
+      if (gdk_rgba_parse (&color, colors[i]))
+        gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (dialog->buttons[i]), &color);
     }
 
-  g_free (color_str);
   g_strfreev (colors);
 }
 
