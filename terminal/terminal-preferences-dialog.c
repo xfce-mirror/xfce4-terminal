@@ -22,6 +22,8 @@
 #endif
 
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4kbd-private-3/libxfce4kbd-private/xfce-shortcuts-editor.h>
+#include <libxfce4kbd-private-3/libxfce4kbd-private/xfce-shortcuts-editor-dialog.h>
 
 #include <terminal/terminal-util.h>
 #include <terminal/terminal-enum-types.h>
@@ -33,60 +35,60 @@
 
 
 
-static void      terminal_preferences_dialog_finalize                             (GObject                    *object);
-static void      terminal_preferences_dialog_response                             (GtkDialog                  *dialog,
-                                                                                   gint                        response);
+static void  terminal_preferences_dialog_finalize                    (GObject                    *object);
+static void  terminal_preferences_dialog_response                    (GtkDialog                  *dialog,
+                                                                      gint                        response);
 
 
 
-static void      terminal_preferences_dialog_new_section                          (GtkWidget                 **frame,
-                                                                                   GtkWidget                 **vbox,
-                                                                                   GtkWidget                 **grid,
-                                                                                   GtkWidget                 **label,
-                                                                                   gint                       *row,
-                                                                                   const gchar                *header);
+static void  terminal_preferences_dialog_new_section                 (GtkWidget                 **frame,
+                                                                      GtkWidget                 **vbox,
+                                                                      GtkWidget                 **grid,
+                                                                      GtkWidget                 **label,
+                                                                      gint                       *row,
+                                                                      const gchar                *header);
 
 
 
-static void      terminal_preferences_dialog_background_notify                    (TerminalPreferencesDialog  *dialog,
-                                                                                   GtkWidget                  *widget);
-static void      terminal_preferences_dialog_background_set                       (TerminalPreferencesDialog  *dialog,
-                                                                                   GtkWidget                  *widget);
+static void  terminal_preferences_dialog_background_notify           (TerminalPreferencesDialog  *dialog,
+                                                                      GtkWidget                  *widget);
+static void  terminal_preferences_dialog_background_set              (TerminalPreferencesDialog  *dialog,
+                                                                      GtkWidget                  *widget);
 
 
 
-static void      terminal_preferences_dialog_geometry_notify                      (TerminalPreferencesDialog *dialog);
-static void      terminal_preferences_dialog_geometry_changed                     (TerminalPreferencesDialog *dialog,
-                                                                                   GtkWidget                 *widget);
+static void  terminal_preferences_dialog_geometry_notify             (TerminalPreferencesDialog  *dialog);
+static void  terminal_preferences_dialog_geometry_changed            (TerminalPreferencesDialog  *dialog,
+                                                                      GtkWidget                  *widget);
 
 
 
-static void      terminal_preferences_dialog_palette_notify                       (TerminalPreferencesDialog  *dialog);
-static void      terminal_preferences_dialog_palette_changed                      (TerminalPreferencesDialog  *dialog,
-                                                                                   GtkWidget                  *widget);
+static void  terminal_preferences_dialog_palette_notify              (TerminalPreferencesDialog  *dialog);
+static void  terminal_preferences_dialog_palette_changed             (TerminalPreferencesDialog  *dialog,
+                                                                      GtkWidget                  *widget);
 
 
 
-static void      terminal_preferences_dialog_presets_changed                      (TerminalPreferencesDialog  *dialog,
-                                                                                   GtkWidget                  *widget);
-static void      terminal_preferences_dialog_presets_load                         (TerminalPreferencesDialog  *dialog,
-                                                                                   GtkWidget                  *widget);
+static void  terminal_preferences_dialog_presets_changed             (TerminalPreferencesDialog  *dialog,
+                                                                      GtkWidget                  *widget);
+static void  terminal_preferences_dialog_presets_load                (TerminalPreferencesDialog  *dialog,
+                                                                      GtkWidget                  *widget);
 
 
 
-static void      terminal_preferences_dialog_reset_cell_scale                     (TerminalPreferencesDialog  *dialog,
-                                                                                   GtkWidget                  *widget);
-static void      terminal_preferences_dialog_reset_compatibility_options          (TerminalPreferencesDialog  *dialog,
-                                                                                   GtkWidget                  *widget);
-static void      terminal_preferences_dialog_reset_double_click_select            (TerminalPreferencesDialog  *dialog,
-                                                                                   GtkWidget                  *widget);
+static void  terminal_preferences_dialog_reset_cell_scale            (TerminalPreferencesDialog  *dialog,
+                                                                      GtkWidget                  *widget);
+static void  terminal_preferences_dialog_reset_compatibility_options (TerminalPreferencesDialog  *dialog,
+                                                                      GtkWidget                  *widget);
+static void  terminal_preferences_dialog_reset_double_click_select   (TerminalPreferencesDialog  *dialog,
+                                                                      GtkWidget                  *widget);
 
 
 
-static void      terminal_preferences_dialog_encoding_changed                     (TerminalPreferencesDialog *dialog,
-                                                                                   GtkWidget                 *widget);
-static void      terminal_gtk_label_set_a11y_relation                             (GtkLabel                   *label,
-                                                                                   GtkWidget                  *widget);
+static void  terminal_preferences_dialog_encoding_changed            (TerminalPreferencesDialog  *dialog,
+                                                                      GtkWidget                  *widget);
+static void  terminal_gtk_label_set_a11y_relation                    (GtkLabel                   *label,
+                                                                      GtkWidget                  *widget);
 
 
 
@@ -213,7 +215,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gint           row = 0;
 
   /* grab a reference on the preferences */
-  dialog->preferences = terminal_preferences_get();
+  dialog->preferences = terminal_preferences_get ();
 
   /* configure the dialog properties */
   gtk_window_set_icon_name (GTK_WINDOW (dialog), "org.xfce.terminal");
@@ -295,10 +297,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Command */
-  terminal_preferences_dialog_new_section  (&frame, &vbox, &grid, &label, &row, "Command");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Command");
 
   button = gtk_check_button_new_with_mnemonic (_("_Run command as login shell"));
-  g_object_bind_property (G_OBJECT(dialog->preferences), "command-login-shell",
+  g_object_bind_property (G_OBJECT (dialog->preferences), "command-login-shell",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Select this option to force Terminal to run your shell"
@@ -313,7 +315,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Run a custom command instead of my shell"));
-  g_object_bind_property (G_OBJECT(dialog->preferences), "run-custom-command",
+  g_object_bind_property (G_OBJECT (dialog->preferences), "run-custom-command",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Select this option to force Terminal to run a custom command"
@@ -354,7 +356,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Select this option to make new temrinals (tabs or windows) use custom"
-                                         " working directory. Otherwise, current working directory will be used."));
+                                          " working directory. Otherwise, current working directory will be used."));
   gtk_widget_set_halign (button, GTK_ALIGN_START);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
   gtk_widget_show (button);
@@ -474,7 +476,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_gtk_label_set_a11y_relation (GTK_LABEL (label), combo);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
-  
+
   button = gtk_check_button_new_with_mnemonic (_("Cursor blinks"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "misc-cursor-blinks",
                           G_OBJECT (button), "active",
@@ -515,9 +517,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   dialog->dropdown_vbox = GTK_BOX (vbox);
   dialog->dropdown_notebook = GTK_NOTEBOOK (notebook);
 
+
   /* section: Behavior */
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Behavior");
-  
+
   button = gtk_check_button_new_with_mnemonic (_("_Keep window open when it loses focus"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-keep-open-default",
                           G_OBJECT (button), "active",
@@ -546,7 +549,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                          ", rather than close it, if it had previously lost focus."));
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
   gtk_widget_show (button);
-  
+
   /* next row */
   row++;
 
@@ -666,7 +669,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 3, 1);
   gtk_widget_show (button);
 
-  
+
   /* section: Position */
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Position");
 
@@ -764,7 +767,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   /* next row */
   row++;
-  
+
   button = gtk_check_button_new_with_mnemonic (_("_Allow bold text"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "font-allow-bold",
                           G_OBJECT (button), "active",
@@ -776,7 +779,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* next row */
   row++;
 
-  label = gtk_label_new_with_mnemonic(_("Text blinks:"));
+  label = gtk_label_new_with_mnemonic (_("Text blinks:"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
@@ -798,8 +801,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* next row */
   row++;
 
-  label = gtk_label_new_with_mnemonic(_("Cell spacing:"));
-  gtk_label_set_xalign(GTK_LABEL (label), 0.0f);
+  label = gtk_label_new_with_mnemonic (_("Cell spacing:"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
@@ -811,8 +814,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
-  label = gtk_label_new_with_mnemonic(_("x width"));
-  gtk_label_set_xalign(GTK_LABEL (label), 0.0f);
+  label = gtk_label_new_with_mnemonic (_("x width"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 2, row, 1, 1);
   gtk_widget_show (label);
 
@@ -824,15 +827,14 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 3, row, 1, 1);
   gtk_widget_show (button);
 
-  label = gtk_label_new_with_mnemonic(_("x height"));
-  gtk_label_set_xalign(GTK_LABEL (label), 0.0f);
+  label = gtk_label_new_with_mnemonic (_("x height"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 4, row, 1, 1);
   gtk_widget_show (label);
 
   button = gtk_button_new_with_mnemonic (_("Reset"));
   g_signal_connect_swapped (G_OBJECT (button), "clicked",
-                            G_CALLBACK (terminal_preferences_dialog_reset_cell_scale),
-                            G_OBJECT (dialog));
+                            G_CALLBACK (terminal_preferences_dialog_reset_cell_scale), G_OBJECT (dialog));
   gtk_widget_set_halign (button, GTK_ALIGN_START);
   gtk_grid_attach (GTK_GRID (grid), button, 5, row, 1, 1);
   gtk_widget_show (button);
@@ -919,7 +921,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_file_chooser_button_new ("Select a Background Image", GTK_FILE_CHOOSER_ACTION_OPEN);
-  dialog->bg_image_signal_id = g_signal_connect_swapped (G_OBJECT (dialog->preferences), "notify::background-image-file", 
+  dialog->bg_image_signal_id = g_signal_connect_swapped (G_OBJECT (dialog->preferences), "notify::background-image-file",
                                                          G_CALLBACK (terminal_preferences_dialog_background_notify), button);
   terminal_preferences_dialog_background_notify (dialog, button);
   g_signal_connect_swapped (button, "file-set",
@@ -1015,7 +1017,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* Next row */
   row++;
 
-  label = gtk_label_new_with_mnemonic(_("Default geometry"));
+  label = gtk_label_new_with_mnemonic (_("Default geometry"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
@@ -1029,7 +1031,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   dialog->geometry_columns_button = GTK_SPIN_BUTTON (button);
 
-  label = gtk_label_new_with_mnemonic(_("columns"));
+  label = gtk_label_new_with_mnemonic (_("columns"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 2, row, 1, 1);
   gtk_widget_show (label);
@@ -1043,7 +1045,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   dialog->geometry_rows_button = GTK_SPIN_BUTTON (button);
 
-  label = gtk_label_new_with_mnemonic(_("rows"));
+  label = gtk_label_new_with_mnemonic (_("rows"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 4, row, 1, 1);
   gtk_widget_show (label);
@@ -1056,7 +1058,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* section: Tabs */
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Tabs");
 
-  label = gtk_label_new_with_mnemonic(_("Reset tab activity indicator after"));
+  label = gtk_label_new_with_mnemonic (_("Reset tab activity indicator after"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
@@ -1069,7 +1071,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
-  label = gtk_label_new_with_mnemonic(_("seconds"));
+  label = gtk_label_new_with_mnemonic (_("seconds"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 2, row, 1, 1);
   gtk_widget_show (label);
@@ -1167,14 +1169,14 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Custom colors */
-  terminal_preferences_dialog_new_section(&frame, &vbox, &grid, &label, &row, "Custom Colors");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Custom Colors");
 
   button = gtk_check_button_new_with_mnemonic (_("_Cursor color:"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "color-cursor-use-default",
                           G_OBJECT (button), "active",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this option to set custom text and background colors for cursor."
-                                         " If disabled the background and text colors will be reversed."));
+                                          " If disabled the background and text colors will be reversed."));
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
   gtk_widget_show (button);
 
@@ -1208,7 +1210,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                           G_OBJECT (button), "active",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this option to set custom text and background colors for cursor."
-                                         " If disabled the background and text colors will be reversed."));
+                                          " If disabled the background and text colors will be reversed."));
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
   gtk_widget_show (button);
 
@@ -1258,7 +1260,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Palette */
-  terminal_preferences_dialog_new_section(&frame, &vbox, &grid, &label, &row, "Palette");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Palette");
 
   for (gint i = 0; i < 16; i++)
     {
@@ -1284,12 +1286,12 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this option to allow escape sequences such as '\\e[1;35m' to switch text "
-                                         "bright colors in addition to bold. If disabled, text color will remain intact."));
+                                          "bright colors in addition to bold. If disabled, text color will remain intact."));
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 8, 1);
   gtk_widget_show (button);
 
   /* section: Presets */
-  terminal_preferences_dialog_new_section(&frame, &vbox, &grid, &label, &row, "Presets");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Presets");
 
   combo = gtk_combo_box_text_new ();
   terminal_preferences_dialog_presets_load (dialog, combo);
@@ -1317,8 +1319,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_container_set_border_width (GTK_CONTAINER (infobar), 1);
   label = gtk_label_new (NULL);
   gtk_label_set_markup (GTK_LABEL (label), _("These options may cause some applications to behave incorrectly.\n"
-                                             "They are only here to allow you to work around certain applications\n"
-                                             "and operating systems that expect different terminal behavior."));
+                                              "They are only here to allow you to work around certain applications\n"
+                                              "and operating systems that expect different terminal behavior."));
   box = gtk_info_bar_get_content_area (GTK_INFO_BAR (infobar));
   gtk_container_add (GTK_CONTAINER (box), label);
   gtk_info_bar_set_message_type (GTK_INFO_BAR (infobar), GTK_MESSAGE_WARNING);
@@ -1396,7 +1398,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* next row */
   row++;
 
-  button = gtk_button_new_with_mnemonic(_("Reset compatibility options to defaults"));
+  button = gtk_button_new_with_mnemonic (_("Reset compatibility options to defaults"));
   g_signal_connect_swapped (button, "clicked",
                             G_CALLBACK (terminal_preferences_dialog_reset_compatibility_options), G_OBJECT (dialog));
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
@@ -1415,9 +1417,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Double Click */
-  terminal_preferences_dialog_new_section(&frame, &vbox, &grid, &label, &row, "Double Click");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Double Click");
 
-  label = gtk_label_new_with_mnemonic(_("Consider the following characters part of a word when double clicking:"));
+  label = gtk_label_new_with_mnemonic (_("Consider the following characters part of a word when double clicking:"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
@@ -1436,14 +1438,14 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   button = gtk_button_new_with_mnemonic (_("Reset"));
   g_signal_connect_swapped (button, "clicked",
                             G_CALLBACK (terminal_preferences_dialog_reset_double_click_select), G_OBJECT (dialog));
-  gtk_grid_attach(GTK_GRID (grid), button, 1, row, 1, 1);
+  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
 
   /* section: Encoding */
-  terminal_preferences_dialog_new_section(&frame, &vbox, &grid, &label, &row, "Encoding");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Encoding");
 
-  label = gtk_label_new_with_mnemonic(_("Default character encoding"));
+  label = gtk_label_new_with_mnemonic (_("Default character encoding"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
@@ -1465,9 +1467,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_object_unref (G_OBJECT (model));
   g_free (current);
 
-  
+
   /* section: Shortcuts */
-  terminal_preferences_dialog_new_section(&frame, &vbox, &grid, &label, &row, "Shortcuts");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Shortcuts");
 
   button = gtk_check_button_new_with_mnemonic (_("_Disable all menu access keys (such as Alt + f)"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "shortcuts-no-mnemonics",
@@ -1498,7 +1500,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Misc */
-  terminal_preferences_dialog_new_section(&frame, &vbox, &grid, &label, &row, "Misc");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Misc");
 
   button = gtk_check_button_new_with_mnemonic (_("_Use middle mouse click to close tabs"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "misc-tab-close-middle-click",
@@ -1560,8 +1562,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* next row */
   row++;
 
-  label = gtk_label_new_with_mnemonic(_("Right click action:"));
-  gtk_label_set_xalign (GTK_LABEL(label), 0.0f);
+  label = gtk_label_new_with_mnemonic (_("Right click action:"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
@@ -1577,6 +1579,27 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_gtk_label_set_a11y_relation (GTK_LABEL (label), combo);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
+
+
+
+  /*
+   * Shortcuts
+   */
+  label = gtk_label_new (_("Shortcuts"));
+  vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
+  gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
+  gtk_widget_show (label);
+  gtk_widget_show (vbox);
+
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_IN, NULL);
+  gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, TRUE, 0);
+  gtk_widget_show (frame);
+
+  grid = xfce_shortcuts_editor_new (7,
+                                    _("Window"), terminal_window_get_action_entries (), TERMINAL_WINDOW_ACTION_N,
+                                    _("Terminal"), terminal_widget_get_action_entries (), TERMINAL_WIDGET_ACTION_N);
+  gtk_container_add (GTK_CONTAINER (frame), grid);
+  gtk_widget_show (grid);
 }
 
 
@@ -1609,7 +1632,7 @@ terminal_preferences_dialog_new_section (GtkWidget   **frame,
 
   *label = gtk_label_new (_(header));
   /* For bold text */
-  gtk_label_set_attributes (GTK_LABEL (*label), terminal_pango_attr_list_bold());
+  gtk_label_set_attributes (GTK_LABEL (*label), terminal_pango_attr_list_bold ());
   gtk_frame_set_label_widget (GTK_FRAME (*frame), *label);
   gtk_widget_show (*label);
 
@@ -1686,8 +1709,8 @@ terminal_preferences_dialog_geometry_notify (TerminalPreferencesDialog *dialog)
     return;
 
   /* parse integers from strings */
-  cols = atoi (split [GEOMETRY_GET_COLUMNS]);
-  rows = atoi (split [GEOMETRY_GET_ROWS]);
+  cols = atoi (split[GEOMETRY_GET_COLUMNS]);
+  rows = atoi (split[GEOMETRY_GET_ROWS]);
 
   /* apply values to buttons */
   gtk_spin_button_set_value (dialog->geometry_columns_button, cols);
@@ -1761,10 +1784,10 @@ static void
 terminal_preferences_dialog_palette_changed (TerminalPreferencesDialog *dialog,
                                              GtkWidget                 *widget)
 {
-  guint           i;
-  GdkRGBA         color;
-  gchar          *color_str;
-  GString        *array;
+  guint    i;
+  GdkRGBA  color;
+  gchar   *color_str;
+  GString *array;
 
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
   terminal_return_if_fail (GTK_IS_COLOR_BUTTON (widget));
@@ -1931,8 +1954,7 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog,
         presets[n_global + n] = user[n];
 
       /* create sorting store */
-      store = gtk_list_store_new (N_PRESET_COLUMNS, G_TYPE_STRING,
-                                  G_TYPE_BOOLEAN, G_TYPE_STRING);
+      store = gtk_list_store_new (N_PRESET_COLUMNS, G_TYPE_STRING, G_TYPE_BOOLEAN, G_TYPE_STRING);
       gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
                                             PRESET_COLUMN_TITLE,
                                             GTK_SORT_ASCENDING);
@@ -1959,10 +1981,7 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog,
           title = xfce_rc_read_entry (rc, "Name", NULL);
           if (G_LIKELY (title != NULL))
             {
-              gtk_list_store_insert_with_values (store, NULL, n_presets++,
-                                                 PRESET_COLUMN_TITLE, title,
-                                                 PRESET_COLUMN_PATH, path,
-                                                 -1);
+              gtk_list_store_insert_with_values (store, NULL, n_presets++, PRESET_COLUMN_TITLE, title, PRESET_COLUMN_PATH, path, -1);
             }
 
           xfce_rc_close (rc);
@@ -1975,16 +1994,12 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog,
                                             GTK_SORT_ASCENDING);
 
       /* default item + separator */
-      gtk_list_store_insert_with_values (store, &iter, 0,
-                                         PRESET_COLUMN_TITLE, _("Select Preset"),
-                                         -1);
-      gtk_list_store_insert_with_values (store, NULL, 1,
-                                         PRESET_COLUMN_IS_SEPARATOR, TRUE,
-                                         -1);
+      gtk_list_store_insert_with_values (store, &iter, 0, PRESET_COLUMN_TITLE, _("Select Preset"), -1);
+      gtk_list_store_insert_with_values (store, NULL, 1, PRESET_COLUMN_IS_SEPARATOR, TRUE, -1);
 
       /* set model */
       gtk_combo_box_set_model (combobox, GTK_TREE_MODEL (store));
-      gtk_combo_box_set_active_iter  (combobox, &iter);
+      gtk_combo_box_set_active_iter (combobox, &iter);
       gtk_combo_box_set_row_separator_func (combobox, terminal_preferences_dialog_presets_sepfunc, NULL, NULL);
       g_signal_connect_swapped (combobox, "changed",
                                 G_CALLBACK (terminal_preferences_dialog_presets_changed), dialog);
@@ -2000,22 +2015,26 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog,
 
 
 
-#define RESET_PROPERTIES(properties) \
-  G_STMT_START { \
-  guint i; \
-  for (i = 0; i < G_N_ELEMENTS (properties); i++) \
-    { \
-      GParamSpec *spec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), properties[i]); \
-      if (G_LIKELY (spec != NULL)) \
-        { \
-          GValue value = { 0, }; \
-          g_value_init (&value, spec->value_type); \
-          g_param_value_set_default (spec, &value); \
-          g_object_set_property (G_OBJECT (dialog->preferences), properties[i], &value); \
-          g_value_unset (&value); \
-        } \
-    } \
-  } G_STMT_END
+#define RESET_PROPERTIES(properties)                                                                               \
+  G_STMT_START                                                                                                     \
+  {                                                                                                                \
+    guint i;                                                                                                       \
+    for (i = 0; i < G_N_ELEMENTS (properties); i++)                                                                \
+      {                                                                                                            \
+        GParamSpec *spec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), properties[i]); \
+        if (G_LIKELY (spec != NULL))                                                                               \
+          {                                                                                                        \
+            GValue value = {                                                                                       \
+                0,                                                                                                 \
+            };                                                                                                     \
+            g_value_init (&value, spec->value_type);                                                               \
+            g_param_value_set_default (spec, &value);                                                              \
+            g_object_set_property (G_OBJECT (dialog->preferences), properties[i], &value);                         \
+            g_value_unset (&value);                                                                                \
+          }                                                                                                        \
+      }                                                                                                            \
+  }                                                                                                                \
+  G_STMT_END
 
 
 
@@ -2023,7 +2042,7 @@ static void
 terminal_preferences_dialog_reset_cell_scale (TerminalPreferencesDialog *dialog,
                                               GtkWidget                 *widget)
 {
-  const gchar *properties[] = { "cell-width-scale", "cell-height-scale" };
+  const gchar *properties[] = {"cell-width-scale", "cell-height-scale"};
   RESET_PROPERTIES (properties);
 }
 
@@ -2033,7 +2052,7 @@ static void
 terminal_preferences_dialog_reset_compatibility_options (TerminalPreferencesDialog *dialog,
                                                          GtkWidget                 *widget)
 {
-  const gchar *properties[] = { "binding-backspace", "binding-delete", "binding-ambiguous-width" };
+  const gchar *properties[] = {"binding-backspace", "binding-delete", "binding-ambiguous-width"};
   RESET_PROPERTIES (properties);
 }
 
@@ -2043,7 +2062,7 @@ static void
 terminal_preferences_dialog_reset_double_click_select (TerminalPreferencesDialog *dialog,
                                                        GtkWidget                 *widget)
 {
-  const gchar *properties[] = { "misc-right-click-action" };
+  const gchar *properties[] = {"misc-right-click-action"};
   RESET_PROPERTIES (properties);
 }
 
@@ -2068,9 +2087,7 @@ terminal_preferences_dialog_encoding_changed (TerminalPreferencesDialog *dialog,
   if (gtk_combo_box_get_active_iter (combobox, &iter))
     {
       model = gtk_combo_box_get_model (combobox);
-      gtk_tree_model_get (model, &iter,
-                          ENCODING_COLUMN_IS_CHARSET, &is_charset,
-                          ENCODING_COLUMN_VALUE, &encoding, -1);
+      gtk_tree_model_get (model, &iter, ENCODING_COLUMN_IS_CHARSET, &is_charset, ENCODING_COLUMN_VALUE, &encoding, -1);
 
       /* select the child if a menu header is clicked */
       if (encoding == NULL && !is_charset)
@@ -2136,8 +2153,7 @@ terminal_preferences_dialog_response (GtkDialog *dialog,
   if (G_UNLIKELY (response == GTK_RESPONSE_HELP))
     {
       /* open the preferences section of the user manual */
-      xfce_dialog_show_help (GTK_WINDOW (dialog), "xfce4-terminal",
-                             "preferences", NULL);
+      xfce_dialog_show_help (GTK_WINDOW (dialog), "xfce4-terminal", "preferences", NULL);
     }
   else
     {
@@ -2155,10 +2171,10 @@ terminal_preferences_dialog_new (gboolean show_drop_down,
   static TerminalPreferencesDialog *dialog = NULL;
 
   if (G_LIKELY (dialog == NULL))
-  {
-    dialog = g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL); 
-    g_object_add_weak_pointer (G_OBJECT (dialog), (gpointer) &dialog);
-  }
+    {
+      dialog = g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
+      g_object_add_weak_pointer (G_OBJECT (dialog), (gpointer) &dialog);
+    }
 
   gtk_widget_set_visible (GTK_WIDGET (dialog->dropdown_label), show_drop_down);
   gtk_widget_set_visible (GTK_WIDGET (dialog->dropdown_vbox), show_drop_down);
