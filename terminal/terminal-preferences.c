@@ -157,16 +157,16 @@ static gboolean no_xfconf = FALSE;
 
 
 
-static void     terminal_preferences_finalize           (GObject             *object);
-static void     terminal_preferences_get_property       (GObject             *object,
-                                                         guint                prop_id,
-                                                         GValue              *value,
-                                                         GParamSpec          *pspec);
-static void     terminal_preferences_set_property       (GObject             *object,
-                                                         guint                prop_id,
-                                                         const GValue        *value,
-                                                         GParamSpec          *pspec);
-static void     terminal_preferences_load               (TerminalPreferences *preferences);
+static void     terminal_preferences_finalize      (GObject             *object);
+static void     terminal_preferences_get_property  (GObject             *object,
+                                                    guint                prop_id,
+                                                    GValue              *value,
+                                                    GParamSpec          *pspec);
+static void     terminal_preferences_set_property  (GObject             *object,
+                                                    guint                prop_id,
+                                                    const GValue        *value,
+                                                    GParamSpec          *pspec);
+static void     terminal_preferences_load          (TerminalPreferences *preferences);
 
 
 
@@ -178,10 +178,7 @@ transform_color_to_string (const GValue *src,
   gchar    buffer[16];
 
   color = g_value_get_boxed (src);
-  g_snprintf (buffer, sizeof (buffer), "#%04x%04x%04x",
-              (guint) (color->red * 65535),
-              (guint) (color->green * 65535),
-              (guint) (color->blue * 65535));
+  g_snprintf (buffer, sizeof (buffer), "#%04x%04x%04x", (guint) (color->red * 65535), (guint) (color->green * 65535), (guint) (color->blue * 65535));
   g_value_set_string (dst, buffer);
 }
 
@@ -265,18 +262,19 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 {
   GObjectClass *gobject_class;
   guint         i;
-  const GType   enum_types[] = {
-    GTK_TYPE_POSITION_TYPE,
-    TERMINAL_TYPE_BACKGROUND_STYLE,
-    TERMINAL_TYPE_BACKGROUND,
-    TERMINAL_TYPE_SCROLLBAR,
-    TERMINAL_TYPE_TITLE,
-    TERMINAL_TYPE_ERASE_BINDING,
-    TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING,
-    TERMINAL_TYPE_CURSOR_SHAPE,
-    TERMINAL_TYPE_TEXT_BLINK_MODE,
-    TERMINAL_TYPE_RIGHT_CLICK_ACTION
-  };
+  const GType   enum_types[] =
+    {
+        GTK_TYPE_POSITION_TYPE,
+        TERMINAL_TYPE_BACKGROUND_STYLE,
+        TERMINAL_TYPE_BACKGROUND,
+        TERMINAL_TYPE_SCROLLBAR,
+        TERMINAL_TYPE_TITLE,
+        TERMINAL_TYPE_ERASE_BINDING,
+        TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING,
+        TERMINAL_TYPE_CURSOR_SHAPE,
+        TERMINAL_TYPE_TEXT_BLINK_MODE,
+        TERMINAL_TYPE_RIGHT_CLICK_ACTION
+    };
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_preferences_finalize;
@@ -1104,8 +1102,8 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
- * TerminalPreferences:overlay-scrolling:
- **/
+   * TerminalPreferences:overlay-scrolling:
+   **/
   preferences_props[PROP_OVERLAY_SCROLLING] =
       g_param_spec_boolean ("overlay-scrolling",
                             NULL,
@@ -1206,7 +1204,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          "TitleMode",
                          TERMINAL_TYPE_TITLE,
                          TERMINAL_TITLE_APPEND,
-                         G_PARAM_READWRITE| G_PARAM_STATIC_STRINGS);
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:word-chars:
@@ -1292,9 +1290,9 @@ terminal_preferences_get_property (GObject    *object,
                                    GParamSpec *pspec)
 {
   TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
-  GValue               src = { 0, };
-  gchar                prop_name[64];
-  gchar              **array;
+  GValue   src = { 0, };
+  gchar    prop_name[64];
+  gchar  **array;
 
   terminal_return_if_fail (prop_id < N_PROPERTIES);
 
@@ -1337,10 +1335,10 @@ terminal_preferences_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-  TerminalPreferences  *preferences = TERMINAL_PREFERENCES (object);
-  GValue                dst = { 0, };
-  gchar                 prop_name[64];
-  gchar               **array;
+  TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
+  GValue   dst = { 0, };
+  gchar    prop_name[64];
+  gchar  **array;
 
   /* leave if the channel is not set */
   if (G_UNLIKELY (preferences->channel == NULL))
@@ -1362,7 +1360,7 @@ terminal_preferences_set_property (GObject      *object,
       /* convert to a GValue GPtrArray in xfconf */
       array = g_value_get_boxed (value);
       if (array != NULL && *array != NULL)
-        xfconf_channel_set_string_list (preferences->channel, prop_name, (const gchar * const *) array);
+        xfconf_channel_set_string_list (preferences->channel, prop_name, (const gchar *const *) array);
       else
         xfconf_channel_reset_property (preferences->channel, prop_name, FALSE);
     }
@@ -1418,16 +1416,16 @@ terminal_preferences_check_blurb (GParamSpec *spec)
 static void
 terminal_preferences_load (TerminalPreferences *preferences)
 {
-  gchar        *filename;
-  const gchar  *string, *name;
-  GParamSpec   *pspec;
-  XfceRc       *rc;
-  GValue        dst = { 0, };
-  GValue        src = { 0, };
-  guint         n;
-  gboolean      migrate_colors = FALSE;
-  gchar         color_name[16];
-  GString      *array;
+  gchar       *filename;
+  const gchar *string, *name;
+  GParamSpec  *pspec;
+  XfceRc      *rc;
+  GValue       dst = { 0, };
+  GValue       src = { 0, };
+  guint        n;
+  gboolean     migrate_colors = FALSE;
+  gchar        color_name[16];
+  GString     *array;
 
   filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC);
   if (G_UNLIKELY (filename == NULL))
@@ -1524,7 +1522,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
  *
  * Return value :
  **/
-TerminalPreferences*
+TerminalPreferences *
 terminal_preferences_get (void)
 {
   static TerminalPreferences *preferences = NULL;
@@ -1550,8 +1548,8 @@ terminal_preferences_get_color (TerminalPreferences *preferences,
                                 const gchar         *property,
                                 GdkRGBA             *color_return)
 {
-  gchar    *spec;
-  gboolean  succeed = FALSE;
+  gchar   *spec;
+  gboolean succeed = FALSE;
 
   terminal_return_val_if_fail (TERMINAL_IS_PREFERENCES (preferences), FALSE);
 
