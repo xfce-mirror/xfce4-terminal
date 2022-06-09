@@ -194,6 +194,8 @@ void               terminal_window_update_goto_accels       (TerminalWindow     
 XfceGtkActionEntry *terminal_window_get_action_entry         (TerminalWindow      *window,
                                                               TerminalWindowAction action);
 
+XfceGtkActionEntry *terminal_window_get_action_entries      (void);
+
 G_END_DECLS
 
 #endif /* !TERMINAL_WINDOW_H */
