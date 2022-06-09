@@ -22,6 +22,7 @@
 #endif
 
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4kbd-private-3/libxfce4kbd-private/xfce-shortcuts-editor.h>
 
 #include <terminal/terminal-util.h>
 #include <terminal/terminal-enum-types.h>
@@ -1577,6 +1578,27 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_gtk_label_set_a11y_relation (GTK_LABEL (label), combo);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
+
+
+
+  /*
+   * Shortcuts
+   */
+  label = gtk_label_new (_("Shortcuts"));
+  vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
+  gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
+  gtk_widget_show (label);
+  gtk_widget_show (vbox);
+
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_IN, NULL);
+  gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, TRUE, 0);
+  gtk_widget_show (frame);
+
+  grid = xfce_shortcuts_editor_new (7,
+                                    _("Window"), terminal_window_get_action_entries (), TERMINAL_WINDOW_ACTION_N,
+                                    _("Terminal"), terminal_widget_get_action_entries (), TERMINAL_WIDGET_ACTION_N);
+  gtk_container_add (GTK_CONTAINER (frame), grid);
+  gtk_widget_show (grid);
 }
 
 
