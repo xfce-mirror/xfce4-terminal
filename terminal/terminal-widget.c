@@ -152,8 +152,8 @@ static const GtkTargetEntry targets[] =
 
 static XfceGtkActionEntry action_entries[] =
 {
-  { TERMINAL_WIDGET_ACTION_SCROLL_UP,   "<Actions>/terminal-widget/shift-up",   "<Shift>Up",   XFCE_GTK_MENU_ITEM, N_ ("Misc Use Shift Arrows Up"),   NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_up),   },
-  { TERMINAL_WIDGET_ACTION_SCROLL_DOWN, "<Actions>/terminal-widget/shift-down", "<Shift>Down", XFCE_GTK_MENU_ITEM, N_ ("Misc Use Shift Arrows Down"), NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_down), },
+  { TERMINAL_WIDGET_ACTION_SCROLL_UP,   "<Actions>/terminal-widget/shift-up",   "<Shift>Up",   XFCE_GTK_MENU_ITEM, N_ ("Scroll one line Up"),   NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_up),   },
+  { TERMINAL_WIDGET_ACTION_SCROLL_DOWN, "<Actions>/terminal-widget/shift-down", "<Shift>Down", XFCE_GTK_MENU_ITEM, N_ ("Scroll one line Down"), NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_down), },
 };
 
 #define get_action_entry(id) xfce_gtk_get_action_entry_by_id(action_entries, G_N_ELEMENTS(action_entries), id)
@@ -913,4 +913,12 @@ terminal_widget_disconnect_accelerators (TerminalWidget *widget)
   /* and release the accel group */
   g_object_unref (widget->accel_group);
   widget->accel_group = NULL;
+}
+
+
+
+XfceGtkActionEntry*
+terminal_widget_get_action_entries (void)
+{
+  return action_entries;
 }
