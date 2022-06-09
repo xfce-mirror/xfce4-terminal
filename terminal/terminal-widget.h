@@ -22,6 +22,8 @@
 
 #include <vte/vte.h>
 
+#include <libxfce4ui/libxfce4ui.h>
+
 G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_WIDGET            (terminal_widget_get_type ())
@@ -47,13 +49,16 @@ enum
 typedef enum
 {
   TERMINAL_WIDGET_ACTION_SCROLL_UP,
-  TERMINAL_WIDGET_ACTION_SCROLL_DOWN
+  TERMINAL_WIDGET_ACTION_SCROLL_DOWN,
+  TERMINAL_WIDGET_ACTION_N
 } TerminalWidgetAction;
 
 typedef struct _TerminalWidget      TerminalWidget;
 typedef struct _TerminalWidgetClass TerminalWidgetClass;
 
-GType      terminal_widget_get_type (void) G_GNUC_CONST;
+GType               terminal_widget_get_type           (void) G_GNUC_CONST;
+
+XfceGtkActionEntry *terminal_widget_get_action_entries (void);
 
 G_END_DECLS
 
