@@ -530,6 +530,8 @@ terminal_window_init (TerminalWindow *window)
   /* set notebook tabs style */
   gtk_widget_set_name (window->priv->notebook, NOTEBOOK_NAME);
   terminal_window_update_slim_tabs (window);
+
+  /* set terminal padding: Needs restart */
   terminal_window_update_terminal_padding (window);
 
   /* signals */
