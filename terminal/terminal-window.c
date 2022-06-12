@@ -89,13 +89,6 @@ const gchar *CSS_SLIM_TABS =
 "  padding: 1px;\n"
 "}\n";
 
-
-const gchar *CSS_TERMINAL_PADDING =
-"VteTerminal, TerminalScreen, vte-terminal {\n"
-"  padding: %dpx %dpx %dpx %dpx;\n"
-"  -VteTerminal-inner-border: %dpx %dpx %dpx %dpx;\n"
-"}\n";
-
 /* See gnome-terminal bug #789356 */
 #if GTK_CHECK_VERSION (3, 22, 23)
 #define WINDOW_STATE_TILED (GDK_WINDOW_STATE_TILED       | \
@@ -530,6 +523,8 @@ terminal_window_init (TerminalWindow *window)
   /* set notebook tabs style */
   gtk_widget_set_name (window->priv->notebook, NOTEBOOK_NAME);
   terminal_window_update_slim_tabs (window);
+
+  /* set terminal padding: Needs restart */
   terminal_window_update_terminal_padding (window);
 
   /* signals */
@@ -999,7 +994,9 @@ terminal_window_update_terminal_padding (TerminalWindow *window)
   g_object_get (G_OBJECT (window->priv->preferences),
                 "misc-terminal-padding", &padding,
                 NULL);
-  str = g_strdup_printf (CSS_TERMINAL_PADDING,
+  str = g_strdup_printf ("VteTerminal, TerminalScreen, vte-terminal {\n"
+                         "  padding: %dpx %dpx %dpx %dpx;\n"
+                         "  -VteTerminal-inner-border: %dpx %dpx %dpx %dpx;}\n",
                          padding, padding, padding, padding,
                          padding, padding, padding, padding);
   provider = gtk_css_provider_new ();
@@ -1008,6 +1005,7 @@ terminal_window_update_terminal_padding (TerminalWindow *window)
                                              GTK_STYLE_PROVIDER_PRIORITY_USER);
   gtk_css_provider_load_from_data (provider, str, -1, NULL);
   g_object_unref (provider);
+  g_free (str);
 }
 
 
