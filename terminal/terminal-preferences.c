@@ -135,6 +135,7 @@ enum
   PROP_TEXT_BLINK_MODE,
   PROP_CELL_WIDTH_SCALE,
   PROP_CELL_HEIGHT_SCALE,
+  PROP_MISC_TERMINAL_PADDING,
   N_PROPERTIES,
 };
 
@@ -1246,6 +1247,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                            "CellHeightScale",
                            1.0, 2.0, 1.0,
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-terminal-padding:
+   **/
+  preferences_props[PROP_MISC_TERMINAL_PADDING] =
+      g_param_spec_int ("misc-terminal-padding",
+                        NULL,
+                        "MiscTerminalPadding",
+                        0, 100, 10,
+                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
 
   /* install all properties */
   g_object_class_install_properties (gobject_class, N_PROPERTIES, preferences_props);
