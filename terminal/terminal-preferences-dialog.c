@@ -1059,6 +1059,29 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                                          G_CALLBACK (terminal_preferences_dialog_geometry_notify), dialog);
   terminal_preferences_dialog_geometry_notify (dialog);
 
+  /* next row */
+  row++;
+
+  label = gtk_label_new_with_mnemonic (_("Padding (Requires restart):"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
+  gtk_widget_show (label);
+
+  button = gtk_spin_button_new_with_range (0, 50, 1);
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-terminal-padding",
+                          G_OBJECT (button), "value",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_halign (button, GTK_ALIGN_START);
+  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
+  gtk_widget_show (button);
+
+  button = gtk_button_new_with_mnemonic (_("Reset"));
+  g_signal_connect_swapped (button, "clicked",
+                            G_CALLBACK (terminal_preferences_dialog_reset_cell_scale), dialog);
+  gtk_widget_set_halign (button, GTK_ALIGN_START);
+  gtk_grid_attach (GTK_GRID (grid), button, 2, row, 1, 1);
+  gtk_widget_show (button);
+
 
   /* section: Tabs */
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Tabs");
