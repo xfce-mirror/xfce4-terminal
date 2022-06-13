@@ -56,7 +56,6 @@ typedef enum
     TERMINAL_WINDOW_ACTION_SELECT_ALL,
     TERMINAL_WINDOW_ACTION_COPY_INPUT,
     TERMINAL_WINDOW_ACTION_PREFERENCES,
-    TERMINAL_WINDOW_ACTION_SHORTCUTS,
     TERMINAL_WINDOW_ACTION_VIEW_MENU,
     TERMINAL_WINDOW_ACTION_ZOOM_IN,
     TERMINAL_WINDOW_ACTION_ZOOM_IN_ALT,
@@ -193,6 +192,8 @@ void               terminal_window_update_goto_accels       (TerminalWindow     
 
 XfceGtkActionEntry *terminal_window_get_action_entry         (TerminalWindow      *window,
                                                               TerminalWindowAction action);
+
+XfceGtkActionEntry *terminal_window_get_action_entries      (void);
 
 G_END_DECLS
 
