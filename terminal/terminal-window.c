@@ -33,7 +33,6 @@
 #endif
 
 #include <libxfce4ui/libxfce4ui.h>
-#include <libxfce4kbd-private-3/libxfce4kbd-private/xfce-shortcuts-editor-dialog.h>
 
 #if defined(GDK_WINDOWING_X11)
 #include <gdk/gdkx.h>
@@ -135,6 +134,7 @@ static void         terminal_window_set_size_force_grid           (TerminalWindo
                                                                    glong                force_grid_width,
                                                                    glong                force_grid_height);
 static void         terminal_window_update_slim_tabs              (TerminalWindow      *window);
+static void         terminal_window_update_terminal_padding       (TerminalWindow      *window);
 static void         terminal_window_update_mnemonic_modifier      (TerminalWindow      *window);
 static void         terminal_window_notebook_page_switched        (GtkNotebook         *notebook,
                                                                    GtkWidget           *page,
@@ -195,7 +195,6 @@ static gboolean     terminal_window_action_paste_selection        (TerminalWindo
 static gboolean     terminal_window_action_select_all             (TerminalWindow      *window);
 static gboolean     terminal_window_action_copy_input             (TerminalWindow      *window);
 static gboolean     terminal_window_action_prefs                  (TerminalWindow      *window);
-static gboolean     terminal_window_action_shortcuts              (TerminalWindow      *window);
 static gboolean     terminal_window_action_toggle_toolbar         (TerminalWindow      *window);
 static gboolean     terminal_window_action_toggle_borders         (TerminalWindow      *window);
 static gboolean     terminal_window_action_fullscreen             (TerminalWindow      *window);
@@ -332,7 +331,6 @@ static XfceGtkActionEntry action_entries[] =
     { TERMINAL_WINDOW_ACTION_SELECT_ALL,            "<Actions>/terminal-window/select-all",            "<control><shift>a",         XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Select _All"),                   NULL,                                     "edit-select-all",        G_CALLBACK (terminal_window_action_select_all), },
     { TERMINAL_WINDOW_ACTION_COPY_INPUT,            "<Actions>/terminal-window/copy-input",            "",                          XFCE_GTK_MENU_ITEM,       N_ ("Copy _Input To All Tabs..."),    NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_copy_input), },
     { TERMINAL_WINDOW_ACTION_PREFERENCES,           "<Actions>/terminal-window/preferences",           "",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Pr_eferences..."),               N_ ("Open the preferences dialog"),       "preferences-system",     G_CALLBACK (terminal_window_action_prefs), },
-    { TERMINAL_WINDOW_ACTION_SHORTCUTS,             "<Actions>/TerminalWindow/shortcuts",              "",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Short_cuts..."),                 N_ ("Open the shortcuts dialog"),         "",                       G_CALLBACK (terminal_window_action_shortcuts), },
     { TERMINAL_WINDOW_ACTION_VIEW_MENU,             "<Actions>/terminal-window/view-menu",             "",                          XFCE_GTK_MENU_ITEM,       N_ ("_View"),                         NULL,                                     NULL,                     NULL, },
     { TERMINAL_WINDOW_ACTION_ZOOM_IN,               "<Actions>/terminal-window/zoom-in",               "<control>plus",             XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Zoom _In"),                      N_ ("Zoom in with larger font"),          "zoom-in",                G_CALLBACK (terminal_window_action_zoom_in), },
     { TERMINAL_WINDOW_ACTION_ZOOM_IN_ALT,           "<Actions>/terminal-window/zoom-in-alt",           "<control>KP_Add",           XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Zoom In Alt"),                   NULL,                                     "zoom-in-alt",            G_CALLBACK (terminal_window_action_zoom_in), },
@@ -525,6 +523,9 @@ terminal_window_init (TerminalWindow *window)
   /* set notebook tabs style */
   gtk_widget_set_name (window->priv->notebook, NOTEBOOK_NAME);
   terminal_window_update_slim_tabs (window);
+
+  /* set terminal padding: Needs restart */
+  terminal_window_update_terminal_padding (window);
 
   /* signals */
   g_signal_connect (G_OBJECT (window->priv->notebook), "switch-page",
@@ -978,6 +979,33 @@ terminal_window_update_slim_tabs (TerminalWindow *window)
       gtk_css_provider_load_from_data (provider, CSS_SLIM_TABS, -1, NULL);
       g_object_unref (provider);
     }
+}
+
+
+
+static void
+terminal_window_update_terminal_padding (TerminalWindow *window)
+{
+  GdkScreen      *screen = gtk_window_get_screen (GTK_WINDOW (window));
+  GtkCssProvider *provider;
+  gint            padding;
+  gchar          *str;
+
+  g_object_get (G_OBJECT (window->priv->preferences),
+                "misc-terminal-padding", &padding,
+                NULL);
+  str = g_strdup_printf ("VteTerminal, TerminalScreen, vte-terminal {\n"
+                         "  padding: %dpx %dpx %dpx %dpx;\n"
+                         "  -VteTerminal-inner-border: %dpx %dpx %dpx %dpx;}\n",
+                         padding, padding, padding, padding,
+                         padding, padding, padding, padding);
+  provider = gtk_css_provider_new ();
+  gtk_style_context_add_provider_for_screen (screen,
+                                             GTK_STYLE_PROVIDER (provider),
+                                             GTK_STYLE_PROVIDER_PRIORITY_USER);
+  gtk_css_provider_load_from_data (provider, str, -1, NULL);
+  g_object_unref (provider);
+  g_free (str);
 }
 
 
@@ -1809,16 +1837,6 @@ terminal_window_action_prefs (TerminalWindow *window)
       gtk_window_set_transient_for (GTK_WINDOW (window->priv->preferences_dialog), GTK_WINDOW (window));
       gtk_window_present (GTK_WINDOW (window->priv->preferences_dialog));
     }
-
-  return TRUE;
-}
-
-
-
-static gboolean
-terminal_window_action_shortcuts (TerminalWindow *window)
-{
-  xfce_shortcuts_editor_dialog_new_with_parent (GTK_WINDOW (window), 4, "", action_entries, TERMINAL_WINDOW_ACTION_N);
 
   return TRUE;
 }
@@ -3168,7 +3186,6 @@ terminal_window_update_edit_menu     (TerminalWindow      *window,
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY_INPUT), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHORTCUTS), G_OBJECT (window), GTK_MENU_SHELL (menu));
 
   gtk_widget_show_all (GTK_WIDGET (menu));
 }
@@ -3398,4 +3415,12 @@ terminal_window_get_action_entry (TerminalWindow      *window,
                                   TerminalWindowAction action)
 {
   return (XfceGtkActionEntry*) get_action_entry (action);
+}
+
+
+
+XfceGtkActionEntry*
+terminal_window_get_action_entries (void)
+{
+  return action_entries;
 }
