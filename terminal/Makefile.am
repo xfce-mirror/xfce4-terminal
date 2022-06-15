@@ -13,7 +13,7 @@ xfce4_terminal_built_sources = \
 	terminal-enum-types.c \
 	terminal-enum-types.h \
 	terminal-marshal.c \
-	terminal-marshal.h \
+	terminal-marshal.h
 
 xfce4_terminal_headers = \
 	terminal-app.h \
