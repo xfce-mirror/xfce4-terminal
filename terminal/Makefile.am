@@ -14,7 +14,6 @@ xfce4_terminal_built_sources = \
 	terminal-enum-types.h \
 	terminal-marshal.c \
 	terminal-marshal.h \
-	terminal-preferences-ui.h
 
 xfce4_terminal_headers = \
 	terminal-app.h \
@@ -103,9 +102,6 @@ DISTCLEANFILES = \
 
 BUILT_SOURCES = \
 	$(xfce4_terminal_built_sources)
-
-terminal-preferences-ui.h: $(srcdir)/terminal-preferences.glade Makefile
-	$(AM_V_GEN) xdt-csource --strip-comments --strip-content --static --name=terminal_preferences_ui $< >$@
 
 terminal-enum-types.h: stamp-terminal-enum-types.h
 	@true
