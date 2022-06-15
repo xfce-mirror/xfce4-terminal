@@ -152,7 +152,6 @@ clean-local:
 
 EXTRA_DIST = \
 	terminal-config.h.in \
-	terminal-marshal.list \
-	terminal-preferences.glade
+	terminal-marshal.list
 
 # vi:set ts=8 sw=8 noet ai nocindent:
