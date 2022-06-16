@@ -35,6 +35,7 @@
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-gdbus.h>
 #include <terminal/terminal-preferences-dialog.h>
+#include <xfconf/xfconf.h>
 
 
 
@@ -201,6 +202,16 @@ main (int argc, char **argv)
    */
   g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING);
 #endif
+
+  /* initialize xfconf */
+  if (!xfconf_init (&error))
+    {
+      g_printerr (PACKAGE_NAME ": Failed to initialize Xfconf: %s\n\n", error->message);
+      g_clear_error (&error);
+
+      /* disable get/set properties */
+      terminal_preferences_xfconf_init_failed ();
+    }
 
   /* parse some options we need in main, not the windows attrs */
   terminal_options_parse (argc, argv, &options);
