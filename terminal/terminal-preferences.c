@@ -1294,10 +1294,10 @@ terminal_preferences_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-  TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
-  GValue   src = { 0, };
-  gchar    prop_name[64];
-  gchar  **array;
+  TerminalPreferences  *preferences = TERMINAL_PREFERENCES (object);
+  GValue                src = { 0, };
+  gchar                 prop_name[64];
+  gchar               **array;
 
   terminal_return_if_fail (prop_id < N_PROPERTIES);
 
@@ -1340,10 +1340,10 @@ terminal_preferences_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-  TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
-  GValue   dst = { 0, };
-  gchar    prop_name[64];
-  gchar  **array;
+  TerminalPreferences  *preferences = TERMINAL_PREFERENCES (object);
+  GValue                dst = { 0, };
+  gchar                 prop_name[64];
+  gchar               **array;
 
   /* leave if the channel is not set */
   if (G_UNLIKELY (preferences->channel == NULL))
