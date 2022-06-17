@@ -35,6 +35,7 @@
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-private.h>
+#include <xfconf/xfconf.h>
 
 #define TERMINALRC     "xfce4/terminal/terminalrc"
 #define TERMINALRC_OLD "Terminal/terminalrc"
@@ -111,7 +112,6 @@ enum
   PROP_USE_DEFAULT_WORKING_DIR,
   PROP_DEFAULT_WORKING_DIR,
   PROP_MISC_REWRAP_ON_RESIZE,
-  PROP_MISC_USE_SHIFT_ARROWS_TO_SCROLL,
   PROP_MISC_SLIM_TABS,
   PROP_MISC_NEW_TAB_ADJACENT,
   PROP_MISC_SEARCH_DIALOG_OPACITY,
@@ -137,50 +137,38 @@ enum
   N_PROPERTIES,
 };
 
+
+
+static void     terminal_preferences_finalize      (GObject             *object);
+static void     terminal_preferences_get_property  (GObject             *object,
+                                                    guint                prop_id,
+                                                    GValue              *value,
+                                                    GParamSpec          *pspec);
+static void     terminal_preferences_set_property  (GObject             *object,
+                                                    guint                prop_id,
+                                                    const GValue        *value,
+                                                    GParamSpec          *pspec);
+static void     terminal_preferences_prop_changed  (XfconfChannel       *channel,
+                                                    const gchar         *prop_name,
+                                                    const GValue        *value,
+                                                    TerminalPreferences *preferences);
+static void     terminal_preferences_load_rc_file  (TerminalPreferences *preferences);
+
+
+
 struct _TerminalPreferencesClass
 {
-  GObjectClass parent_class;
+  GObjectClass __parent__;
 };
 
 struct _TerminalPreferences
 {
-  GObject       parent_instance;
+  GObject        __parent__;
 
-  GValue        values[N_PROPERTIES];
+  XfconfChannel *channel;
 
-  GFile        *file;
-  GFileMonitor *monitor;
-  guint64       last_mtime;
-
-  guint         store_idle_id;
-  guint         loading_in_progress : 1;
+  gulong         property_changed_id;
 };
-
-
-
-static void     terminal_preferences_dispose            (GObject             *object);
-static void     terminal_preferences_finalize           (GObject             *object);
-static void     terminal_preferences_get_property       (GObject             *object,
-                                                         guint                prop_id,
-                                                         GValue              *value,
-                                                         GParamSpec          *pspec);
-static void     terminal_preferences_set_property       (GObject             *object,
-                                                         guint                prop_id,
-                                                         const GValue        *value,
-                                                         GParamSpec          *pspec);
-static void     terminal_preferences_load               (TerminalPreferences *preferences);
-static void     terminal_preferences_schedule_store     (TerminalPreferences *preferences);
-static gboolean terminal_preferences_store_idle         (gpointer             user_data);
-static void     terminal_preferences_store_idle_destroy (gpointer             user_data);
-static void     terminal_preferences_monitor_changed    (GFileMonitor        *monitor,
-                                                         GFile               *file,
-                                                         GFile               *other_file,
-                                                         GFileMonitorEvent    event_type,
-                                                         TerminalPreferences *preferences);
-static void     terminal_preferences_monitor_disconnect (TerminalPreferences *preferences);
-static void     terminal_preferences_monitor_connect    (TerminalPreferences *preferences,
-                                                         const gchar         *filename,
-                                                         gboolean             update_mtime);
 
 
 
@@ -192,10 +180,7 @@ transform_color_to_string (const GValue *src,
   gchar    buffer[16];
 
   color = g_value_get_boxed (src);
-  g_snprintf (buffer, sizeof (buffer), "#%04x%04x%04x",
-              (guint) (color->red * 65535),
-              (guint) (color->green * 65535),
-              (guint) (color->blue * 65535));
+  g_snprintf (buffer, sizeof (buffer), "#%04x%04x%04x", (guint) (color->red * 65535), (guint) (color->green * 65535), (guint) (color->blue * 65535));
   g_value_set_string (dst, buffer);
 }
 
@@ -266,6 +251,11 @@ transform_string_to_enum (const GValue *src,
 
 
 
+/* don't do anything in case xfconf_init() failed */
+static gboolean no_xfconf = FALSE;
+
+
+
 G_DEFINE_TYPE (TerminalPreferences, terminal_preferences, G_TYPE_OBJECT)
 
 
@@ -279,21 +269,21 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 {
   GObjectClass *gobject_class;
   guint         i;
-  const GType   enum_types[] = {
-    GTK_TYPE_POSITION_TYPE,
-    TERMINAL_TYPE_BACKGROUND_STYLE,
-    TERMINAL_TYPE_BACKGROUND,
-    TERMINAL_TYPE_SCROLLBAR,
-    TERMINAL_TYPE_TITLE,
-    TERMINAL_TYPE_ERASE_BINDING,
-    TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING,
-    TERMINAL_TYPE_CURSOR_SHAPE,
-    TERMINAL_TYPE_TEXT_BLINK_MODE,
-    TERMINAL_TYPE_RIGHT_CLICK_ACTION
-  };
+  const GType   enum_types[] =
+    {
+        GTK_TYPE_POSITION_TYPE,
+        TERMINAL_TYPE_BACKGROUND_STYLE,
+        TERMINAL_TYPE_BACKGROUND,
+        TERMINAL_TYPE_SCROLLBAR,
+        TERMINAL_TYPE_TITLE,
+        TERMINAL_TYPE_ERASE_BINDING,
+        TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING,
+        TERMINAL_TYPE_CURSOR_SHAPE,
+        TERMINAL_TYPE_TEXT_BLINK_MODE,
+        TERMINAL_TYPE_RIGHT_CLICK_ACTION
+    };
 
   gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->dispose = terminal_preferences_dispose;
   gobject_class->finalize = terminal_preferences_finalize;
   gobject_class->get_property = terminal_preferences_get_property;
   gobject_class->set_property = terminal_preferences_set_property;
@@ -1037,16 +1027,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * TerminalPreferences:misc-use-shift-arrows-to-scroll:
-   **/
-  preferences_props[PROP_MISC_USE_SHIFT_ARROWS_TO_SCROLL] =
-      g_param_spec_boolean ("misc-use-shift-arrows-to-scroll",
-                            NULL,
-                            "MiscUseShiftArrowsToScroll",
-                            FALSE,
-                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
    * TerminalPreferences:misc-slim-tabs:
    **/
   preferences_props[PROP_MISC_SLIM_TABS] =
@@ -1119,8 +1099,8 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
- * TerminalPreferences:overlay-scrolling:
- **/
+   * TerminalPreferences:overlay-scrolling:
+   **/
   preferences_props[PROP_OVERLAY_SCROLLING] =
       g_param_spec_boolean ("overlay-scrolling",
                             NULL,
@@ -1221,7 +1201,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          "TitleMode",
                          TERMINAL_TYPE_TITLE,
                          TERMINAL_TITLE_APPEND,
-                         G_PARAM_READWRITE| G_PARAM_STATIC_STRINGS);
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:word-chars:
@@ -1273,28 +1253,29 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
-  /* load settings */
-  terminal_preferences_load (preferences);
-}
+  const gchar check_prop[] = "/title-initial";
 
+  /* don't set a channel if xfconf init failed */
+  if (no_xfconf)
+    return;
 
+  /* load the channel */
+  preferences->channel = xfconf_channel_get ("xfce4-terminal");
 
-static void
-terminal_preferences_dispose (GObject *object)
-{
-  TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
-
-  /* stop file monitoring */
-  terminal_preferences_monitor_disconnect (preferences);
-
-  /* flush preferences */
-  if (G_UNLIKELY (preferences->store_idle_id != 0))
+  /* check one of the property to see if there are values */
+  if (!xfconf_channel_has_property (preferences->channel, check_prop))
     {
-      g_source_remove (preferences->store_idle_id);
-      terminal_preferences_store_idle (preferences);
+      /* try to load the old config file & save changes */
+      terminal_preferences_load_rc_file (preferences);
+
+      /* set the string we check */
+      if (!xfconf_channel_has_property (preferences->channel, check_prop))
+        xfconf_channel_set_string (preferences->channel, check_prop, _("Terminal"));
     }
 
-  (*G_OBJECT_CLASS (terminal_preferences_parent_class)->dispose) (object);
+  preferences->property_changed_id =
+    g_signal_connect (G_OBJECT (preferences->channel), "property-changed",
+                      G_CALLBACK (terminal_preferences_prop_changed), preferences);
 }
 
 
@@ -1302,13 +1283,6 @@ terminal_preferences_dispose (GObject *object)
 static void
 terminal_preferences_finalize (GObject *object)
 {
-  TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
-  guint                n;
-
-  for (n = 1; n < N_PROPERTIES; ++n)
-    if (G_IS_VALUE (preferences->values + n))
-      g_value_unset (preferences->values + n);
-
   (*G_OBJECT_CLASS (terminal_preferences_parent_class)->finalize) (object);
 }
 
@@ -1321,20 +1295,39 @@ terminal_preferences_get_property (GObject    *object,
                                    GParamSpec *pspec)
 {
   TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
-  GValue              *src;
+  GValue   src = { 0, };
+  gchar    prop_name[64];
+  gchar  **array;
 
   terminal_return_if_fail (prop_id < N_PROPERTIES);
 
-  src = preferences->values + prop_id;
-  if (G_VALUE_HOLDS (src, pspec->value_type))
+  /* only set defaults if channel is not set */
+  if (G_UNLIKELY (preferences->channel == NULL))
     {
-      if (G_LIKELY (pspec->value_type == G_TYPE_STRING))
-        g_value_set_static_string (value, g_value_get_string (src));
-      else
-        g_value_copy (src, value);
+      g_param_value_set_default (pspec, value);
+      return;
+    }
+
+  /* build property name */
+  g_snprintf (prop_name, sizeof (prop_name), "/%s", g_param_spec_get_name (pspec));
+
+  if (G_VALUE_TYPE (value) == G_TYPE_STRV)
+    {
+      /* handle arrays directly since we cannot transform those */
+      array = xfconf_channel_get_string_list (preferences->channel, prop_name);
+      g_value_take_boxed (value, array);
+    }
+  else if (xfconf_channel_get_property (preferences->channel, prop_name, &src))
+    {
+      if (G_VALUE_TYPE (value) == G_VALUE_TYPE (&src))
+        g_value_copy (&src, value);
+      else if (!g_value_transform (&src, value))
+        g_printerr ("Terminal: Failed to transform property %s\n", prop_name);
+      g_value_unset (&src);
     }
   else
     {
+      /* value is not found, return default */
       g_param_value_set_default (pspec, value);
     }
 }
@@ -1348,91 +1341,74 @@ terminal_preferences_set_property (GObject      *object,
                                    GParamSpec   *pspec)
 {
   TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
-  GValue              *dst;
+  GValue   dst = { 0, };
+  gchar    prop_name[64];
+  gchar  **array;
 
-  terminal_return_if_fail (prop_id < N_PROPERTIES);
-  terminal_return_if_fail (preferences_props[prop_id] == pspec);
+  /* leave if the channel is not set */
+  if (G_UNLIKELY (preferences->channel == NULL))
+    return;
 
-  dst = preferences->values + prop_id;
-  if (!G_IS_VALUE (dst))
+  /* build property name */
+  g_snprintf (prop_name, sizeof (prop_name), "/%s", g_param_spec_get_name (pspec));
+
+  if (G_VALUE_HOLDS_ENUM (value))
     {
-      g_value_init (dst, pspec->value_type);
-      g_param_value_set_default (pspec, dst);
+      /* convert into a string */
+      g_value_init (&dst, G_TYPE_STRING);
+      if (g_value_transform (value, &dst))
+        xfconf_channel_set_property (preferences->channel, prop_name, &dst);
+      g_value_unset (&dst);
     }
-
-  if (g_param_values_cmp (pspec, value, dst) != 0)
+  else if (G_VALUE_HOLDS (value, G_TYPE_STRV))
     {
-      g_value_copy (value, dst);
-
-      /* don't schedule a store if loading */
-      if (!preferences->loading_in_progress)
-        {
-          /* notify */
-          g_object_notify_by_pspec (object, pspec);
-
-          /* store new value */
-          terminal_preferences_schedule_store (preferences);
-        }
-    }
-}
-
-
-
-#ifdef G_ENABLE_DEBUG
-static void
-terminal_preferences_check_blurb (GParamSpec *spec)
-{
-  const gchar *s, *name;
-  gboolean     upper = TRUE;
-  gchar       *option, *t;
-
-  /* generate the option name */
-  name = g_param_spec_get_name (spec);
-  option = g_new (gchar, strlen (name) + 1);
-  for (s = name, t = option; *s != '\0'; ++s)
-    {
-      if (*s == '-')
-        {
-          upper = TRUE;
-        }
-      else if (upper)
-        {
-          *t++ = g_ascii_toupper (*s);
-          upper = FALSE;
-        }
+      /* convert to a GValue GPtrArray in xfconf */
+      array = g_value_get_boxed (value);
+      if (array != NULL && *array != NULL)
+        xfconf_channel_set_string_list (preferences->channel, prop_name, (const gchar *const *) array);
       else
-        {
-          *t++ = *s;
-        }
+        xfconf_channel_reset_property (preferences->channel, prop_name, FALSE);
     }
-  *t = '\0';
-
-  /* check if the generated option name is equal to the blurb */
-  if (g_strcmp0 (option, g_param_spec_get_blurb (spec)) != 0)
-    g_error ("The blurb of property \"%s\" does not match option name", name);
-
-  /* cleanup */
-  g_free (option);
+  else
+    {
+      /* other types we support directly */
+      xfconf_channel_set_property (preferences->channel, prop_name, value);
+    }
 }
-#endif
 
 
 
 static void
-terminal_preferences_load (TerminalPreferences *preferences)
+terminal_preferences_prop_changed (XfconfChannel       *channel,
+                                   const gchar         *prop_name,
+                                   const GValue        *value,
+                                   TerminalPreferences *preferences)
 {
-  gchar        *filename;
-  const gchar  *string, *name;
-  GParamSpec   *pspec;
-  XfceRc       *rc;
-  GValue        dst = { 0, };
-  GValue        src = { 0, };
-  GValue       *value;
-  guint         n;
-  gboolean      migrate_colors = FALSE;
-  gchar         color_name[16];
-  GString      *array;
+  GParamSpec *pspec;
 
+  /* check if the property exists and emit change */
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (preferences), prop_name + 1);
+  if (G_LIKELY (pspec != NULL))
+    g_object_notify_by_pspec (G_OBJECT (preferences), pspec);
+}
+
+
+
+static void
+terminal_preferences_load_rc_file (TerminalPreferences *preferences)
+{
+  gchar       *filename;
+  const gchar *string, *name;
+  GParamSpec  *pspec;
+  XfceRc      *rc;
+  GValue       dst = { 0, };
+  GValue       src = { 0, };
+  guint        n;
+  gboolean     migrate_colors = FALSE;
+  gchar        color_name[16];
+  GString     *array;
+
+  /* find file */
   filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC);
   if (G_UNLIKELY (filename == NULL))
     {
@@ -1443,11 +1419,10 @@ terminal_preferences_load (TerminalPreferences *preferences)
         return;
     }
 
+  /* look for preferences */
   rc = xfce_rc_simple_open (filename, TRUE);
   if (G_UNLIKELY (rc == NULL))
-    goto connect_monitor;
-
-  preferences->loading_in_progress = TRUE;
+    return;
 
   g_object_freeze_notify (G_OBJECT (preferences));
 
@@ -1468,13 +1443,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
       string = xfce_rc_read_entry (rc, g_param_spec_get_blurb (pspec), NULL);
       if (G_UNLIKELY (string == NULL))
         {
-          /* check if we need to reset to the default value */
-          value = preferences->values + n;
-          if (G_IS_VALUE (value))
-            {
-              g_value_unset (value);
-              g_object_notify_by_pspec (G_OBJECT (preferences), pspec);
-            }
+          g_object_notify_by_pspec (G_OBJECT (preferences), pspec);
         }
       else
         {
@@ -1526,288 +1495,53 @@ terminal_preferences_load (TerminalPreferences *preferences)
 
   g_object_thaw_notify (G_OBJECT (preferences));
 
-connect_monitor:
-  /* startup file monitoring */
-  terminal_preferences_monitor_connect (preferences, filename, FALSE);
-
-  preferences->loading_in_progress = FALSE;
+  g_print ("\n\n"
+           "Your Terminal settings have been migrated to Xfconf.\n"
+           "The config file \"%s\"\n"
+           "is not used anymore.\n\n", filename);
 
   g_free (filename);
 }
 
 
 
+#ifdef G_ENABLE_DEBUG
 static void
-terminal_preferences_schedule_store (TerminalPreferences *preferences)
+terminal_preferences_check_blurb (GParamSpec *spec)
 {
-  if (preferences->store_idle_id == 0 && !preferences->loading_in_progress)
+  const gchar *s, *name;
+  gboolean     upper = TRUE;
+  gchar       *option, *t;
+
+  /* generate the option name */
+  name = g_param_spec_get_name (spec);
+  option = g_new (gchar, strlen (name) + 1);
+  for (s = name, t = option; *s != '\0'; ++s)
     {
-      preferences->store_idle_id =
-          gdk_threads_add_timeout_seconds_full (G_PRIORITY_LOW, 1, terminal_preferences_store_idle,
-                                                preferences, terminal_preferences_store_idle_destroy);
-    }
-}
-
-
-
-static void
-terminal_preferences_store_value (const GValue *value,
-                                  const gchar  *property,
-                                  XfceRc       *rc)
-{
-  GValue       dst = { 0, };
-  const gchar *string;
-
-  terminal_return_if_fail (G_IS_VALUE (value));
-
-  if (G_VALUE_HOLDS_STRING (value))
-    {
-      /* write */
-      string = g_value_get_string (value);
-      if (G_LIKELY (string != NULL))
-        xfce_rc_write_entry (rc, property, string);
-    }
-  else
-    {
-      /* transform the property to a string */
-      g_value_init (&dst, G_TYPE_STRING);
-      if (!g_value_transform (value, &dst))
-        terminal_assert_not_reached ();
-
-      /* write */
-      string = g_value_get_string (&dst);
-      if (G_LIKELY (string != NULL))
-        xfce_rc_write_entry (rc, property, string);
-
-      /* cleanup */
-      g_value_unset (&dst);
-    }
-}
-
-
-
-static gboolean
-terminal_preferences_store_idle (gpointer user_data)
-{
-  TerminalPreferences *preferences = TERMINAL_PREFERENCES (user_data);
-  const gchar         *blurb;
-  GParamSpec          *pspec;
-  XfceRc              *rc = NULL;
-  GValue              *value;
-  GValue               src = { 0, };
-  guint                n;
-  gchar               *filename;
-
-  /* try again later if we're loading */
-  if (G_UNLIKELY (preferences->loading_in_progress))
-    return TRUE;
-
-  filename = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, TERMINALRC, TRUE);
-  if (G_UNLIKELY (filename == NULL))
-    {
-      g_warning ("Unable to store terminal preferences.");
-      return FALSE;
-    }
-
-  rc = xfce_rc_simple_open (filename, FALSE);
-  if (G_UNLIKELY (rc == NULL))
-    goto error;
-
-  xfce_rc_set_group (rc, "Configuration");
-
-  for (n = PROP_0 + 1; n < N_PROPERTIES; ++n)
-    {
-      pspec = preferences_props[n];
-      value = preferences->values + n;
-      blurb = g_param_spec_get_blurb (pspec);
-
-      if (G_IS_VALUE (value)
-          && !g_param_value_defaults (pspec, value))
+      if (*s == '-')
         {
-          /* always save non-default values */
-          terminal_preferences_store_value (value, blurb, rc);
-          continue;
+          upper = TRUE;
         }
-
-      if (g_str_has_prefix (blurb, "Misc"))
+      else if (upper)
         {
-          /* store the hidden-properties' default value */
-          g_value_init (&src, G_PARAM_SPEC_VALUE_TYPE (pspec));
-          g_param_value_set_default (pspec, &src);
-          terminal_preferences_store_value (&src, blurb, rc);
-          g_value_unset (&src);
+          *t++ = g_ascii_toupper (*s);
+          upper = FALSE;
         }
       else
         {
-          /* remove from the configuration */
-          xfce_rc_delete_entry (rc, blurb, FALSE);
+          *t++ = *s;
         }
     }
+  *t = '\0';
 
-  /* check if verything has been written */
-  xfce_rc_flush (rc);
-  if (xfce_rc_is_dirty (rc))
-    goto error;
-
-  /* check if we need to update the monitor */
-  terminal_preferences_monitor_connect (preferences, filename, TRUE);
-
-  if (G_LIKELY (FALSE))
-    {
-error:
-      g_warning ("Unable to store terminal preferences to \"%s\".", filename);
-    }
+  /* check if the generated option name is equal to the blurb */
+  if (g_strcmp0 (option, g_param_spec_get_blurb (spec)) != 0)
+    g_error ("The blurb of property \"%s\" does not match option name", name);
 
   /* cleanup */
-  g_free (filename);
-  if (G_LIKELY (rc != NULL))
-    xfce_rc_close (rc);
-
-  return FALSE;
+  g_free (option);
 }
-
-
-
-static void
-terminal_preferences_store_idle_destroy (gpointer user_data)
-{
-  TERMINAL_PREFERENCES (user_data)->store_idle_id = 0;
-}
-
-
-
-static void
-terminal_preferences_monitor_changed (GFileMonitor        *monitor,
-                                      GFile               *file,
-                                      GFile               *other_file,
-                                      GFileMonitorEvent    event_type,
-                                      TerminalPreferences *preferences)
-{
-  GFileInfo *info;
-  guint64    mtime = 0;
-
-  terminal_return_if_fail (G_IS_FILE_MONITOR (monitor));
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
-  terminal_return_if_fail (G_IS_FILE (file));
-
-  /* xfce rc rewrites the file, so skip other events */
-  if (G_UNLIKELY (preferences->loading_in_progress))
-    return;
-
-  /* get the last modified timestamp from the file */
-  info = g_file_query_info (file, G_FILE_ATTRIBUTE_TIME_MODIFIED,
-                            G_FILE_QUERY_INFO_NONE, NULL, NULL);
-  if (G_LIKELY (info != NULL))
-    {
-      mtime = g_file_info_get_attribute_uint64 (info,
-          G_FILE_ATTRIBUTE_TIME_MODIFIED);
-      g_object_unref (G_OBJECT (info));
-    }
-
-  /* reload the preferences if the new mtime is newer */
-  if (G_UNLIKELY (mtime > preferences->last_mtime))
-    {
-      terminal_preferences_load (preferences);
-
-      /* set new mtime */
-      preferences->last_mtime = mtime;
-    }
-}
-
-
-
-static void
-terminal_preferences_monitor_disconnect (TerminalPreferences *preferences)
-{
-  /* release the old file and monitor */
-  if (G_LIKELY (preferences->file != NULL))
-    {
-      g_object_unref (G_OBJECT (preferences->file));
-      preferences->file = NULL;
-    }
-
-  if (G_LIKELY (preferences->monitor != NULL))
-    {
-      g_file_monitor_cancel (preferences->monitor);
-      g_object_unref (G_OBJECT (preferences->monitor));
-      preferences->monitor = NULL;
-    }
-}
-
-
-
-static void
-terminal_preferences_monitor_connect (TerminalPreferences *preferences,
-                                      const gchar         *filename,
-                                      gboolean             update_mtime)
-{
-  GError    *error = NULL;
-  GFileInfo *info;
-  GFile     *new_file;
-
-  /* get new file location */
-  new_file = g_file_new_for_path (filename);
-
-  /* filename could be a symlink: read the actual path to rc file then */
-  info = g_file_query_info (new_file, G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK","G_FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET,
-                            G_FILE_QUERY_INFO_NONE, NULL, NULL);
-  if (g_file_info_get_is_symlink (info))
-    {
-      g_object_unref (new_file);
-      new_file = g_file_new_for_path (g_file_info_get_symlink_target (info));
-      g_object_unref (info);
-    }
-
-  /* check if we need to start or update file monitoring */
-  if (preferences->file == NULL
-      || !g_file_equal (new_file, preferences->file))
-    {
-      /* disconnect old monitor */
-      terminal_preferences_monitor_disconnect (preferences);
-
-      /* create new local file */
-      preferences->file = g_object_ref (new_file);
-
-      /* monitor the file */
-      preferences->monitor = g_file_monitor_file (preferences->file,
-                                                  G_FILE_MONITOR_NONE,
-                                                  NULL, &error);
-      if (G_LIKELY (preferences->monitor != NULL))
-        {
-          /* connect signal */
-#ifdef G_ENABLE_DEBUG
-          g_debug ("Monitoring \"%s\" for changes.", filename);
 #endif
-          g_signal_connect (G_OBJECT (preferences->monitor), "changed",
-                            G_CALLBACK (terminal_preferences_monitor_changed),
-                            preferences);
-        }
-      else
-        {
-          g_critical ("Failed to setup monitoring for file \"%s\": %s",
-                      filename, error->message);
-          g_error_free (error);
-        }
-    }
-
-  g_object_unref (new_file);
-
-  preferences->last_mtime = 0;
-
-  /* store the last known mtime */
-  if (preferences->file != NULL
-      && update_mtime)
-    {
-      info = g_file_query_info (preferences->file, G_FILE_ATTRIBUTE_TIME_MODIFIED,
-                                G_FILE_QUERY_INFO_NONE, NULL, NULL);
-      if (G_LIKELY (info != NULL))
-        {
-          preferences->last_mtime = g_file_info_get_attribute_uint64 (info,
-              G_FILE_ATTRIBUTE_TIME_MODIFIED);
-          g_object_unref (G_OBJECT (info));
-        }
-    }
-}
 
 
 
@@ -1816,7 +1550,7 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
  *
  * Return value :
  **/
-TerminalPreferences*
+TerminalPreferences *
 terminal_preferences_get (void)
 {
   static TerminalPreferences *preferences = NULL;
@@ -1842,8 +1576,8 @@ terminal_preferences_get_color (TerminalPreferences *preferences,
                                 const gchar         *property,
                                 GdkRGBA             *color_return)
 {
-  gchar    *spec;
-  gboolean  succeed = FALSE;
+  gchar   *spec;
+  gboolean succeed = FALSE;
 
   terminal_return_val_if_fail (TERMINAL_IS_PREFERENCES (preferences), FALSE);
 
@@ -1853,4 +1587,12 @@ terminal_preferences_get_color (TerminalPreferences *preferences,
   g_free (spec);
 
   return succeed;
+}
+
+
+
+void
+terminal_preferences_xfconf_init_failed (void)
+{
+  no_xfconf = TRUE;
 }
