@@ -112,7 +112,6 @@ enum
   PROP_USE_DEFAULT_WORKING_DIR,
   PROP_DEFAULT_WORKING_DIR,
   PROP_MISC_REWRAP_ON_RESIZE,
-  PROP_MISC_USE_SHIFT_ARROWS_TO_SCROLL,
   PROP_MISC_SLIM_TABS,
   PROP_MISC_NEW_TAB_ADJACENT,
   PROP_MISC_SEARCH_DIALOG_OPACITY,
@@ -1028,16 +1027,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * TerminalPreferences:misc-use-shift-arrows-to-scroll:
-   **/
-  preferences_props[PROP_MISC_USE_SHIFT_ARROWS_TO_SCROLL] =
-      g_param_spec_boolean ("misc-use-shift-arrows-to-scroll",
-                            NULL,
-                            "MiscUseShiftArrowsToScroll",
-                            FALSE,
-                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
    * TerminalPreferences:misc-slim-tabs:
    **/
   preferences_props[PROP_MISC_SLIM_TABS] =
@@ -1435,7 +1424,7 @@ terminal_preferences_load_rc_file (TerminalPreferences *preferences)
   if (G_UNLIKELY (rc == NULL))
     return;
 
-  /* TODO: is freeze notify required here ? */
+  g_object_freeze_notify (G_OBJECT (preferences));
 
   xfce_rc_set_group (rc, "Configuration");
 
@@ -1504,7 +1493,7 @@ terminal_preferences_load_rc_file (TerminalPreferences *preferences)
 
   xfce_rc_close (rc);
 
-  /* TODO: notify if freezed */
+  g_object_thaw_notify (G_OBJECT (preferences));
 
   g_print ("\n\n"
            "Your Terminal settings have been migrated to Xfconf.\n"
