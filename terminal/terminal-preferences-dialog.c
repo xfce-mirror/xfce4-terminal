@@ -336,7 +336,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_object_bind_property (G_OBJECT (dialog->preferences), "use-default-working-dir",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  gtk_widget_set_tooltip_text (button, _("Select this option to make new temrinals (tabs or windows) use custom"
+  gtk_widget_set_tooltip_text (button, _("Select this option to make new terminals (tabs or windows) use custom"
                                           " working directory. Otherwise, current working directory will be used."));
   gtk_widget_set_halign (button, GTK_ALIGN_START);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
@@ -1323,7 +1323,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   combo = gtk_combo_box_text_new ();
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Auto-detect"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("ASCII Del"));
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Escapre sequence"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Escape sequence"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Control-H"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Erase TTY"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "binding-backspace",
@@ -1346,7 +1346,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   combo = gtk_combo_box_text_new ();
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Auto-detect"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("ASCII Del"));
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Escapre sequence"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Escape sequence"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Control-H"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Erase TTY"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "binding-delete",
@@ -2000,7 +2000,7 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog,
 
 
 static void
-temrinal_preferences_dialog_reset_properties (TerminalPreferencesDialog  *dialog,
+terminal_preferences_dialog_reset_properties (TerminalPreferencesDialog  *dialog,
                                               guint                       props_n,
                                               const gchar               **props)
 {
@@ -2025,7 +2025,7 @@ terminal_preferences_dialog_reset_cell_scale (TerminalPreferencesDialog *dialog,
                                               GtkWidget                 *widget)
 {
   const gchar *properties[] = { "cell-width-scale", "cell-height-scale" };
-  temrinal_preferences_dialog_reset_properties (dialog, G_N_ELEMENTS (properties), properties);
+  terminal_preferences_dialog_reset_properties (dialog, G_N_ELEMENTS (properties), properties);
 }
 
 
@@ -2035,7 +2035,7 @@ terminal_preferences_dialog_reset_compatibility_options (TerminalPreferencesDial
                                                          GtkWidget                 *widget)
 {
   const gchar *properties[] = { "binding-backspace", "binding-delete", "binding-ambiguous-width" };
-  temrinal_preferences_dialog_reset_properties (dialog, G_N_ELEMENTS (properties), properties);
+  terminal_preferences_dialog_reset_properties (dialog, G_N_ELEMENTS (properties), properties);
 }
 
 
@@ -2045,7 +2045,7 @@ terminal_preferences_dialog_reset_double_click_select (TerminalPreferencesDialog
                                                        GtkWidget                 *widget)
 {
   const gchar *properties[] = { "word-chars" };
-  temrinal_preferences_dialog_reset_properties (dialog, G_N_ELEMENTS (properties), properties);
+  terminal_preferences_dialog_reset_properties (dialog, G_N_ELEMENTS (properties), properties);
 }
 
 
