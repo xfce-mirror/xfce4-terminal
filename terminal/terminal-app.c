@@ -131,8 +131,6 @@ terminal_app_init (TerminalApp *app)
   app->preferences = terminal_preferences_get ();
   g_signal_connect_swapped (G_OBJECT (app->preferences), "notify::shortcuts-no-menukey",
                             G_CALLBACK (terminal_app_update_accels), app);
-  g_signal_connect_swapped (G_OBJECT (app->preferences), "notify::shortcuts-no-helpkey",
-                            G_CALLBACK (terminal_app_update_accels), app);
 
   /* remember the original menu bar accel */
   g_object_get (G_OBJECT (gtk_settings_get_default ()),
@@ -206,12 +204,6 @@ terminal_app_update_accels (TerminalApp *app)
   gtk_accelerator_parse (app->initial_menu_bar_accel, &key, &mod);
   gtk_accel_map_change_entry ("<Actions>/terminal-window/toggle-menubar",
                               no_key ? 0 : key, no_key ? 0 : mod, TRUE);
-
-  g_object_get (G_OBJECT (app->preferences),
-                "shortcuts-no-helpkey", &no_key,
-                NULL);
-  gtk_accel_map_change_entry ("<Actions>/terminal-window/contents",
-                              no_key ? 0 : GDK_KEY_F1, 0, TRUE);
 }
 
 
