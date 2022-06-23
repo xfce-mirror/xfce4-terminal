@@ -35,6 +35,8 @@
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-gdbus.h>
 #include <terminal/terminal-preferences-dialog.h>
+#include <terminal/terminal-window.h>
+#include <terminal/terminal-widget.h>
 
 
 
@@ -232,12 +234,24 @@ main (int argc, char **argv)
   else if (G_UNLIKELY (options.show_preferences))
     {
       GtkWidget *dialog;
+
       gtk_init (&argc, &argv);
+
+      /* load the AccelMap for the XfceShortcutsEditor */
+      app = g_object_new (TERMINAL_TYPE_APP, NULL);
+      xfce_gtk_accel_map_add_entries (terminal_window_get_action_entries (), TERMINAL_WINDOW_ACTION_N);
+      xfce_gtk_accel_map_add_entries (terminal_widget_get_action_entries (), TERMINAL_WIDGET_ACTION_N);
+      terminal_app_load_accels (app); /* manual execution, instead of the typical idle function */
+
+      /* create and run the dialog */
       dialog = terminal_preferences_dialog_new (TRUE, FALSE);
       g_signal_connect_after (G_OBJECT (dialog), "destroy",
           G_CALLBACK (gtk_main_quit), NULL);
       gtk_window_present (GTK_WINDOW (dialog));
       gtk_main ();
+
+      g_object_unref (G_OBJECT (app));
+
       return EXIT_SUCCESS;
     }
 

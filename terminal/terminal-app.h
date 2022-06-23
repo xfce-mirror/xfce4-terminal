@@ -59,6 +59,8 @@ gboolean     terminal_app_process             (TerminalApp        *app,
                                                gint                argc,
                                                GError            **error);
 
+void         terminal_app_load_accels         (TerminalApp        *app);
+
 G_END_DECLS
 
 #endif /* !TERMINAL_APP_H */
