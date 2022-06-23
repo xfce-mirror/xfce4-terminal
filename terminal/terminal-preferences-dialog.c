@@ -73,29 +73,6 @@ static gboolean  monospace_filter                                        (const 
 
 
 
-struct _TerminalPreferencesDialogClass
-{
-  XfceTitledDialogClass __parent__;
-};
-
-struct _TerminalPreferencesDialog
-{
-  XfceTitledDialog     __parent__;
-  TerminalPreferences *preferences;
-
-  GtkColorButton      *buttons[16];
-  GtkLabel            *dropdown_label;
-  GtkBox              *dropdown_vbox;
-  GtkNotebook         *dropdown_notebook;
-  GtkSpinButton       *geometry_columns_button;
-  GtkSpinButton       *geometry_rows_button;
-  gint                 n_presets;
-
-  gulong               bg_image_signal_id;
-  gulong               palette_signal_id;
-  gulong               geometry_signal_id;
-};
-
 enum
 {
   PRESET_COLUMN_TITLE,
@@ -106,14 +83,44 @@ enum
 
 enum
 {
-  GEOMETRY_GET_COLUMNS,
-  GEOMETRY_GET_ROWS
+  GEOMETRY_COLUMN,
+  GEOMETRY_ROW,
+  N_GEOMETRY_BUTTONS
 };
 
 enum
 {
   BACKGROUND_COMBO_SHOW_IMAGE_OPTIONS = 1,
   BACKGROUND_COMBO_SHOW_OPACITY_OPTIONS
+};
+
+enum
+{
+  N_PALETTE_BUTTONS = 16,
+};
+
+struct _TerminalPreferencesDialogClass
+{
+  XfceTitledDialogClass __parent__;
+};
+
+struct _TerminalPreferencesDialog
+{
+  XfceTitledDialog     __parent__;
+  TerminalPreferences *preferences;
+
+  GtkColorButton      *palette_button[N_PALETTE_BUTTONS];
+  GtkSpinButton       *geometry_button[N_GEOMETRY_BUTTONS];
+  GtkLabel            *dropdown_label;
+  GtkBox              *dropdown_vbox;
+  GtkNotebook         *dropdown_notebook;
+  gint                 n_presets;
+
+  gulong               bg_image_signal_id;
+  gulong               palette_notify_signal_id;
+  gulong               palette_set_signal_id[N_PALETTE_BUTTONS];
+  gulong               geometry_notify_signal_id;
+  gulong               geometry_set_signal_id[N_GEOMETRY_BUTTONS];
 };
 
 
@@ -1007,13 +1014,14 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (10, 4000, 1);
-  g_signal_connect_swapped (button, "value-changed",
-                            G_CALLBACK (terminal_preferences_dialog_geometry_changed), dialog);
+  dialog->geometry_set_signal_id[GEOMETRY_COLUMN] =
+    g_signal_connect_swapped (button, "value-changed",
+                              G_CALLBACK (terminal_preferences_dialog_geometry_changed), dialog);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
-  dialog->geometry_columns_button = GTK_SPIN_BUTTON (button);
+  dialog->geometry_button[GEOMETRY_COLUMN] = GTK_SPIN_BUTTON (button);
 
   label = gtk_label_new_with_mnemonic (_("columns"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
@@ -1021,21 +1029,23 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (10, 3000, 1);
-  g_signal_connect_swapped (button, "value-changed",
-                            G_CALLBACK (terminal_preferences_dialog_geometry_changed), dialog);
+  dialog->geometry_set_signal_id[GEOMETRY_ROW] =
+    g_signal_connect_swapped (button, "value-changed",
+                              G_CALLBACK (terminal_preferences_dialog_geometry_changed), dialog);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
   gtk_grid_attach (GTK_GRID (grid), button, 3, row, 1, 1);
   gtk_widget_show (button);
 
-  dialog->geometry_rows_button = GTK_SPIN_BUTTON (button);
+  dialog->geometry_button[GEOMETRY_ROW] = GTK_SPIN_BUTTON (button);
 
   label = gtk_label_new_with_mnemonic (_("rows"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 4, row, 1, 1);
   gtk_widget_show (label);
 
-  dialog->geometry_signal_id = g_signal_connect_swapped (dialog->preferences, "notify::misc-default-geometry",
-                                                         G_CALLBACK (terminal_preferences_dialog_geometry_notify), dialog);
+  dialog->geometry_notify_signal_id =
+    g_signal_connect_swapped (dialog->preferences, "notify::misc-default-geometry",
+                              G_CALLBACK (terminal_preferences_dialog_geometry_notify), dialog);
   terminal_preferences_dialog_geometry_notify (dialog);
 
 
@@ -1246,20 +1256,22 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* section: Palette */
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Palette");
 
-  for (gint i = 0; i < 16; i++)
+  for (gint i = 0; i < N_PALETTE_BUTTONS; i++)
     {
-      row = i / 8;
+      row = i / (N_PALETTE_BUTTONS / 2);
       button = gtk_color_button_new ();
-      g_signal_connect_swapped (button, "color-set",
-                                G_CALLBACK (terminal_preferences_dialog_palette_changed), dialog);
+      dialog->palette_set_signal_id[i] =
+        g_signal_connect_swapped (button, "color-set",
+                                  G_CALLBACK (terminal_preferences_dialog_palette_changed), dialog);
       gtk_widget_set_halign (button, GTK_ALIGN_START);
-      gtk_grid_attach (GTK_GRID (grid), button, i % 8, row, 1, 1);
+      gtk_grid_attach (GTK_GRID (grid), button, i % (N_PALETTE_BUTTONS / 2), row, 1, 1);
       gtk_widget_show (button);
-      dialog->buttons[i] = GTK_COLOR_BUTTON (button);
+      dialog->palette_button[i] = GTK_COLOR_BUTTON (button);
     }
 
-  dialog->palette_signal_id = g_signal_connect_swapped (dialog->preferences, "notify::color-palette",
-                                                        G_CALLBACK (terminal_preferences_dialog_palette_notify), dialog);
+  dialog->palette_notify_signal_id =
+    g_signal_connect_swapped (dialog->preferences, "notify::color-palette",
+                              G_CALLBACK (terminal_preferences_dialog_palette_notify), dialog);
   terminal_preferences_dialog_palette_notify (dialog);
 
   /* next row */
@@ -1674,8 +1686,7 @@ terminal_preferences_dialog_background_set (TerminalPreferencesDialog *dialog,
 static void
 terminal_preferences_dialog_geometry_notify (TerminalPreferencesDialog *dialog)
 {
-  gint    cols;
-  gint    rows;
+  gint    i;
   gchar  *geometry = NULL;
   gchar **split = NULL;
 
@@ -1692,13 +1703,15 @@ terminal_preferences_dialog_geometry_notify (TerminalPreferencesDialog *dialog)
   if (G_UNLIKELY (split == NULL))
     return;
 
-  /* parse integers from strings */
-  cols = atoi (split[GEOMETRY_GET_COLUMNS]);
-  rows = atoi (split[GEOMETRY_GET_ROWS]);
-
   /* apply values to buttons */
-  gtk_spin_button_set_value (dialog->geometry_columns_button, cols);
-  gtk_spin_button_set_value (dialog->geometry_rows_button, rows);
+  for (i = 0; i < N_GEOMETRY_BUTTONS; i++)
+    {
+      /* setting the value should not trigger an update in the preference, hence the "value-changed" signal is being blocked */
+      g_signal_handler_block (dialog->geometry_button[i], dialog->geometry_set_signal_id[i]);
+      gtk_spin_button_set_value (dialog->geometry_button[i], atoi (split[i]));
+      /* unblock signal */
+      g_signal_handler_unblock (dialog->geometry_button[i], dialog->geometry_set_signal_id[i]);
+    }
 
   g_strfreev (split);
 }
@@ -1716,15 +1729,19 @@ terminal_preferences_dialog_geometry_changed (TerminalPreferencesDialog *dialog,
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
   terminal_return_if_fail (GTK_IS_SPIN_BUTTON (widget));
 
-  cols = gtk_spin_button_get_value_as_int (dialog->geometry_columns_button);
-  rows = gtk_spin_button_get_value_as_int (dialog->geometry_rows_button);
+  cols = gtk_spin_button_get_value_as_int (dialog->geometry_button[GEOMETRY_COLUMN]);
+  rows = gtk_spin_button_get_value_as_int (dialog->geometry_button[GEOMETRY_ROW]);
 
   geometry = g_strdup_printf ("%dx%d", cols, rows);
 
   /* set property */
-  g_signal_handler_block (dialog->preferences, dialog->geometry_signal_id);
+
+  /* setting the property should not trigger an update on the buttons, otherwise it will go on in a loop */
+  g_signal_handler_block (dialog->preferences, dialog->geometry_notify_signal_id);
   g_object_set (G_OBJECT (dialog->preferences), "misc-default-geometry", geometry, NULL);
-  g_signal_handler_unblock (dialog->preferences, dialog->geometry_signal_id);
+  /* unblock signal */
+  g_signal_handler_unblock (dialog->preferences, dialog->geometry_notify_signal_id);
+
   g_free (geometry);
 }
 
@@ -1753,10 +1770,14 @@ terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
     return;
 
   /* apply values to buttons */
-  for (i = 0; i < 16 && colors[i] != NULL; i++)
+  for (i = 0; i < N_PALETTE_BUTTONS && colors[i] != NULL; i++)
     {
+      /* setting the color should not trigger an update in the preference, hence the "color-set" signal is being blocked */
+      g_signal_handler_block (GTK_WIDGET (dialog->palette_button[i]), dialog->palette_set_signal_id[i]);
       if (gdk_rgba_parse (&color, colors[i]))
-        gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (dialog->buttons[i]), &color);
+        gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (dialog->palette_button[i]), &color);
+      /* unblock signal */
+      g_signal_handler_unblock (GTK_WIDGET (dialog->palette_button[i]), dialog->palette_set_signal_id[i]);
     }
 
   g_strfreev (colors);
@@ -1778,23 +1799,27 @@ terminal_preferences_dialog_palette_changed (TerminalPreferencesDialog *dialog,
 
   array = g_string_sized_new (225);
 
-  for (i = 0; i < 16; i++)
+  for (i = 0; i < N_PALETTE_BUTTONS; i++)
     {
-      gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (dialog->buttons[i]), &color);
+      gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (dialog->palette_button[i]), &color);
 
       /* append to string */
       color_str = gdk_rgba_to_string (&color);
       g_string_append (array, color_str);
       g_free (color_str);
 
-      if (i != 15)
+      if (i != N_PALETTE_BUTTONS - 1)
         g_string_append_c (array, ';');
     }
 
   /* set property */
-  g_signal_handler_block (dialog->preferences, dialog->palette_signal_id);
+
+  /* setting the property should not trigger an update on the buttons, otherwise it will go on in a loop */
+  g_signal_handler_block (dialog->preferences, dialog->palette_notify_signal_id);
   g_object_set (dialog->preferences, "color-palette", array->str, NULL);
-  g_signal_handler_unblock (dialog->preferences, dialog->palette_signal_id);
+  /* unblock signal */
+  g_signal_handler_unblock (dialog->preferences, dialog->palette_notify_signal_id);
+
   g_string_free (array, TRUE);
 }
 
@@ -2125,10 +2150,13 @@ terminal_preferences_dialog_finalize (GObject *object)
   /* disconnect signals */
   if (G_LIKELY (dialog->bg_image_signal_id != 0))
     g_signal_handler_disconnect (dialog->preferences, dialog->bg_image_signal_id);
-  if (G_LIKELY (dialog->palette_signal_id != 0))
-    g_signal_handler_disconnect (dialog->preferences, dialog->palette_signal_id);
-  if (G_LIKELY (dialog->geometry_signal_id != 0))
-    g_signal_handler_disconnect (dialog->preferences, dialog->geometry_signal_id);
+  if (G_LIKELY (dialog->palette_notify_signal_id != 0))
+    g_signal_handler_disconnect (dialog->preferences, dialog->palette_notify_signal_id);
+  if (G_LIKELY (dialog->geometry_notify_signal_id != 0))
+    g_signal_handler_disconnect (dialog->preferences, dialog->geometry_notify_signal_id);
+
+  /* other signals like the set-signals do not need to be disconnected since the 
+   * instances have already been released and the respective signals taken care of */
 
   /* release our reference on the preferences */
   g_object_unref (G_OBJECT (dialog->preferences));
