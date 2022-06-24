@@ -103,13 +103,14 @@ typedef enum /*< enum,prefix=TERMINAL_RIGHT_CLICK_ACTION >*/
     TERMINAL_RIGHT_CLICK_ACTION_PASTE_SELECTION
 } TerminalRightClickAction;
 
-GType                terminal_preferences_get_type  (void) G_GNUC_CONST;
+GType                terminal_preferences_get_type            (void) G_GNUC_CONST;
 
-TerminalPreferences *terminal_preferences_get       (void);
+TerminalPreferences *terminal_preferences_get                 (void);
 
-gboolean             terminal_preferences_get_color (TerminalPreferences *preferences,
-                                                     const gchar         *property,
-                                                     GdkRGBA             *color_return);
+gboolean             terminal_preferences_get_color           (TerminalPreferences *preferences,
+                                                               const gchar         *property,
+                                                               GdkRGBA             *color_return);
+void                 terminal_preferences_xfconf_init_failed  (void);
 
 
 G_END_DECLS
