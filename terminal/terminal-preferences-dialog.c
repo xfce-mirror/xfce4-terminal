@@ -1484,16 +1484,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
   gtk_widget_show (button);
 
-  /* next row */
-  row++;
-
-  button = gtk_check_button_new_with_mnemonic (_("_Disable help window shortcut key (F1 by default)"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "shortcuts-no-helpkey",
-                          G_OBJECT (button), "active",
-                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
-  gtk_widget_show (button);
-
 
   /* section: Misc */
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Misc");
