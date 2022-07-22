@@ -56,6 +56,7 @@
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-widget.h>
 #include <terminal/terminal-window.h>
+#include <terminal/terminal-preferences.h>
 #include <terminal/terminal-window-dropdown.h>
 
 #if defined(GDK_WINDOWING_X11)
@@ -153,6 +154,7 @@ static void       terminal_screen_update_scrolling_on_keystroke (TerminalScreen 
 static void       terminal_screen_update_text_blink_mode        (TerminalScreen        *screen);
 static void       terminal_screen_update_title                  (TerminalScreen        *screen);
 static void       terminal_screen_update_word_chars             (TerminalScreen        *screen);
+static void       terminal_screen_update_all                    (TerminalScreen        *screen);
 static void       terminal_screen_vte_child_exited              (VteTerminal           *terminal,
                                                                  gint                   status,
                                                                  TerminalScreen        *screen);
@@ -221,6 +223,8 @@ struct _TerminalScreen
 
   guint                activity_timeout_id;
   time_t               activity_resize_time;
+
+  gchar               *profile;
 };
 
 typedef struct
@@ -370,32 +374,18 @@ terminal_screen_init (TerminalScreen *screen)
   screen->scrollbar = gtk_scrolled_window_get_vscrollbar (GTK_SCROLLED_WINDOW (screen->swin));
   g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
 
+  /* initialize profile to the current default profile */
+  screen->profile = terminal_preferences_get_default_profile (screen->preferences);
+
   /* watch preferences changes */
   g_signal_connect (G_OBJECT (screen->preferences), "notify",
       G_CALLBACK (terminal_screen_preferences_changed), screen);
 
+  /* apply current settings */
+  terminal_screen_update_all (screen);
+
   /* show the terminal */
   gtk_widget_show_all (screen->swin);
-
-  /* apply current settings */
-  terminal_screen_update_binding_backspace (screen);
-  terminal_screen_update_binding_delete (screen);
-  terminal_screen_update_binding_ambiguous_width (screen);
-  terminal_screen_update_encoding (screen);
-  terminal_screen_update_font (screen);
-  terminal_screen_update_misc_bell (screen);
-  terminal_screen_update_misc_cursor_blinks (screen);
-  terminal_screen_update_misc_cursor_shape (screen);
-  terminal_screen_update_misc_mouse_autohide (screen);
-  terminal_screen_update_misc_rewrap_on_resize (screen);
-  terminal_screen_update_scrolling_bar (screen);
-  terminal_screen_update_scrolling_lines (screen);
-  terminal_screen_update_scrolling_on_output (screen);
-  terminal_screen_update_scrolling_on_keystroke (screen);
-  terminal_screen_update_text_blink_mode (screen);
-  terminal_screen_update_word_chars (screen);
-  terminal_screen_update_background (screen);
-  terminal_screen_update_colors (screen);
 
   /* last, connect contents-changed to avoid a race with updates above */
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "contents-changed",
@@ -429,6 +419,7 @@ terminal_screen_finalize (GObject *object)
   g_free (screen->custom_fg_color);
   g_free (screen->custom_bg_color);
   g_free (screen->custom_title_color);
+  g_free (screen->profile);
 
   (*G_OBJECT_CLASS (terminal_screen_parent_class)->finalize) (object);
 }
@@ -636,10 +627,18 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
                                      TerminalScreen      *screen)
 {
   const gchar *name;
+  gchar       *current_profile;
+  gboolean     needs_change = FALSE;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
   terminal_return_if_fail (screen->preferences == preferences);
+
+  current_profile = terminal_preferences_get_active_profile (preferences);
+  needs_change = g_strcmp0 (screen->profile, current_profile) != 0;
+  g_free (current_profile);
+  if (needs_change)
+      return;
 
   /* get name */
   name = g_param_spec_get_name (pspec);
@@ -3120,4 +3119,70 @@ terminal_screen_widget_append_accels (TerminalScreen *screen,
 
   if (G_LIKELY (G_IS_OBJECT (screen->terminal)))
     g_object_set (G_OBJECT (screen->terminal), "accel-group", accel_group, NULL);
+}
+
+
+
+static void
+terminal_screen_update_all (TerminalScreen *screen)
+{
+  /* apply the current settings */
+  terminal_screen_update_binding_backspace (screen);
+  terminal_screen_update_binding_delete (screen);
+  terminal_screen_update_binding_ambiguous_width (screen);
+  terminal_screen_update_encoding (screen);
+  terminal_screen_update_font (screen);
+  terminal_screen_update_misc_bell (screen);
+  terminal_screen_update_misc_cursor_blinks (screen);
+  terminal_screen_update_misc_cursor_shape (screen);
+  terminal_screen_update_misc_mouse_autohide (screen);
+  terminal_screen_update_misc_rewrap_on_resize (screen);
+  terminal_screen_update_scrolling_bar (screen);
+  terminal_screen_update_scrolling_lines (screen);
+  terminal_screen_update_scrolling_on_output (screen);
+  terminal_screen_update_scrolling_on_keystroke (screen);
+  terminal_screen_update_text_blink_mode (screen);
+  terminal_screen_update_word_chars (screen);
+  terminal_screen_update_background (screen);
+  terminal_screen_update_colors (screen);
+}
+
+
+
+void
+terminal_screen_change_profile_to (TerminalScreen *screen,
+                                   const gchar    *name)
+{
+  gchar *active_profile;
+
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
+  /* No change required */
+  if (g_strcmp0 (screen->profile, name) == 0)
+    return;
+
+  active_profile = terminal_preferences_get_active_profile (screen->preferences);
+  g_free (screen->profile);
+  screen->profile = g_strdup (name);
+
+  if (g_strcmp0 (name, active_profile) != 0)
+    terminal_preferences_switch_profile (screen->preferences, name);
+
+  /* update all the settings */
+  terminal_screen_update_all (screen);
+
+  /* We don't want the profile change in preferences to be persistent
+     as this function should change preferences only for this instance of screen */
+  if (g_strcmp0 (name, active_profile) != 0)
+    terminal_preferences_switch_profile (screen->preferences, active_profile);
+
+  g_free (active_profile);
+}
+
+
+
+gchar *
+terminal_screen_get_profile_name (TerminalScreen *screen)
+{
+  return g_strdup (screen->profile);
 }
