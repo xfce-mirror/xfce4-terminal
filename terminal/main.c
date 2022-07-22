@@ -38,7 +38,6 @@
 #include <xfconf/xfconf.h>
 
 
-
 static void
 colortable_sub (const gchar *bright,
                 guint        start)
@@ -210,7 +209,7 @@ main (int argc, char **argv)
       g_clear_error (&error);
 
       /* disable get/set properties */
-      terminal_preferences_xfconf_init_failed ();
+      terminal_app_found_no_xfconf ();
     }
 
   /* parse some options we need in main, not the windows attrs */

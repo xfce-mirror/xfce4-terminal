@@ -17,6 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "terminal-profile-manager.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -35,6 +36,7 @@
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-private.h>
+#include <terminal/terminal-app.h>
 #include <xfconf/xfconf.h>
 
 #define TERMINALRC     "xfce4/terminal/terminalrc"
@@ -152,7 +154,6 @@ static void     terminal_preferences_prop_changed  (XfconfChannel       *channel
                                                     const gchar         *prop_name,
                                                     const GValue        *value,
                                                     TerminalPreferences *preferences);
-static void     terminal_preferences_load_rc_file  (TerminalPreferences *preferences);
 
 
 
@@ -166,6 +167,7 @@ struct _TerminalPreferences
   GObject        __parent__;
 
   XfconfChannel *channel;
+  gchar         *profile;
 
   gulong         property_changed_id;
 };
@@ -248,11 +250,6 @@ transform_string_to_enum (const GValue *src,
     genum_value = genum_class->values;
   g_value_set_enum (dst, genum_value->value);
 }
-
-
-
-/* don't do anything in case xfconf_init() failed */
-static gboolean no_xfconf = FALSE;
 
 
 
@@ -1251,25 +1248,15 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
-  const gchar check_prop[] = "/title-initial";
-
+  TerminalProfileManager *manager = terminal_profile_manager_get ();
   /* don't set a channel if xfconf init failed */
-  if (no_xfconf)
+  if (no_xfconf ())
     return;
 
   /* load the channel */
   preferences->channel = xfconf_channel_get ("xfce4-terminal");
 
-  /* check one of the property to see if there are values */
-  if (!xfconf_channel_has_property (preferences->channel, check_prop))
-    {
-      /* try to load the old config file & save changes */
-      terminal_preferences_load_rc_file (preferences);
-
-      /* set the string we check */
-      if (!xfconf_channel_has_property (preferences->channel, check_prop))
-        xfconf_channel_set_string (preferences->channel, check_prop, _("Terminal"));
-    }
+  preferences->profile = terminal_profile_manager_get_default_profile_name (manager);
 
   preferences->property_changed_id =
     g_signal_connect (G_OBJECT (preferences->channel), "property-changed",
@@ -1307,7 +1294,7 @@ terminal_preferences_get_property (GObject    *object,
     }
 
   /* build property name */
-  g_snprintf (prop_name, sizeof (prop_name), "/%s", g_param_spec_get_name (pspec));
+  g_snprintf (prop_name, sizeof (prop_name), "/%s/%s", preferences->profile, g_param_spec_get_name (pspec));
 
   if (G_VALUE_TYPE (value) == G_TYPE_STRV)
     {
@@ -1348,7 +1335,7 @@ terminal_preferences_set_property (GObject      *object,
     return;
 
   /* build property name */
-  g_snprintf (prop_name, sizeof (prop_name), "/%s", g_param_spec_get_name (pspec));
+  g_snprintf (prop_name, sizeof (prop_name), "/%s/%s", preferences->profile, g_param_spec_get_name (pspec));
 
   if (G_VALUE_HOLDS_ENUM (value))
     {
@@ -1383,123 +1370,131 @@ terminal_preferences_prop_changed (XfconfChannel       *channel,
                                    TerminalPreferences *preferences)
 {
   GParamSpec *pspec;
+  gchar      **split;
 
   /* check if the property exists and emit change */
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (preferences), prop_name + 1);
+  split = g_strsplit (prop_name, "/", 3);
+  if (!g_str_equal (split[1], preferences->profile))
+    {
+      g_strfreev (split);
+      return;
+    }
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (preferences), split[2]);
   if (G_LIKELY (pspec != NULL))
     g_object_notify_by_pspec (G_OBJECT (preferences), pspec);
+  g_strfreev (split);
 }
 
 
 
-static void
-terminal_preferences_load_rc_file (TerminalPreferences *preferences)
-{
-  gchar       *filename;
-  const gchar *string, *name;
-  GParamSpec  *pspec;
-  XfceRc      *rc;
-  GValue       dst = { 0, };
-  GValue       src = { 0, };
-  guint        n;
-  gboolean     migrate_colors = FALSE;
-  gchar        color_name[16];
-  GString     *array;
-
-  /* find file */
-  filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC);
-  if (G_UNLIKELY (filename == NULL))
-    {
-      /* old location of the Terminal days */
-      filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC_OLD);
-      migrate_colors = TRUE;
-      if (G_UNLIKELY (filename == NULL))
-        return;
-    }
-
-  /* look for preferences */
-  rc = xfce_rc_simple_open (filename, TRUE);
-  if (G_UNLIKELY (rc == NULL))
-    return;
-
-  g_object_freeze_notify (G_OBJECT (preferences));
-
-  xfce_rc_set_group (rc, "Configuration");
-
-  g_value_init (&src, G_TYPE_STRING);
-
-  for (n = PROP_0 + 1; n < N_PROPERTIES; ++n)
-    {
-      pspec = preferences_props[n];
-      name = g_param_spec_get_name (pspec);
-
-#ifdef G_ENABLE_DEBUG
-      terminal_assert (g_param_spec_get_nick (pspec) != NULL);
-      terminal_preferences_check_blurb (pspec);
-#endif
-
-      string = xfce_rc_read_entry (rc, g_param_spec_get_blurb (pspec), NULL);
-      if (G_UNLIKELY (string == NULL))
-        {
-          g_object_notify_by_pspec (G_OBJECT (preferences), pspec);
-        }
-      else
-        {
-          g_value_set_static_string (&src, string);
-
-          if (G_PARAM_SPEC_VALUE_TYPE (pspec) == G_TYPE_STRING)
-            {
-              /* set the string property */
-              g_object_set_property (G_OBJECT (preferences), name, &src);
-            }
-          else
-            {
-              g_value_init (&dst, G_PARAM_SPEC_VALUE_TYPE (pspec));
-              if (G_LIKELY (g_value_transform (&src, &dst)))
-                g_object_set_property (G_OBJECT (preferences), name, &dst);
-              else
-                g_warning ("Unable to load property \"%s\"", name);
-              g_value_unset (&dst);
-            }
-        }
-    }
-
-  /* migrate old terminal color properties into a single string */
-  if (G_UNLIKELY (migrate_colors))
-    {
-      /* concat all values */
-      array = g_string_sized_new (225);
-      for (n = 1; n <= 16; n++)
-        {
-          g_snprintf (color_name, sizeof (color_name), "ColorPalette%d", n);
-          string = xfce_rc_read_entry (rc, color_name, NULL);
-          if (string == NULL)
-            break;
-
-          g_string_append (array, string);
-          if (n != 16)
-            g_string_append_c (array, ';');
-        }
-
-      /* set property if 16 colors were found */
-      if (n >= 16)
-        g_object_set (G_OBJECT (preferences), "color-palette", array->str, NULL);
-      g_string_free (array, TRUE);
-    }
-
-  g_value_unset (&src);
-
-  xfce_rc_close (rc);
-
-  g_object_thaw_notify (G_OBJECT (preferences));
-
-  g_print ("\n\n"
-           "Your Terminal settings have been migrated to Xfconf.\n"
-           "The config file \"%s\"\n"
-           "is not used anymore.\n\n", filename);
-
-  g_free (filename);
-}
+// static void
+// terminal_preferences_load_rc_file (TerminalPreferences *preferences)
+// {
+//   gchar       *filename;
+//   const gchar *string, *name;
+//   GParamSpec  *pspec;
+//   XfceRc      *rc;
+//   GValue       dst = { 0, };
+//   GValue       src = { 0, };
+//   guint        n;
+//   gboolean     migrate_colors = FALSE;
+//   gchar        color_name[16];
+//   GString     *array;
+// 
+//   /* find file */
+//   filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC);
+//   if (G_UNLIKELY (filename == NULL))
+//     {
+//       /* old location of the Terminal days */
+//       filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC_OLD);
+//       migrate_colors = TRUE;
+//       if (G_UNLIKELY (filename == NULL))
+//         return;
+//     }
+// 
+//   /* look for preferences */
+//   rc = xfce_rc_simple_open (filename, TRUE);
+//   if (G_UNLIKELY (rc == NULL))
+//     return;
+// 
+//   g_object_freeze_notify (G_OBJECT (preferences));
+// 
+//   xfce_rc_set_group (rc, "Configuration");
+// 
+//   g_value_init (&src, G_TYPE_STRING);
+// 
+//   for (n = PROP_0 + 1; n < N_PROPERTIES; ++n)
+//     {
+//       pspec = preferences_props[n];
+//       name = g_param_spec_get_name (pspec);
+// 
+// #ifdef G_ENABLE_DEBUG
+//       terminal_assert (g_param_spec_get_nick (pspec) != NULL);
+//       terminal_preferences_check_blurb (pspec);
+// #endif
+// 
+//       string = xfce_rc_read_entry (rc, g_param_spec_get_blurb (pspec), NULL);
+//       if (G_UNLIKELY (string == NULL))
+//         {
+//           g_object_notify_by_pspec (G_OBJECT (preferences), pspec);
+//         }
+//       else
+//         {
+//           g_value_set_static_string (&src, string);
+// 
+//           if (G_PARAM_SPEC_VALUE_TYPE (pspec) == G_TYPE_STRING)
+//             {
+//               /* set the string property */
+//               g_object_set_property (G_OBJECT (preferences), name, &src);
+//             }
+//           else
+//             {
+//               g_value_init (&dst, G_PARAM_SPEC_VALUE_TYPE (pspec));
+//               if (G_LIKELY (g_value_transform (&src, &dst)))
+//                 g_object_set_property (G_OBJECT (preferences), name, &dst);
+//               else
+//                 g_warning ("Unable to load property \"%s\"", name);
+//               g_value_unset (&dst);
+//             }
+//         }
+//     }
+// 
+//   /* migrate old terminal color properties into a single string */
+//   if (G_UNLIKELY (migrate_colors))
+//     {
+//       /* concat all values */
+//       array = g_string_sized_new (225);
+//       for (n = 1; n <= 16; n++)
+//         {
+//           g_snprintf (color_name, sizeof (color_name), "ColorPalette%d", n);
+//           string = xfce_rc_read_entry (rc, color_name, NULL);
+//           if (string == NULL)
+//             break;
+// 
+//           g_string_append (array, string);
+//           if (n != 16)
+//             g_string_append_c (array, ';');
+//         }
+// 
+//       /* set property if 16 colors were found */
+//       if (n >= 16)
+//         g_object_set (G_OBJECT (preferences), "color-palette", array->str, NULL);
+//       g_string_free (array, TRUE);
+//     }
+// 
+//   g_value_unset (&src);
+// 
+//   xfce_rc_close (rc);
+// 
+//   g_object_thaw_notify (G_OBJECT (preferences));
+// 
+//   g_print ("\n\n"
+//            "Your Terminal settings have been migrated to Xfconf.\n"
+//            "The config file \"%s\"\n"
+//            "is not used anymore.\n\n", filename);
+// 
+//   g_free (filename);
+// }
 
 
 
@@ -1590,7 +1585,15 @@ terminal_preferences_get_color (TerminalPreferences *preferences,
 
 
 void
-terminal_preferences_xfconf_init_failed (void)
+terminal_preferences_set_profile (TerminalPreferences *preferences,
+                                  const gchar         *name)
 {
-  no_xfconf = TRUE;
+  if (preferences->profile != NULL)
+    g_free (preferences->profile);
+  preferences->profile = NULL;
+
+  preferences->profile = g_strdup (name);
+
+  for (gint i = PROP_0 + 1; i < N_PROPERTIES; i++)
+    g_object_notify_by_pspec (G_OBJECT (preferences), preferences_props[i]);
 }

@@ -31,6 +31,7 @@
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-widget.h>
+#include <terminal/terminal-profile-manager.h>
 
 
 
@@ -69,6 +70,19 @@ static void      terminal_gtk_label_set_a11y_relation                    (GtkLab
 static gboolean  monospace_filter                                        (const PangoFontFamily      *family,
                                                                           const PangoFontFace        *face,
                                                                           gpointer                    data);
+static void      terminal_preferences_dialog_add_new_profile             (TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_clone_new_profile           (TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_remove_profile              (TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_activate_profile            (TerminalPreferencesDialog  *dialog,
+                                                                          GtkTreeSelection           *selection);
+static void      terminal_preferences_dialog_set_profile_as_default      (TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_populate_store              (TerminalPreferencesDialog  *dialog,
+                                                                          GtkListStore               *store);
+static gchar    *terminal_preferences_dialog_get_profile_name            (TerminalPreferencesDialog  *dialog,
+                                                                          const gchar                *dialog_title,
+                                                                          const gchar                *placeholder);
+static void      terminal_preferences_dialog_after_realize               (TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_rename_profile              (TerminalPreferencesDialog  *dialog);
 
 
 
@@ -98,6 +112,13 @@ enum
   N_PALETTE_BUTTONS = 16,
 };
 
+enum
+{
+  COLUMN_PROFILE_NAME,
+  COLUMN_PROFILE_IS_DEFAULT,
+  N_COLUMN,
+};
+
 struct _TerminalPreferencesDialogClass
 {
   XfceTitledDialogClass __parent__;
@@ -107,6 +128,7 @@ struct _TerminalPreferencesDialog
 {
   XfceTitledDialog     __parent__;
   TerminalPreferences *preferences;
+  TerminalProfileManager *manager;
 
   GtkColorButton      *palette_button[N_PALETTE_BUTTONS];
   GtkSpinButton       *geometry_button[N_GEOMETRY_BUTTONS];
@@ -115,12 +137,24 @@ struct _TerminalPreferencesDialog
   GtkNotebook         *dropdown_notebook;
   GtkWidget           *file_chooser;
   gint                 n_presets;
+  GtkListStore        *store;
+  GtkTreeView         *view;
+  GtkWidget           *profile_popover;
+  GtkWidget           *go_up_image;
+  GtkWidget           *go_down_image;
+  GtkWidget           *profile_label;
+  GtkTreeIter         *default_profile_iter;
+  GtkWidget           *profile_name_accept;
 
-  gulong               bg_image_signal_id;
+  gulong               bg_image_notify_signal_id;
+  gulong               bg_image_set_signal_id;
   gulong               palette_notify_signal_id;
   gulong               palette_set_signal_id[N_PALETTE_BUTTONS];
   gulong               geometry_notify_signal_id;
   gulong               geometry_set_signal_id[N_GEOMETRY_BUTTONS];
+
+  GList               *bindings;
+  GBindingGroup       *group;
 };
 
 
@@ -184,26 +218,41 @@ transform_combo_show_opacity_options (GBinding     *binding,
 static void
 terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 {
-  GtkFileFilter *filter;
-  GtkTreeModel  *model;
-  GtkTreeIter    current_iter;
-  GtkWidget     *notebook;
-  GtkWidget     *button;
-  GtkWidget     *image;
-  GtkWidget     *frame;
-  GtkWidget     *label;
-  GtkWidget     *vbox;
-  GtkWidget     *box;
-  GtkWidget     *infobar;
-  GtkWidget     *grid;
-  GtkWidget     *background_grid;
-  GtkWidget     *entry;
-  GtkWidget     *combo;
-  gchar         *current;
-  gint           row = 0;
+  GtkTreeViewColumn *column;
+  GtkFileFilter     *filter;
+  GtkListStore      *store;
+  GtkTreeModel      *model;
+  GtkTreeIter        current_iter;
+  GtkWidget         *notebook;
+  GtkWidget         *button;
+  GtkWidget         *image;
+  GtkWidget         *frame;
+  GtkWidget         *label;
+  GtkWidget         *vbox;
+  GtkWidget         *hbox;
+  GtkWidget         *box;
+  GtkWidget         *infobar;
+  GtkWidget         *grid;
+  GtkWidget         *background_grid;
+  GtkWidget         *entry;
+  GtkWidget         *combo;
+  GtkWidget         *view;
+  GtkTreeSelection  *selection;
+  gboolean           has_next;
+  gchar             *current;
+  gchar             *profile;
+  GBindingGroup     *group;
+  gint               row = 0;
 
-  /* grab a reference on the preferences */
-  dialog->preferences = terminal_preferences_get ();
+  /* have a separate instance of preferences so as to not affect  other components */
+  dialog->manager = terminal_profile_manager_get ();
+  dialog->preferences = terminal_profile_manager_get_default_profile (dialog->manager);
+
+  dialog->group = g_binding_group_new ();
+  group = dialog->group;
+
+  g_signal_connect (G_OBJECT (dialog), "realize",
+                    G_CALLBACK (terminal_preferences_dialog_after_realize), NULL);
 
   /* configure the dialog properties */
   gtk_window_set_icon_name (GTK_WINDOW (dialog), "org.xfce.terminal");
@@ -230,9 +279,145 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   notebook = gtk_notebook_new ();
   gtk_container_set_border_width (GTK_CONTAINER (notebook), 6);
+  gtk_notebook_set_tab_pos (GTK_NOTEBOOK (notebook), GTK_POS_LEFT);
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), notebook, TRUE, TRUE, 0);
   gtk_widget_show (notebook);
 
+
+  /*
+   * Profiles
+   */
+  /* list store for the profile names, to be used for the tree-view */
+  store = gtk_list_store_new (N_COLUMN, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+  terminal_preferences_dialog_populate_store (dialog, store);
+  dialog->store = store;
+
+  /* content for profiles button in notebook tab */
+  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+
+  /* label to signify active profile */
+  profile = terminal_profile_manager_get_default_profile_name (dialog->manager);
+  dialog->profile_label = gtk_label_new_with_mnemonic (_(profile));
+  gtk_box_pack_start (GTK_BOX (box), dialog->profile_label, TRUE, TRUE, 0);
+  gtk_widget_show (dialog->profile_label);
+  g_free (profile);
+
+  /* append the dropdown icon to the button */
+  dialog->go_up_image   = gtk_image_new_from_icon_name ("pan-up-symbolic", GTK_ICON_SIZE_BUTTON);
+  gtk_box_pack_start (GTK_BOX (box), dialog->go_up_image, FALSE, TRUE, 0);
+  gtk_widget_set_halign (dialog->go_up_image, GTK_ALIGN_END);
+  gtk_widget_hide (dialog->go_up_image);
+
+  dialog->go_down_image = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_BUTTON);
+  gtk_box_pack_start (GTK_BOX (box), dialog->go_down_image, FALSE, TRUE, 0);
+  gtk_widget_set_halign (dialog->go_down_image, GTK_ALIGN_END);
+  gtk_widget_show (dialog->go_down_image);
+
+  gtk_widget_show (box);
+  gtk_widget_set_hexpand (box, TRUE);
+
+  /* profiles button for the notebook tab */
+  button = gtk_button_new ();
+  gtk_container_add (GTK_CONTAINER (button), box);
+  dialog->profile_popover = gtk_popover_new (button);
+  gtk_widget_set_size_request (dialog->profile_popover, 450, 350);
+  g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_popover_popup), dialog->profile_popover);
+  g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_widget_show), dialog->go_up_image);
+  g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_widget_hide), dialog->go_down_image);
+  g_signal_connect_swapped (G_OBJECT (dialog->profile_popover), "closed", G_CALLBACK (gtk_widget_hide), dialog->go_up_image);
+  g_signal_connect_swapped (G_OBJECT (dialog->profile_popover), "closed", G_CALLBACK (gtk_widget_show), dialog->go_down_image);
+  gtk_notebook_set_action_widget (GTK_NOTEBOOK (notebook), button, GTK_PACK_START);
+  gtk_widget_show (button);
+
+  /* contents of the popover */
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  gtk_container_add (GTK_CONTAINER (dialog->profile_popover), vbox);
+  gtk_widget_show (vbox);
+
+  /* the tree-view to display the profiles & their status */
+  view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+  gtk_tree_view_set_activate_on_single_click (GTK_TREE_VIEW (view), TRUE);
+  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
+  /* start the dialog with selection set to default profile */
+  has_next = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &current_iter);
+  while (has_next)
+    {
+      gtk_tree_model_get (GTK_TREE_MODEL (store), &current_iter, COLUMN_PROFILE_IS_DEFAULT, &current, -1);
+      if (current != NULL)
+        {
+          gtk_tree_selection_select_iter (selection, &current_iter);
+          dialog->default_profile_iter = gtk_tree_iter_copy (&current_iter);
+          break;
+        }
+      has_next = gtk_tree_model_iter_next (GTK_TREE_MODEL (store), &current_iter);
+    }
+  /* single click should activate the profile */
+  g_signal_connect_swapped (GTK_TREE_SELECTION (selection), "changed",
+    G_CALLBACK (terminal_preferences_dialog_activate_profile), dialog);
+  dialog->view = GTK_TREE_VIEW (view);
+  gtk_widget_set_margin_start (view, 12);
+  gtk_widget_set_margin_end (view, 12);
+  gtk_widget_show (view);
+
+  /* append the columns to the tree-view */
+  column = gtk_tree_view_column_new_with_attributes ("Default",
+                                                     gtk_cell_renderer_pixbuf_new (),
+                                                     "icon-name", COLUMN_PROFILE_IS_DEFAULT,
+                                                     NULL);
+  gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
+
+  column = gtk_tree_view_column_new_with_attributes ("Profiles",
+                                                     gtk_cell_renderer_text_new (),
+                                                     "text", COLUMN_PROFILE_NAME,
+                                                     NULL);
+  gtk_tree_view_column_set_expand (column, TRUE);
+  gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
+
+  gtk_box_pack_start (GTK_BOX (vbox), view, TRUE, TRUE, 6);
+
+  /* container for the action buttons in the popover */
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+  gtk_widget_set_margin_start (hbox, 12);
+  gtk_widget_set_margin_end (hbox, 12);
+  gtk_widget_show (hbox);
+  
+  /* button to create a new profile from current active profile */
+  button = gtk_button_new_from_icon_name ("edit-copy-symbolic", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_set_tooltip_text (button, _("Clone Profile"));
+  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_clone_new_profile), dialog);
+  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
+  gtk_widget_show (button);
+
+  /* button to create a new profile from defaults */
+  button = gtk_button_new_from_icon_name ("list-add-symbolic", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_set_tooltip_text (button, _("Add a new Profile"));
+  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_add_new_profile), dialog);
+  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
+  gtk_widget_show (button);
+
+  /* button to delete a profile */
+  button = gtk_button_new_from_icon_name ("list-remove-symbolic", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_set_tooltip_text (button, _("Remove Profile"));
+  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_remove_profile), dialog);
+  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
+  gtk_widget_show (button);
+
+  /* button to rename selected profile */
+  button = gtk_button_new_from_icon_name ("document-edit-symbolic", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_set_tooltip_text (button, _("Rename selected Profile"));
+  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_rename_profile), dialog);
+  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
+  gtk_widget_show (button);
+
+  /* button to set the selected profile as default */
+  button = gtk_button_new_from_icon_name ("starred-symbolic", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_set_tooltip_text (button, _("Set as Default"));
+  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_set_profile_as_default), dialog);
+  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
+  gtk_widget_show (button);
+
+  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 6);
 
 
   /*
@@ -254,7 +439,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   entry = gtk_entry_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "title-initial",
+  g_binding_group_bind   (group, "title-initial",
                           G_OBJECT (entry), "text",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (entry, TRUE);
@@ -274,7 +459,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Goes before initial title"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Goes after initial title"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Isn't displayed"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "title-mode",
+  g_binding_group_bind   (group, "title-mode",
                           G_OBJECT (combo), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (combo, TRUE);
@@ -288,7 +473,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Command");
 
   button = gtk_check_button_new_with_mnemonic (_("_Run command as login shell"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "command-login-shell",
+  g_binding_group_bind   (group, "command-login-shell",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Select this option to force Terminal to run your shell"
@@ -303,7 +488,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Run a custom command instead of my shell"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "run-custom-command",
+  g_binding_group_bind   (group, "run-custom-command",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Select this option to force Terminal to run a custom command"
@@ -318,17 +503,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   /* it should not be reactive to input if run-custom-command is disabled */
-  g_object_bind_property (G_OBJECT (dialog->preferences), "run-custom-command",
+  g_binding_group_bind   (group, "run-custom-command",
                           G_OBJECT (label), "sensitive",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_show (label);
 
   entry = gtk_entry_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "custom-command",
+  g_binding_group_bind   (group, "custom-command",
                           G_OBJECT (entry), "text",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   /* it should not be reactive to input if run-custom-command is disabled */
-  g_object_bind_property (G_OBJECT (dialog->preferences), "run-custom-command",
+  g_binding_group_bind   (group, "run-custom-command",
                           G_OBJECT (entry), "sensitive",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (entry, GTK_ALIGN_FILL);
@@ -340,7 +525,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Working directory:"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "use-default-working-dir",
+  g_binding_group_bind   (group, "use-default-working-dir",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Select this option to make new terminals (tabs or windows) use custom"
@@ -350,11 +535,11 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   entry = gtk_entry_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "default-working-dir",
+  g_binding_group_bind   (group, "default-working-dir",
                           G_OBJECT (entry), "text",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   /* it should not be reactive to input if use-default-working-dir is disabled */
-  g_object_bind_property (G_OBJECT (dialog->preferences), "use-default-working-dir",
+  g_binding_group_bind   (group, "use-default-working-dir",
                           G_OBJECT (entry), "sensitive",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (entry, GTK_ALIGN_FILL);
@@ -367,7 +552,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Scrolling");
 
   button = gtk_check_button_new_with_mnemonic (_("_Scroll on output"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "scrolling-on-output",
+  g_binding_group_bind   (group, "scrolling-on-output",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("This option controls whether the terminal will scroll down automatically"
@@ -377,7 +562,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("_Enable overlay scrolling (Requires restart)"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "overlay-scrolling",
+  g_binding_group_bind   (group, "overlay-scrolling",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("This controls whether scrollbar is drawn as an overlay (auto-hide) or not."));
@@ -386,7 +571,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("_Scroll on keystroke"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "scrolling-on-keystroke",
+  g_binding_group_bind   (group, "scrolling-on-keystroke",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enables you to press any key on the keyboard to scroll down the terminal"
@@ -407,7 +592,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Disabled"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("On the left side"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("On the right side"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "scrolling-bar",
+  g_binding_group_bind   (group, "scrolling-bar",
                           G_OBJECT (combo), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (combo, TRUE);
@@ -425,10 +610,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (0u, 1024u * 1024u, 1);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "scrolling-lines",
+  g_binding_group_bind   (group, "scrolling-lines",
                           G_OBJECT (button), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "scrolling-unlimited",
+  g_binding_group_bind   (group, "scrolling-unlimited",
                           G_OBJECT (button), "sensitive",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -436,7 +621,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("_Unlimited Scrollback"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "scrolling-unlimited",
+  g_binding_group_bind   (group, "scrolling-unlimited",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("This controls whether the terminal will have no limits on scrollback."));
@@ -456,7 +641,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Block"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("I-Beam"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Underline"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-cursor-shape",
+  g_binding_group_bind   (group, "misc-cursor-shape",
                           G_OBJECT (combo), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (combo, TRUE);
@@ -466,7 +651,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (combo);
 
   button = gtk_check_button_new_with_mnemonic (_("Cursor blinks"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-cursor-blinks",
+  g_binding_group_bind   (group, "misc-cursor-blinks",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("This option controls whether the cursor will be blinking or not."));
@@ -479,14 +664,14 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Clipboard");
 
   button = gtk_check_button_new_with_mnemonic (_("Automatically copy selection to clipboard"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-copy-on-select",
+  g_binding_group_bind   (group, "misc-copy-on-select",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("Show unsafe paste dialog"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-show-unsafe-paste-dialog",
+  g_binding_group_bind   (group, "misc-show-unsafe-paste-dialog",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Show a dialog that allows to edit text that is considered unsafe for pasting"));
@@ -510,7 +695,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Behavior");
 
   button = gtk_check_button_new_with_mnemonic (_("_Keep window open when it loses focus"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-keep-open-default",
+  g_binding_group_bind   (group, "dropdown-keep-open-default",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
@@ -520,7 +705,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Always keep window on top"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-keep-above",
+  g_binding_group_bind   (group, "dropdown-keep-above",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
@@ -530,7 +715,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Use shortcut to focus visible window"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-toggle-focus",
+  g_binding_group_bind   (group, "dropdown-toggle-focus",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("If enabled, the shortcut to open and retract the window will give focus\n"
@@ -542,7 +727,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Show status icon in notification area"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-status-icon",
+  g_binding_group_bind   (group, "dropdown-status-icon",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
@@ -559,7 +744,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 10, 100, 1);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-width",
+  g_binding_group_bind   (group, "dropdown-width",
                           G_OBJECT (gtk_range_get_adjustment (GTK_RANGE (button))), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (button, TRUE);
@@ -581,7 +766,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 10, 100, 1);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-height",
+  g_binding_group_bind   (group, "dropdown-height",
                           G_OBJECT (gtk_range_get_adjustment (GTK_RANGE (button))), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (button, TRUE);
@@ -603,7 +788,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-opacity",
+  g_binding_group_bind   (group, "dropdown-opacity",
                           G_OBJECT (gtk_range_get_adjustment (GTK_RANGE (button))), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (button, TRUE);
@@ -625,7 +810,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 500, 1);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-animation-time",
+  g_binding_group_bind   (group, "dropdown-animation-time",
                           G_OBJECT (gtk_range_get_adjustment (GTK_RANGE (button))), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (button, TRUE);
@@ -641,7 +826,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Always show tabs"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-always-show-tabs",
+  g_binding_group_bind   (group, "dropdown-always-show-tabs",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 3, 1);
@@ -651,7 +836,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Show window borders"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-show-borders",
+  g_binding_group_bind   (group, "dropdown-show-borders",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 3, 1);
@@ -676,7 +861,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_scale_add_mark (GTK_SCALE (button), 75, GTK_POS_BOTTOM, NULL);
   gtk_scale_add_mark (GTK_SCALE (button), 100, GTK_POS_BOTTOM, NULL);
 
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-position",
+  g_binding_group_bind   (group, "dropdown-position",
                           G_OBJECT (gtk_range_get_adjustment (GTK_RANGE (button))), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (button, TRUE);
@@ -698,7 +883,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-position-vertical",
+  g_binding_group_bind   (group, "dropdown-position-vertical",
                           G_OBJECT (gtk_range_get_adjustment (GTK_RANGE (button))), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (button, TRUE);
@@ -714,7 +899,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Move to monitor with pointer"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-move-to-active",
+  g_binding_group_bind   (group, "dropdown-move-to-active",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 3, 1);
@@ -736,7 +921,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Font");
 
   button = gtk_check_button_new_with_mnemonic (_("_Use system font"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "font-use-system",
+  g_binding_group_bind   (group, "font-use-system",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this to use system-wide monospace font."));
@@ -744,10 +929,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   button = gtk_font_button_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "font-name",
+  g_binding_group_bind   (group, "font-name",
                           G_OBJECT (button), "font-name",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "font-use-system",
+  g_binding_group_bind   (group, "font-use-system",
                           G_OBJECT (button), "sensitive",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
   gtk_font_button_set_use_font (GTK_FONT_BUTTON (button), TRUE);
@@ -760,7 +945,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Allow bold text"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "font-allow-bold",
+  g_binding_group_bind   (group, "font-allow-bold",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this to allow applications running inside the terminal windows to use bold font."));
@@ -780,7 +965,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("When focused"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("When unfocused"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Always"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "text-blink-mode",
+  g_binding_group_bind   (group, "text-blink-mode",
                           G_OBJECT (combo), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (combo, TRUE);
@@ -798,7 +983,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (1.0, 2.0, 0.1);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "cell-width-scale",
+  g_binding_group_bind   (group, "cell-width-scale",
                           G_OBJECT (button), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -811,7 +996,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (1.0, 2.0, 0.1);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "cell-height-scale",
+  g_binding_group_bind   (group, "cell-height-scale",
                           G_OBJECT (button), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -838,7 +1023,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("None (use solid color)"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Background image"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Transparent Background"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "background-mode",
+  g_binding_group_bind   (group, "background-mode",
                           G_OBJECT (combo), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (combo, TRUE);
@@ -878,7 +1063,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0.0, 1.0, 0.01);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "background-darkness",
+  g_binding_group_bind   (group, "background-darkness",
                           G_OBJECT (gtk_range_get_adjustment (GTK_RANGE (button))), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (button, TRUE);
@@ -913,11 +1098,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_file_chooser_button_new ("Select a Background Image", GTK_FILE_CHOOSER_ACTION_OPEN);
   dialog->file_chooser = button;
-  dialog->bg_image_signal_id = g_signal_connect_swapped (dialog->preferences, "notify::background-image-file",
-                                                         G_CALLBACK (terminal_preferences_dialog_background_notify), dialog);
+  dialog->bg_image_set_signal_id =
+   g_signal_connect_swapped (button, "file-set",
+                             G_CALLBACK (terminal_preferences_dialog_background_set), dialog);
+  dialog->bg_image_notify_signal_id =
+   g_signal_connect_swapped (dialog->preferences, "notify::background-image-file",
+                             G_CALLBACK (terminal_preferences_dialog_background_notify), dialog);
   terminal_preferences_dialog_background_notify (dialog);
-  g_signal_connect_swapped (button, "file-set",
-                            G_CALLBACK (terminal_preferences_dialog_background_set), dialog);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
@@ -948,7 +1135,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Scaled"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Stretched"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Filled"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "background-image-style",
+  g_binding_group_bind   (group, "background-image-style",
                           G_OBJECT (combo), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (combo, TRUE);
@@ -965,7 +1152,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0.0, 1.0, 0.01);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "background-image-shading",
+  g_binding_group_bind   (group, "background-image-shading",
                           G_OBJECT (gtk_range_get_adjustment (GTK_RANGE (button))), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (button, TRUE);
@@ -977,7 +1164,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Opening New Nindows");
 
   button = gtk_check_button_new_with_mnemonic (_("_Display menubar in new windows"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-menubar-default",
+  g_binding_group_bind   (group, "misc-menubar-default",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this option to show menubars in newly created terminal windows."));
@@ -988,7 +1175,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Display toolbar in new windows"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-toolbar-default",
+  g_binding_group_bind   (group, "misc-toolbar-default",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this option to show toolbar in newly created terminal windows."));
@@ -999,7 +1186,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Display borders around new windows"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-borders-default",
+  g_binding_group_bind   (group, "misc-borders-default",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this option to show window decorations around newly created terminal windows."));
@@ -1059,7 +1246,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (0, 30, 1);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "tab-activity-timeout",
+  g_binding_group_bind   (group, "tab-activity-timeout",
                           G_OBJECT (button), "value",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -1075,12 +1262,33 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Use custom styling to make tabs slim (restart required)"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-slim-tabs",
+  g_binding_group_bind   (group, "misc-slim-tabs",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 3, 1);
   gtk_widget_show (button);
 
+  /* section: Misc */
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Misc");
+
+  label = gtk_label_new_with_mnemonic (_("Preferences dialog tab placement:"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
+  gtk_widget_show (label);
+
+  combo = gtk_combo_box_text_new ();
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Left"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Right"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Top"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Bottom"));
+  g_object_bind_property (G_OBJECT (notebook), "tab-pos",
+                          G_OBJECT (combo), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_hexpand (combo, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), combo, 1, row, 1, 1);
+  terminal_gtk_label_set_a11y_relation (GTK_LABEL (label), combo);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
+  gtk_widget_show (combo);
 
 
   /*
@@ -1101,10 +1309,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_color_button_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-foreground",
+  g_binding_group_bind   (group, "color-foreground",
                           G_OBJECT (button), "rgba",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-use-theme",
+  g_binding_group_bind   (group, "color-use-theme",
                           G_OBJECT (button), "sensitive",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -1116,10 +1324,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_color_button_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-background",
+  g_binding_group_bind   (group, "color-background",
                           G_OBJECT (button), "rgba",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-use-theme",
+  g_binding_group_bind   (group, "color-use-theme",
                           G_OBJECT (button), "sensitive",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -1131,10 +1339,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_color_button_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "tab-activity-color",
+  g_binding_group_bind   (group, "tab-activity-color",
                           G_OBJECT (button), "rgba",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-use-theme",
+  g_binding_group_bind   (group, "color-use-theme",
                           G_OBJECT (button), "sensitive",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -1145,7 +1353,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Use system theme colors for text and background"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-use-theme",
+  g_binding_group_bind   (group, "color-use-theme",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 6, 1);
@@ -1155,7 +1363,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Vary the background color for each tab"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-background-vary",
+  g_binding_group_bind   (group, "color-background-vary",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("The random color is based on the selected background color, keeping the same brightness."));
@@ -1167,7 +1375,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Custom Colors");
 
   button = gtk_check_button_new_with_mnemonic (_("_Cursor color:"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-cursor-use-default",
+  g_binding_group_bind   (group, "color-cursor-use-default",
                           G_OBJECT (button), "active",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this option to set custom text and background colors for cursor."
@@ -1176,10 +1384,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-cursor-use-default",
+  g_binding_group_bind   (group, "color-cursor-use-default",
                           G_OBJECT (button), "sensitive",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-cursor-foreground",
+  g_binding_group_bind   (group, "color-cursor-foreground",
                           G_OBJECT (button), "rgba",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -1187,10 +1395,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-cursor-use-default",
+  g_binding_group_bind   (group, "color-cursor-use-default",
                           G_OBJECT (button), "sensitive",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-cursor",
+  g_binding_group_bind   (group, "color-cursor",
                           G_OBJECT (button), "rgba",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -1201,7 +1409,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Text selection color:"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-selection-use-default",
+  g_binding_group_bind   (group, "color-selection-use-default",
                           G_OBJECT (button), "active",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this option to set custom text and background colors for cursor."
@@ -1210,10 +1418,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-selection-use-default",
+  g_binding_group_bind   (group, "color-selection-use-default",
                           G_OBJECT (button), "sensitive",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-selection",
+  g_binding_group_bind   (group, "color-selection",
                           G_OBJECT (button), "rgba",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -1221,10 +1429,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-selection-use-default",
+  g_binding_group_bind   (group, "color-selection-use-default",
                           G_OBJECT (button), "sensitive",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-selection-background",
+  g_binding_group_bind   (group, "color-selection-background",
                           G_OBJECT (button), "rgba",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -1235,7 +1443,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Bold selection color:"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-bold-use-default",
+  g_binding_group_bind   (group, "color-bold-use-default",
                           G_OBJECT (button), "active",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this option to set a custom bold color. If disabled the text color will be used."));
@@ -1243,10 +1451,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-bold-use-default",
+  g_binding_group_bind   (group, "color-bold-use-default",
                           G_OBJECT (button), "sensitive",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-bold",
+  g_binding_group_bind   (group, "color-bold",
                           G_OBJECT (button), "rgba",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_halign (button, GTK_ALIGN_START);
@@ -1279,7 +1487,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Show bold text in bright colors:"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "color-bold-is-bright",
+  g_binding_group_bind   (group, "color-bold-is-bright",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this option to allow escape sequences such as '\\e[1;35m' to switch text "
@@ -1339,7 +1547,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Escape sequence"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Control-H"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Erase TTY"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "binding-backspace",
+  g_binding_group_bind   (group, "binding-backspace",
                           G_OBJECT (combo), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (combo, TRUE);
@@ -1362,7 +1570,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Escape sequence"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Control-H"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Erase TTY"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "binding-delete",
+  g_binding_group_bind   (group, "binding-delete",
                           G_OBJECT (combo), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (combo, TRUE);
@@ -1383,7 +1591,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Narrow"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Wide"));
   gtk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
-  g_object_bind_property (G_OBJECT (dialog->preferences), "binding-ambiguous-width",
+  g_binding_group_bind   (group, "binding-ambiguous-width",
                           G_OBJECT (combo), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (combo, TRUE);
@@ -1425,7 +1633,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   entry = gtk_entry_new ();
-  g_object_bind_property (G_OBJECT (dialog->preferences), "word-chars",
+  g_binding_group_bind   (group, "word-chars",
                           G_OBJECT (entry), "text",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (entry, TRUE);
@@ -1469,7 +1677,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Shortcuts");
 
   button = gtk_check_button_new_with_mnemonic (_("_Disable all menu access keys (such as Alt + f)"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "shortcuts-no-mnemonics",
+  g_binding_group_bind   (group, "shortcuts-no-mnemonics",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
@@ -1479,7 +1687,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Disable menu shortcut key (F10 by default)"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "shortcuts-no-menukey",
+  g_binding_group_bind   (group, "shortcuts-no-menukey",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
@@ -1490,7 +1698,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Misc");
 
   button = gtk_check_button_new_with_mnemonic (_("_Use middle mouse click to close tabs"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-tab-close-middle-click",
+  g_binding_group_bind   (group, "misc-tab-close-middle-click",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
@@ -1500,7 +1708,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Use middle mouse click to open urls"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-middle-click-opens-uri",
+  g_binding_group_bind   (group, "misc-middle-click-opens-uri",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
@@ -1510,7 +1718,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Auto-hide mouse pointer"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-mouse-autohide",
+  g_binding_group_bind   (group, "misc-mouse-autohide",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
@@ -1520,7 +1728,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Open new tab to the right of the active tab"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-new-tab-adjacent",
+  g_binding_group_bind   (group, "misc-new-tab-adjacent",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
@@ -1530,7 +1738,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Audible bell"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-bell",
+  g_binding_group_bind   (group, "misc-bell",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
@@ -1540,7 +1748,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Visual bell"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-bell-urgent",
+  g_binding_group_bind   (group, "misc-bell-urgent",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
@@ -1558,7 +1766,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Context Menu"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Paste clipboard"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Paste selection"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-right-click-action",
+  g_binding_group_bind   (group, "misc-right-click-action",
                           G_OBJECT (combo), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_hexpand (combo, TRUE);
@@ -1572,7 +1780,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_check_button_new_with_mnemonic (_("Enable Hyperlinks"));
   gtk_widget_set_tooltip_text (button, _("Enable support for hyperlinks."));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-hyperlinks-enabled",
+  g_binding_group_bind   (group, "misc-hyperlinks-enabled",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
@@ -1598,6 +1806,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                     _("Terminal"), terminal_widget_get_action_entries (), (size_t) TERMINAL_WIDGET_ACTION_N);
   gtk_container_add (GTK_CONTAINER (frame), grid);
   gtk_widget_show (grid);
+
+  g_binding_group_set_source (group, dialog->preferences);
 }
 
 
@@ -1658,7 +1868,14 @@ terminal_preferences_dialog_background_notify (TerminalPreferencesDialog *dialog
   button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog->file_chooser));
   g_object_get (G_OBJECT (dialog->preferences), "background-image-file", &prop_file, NULL);
   if (g_strcmp0 (button_file, prop_file) != 0)
-    gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (dialog->file_chooser), prop_file);
+    {
+      g_signal_handler_block (GTK_FILE_CHOOSER (dialog->file_chooser), dialog->bg_image_set_signal_id);
+      if (G_LIKELY (prop_file == NULL))
+        gtk_file_chooser_unselect_all (GTK_FILE_CHOOSER (dialog->file_chooser));
+      else
+        gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (dialog->file_chooser), prop_file);
+      g_signal_handler_unblock (GTK_FILE_CHOOSER (dialog->file_chooser), dialog->bg_image_set_signal_id);
+    }
   g_free (button_file);
   g_free (prop_file);
 }
@@ -1675,9 +1892,9 @@ terminal_preferences_dialog_background_set (TerminalPreferencesDialog *dialog,
   terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
 
   filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
-  g_signal_handler_block (dialog->preferences, dialog->bg_image_signal_id);
+  g_signal_handler_block (dialog->preferences, dialog->bg_image_notify_signal_id);
   g_object_set (G_OBJECT (dialog->preferences), "background-image-file", filename, NULL);
-  g_signal_handler_unblock (dialog->preferences, dialog->bg_image_signal_id);
+  g_signal_handler_unblock (dialog->preferences, dialog->bg_image_notify_signal_id);
   g_free (filename);
 }
 
@@ -2147,8 +2364,8 @@ terminal_preferences_dialog_finalize (GObject *object)
   TerminalPreferencesDialog *dialog = TERMINAL_PREFERENCES_DIALOG (object);
 
   /* disconnect signals */
-  if (G_LIKELY (dialog->bg_image_signal_id != 0))
-    g_signal_handler_disconnect (dialog->preferences, dialog->bg_image_signal_id);
+  if (G_LIKELY (dialog->bg_image_notify_signal_id != 0))
+    g_signal_handler_disconnect (dialog->preferences, dialog->bg_image_notify_signal_id);
   if (G_LIKELY (dialog->palette_notify_signal_id != 0))
     g_signal_handler_disconnect (dialog->preferences, dialog->palette_notify_signal_id);
   if (G_LIKELY (dialog->geometry_notify_signal_id != 0))
@@ -2194,6 +2411,8 @@ terminal_preferences_dialog_new (gboolean show_drop_down,
       dialog = g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
       g_object_add_weak_pointer (G_OBJECT (dialog), (gpointer) &dialog);
     }
+  else
+    g_object_ref (G_OBJECT (dialog));
 
   gtk_widget_set_visible (GTK_WIDGET (dialog->dropdown_label), show_drop_down);
   gtk_widget_set_visible (GTK_WIDGET (dialog->dropdown_vbox), show_drop_down);
@@ -2202,4 +2421,324 @@ terminal_preferences_dialog_new (gboolean show_drop_down,
     gtk_notebook_set_current_page (GTK_NOTEBOOK (dialog->dropdown_notebook), 1);
 
   return GTK_WIDGET (dialog);
+}
+
+
+
+static void
+terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
+{
+  GtkTreeIter  iter;
+  gchar       *profile_name;
+
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+
+  profile_name = terminal_preferences_dialog_get_profile_name (dialog, "New Profile", NULL);
+
+  if (profile_name == NULL || terminal_profile_manager_has_profile (dialog->manager, profile_name))
+    return;
+
+  gtk_list_store_append (dialog->store, &iter);
+  gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
+  terminal_profile_manager_create_profile (dialog->manager, profile_name, NULL, FALSE);
+
+  g_free (profile_name);
+}
+
+
+
+static void
+terminal_preferences_dialog_clone_new_profile (TerminalPreferencesDialog *dialog)
+{
+  GtkTreeSelection *selection;
+  GtkTreeModel     *model;
+  GtkTreeIter       iter;
+  gchar            *profile_name;
+  gchar            *dialog_title;
+
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+
+  model = GTK_TREE_MODEL (dialog->store);
+  selection = gtk_tree_view_get_selection (dialog->view);
+  gtk_tree_selection_get_selected (selection, &model, &iter);
+
+  gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter,
+                      COLUMN_PROFILE_NAME, &profile_name, -1);
+
+  dialog_title = g_strdup_printf ("Clone/Copy/Duplicate Profile - %s", profile_name);
+  profile_name = terminal_preferences_dialog_get_profile_name (dialog, dialog_title, profile_name);
+
+  if (profile_name == NULL || terminal_profile_manager_has_profile (dialog->manager, profile_name))
+    return;
+
+  gtk_list_store_append (dialog->store, &iter);
+  gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
+  /* TODO: Create a dialog box to enter clone from profile name */
+  terminal_profile_manager_create_profile (dialog->manager, profile_name, NULL, FALSE);
+
+  g_free (profile_name);
+  g_free (dialog_title);
+}
+
+
+
+static void
+terminal_preferences_dialog_remove_profile (TerminalPreferencesDialog *dialog)
+{
+  GtkTreeSelection *selection;
+  GtkTreeModel     *model;
+  GtkTreeIter       iter;
+  gchar            *name;
+  gboolean          success;
+
+  model = GTK_TREE_MODEL (dialog->store);
+  selection = gtk_tree_view_get_selection (dialog->view);
+  if (gtk_tree_selection_count_selected_rows (selection) != 1)
+    return;
+  gtk_tree_selection_get_selected (selection, &model, &iter);
+  gtk_tree_model_get (model, &iter,
+                      COLUMN_PROFILE_NAME, &name, -1);
+  success = terminal_profile_manager_delete_profile (dialog->manager, name);
+  if (G_LIKELY(success))
+    gtk_list_store_remove (dialog->store, &iter);
+
+  g_free (name);
+}
+
+
+
+static void
+terminal_preferences_dialog_activate_profile (TerminalPreferencesDialog *dialog,
+                                              GtkTreeSelection          *selection)
+{
+  gchar        *active_profile;
+  GtkTreeIter   iter;
+  GtkTreeModel *model;
+
+  gtk_tree_selection_get_selected (selection, &model, &iter);
+  gtk_tree_model_get (model, &iter,
+                      COLUMN_PROFILE_NAME, &active_profile, -1);
+  if (dialog->preferences != NULL)
+    g_object_unref (dialog->preferences);
+  dialog->preferences = NULL;
+  dialog->preferences = terminal_profile_manager_get_profile (dialog->manager, active_profile);
+  g_binding_group_set_source (dialog->group, dialog->preferences);
+}
+
+
+
+static void
+terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
+                                            GtkListStore              *store)
+{
+  GtkTreeIter  iter;
+  gchar       *def = terminal_profile_manager_get_default_profile_name (dialog->manager);
+  const GList *profiles = terminal_profile_manager_get_profiles (dialog->manager);
+
+  for (const GList *lp = profiles; lp != NULL; lp = lp->next)
+    {
+      gtk_list_store_append (store, &iter);
+      gtk_list_store_set (store, &iter,
+                          COLUMN_PROFILE_NAME, lp->data,
+                          /* This Column has a PixbufRenderer. "object-select-symbolic" stands for the 'tick' symbol.
+                           * If NULL is set then nothing is drawn by the PixbufRenderer. */
+                          COLUMN_PROFILE_IS_DEFAULT, g_strcmp0 (lp->data, def) == 0 ? "object-select-symbolic" : NULL, -1);
+    }
+
+  g_free (def);
+}
+
+
+
+static void
+validate_profile_name_dialog_input (TerminalPreferencesDialog *dialog,
+                                    GParamSpec                *spec,
+                                    GtkWidget                 *entry)
+{
+  const gchar *input;
+  gchar       *invalid_tooltip_profile_exists = "A profile with this name already exists. Please choose a different name.";
+  gchar       *invalid_tooltip_input_null = "A profile name has to be atleast 1 character long.";
+  gchar       *valid_tooltip_text = "This is a fine name ;)";
+  gboolean     input_is_invalid;
+  gint         len;
+
+  terminal_return_if_fail (TERMINAL_IS_TERMINAL_PREFERENCES (preferences));
+  terminal_return_if_fail (GTK_IS_ENTRY (entry));
+
+  input = gtk_entry_get_text (GTK_ENTRY (entry));
+  len = gtk_entry_get_text_length (GTK_ENTRY (entry));
+  input_is_invalid = len == 0 || terminal_profile_manager_has_profile  (dialog->manager, input);
+  gtk_entry_set_icon_from_icon_name (GTK_ENTRY (entry), GTK_ENTRY_ICON_PRIMARY, input_is_invalid ? "emblem-important-symbolic" : "emblem-ok-symbolic");
+  gtk_entry_set_icon_tooltip_text (GTK_ENTRY (entry), GTK_ENTRY_ICON_PRIMARY,
+                                   input_is_invalid ? 
+                                   (len == 0 ? invalid_tooltip_input_null : invalid_tooltip_profile_exists)
+                                   : valid_tooltip_text);
+  gtk_widget_set_sensitive (dialog->profile_name_accept, !input_is_invalid);
+}
+
+
+
+static gboolean
+transform_text_to_bool (GBinding     *binding,
+                        const GValue *from,
+                        GValue       *to,
+                        gpointer      user_data)
+{
+  TerminalProfileManager *manager = terminal_profile_manager_get();
+  gboolean             profile_exists = terminal_profile_manager_has_profile (manager, g_value_get_string (from));
+
+  g_value_set_boolean (to, !profile_exists);
+
+  return TRUE;
+}
+
+
+
+static gchar *
+terminal_preferences_dialog_get_profile_name (TerminalPreferencesDialog *dialog,
+                                              const gchar               *dialog_title,
+                                              const gchar               *buffer_text)
+{
+  gchar       *profile_name = NULL;
+  GtkWidget   *entry_dialog;
+  GtkWidget   *entry;
+  GtkWidget   *accept_button;
+  gint         response;
+
+  /* Create the prompt dialog which will contain the GtkEntry */
+  entry_dialog = xfce_titled_dialog_new ();
+  gtk_window_set_title (GTK_WINDOW (entry_dialog), _(dialog_title));
+  gtk_window_set_default_size (GTK_WINDOW (entry_dialog), 300, 50);
+
+  /* Add cancel & accept action buttons */
+  xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (entry_dialog));
+  xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Cancel"), GTK_RESPONSE_CANCEL);
+  accept_button = xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Accept"), GTK_RESPONSE_APPLY);
+  dialog->profile_name_accept = accept_button;
+
+  /* Add the GtkEntry to the prompt dialog */
+  entry = gtk_entry_new ();
+  if (buffer_text != NULL)
+    gtk_entry_set_text (GTK_ENTRY (entry), buffer_text);
+  gtk_widget_set_margin_start (entry, 15);
+  gtk_widget_set_margin_end (entry, 15);
+  gtk_widget_show (entry);
+  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (entry_dialog))), entry, TRUE, TRUE, 10);
+
+  /* Window behavior */
+  gtk_window_set_transient_for (GTK_WINDOW (entry_dialog), GTK_WINDOW (dialog));
+  gtk_window_set_modal (GTK_WINDOW (entry_dialog), TRUE);
+
+  /* without this you can still interact with the popover */
+  gtk_popover_set_modal (GTK_POPOVER (dialog->profile_popover), FALSE);
+
+  /* make accept button in-sensitive if a profile with the input string already exists */
+  g_object_bind_property_full (G_OBJECT (entry), "text",
+                               G_OBJECT (accept_button), "sensitive",
+                               G_BINDING_SYNC_CREATE,
+                               transform_text_to_bool, NULL,
+                               dialog->preferences, NULL);
+
+  /* validate the user's input */
+  g_signal_connect_swapped (G_OBJECT (entry), "notify::text",
+                            G_CALLBACK (validate_profile_name_dialog_input), dialog);
+  validate_profile_name_dialog_input (dialog, NULL, entry);
+
+  /* Run the prompt */
+  response = gtk_dialog_run (GTK_DIALOG (entry_dialog));
+
+  if (G_UNLIKELY (response == GTK_RESPONSE_APPLY) && gtk_entry_get_text_length (GTK_ENTRY (entry)) > 0)
+    profile_name = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
+  gtk_widget_destroy (entry_dialog);
+
+  gtk_popover_set_modal (GTK_POPOVER (dialog->profile_popover), TRUE);
+
+  return profile_name;
+}
+
+
+
+static void
+terminal_preferences_dialog_set_profile_as_default (TerminalPreferencesDialog  *dialog)
+{
+  GtkTreeSelection *selection;
+  GtkTreeModel     *model = GTK_TREE_MODEL (dialog->store);
+  GtkTreePath      *default_path = gtk_tree_model_get_path (model, dialog->default_profile_iter);
+  GtkTreePath      *selected_path;
+  GtkTreeIter       iter;
+  gchar            *profile_name;
+
+  selection = gtk_tree_view_get_selection (dialog->view);
+  gtk_tree_selection_get_selected (selection, &model, &iter);
+  selected_path = gtk_tree_model_get_path (model, &iter);
+  /* return if profile already set as default */
+  if (gtk_tree_path_compare (default_path, selected_path) == 0)
+    {
+      gtk_tree_path_free (default_path);
+      gtk_tree_path_free (selected_path);
+      return;
+    }
+
+  /* unmark the currently set */
+  gtk_list_store_set (dialog->store, dialog->default_profile_iter, COLUMN_PROFILE_IS_DEFAULT, NULL, -1);
+
+  /* This column has a PixbufRenderer. So we set the symbol to be drawn. In this case the 'tick' symbol. */
+  gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_IS_DEFAULT, "object-select-symbolic", -1);
+
+  /* release previous default iter & set current default iter */
+  gtk_tree_iter_free (dialog->default_profile_iter);
+  dialog->default_profile_iter = gtk_tree_iter_copy (&iter);
+  
+  gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
+  terminal_profile_manager_set_default_profile (dialog->manager, profile_name);
+
+  g_free (profile_name);
+  gtk_tree_path_free (default_path);
+  gtk_tree_path_free (selected_path);
+}
+
+
+
+static void
+terminal_preferences_dialog_after_realize (TerminalPreferencesDialog *dialog)
+{
+  /* TODO */
+}
+
+
+
+static void
+terminal_preferences_dialog_rename_profile (TerminalPreferencesDialog *dialog)
+{
+  GtkTreeSelection *selection;
+  GtkTreeModel     *model;
+  GtkTreeIter       iter;
+  gchar            *profile_name;
+  gchar            *new_profile_name;
+  gchar            *dialog_title;
+
+  model = GTK_TREE_MODEL (dialog->store);
+  selection = gtk_tree_view_get_selection (dialog->view);
+  gtk_tree_selection_get_selected (selection, &model, &iter);
+
+  gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter,
+                      COLUMN_PROFILE_NAME, &profile_name, -1);
+
+  dialog_title = g_strdup_printf ("Rename Profile - %s", profile_name);
+  /* get new profile name from user */
+  new_profile_name = terminal_preferences_dialog_get_profile_name (dialog, dialog_title, profile_name);
+
+  if (new_profile_name == NULL || terminal_profile_manager_has_profile (dialog->manager, new_profile_name))
+    return;
+
+  /* change the profile name in the view */
+  gtk_list_store_set (GTK_LIST_STORE (dialog->store), &iter,
+                      COLUMN_PROFILE_NAME, new_profile_name, -1);
+  gtk_label_set_text(GTK_LABEL (dialog->profile_label), new_profile_name);
+
+  /* reflect the changes on the backend */
+  terminal_profile_manager_rename_profile (dialog->manager, profile_name, new_profile_name);
+
+  g_free (profile_name);
+  g_free (dialog_title);
 }
