@@ -99,6 +99,12 @@ enum
   N_PALETTE_BUTTONS = 16,
 };
 
+enum
+{
+  COLUMN_PROFILE_NAME,
+  N_COLUMN,
+};
+
 struct _TerminalPreferencesDialogClass
 {
   XfceTitledDialogClass __parent__;
@@ -201,6 +207,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GtkWidget     *combo;
   gchar         *current;
   gint           row = 0;
+  GtkCellRenderer *renderer;
+  GtkTreeViewColumn *column;
+  GtkListStore *store;
 
   /* grab a reference on the preferences */
   dialog->preferences = terminal_preferences_get ();
@@ -232,6 +241,57 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_container_set_border_width (GTK_CONTAINER (notebook), 6);
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), notebook, TRUE, TRUE, 0);
   gtk_widget_show (notebook);
+
+
+
+  /*
+   * Profile
+   */
+  label = gtk_label_new (_("Profile"));
+  vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
+  gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
+  gtk_widget_show (label);
+  gtk_widget_show (vbox);
+
+  /* section: Title */
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, NULL);
+
+  store = gtk_list_store_new (N_COLUMN, G_TYPE_STRING);
+  gtk_list_store_append (store, &current_iter);
+  gtk_list_store_set (store, &current_iter,
+                      COLUMN_PROFILE_NAME, "default", -1);
+  gtk_list_store_append (store, &current_iter);
+  gtk_list_store_set (store, &current_iter,
+                      COLUMN_PROFILE_NAME, "myprofile1", -1);
+  gtk_list_store_append (store, &current_iter);
+  gtk_list_store_set (store, &current_iter,
+                      COLUMN_PROFILE_NAME, "myprofile2", -1);
+  vbox = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+  g_object_unref (store);
+  renderer = gtk_cell_renderer_text_new ();
+  column = gtk_tree_view_column_new_with_attributes ("Profiles", renderer,
+                                                     "text", COLUMN_PROFILE_NAME, NULL);
+  gtk_tree_view_append_column (GTK_TREE_VIEW (vbox), column);
+  gtk_widget_set_vexpand (vbox, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), vbox, 0, row, 3, 1);
+  gtk_widget_show (vbox);
+
+  row++;
+
+  button = gtk_button_new_with_mnemonic (_("New Profile"));
+  gtk_widget_set_hexpand (button, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
+  gtk_widget_show (button);
+
+  button = gtk_button_new_with_mnemonic (_("Delete Profile"));
+  gtk_widget_set_hexpand (button, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
+  gtk_widget_show (button);
+
+  button = gtk_button_new_with_mnemonic (_("Reset Profile"));
+  gtk_widget_set_hexpand (button, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), button, 2, row, 1, 1);
+  gtk_widget_show (button);
 
 
 
@@ -1616,11 +1676,14 @@ terminal_preferences_dialog_new_section (GtkWidget   **frame,
   gtk_box_pack_start (GTK_BOX (*vbox), *frame, FALSE, TRUE, 0);
   gtk_widget_show (*frame);
 
-  *label = gtk_label_new (_(header));
-  /* For bold text */
-  gtk_label_set_attributes (GTK_LABEL (*label), terminal_pango_attr_list_bold ());
-  gtk_frame_set_label_widget (GTK_FRAME (*frame), *label);
-  gtk_widget_show (*label);
+  if (header != NULL)
+    {
+      *label = gtk_label_new (_(header));
+      /* For bold text */
+      gtk_label_set_attributes (GTK_LABEL (*label), terminal_pango_attr_list_bold ());
+      gtk_frame_set_label_widget (GTK_FRAME (*frame), *label);
+      gtk_widget_show (*label);
+    }
 
   /* init row */
   *row = 0;
