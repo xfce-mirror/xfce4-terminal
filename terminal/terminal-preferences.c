@@ -1266,7 +1266,8 @@ terminal_preferences_init (TerminalPreferences *preferences)
       preferences->profile_name = g_strdup ("default");
 
       /* try to load the old config file & save changes */
-      terminal_preferences_load_rc_file (preferences);
+      /*TODO: Handle old conversion */
+      // terminal_preferences_load_rc_file (preferences);
 
       /* save the name of the default profile user /default-profile */
       xfconf_channel_set_string (preferences->channel, "/default-profile", "default");

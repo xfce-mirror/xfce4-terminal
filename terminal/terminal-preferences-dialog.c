@@ -138,7 +138,6 @@ struct _TerminalPreferencesDialog
   GtkWidget           *go_down_image;
   GtkWidget           *profile_label;
   GtkWidget           *profile_selector_button;
-  GtkWidget           *file_chooser;
 
   gulong               bg_image_signal_id;
   gulong               palette_notify_signal_id;
