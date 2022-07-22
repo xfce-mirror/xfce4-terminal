@@ -152,6 +152,7 @@ static void     terminal_preferences_prop_changed  (XfconfChannel       *channel
                                                     const GValue        *value,
                                                     TerminalPreferences *preferences);
 static void     terminal_preferences_load_rc_file  (TerminalPreferences *preferences);
+static void     terminal_preferences_load_defaults (TerminalPreferences *preferences);
 
 
 
@@ -165,6 +166,8 @@ struct _TerminalPreferences
   GObject        __parent__;
 
   XfconfChannel *channel;
+  gchar         *profile_name;
+  GPtrArray     *profiles;
 
   gulong         property_changed_id;
 };
@@ -1240,7 +1243,8 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
-  const gchar check_prop[] = "/title-initial";
+  const gchar  check_prop[] = "/default-properties/title-initial";
+  GValue       value = G_VALUE_INIT;
 
   /* don't set a channel if xfconf init failed */
   if (no_xfconf)
@@ -1252,12 +1256,40 @@ terminal_preferences_init (TerminalPreferences *preferences)
   /* check one of the property to see if there are values */
   if (!xfconf_channel_has_property (preferences->channel, check_prop))
     {
+      /* Reset Xfconf channel for the New Format */
+      xfconf_channel_reset_property (preferences->channel, "/", TRUE);
+
       /* try to load the old config file & save changes */
-      terminal_preferences_load_rc_file (preferences);
+      /*TODO: Handle old conversion */
+      // terminal_preferences_load_rc_file (preferences);
 
       /* set the string we check */
       if (!xfconf_channel_has_property (preferences->channel, check_prop))
-        xfconf_channel_set_string (preferences->channel, check_prop, _("Terminal"));
+        {
+          terminal_preferences_load_defaults (preferences);
+
+          /* create & store a new default profile named default */
+          preferences->profile_name = g_strdup ("default");
+
+          /* save the name of the default profile user /default-profile */
+          xfconf_channel_set_string (preferences->channel, "/default-profile", "default");
+
+          /* create & store the g_ptr_array for storing the different profile names */
+          preferences->profiles = g_ptr_array_new ();
+
+          /* save the default profile name as the only element in the array */
+          g_value_init (&value, G_TYPE_STRING);
+          g_value_set_string (&value, "default");
+
+          g_ptr_array_add (preferences->profiles, (gpointer) &value);
+
+          xfconf_channel_set_arrayv (preferences->channel, "/profiles", preferences->profiles);
+        }
+    }
+  else
+    {
+      preferences->profile_name = xfconf_channel_get_string (preferences->channel, "/default-profile", "default");
+      preferences->profiles = xfconf_channel_get_arrayv (preferences->channel, "/profiles");
     }
 
   preferences->property_changed_id =
@@ -1270,6 +1302,11 @@ terminal_preferences_init (TerminalPreferences *preferences)
 static void
 terminal_preferences_finalize (GObject *object)
 {
+  TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
+
+  g_free (preferences->profile_name);
+  g_ptr_array_free (preferences->profiles, TRUE);
+
   (*G_OBJECT_CLASS (terminal_preferences_parent_class)->finalize) (object);
 }
 
@@ -1296,7 +1333,7 @@ terminal_preferences_get_property (GObject    *object,
     }
 
   /* build property name */
-  g_snprintf (prop_name, sizeof (prop_name), "/%s", g_param_spec_get_name (pspec));
+  g_snprintf (prop_name, sizeof (prop_name), "/%s/%s", preferences->profile_name, g_param_spec_get_name (pspec));
 
   if (G_VALUE_TYPE (value) == G_TYPE_STRV)
     {
@@ -1337,7 +1374,7 @@ terminal_preferences_set_property (GObject      *object,
     return;
 
   /* build property name */
-  g_snprintf (prop_name, sizeof (prop_name), "/%s", g_param_spec_get_name (pspec));
+  g_snprintf (prop_name, sizeof (prop_name), "/%s/%s", preferences->profile_name, g_param_spec_get_name (pspec));
 
   if (G_VALUE_HOLDS_ENUM (value))
     {
@@ -1582,4 +1619,160 @@ void
 terminal_preferences_xfconf_init_failed (void)
 {
   no_xfconf = TRUE;
+}
+
+
+
+/**
+ * terminal_preferences_add_profile:
+ * @preferences : a #TerminalPreferences instance.
+ * @profile_name : the profile name of the new profile to create
+ *
+ * Creates a new profile with the given @profile_name.
+ *
+ * Return value: (void)
+ **/
+void
+terminal_preferences_add_profile (TerminalPreferences *preferences,
+                                  const gchar         *profile_name)
+{
+  GValue value = G_VALUE_INIT;
+  g_value_init (&value, G_TYPE_STRING);
+  g_value_set_string (&value, profile_name);
+  g_ptr_array_add (preferences->profiles, (gpointer) &value);
+  xfconf_channel_set_arrayv (preferences->channel, "/profiles", preferences->profiles);
+}
+
+
+
+/**
+ * terminal_preferences_switch_profile:
+ * @preferences : a #TerminalPreferences instance.
+ * @profile_name : the profile name of the profile to switch to
+ *
+ * Switches to the profile with the given @profile_name.
+ *
+ * Return value: (void)
+ **/
+void
+terminal_preferences_switch_profile (TerminalPreferences *preferences,
+                                     const gchar         *name)
+{
+  /* load the default settings before switching profiles */
+  terminal_preferences_load_defaults (preferences);
+  g_free (preferences->profile_name);
+
+  /* Now load the profile specific settings */
+  preferences->profile_name = g_strdup (name);
+  for (gint i = 1; i < N_PROPERTIES; i++)
+    g_object_notify (G_OBJECT (preferences), g_param_spec_get_name (preferences_props[i]));
+  xfconf_channel_set_string (preferences->channel, "/default-profile", preferences->profile_name);
+}
+
+
+
+/**
+ * terminal_preferences_get_default_profile:
+ * @preferences : a #TerminalPreferences instance.
+ *
+ * Returns the profile name of the current default profile.
+ *
+ * Return value: (transfer full): name of the default profile
+ **/
+gchar *
+terminal_preferences_get_default_profile (TerminalPreferences *preferences)
+{
+  return g_strdup (preferences->profile_name);
+}
+
+
+
+/**
+ * terminal_preferences_get_profiles:
+ * @preferences : a #TerminalPreferences instance.
+ *
+ * Returns the profile names of the existing profiles.
+ *
+ * Return value: (transfer container): array of names of the existing profiles
+ **/
+gchar **
+terminal_preferences_get_profiles (TerminalPreferences *preferences)
+{
+  gint N = preferences->profiles->len;
+  gchar **profile_names = (gchar **) g_malloc (sizeof (gchar *) * N);
+  for (int i = 0; i < N; i++)
+    profile_names[i] = g_strdup (g_value_get_string (g_ptr_array_index (preferences->profiles, i)));
+  return profile_names;
+}
+
+
+
+/**
+ * terminal_preferences_get_n_profiles:
+ * @preferences : a #TerminalPreferences instance.
+ *
+ * Returns the number of existing profiles.
+ *
+ * Return value: (int): the number of existing profiles
+ **/
+gint
+terminal_preferences_get_n_profiles (TerminalPreferences *preferences)
+{
+  return preferences->profiles->len;
+}
+
+
+
+static gboolean
+find_value_with_profile_name (gconstpointer value,
+                              gconstpointer profile_name)
+{
+  const gchar *name;
+
+  name = g_value_get_string (value);
+
+  return g_strcmp0 (name, profile_name) == 0 ? TRUE : FALSE; 
+}
+
+
+
+/**
+ * terminal_preferences_remove_profiles:
+ * @preferences : a #TerminalPreferences instance.
+ * @profile_name : the profile name of the profile to remove
+ *
+ * Deletes the profile with @profile_name.
+ *
+ * Return value: (void)
+ **/
+void
+terminal_preferences_remove_profile (TerminalPreferences *preferences,
+                                     const gchar         *profile_name)
+{
+  guint index = 0;
+  g_ptr_array_find_with_equal_func (preferences->profiles,
+                                    (gconstpointer) profile_name,
+                                    (GEqualFunc) find_value_with_profile_name,
+                                    &index);
+  if (index >= preferences->profiles->len)
+    return;
+  g_ptr_array_remove_index (preferences->profiles, index);
+  xfconf_channel_set_arrayv (preferences->channel, "/profiles", preferences->profiles);
+}
+
+
+
+static void
+terminal_preferences_load_defaults (TerminalPreferences *preferences)
+{
+  gchar *prev = preferences->profile_name;
+
+  preferences->profile_name = g_strdup ("default-properties");
+  for (gint prop = 1; prop < N_PROPERTIES; prop++)
+    terminal_preferences_set_property (G_OBJECT (preferences), prop,
+                                       g_param_spec_get_default_value (preferences_props [prop]),
+                                       preferences_props [prop]);
+  g_free (preferences->profile_name);
+
+  preferences->profile_name = prev;
 }
