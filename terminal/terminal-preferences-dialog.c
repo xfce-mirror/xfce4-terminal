@@ -70,6 +70,7 @@ static void      terminal_gtk_label_set_a11y_relation                    (GtkLab
 static gboolean  monospace_filter                                        (const PangoFontFamily      *family,
                                                                           const PangoFontFace        *face,
                                                                           gpointer                    data);
+static void      terminal_preferences_dialog_popover_popped_off          (GtkWidget                  *button);
 
 
 
@@ -191,6 +192,7 @@ static void
 terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 {
   GtkFileFilter *filter;
+  GtkListStore  *store;
   GtkTreeModel  *model;
   GtkTreeIter    current_iter;
   GtkWidget     *notebook;
@@ -199,17 +201,18 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GtkWidget     *frame;
   GtkWidget     *label;
   GtkWidget     *vbox;
+  GtkWidget     *hbox;
   GtkWidget     *box;
   GtkWidget     *infobar;
   GtkWidget     *grid;
   GtkWidget     *background_grid;
   GtkWidget     *entry;
   GtkWidget     *combo;
+  GtkWidget     *popover;
+  GtkWidget     *view;
+  GtkTreeViewColumn *column;
   gchar         *current;
   gint           row = 0;
-  GtkCellRenderer *renderer;
-  GtkTreeViewColumn *column;
-  GtkListStore *store;
 
   /* grab a reference on the preferences */
   dialog->preferences = terminal_preferences_get ();
@@ -247,51 +250,52 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /*
    * Profile
    */
-  label = gtk_label_new (_("Profile"));
-  vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
-  gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
-  gtk_widget_show (label);
-  gtk_widget_show (vbox);
+  button = gtk_button_new_from_icon_name("go-down", GTK_ICON_SIZE_BUTTON);
+  g_object_ref_sink (button);
+  popover = gtk_popover_new (button);
+  g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_popover_popup), popover);
+  image = gtk_image_new_from_icon_name ("go-up", GTK_ICON_SIZE_BUTTON);
+  g_object_ref_sink (image);
+  g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (gtk_button_set_image), image);
+  g_signal_connect_swapped (G_OBJECT (popover), "closed", G_CALLBACK (terminal_preferences_dialog_popover_popped_off), button);
+  gtk_notebook_set_action_widget (GTK_NOTEBOOK (notebook), button, GTK_PACK_START);
+  gtk_widget_show (button);
 
-  /* section: Title */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, NULL);
-
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   store = gtk_list_store_new (N_COLUMN, G_TYPE_STRING);
   gtk_list_store_append (store, &current_iter);
-  gtk_list_store_set (store, &current_iter,
-                      COLUMN_PROFILE_NAME, "default", -1);
+  gtk_list_store_set (store, &current_iter, COLUMN_PROFILE_NAME, "default", -1);
   gtk_list_store_append (store, &current_iter);
-  gtk_list_store_set (store, &current_iter,
-                      COLUMN_PROFILE_NAME, "myprofile1", -1);
-  gtk_list_store_append (store, &current_iter);
-  gtk_list_store_set (store, &current_iter,
-                      COLUMN_PROFILE_NAME, "myprofile2", -1);
-  vbox = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
-  g_object_unref (store);
-  renderer = gtk_cell_renderer_text_new ();
-  column = gtk_tree_view_column_new_with_attributes ("Profiles", renderer,
-                                                     "text", COLUMN_PROFILE_NAME, NULL);
-  gtk_tree_view_append_column (GTK_TREE_VIEW (vbox), column);
-  gtk_widget_set_vexpand (vbox, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), vbox, 0, row, 3, 1);
+  gtk_list_store_set (store, &current_iter, COLUMN_PROFILE_NAME, "new-profile", -1);
+  view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+  gtk_container_set_border_width (GTK_CONTAINER (view), 12);
+  gtk_widget_set_margin_start (view, 12);
+  gtk_widget_set_margin_end (view, 12);
+  column = gtk_tree_view_column_new_with_attributes ("Profiles",
+                                                     gtk_cell_renderer_text_new (),
+                                                     "text", COLUMN_PROFILE_NAME,
+                                                     NULL);
+  gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
+  gtk_box_pack_start (GTK_BOX (vbox), view, TRUE, TRUE, 6);
+  gtk_widget_show (view);
+
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+  gtk_widget_set_margin_start (hbox, 12);
+  gtk_widget_set_margin_end (hbox, 12);
+  button = gtk_button_new_from_icon_name ("list-add", GTK_ICON_SIZE_BUTTON);
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, TRUE, 0);
+  gtk_widget_show (button);
+  button = gtk_button_new_from_icon_name ("list-remove", GTK_ICON_SIZE_BUTTON);
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, TRUE, 0);
+  gtk_widget_show (button);
+  button = gtk_button_new_from_icon_name ("edit-undo", GTK_ICON_SIZE_BUTTON);
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, TRUE, 0);
+  gtk_widget_show (button);
+  gtk_box_pack_start(GTK_BOX (vbox), hbox, FALSE, TRUE, 6);
+  gtk_widget_show (hbox);
+  
+  gtk_container_add (GTK_CONTAINER (popover), vbox);
   gtk_widget_show (vbox);
-
-  row++;
-
-  button = gtk_button_new_with_mnemonic (_("New Profile"));
-  gtk_widget_set_hexpand (button, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
-  gtk_widget_show (button);
-
-  button = gtk_button_new_with_mnemonic (_("Delete Profile"));
-  gtk_widget_set_hexpand (button, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
-  gtk_widget_show (button);
-
-  button = gtk_button_new_with_mnemonic (_("Reset Profile"));
-  gtk_widget_set_hexpand (button, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), button, 2, row, 1, 1);
-  gtk_widget_show (button);
 
 
 
@@ -2255,4 +2259,13 @@ terminal_preferences_dialog_new (gboolean show_drop_down,
     gtk_notebook_set_current_page (GTK_NOTEBOOK (dialog->dropdown_notebook), 1);
 
   return GTK_WIDGET (dialog);
+}
+
+
+
+static void
+terminal_preferences_dialog_popover_popped_off (GtkWidget *button)
+{
+  GtkWidget *image = gtk_image_new_from_icon_name ("go-down", GTK_ICON_SIZE_BUTTON);
+  gtk_button_set_image (GTK_BUTTON (button), image);
 }
