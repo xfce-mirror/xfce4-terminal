@@ -2302,10 +2302,14 @@ static void
 terminal_preferences_dialog_remove_profile (TerminalPreferencesDialog *dialog)
 {
   GtkTreeSelection *selection;
+  GtkTreeModel     *model;
   GtkTreeIter       iter;
 
+  model = GTK_TREE_MODEL (dialog->store);
   selection = gtk_tree_view_get_selection (dialog->view);
-  gtk_tree_selection_select_iter (selection, &iter);
+  if (gtk_tree_selection_count_selected_rows (selection) != 1)
+    return;
+  gtk_tree_selection_get_selected (selection, &model, &iter);
   gtk_list_store_remove (dialog->store, &iter);
 }
 
@@ -2315,10 +2319,12 @@ static void
 terminal_preferences_dialog_reset_profile (TerminalPreferencesDialog *dialog)
 {
   GtkTreeSelection *selection;
+  GtkTreeModel     *model;
   GtkTreeIter       iter;
 
+  model = GTK_TREE_MODEL (dialog->store);
   selection = gtk_tree_view_get_selection (dialog->view);
-  gtk_tree_selection_select_iter (selection, &iter);
+  gtk_tree_selection_get_selected (selection, &model, &iter);
 
-  /* now reset the settings */
+  /* reset the settings */
 }
