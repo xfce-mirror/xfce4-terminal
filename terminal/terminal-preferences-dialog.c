@@ -247,7 +247,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   notebook = gtk_notebook_new ();
   gtk_container_set_border_width (GTK_CONTAINER (notebook), 6);
-  gtk_notebook_set_tab_pos (GTK_NOTEBOOK (notebook), GTK_POS_LEFT);
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), notebook, TRUE, TRUE, 0);
   gtk_widget_show (notebook);
 
@@ -1155,6 +1154,28 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 3, 1);
   gtk_widget_show (button);
+
+  /* section: Misc */
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Misc");
+
+  label = gtk_label_new_with_mnemonic (_("Preferences dialog tab placement:"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
+  gtk_widget_show (label);
+
+  combo = gtk_combo_box_text_new ();
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Left"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Right"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Top"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Bottom"));
+  g_object_bind_property (G_OBJECT (notebook), "tab-pos",
+                          G_OBJECT (combo), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_hexpand (combo, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), combo, 1, row, 1, 1);
+  terminal_gtk_label_set_a11y_relation (GTK_LABEL (label), combo);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
+  gtk_widget_show (combo);
 
 
 
