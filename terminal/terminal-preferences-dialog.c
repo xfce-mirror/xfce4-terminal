@@ -264,6 +264,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
   dialog->profile_label = gtk_label_new ("Default");
+  gtk_label_set_xalign (GTK_LABEL (dialog->profile_label), 0.0f);
   g_object_ref_sink (dialog->profile_label);
   dialog->go_up_image   = gtk_image_new_from_icon_name ("go-up",   GTK_ICON_SIZE_BUTTON);
   g_object_ref_sink (dialog->go_up_image);
@@ -274,6 +275,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (box), dialog->go_up_image, FALSE, TRUE, 0);
   gtk_widget_hide (dialog->go_up_image);
   gtk_widget_show (box);
+  gtk_widget_set_hexpand (box, TRUE);
   gtk_widget_show (dialog->go_down_image);
   gtk_widget_show (dialog->profile_label);
 
@@ -2345,7 +2347,7 @@ terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
       gtk_widget_destroy (entry_dialog);
     }
 
-  if (profile_name == NULL || g_strcmp0 (profile_name, "") == 0)
+  if (profile_name == NULL)
     return;
   gtk_list_store_append (dialog->store, &iter);
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
@@ -2377,7 +2379,7 @@ terminal_preferences_dialog_tree_model_foreach (GtkTreeModel *model,
                                                 GtkTreeIter  *iter,
                                                 gpointer      data)
 {
-  gtk_list_store_set(GTK_LIST_STORE (data), iter, COLUMN_PROFILE_ICON_NAME, g_strdup (""), -1);
+  gtk_list_store_set(GTK_LIST_STORE (data), iter, COLUMN_PROFILE_ICON_NAME, NULL, -1);
 
   return FALSE;
 }
@@ -2390,6 +2392,7 @@ terminal_preferences_dialog_set_default_profile (TerminalPreferencesDialog *dial
   GtkTreeSelection *selection;
   GtkTreeModel     *model;
   GtkTreeIter       iter;
+  gchar            *profile_name;
 
   model = GTK_TREE_MODEL (dialog->store);
   selection = gtk_tree_view_get_selection (dialog->view);
@@ -2399,4 +2402,7 @@ terminal_preferences_dialog_set_default_profile (TerminalPreferencesDialog *dial
   gtk_tree_model_foreach (model, (GtkTreeModelForeachFunc) terminal_preferences_dialog_tree_model_foreach, dialog->store);
   /* set selection */
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_ICON_NAME, g_strdup ("object-select"), -1);
+  gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
+  
+  gtk_label_set_text (GTK_LABEL (dialog->profile_label), profile_name);
 }
