@@ -251,6 +251,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   notebook = gtk_notebook_new ();
   gtk_container_set_border_width (GTK_CONTAINER (notebook), 6);
+  gtk_notebook_set_tab_pos (GTK_NOTEBOOK (notebook), GTK_POS_LEFT);
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), notebook, TRUE, TRUE, 0);
   gtk_widget_show (notebook);
 
@@ -2332,9 +2333,13 @@ terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
 
   /* create input box */
   entry = gtk_entry_new ();
+  gtk_widget_set_margin_start (entry, 15);
+  gtk_widget_set_margin_end (entry, 15);
   entry_dialog = xfce_titled_dialog_new ();
+  gtk_window_set_default_size (GTK_WINDOW (entry_dialog), 300, 50);
+  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (entry_dialog))), entry, TRUE, TRUE, 10);
+  gtk_widget_show (entry);
   xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (entry_dialog));
-  xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (entry_dialog), entry, GTK_RESPONSE_NONE);
   xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Cancel"), GTK_RESPONSE_CANCEL);
   xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Accept"), GTK_RESPONSE_ACCEPT);
   response = gtk_dialog_run (GTK_DIALOG (entry_dialog));
