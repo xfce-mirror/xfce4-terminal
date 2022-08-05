@@ -72,7 +72,7 @@ static gboolean  monospace_filter                                        (const 
                                                                           gpointer                    data);
 static void      terminal_preferences_dialog_add_new_profile             (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_remove_profile              (TerminalPreferencesDialog  *dialog);
-static void      terminal_preferences_dialog_set_default_profile         (TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_activate_profile            (TerminalPreferencesDialog  *dialog);
 
 
 
@@ -263,7 +263,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   dialog->store = store;
 
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  dialog->profile_label = gtk_label_new ("Default");
+  dialog->profile_label = gtk_label_new ("...");
   gtk_label_set_xalign (GTK_LABEL (dialog->profile_label), 0.0f);
   g_object_ref_sink (dialog->profile_label);
   dialog->go_up_image   = gtk_image_new_from_icon_name ("go-up",   GTK_ICON_SIZE_BUTTON);
@@ -272,7 +272,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_object_ref_sink (dialog->go_down_image);
   gtk_box_pack_start (GTK_BOX (box), dialog->profile_label, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (box), dialog->go_down_image, FALSE, TRUE, 0);
+  gtk_widget_set_halign (dialog->go_down_image, GTK_ALIGN_END);
   gtk_box_pack_start (GTK_BOX (box), dialog->go_up_image, FALSE, TRUE, 0);
+  gtk_widget_set_halign (dialog->go_up_image, GTK_ALIGN_END);
   gtk_widget_hide (dialog->go_up_image);
   gtk_widget_show (box);
   gtk_widget_set_hexpand (box, TRUE);
@@ -294,7 +296,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
   dialog->view = GTK_TREE_VIEW (view);
-  gtk_container_set_border_width (GTK_CONTAINER (view), 12);
   gtk_widget_set_margin_start (view, 12);
   gtk_widget_set_margin_end (view, 12);
   column = gtk_tree_view_column_new_with_attributes ("Profiles",
@@ -323,7 +324,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
   button = gtk_button_new_from_icon_name ("object-select", GTK_ICON_SIZE_BUTTON);
-  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_set_default_profile), dialog);
+  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_activate_profile), dialog);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
   gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 6);
@@ -2387,7 +2388,7 @@ terminal_preferences_dialog_tree_model_foreach (GtkTreeModel *model,
 
 
 static void
-terminal_preferences_dialog_set_default_profile (TerminalPreferencesDialog *dialog)
+terminal_preferences_dialog_activate_profile (TerminalPreferencesDialog *dialog)
 {
   GtkTreeSelection *selection;
   GtkTreeModel     *model;
