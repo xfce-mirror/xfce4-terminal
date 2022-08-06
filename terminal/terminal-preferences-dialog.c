@@ -31,6 +31,7 @@
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-widget.h>
+#include <terminal/terminal-preferences.h>
 
 
 
@@ -73,6 +74,7 @@ static gboolean  monospace_filter                                        (const 
 static void      terminal_preferences_dialog_add_new_profile             (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_remove_profile              (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_activate_profile            (TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_populate_store              (GtkListStore               *store);
 
 
 
@@ -221,6 +223,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GtkWidget     *view;
   GtkTreeViewColumn *column;
   gchar         *current;
+  gchar         *profile;
   gint           row = 0;
 
   /* grab a reference on the preferences */
@@ -261,10 +264,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
    * Profile
    */
   store = gtk_list_store_new (N_COLUMN, G_TYPE_STRING, G_TYPE_STRING);
+  terminal_preferences_dialog_populate_store (store);
   dialog->store = store;
 
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  dialog->profile_label = gtk_label_new ("...");
+  profile = terminal_preferences_get_default_profile ();
+  dialog->profile_label = gtk_label_new (profile);
+  g_free (profile);
   gtk_label_set_xalign (GTK_LABEL (dialog->profile_label), 0.0f);
   g_object_ref_sink (dialog->profile_label);
   dialog->go_up_image   = gtk_image_new_from_icon_name ("go-up",   GTK_ICON_SIZE_BUTTON);
@@ -2357,6 +2363,7 @@ terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
     return;
   gtk_list_store_append (dialog->store, &iter);
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
+  terminal_preferences_add_profile (profile_name);
   g_free (profile_name);
 }
 
@@ -2410,5 +2417,22 @@ terminal_preferences_dialog_activate_profile (TerminalPreferencesDialog *dialog)
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_ICON_NAME, g_strdup ("object-select"), -1);
   gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
   
+  terminal_preferences_change_channel_to (dialog->preferences, profile_name);
   gtk_label_set_text (GTK_LABEL (dialog->profile_label), profile_name);
+}
+
+
+
+static void
+terminal_preferences_dialog_populate_store (GtkListStore *store)
+{
+  GtkTreeIter  iter;
+  gchar       *def = terminal_preferences_get_default_profile ();
+  gint         i = 0;
+
+  for (gchar **str = terminal_preferences_get_profiles(); str[i] != NULL; i++)
+    {
+      gtk_list_store_append (store, &iter);
+      gtk_list_store_set (store, &iter, COLUMN_PROFILE_NAME, str[i], COLUMN_PROFILE_ICON_NAME, g_strcmp0(str[i], def) == 0 ? "object-select" : NULL, -1);
+    }
 }
