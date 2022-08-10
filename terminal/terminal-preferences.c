@@ -1645,7 +1645,7 @@ terminal_preferences_get_channel (void)
 gchar **
 terminal_preferences_get_profiles (void)
 {
-  return g_strsplit (xfconf_channel_get_string(terminal_preferences_get_channel (), "/profiles", "default"), ";", -1);
+  return g_strsplit (xfconf_channel_get_string (terminal_preferences_get_channel (), "/profiles", "default"), ";", -1);
 }
 
 
