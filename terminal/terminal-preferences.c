@@ -1608,7 +1608,7 @@ terminal_preferences_change_channel_to (TerminalPreferences *preferences,
   for (int i = 1; i < N_PROPERTIES; i++)
     {
       prop = g_param_spec_get_name (preferences_props[i]);
-      if (xfconf_channel_has_property (preferences->channel, prop))
+      if (xfconf_channel_has_property (preferences->channel, g_strdup_printf ("/%s", prop)))
           g_object_notify(G_OBJECT (preferences), prop);
     }
 
