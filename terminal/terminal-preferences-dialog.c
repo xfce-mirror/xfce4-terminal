@@ -2375,13 +2375,19 @@ terminal_preferences_dialog_remove_profile (TerminalPreferencesDialog *dialog)
   GtkTreeSelection *selection;
   GtkTreeModel     *model;
   GtkTreeIter       iter;
+  gchar            *name;
+  gchar            *icon_name;
 
   model = GTK_TREE_MODEL (dialog->store);
   selection = gtk_tree_view_get_selection (dialog->view);
   if (gtk_tree_selection_count_selected_rows (selection) != 1)
     return;
   gtk_tree_selection_get_selected (selection, &model, &iter);
+  gtk_tree_model_get(model, &iter, COLUMN_PROFILE_NAME, &name, COLUMN_PROFILE_ICON_NAME, &icon_name, -1);
+  if (g_strcmp0 (icon_name, "object-select") == 0)
+    return;
   gtk_list_store_remove (dialog->store, &iter);
+  terminal_preferences_remove_profile (name);
 }
 
 

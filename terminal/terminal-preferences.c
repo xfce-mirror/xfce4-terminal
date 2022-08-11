@@ -1260,6 +1260,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
 
       xfconf_channel_set_string (channel, check_prop, "default");
       xfconf_channel_set_string (channel, "/profiles", "default");
+      xfconf_channel_set_int (channel, "/n_profiles", 1);
     }
 
   profile = xfconf_channel_get_string (channel, check_prop, "default");
@@ -1654,6 +1655,30 @@ void
 terminal_preferences_add_profile (const gchar *name)
 {
   XfconfChannel *channel = terminal_preferences_get_channel ();
+  gint n = xfconf_channel_get_int(channel, "/n_profiles", 1);
   gchar *new_string = g_strdup_printf ("%s;%s", xfconf_channel_get_string (channel, "/profiles", "default"), name);
   xfconf_channel_set_string (channel, "/profiles", new_string);
+  xfconf_channel_set_int (channel, "/n_profiles", ++n);
+}
+
+
+
+void
+terminal_preferences_remove_profile (const gchar *name)
+{
+  XfconfChannel *channel = terminal_preferences_get_channel ();
+  gint n = xfconf_channel_get_int(channel, "/n_profiles", 1);
+  gchar **profiles = terminal_preferences_get_profiles ();
+  GString *str = g_string_new(NULL);
+  for (gint i = 0; i < n; i++)
+    {
+      if (g_strcmp0(profiles[i], name) == 0)
+        continue;
+      g_string_append(str, profiles[i]);
+      if (i < n - 1)
+        g_string_append_c(str, ';');
+    }
+  xfconf_channel_set_string (channel, "/profiles", str->str);
+  xfconf_channel_set_int (channel, "/n_profiles", --n);
+  xfconf_channel_reset_property(xfconf_channel_get(name), "/", TRUE);
 }
