@@ -111,6 +111,12 @@ gboolean             terminal_preferences_get_color           (TerminalPreferenc
                                                                const gchar         *property,
                                                                GdkRGBA             *color_return);
 void                 terminal_preferences_xfconf_init_failed  (void);
+void                 terminal_preferences_change_channel_to   (TerminalPreferences *preferences,
+                                                               const gchar         *channel);
+gchar               *terminal_preferences_get_default_profile (void);
+gchar              **terminal_preferences_get_profiles        (void);
+void                 terminal_preferences_add_profile         (const gchar         *name);
+void                 terminal_preferences_remove_profile      (const gchar *name);
 
 
 G_END_DECLS

@@ -152,6 +152,7 @@ static void     terminal_preferences_prop_changed  (XfconfChannel       *channel
                                                     const GValue        *value,
                                                     TerminalPreferences *preferences);
 static void     terminal_preferences_load_rc_file  (TerminalPreferences *preferences);
+static XfconfChannel * terminal_preferences_get_channel (void);
 
 
 
@@ -1240,25 +1241,30 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
-  const gchar check_prop[] = "/title-initial";
+  XfconfChannel *channel;
+  const gchar    check_prop[] = "/default-profile";
+  gchar         *profile;
 
   /* don't set a channel if xfconf init failed */
   if (no_xfconf)
     return;
 
   /* load the channel */
-  preferences->channel = xfconf_channel_get ("xfce4-terminal");
+  channel = terminal_preferences_get_channel ();
 
   /* check one of the property to see if there are values */
-  if (!xfconf_channel_has_property (preferences->channel, check_prop))
+  if (!xfconf_channel_has_property (channel, check_prop))
     {
       /* try to load the old config file & save changes */
       terminal_preferences_load_rc_file (preferences);
 
-      /* set the string we check */
-      if (!xfconf_channel_has_property (preferences->channel, check_prop))
-        xfconf_channel_set_string (preferences->channel, check_prop, _("Terminal"));
+      xfconf_channel_set_string (channel, check_prop, "default");
+      xfconf_channel_set_string (channel, "/profiles", "default");
+      xfconf_channel_set_int (channel, "/n_profiles", 1);
     }
+
+  profile = xfconf_channel_get_string (channel, check_prop, "default");
+  preferences->channel = xfconf_channel_get (profile);
 
   preferences->property_changed_id =
     g_signal_connect (G_OBJECT (preferences->channel), "property-changed",
@@ -1582,4 +1588,97 @@ void
 terminal_preferences_xfconf_init_failed (void)
 {
   no_xfconf = TRUE;
+}
+
+
+
+void
+terminal_preferences_change_channel_to (TerminalPreferences *preferences,
+                                        const gchar         *channel_name)
+{
+  const gchar *prop;
+  XfconfChannel *channel = terminal_preferences_get_channel ();
+  g_signal_handler_disconnect (preferences->channel, preferences->property_changed_id);
+  xfconf_channel_set_string (channel, "/default-profile", channel_name);
+  preferences->channel = xfconf_channel_get (channel_name);
+
+  preferences->property_changed_id =
+    g_signal_connect (G_OBJECT (preferences->channel), "property-changed",
+                      G_CALLBACK (terminal_preferences_prop_changed), preferences);
+
+  for (int i = 1; i < N_PROPERTIES; i++)
+    {
+      prop = g_param_spec_get_name (preferences_props[i]);
+      if (xfconf_channel_has_property (preferences->channel, g_strdup_printf ("/%s", prop)))
+          g_object_notify(G_OBJECT (preferences), prop);
+    }
+
+
+}
+
+
+
+gchar *
+terminal_preferences_get_default_profile (void)
+{
+  return xfconf_channel_get_string (terminal_preferences_get_channel (), "/default-profile", "default");
+}
+
+
+
+static XfconfChannel *
+terminal_preferences_get_channel (void)
+{
+  static XfconfChannel *channel = NULL;
+
+  if (G_UNLIKELY (channel == NULL))
+    {
+      channel = xfconf_channel_get ("xfce4-terminal-main");
+      g_object_add_weak_pointer (G_OBJECT (channel),
+                                 (gpointer) &channel);
+    }
+
+  return channel;
+}
+
+
+
+gchar **
+terminal_preferences_get_profiles (void)
+{
+  return g_strsplit (xfconf_channel_get_string (terminal_preferences_get_channel (), "/profiles", "default"), ";", -1);
+}
+
+
+
+void
+terminal_preferences_add_profile (const gchar *name)
+{
+  XfconfChannel *channel = terminal_preferences_get_channel ();
+  gint n = xfconf_channel_get_int(channel, "/n_profiles", 1);
+  gchar *new_string = g_strdup_printf ("%s;%s", xfconf_channel_get_string (channel, "/profiles", "default"), name);
+  xfconf_channel_set_string (channel, "/profiles", new_string);
+  xfconf_channel_set_int (channel, "/n_profiles", ++n);
+}
+
+
+
+void
+terminal_preferences_remove_profile (const gchar *name)
+{
+  XfconfChannel *channel = terminal_preferences_get_channel ();
+  gint n = xfconf_channel_get_int(channel, "/n_profiles", 1);
+  gchar **profiles = terminal_preferences_get_profiles ();
+  GString *str = g_string_new(NULL);
+  for (gint i = 0; i < n; i++)
+    {
+      if (g_strcmp0(profiles[i], name) == 0)
+        continue;
+      g_string_append(str, profiles[i]);
+      if (i < n - 1)
+        g_string_append_c(str, ';');
+    }
+  xfconf_channel_set_string (channel, "/profiles", str->str);
+  xfconf_channel_set_int (channel, "/n_profiles", --n);
+  xfconf_channel_reset_property(xfconf_channel_get(name), "/", TRUE);
 }
