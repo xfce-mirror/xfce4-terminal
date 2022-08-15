@@ -94,32 +94,34 @@ static const TerminalRegexPattern regex_patterns[] =
 
 
 
-static void     terminal_widget_finalize                 (GObject          *object);
-static void     terminal_widget_set_property             (GObject          *object,
-                                                          guint             prop_id,
-                                                          const GValue     *value,
-                                                          GParamSpec       *pspec);
-static gboolean terminal_widget_button_press_event       (GtkWidget        *widget,
-                                                          GdkEventButton   *event);
-static void     terminal_widget_drag_data_received       (GtkWidget        *widget,
-                                                          GdkDragContext   *context,
-                                                          gint              x,
-                                                          gint              y,
-                                                          GtkSelectionData *selection_data,
-                                                          guint             info,
-                                                          guint             time);
-static gboolean terminal_widget_key_press_event          (GtkWidget        *widget,
-                                                          GdkEventKey      *event);
-static void     terminal_widget_open_uri                 (TerminalWidget   *widget,
-                                                          const gchar      *wlink,
-                                                          PatternType       type);
-static void     terminal_widget_update_highlight_urls    (TerminalWidget   *widget);
-static gboolean terminal_widget_action_shift_scroll_up   (TerminalWidget   *widget);
-static gboolean terminal_widget_action_shift_scroll_down (TerminalWidget   *widget);
-static void     terminal_widget_connect_accelerators     (TerminalWidget   *widget);
-static void     terminal_widget_disconnect_accelerators  (TerminalWidget   *widget);
-static TerminalHyperlink terminal_widget_get_link(TerminalWidget *widget, GdkEvent *event);
-static gboolean terminal_widget_link_clickable(const gchar *uri, PatternType type);
+static void              terminal_widget_finalize                 (GObject          *object);
+static void              terminal_widget_set_property             (GObject          *object,
+                                                                   guint             prop_id,
+                                                                   const GValue     *value,
+                                                                   GParamSpec       *pspec);
+static gboolean          terminal_widget_button_press_event       (GtkWidget        *widget,
+                                                                   GdkEventButton   *event);
+static void              terminal_widget_drag_data_received       (GtkWidget        *widget,
+                                                                   GdkDragContext   *context,
+                                                                   gint              x,
+                                                                   gint              y,
+                                                                   GtkSelectionData *selection_data,
+                                                                   guint             info,
+                                                                   guint             time);
+static gboolean          terminal_widget_key_press_event          (GtkWidget        *widget,
+                                                                   GdkEventKey      *event);
+static void              terminal_widget_open_uri                 (TerminalWidget   *widget,
+                                                                   const gchar      *wlink,
+                                                                   PatternType       type);
+static void              terminal_widget_update_highlight_urls    (TerminalWidget   *widget);
+static gboolean          terminal_widget_action_shift_scroll_up   (TerminalWidget   *widget);
+static gboolean          terminal_widget_action_shift_scroll_down (TerminalWidget   *widget);
+static void              terminal_widget_connect_accelerators     (TerminalWidget   *widget);
+static void              terminal_widget_disconnect_accelerators  (TerminalWidget   *widget);
+static TerminalHyperlink terminal_widget_get_link                 (TerminalWidget   *widget,
+                                                                   GdkEvent         *event);
+static gboolean          terminal_widget_link_clickable           (const gchar      *uri,
+                                                                   PatternType       type);
 
 
 
@@ -396,13 +398,13 @@ terminal_widget_context_menu (TerminalWidget *widget,
                               guint32         event_time,
                               GdkEvent       *event)
 {
-  GMainLoop   *loop;
-  GtkWidget   *menu = NULL;
-  GtkWidget   *item_copy = NULL;
-  GtkWidget   *item_open = NULL;
-  GtkWidget   *item_separator = NULL;
-  GList       *children;
-  guint        id;
+  GMainLoop        *loop;
+  GtkWidget        *menu = NULL;
+  GtkWidget        *item_copy = NULL;
+  GtkWidget        *item_open = NULL;
+  GtkWidget        *item_separator = NULL;
+  GList            *children;
+  guint             id;
   TerminalHyperlink link;
 
   g_signal_emit (G_OBJECT (widget), widget_signals[GET_CONTEXT_MENU], 0, &menu);
