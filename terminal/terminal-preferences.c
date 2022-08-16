@@ -1243,7 +1243,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
-  const gchar  check_prop[] = "/default_properties";
+  const gchar check_prop[] = "/default_properties";
 
   /* don't set a channel if xfconf init failed */
   if (no_xfconf)
@@ -1264,7 +1264,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
           preferences->profile_name = g_strdup ("default_properties");
           for (gint i = 1; i < N_PROPERTIES; i++)
             terminal_preferences_set_property (G_OBJECT (preferences), i,
-                                               g_param_spec_get_default_value(preferences_props[i]), preferences_props[i]);
+                                               g_param_spec_get_default_value (preferences_props[i]), preferences_props[i]);
           g_free (preferences->profile_name);
           xfconf_channel_set_string (preferences->channel, "/profiles", "default");
           xfconf_channel_set_string (preferences->channel, "/default_profile", "default");
@@ -1639,7 +1639,7 @@ terminal_preferences_remove_profile (TerminalPreferences *preferences,
   for (gint i = 0; i < preferences->n_profiles; i++)
     if (g_strcmp0 (profiles[i], name) != 0)
       {
-        g_string_append(new_profiles, profiles[i]);
+        g_string_append (new_profiles, profiles[i]);
         if (i < preferences->n_profiles - 1)
           g_string_append_c(new_profiles, ';');
       }

@@ -2386,7 +2386,7 @@ terminal_preferences_dialog_remove_profile (TerminalPreferencesDialog *dialog)
   if (gtk_tree_selection_count_selected_rows (selection) != 1)
     return;
   gtk_tree_selection_get_selected (selection, &model, &iter);
-  gtk_tree_model_get(model, &iter, COLUMN_PROFILE_NAME, &name, COLUMN_PROFILE_ICON_NAME, &icon_name, -1);
+  gtk_tree_model_get (model, &iter, COLUMN_PROFILE_NAME, &name, COLUMN_PROFILE_ICON_NAME, &icon_name, -1);
   if (g_strcmp0 (icon_name, "object-select") == 0)
     return;
   gtk_list_store_remove (dialog->store, &iter);
@@ -2401,7 +2401,7 @@ terminal_preferences_dialog_tree_model_foreach (GtkTreeModel *model,
                                                 GtkTreeIter  *iter,
                                                 gpointer      data)
 {
-  gtk_list_store_set(GTK_LIST_STORE (data), iter, COLUMN_PROFILE_ICON_NAME, NULL, -1);
+  gtk_list_store_set (GTK_LIST_STORE (data), iter, COLUMN_PROFILE_ICON_NAME, NULL, -1);
 
   return FALSE;
 }
@@ -2446,6 +2446,6 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
       gtk_list_store_append (store, &iter);
       gtk_list_store_set (store, &iter,
                           COLUMN_PROFILE_NAME, str[i],
-                          COLUMN_PROFILE_ICON_NAME, g_strcmp0(str[i], def) == 0 ? "object-select" : NULL, -1);
+                          COLUMN_PROFILE_ICON_NAME, g_strcmp0 (str[i], def) == 0 ? "object-select" : NULL, -1);
     }
 }
