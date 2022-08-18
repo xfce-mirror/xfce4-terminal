@@ -371,8 +371,8 @@ terminal_screen_init (TerminalScreen *screen)
   g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
 
   /* watch preferences changes */
-  g_signal_connect (G_OBJECT (screen->preferences), "notify",
-      G_CALLBACK (terminal_screen_preferences_changed), screen);
+  // g_signal_connect (G_OBJECT (screen->preferences), "notify",
+  //     G_CALLBACK (terminal_screen_preferences_changed), screen);
 
   /* show the terminal */
   gtk_widget_show_all (screen->swin);
