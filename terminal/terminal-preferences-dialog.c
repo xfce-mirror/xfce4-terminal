@@ -300,6 +300,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_signal_connect_swapped (G_OBJECT (popover), "closed", G_CALLBACK (gtk_widget_hide), dialog->go_up_image);
   g_signal_connect_swapped (G_OBJECT (popover), "closed", G_CALLBACK (gtk_widget_show), dialog->go_down_image);
   gtk_notebook_set_action_widget (GTK_NOTEBOOK (notebook), button, GTK_PACK_START);
+  gtk_window_set_transient_for (GTK_WINDOW (popover), GTK_WINDOW (dialog));
+  gtk_popover_set_modal (GTK_POPOVER (popover), TRUE);
   gtk_widget_show (button);
 
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
@@ -1775,13 +1777,14 @@ terminal_preferences_dialog_background_notify (TerminalPreferencesDialog *dialog
                                                GParamSpec                *pspec,
                                                GtkWidget                 *widget)
 {
-  gchar *button_file, *prop_file;
+  /* TODO: resolve errors */
+  // gchar *button_file, *prop_file;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
+  // terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  // terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
 
-  button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
-  // g_object_get (G_OBJECT (dialog->preferences), "background-image-file", &prop_file, NULL);
+  // button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
+  // g_object_get (dialog->preferences, "background-image-file", &prop_file, NULL);
   // if (g_strcmp0 (button_file, prop_file) != 0)
   //   gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), prop_file);
   // g_free (button_file);
@@ -2351,6 +2354,9 @@ terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
   xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (entry_dialog));
   xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Cancel"), GTK_RESPONSE_CANCEL);
   xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Accept"), GTK_RESPONSE_ACCEPT);
+  gtk_window_set_transient_for (GTK_WINDOW (entry_dialog), GTK_WINDOW (dialog));
+  gtk_window_set_modal (GTK_WINDOW (entry_dialog), TRUE);
+  gtk_window_set_destroy_with_parent (GTK_WINDOW (entry_dialog), TRUE);
   response = gtk_dialog_run (GTK_DIALOG (entry_dialog));
   switch (response)
     {
@@ -2358,7 +2364,8 @@ terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
       gtk_widget_destroy (entry_dialog);
       break;
     default:
-      profile_name = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
+      if (gtk_entry_get_text_length (GTK_ENTRY (entry)) > 0)
+        profile_name = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
       gtk_widget_destroy (entry_dialog);
     }
 
