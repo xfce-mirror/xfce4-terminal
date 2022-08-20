@@ -32,7 +32,7 @@ G_BEGIN_DECLS
 typedef struct _TerminalProfileSelector      TerminalProfileSelector;
 typedef struct _TerminalProfileSelectorClass TerminalProfileSelectorClass;
 
-GtkWidget      *terminal_profile_selector_new     (void);
+GtkWidget      *terminal_profile_selector_new                           (void);
 
 G_END_DECLS
 

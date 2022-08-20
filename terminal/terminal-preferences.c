@@ -1243,7 +1243,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
-  const gchar check_prop[] = "/default_properties";
+  const gchar check_prop[] = "/default_properties/title-initial";
 
   /* don't set a channel if xfconf init failed */
   if (no_xfconf)
@@ -1272,9 +1272,10 @@ terminal_preferences_init (TerminalPreferences *preferences)
         }
     }
 
-  preferences->profile_name = xfconf_channel_get_string (preferences->channel, "/default_profile", "default");
-  preferences->profiles = xfconf_channel_get_string (preferences->channel, "/profiles", "default");
+  preferences->profiles = xfconf_channel_get_string (preferences->channel, "/profiles", NULL);
+  g_print ("%s\n", preferences->profiles);
   preferences->n_profiles = xfconf_channel_get_int (preferences->channel, "/n_profiles", 1);
+  preferences->profile_name = xfconf_channel_get_string (preferences->channel, "/default_profile", "default");
 
   preferences->property_changed_id =
     g_signal_connect (G_OBJECT (preferences->channel), "property-changed",

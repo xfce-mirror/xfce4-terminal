@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "terminal-preferences.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -28,10 +27,10 @@
 
 
 static void  terminal_profile_selector_finalize             (GObject                   *object);
-static void  terminal_profile_selector_add_new_profile      (TerminalProfileSelector   *dialog);
-static void  terminal_profile_selector_remove_profile       (TerminalProfileSelector   *dialog);
-static void  terminal_profile_selector_activate_profile     (TerminalProfileSelector   *dialog);
-static void  terminal_profile_selector_populate_store       (TerminalProfileSelector   *dialog,
+static void  terminal_profile_selector_add_new_profile      (TerminalProfileSelector   *widget);
+static void  terminal_profile_selector_remove_profile       (TerminalProfileSelector   *widget);
+static void  terminal_profile_selector_activate_profile     (TerminalProfileSelector   *widget);
+static void  terminal_profile_selector_populate_store       (TerminalProfileSelector   *widget,
                                                              GtkListStore               *store);
 
 
@@ -40,12 +39,15 @@ enum
 {
   COLUMN_PROFILE_NAME,
   COLUMN_PROFILE_ICON_NAME,
-  N_COLUMN,
+  N_COLUMN
 };
 
 struct _TerminalProfileSelectorClass
 {
   GtkBinClass          __parent__;
+
+  void (*profile_switch_callback) (TerminalPreferences *preferences,
+                                   const gchar         *name);
 };
 
 struct _TerminalProfileSelector
@@ -72,6 +74,8 @@ terminal_profile_selector_class_init (TerminalProfileSelectorClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_profile_selector_finalize;
+
+  klass->profile_switch_callback = terminal_preferences_switch_profile;
 }
 
 
@@ -144,7 +148,7 @@ terminal_profile_selector_finalize (GObject *object)
 
 
 static void
-terminal_profile_selector_add_new_profile (TerminalProfileSelector *dialog)
+terminal_profile_selector_add_new_profile (TerminalProfileSelector *widget)
 {
   GtkTreeIter  iter;
   gchar       *profile_name = NULL;
@@ -177,16 +181,16 @@ terminal_profile_selector_add_new_profile (TerminalProfileSelector *dialog)
 
   if (profile_name == NULL)
     return;
-  gtk_list_store_append (dialog->store, &iter);
-  gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
-  terminal_preferences_add_profile (dialog->preferences, profile_name);
+  gtk_list_store_append (widget->store, &iter);
+  gtk_list_store_set (widget->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
+  terminal_preferences_add_profile (widget->preferences, profile_name);
   g_free (profile_name);
 }
 
 
 
 static void
-terminal_profile_selector_remove_profile (TerminalProfileSelector *dialog)
+terminal_profile_selector_remove_profile (TerminalProfileSelector *widget)
 {
   GtkTreeSelection *selection;
   GtkTreeModel     *model;
@@ -194,16 +198,16 @@ terminal_profile_selector_remove_profile (TerminalProfileSelector *dialog)
   gchar            *name;
   gchar            *icon_name;
 
-  model = GTK_TREE_MODEL (dialog->store);
-  selection = gtk_tree_view_get_selection (dialog->view);
+  model = GTK_TREE_MODEL (widget->store);
+  selection = gtk_tree_view_get_selection (widget->view);
   if (gtk_tree_selection_count_selected_rows (selection) != 1)
     return;
   gtk_tree_selection_get_selected (selection, &model, &iter);
   gtk_tree_model_get (model, &iter, COLUMN_PROFILE_NAME, &name, COLUMN_PROFILE_ICON_NAME, &icon_name, -1);
   if (g_strcmp0 (icon_name, "object-select") == 0)
     return;
-  gtk_list_store_remove (dialog->store, &iter);
-  terminal_preferences_remove_profile (dialog->preferences, name);
+  gtk_list_store_remove (widget->store, &iter);
+  terminal_preferences_remove_profile (widget->preferences, name);
 }
 
 
@@ -222,24 +226,25 @@ terminal_profile_selector_tree_model_foreach (GtkTreeModel *model,
 
 
 static void
-terminal_profile_selector_activate_profile (TerminalProfileSelector *dialog)
+terminal_profile_selector_activate_profile (TerminalProfileSelector *widget)
 {
   GtkTreeSelection *selection;
   GtkTreeModel     *model;
   GtkTreeIter       iter;
   gchar            *profile_name;
 
-  model = GTK_TREE_MODEL (dialog->store);
-  selection = gtk_tree_view_get_selection (dialog->view);
+  model = GTK_TREE_MODEL (widget->store);
+  selection = gtk_tree_view_get_selection (widget->view);
   gtk_tree_selection_get_selected (selection, &model, &iter);
 
+  terminal_preferences_switch_profile (widget->preferences, profile_name);
   /* remove previous selection */
-  gtk_tree_model_foreach (model, (GtkTreeModelForeachFunc) terminal_profile_selector_tree_model_foreach, dialog->store);
+  gtk_tree_model_foreach (model, (GtkTreeModelForeachFunc) terminal_profile_selector_tree_model_foreach, widget->store);
   /* set selection */
-  gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_ICON_NAME, g_strdup ("object-select"), -1);
-  gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
+  gtk_list_store_set (widget->store, &iter, COLUMN_PROFILE_ICON_NAME, g_strdup ("object-select"), -1);
+  gtk_tree_model_get (GTK_TREE_MODEL (widget->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
   
-  terminal_preferences_switch_profile (dialog->preferences, profile_name);
+  TERMINAL_PROFILE_SELECTOR_GET_CLASS (widget)->profile_switch_callback (widget->preferences, profile_name);
 }
 
 
@@ -273,6 +278,7 @@ terminal_profile_selector_new (void)
     {
       widget = g_object_new (TERMINAL_TYPE_PROFILE_SELECTOR, NULL);
       g_object_add_weak_pointer (G_OBJECT (widget), (gpointer) &widget);
+      g_object_ref_sink (G_OBJECT (widget));
     }
   else
       g_object_ref (widget);
