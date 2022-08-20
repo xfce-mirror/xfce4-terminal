@@ -20,6 +20,8 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
+#include <terminal/terminal-screen.h>
+
 G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_PROFILE_SELECTOR            (terminal_profile_selector_get_type ())
@@ -29,10 +31,14 @@ G_BEGIN_DECLS
 #define TERMINAL_IS_PROFILE_SELECTOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_PROFILE_SELECTOR))
 #define TERMINAL_PROFILE_SELECTOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_PROFILE_SELECTOR, TerminalProfileSelectorClass))
 
+GType      terminal_profile_selector_get_type     (void) G_GNUC_CONST;
+
 typedef struct _TerminalProfileSelector      TerminalProfileSelector;
 typedef struct _TerminalProfileSelectorClass TerminalProfileSelectorClass;
 
-GtkWidget      *terminal_profile_selector_new                           (void);
+GtkWidget      *terminal_profile_selector_new                       (void);
+GtkWidget      *terminal_profile_selector_dialog_for_screen         (TerminalProfileSelector *widget,
+                                                                     TerminalScreen          *screen);
 
 G_END_DECLS
 

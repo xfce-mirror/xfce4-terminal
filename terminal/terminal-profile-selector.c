@@ -21,16 +21,19 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
+#include <terminal/terminal-screen.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-profile-selector.h>
 
 
 
-static void  terminal_profile_selector_finalize             (GObject                   *object);
-static void  terminal_profile_selector_add_new_profile      (TerminalProfileSelector   *widget);
-static void  terminal_profile_selector_remove_profile       (TerminalProfileSelector   *widget);
-static void  terminal_profile_selector_activate_profile     (TerminalProfileSelector   *widget);
-static void  terminal_profile_selector_populate_store       (TerminalProfileSelector   *widget,
+static void   terminal_profile_selector_finalize             (GObject                   *object);
+static void   terminal_profile_selector_add_new_profile      (TerminalProfileSelector   *widget);
+static void   terminal_profile_selector_remove_profile       (TerminalProfileSelector   *widget);
+static void   terminal_profile_selector_set_default_profile  (TerminalProfileSelector   *widget);
+static void   terminal_profile_selector_activate_profile     (TerminalProfileSelector   *widget);
+static gchar *terminal_profile_selector_get_selected_profile (TerminalProfileSelector   *widget);
+static void   terminal_profile_selector_populate_store       (TerminalProfileSelector   *widget,
                                                              GtkListStore               *store);
 
 
@@ -45,9 +48,6 @@ enum
 struct _TerminalProfileSelectorClass
 {
   GtkBinClass          __parent__;
-
-  void (*profile_switch_callback) (TerminalPreferences *preferences,
-                                   const gchar         *name);
 };
 
 struct _TerminalProfileSelector
@@ -55,6 +55,7 @@ struct _TerminalProfileSelector
   GtkBin               __parent__;
 
   TerminalPreferences *preferences;
+  TerminalScreen      *screen;
 
   gint                 n_presets;
   GtkListStore        *store;
@@ -74,8 +75,6 @@ terminal_profile_selector_class_init (TerminalProfileSelectorClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_profile_selector_finalize;
-
-  klass->profile_switch_callback = terminal_preferences_switch_profile;
 }
 
 
@@ -124,6 +123,10 @@ terminal_profile_selector_init (TerminalProfileSelector *widget)
   gtk_widget_show (button);
   button = gtk_button_new_from_icon_name ("list-remove", GTK_ICON_SIZE_BUTTON);
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_profile_selector_remove_profile), widget);
+  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
+  gtk_widget_show (button);
+  button = gtk_button_new_from_icon_name ("object-select", GTK_ICON_SIZE_BUTTON);
+  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_profile_selector_set_default_profile), widget);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
   button = gtk_button_new_from_icon_name ("object-select", GTK_ICON_SIZE_BUTTON);
@@ -226,25 +229,21 @@ terminal_profile_selector_tree_model_foreach (GtkTreeModel *model,
 
 
 static void
+terminal_profile_selector_set_default_profile (TerminalProfileSelector *widget)
+{
+  gchar *name = terminal_profile_selector_get_selected_profile (widget);
+  terminal_preferences_switch_profile (widget->preferences, name);
+  g_free (name);
+}
+
+
+
+static void
 terminal_profile_selector_activate_profile (TerminalProfileSelector *widget)
 {
-  GtkTreeSelection *selection;
-  GtkTreeModel     *model;
-  GtkTreeIter       iter;
-  gchar            *profile_name;
-
-  model = GTK_TREE_MODEL (widget->store);
-  selection = gtk_tree_view_get_selection (widget->view);
-  gtk_tree_selection_get_selected (selection, &model, &iter);
-
-  terminal_preferences_switch_profile (widget->preferences, profile_name);
-  /* remove previous selection */
-  gtk_tree_model_foreach (model, (GtkTreeModelForeachFunc) terminal_profile_selector_tree_model_foreach, widget->store);
-  /* set selection */
-  gtk_list_store_set (widget->store, &iter, COLUMN_PROFILE_ICON_NAME, g_strdup ("object-select"), -1);
-  gtk_tree_model_get (GTK_TREE_MODEL (widget->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
-  
-  TERMINAL_PROFILE_SELECTOR_GET_CLASS (widget)->profile_switch_callback (widget->preferences, profile_name);
+  gchar *name = terminal_profile_selector_get_selected_profile (widget);
+  terminal_screen_change_profile_to (widget->screen, name);
+  g_free (name);
 }
 
 
@@ -284,4 +283,59 @@ terminal_profile_selector_new (void)
       g_object_ref (widget);
 
   return GTK_WIDGET (widget);
+}
+
+
+
+static gchar*
+terminal_profile_selector_get_selected_profile (TerminalProfileSelector *widget)
+{
+  GtkTreeSelection *selection;
+  GtkTreeModel     *model;
+  GtkTreeIter       iter;
+  gchar            *profile_name;
+
+  model = GTK_TREE_MODEL (widget->store);
+  selection = gtk_tree_view_get_selection (widget->view);
+  gtk_tree_selection_get_selected (selection, &model, &iter);
+
+  /* remove previous selection */
+  gtk_tree_model_foreach (model, (GtkTreeModelForeachFunc) terminal_profile_selector_tree_model_foreach, widget->store);
+  /* set selection */
+  gtk_list_store_set (widget->store, &iter, COLUMN_PROFILE_ICON_NAME, g_strdup ("object-select"), -1);
+  gtk_tree_model_get (GTK_TREE_MODEL (widget->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
+
+  return profile_name;
+}
+
+
+
+GtkWidget *
+terminal_profile_selector_dialog_for_screen (TerminalProfileSelector *widget,
+                                             TerminalScreen          *screen)
+{
+  gint       response;
+  GtkWidget *dialog = xfce_titled_dialog_new ();
+  GtkWidget *profile_selector = terminal_profile_selector_new ();
+
+  gtk_window_set_icon_name (GTK_WINDOW (dialog), "org.xfce.terminal");
+  gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Switch Profile"));
+
+  widget->screen = screen;
+
+  xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (dialog));
+  xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (dialog), "Done", GTK_RESPONSE_CANCEL);
+  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), profile_selector, TRUE, TRUE, 0);
+  gtk_widget_show (profile_selector);
+
+  response = gtk_dialog_run (GTK_DIALOG (dialog)) ;
+
+  switch (response)
+    {
+    default:
+      gtk_widget_destroy (dialog);
+    }
+
+  return dialog;
 }
