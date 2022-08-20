@@ -31,6 +31,8 @@
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-widget.h>
+#include <terminal/terminal-preferences.h>
+#include <terminal/terminal-profile-selector.h>
 
 
 
@@ -44,6 +46,7 @@ static void      terminal_preferences_dialog_new_section                 (GtkWid
                                                                           gint                       *row,
                                                                           const gchar                *header);
 static void      terminal_preferences_dialog_background_notify           (TerminalPreferencesDialog  *dialog,
+                                                                          GParamSpec                 *pspec,
                                                                           GtkWidget                  *widget);
 static void      terminal_preferences_dialog_background_set              (TerminalPreferencesDialog  *dialog,
                                                                           GtkWidget                  *widget);
@@ -99,6 +102,13 @@ enum
   N_PALETTE_BUTTONS = 16,
 };
 
+enum
+{
+  COLUMN_PROFILE_NAME,
+  COLUMN_PROFILE_ICON_NAME,
+  N_COLUMN,
+};
+
 struct _TerminalPreferencesDialogClass
 {
   XfceTitledDialogClass __parent__;
@@ -115,6 +125,10 @@ struct _TerminalPreferencesDialog
   GtkBox              *dropdown_vbox;
   GtkNotebook         *dropdown_notebook;
   gint                 n_presets;
+  GtkWidget           *go_up_image;
+  GtkWidget           *go_down_image;
+  GtkWidget           *profile_label;
+  GtkWidget           *profile_selector_button;
 
   gulong               bg_image_signal_id;
   gulong               palette_notify_signal_id;
@@ -184,23 +198,26 @@ transform_combo_show_opacity_options (GBinding     *binding,
 static void
 terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 {
-  GtkFileFilter *filter;
-  GtkTreeModel  *model;
-  GtkTreeIter    current_iter;
-  GtkWidget     *notebook;
-  GtkWidget     *button;
-  GtkWidget     *image;
-  GtkWidget     *frame;
-  GtkWidget     *label;
-  GtkWidget     *vbox;
-  GtkWidget     *box;
-  GtkWidget     *infobar;
-  GtkWidget     *grid;
-  GtkWidget     *background_grid;
-  GtkWidget     *entry;
-  GtkWidget     *combo;
-  gchar         *current;
-  gint           row = 0;
+  GtkFileFilter     *filter;
+  GtkTreeModel      *model;
+  GtkTreeIter        current_iter;
+  GtkWidget         *notebook;
+  GtkWidget         *button;
+  GtkWidget         *image;
+  GtkWidget         *frame;
+  GtkWidget         *label;
+  GtkWidget         *vbox;
+  GtkWidget         *box;
+  GtkWidget         *infobar;
+  GtkWidget         *grid;
+  GtkWidget         *background_grid;
+  GtkWidget         *entry;
+  GtkWidget         *combo;
+  GtkWidget         *popover;
+  GtkWidget         *widget;
+  gchar             *current;
+  gchar             *profile;
+  gint               row = 0;
 
   /* grab a reference on the preferences */
   dialog->preferences = terminal_preferences_get ();
@@ -230,8 +247,52 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   notebook = gtk_notebook_new ();
   gtk_container_set_border_width (GTK_CONTAINER (notebook), 6);
+  gtk_notebook_set_tab_pos (GTK_NOTEBOOK (notebook), GTK_POS_LEFT);
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), notebook, TRUE, TRUE, 0);
   gtk_widget_show (notebook);
+
+
+
+  /*
+   * Profile
+   */
+  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  profile = terminal_preferences_get_default_profile (dialog->preferences);
+  dialog->profile_label = gtk_label_new (profile);
+  g_free (profile);
+  gtk_label_set_xalign (GTK_LABEL (dialog->profile_label), 0.0f);
+  g_object_ref_sink (dialog->profile_label);
+  dialog->go_up_image   = gtk_image_new_from_icon_name ("go-up",   GTK_ICON_SIZE_BUTTON);
+  g_object_ref_sink (dialog->go_up_image);
+  dialog->go_down_image = gtk_image_new_from_icon_name ("go-down", GTK_ICON_SIZE_BUTTON);
+  g_object_ref_sink (dialog->go_down_image);
+  gtk_box_pack_start (GTK_BOX (box), dialog->profile_label, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (box), dialog->go_down_image, FALSE, TRUE, 0);
+  gtk_widget_set_halign (dialog->go_down_image, GTK_ALIGN_END);
+  gtk_box_pack_start (GTK_BOX (box), dialog->go_up_image, FALSE, TRUE, 0);
+  gtk_widget_set_halign (dialog->go_up_image, GTK_ALIGN_END);
+  gtk_widget_hide (dialog->go_up_image);
+  gtk_widget_show (box);
+  gtk_widget_set_hexpand (box, TRUE);
+  gtk_widget_show (dialog->go_down_image);
+  gtk_widget_show (dialog->profile_label);
+
+  button = gtk_button_new ();
+  dialog->profile_selector_button = button;
+  gtk_container_add (GTK_CONTAINER (button), box);
+  popover = gtk_popover_new (button);
+  g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_popover_popup), popover);
+  g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_widget_show), dialog->go_up_image);
+  g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_widget_hide), dialog->go_down_image);
+  g_signal_connect_swapped (G_OBJECT (popover), "closed", G_CALLBACK (gtk_widget_hide), dialog->go_up_image);
+  g_signal_connect_swapped (G_OBJECT (popover), "closed", G_CALLBACK (gtk_widget_show), dialog->go_down_image);
+  gtk_notebook_set_action_widget (GTK_NOTEBOOK (notebook), button, GTK_PACK_START);
+  gtk_popover_set_modal (GTK_POPOVER (popover), TRUE);
+  gtk_widget_show (button);
+
+  widget = terminal_profile_selector_new ();
+  gtk_container_add (GTK_CONTAINER (popover), widget);
+  gtk_widget_show (widget);
 
 
 
@@ -912,9 +973,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_file_chooser_button_new ("Select a Background Image", GTK_FILE_CHOOSER_ACTION_OPEN);
-  dialog->bg_image_signal_id = g_signal_connect_swapped (dialog->preferences, "notify::background-image-file",
-                                                         G_CALLBACK (terminal_preferences_dialog_background_notify), button);
-  terminal_preferences_dialog_background_notify (dialog, button);
+  dialog->bg_image_signal_id = g_signal_connect (dialog->preferences, "notify::background-image-file",
+                                                 G_CALLBACK (terminal_preferences_dialog_background_notify), button);
+  terminal_preferences_dialog_background_notify (dialog, NULL, button);
   g_signal_connect_swapped (button, "file-set",
                             G_CALLBACK (terminal_preferences_dialog_background_set), dialog);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
@@ -1079,6 +1140,28 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 3, 1);
   gtk_widget_show (button);
+
+  /* section: Misc */
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Misc");
+
+  label = gtk_label_new_with_mnemonic (_("Preferences dialog tab placement:"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
+  gtk_widget_show (label);
+
+  combo = gtk_combo_box_text_new ();
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Left"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Right"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Top"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Bottom"));
+  g_object_bind_property (G_OBJECT (notebook), "tab-pos",
+                          G_OBJECT (combo), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_hexpand (combo, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), combo, 1, row, 1, 1);
+  terminal_gtk_label_set_a11y_relation (GTK_LABEL (label), combo);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
+  gtk_widget_show (combo);
 
 
 
@@ -1616,11 +1699,14 @@ terminal_preferences_dialog_new_section (GtkWidget   **frame,
   gtk_box_pack_start (GTK_BOX (*vbox), *frame, FALSE, TRUE, 0);
   gtk_widget_show (*frame);
 
-  *label = gtk_label_new (_(header));
-  /* For bold text */
-  gtk_label_set_attributes (GTK_LABEL (*label), terminal_pango_attr_list_bold ());
-  gtk_frame_set_label_widget (GTK_FRAME (*frame), *label);
-  gtk_widget_show (*label);
+  if (header != NULL)
+    {
+      *label = gtk_label_new (_(header));
+      /* For bold text */
+      gtk_label_set_attributes (GTK_LABEL (*label), terminal_pango_attr_list_bold ());
+      gtk_frame_set_label_widget (GTK_FRAME (*frame), *label);
+      gtk_widget_show (*label);
+    }
 
   /* init row */
   *row = 0;
@@ -1638,19 +1724,21 @@ terminal_preferences_dialog_new_section (GtkWidget   **frame,
 
 static void
 terminal_preferences_dialog_background_notify (TerminalPreferencesDialog *dialog,
+                                               GParamSpec                *pspec,
                                                GtkWidget                 *widget)
 {
-  gchar *button_file, *prop_file;
+  /* TODO: resolve errors */
+  // gchar *button_file, *prop_file;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
+  // terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  // terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
 
-  button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
-  g_object_get (G_OBJECT (dialog->preferences), "background-image-file", &prop_file, NULL);
-  if (g_strcmp0 (button_file, prop_file) != 0)
-    gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), prop_file);
-  g_free (button_file);
-  g_free (prop_file);
+  // button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
+  // g_object_get (dialog->preferences, "background-image-file", &prop_file, NULL);
+  // if (g_strcmp0 (button_file, prop_file) != 0)
+  //   gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), prop_file);
+  // g_free (button_file);
+  // g_free (prop_file);
 }
 
 
