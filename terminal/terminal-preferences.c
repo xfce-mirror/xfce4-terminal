@@ -1271,11 +1271,12 @@ terminal_preferences_init (TerminalPreferences *preferences)
           xfconf_channel_set_int (preferences->channel, "/n_profiles", 1);
         }
     }
-
-  preferences->profiles = xfconf_channel_get_string (preferences->channel, "/profiles", NULL);
-  g_print ("%s\n", preferences->profiles);
-  preferences->n_profiles = xfconf_channel_get_int (preferences->channel, "/n_profiles", 1);
-  preferences->profile_name = xfconf_channel_get_string (preferences->channel, "/default_profile", "default");
+  else
+    {
+      preferences->profiles = xfconf_channel_get_string (preferences->channel, "/profiles", "default");
+      preferences->n_profiles = xfconf_channel_get_int (preferences->channel, "/n_profiles", 1);
+      preferences->profile_name = xfconf_channel_get_string (preferences->channel, "/default_profile", "default");
+    }
 
   preferences->property_changed_id =
     g_signal_connect (G_OBJECT (preferences->channel), "property-changed",
