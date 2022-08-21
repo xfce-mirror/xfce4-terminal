@@ -111,6 +111,15 @@ gboolean             terminal_preferences_get_color           (TerminalPreferenc
                                                                const gchar         *property,
                                                                GdkRGBA             *color_return);
 void                 terminal_preferences_xfconf_init_failed  (void);
+void                 terminal_preferences_add_profile         (TerminalPreferences *preferences,
+                                                               const gchar         *name);
+void                 terminal_preferences_remove_profile      (TerminalPreferences *preferences,
+                                                               const gchar         *name);
+void                 terminal_preferences_switch_profile      (TerminalPreferences *preferences,
+                                                               const gchar         *name);
+gchar               *terminal_preferences_get_default_profile (TerminalPreferences *preferences);
+gchar              **terminal_preferences_get_profiles        (TerminalPreferences *preferences);
+gint                 terminal_preferences_get_n_profiles      (TerminalPreferences *preferences);
 
 
 G_END_DECLS
