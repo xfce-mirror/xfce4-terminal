@@ -146,6 +146,11 @@ static void
 terminal_profile_selector_finalize (GObject *object)
 {
   TerminalProfileSelector *widget = TERMINAL_PROFILE_SELECTOR (object);
+
+  /* release our reference on the preferences */
+  g_object_unref (G_OBJECT (widget->preferences));
+
+  (*G_OBJECT_CLASS (terminal_profile_selector_parent_class)->finalize) (object);
 }
 
 
