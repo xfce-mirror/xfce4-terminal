@@ -185,6 +185,7 @@ static void       terminal_screen_paste_unsafe_text             (TerminalScreen 
 static void       terminal_screen_update_sixel                  (TerminalScreen        *screen);
 
 
+
 struct _TerminalScreenClass
 {
   GtkOverlayClass parent_class;
@@ -3124,6 +3125,8 @@ terminal_screen_widget_append_accels (TerminalScreen *screen,
   if (G_LIKELY (G_IS_OBJECT (screen->terminal)))
     g_object_set (G_OBJECT (screen->terminal), "accel-group", accel_group, NULL);
 }
+
+
 
 void terminal_screen_update_sixel (TerminalScreen *screen)
 {
