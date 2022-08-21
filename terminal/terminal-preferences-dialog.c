@@ -45,9 +45,7 @@ static void      terminal_preferences_dialog_new_section                 (GtkWid
                                                                           GtkWidget                 **label,
                                                                           gint                       *row,
                                                                           const gchar                *header);
-static void      terminal_preferences_dialog_background_notify           (TerminalPreferencesDialog  *dialog,
-                                                                          GParamSpec                 *pspec,
-                                                                          GtkWidget                  *widget);
+static void      terminal_preferences_dialog_background_notify           (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_background_set              (TerminalPreferencesDialog  *dialog,
                                                                           GtkWidget                  *widget);
 static void      terminal_preferences_dialog_geometry_notify             (TerminalPreferencesDialog  *dialog);
@@ -129,6 +127,7 @@ struct _TerminalPreferencesDialog
   GtkWidget           *go_down_image;
   GtkWidget           *profile_label;
   GtkWidget           *profile_selector_button;
+  GtkWidget           *file_chooser;
 
   gulong               bg_image_signal_id;
   gulong               palette_notify_signal_id;
@@ -973,9 +972,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_file_chooser_button_new ("Select a Background Image", GTK_FILE_CHOOSER_ACTION_OPEN);
-  dialog->bg_image_signal_id = g_signal_connect (dialog->preferences, "notify::background-image-file",
-                                                 G_CALLBACK (terminal_preferences_dialog_background_notify), button);
-  terminal_preferences_dialog_background_notify (dialog, NULL, button);
+  dialog->file_chooser = button;
+  dialog->bg_image_signal_id = g_signal_connect_swapped (dialog->preferences, "notify::background-image-file",
+                                                         G_CALLBACK (terminal_preferences_dialog_background_notify), dialog);
+  terminal_preferences_dialog_background_notify (dialog);
   g_signal_connect_swapped (button, "file-set",
                             G_CALLBACK (terminal_preferences_dialog_background_set), dialog);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
@@ -1723,22 +1723,18 @@ terminal_preferences_dialog_new_section (GtkWidget   **frame,
 
 
 static void
-terminal_preferences_dialog_background_notify (TerminalPreferencesDialog *dialog,
-                                               GParamSpec                *pspec,
-                                               GtkWidget                 *widget)
+terminal_preferences_dialog_background_notify (TerminalPreferencesDialog *dialog)
 {
-  /* TODO: resolve errors */
-  // gchar *button_file, *prop_file;
+  gchar *button_file, *prop_file;
 
-  // terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  // terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
 
-  // button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
-  // g_object_get (dialog->preferences, "background-image-file", &prop_file, NULL);
-  // if (g_strcmp0 (button_file, prop_file) != 0)
-  //   gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), prop_file);
-  // g_free (button_file);
-  // g_free (prop_file);
+  button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog->file_chooser));
+  g_object_get (dialog->preferences, "background-image-file", &prop_file, NULL);
+  if (g_strcmp0 (button_file, prop_file) != 0)
+    gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (dialog->file_chooser), prop_file);
+  g_free (button_file);
+  g_free (prop_file);
 }
 
 
@@ -2271,6 +2267,10 @@ terminal_preferences_dialog_new (gboolean show_drop_down,
     {
       dialog = g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
       g_object_add_weak_pointer (G_OBJECT (dialog), (gpointer) &dialog);
+    }
+  else
+    {
+      g_object_ref (G_OBJECT (dialog));
     }
 
   gtk_widget_set_visible (GTK_WIDGET (dialog->dropdown_label), show_drop_down);
