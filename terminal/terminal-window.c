@@ -49,6 +49,7 @@
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-window-dropdown.h>
 #include <terminal/terminal-widget.h>
+#include <terminal/terminal-profile-selector.h>
 
 
 
@@ -199,6 +200,7 @@ static gboolean     terminal_window_action_toggle_borders         (TerminalWindo
 static gboolean     terminal_window_action_fullscreen             (TerminalWindow      *window);
 static gboolean     terminal_window_action_readonly               (TerminalWindow      *window);
 static gboolean     terminal_window_action_scroll_on_output       (TerminalWindow      *window);
+static gboolean     terminal_window_action_profile_selector       (TerminalWindow      *window);
 static gboolean     terminal_window_action_zoom_in                (TerminalWindow      *window);
 static gboolean     terminal_window_action_zoom_out               (TerminalWindow      *window);
 static gboolean     terminal_window_action_zoom_reset             (TerminalWindow      *window);
@@ -275,6 +277,8 @@ struct _TerminalWindowPrivate
 
   GtkWidget           *search_dialog;
   GtkWidget           *title_popover;
+
+  GtkWidget           *profile_selector;
 
   /* pushed size of screen */
   glong                grid_width;
@@ -362,6 +366,7 @@ static XfceGtkActionEntry action_entries[] =
     { TERMINAL_WINDOW_ACTION_FULLSCREEN,            "<Actions>/terminal-window/fullscreen",            "F11",                       XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Fullscreen"),                   N_ ("Toggle fullscreen mode"),            "view-fullscreen",        G_CALLBACK (terminal_window_action_fullscreen), },
     { TERMINAL_WINDOW_ACTION_READ_ONLY,             "<Actions>/terminal-window/read-only",             "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Read-Only"),                    N_ ("Toggle read-only mode"),             NULL,                     G_CALLBACK (terminal_window_action_readonly), },
     { TERMINAL_WINDOW_ACTION_SCROLL_ON_OUTPUT,      "<Actions>/terminal-window/scroll-on-output",      "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Scroll on _Output"),             N_ ("Toggle scroll on output"),           NULL,                     G_CALLBACK (terminal_window_action_scroll_on_output), },
+    { TERMINAL_WINDOW_ACTION_SWITCH_PROFILE,        "<Actions>/terminal-window/switch-profile",        "<control><alt>t",           XFCE_GTK_MENU_ITEM,       N_ ("Switch _Profile"),               N_ ("Switch Profile for active tab"),     NULL,                     G_CALLBACK (terminal_window_action_profile_selector), },
     /* used for changing the accelerator keys via the ShortcutsEditor, the logic is still handle by GtkActionEntries */
     { TERMINAL_WINDOW_ACTION_GOTO_TAB_1,            "<Actions>/terminal-window/goto-tab-1",            "<Alt>1",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 1"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
     { TERMINAL_WINDOW_ACTION_GOTO_TAB_2,            "<Actions>/terminal-window/goto-tab-2",            "<Alt>2",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 2"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
@@ -445,6 +450,8 @@ terminal_window_init (TerminalWindow *window)
   window->priv = terminal_window_get_instance_private (window);
 
   window->priv->preferences = terminal_preferences_get ();
+
+  window->priv->profile_selector = terminal_profile_selector_new ();
 
   window->priv->font = NULL;
   window->priv->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
@@ -1879,6 +1886,17 @@ terminal_window_action_scroll_on_output (TerminalWindow  *window)
 
 
 static gboolean
+terminal_window_action_profile_selector (TerminalWindow  *window)
+{
+  terminal_return_if_fail (window->priv->active != NULL);
+
+  terminal_profile_selector_dialog_for_screen (window->priv->profile_selector, window->priv->active);
+  return TRUE;
+}
+
+
+
+static gboolean
 terminal_window_action_zoom_in (TerminalWindow *window)
 {
   terminal_return_if_fail (window->priv->active != NULL);
@@ -3243,6 +3261,7 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
   gtk_widget_set_sensitive (item, can_go_left);
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_MOVE_TAB_RIGHT), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, can_go_right);
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SWITCH_PROFILE), G_OBJECT (window), GTK_MENU_SHELL (menu));
   
   /* go-to menu */
   for (n = 0; n < n_pages; n++)

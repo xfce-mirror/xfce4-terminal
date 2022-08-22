@@ -30,7 +30,8 @@ xfce4_terminal_headers = \
 	terminal-util.h \
 	terminal-widget.h \
 	terminal-window.h \
-	terminal-window-dropdown.h
+	terminal-window-dropdown.h \
+	terminal-profile-selector.h
 
 xfce4_terminal_SOURCES = \
 	$(xfce4_terminal_built_sources) \
@@ -48,7 +49,8 @@ xfce4_terminal_SOURCES = \
 	terminal-util.c \
 	terminal-widget.c \
 	terminal-window.c \
-	terminal-window-dropdown.c
+	terminal-window-dropdown.c \
+	terminal-profile-selector.c
 
 xfce4_terminal_CFLAGS = \
 	$(GTK_CFLAGS) \
