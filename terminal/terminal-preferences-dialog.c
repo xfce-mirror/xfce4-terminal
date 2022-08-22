@@ -130,6 +130,7 @@ struct _TerminalPreferencesDialog
   GtkLabel            *dropdown_label;
   GtkBox              *dropdown_vbox;
   GtkNotebook         *dropdown_notebook;
+  GtkWidget           *file_chooser;
   gint                 n_presets;
   GtkListStore        *store;
   GtkTreeView         *view;
@@ -1798,7 +1799,7 @@ terminal_preferences_dialog_background_notify (TerminalPreferencesDialog *dialog
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
 
   button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog->file_chooser));
-  g_object_get (dialog->preferences, "background-image-file", &prop_file, NULL);
+  g_object_get (G_OBJECT (dialog->preferences), "background-image-file", &prop_file, NULL);
   if (g_strcmp0 (button_file, prop_file) != 0)
     gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (dialog->file_chooser), prop_file);
   g_free (button_file);
