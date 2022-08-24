@@ -1623,9 +1623,18 @@ terminal_preferences_xfconf_init_failed (void)
 
 
 
+/**
+ * terminal_preferences_add_profile:
+ * @preferences : a #TerminalPreferences instance.
+ * @profile_name : the profile name of the new profile to create
+ *
+ * Creates a new profile with the given @profile_name.
+ *
+ * Return value: (void)
+ **/
 void
 terminal_preferences_add_profile (TerminalPreferences *preferences,
-                                         const gchar         *profile_name)
+                                  const gchar         *profile_name)
 {
   GValue value = G_VALUE_INIT;
   g_value_init (&value, G_TYPE_STRING);
@@ -1636,6 +1645,15 @@ terminal_preferences_add_profile (TerminalPreferences *preferences,
 
 
 
+/**
+ * terminal_preferences_switch_profile:
+ * @preferences : a #TerminalPreferences instance.
+ * @profile_name : the profile name of the profile to switch to
+ *
+ * Switches to the profile with the given @profile_name.
+ *
+ * Return value: (void)
+ **/
 void
 terminal_preferences_switch_profile (TerminalPreferences *preferences,
                                      const gchar         *name)
@@ -1653,6 +1671,14 @@ terminal_preferences_switch_profile (TerminalPreferences *preferences,
 
 
 
+/**
+ * terminal_preferences_get_default_profile:
+ * @preferences : a #TerminalPreferences instance.
+ *
+ * Returns the profile name of the current default profile.
+ *
+ * Return value: (transfer full): name of the default profile
+ **/
 gchar *
 terminal_preferences_get_default_profile (TerminalPreferences *preferences)
 {
@@ -1661,7 +1687,14 @@ terminal_preferences_get_default_profile (TerminalPreferences *preferences)
 
 
 
-/* Free using g_free & not g_strfreev */
+/**
+ * terminal_preferences_get_profiles:
+ * @preferences : a #TerminalPreferences instance.
+ *
+ * Returns the profile names of the existing profiles.
+ *
+ * Return value: (transfer container): array of names of the existing profiles
+ **/
 gchar **
 terminal_preferences_get_profiles (TerminalPreferences *preferences)
 {
@@ -1674,6 +1707,14 @@ terminal_preferences_get_profiles (TerminalPreferences *preferences)
 
 
 
+/**
+ * terminal_preferences_get_n_profiles:
+ * @preferences : a #TerminalPreferences instance.
+ *
+ * Returns the number of existing profiles.
+ *
+ * Return value: (int): the number of existing profiles
+ **/
 gint
 terminal_preferences_get_n_profiles (TerminalPreferences *preferences)
 {
@@ -1695,6 +1736,15 @@ find_value_with_profile_name (gconstpointer value,
 
 
 
+/**
+ * terminal_preferences_remove_profiles:
+ * @preferences : a #TerminalPreferences instance.
+ * @profile_name : the profile name of the profile to remove
+ *
+ * Deletes the profile with @profile_name.
+ *
+ * Return value: (void)
+ **/
 void
 terminal_preferences_remove_profile (TerminalPreferences *preferences,
                                      const gchar         *profile_name)
