@@ -2358,15 +2358,14 @@ terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
       gtk_widget_destroy (entry_dialog);
       break;
     default:
-      profile_name = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
+      if (gtk_entry_get_text_length (GTK_ENTRY (entry)) > 0)
+        profile_name = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
       gtk_widget_destroy (entry_dialog);
     }
 
-  if (profile_name == NULL || g_utf8_strlen (profile_name, -1) == 0)
-    {
-      g_free (profile_name);
+  if (profile_name == NULL)
       return;
-    }
+
   gtk_list_store_append (dialog->store, &iter);
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
   terminal_preferences_add_profile (dialog->preferences, profile_name);
