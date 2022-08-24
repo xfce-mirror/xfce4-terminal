@@ -342,7 +342,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (vbox);
 
 
-
   /*
    * General
    */
