@@ -269,6 +269,10 @@ terminal_profile_selector_populate_store (TerminalProfileSelector *widget,
                           COLUMN_PROFILE_NAME, str[i],
                           COLUMN_PROFILE_ICON_NAME, g_strcmp0 (str[i], def) == 0 ? "object-select" : NULL, -1);
     }
+
+  // g_strfreev (str);
+  g_free (str);
+  g_free (def);
 }
 
 

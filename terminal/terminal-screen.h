@@ -141,6 +141,7 @@ void            terminal_screen_widget_append_accels      (TerminalScreen *scree
                                                            GtkAccelGroup  *accel_group);
 void            terminal_screen_change_profile_to         (TerminalScreen *screen,
                                                            const gchar    *name);
+gchar          *terminal_screen_get_profile_name          (TerminalScreen *screen);
 
 G_END_DECLS
 

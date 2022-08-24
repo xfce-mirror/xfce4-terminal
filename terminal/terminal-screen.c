@@ -3162,6 +3162,7 @@ terminal_screen_change_profile_to (TerminalScreen *screen,
     return;
 
   default_profile = terminal_preferences_get_default_profile (screen->preferences);
+  g_free (screen->profile);
   screen->profile = g_strdup (name);
 
   if (g_strcmp0 (name, default_profile) != 0)
@@ -3174,4 +3175,14 @@ terminal_screen_change_profile_to (TerminalScreen *screen,
      as this function should change preferences only for this instance of screen */
   if (g_strcmp0 (name, default_profile) != 0)
     terminal_preferences_switch_profile (screen->preferences, default_profile);
+
+  g_free (default_profile);
+}
+
+
+
+gchar *
+terminal_screen_get_profile_name (TerminalScreen *screen)
+{
+  return g_strdup (screen->profile);
 }
