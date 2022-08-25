@@ -1666,6 +1666,23 @@ terminal_preferences_switch_profile (TerminalPreferences *preferences,
   preferences->profile_name = g_strdup (name);
   for (gint i = 1; i < N_PROPERTIES; i++)
     g_object_notify (G_OBJECT (preferences), g_param_spec_get_name (preferences_props[i]));
+}
+
+
+
+/**
+ * terminal_preferences_set_default_profile:
+ * @preferences : a #TerminalPreferences instance.
+ * @profile_name : the profile name of the profile to set as default
+ *
+ * Sets the profile with @profile_name default profile.
+ *
+ * Return value: (void)
+ **/
+void
+terminal_preferences_set_default_profile (TerminalPreferences *preferences,
+                                                 const gchar         *name)
+{
   xfconf_channel_set_string (preferences->channel, "/default-profile", preferences->profile_name);
 }
 

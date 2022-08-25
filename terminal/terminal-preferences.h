@@ -117,6 +117,8 @@ void                 terminal_preferences_remove_profile      (TerminalPreferenc
                                                                const gchar         *name);
 void                 terminal_preferences_switch_profile      (TerminalPreferences *preferences,
                                                                const gchar         *name);
+void                 terminal_preferences_set_default_profile (TerminalPreferences *preferences,
+                                                               const gchar         *name);
 gchar               *terminal_preferences_get_default_profile (TerminalPreferences *preferences);
 gchar              **terminal_preferences_get_profiles        (TerminalPreferences *preferences);
 gint                 terminal_preferences_get_n_profiles      (TerminalPreferences *preferences);
