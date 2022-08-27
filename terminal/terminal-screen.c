@@ -634,7 +634,7 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
   terminal_return_if_fail (screen->preferences == preferences);
 
-  current_profile = terminal_preferences_get_default_profile (preferences);
+  current_profile = terminal_preferences_get_active_profile (preferences);
   needs_change = g_strcmp0 (screen->profile, current_profile) != 0;
   g_free (current_profile);
   if (needs_change)
@@ -3153,7 +3153,7 @@ void
 terminal_screen_change_profile_to (TerminalScreen *screen,
                                    const gchar    *name)
 {
-  gchar *default_profile;
+  gchar *active_profile;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -3161,22 +3161,22 @@ terminal_screen_change_profile_to (TerminalScreen *screen,
   if (g_strcmp0 (screen->profile, name) == 0)
     return;
 
-  default_profile = terminal_preferences_get_default_profile (screen->preferences);
+  active_profile = terminal_preferences_get_active_profile (screen->preferences);
   g_free (screen->profile);
   screen->profile = g_strdup (name);
 
-  if (g_strcmp0 (name, default_profile) != 0)
-    terminal_preferences_switch_profile (screen->preferences, name);
+  if (g_strcmp0 (name, active_profile) != 0)
+    terminal_preferences_switch_profile (screen->preferences, name, TRUE);
 
   /* update all the settings */
   terminal_screen_update_all (screen);
 
   /* We don't want the profile change in preferences to be persistent
      as this function should change preferences only for this instance of screen */
-  if (g_strcmp0 (name, default_profile) != 0)
-    terminal_preferences_switch_profile (screen->preferences, default_profile);
+  if (g_strcmp0 (name, active_profile) != 0)
+    terminal_preferences_switch_profile (screen->preferences, active_profile, TRUE);
 
-  g_free (default_profile);
+  g_free (active_profile);
 }
 
 
