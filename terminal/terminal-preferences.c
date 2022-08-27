@@ -1627,6 +1627,7 @@ terminal_preferences_xfconf_init_failed (void)
  * terminal_preferences_add_profile:
  * @preferences : a #TerminalPreferences instance.
  * @profile_name : the profile name of the new profile to create
+ * @from_defaults : to specify if current values should be carried over to the new profile
  *
  * Creates a new profile with the given @profile_name.
  *
@@ -1634,13 +1635,23 @@ terminal_preferences_xfconf_init_failed (void)
  **/
 void
 terminal_preferences_add_profile (TerminalPreferences *preferences,
-                                  const gchar         *profile_name)
+                                  const gchar         *profile_name,
+                                  gboolean             from_defaults)
 {
-  GValue value = G_VALUE_INIT;
+  GValue  value = G_VALUE_INIT;
+  gchar  *current_profile = g_strdup (preferences->profile_name);
+
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
+
   g_value_init (&value, G_TYPE_STRING);
   g_value_set_string (&value, profile_name);
   g_ptr_array_add (preferences->profiles, (gpointer) &value);
   xfconf_channel_set_arrayv (preferences->channel, "/profiles", preferences->profiles);
+
+  terminal_preferences_switch_profile (preferences, profile_name, from_defaults);
+  terminal_preferences_switch_profile (preferences, current_profile, TRUE);
+
+  g_free (current_profile);
 }
 
 
@@ -1649,6 +1660,7 @@ terminal_preferences_add_profile (TerminalPreferences *preferences,
  * terminal_preferences_switch_profile:
  * @preferences : a #TerminalPreferences instance.
  * @profile_name : the profile name of the profile to switch to
+ * @reset_current_values : to specify if current values should be reset before switching
  *
  * Switches to the profile with the given @profile_name.
  *
@@ -1656,10 +1668,14 @@ terminal_preferences_add_profile (TerminalPreferences *preferences,
  **/
 void
 terminal_preferences_switch_profile (TerminalPreferences *preferences,
-                                     const gchar         *name)
+                                     const gchar         *name,
+                                     gboolean             reset_current_values)
 {
-  /* load the default settings before switching profiles */
-  terminal_preferences_load_defaults (preferences);
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
+
+  /* load the default (if reset_current_values is true) settings before switching profiles */
+  if (reset_current_values)
+    terminal_preferences_load_defaults (preferences);
   g_free (preferences->profile_name);
 
   /* Now load the profile specific settings */
@@ -1681,9 +1697,9 @@ terminal_preferences_switch_profile (TerminalPreferences *preferences,
  **/
 void
 terminal_preferences_set_default_profile (TerminalPreferences *preferences,
-                                                 const gchar         *name)
+                                          const gchar         *name)
 {
-  xfconf_channel_set_string (preferences->channel, "/default-profile", preferences->profile_name);
+  xfconf_channel_set_string (preferences->channel, "/default-profile", name);
 }
 
 
@@ -1698,6 +1714,22 @@ terminal_preferences_set_default_profile (TerminalPreferences *preferences,
  **/
 gchar *
 terminal_preferences_get_default_profile (TerminalPreferences *preferences)
+{
+  return xfconf_channel_get_string (preferences->channel, "/default-profile", "default");
+}
+
+
+
+/**
+ * terminal_preferences_get_active_profile:
+ * @preferences : a #TerminalPreferences instance.
+ *
+ * Returns the profile name of the current active profile.
+ *
+ * Return value: (transfer full): name of the default profile
+ **/
+gchar *
+terminal_preferences_get_active_profile (TerminalPreferences *preferences)
 {
   return g_strdup (preferences->profile_name);
 }
@@ -1792,4 +1824,22 @@ terminal_preferences_load_defaults (TerminalPreferences *preferences)
   g_free (preferences->profile_name);
 
   preferences->profile_name = prev;
+}
+
+
+
+gboolean
+terminal_preferences_has_profile (TerminalPreferences *preferences,
+                                  const gchar         *profile_name)
+{
+  gboolean has_profile = FALSE;
+  gint     n_profiles  = preferences->profiles->len;
+
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
+
+  for (gint i = 0; i < n_profiles && !has_profile; i++)
+    if (g_strcmp0 (g_value_get_string (g_ptr_array_index (preferences->profiles, i)), profile_name) == 0)
+      has_profile = TRUE;
+
+  return has_profile;
 }
