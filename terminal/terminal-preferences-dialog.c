@@ -2363,7 +2363,7 @@ terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
 
   gtk_list_store_append (dialog->store, &iter);
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
-  terminal_preferences_add_profile (dialog->preferences, profile_name, TRUE);
+  terminal_preferences_add_profile (dialog->preferences, profile_name, FALSE);
 
   g_free (profile_name);
 }
@@ -2385,7 +2385,7 @@ terminal_preferences_dialog_clone_new_profile (TerminalPreferencesDialog *dialog
 
   gtk_list_store_append (dialog->store, &iter);
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
-  terminal_preferences_add_profile (dialog->preferences, profile_name, FALSE);
+  terminal_preferences_add_profile (dialog->preferences, profile_name, TRUE);
 
   g_free (profile_name);
 }
@@ -2449,7 +2449,7 @@ terminal_preferences_dialog_activate_profile (TerminalPreferencesDialog *dialog)
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_IS_ACTIVE, g_strdup ("object-select-symbolic"), -1);
   gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
   
-  terminal_preferences_switch_profile (dialog->preferences, profile_name, TRUE);
+  terminal_preferences_switch_profile (dialog->preferences, profile_name);
   gtk_label_set_text (GTK_LABEL (dialog->profile_label), profile_name);
 
   g_free (profile_name);
@@ -2475,8 +2475,7 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
                           COLUMN_PROFILE_IS_ACTIVE, g_strcmp0 (str[i], def) == 0 ? g_strdup ("object-select-symbolic") : NULL, -1);
     }
 
-  /* don't g_strfreev (transfer container) */
-  g_free (str);
+  g_strfreev (str);
   g_free (def);
 }
 
