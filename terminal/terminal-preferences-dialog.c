@@ -308,6 +308,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+  /* double click should activate the profile */
+  g_signal_connect_swapped (GTK_TREE_VIEW (view), "row-activated",
+                            G_CALLBACK (terminal_preferences_dialog_activate_profile), dialog);
   dialog->view = GTK_TREE_VIEW (view);
   gtk_widget_set_margin_start (view, 12);
   gtk_widget_set_margin_end (view, 12);
