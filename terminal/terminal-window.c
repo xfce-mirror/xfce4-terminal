@@ -3349,9 +3349,12 @@ terminal_window_update_profiles_menu (TerminalWindow      *window,
       g_signal_connect_swapped (G_OBJECT (item), "toggled",
                                 G_CALLBACK (terminal_window_action_set_profile), window);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+      g_free (profiles[i]);
     }
 
-  g_strfreev (profiles);
+  /* TODO: g_strfreev doesn't seem to work but individual g_free calls seem to work */
+  // g_strfreev (profiles);
+  g_free (profiles);
   g_free (current_profile);
 
   gtk_widget_show_all (GTK_WIDGET (menu));
