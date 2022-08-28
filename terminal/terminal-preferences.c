@@ -1646,12 +1646,21 @@ terminal_preferences_add_profile (TerminalPreferences *preferences,
   g_value_init (&value, G_TYPE_STRING);
   g_value_set_string (&value, profile_name);
   g_ptr_array_add (preferences->profiles, (gpointer) &value);
+
+  /* Save the array of profile names */
   xfconf_channel_set_arrayv (preferences->channel, "/profiles", preferences->profiles);
+
+  /* Now free our current profiles g_ptr_array because the newly added value pointer will be freed when this stack frame gets popped */
+  g_ptr_array_free (preferences->profiles, TRUE);
+
+  /* Fetch the saved array */
+  preferences->profiles = xfconf_channel_get_arrayv (preferences->channel, "/profiles");
 
   terminal_preferences_switch_profile (preferences, profile_name, from_defaults);
   terminal_preferences_switch_profile (preferences, current_profile, TRUE);
 
   g_free (current_profile);
+  g_value_unset (&value);
 }
 
 
@@ -1750,7 +1759,7 @@ terminal_preferences_get_profiles (TerminalPreferences *preferences)
   gint N = preferences->profiles->len;
   gchar **profile_names = (gchar **) g_malloc (sizeof (gchar *) * N);
   for (int i = 0; i < N; i++)
-    profile_names[i] = g_strdup (g_value_get_string (g_ptr_array_index (preferences->profiles, i)));
+    profile_names[i] = g_value_dup_string (g_ptr_array_index (preferences->profiles, i));
   return profile_names;
 }
 
