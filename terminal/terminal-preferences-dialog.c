@@ -297,6 +297,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   dialog->profile_selector_button = button;
   gtk_container_add (GTK_CONTAINER (button), box);
   popover = gtk_popover_new (button);
+  gtk_widget_set_size_request (popover, 450, 350);
   g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_popover_popup), popover);
   g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_widget_show), dialog->go_up_image);
   g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_widget_hide), dialog->go_down_image);
@@ -319,7 +320,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                                      gtk_cell_renderer_text_new (),
                                                      "text", COLUMN_PROFILE_NAME,
                                                      NULL);
-  gtk_tree_view_column_set_min_width (column, 150);
+  gtk_tree_view_column_set_expand (column, TRUE);
   gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
   column = gtk_tree_view_column_new_with_attributes ("Active",
                                                      gtk_cell_renderer_pixbuf_new (),
@@ -352,7 +353,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_set_profile_as_default), dialog);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
-  gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 6);
+  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 6);
   gtk_widget_show (hbox);
 
   gtk_container_add (GTK_CONTAINER (popover), vbox);
