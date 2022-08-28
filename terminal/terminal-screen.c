@@ -3166,7 +3166,7 @@ terminal_screen_change_profile_to (TerminalScreen *screen,
   screen->profile = g_strdup (name);
 
   if (g_strcmp0 (name, active_profile) != 0)
-    terminal_preferences_switch_profile (screen->preferences, name, TRUE);
+    terminal_preferences_switch_profile (screen->preferences, name);
 
   /* update all the settings */
   terminal_screen_update_all (screen);
@@ -3174,7 +3174,7 @@ terminal_screen_change_profile_to (TerminalScreen *screen,
   /* We don't want the profile change in preferences to be persistent
      as this function should change preferences only for this instance of screen */
   if (g_strcmp0 (name, active_profile) != 0)
-    terminal_preferences_switch_profile (screen->preferences, active_profile, TRUE);
+    terminal_preferences_switch_profile (screen->preferences, active_profile);
 
   g_free (active_profile);
 }

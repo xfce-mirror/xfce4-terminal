@@ -113,12 +113,11 @@ gboolean             terminal_preferences_get_color           (TerminalPreferenc
 void                 terminal_preferences_xfconf_init_failed  (void);
 void                 terminal_preferences_add_profile         (TerminalPreferences *preferences,
                                                                const gchar         *name,
-                                                               gboolean             from_defaults);
+                                                               gboolean             clone);
 void                 terminal_preferences_remove_profile      (TerminalPreferences *preferences,
                                                                const gchar         *name);
 void                 terminal_preferences_switch_profile      (TerminalPreferences *preferences,
-                                                               const gchar         *name,
-                                                               gboolean             reset_current_values);
+                                                               const gchar         *name);
 void                 terminal_preferences_set_default_profile (TerminalPreferences *preferences,
                                                                const gchar         *name);
 gchar               *terminal_preferences_get_default_profile (TerminalPreferences *preferences);

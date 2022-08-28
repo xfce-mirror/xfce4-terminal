@@ -3351,8 +3351,7 @@ terminal_window_update_profiles_menu (TerminalWindow      *window,
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
     }
 
-  // g_strfreev (profiles);
-  g_free (profiles);
+  g_strfreev (profiles);
   g_free (current_profile);
 
   gtk_widget_show_all (GTK_WIDGET (menu));
