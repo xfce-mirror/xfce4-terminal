@@ -1649,7 +1649,6 @@ terminal_preferences_add_profile (TerminalPreferences *preferences,
 
   /* Save the array of profile names */
   xfconf_channel_set_arrayv (preferences->channel, "/profiles", preferences->profiles);
-  g_free (profile);
 
   if (G_UNLIKELY (clone))
     {
@@ -1767,7 +1766,6 @@ terminal_preferences_get_profiles (TerminalPreferences *preferences)
 {
   gint N = preferences->profiles->len;
   gchar **profile_names = (gchar **) g_malloc (sizeof (gchar *) * N);
-  preferences->profiles = xfconf_channel_get_arrayv (preferences->channel, "/profiles");
   for (int i = 0; i < N; i++)
     profile_names[i] = g_value_dup_string (g_ptr_array_index (preferences->profiles, i));
   return profile_names;
@@ -1866,7 +1864,7 @@ terminal_preferences_has_profile (TerminalPreferences *preferences,
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
 
   for (gint i = 0; i < n_profiles && !has_profile; i++)
-    if (g_strcmp0 (g_value_get_string (g_ptr_array_index (preferences->profiles, i)), profile_name) == 0)
+    if (g_strcmp0 (profile_name, g_value_get_string (g_ptr_array_index (preferences->profiles, i))) == 0)
       has_profile = TRUE;
 
   return has_profile;
