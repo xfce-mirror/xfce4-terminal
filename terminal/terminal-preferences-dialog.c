@@ -71,7 +71,6 @@ static gboolean  monospace_filter                                        (const 
                                                                           const PangoFontFace        *face,
                                                                           gpointer                    data);
 static void      terminal_preferences_dialog_add_new_profile             (TerminalPreferencesDialog  *dialog);
-<<<<<<< HEAD
 static void      terminal_preferences_dialog_clone_new_profile           (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_remove_profile              (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_activate_profile            (TerminalPreferencesDialog  *dialog);
@@ -79,12 +78,6 @@ static void      terminal_preferences_dialog_set_profile_as_default      (Termin
 static void      terminal_preferences_dialog_populate_store              (TerminalPreferencesDialog  *dialog,
                                                                           GtkListStore               *store);
 static gchar    *terminal_preferences_dialog_get_new_profile_name        (TerminalPreferencesDialog  *dialog);
-=======
-static void      terminal_preferences_dialog_remove_profile              (TerminalPreferencesDialog  *dialog);
-static void      terminal_preferences_dialog_activate_profile            (TerminalPreferencesDialog  *dialog);
-static void      terminal_preferences_dialog_populate_store              (TerminalPreferencesDialog  *dialog,
-                                                                          GtkListStore               *store);
->>>>>>> a646e1e5 (Feature: User Profiles)
 
 
 
@@ -117,12 +110,8 @@ enum
 enum
 {
   COLUMN_PROFILE_NAME,
-<<<<<<< HEAD
   COLUMN_PROFILE_IS_DEFAULT,
   COLUMN_PROFILE_IS_ACTIVE,
-=======
-  COLUMN_PROFILE_ICON_NAME,
->>>>>>> a646e1e5 (Feature: User Profiles)
   N_COLUMN,
 };
 
@@ -280,11 +269,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /*
    * Profile
    */
-<<<<<<< HEAD
   store = gtk_list_store_new (N_COLUMN, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
-=======
-  store = gtk_list_store_new (N_COLUMN, G_TYPE_STRING, G_TYPE_STRING);
->>>>>>> a646e1e5 (Feature: User Profiles)
   terminal_preferences_dialog_populate_store (dialog, store);
   dialog->store = store;
 
@@ -313,10 +298,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   dialog->profile_selector_button = button;
   gtk_container_add (GTK_CONTAINER (button), box);
   popover = gtk_popover_new (button);
-<<<<<<< HEAD
   gtk_widget_set_size_request (popover, 450, 350);
-=======
->>>>>>> a646e1e5 (Feature: User Profiles)
   g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_popover_popup), popover);
   g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_widget_show), dialog->go_up_image);
   g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_widget_hide), dialog->go_down_image);
@@ -327,7 +309,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
-<<<<<<< HEAD
   /* double click should activate the profile */
   g_signal_connect_swapped (GTK_TREE_VIEW (view), "row-activated",
                             G_CALLBACK (terminal_preferences_dialog_activate_profile), dialog);
@@ -339,28 +320,15 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                                      "icon-name", COLUMN_PROFILE_IS_DEFAULT,
                                                      NULL);
   gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
-=======
-  dialog->view = GTK_TREE_VIEW (view);
-  gtk_widget_set_margin_start (view, 12);
-  gtk_widget_set_margin_end (view, 12);
->>>>>>> a646e1e5 (Feature: User Profiles)
   column = gtk_tree_view_column_new_with_attributes ("Profiles",
                                                      gtk_cell_renderer_text_new (),
                                                      "text", COLUMN_PROFILE_NAME,
                                                      NULL);
-<<<<<<< HEAD
   gtk_tree_view_column_set_expand (column, TRUE);
   gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
   column = gtk_tree_view_column_new_with_attributes ("Active",
                                                      gtk_cell_renderer_pixbuf_new (),
                                                      "icon-name", COLUMN_PROFILE_IS_ACTIVE,
-=======
-  gtk_tree_view_column_set_min_width (column, 150);
-  gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
-  column = gtk_tree_view_column_new_with_attributes ("Enabled",
-                                                     gtk_cell_renderer_pixbuf_new (),
-                                                     "icon-name", COLUMN_PROFILE_ICON_NAME,
->>>>>>> a646e1e5 (Feature: User Profiles)
                                                      NULL);
   gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
   gtk_box_pack_start (GTK_BOX (vbox), view, TRUE, TRUE, 6);
@@ -369,7 +337,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_widget_set_margin_start (hbox, 12);
   gtk_widget_set_margin_end (hbox, 12);
-<<<<<<< HEAD
   button = gtk_button_new_from_icon_name ("document-revert-symbolic", GTK_ICON_SIZE_BUTTON);
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_clone_new_profile), dialog);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
@@ -393,23 +360,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 6);
   gtk_widget_show (hbox);
 
-=======
-  button = gtk_button_new_from_icon_name ("list-add", GTK_ICON_SIZE_BUTTON);
-  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_add_new_profile), dialog);
-  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
-  gtk_widget_show (button);
-  button = gtk_button_new_from_icon_name ("list-remove", GTK_ICON_SIZE_BUTTON);
-  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_remove_profile), dialog);
-  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
-  gtk_widget_show (button);
-  button = gtk_button_new_from_icon_name ("object-select", GTK_ICON_SIZE_BUTTON);
-  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_activate_profile), dialog);
-  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
-  gtk_widget_show (button);
-  gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 6);
-  gtk_widget_show (hbox);
-  
->>>>>>> a646e1e5 (Feature: User Profiles)
   gtk_container_add (GTK_CONTAINER (popover), vbox);
   gtk_widget_show (vbox);
 
@@ -2461,11 +2411,7 @@ terminal_preferences_dialog_remove_profile (TerminalPreferencesDialog *dialog)
   if (gtk_tree_selection_count_selected_rows (selection) != 1)
     return;
   gtk_tree_selection_get_selected (selection, &model, &iter);
-<<<<<<< HEAD
   gtk_tree_model_get(model, &iter, COLUMN_PROFILE_NAME, &name, COLUMN_PROFILE_IS_ACTIVE, &icon_name, -1);
-=======
-  gtk_tree_model_get(model, &iter, COLUMN_PROFILE_NAME, &name, COLUMN_PROFILE_ICON_NAME, &icon_name, -1);
->>>>>>> a646e1e5 (Feature: User Profiles)
   if (g_strcmp0 (icon_name, "object-select") == 0)
     return;
   gtk_list_store_remove (dialog->store, &iter);
