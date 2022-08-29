@@ -111,6 +111,30 @@ gboolean             terminal_preferences_get_color           (TerminalPreferenc
                                                                const gchar         *property,
                                                                GdkRGBA             *color_return);
 void                 terminal_preferences_xfconf_init_failed  (void);
+void                 terminal_preferences_add_profile         (TerminalPreferences *preferences,
+<<<<<<< HEAD
+                                                               const gchar         *name,
+                                                               gboolean             clone);
+=======
+                                                               const gchar         *name);
+>>>>>>> a646e1e5 (Feature: User Profiles)
+void                 terminal_preferences_remove_profile      (TerminalPreferences *preferences,
+                                                               const gchar         *name);
+void                 terminal_preferences_switch_profile      (TerminalPreferences *preferences,
+                                                               const gchar         *name);
+void                 terminal_preferences_set_default_profile (TerminalPreferences *preferences,
+                                                               const gchar         *name);
+gchar               *terminal_preferences_get_default_profile (TerminalPreferences *preferences);
+<<<<<<< HEAD
+gchar               *terminal_preferences_get_active_profile  (TerminalPreferences *preferences);
+gchar              **terminal_preferences_get_profiles        (TerminalPreferences *preferences);
+gint                 terminal_preferences_get_n_profiles      (TerminalPreferences *preferences);
+gboolean             terminal_preferences_has_profile         (TerminalPreferences *preferences,
+                                                               const gchar         *profile_name);
+=======
+gchar              **terminal_preferences_get_profiles        (TerminalPreferences *preferences);
+gint                 terminal_preferences_get_n_profiles      (TerminalPreferences *preferences);
+>>>>>>> a646e1e5 (Feature: User Profiles)
 
 
 G_END_DECLS
