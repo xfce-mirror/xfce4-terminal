@@ -2496,14 +2496,9 @@ terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dia
   GtkWidget   *entry;
   gint         response;
 
-  /* create input box */
-  entry = gtk_entry_new ();
-  gtk_widget_set_margin_start (entry, 15);
-  gtk_widget_set_margin_end (entry, 15);
-  gtk_widget_show (entry);
-
   /* Create the prompt dialog which will contain the GtkEntry */
   entry_dialog = xfce_titled_dialog_new ();
+  gtk_window_set_title (GTK_WINDOW (entry_dialog), _("New Profile"));
   gtk_window_set_default_size (GTK_WINDOW (entry_dialog), 300, 50);
 
   /* Add cancel & accept action buttons */
@@ -2512,7 +2507,15 @@ terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dia
   xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Accept"), GTK_RESPONSE_ACCEPT);
 
   /* Add the GtkEntry to the prompt dialog */
+  entry = gtk_entry_new ();
+  gtk_widget_set_margin_start (entry, 15);
+  gtk_widget_set_margin_end (entry, 15);
+  gtk_widget_show (entry);
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (entry_dialog))), entry, TRUE, TRUE, 10);
+
+  /* Window behavior */
+  gtk_window_set_transient_for (GTK_WINDOW (entry_dialog), GTK_WINDOW (dialog));
+  gtk_window_set_modal (GTK_WINDOW (entry_dialog), TRUE);
 
   /* Run the prompt */
   response = gtk_dialog_run (GTK_DIALOG (entry_dialog));
