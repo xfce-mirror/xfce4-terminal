@@ -134,6 +134,7 @@ struct _TerminalPreferencesDialog
   gint                 n_presets;
   GtkListStore        *store;
   GtkTreeView         *view;
+  GtkWidget           *profile_popover;
   GtkWidget           *go_up_image;
   GtkWidget           *go_down_image;
   GtkWidget           *profile_label;
@@ -225,7 +226,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GtkWidget         *background_grid;
   GtkWidget         *entry;
   GtkWidget         *combo;
-  GtkWidget         *popover;
   GtkWidget         *view;
   gchar             *current;
   gchar             *profile;
@@ -296,13 +296,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   button = gtk_button_new ();
   dialog->profile_selector_button = button;
   gtk_container_add (GTK_CONTAINER (button), box);
-  popover = gtk_popover_new (button);
-  gtk_widget_set_size_request (popover, 450, 350);
-  g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_popover_popup), popover);
+  dialog->profile_popover = gtk_popover_new (button);
+  gtk_widget_set_size_request (dialog->profile_popover, 450, 350);
+  g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_popover_popup), dialog->profile_popover);
   g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_widget_show), dialog->go_up_image);
   g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (gtk_widget_hide), dialog->go_down_image);
-  g_signal_connect_swapped (G_OBJECT (popover), "closed", G_CALLBACK (gtk_widget_hide), dialog->go_up_image);
-  g_signal_connect_swapped (G_OBJECT (popover), "closed", G_CALLBACK (gtk_widget_show), dialog->go_down_image);
+  g_signal_connect_swapped (G_OBJECT (dialog->profile_popover), "closed", G_CALLBACK (gtk_widget_hide), dialog->go_up_image);
+  g_signal_connect_swapped (G_OBJECT (dialog->profile_popover), "closed", G_CALLBACK (gtk_widget_show), dialog->go_down_image);
   gtk_notebook_set_action_widget (GTK_NOTEBOOK (notebook), button, GTK_PACK_START);
   gtk_widget_show (button);
 
@@ -364,7 +364,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 6);
   gtk_widget_show (hbox);
 
-  gtk_container_add (GTK_CONTAINER (popover), vbox);
+  gtk_container_add (GTK_CONTAINER (dialog->profile_popover), vbox);
   gtk_widget_show (vbox);
 
 
@@ -2522,6 +2522,9 @@ terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dia
   gtk_window_set_transient_for (GTK_WINDOW (entry_dialog), GTK_WINDOW (dialog));
   gtk_window_set_modal (GTK_WINDOW (entry_dialog), TRUE);
 
+  /* without this you can still interact with the popover */
+  gtk_popover_set_modal (GTK_POPOVER (dialog->profile_popover), FALSE);
+
   /* Run the prompt */
   response = gtk_dialog_run (GTK_DIALOG (entry_dialog));
   switch (response)
@@ -2536,6 +2539,8 @@ terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dia
           gtk_widget_destroy (entry_dialog);
         }
     }
+
+  gtk_popover_set_modal (GTK_POPOVER (dialog->profile_popover), TRUE);
 
   return profile_name;
 }
