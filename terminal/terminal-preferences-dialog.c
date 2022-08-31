@@ -268,31 +268,38 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /*
    * Profile
    */
+  /* list store for the profile names, to be used for the tree-view */
   store = gtk_list_store_new (N_COLUMN, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
   terminal_preferences_dialog_populate_store (dialog, store);
   dialog->store = store;
 
+  /* content for profiles button in notebook tab */
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+
+  /* label to signify active profile */
   profile = terminal_preferences_get_default_profile (dialog->preferences);
   dialog->profile_label = gtk_label_new (profile);
+  gtk_box_pack_start (GTK_BOX (box), dialog->profile_label, TRUE, TRUE, 0);
+  gtk_widget_show (dialog->profile_label);
   g_free (profile);
-  gtk_label_set_xalign (GTK_LABEL (dialog->profile_label), 0.0f);
-  g_object_ref_sink (dialog->profile_label);
+
+  /* append the dropdown icon to the button */
   dialog->go_up_image   = gtk_image_new_from_icon_name ("go-up",   GTK_ICON_SIZE_BUTTON);
   g_object_ref_sink (dialog->go_up_image);
-  dialog->go_down_image = gtk_image_new_from_icon_name ("go-down", GTK_ICON_SIZE_BUTTON);
-  g_object_ref_sink (dialog->go_down_image);
-  gtk_box_pack_start (GTK_BOX (box), dialog->profile_label, TRUE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX (box), dialog->go_down_image, FALSE, TRUE, 0);
-  gtk_widget_set_halign (dialog->go_down_image, GTK_ALIGN_END);
   gtk_box_pack_start (GTK_BOX (box), dialog->go_up_image, FALSE, TRUE, 0);
   gtk_widget_set_halign (dialog->go_up_image, GTK_ALIGN_END);
   gtk_widget_hide (dialog->go_up_image);
+
+  dialog->go_down_image = gtk_image_new_from_icon_name ("go-down", GTK_ICON_SIZE_BUTTON);
+  g_object_ref_sink (dialog->go_down_image);
+  gtk_box_pack_start (GTK_BOX (box), dialog->go_down_image, FALSE, TRUE, 0);
+  gtk_widget_set_halign (dialog->go_down_image, GTK_ALIGN_END);
+  gtk_widget_show (dialog->go_down_image);
+
   gtk_widget_show (box);
   gtk_widget_set_hexpand (box, TRUE);
-  gtk_widget_show (dialog->go_down_image);
-  gtk_widget_show (dialog->profile_label);
 
+  /* profiles button for the notebook tab */
   button = gtk_button_new ();
   dialog->profile_selector_button = button;
   gtk_container_add (GTK_CONTAINER (button), box);
@@ -306,7 +313,12 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_notebook_set_action_widget (GTK_NOTEBOOK (notebook), button, GTK_PACK_START);
   gtk_widget_show (button);
 
+  /* contents of the popover */
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  gtk_container_add (GTK_CONTAINER (popover), vbox);
+  gtk_widget_show (vbox);
+
+  /* the tree-view to display the profiles & their status */
   view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
   /* double click should activate the profile */
   g_signal_connect_swapped (GTK_TREE_VIEW (view), "row-activated",
@@ -314,25 +326,31 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   dialog->view = GTK_TREE_VIEW (view);
   gtk_widget_set_margin_start (view, 12);
   gtk_widget_set_margin_end (view, 12);
+  gtk_widget_show (view);
+
+  /* append the columns to the tree-view */
   column = gtk_tree_view_column_new_with_attributes ("Default",
                                                      gtk_cell_renderer_pixbuf_new (),
                                                      "icon-name", COLUMN_PROFILE_IS_DEFAULT,
                                                      NULL);
   gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
+
   column = gtk_tree_view_column_new_with_attributes ("Profiles",
                                                      gtk_cell_renderer_text_new (),
                                                      "text", COLUMN_PROFILE_NAME,
                                                      NULL);
   gtk_tree_view_column_set_expand (column, TRUE);
   gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
+
   column = gtk_tree_view_column_new_with_attributes ("Active",
                                                      gtk_cell_renderer_pixbuf_new (),
                                                      "icon-name", COLUMN_PROFILE_IS_ACTIVE,
                                                      NULL);
   gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
-  gtk_box_pack_start (GTK_BOX (vbox), view, TRUE, TRUE, 6);
-  gtk_widget_show (view);
 
+  gtk_box_pack_start (GTK_BOX (vbox), view, TRUE, TRUE, 6);
+
+  /* container for the action buttons in the popover */
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_widget_set_margin_start (hbox, 12);
   gtk_widget_set_margin_end (hbox, 12);
@@ -341,31 +359,41 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_clone_new_profile), dialog);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
+
+  /* button to create a new profile from defaults */
   button = gtk_button_new_from_icon_name ("list-add-symbolic", GTK_ICON_SIZE_BUTTON);
   gtk_widget_set_tooltip_text (button, _("Add a new Profile"));
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_add_new_profile), dialog);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
+
+  /* button to delete a profile */
   button = gtk_button_new_from_icon_name ("list-remove-symbolic", GTK_ICON_SIZE_BUTTON);
   gtk_widget_set_tooltip_text (button, _("Remove Profile"));
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_remove_profile), dialog);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
+
+  /* button to activate a profile */
   button = gtk_button_new_from_icon_name ("object-select-symbolic", GTK_ICON_SIZE_BUTTON);
   gtk_widget_set_tooltip_text (button, _("Select Profile"));
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_activate_profile), dialog);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
+
+  /* button to set the selected profile as default */
   button = gtk_button_new_from_icon_name ("starred-symbolic", GTK_ICON_SIZE_BUTTON);
   gtk_widget_set_tooltip_text (button, _("Set as Default"));
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_set_profile_as_default), dialog);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
-  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 6);
-  gtk_widget_show (hbox);
 
+<<<<<<< HEAD
   gtk_container_add (GTK_CONTAINER (dialog->profile_popover), vbox);
   gtk_widget_show (vbox);
+=======
+  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 6);
+>>>>>>> 9fb39e8b (improvements)
 
 
   /*
@@ -1237,7 +1265,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (combo);
 
 
-
   /*
    * Colors
    */
@@ -1772,14 +1799,11 @@ terminal_preferences_dialog_new_section (GtkWidget   **frame,
   gtk_box_pack_start (GTK_BOX (*vbox), *frame, FALSE, TRUE, 0);
   gtk_widget_show (*frame);
 
-  if (header != NULL)
-    {
-      *label = gtk_label_new (_(header));
-      /* For bold text */
-      gtk_label_set_attributes (GTK_LABEL (*label), terminal_pango_attr_list_bold ());
-      gtk_frame_set_label_widget (GTK_FRAME (*frame), *label);
-      gtk_widget_show (*label);
-    }
+  *label = gtk_label_new (_(header));
+  /* For bold text */
+  gtk_label_set_attributes (GTK_LABEL (*label), terminal_pango_attr_list_bold ());
+  gtk_frame_set_label_widget (GTK_FRAME (*frame), *label);
+  gtk_widget_show (*label);
 
   /* init row */
   *row = 0;
@@ -2342,9 +2366,7 @@ terminal_preferences_dialog_new (gboolean show_drop_down,
       g_object_add_weak_pointer (G_OBJECT (dialog), (gpointer) &dialog);
     }
   else
-    {
-      g_object_ref (G_OBJECT (dialog));
-    }
+    g_object_ref (G_OBJECT (dialog));
 
   gtk_widget_set_visible (GTK_WIDGET (dialog->dropdown_label), show_drop_down);
   gtk_widget_set_visible (GTK_WIDGET (dialog->dropdown_vbox), show_drop_down);
