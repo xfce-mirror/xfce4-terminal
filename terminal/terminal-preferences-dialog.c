@@ -2482,12 +2482,10 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
                           COLUMN_PROFILE_NAME, str[i],
                           COLUMN_PROFILE_IS_DEFAULT, g_strcmp0 (str[i], def) == 0 ? g_strdup ("object-select-symbolic") : NULL,
                           COLUMN_PROFILE_IS_ACTIVE, g_strcmp0 (str[i], def) == 0 ? g_strdup ("object-select-symbolic") : NULL, -1);
-      g_free (str[i]);
     }
 
   /* TODO: g_strfreev doesn't seem to work but individual g_free calls seem to work */
-  // g_strfreev (str);
-  g_free (str);
+  g_strfreev (str);
   g_free (def);
 }
 
