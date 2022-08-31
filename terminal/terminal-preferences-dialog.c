@@ -31,7 +31,6 @@
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-widget.h>
-#include <terminal/terminal-preferences.h>
 
 
 
@@ -138,7 +137,6 @@ struct _TerminalPreferencesDialog
   GtkWidget           *go_up_image;
   GtkWidget           *go_down_image;
   GtkWidget           *profile_label;
-  GtkWidget           *profile_selector_button;
 
   gulong               bg_image_signal_id;
   gulong               palette_notify_signal_id;
@@ -301,7 +299,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   /* profiles button for the notebook tab */
   button = gtk_button_new ();
-  dialog->profile_selector_button = button;
   gtk_container_add (GTK_CONTAINER (button), box);
   dialog->profile_popover = gtk_popover_new (button);
   gtk_widget_set_size_request (dialog->profile_popover, 450, 350);
@@ -315,7 +312,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   /* contents of the popover */
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  gtk_container_add (GTK_CONTAINER (popover), vbox);
+  gtk_container_add (GTK_CONTAINER (dialog->profile_popover), vbox);
   gtk_widget_show (vbox);
 
   /* the tree-view to display the profiles & their status */
@@ -354,6 +351,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_widget_set_margin_start (hbox, 12);
   gtk_widget_set_margin_end (hbox, 12);
+  gtk_widget_show (hbox);
+  
+  /* button to create a new profile from current active profile */
   button = gtk_button_new_from_icon_name ("edit-copy-symbolic", GTK_ICON_SIZE_BUTTON);
   gtk_widget_set_tooltip_text (button, _("Copy Profile"));
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_clone_new_profile), dialog);
@@ -388,12 +388,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
 
-<<<<<<< HEAD
-  gtk_container_add (GTK_CONTAINER (dialog->profile_popover), vbox);
-  gtk_widget_show (vbox);
-=======
   gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 6);
->>>>>>> 9fb39e8b (improvements)
 
 
   /*
@@ -2519,6 +2514,7 @@ terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dia
   gchar       *profile_name = NULL;
   GtkWidget   *entry_dialog;
   GtkWidget   *entry;
+  GtkWidget   *accept_button;
   gint         response;
 
   /* Create the prompt dialog which will contain the GtkEntry */
@@ -2529,7 +2525,7 @@ terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dia
   /* Add cancel & accept action buttons */
   xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (entry_dialog));
   xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Cancel"), GTK_RESPONSE_CANCEL);
-  xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Accept"), GTK_RESPONSE_ACCEPT);
+  accept_button = xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Accept"), GTK_RESPONSE_ACCEPT);
 
   /* Add the GtkEntry to the prompt dialog */
   entry = gtk_entry_new ();
@@ -2545,20 +2541,18 @@ terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dia
   /* without this you can still interact with the popover */
   gtk_popover_set_modal (GTK_POPOVER (dialog->profile_popover), FALSE);
 
+  /* make accept button in-sensitive if the input string is 0 in length */
+  g_object_bind_property (G_OBJECT (entry), "text-length",
+                          G_OBJECT (accept_button), "sensitive",
+                          G_BINDING_SYNC_CREATE);
+
   /* Run the prompt */
   response = gtk_dialog_run (GTK_DIALOG (entry_dialog));
-  switch (response)
-    {
-    case GTK_RESPONSE_CANCEL:
-      gtk_widget_destroy (entry_dialog);
-      break;
-    default:
-      if (gtk_entry_get_text_length (GTK_ENTRY (entry)) > 0)
-        {
-          profile_name = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
-          gtk_widget_destroy (entry_dialog);
-        }
-    }
+
+  if (G_UNLIKELY (response == GTK_RESPONSE_ACCEPT) && gtk_entry_get_text_length (GTK_ENTRY (entry)) > 0)
+    profile_name = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
+  else
+    gtk_widget_destroy (entry_dialog);
 
   gtk_popover_set_modal (GTK_POPOVER (dialog->profile_popover), TRUE);
 
