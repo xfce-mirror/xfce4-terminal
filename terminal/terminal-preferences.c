@@ -1727,7 +1727,7 @@ terminal_preferences_set_default_profile (TerminalPreferences *preferences,
  *
  * Returns the profile name of the current default profile.
  *
- * Return value: (transfer full): name of the default profile
+ * Return value: (transfer full): Name of the default profile. Free with g_free.
  **/
 gchar *
 terminal_preferences_get_default_profile (TerminalPreferences *preferences)
@@ -1743,7 +1743,7 @@ terminal_preferences_get_default_profile (TerminalPreferences *preferences)
  *
  * Returns the profile name of the current active profile.
  *
- * Return value: (transfer full): name of the default profile
+ * Return value: (transfer full): Name of the default profile. Free with g_free.
  **/
 gchar *
 terminal_preferences_get_active_profile (TerminalPreferences *preferences)
