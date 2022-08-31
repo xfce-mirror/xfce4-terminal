@@ -1765,9 +1765,11 @@ gchar **
 terminal_preferences_get_profiles (TerminalPreferences *preferences)
 {
   gint N = preferences->profiles->len;
-  gchar **profile_names = (gchar **) g_malloc (sizeof (gchar *) * N);
+  gchar **profile_names = (gchar **) g_malloc (sizeof (gchar *) * (N + 1));
   for (int i = 0; i < N; i++)
     profile_names[i] = g_value_dup_string (g_ptr_array_index (preferences->profiles, i));
+  /* to make it a NULL terminal array of strings */
+  profile_names [N] = NULL;
   return profile_names;
 }
 
