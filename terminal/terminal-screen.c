@@ -381,11 +381,11 @@ terminal_screen_init (TerminalScreen *screen)
   g_signal_connect (G_OBJECT (screen->preferences), "notify",
       G_CALLBACK (terminal_screen_preferences_changed), screen);
 
-  /* apply current settings */
-  terminal_screen_update_all (screen);
-
   /* show the terminal */
   gtk_widget_show_all (screen->swin);
+
+  /* apply current settings */
+  terminal_screen_update_all (screen);
 
   /* last, connect contents-changed to avoid a race with updates above */
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "contents-changed",
@@ -3153,7 +3153,7 @@ void
 terminal_screen_change_profile_to (TerminalScreen *screen,
                                    const gchar    *name)
 {
-  gchar *active_profile;
+  gchar *preferences_active_profile;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -3161,11 +3161,11 @@ terminal_screen_change_profile_to (TerminalScreen *screen,
   if (g_strcmp0 (screen->profile, name) == 0)
     return;
 
-  active_profile = terminal_preferences_get_active_profile (screen->preferences);
+  preferences_active_profile = terminal_preferences_get_active_profile (screen->preferences);
   g_free (screen->profile);
   screen->profile = g_strdup (name);
 
-  if (g_strcmp0 (name, active_profile) != 0)
+  if (g_strcmp0 (name, preferences_active_profile) != 0)
     terminal_preferences_switch_profile (screen->preferences, name);
 
   /* update all the settings */
@@ -3173,14 +3173,22 @@ terminal_screen_change_profile_to (TerminalScreen *screen,
 
   /* We don't want the profile change in preferences to be persistent
      as this function should change preferences only for this instance of screen */
-  if (g_strcmp0 (name, active_profile) != 0)
-    terminal_preferences_switch_profile (screen->preferences, active_profile);
+  if (g_strcmp0 (name, preferences_active_profile) != 0)
+    terminal_preferences_switch_profile (screen->preferences, preferences_active_profile);
 
-  g_free (active_profile);
+  g_free (preferences_active_profile);
 }
 
 
 
+/**
+ * terminal_screen_has_profiles:
+ * @screen : a #TerminalScreen instance.
+ *
+ * Returns the screen's active profile name.
+ *
+ * Return value: (transfer full) free with g_free
+ **/
 gchar *
 terminal_screen_get_profile_name (TerminalScreen *screen)
 {
