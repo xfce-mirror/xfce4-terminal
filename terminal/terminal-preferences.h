@@ -114,7 +114,7 @@ void                 terminal_preferences_xfconf_init_failed  (void);
 void                 terminal_preferences_add_profile         (TerminalPreferences *preferences,
                                                                const gchar         *name,
                                                                gboolean             clone);
-void                 terminal_preferences_remove_profile      (TerminalPreferences *preferences,
+gboolean             terminal_preferences_remove_profile      (TerminalPreferences *preferences,
                                                                const gchar         *name);
 void                 terminal_preferences_switch_profile      (TerminalPreferences *preferences,
                                                                const gchar         *name);
