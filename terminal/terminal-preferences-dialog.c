@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gtk/gtkcssprovider.h"
+#include "terminal-preferences.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -232,7 +232,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gint               row = 0;
 
   /* have a separate instance of preferences so as to not affect  other components */
-  dialog->preferences = g_object_new (TERMINAL_TYPE_PREFERENCES, NULL);
+  dialog->preferences = terminal_preferences_get ();
 
   /* configure the dialog properties */
   gtk_window_set_icon_name (GTK_WINDOW (dialog), "org.xfce.terminal");
