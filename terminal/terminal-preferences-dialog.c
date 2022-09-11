@@ -17,6 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "gtk/gtkcssprovider.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -138,7 +139,8 @@ struct _TerminalPreferencesDialog
   GtkWidget           *go_down_image;
   GtkWidget           *profile_label;
 
-  gulong               bg_image_signal_id;
+  gulong               bg_image_notify_signal_id;
+  gulong               bg_image_set_signal_id;
   gulong               palette_notify_signal_id;
   gulong               palette_set_signal_id[N_PALETTE_BUTTONS];
   gulong               geometry_notify_signal_id;
@@ -229,8 +231,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gchar             *profile;
   gint               row = 0;
 
-  /* grab a reference on the preferences */
-  dialog->preferences = terminal_preferences_get ();
+  /* have a separate instance of preferences so as to not affect  other components */
+  dialog->preferences = g_object_new (TERMINAL_TYPE_PREFERENCES, NULL);
 
   /* configure the dialog properties */
   gtk_window_set_icon_name (GTK_WINDOW (dialog), "org.xfce.terminal");
@@ -1069,11 +1071,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_file_chooser_button_new ("Select a Background Image", GTK_FILE_CHOOSER_ACTION_OPEN);
   dialog->file_chooser = button;
-  dialog->bg_image_signal_id = g_signal_connect_swapped (dialog->preferences, "notify::background-image-file",
-                                                         G_CALLBACK (terminal_preferences_dialog_background_notify), dialog);
+  dialog->bg_image_set_signal_id =
+   g_signal_connect_swapped (button, "file-set",
+                             G_CALLBACK (terminal_preferences_dialog_background_set), dialog);
+  dialog->bg_image_notify_signal_id =
+   g_signal_connect_swapped (dialog->preferences, "notify::background-image-file",
+                             G_CALLBACK (terminal_preferences_dialog_background_notify), dialog);
   terminal_preferences_dialog_background_notify (dialog);
-  g_signal_connect_swapped (button, "file-set",
-                            G_CALLBACK (terminal_preferences_dialog_background_set), dialog);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
@@ -1824,7 +1828,14 @@ terminal_preferences_dialog_background_notify (TerminalPreferencesDialog *dialog
   button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog->file_chooser));
   g_object_get (G_OBJECT (dialog->preferences), "background-image-file", &prop_file, NULL);
   if (g_strcmp0 (button_file, prop_file) != 0)
-    gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (dialog->file_chooser), prop_file);
+    {
+      g_signal_handler_block (GTK_FILE_CHOOSER (dialog->file_chooser), dialog->bg_image_set_signal_id);
+      if (G_LIKELY (prop_file == NULL))
+        gtk_file_chooser_unselect_all (GTK_FILE_CHOOSER (dialog->file_chooser));
+      else
+        gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (dialog->file_chooser), prop_file);
+      g_signal_handler_unblock (GTK_FILE_CHOOSER (dialog->file_chooser), dialog->bg_image_set_signal_id);
+    }
   g_free (button_file);
   g_free (prop_file);
 }
@@ -1841,9 +1852,9 @@ terminal_preferences_dialog_background_set (TerminalPreferencesDialog *dialog,
   terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
 
   filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
-  g_signal_handler_block (dialog->preferences, dialog->bg_image_signal_id);
+  g_signal_handler_block (dialog->preferences, dialog->bg_image_notify_signal_id);
   g_object_set (G_OBJECT (dialog->preferences), "background-image-file", filename, NULL);
-  g_signal_handler_unblock (dialog->preferences, dialog->bg_image_signal_id);
+  g_signal_handler_unblock (dialog->preferences, dialog->bg_image_notify_signal_id);
   g_free (filename);
 }
 
@@ -2313,8 +2324,8 @@ terminal_preferences_dialog_finalize (GObject *object)
   TerminalPreferencesDialog *dialog = TERMINAL_PREFERENCES_DIALOG (object);
 
   /* disconnect signals */
-  if (G_LIKELY (dialog->bg_image_signal_id != 0))
-    g_signal_handler_disconnect (dialog->preferences, dialog->bg_image_signal_id);
+  if (G_LIKELY (dialog->bg_image_notify_signal_id != 0))
+    g_signal_handler_disconnect (dialog->preferences, dialog->bg_image_notify_signal_id);
   if (G_LIKELY (dialog->palette_notify_signal_id != 0))
     g_signal_handler_disconnect (dialog->preferences, dialog->palette_notify_signal_id);
   if (G_LIKELY (dialog->geometry_notify_signal_id != 0))
@@ -2425,21 +2436,18 @@ terminal_preferences_dialog_remove_profile (TerminalPreferencesDialog *dialog)
   GtkTreeModel     *model;
   GtkTreeIter       iter;
   gchar            *name;
-  gchar            *icon_name;
 
   model = GTK_TREE_MODEL (dialog->store);
   selection = gtk_tree_view_get_selection (dialog->view);
   if (gtk_tree_selection_count_selected_rows (selection) != 1)
     return;
   gtk_tree_selection_get_selected (selection, &model, &iter);
-  gtk_tree_model_get(model, &iter, COLUMN_PROFILE_NAME, &name, COLUMN_PROFILE_IS_ACTIVE, &icon_name, -1);
-  if (g_strcmp0 (icon_name, "object-select") == 0)
-    return;
+  gtk_tree_model_get (model, &iter,
+                      COLUMN_PROFILE_NAME, &name, -1);
   gtk_list_store_remove (dialog->store, &iter);
   terminal_preferences_remove_profile (dialog->preferences, name);
 
   g_free (name);
-  g_free (icon_name);
 }
 
 
@@ -2525,7 +2533,7 @@ terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dia
   /* Add cancel & accept action buttons */
   xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (entry_dialog));
   xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Cancel"), GTK_RESPONSE_CANCEL);
-  accept_button = xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Accept"), GTK_RESPONSE_ACCEPT);
+  accept_button = xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Accept"), GTK_RESPONSE_APPLY);
 
   /* Add the GtkEntry to the prompt dialog */
   entry = gtk_entry_new ();
@@ -2549,10 +2557,9 @@ terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dia
   /* Run the prompt */
   response = gtk_dialog_run (GTK_DIALOG (entry_dialog));
 
-  if (G_UNLIKELY (response == GTK_RESPONSE_ACCEPT) && gtk_entry_get_text_length (GTK_ENTRY (entry)) > 0)
+  if (G_UNLIKELY (response == GTK_RESPONSE_APPLY) && gtk_entry_get_text_length (GTK_ENTRY (entry)) > 0)
     profile_name = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
-  else
-    gtk_widget_destroy (entry_dialog);
+  gtk_widget_destroy (entry_dialog);
 
   gtk_popover_set_modal (GTK_POPOVER (dialog->profile_popover), TRUE);
 
