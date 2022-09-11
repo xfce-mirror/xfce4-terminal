@@ -78,6 +78,7 @@ static void      terminal_preferences_dialog_set_profile_as_default      (Termin
 static void      terminal_preferences_dialog_populate_store              (TerminalPreferencesDialog  *dialog,
                                                                           GtkListStore               *store);
 static gchar    *terminal_preferences_dialog_get_new_profile_name        (TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_after_realize               (TerminalPreferencesDialog  *dialog);
 
 
 
@@ -233,6 +234,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   /* have a separate instance of preferences so as to not affect  other components */
   dialog->preferences = terminal_preferences_get ();
+
+  g_signal_connect (G_OBJECT (dialog), "realize",
+                    G_CALLBACK (terminal_preferences_dialog_after_realize), NULL);
 
   /* configure the dialog properties */
   gtk_window_set_icon_name (GTK_WINDOW (dialog), "org.xfce.terminal");
@@ -2602,4 +2606,14 @@ terminal_preferences_dialog_set_profile_as_default (TerminalPreferencesDialog  *
   terminal_preferences_set_default_profile (dialog->preferences, profile_name);
 
   g_free (profile_name);
+}
+
+
+
+static void
+terminal_preferences_dialog_after_realize (TerminalPreferencesDialog *dialog)
+{
+  gchar *default_profile = terminal_preferences_get_default_profile (dialog->preferences);
+  terminal_preferences_switch_profile (dialog->preferences, default_profile);
+  g_free (default_profile);
 }
