@@ -323,6 +323,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   /* the tree-view to display the profiles & their status */
   view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+  gtk_tree_view_set_activate_on_single_click (GTK_TREE_VIEW (view), TRUE);
   /* double click should activate the profile */
   g_signal_connect_swapped (GTK_TREE_VIEW (view), "row-activated",
                             G_CALLBACK (terminal_preferences_dialog_activate_profile), dialog);
@@ -373,13 +374,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
 
-  /* button to rename selected profile */
-  button = gtk_button_new_from_icon_name ("document-edit-symbolic", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_set_tooltip_text (button, _("Rename selected Profile"));
-  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_rename_profile), dialog);
-  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
-  gtk_widget_show (button);
-
   /* button to delete a profile */
   button = gtk_button_new_from_icon_name ("list-remove-symbolic", GTK_ICON_SIZE_BUTTON);
   gtk_widget_set_tooltip_text (button, _("Remove Profile"));
@@ -387,10 +381,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
 
-  /* button to activate a profile */
-  button = gtk_button_new_from_icon_name ("object-select-symbolic", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_set_tooltip_text (button, _("Select Profile"));
-  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_activate_profile), dialog);
+  /* button to rename selected profile */
+  button = gtk_button_new_from_icon_name ("document-edit-symbolic", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_set_tooltip_text (button, _("Rename selected Profile"));
+  g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_rename_profile), dialog);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
 
