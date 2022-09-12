@@ -126,6 +126,9 @@ gchar              **terminal_preferences_get_profiles        (TerminalPreferenc
 gint                 terminal_preferences_get_n_profiles      (TerminalPreferences *preferences);
 gboolean             terminal_preferences_has_profile         (TerminalPreferences *preferences,
                                                                const gchar         *profile_name);
+void                 terminal_preferences_rename_profile      (TerminalPreferences *preferences,
+                                                               const gchar         *from,
+                                                               const gchar         *to);
 
 
 G_END_DECLS
