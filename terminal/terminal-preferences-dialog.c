@@ -112,7 +112,6 @@ enum
 {
   COLUMN_PROFILE_NAME,
   COLUMN_PROFILE_IS_DEFAULT,
-  COLUMN_PROFILE_IS_ACTIVE,
   N_COLUMN,
 };
 
@@ -344,12 +343,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                                      "text", COLUMN_PROFILE_NAME,
                                                      NULL);
   gtk_tree_view_column_set_expand (column, TRUE);
-  gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
-
-  column = gtk_tree_view_column_new_with_attributes ("Active",
-                                                     gtk_cell_renderer_pixbuf_new (),
-                                                     "icon-name", COLUMN_PROFILE_IS_ACTIVE,
-                                                     NULL);
   gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
 
   gtk_box_pack_start (GTK_BOX (vbox), view, TRUE, TRUE, 6);
@@ -2459,19 +2452,6 @@ terminal_preferences_dialog_remove_profile (TerminalPreferencesDialog *dialog)
 
 
 
-static gboolean
-terminal_preferences_dialog_clear_active_column (GtkTreeModel *model,
-                                                 GtkTreePath  *path,
-                                                 GtkTreeIter  *iter,
-                                                 gpointer      data)
-{
-  gtk_list_store_set (GTK_LIST_STORE (data), iter, COLUMN_PROFILE_IS_ACTIVE, NULL, -1);
-
-  return FALSE;
-}
-
-
-
 static void
 terminal_preferences_dialog_activate_profile (TerminalPreferencesDialog *dialog)
 {
@@ -2484,10 +2464,6 @@ terminal_preferences_dialog_activate_profile (TerminalPreferencesDialog *dialog)
   selection = gtk_tree_view_get_selection (dialog->view);
   gtk_tree_selection_get_selected (selection, &model, &iter);
 
-  /* remove previous selection */
-  gtk_tree_model_foreach (model, (GtkTreeModelForeachFunc) terminal_preferences_dialog_clear_active_column, dialog->store);
-  /* set selection */
-  gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_IS_ACTIVE, g_strdup ("object-select-symbolic"), -1);
   gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
   
   terminal_preferences_switch_profile (dialog->preferences, profile_name);
@@ -2512,8 +2488,7 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
       gtk_list_store_append (store, &iter);
       gtk_list_store_set (store, &iter,
                           COLUMN_PROFILE_NAME, str[i],
-                          COLUMN_PROFILE_IS_DEFAULT, g_strcmp0 (str[i], def) == 0 ? g_strdup ("object-select-symbolic") : NULL,
-                          COLUMN_PROFILE_IS_ACTIVE, g_strcmp0 (str[i], def) == 0 ? g_strdup ("object-select-symbolic") : NULL, -1);
+                          COLUMN_PROFILE_IS_DEFAULT, g_strcmp0 (str[i], def) == 0 ? g_strdup ("object-select-symbolic") : NULL, -1);
     }
 
   /* TODO: g_strfreev doesn't seem to work but individual g_free calls seem to work */
