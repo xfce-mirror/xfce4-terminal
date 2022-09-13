@@ -135,7 +135,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
                 "color-background", &selected_color_spec,
                 NULL);
 
-  if (g_strcmp0 (selected_path, loader->path) != 0)
+  if (selected_path != NULL && g_strcmp0 (selected_path, loader->path) != 0)
     {
       gint width, height;
 
