@@ -225,6 +225,7 @@ struct _TerminalScreen
   time_t               activity_resize_time;
 
   gchar               *profile;
+  gchar               *background_image_file;
 };
 
 typedef struct
@@ -338,6 +339,7 @@ terminal_screen_init (TerminalScreen *screen)
   screen->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
   screen->session_id = ++screen_last_session_id;
   screen->pid = -1;
+  screen->background_image_file = NULL;
 
   screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
   g_signal_connect (G_OBJECT (screen->terminal), "child-exited",
@@ -361,7 +363,7 @@ terminal_screen_init (TerminalScreen *screen)
 
   screen->preferences = terminal_preferences_get ();
 
-  g_object_get (G_OBJECT (screen->preferences), "scrolling-bar", &scrollbar, NULL);
+  g_object_get (G_OBJECT (screen->preferences), "scrolling-bar", &scrollbar, "background-image-file", &screen->background_image_file, NULL);
 
   screen->swin = gtk_scrolled_window_new (gtk_scrollable_get_hadjustment (GTK_SCROLLABLE (screen->terminal)), gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (screen->terminal)));
   gtk_scrolled_window_set_propagate_natural_width (GTK_SCROLLED_WINDOW (screen->swin), TRUE);
@@ -585,6 +587,7 @@ terminal_screen_draw (GtkWidget *widget,
 
   if (screen->loader == NULL)
     screen->loader = terminal_image_loader_get ();
+  g_object_set (screen->loader, "background-image-file", screen->background_image_file, NULL);
   image = terminal_image_loader_load (screen->loader, width, height);
 
   if (G_UNLIKELY (image == NULL))
@@ -956,8 +959,9 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 static void
 terminal_screen_update_background (TerminalScreen *screen)
 {
-  TerminalBackground background_mode;
-  gdouble            background_alpha;
+  TerminalBackground  background_mode;
+  gdouble             background_alpha;
+  gchar              *image_file = NULL;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
@@ -967,12 +971,19 @@ terminal_screen_update_background (TerminalScreen *screen)
   if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_TRANSPARENT))
     g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_alpha, NULL);
   else if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE))
-    g_object_get (G_OBJECT (screen->preferences), "background-image-shading", &background_alpha, NULL);
+    g_object_get (G_OBJECT (screen->preferences), "background-image-shading", &background_alpha, "background-image-file", &image_file, NULL);
   else
     background_alpha = 1.0;
 
   screen->background_color.alpha = background_alpha;
   vte_terminal_set_color_background (VTE_TERMINAL (screen->terminal), &screen->background_color);
+
+  if (image_file != NULL && g_strcmp0(image_file, screen->background_image_file) != 0)
+    {
+      g_free (screen->background_image_file);
+      screen->background_image_file = g_strdup (image_file);
+    }
+    g_free (image_file);
 
   gtk_widget_queue_draw (GTK_WIDGET (screen));
 }
