@@ -138,6 +138,7 @@ struct _TerminalPreferencesDialog
   GtkWidget           *go_up_image;
   GtkWidget           *go_down_image;
   GtkWidget           *profile_label;
+  GtkTreeIter         *default_profile_iter;
 
   gulong               bg_image_notify_signal_id;
   gulong               bg_image_set_signal_id;
@@ -227,6 +228,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GtkWidget         *entry;
   GtkWidget         *combo;
   GtkWidget         *view;
+  gboolean           has_next;
   gchar             *current;
   gchar             *profile;
   gint               row = 0;
@@ -344,6 +346,20 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                                      NULL);
   gtk_tree_view_column_set_expand (column, TRUE);
   gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
+
+  /* start the dialog with selection set to default profile */
+  has_next = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &current_iter);
+  while (has_next)
+    {
+      gtk_tree_model_get (GTK_TREE_MODEL (store), &current_iter, COLUMN_PROFILE_IS_DEFAULT, &current, -1);
+      if (current != NULL)
+        {
+          gtk_tree_selection_select_iter (gtk_tree_view_get_selection (GTK_TREE_VIEW (view)), &current_iter);
+          dialog->default_profile_iter = gtk_tree_iter_copy (&current_iter);
+          break;
+        }
+      has_next = gtk_tree_model_iter_next (GTK_TREE_MODEL (store), &current_iter);
+    }
 
   gtk_box_pack_start (GTK_BOX (vbox), view, TRUE, TRUE, 6);
 
@@ -2488,7 +2504,7 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
       gtk_list_store_append (store, &iter);
       gtk_list_store_set (store, &iter,
                           COLUMN_PROFILE_NAME, str[i],
-                          COLUMN_PROFILE_IS_DEFAULT, g_strcmp0 (str[i], def) == 0 ? g_strdup ("object-select-symbolic") : NULL, -1);
+                          COLUMN_PROFILE_IS_DEFAULT, g_strcmp0 (str[i], def) == 0 ? "object-select-symbolic" : NULL, -1);
     }
 
   /* TODO: g_strfreev doesn't seem to work but individual g_free calls seem to work */
@@ -2550,40 +2566,43 @@ terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dia
 
 
 
-static gboolean
-terminal_preferences_dialog_clear_default_column (GtkTreeModel *model,
-                                                  GtkTreePath  *path,
-                                                  GtkTreeIter  *iter,
-                                                  gpointer      data)
-{
-  gtk_list_store_set (GTK_LIST_STORE (data), iter, COLUMN_PROFILE_IS_DEFAULT, NULL, -1);
-
-  return FALSE;
-}
-
-
-
 static void
 terminal_preferences_dialog_set_profile_as_default (TerminalPreferencesDialog  *dialog)
 {
   GtkTreeSelection *selection;
-  GtkTreeModel     *model;
+  GtkTreeModel     *model = GTK_TREE_MODEL (dialog->store);
+  GtkTreePath      *default_path = gtk_tree_model_get_path (model, dialog->default_profile_iter);
+  GtkTreePath      *selected_path;
   GtkTreeIter       iter;
   gchar            *profile_name;
 
-  model = GTK_TREE_MODEL (dialog->store);
   selection = gtk_tree_view_get_selection (dialog->view);
   gtk_tree_selection_get_selected (selection, &model, &iter);
+  selected_path = gtk_tree_model_get_path (model, &iter);
+  /* return if profile already set as default */
+  if (gtk_tree_path_compare (default_path, selected_path) == 0)
+    {
+      gtk_tree_path_free (default_path);
+      gtk_tree_path_free (selected_path);
+      return;
+    }
 
-  /* remove previous selection */
-  gtk_tree_model_foreach (model, (GtkTreeModelForeachFunc) terminal_preferences_dialog_clear_default_column, dialog->store);
+  /* unmark the currently set */
+  gtk_list_store_set (dialog->store, dialog->default_profile_iter, COLUMN_PROFILE_IS_DEFAULT, NULL, -1);
+
   /* set selection */
-  gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_IS_DEFAULT, g_strdup ("object-select-symbolic"), -1);
-  gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
+  gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_IS_DEFAULT, "object-select-symbolic", -1);
+
+  /* release previous default iter & set current default iter */
+  gtk_tree_iter_free (dialog->default_profile_iter);
+  dialog->default_profile_iter = gtk_tree_iter_copy (&iter);
   
+  gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
   terminal_preferences_set_default_profile (dialog->preferences, profile_name);
 
   g_free (profile_name);
+  gtk_tree_path_free (default_path);
+  gtk_tree_path_free (selected_path);
 }
 
 
