@@ -22,6 +22,7 @@
 #include <config.h>
 #endif
 
+#include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-image-loader.h>
 #include <terminal/terminal-private.h>
 
@@ -29,30 +30,45 @@
 #define MAX_IMAGE_WIDTH  7680
 #define MAX_IMAGE_HEIGHT 4320
 
+enum
+{
+  PROP_0,
+  PROP_BACKGROUND_IMAGE_FILE,
+  PROP_BACKGROUND_IMAGE_STYLE,
+};
 
 
-static void terminal_image_loader_finalize (GObject             *object);
-static void terminal_image_loader_check    (TerminalImageLoader *loader);
-static void terminal_image_loader_tile     (TerminalImageLoader *loader,
-                                            GdkPixbuf           *target,
-                                            gint                 width,
-                                            gint                 height);
-static void terminal_image_loader_center   (TerminalImageLoader *loader,
-                                            GdkPixbuf           *target,
-                                            gint                 width,
-                                            gint                 height);
-static void terminal_image_loader_scale    (TerminalImageLoader *loader,
-                                            GdkPixbuf           *target,
-                                            gint                 width,
-                                            gint                 height);
-static void terminal_image_loader_stretch  (TerminalImageLoader *loader,
-                                            GdkPixbuf           *target,
-                                            gint                 width,
-                                            gint                 height);
-static void terminal_image_loader_fill     (TerminalImageLoader *loader,
-                                            GdkPixbuf           *target,
-                                            gint                 width,
-                                            gint                 height);
+
+static void terminal_image_loader_finalize     (GObject             *object);
+static void terminal_image_loader_get_property (GObject             *object,
+                                                guint                prop_id,
+                                                GValue              *value,
+                                                GParamSpec          *pspec);
+static void terminal_image_loader_set_property (GObject             *object,
+                                                guint                prop_id,
+                                                const GValue        *value,
+                                                GParamSpec          *pspec);
+static void terminal_image_loader_check        (TerminalImageLoader *loader);
+static void terminal_image_loader_tile         (TerminalImageLoader *loader,
+                                                GdkPixbuf           *target,
+                                                gint                 width,
+                                                gint                 height);
+static void terminal_image_loader_center       (TerminalImageLoader *loader,
+                                                GdkPixbuf           *target,
+                                                gint                 width,
+                                                gint                 height);
+static void terminal_image_loader_scale        (TerminalImageLoader *loader,
+                                                GdkPixbuf           *target,
+                                                gint                 width,
+                                                gint                 height);
+static void terminal_image_loader_stretch      (TerminalImageLoader *loader,
+                                                GdkPixbuf           *target,
+                                                gint                 width,
+                                                gint                 height);
+static void terminal_image_loader_fill         (TerminalImageLoader *loader,
+                                                GdkPixbuf           *target,
+                                                gint                 width,
+                                                gint                 height);
 
 
 struct _TerminalImageLoaderClass
@@ -64,6 +80,8 @@ struct _TerminalImageLoader
 {
   GObject                  parent_instance;
   TerminalPreferences     *preferences;
+  gchar                   *background_image_file;
+  TerminalBackgroundStyle  background_image_style;
 
   /* the cached image data */
   gchar                   *path;
@@ -87,6 +105,31 @@ terminal_image_loader_class_init (TerminalImageLoaderClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_image_loader_finalize;
+  gobject_class->get_property = terminal_image_loader_get_property;
+  gobject_class->set_property = terminal_image_loader_set_property;
+
+  /**
+   * TerminalImageLoader:background-image-file:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_BACKGROUND_IMAGE_FILE,
+                                   g_param_spec_string ("background-image-file",
+                                                        "background-image-file",
+                                                        "background-image-file",
+                                                        NULL,
+                                                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+  /**
+   * TerminalImageLoader:background-image-style:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_BACKGROUND_IMAGE_STYLE,
+                                   g_param_spec_enum ("background-image-style",
+                                                      "background-image-style",
+                                                      "background-image-style",
+                                                      terminal_background_style_get_type (),
+                                                      TERMINAL_BACKGROUND_STYLE_TILED,
+                                                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
 
@@ -95,6 +138,7 @@ static void
 terminal_image_loader_init (TerminalImageLoader *loader)
 {
   loader->preferences = terminal_preferences_get ();
+  loader->background_image_file = NULL;
 }
 
 
@@ -108,6 +152,8 @@ terminal_image_loader_finalize (GObject *object)
   g_slist_free_full (loader->cache_invalid, g_object_unref);
 
   g_object_unref (G_OBJECT (loader->preferences));
+  
+  g_free (loader->background_image_file);
 
   if (G_LIKELY (loader->pixbuf != NULL))
     g_object_unref (G_OBJECT (loader->pixbuf));
@@ -118,24 +164,75 @@ terminal_image_loader_finalize (GObject *object)
 
 
 
+static void       
+terminal_image_loader_get_property (GObject    *object,
+                                    guint       prop_id,
+                                    GValue     *value,
+                                    GParamSpec *pspec)
+{
+  TerminalImageLoader *loader = TERMINAL_IMAGE_LOADER (object);
+
+  switch (prop_id)
+    {
+      case PROP_BACKGROUND_IMAGE_FILE:
+        g_value_set_string (value, loader->background_image_file);
+        break;
+      
+      case PROP_BACKGROUND_IMAGE_STYLE:
+        g_value_set_enum (value, loader->background_image_style);
+        break;
+
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+
+
+static void
+terminal_image_loader_set_property (GObject       *object,
+                                    guint          prop_id,
+                                    const GValue  *value,
+                                    GParamSpec    *pspec)
+{
+  TerminalImageLoader *loader = TERMINAL_IMAGE_LOADER (object);
+
+  switch (prop_id)
+    {
+      case PROP_BACKGROUND_IMAGE_FILE:
+        g_free (loader->background_image_file);
+        loader->background_image_file = g_value_dup_string (value);
+        break;
+
+      case PROP_BACKGROUND_IMAGE_STYLE:
+        loader->background_image_style = g_value_get_enum (value);
+        break;
+
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+
+
 static void
 terminal_image_loader_check (TerminalImageLoader *loader)
 {
-  TerminalBackgroundStyle selected_style;
+  TerminalBackgroundStyle selected_style = loader->background_image_style;
   GdkRGBA                 selected_color;
   gboolean                invalidate = FALSE;
   gchar                  *selected_color_spec;
-  gchar                  *selected_path;
+  gchar                  *selected_path = g_strdup (loader->background_image_file);
 
   terminal_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
 
   g_object_get (G_OBJECT (loader->preferences),
-                "background-image-file", &selected_path,
-                "background-image-style", &selected_style,
                 "color-background", &selected_color_spec,
                 NULL);
 
-  if (g_strcmp0 (selected_path, loader->path) != 0)
+  if (selected_path != NULL && g_strcmp0 (selected_path, loader->path) != 0)
     {
       gint width, height;
 
