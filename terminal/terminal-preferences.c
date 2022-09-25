@@ -1695,7 +1695,7 @@ terminal_preferences_switch_profile (TerminalPreferences *preferences,
 
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
 
-  /* load the default (if reset_current_values is true) settings before switching profiles */
+  /* flush the previous values to default values */
   terminal_preferences_load_defaults (preferences);
   g_free (preferences->profile_name);
 
@@ -1706,7 +1706,7 @@ terminal_preferences_switch_profile (TerminalPreferences *preferences,
       prop_name = g_strdup_printf ("/%s/%s", preferences->profile_name, g_param_spec_get_name (preferences_props [i]));
       has_prop = xfconf_channel_has_property (preferences->channel, prop_name);
       g_free (prop_name);
-      /* only notify the properties that exist for this profile */
+      /* notify the binding iff property exists for this profile */
       if (!has_prop)
         continue;
       g_object_notify (G_OBJECT (preferences), g_param_spec_get_name (preferences_props [i]));
