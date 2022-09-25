@@ -22,6 +22,7 @@
 #include <config.h>
 #endif
 
+#include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-image-loader.h>
 #include <terminal/terminal-private.h>
 
@@ -33,6 +34,7 @@ enum
 {
   PROP_0,
   PROP_BACKGROUND_IMAGE_FILE,
+  PROP_BACKGROUND_IMAGE_STYLE,
 };
 
 
@@ -79,6 +81,7 @@ struct _TerminalImageLoader
   GObject                  parent_instance;
   TerminalPreferences     *preferences;
   gchar                   *background_image_file;
+  TerminalBackgroundStyle  background_image_style;
 
   /* the cached image data */
   gchar                   *path;
@@ -115,6 +118,18 @@ terminal_image_loader_class_init (TerminalImageLoaderClass *klass)
                                                         "background-image-file",
                                                         NULL,
                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+  /**
+   * TerminalImageLoader:background-image-style:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_BACKGROUND_IMAGE_STYLE,
+                                   g_param_spec_enum ("background-image-style",
+                                                      "background-image-style",
+                                                      "background-image-style",
+                                                      terminal_background_style_get_type (),
+                                                      TERMINAL_BACKGROUND_STYLE_TILED,
+                                                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
 
@@ -163,6 +178,10 @@ terminal_image_loader_get_property (GObject    *object,
         g_value_set_string (value, loader->background_image_file);
         break;
       
+      case PROP_BACKGROUND_IMAGE_STYLE:
+        g_value_set_enum (value, loader->background_image_style);
+        break;
+
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
@@ -186,6 +205,10 @@ terminal_image_loader_set_property (GObject       *object,
         loader->background_image_file = g_value_dup_string (value);
         break;
 
+      case PROP_BACKGROUND_IMAGE_STYLE:
+        loader->background_image_style = g_value_get_enum (value);
+        break;
+
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
@@ -197,7 +220,7 @@ terminal_image_loader_set_property (GObject       *object,
 static void
 terminal_image_loader_check (TerminalImageLoader *loader)
 {
-  TerminalBackgroundStyle selected_style;
+  TerminalBackgroundStyle selected_style = loader->background_image_style;
   GdkRGBA                 selected_color;
   gboolean                invalidate = FALSE;
   gchar                  *selected_color_spec;
@@ -206,7 +229,6 @@ terminal_image_loader_check (TerminalImageLoader *loader)
   terminal_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
 
   g_object_get (G_OBJECT (loader->preferences),
-                "background-image-style", &selected_style,
                 "color-background", &selected_color_spec,
                 NULL);
 
