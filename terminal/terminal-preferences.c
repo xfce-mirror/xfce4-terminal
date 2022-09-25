@@ -1690,6 +1690,9 @@ void
 terminal_preferences_switch_profile (TerminalPreferences *preferences,
                                      const gchar         *name)
 {
+  gchar    *prop_name;
+  gboolean  has_prop;
+
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
 
   /* load the default (if reset_current_values is true) settings before switching profiles */
@@ -1699,7 +1702,15 @@ terminal_preferences_switch_profile (TerminalPreferences *preferences,
   /* Now load the profile specific settings */
   preferences->profile_name = g_strdup (name);
   for (gint i = 1; i < N_PROPERTIES; i++)
-    g_object_notify (G_OBJECT (preferences), g_param_spec_get_name (preferences_props[i]));
+    {
+      prop_name = g_strdup_printf ("/%s/%s", preferences->profile_name, g_param_spec_get_name (preferences_props [i]));
+      has_prop = xfconf_channel_has_property (preferences->channel, prop_name);
+      g_free (prop_name);
+      /* only notify the properties that exist for this profile */
+      if (!has_prop)
+        continue;
+      g_object_notify (G_OBJECT (preferences), g_param_spec_get_name (preferences_props [i]));
+    }
 }
 
 
@@ -1868,9 +1879,7 @@ terminal_preferences_load_defaults (TerminalPreferences *preferences)
 
   preferences->profile_name = g_strdup ("default-properties");
   for (gint prop = 1; prop < N_PROPERTIES; prop++)
-    terminal_preferences_set_property (G_OBJECT (preferences), prop,
-                                       g_param_spec_get_default_value (preferences_props [prop]),
-                                       preferences_props [prop]);
+    g_object_notify (G_OBJECT (preferences), g_param_spec_get_name (preferences_props [prop]));
   g_free (preferences->profile_name);
 
   preferences->profile_name = prev;

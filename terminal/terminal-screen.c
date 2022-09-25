@@ -226,6 +226,8 @@ struct _TerminalScreen
 
   gchar               *profile;
   gchar               *background_image_file;
+
+  TerminalBackgroundStyle background_image_style;
 };
 
 typedef struct
@@ -587,7 +589,7 @@ terminal_screen_draw (GtkWidget *widget,
 
   if (screen->loader == NULL)
     screen->loader = terminal_image_loader_get ();
-  g_object_set (screen->loader, "background-image-file", screen->background_image_file, NULL);
+  g_object_set (screen->loader, "background-image-file", screen->background_image_file, "background-image-style", screen->background_image_style, NULL);
   image = terminal_image_loader_load (screen->loader, width, height);
 
   if (G_UNLIKELY (image == NULL))
@@ -959,9 +961,10 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 static void
 terminal_screen_update_background (TerminalScreen *screen)
 {
-  TerminalBackground  background_mode;
-  gdouble             background_alpha;
-  gchar              *image_file = NULL;
+  TerminalBackgroundStyle  selected_style;
+  TerminalBackground       background_mode;
+  gdouble                  background_alpha;
+  gchar                   *image_file = NULL;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
@@ -971,19 +974,28 @@ terminal_screen_update_background (TerminalScreen *screen)
   if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_TRANSPARENT))
     g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_alpha, NULL);
   else if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE))
-    g_object_get (G_OBJECT (screen->preferences), "background-image-shading", &background_alpha, "background-image-file", &image_file, NULL);
+    {
+      g_object_get (G_OBJECT (screen->preferences),
+        "background-image-shading", &background_alpha,
+        "background-image-file", &image_file,
+        "background-image-style", &selected_style,
+        NULL);
+
+      if (image_file != NULL && g_strcmp0 (image_file, screen->background_image_file) != 0)
+        {
+          g_free (screen->background_image_file);
+          screen->background_image_file = g_strdup (image_file);
+        }
+      g_free (image_file);
+
+      if (selected_style != screen->background_image_style)
+        screen->background_image_style = selected_style;
+    }
   else
     background_alpha = 1.0;
 
   screen->background_color.alpha = background_alpha;
   vte_terminal_set_color_background (VTE_TERMINAL (screen->terminal), &screen->background_color);
-
-  if (image_file != NULL && g_strcmp0(image_file, screen->background_image_file) != 0)
-    {
-      g_free (screen->background_image_file);
-      screen->background_image_file = g_strdup (image_file);
-    }
-    g_free (image_file);
 
   gtk_widget_queue_draw (GTK_WIDGET (screen));
 }
