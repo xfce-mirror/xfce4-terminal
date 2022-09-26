@@ -640,10 +640,10 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
   terminal_return_if_fail (screen->preferences == preferences);
 
   current_profile = terminal_preferences_get_active_profile (preferences);
-  needs_change = g_strcmp0 (screen->profile, current_profile) != 0;
+  needs_change = g_strcmp0 (screen->profile, current_profile) == 0;
   g_free (current_profile);
-  if (needs_change)
-      return;
+  if (!needs_change)
+    return;
 
   /* get name */
   name = g_param_spec_get_name (pspec);
@@ -965,9 +965,16 @@ terminal_screen_update_background (TerminalScreen *screen)
   TerminalBackground       background_mode;
   gdouble                  background_alpha;
   gchar                   *image_file = NULL;
+  gchar                   *active;
+  gboolean                 needs_change;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
+
+  active = terminal_preferences_get_active_profile (screen->preferences);
+  needs_change = g_strcmp0 (active, screen->profile) == 0;
+  if (!needs_change)
+    return;
 
   g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
 
