@@ -1260,7 +1260,10 @@ terminal_preferences_init (TerminalPreferences *preferences)
       xfconf_channel_reset_property (preferences->channel, "/", TRUE);
 
       /* Intialize the default-properties property in the channel */
-      terminal_preferences_load_defaults (preferences);
+      preferences->profile_name = g_strdup ("default-properties");
+      for (gint prop = 1; prop < N_PROPERTIES; prop++)
+        terminal_preferences_set_property (G_OBJECT (preferences), prop, g_param_spec_get_default_value (preferences_props [prop]), preferences_props [prop]);
+      g_free (preferences->profile_name);
 
       /* create & store a new default profile named default */
       preferences->profile_name = g_strdup ("default");
@@ -1695,6 +1698,8 @@ terminal_preferences_switch_profile (TerminalPreferences *preferences,
 
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
 
+  g_object_freeze_notify (G_OBJECT (preferences));
+
   /* flush the previous values to default values */
   terminal_preferences_load_defaults (preferences);
   g_free (preferences->profile_name);
@@ -1709,8 +1714,10 @@ terminal_preferences_switch_profile (TerminalPreferences *preferences,
       /* notify the binding iff property exists for this profile */
       if (!has_prop)
         continue;
-      g_object_notify (G_OBJECT (preferences), g_param_spec_get_name (preferences_props [i]));
+      g_object_notify_by_pspec (G_OBJECT (preferences), preferences_props [i]);
     }
+  
+  g_object_thaw_notify (G_OBJECT (preferences));
 }
 
 
@@ -1879,7 +1886,7 @@ terminal_preferences_load_defaults (TerminalPreferences *preferences)
 
   preferences->profile_name = g_strdup ("default-properties");
   for (gint prop = 1; prop < N_PROPERTIES; prop++)
-    g_object_notify (G_OBJECT (preferences), g_param_spec_get_name (preferences_props [prop]));
+    g_object_notify_by_pspec (G_OBJECT (preferences), preferences_props [prop]);
   g_free (preferences->profile_name);
 
   preferences->profile_name = prev;
