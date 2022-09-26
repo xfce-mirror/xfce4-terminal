@@ -325,9 +325,22 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* the tree-view to display the profiles & their status */
   view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
   gtk_tree_view_set_activate_on_single_click (GTK_TREE_VIEW (view), TRUE);
-  /* double click should activate the profile */
+  /* start the dialog with selection set to default profile */
+  has_next = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &current_iter);
+  while (has_next)
+    {
+      gtk_tree_model_get (GTK_TREE_MODEL (store), &current_iter, COLUMN_PROFILE_IS_DEFAULT, &current, -1);
+      if (current != NULL)
+        {
+          gtk_tree_selection_select_iter (gtk_tree_view_get_selection (GTK_TREE_VIEW (view)), &current_iter);
+          dialog->default_profile_iter = gtk_tree_iter_copy (&current_iter);
+          break;
+        }
+      has_next = gtk_tree_model_iter_next (GTK_TREE_MODEL (store), &current_iter);
+    }
+  /* single click should activate the profile */
   g_signal_connect_swapped (GTK_TREE_VIEW (view), "row-activated",
-                            G_CALLBACK (terminal_preferences_dialog_activate_profile), dialog);
+    G_CALLBACK (terminal_preferences_dialog_activate_profile), dialog);
   dialog->view = GTK_TREE_VIEW (view);
   gtk_widget_set_margin_start (view, 12);
   gtk_widget_set_margin_end (view, 12);
@@ -346,20 +359,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                                      NULL);
   gtk_tree_view_column_set_expand (column, TRUE);
   gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
-
-  /* start the dialog with selection set to default profile */
-  has_next = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &current_iter);
-  while (has_next)
-    {
-      gtk_tree_model_get (GTK_TREE_MODEL (store), &current_iter, COLUMN_PROFILE_IS_DEFAULT, &current, -1);
-      if (current != NULL)
-        {
-          gtk_tree_selection_select_iter (gtk_tree_view_get_selection (GTK_TREE_VIEW (view)), &current_iter);
-          dialog->default_profile_iter = gtk_tree_iter_copy (&current_iter);
-          break;
-        }
-      has_next = gtk_tree_model_iter_next (GTK_TREE_MODEL (store), &current_iter);
-    }
 
   gtk_box_pack_start (GTK_BOX (vbox), view, TRUE, TRUE, 6);
 
