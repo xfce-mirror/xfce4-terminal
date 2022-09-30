@@ -336,7 +336,7 @@ terminal_screen_init (TerminalScreen *screen)
 {
   gboolean scrollbar;
 
-  screen->loader = NULL;
+  screen->loader = terminal_image_loader_get ();
   screen->working_directory = g_get_current_dir ();
   screen->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
   screen->session_id = ++screen_last_session_id;
@@ -571,6 +571,8 @@ terminal_screen_draw (GtkWidget *widget,
 {
   TerminalScreen     *screen = TERMINAL_SCREEN (user_data);
   TerminalBackground  background_mode;
+  gchar              *active_profile;
+  gboolean            is_screen_profile_active;
   GdkPixbuf          *image;
   gint                width, height;
   cairo_surface_t    *surface;
@@ -584,15 +586,15 @@ terminal_screen_draw (GtkWidget *widget,
   if (G_LIKELY (background_mode != TERMINAL_BACKGROUND_IMAGE))
     return FALSE;
 
+  active_profile = terminal_preferences_get_default_profile (screen->preferences);
+  is_screen_profile_active = g_strcmp0 (screen->profile, active_profile) == 0;
+  g_free (active_profile);
+  if (G_UNLIKELY (!is_screen_profile_active))
+    terminal_preferences_switch_profile (screen->preferences, screen->profile);
+
   width = gtk_widget_get_allocated_width (screen->terminal);
   height = gtk_widget_get_allocated_height (screen->terminal);
 
-  if (screen->loader == NULL)
-    screen->loader = terminal_image_loader_get ();
-  if (background_mode == TERMINAL_BACKGROUND_IMAGE)
-    g_object_set (screen->loader, "background-image-file", screen->background_image_file, "background-image-style", screen->background_image_style, NULL);
-  else
-    g_object_set (screen->loader, "background-image-file", NULL, "background-image-style", NULL, NULL);
   image = terminal_image_loader_load (screen->loader, width, height);
 
   if (G_UNLIKELY (image == NULL))
@@ -964,43 +966,18 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 static void
 terminal_screen_update_background (TerminalScreen *screen)
 {
-  TerminalBackgroundStyle  selected_style;
   TerminalBackground       background_mode;
   gdouble                  background_alpha;
-  gchar                   *image_file = NULL;
-  gchar                   *active;
-  gboolean                 needs_change;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
-
-  active = terminal_preferences_get_active_profile (screen->preferences);
-  needs_change = g_strcmp0 (active, screen->profile) == 0;
-  if (!needs_change)
-    return;
 
   g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
 
   if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_TRANSPARENT))
     g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_alpha, NULL);
   else if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE))
-    {
-      g_object_get (G_OBJECT (screen->preferences),
-        "background-image-shading", &background_alpha,
-        "background-image-file", &image_file,
-        "background-image-style", &selected_style,
-        NULL);
-
-      if (image_file != NULL && g_strcmp0 (image_file, screen->background_image_file) != 0)
-        {
-          g_free (screen->background_image_file);
-          screen->background_image_file = g_strdup (image_file);
-        }
-      g_free (image_file);
-
-      if (selected_style != screen->background_image_style)
-        screen->background_image_style = selected_style;
-    }
+    g_object_get (G_OBJECT (screen->preferences), "background-image-shading", &background_alpha, NULL);
   else
     background_alpha = 1.0;
 
