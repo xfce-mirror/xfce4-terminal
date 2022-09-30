@@ -127,7 +127,7 @@ terminal_image_loader_class_init (TerminalImageLoaderClass *klass)
                                    g_param_spec_enum ("background-image-style",
                                                       "background-image-style",
                                                       "background-image-style",
-                                                      terminal_background_style_get_type (),
+                                                      TERMINAL_TYPE_BACKGROUND_STYLE,
                                                       TERMINAL_BACKGROUND_STYLE_TILED,
                                                       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
@@ -139,6 +139,7 @@ terminal_image_loader_init (TerminalImageLoader *loader)
 {
   loader->preferences = terminal_preferences_get ();
   loader->background_image_file = NULL;
+  loader->background_image_style = TERMINAL_BACKGROUND_STYLE_TILED;
 }
 
 
@@ -232,7 +233,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
                 "color-background", &selected_color_spec,
                 NULL);
 
-  if (selected_path != NULL && g_strcmp0 (selected_path, loader->path) != 0)
+  if (g_strcmp0 (selected_path, loader->path) != 0)
     {
       gint width, height;
 

@@ -228,6 +228,8 @@ struct _TerminalScreen
   gchar               *background_image_file;
 
   TerminalBackgroundStyle background_image_style;
+
+  TerminalBackground      background_mode;
 };
 
 typedef struct
@@ -342,6 +344,7 @@ terminal_screen_init (TerminalScreen *screen)
   screen->session_id = ++screen_last_session_id;
   screen->pid = -1;
   screen->background_image_file = NULL;
+  screen->background_image_style = TERMINAL_BACKGROUND_STYLE_TILED;
 
   screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
   g_signal_connect (G_OBJECT (screen->terminal), "child-exited",
@@ -365,7 +368,14 @@ terminal_screen_init (TerminalScreen *screen)
 
   screen->preferences = terminal_preferences_get ();
 
-  g_object_get (G_OBJECT (screen->preferences), "scrolling-bar", &scrollbar, "background-image-file", &screen->background_image_file, NULL);
+  /* initialize profile to the default profile */
+  screen->profile = terminal_preferences_get_default_profile (screen->preferences);
+  terminal_preferences_switch_profile (screen->preferences, screen->profile);
+
+  g_object_get (G_OBJECT (screen->preferences),
+   "scrolling-bar", &scrollbar,
+   "background-image-file", &screen->background_image_file,
+   "background-image-style", &screen->background_image_style, NULL);
 
   screen->swin = gtk_scrolled_window_new (gtk_scrollable_get_hadjustment (GTK_SCROLLABLE (screen->terminal)), gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (screen->terminal)));
   gtk_scrolled_window_set_propagate_natural_width (GTK_SCROLLED_WINDOW (screen->swin), TRUE);
@@ -377,9 +387,6 @@ terminal_screen_init (TerminalScreen *screen)
 
   screen->scrollbar = gtk_scrolled_window_get_vscrollbar (GTK_SCROLLED_WINDOW (screen->swin));
   g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
-
-  /* initialize profile to the current default profile */
-  screen->profile = terminal_preferences_get_default_profile (screen->preferences);
 
   /* watch preferences changes */
   g_signal_connect (G_OBJECT (screen->preferences), "notify",
@@ -424,6 +431,7 @@ terminal_screen_finalize (GObject *object)
   g_free (screen->custom_bg_color);
   g_free (screen->custom_title_color);
   g_free (screen->profile);
+  g_free (screen->background_image_file);
 
   (*G_OBJECT_CLASS (terminal_screen_parent_class)->finalize) (object);
 }
@@ -570,9 +578,6 @@ terminal_screen_draw (GtkWidget *widget,
                       gpointer   user_data)
 {
   TerminalScreen     *screen = TERMINAL_SCREEN (user_data);
-  TerminalBackground  background_mode;
-  gchar              *active_profile;
-  gboolean            is_screen_profile_active;
   GdkPixbuf          *image;
   gint                width, height;
   cairo_surface_t    *surface;
@@ -581,20 +586,13 @@ terminal_screen_draw (GtkWidget *widget,
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
 
-  g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
-
-  if (G_LIKELY (background_mode != TERMINAL_BACKGROUND_IMAGE))
+  if (G_LIKELY (screen->background_mode != TERMINAL_BACKGROUND_IMAGE))
     return FALSE;
-
-  active_profile = terminal_preferences_get_default_profile (screen->preferences);
-  is_screen_profile_active = g_strcmp0 (screen->profile, active_profile) == 0;
-  g_free (active_profile);
-  if (G_UNLIKELY (!is_screen_profile_active))
-    terminal_preferences_switch_profile (screen->preferences, screen->profile);
 
   width = gtk_widget_get_allocated_width (screen->terminal);
   height = gtk_widget_get_allocated_height (screen->terminal);
 
+  g_object_set (G_OBJECT (screen->loader), "background-image-file", screen->background_image_file, "background-image-style", screen->background_image_style, NULL);
   image = terminal_image_loader_load (screen->loader, width, height);
 
   if (G_UNLIKELY (image == NULL))
@@ -973,11 +971,15 @@ terminal_screen_update_background (TerminalScreen *screen)
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
 
   g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
+  screen->background_mode = background_mode;
 
   if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_TRANSPARENT))
     g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_alpha, NULL);
   else if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE))
-    g_object_get (G_OBJECT (screen->preferences), "background-image-shading", &background_alpha, NULL);
+    g_object_get (G_OBJECT (screen->preferences),
+                  "background-image-shading", &background_alpha,
+                  "background-image-file", &screen->background_image_file,
+                  "background-image-style", &screen->background_image_style, NULL);
   else
     background_alpha = 1.0;
 
