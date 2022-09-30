@@ -72,7 +72,8 @@ static gboolean  monospace_filter                                        (const 
 static void      terminal_preferences_dialog_add_new_profile             (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_clone_new_profile           (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_remove_profile              (TerminalPreferencesDialog  *dialog);
-static void      terminal_preferences_dialog_activate_profile            (TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_activate_profile            (TerminalPreferencesDialog  *dialog,
+                                                                          GtkTreeSelection           *selection);
 static void      terminal_preferences_dialog_set_profile_as_default      (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_populate_store              (TerminalPreferencesDialog  *dialog,
                                                                           GtkListStore               *store);
@@ -228,13 +229,15 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GtkWidget         *entry;
   GtkWidget         *combo;
   GtkWidget         *view;
+  GtkTreeSelection  *selection;
   gboolean           has_next;
   gchar             *current;
   gchar             *profile;
   gint               row = 0;
 
   /* have a separate instance of preferences so as to not affect  other components */
-  dialog->preferences = terminal_preferences_get ();
+  dialog->preferences = g_object_new (terminal_preferences_get_type (), NULL);
+  g_object_ref (dialog->preferences);
 
   g_signal_connect (G_OBJECT (dialog), "realize",
                     G_CALLBACK (terminal_preferences_dialog_after_realize), NULL);
@@ -325,6 +328,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* the tree-view to display the profiles & their status */
   view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
   gtk_tree_view_set_activate_on_single_click (GTK_TREE_VIEW (view), TRUE);
+  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
   /* start the dialog with selection set to default profile */
   has_next = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &current_iter);
   while (has_next)
@@ -332,14 +337,14 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
       gtk_tree_model_get (GTK_TREE_MODEL (store), &current_iter, COLUMN_PROFILE_IS_DEFAULT, &current, -1);
       if (current != NULL)
         {
-          gtk_tree_selection_select_iter (gtk_tree_view_get_selection (GTK_TREE_VIEW (view)), &current_iter);
+          gtk_tree_selection_select_iter (selection, &current_iter);
           dialog->default_profile_iter = gtk_tree_iter_copy (&current_iter);
           break;
         }
       has_next = gtk_tree_model_iter_next (GTK_TREE_MODEL (store), &current_iter);
     }
   /* single click should activate the profile */
-  g_signal_connect_swapped (GTK_TREE_VIEW (view), "row-activated",
+  g_signal_connect_swapped (GTK_TREE_SELECTION (selection), "changed",
     G_CALLBACK (terminal_preferences_dialog_activate_profile), dialog);
   dialog->view = GTK_TREE_VIEW (view);
   gtk_widget_set_margin_start (view, 12);
@@ -2468,15 +2473,13 @@ terminal_preferences_dialog_remove_profile (TerminalPreferencesDialog *dialog)
 
 
 static void
-terminal_preferences_dialog_activate_profile (TerminalPreferencesDialog *dialog)
+terminal_preferences_dialog_activate_profile (TerminalPreferencesDialog *dialog,
+                                              GtkTreeSelection          *selection)
 {
-  GtkTreeSelection *selection;
   GtkTreeModel     *model;
   GtkTreeIter       iter;
   gchar            *profile_name;
 
-  model = GTK_TREE_MODEL (dialog->store);
-  selection = gtk_tree_view_get_selection (dialog->view);
   gtk_tree_selection_get_selected (selection, &model, &iter);
 
   gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);

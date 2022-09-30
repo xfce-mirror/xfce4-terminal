@@ -589,7 +589,10 @@ terminal_screen_draw (GtkWidget *widget,
 
   if (screen->loader == NULL)
     screen->loader = terminal_image_loader_get ();
-  g_object_set (screen->loader, "background-image-file", screen->background_image_file, "background-image-style", screen->background_image_style, NULL);
+  if (background_mode == TERMINAL_BACKGROUND_IMAGE)
+    g_object_set (screen->loader, "background-image-file", screen->background_image_file, "background-image-style", screen->background_image_style, NULL);
+  else
+    g_object_set (screen->loader, "background-image-file", NULL, "background-image-style", NULL, NULL);
   image = terminal_image_loader_load (screen->loader, width, height);
 
   if (G_UNLIKELY (image == NULL))
@@ -3200,11 +3203,6 @@ terminal_screen_change_profile_to (TerminalScreen *screen,
 
   /* update all the settings */
   terminal_screen_update_all (screen);
-
-  /* We don't want the profile change in preferences to be persistent
-     as this function should change preferences only for this instance of screen */
-  if (g_strcmp0 (name, preferences_active_profile) != 0)
-    terminal_preferences_switch_profile (screen->preferences, preferences_active_profile);
 
   g_free (preferences_active_profile);
 }
