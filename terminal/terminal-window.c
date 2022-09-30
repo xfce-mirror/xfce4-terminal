@@ -259,6 +259,7 @@ static void         terminal_window_update_help_menu              (TerminalWindo
                                                                    GtkWidget           *menu);
 static gboolean     terminal_window_can_go_left                   (TerminalWindow      *window);
 static gboolean     terminal_window_can_go_right                  (TerminalWindow      *window);
+static void         terminal_window_update_profiles               (TerminalWindow      *window);
 
 
 struct _TerminalWindowPrivate
@@ -562,6 +563,10 @@ terminal_window_init (TerminalWindow *window)
   terminal_window_update_mnemonic_modifier (window);
   g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "notify::shortcuts-no-mnemonics",
                             G_CALLBACK (terminal_window_update_mnemonic_modifier), window);
+
+  /* update the active profiles in screens when profiles have been altered */
+  g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "profiles-changed",
+                            G_CALLBACK (terminal_window_update_profiles), window);
 
   window->fullscreen_supported = TRUE;
 #if defined(GDK_WINDOWING_X11)
@@ -3344,14 +3349,13 @@ terminal_window_update_profiles_menu (TerminalWindow      *window,
     {
       item = gtk_radio_menu_item_new_with_mnemonic (group, _(profiles[i]));
       group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item));
-      if (g_strcmp0 (profiles[i], current_profile) == 0)
+      if (g_strcmp0 (profiles [i], current_profile) == 0)
         gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
       g_signal_connect_swapped (G_OBJECT (item), "toggled",
                                 G_CALLBACK (terminal_window_action_set_profile), window);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
     }
 
-  /* TODO: g_strfreev doesn't seem to work but individual g_free calls seem to work */
   g_strfreev (profiles);
   g_free (current_profile);
 
@@ -3446,4 +3450,33 @@ XfceGtkActionEntry*
 terminal_window_get_action_entries (void)
 {
   return action_entries;
+}
+
+
+
+static void
+terminal_window_update_profiles (TerminalWindow *window)
+{
+  TerminalScreen *screen;
+  gchar          *default_profile;
+  gchar          *active_profile;
+  gint            N;
+  
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (window->priv->preferences));
+
+  default_profile = terminal_preferences_get_default_profile (window->priv->preferences);
+  N = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
+
+  for (gint i = 0; i < N; i++)
+    {
+      screen = TERMINAL_SCREEN (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), i));
+      active_profile = terminal_screen_get_profile_name (screen);
+      g_print ("%s %s\n", default_profile, active_profile);
+      if (!terminal_preferences_has_profile (window->priv->preferences, active_profile))
+        terminal_screen_change_profile_to (screen, default_profile);
+      g_free (active_profile);
+    }
+
+  g_free (default_profile);
 }
