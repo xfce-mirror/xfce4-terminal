@@ -77,7 +77,9 @@ static void      terminal_preferences_dialog_activate_profile            (Termin
 static void      terminal_preferences_dialog_set_profile_as_default      (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_populate_store              (TerminalPreferencesDialog  *dialog,
                                                                           GtkListStore               *store);
-static gchar    *terminal_preferences_dialog_get_new_profile_name        (TerminalPreferencesDialog  *dialog);
+static gchar    *terminal_preferences_dialog_get_profile_name        (TerminalPreferencesDialog  *dialog,
+                                                                          const gchar                *dialog_title,
+                                                                          const gchar                *placeholder);
 static void      terminal_preferences_dialog_after_realize               (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_rename_profile              (TerminalPreferencesDialog  *dialog);
 
@@ -272,9 +274,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (notebook);
 
 
-
   /*
-   * Profile
+   * Profiles
    */
   /* list store for the profile names, to be used for the tree-view */
   store = gtk_list_store_new (N_COLUMN, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
@@ -286,13 +287,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   /* label to signify active profile */
   profile = terminal_preferences_get_default_profile (dialog->preferences);
-  dialog->profile_label = gtk_label_new (profile);
+  dialog->profile_label = gtk_label_new_with_mnemonic (_(profile));
   gtk_box_pack_start (GTK_BOX (box), dialog->profile_label, TRUE, TRUE, 0);
   gtk_widget_show (dialog->profile_label);
   g_free (profile);
 
   /* append the dropdown icon to the button */
-  dialog->go_up_image   = gtk_image_new_from_icon_name ("go-up",   GTK_ICON_SIZE_BUTTON);
+  dialog->go_up_image   = gtk_image_new_from_icon_name ("go-up", GTK_ICON_SIZE_BUTTON);
   g_object_ref_sink (dialog->go_up_image);
   gtk_box_pack_start (GTK_BOX (box), dialog->go_up_image, FALSE, TRUE, 0);
   gtk_widget_set_halign (dialog->go_up_image, GTK_ALIGN_END);
@@ -375,7 +376,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   
   /* button to create a new profile from current active profile */
   button = gtk_button_new_from_icon_name ("edit-copy-symbolic", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_set_tooltip_text (button, _("Copy Profile"));
+  gtk_widget_set_tooltip_text (button, _("Clone Profile"));
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (terminal_preferences_dialog_clone_new_profile), dialog);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
@@ -2411,7 +2412,7 @@ terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
 
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
 
-  profile_name = terminal_preferences_dialog_get_new_profile_name (dialog);
+  profile_name = terminal_preferences_dialog_get_profile_name (dialog, "New Profile", NULL);
 
   if (profile_name == NULL || terminal_preferences_has_profile (dialog->preferences, profile_name))
     return;
@@ -2428,12 +2429,23 @@ terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
 static void
 terminal_preferences_dialog_clone_new_profile (TerminalPreferencesDialog *dialog)
 {
-  GtkTreeIter  iter;
-  gchar       *profile_name;
+  GtkTreeSelection *selection;
+  GtkTreeModel     *model;
+  GtkTreeIter       iter;
+  gchar            *profile_name;
+  gchar            *dialog_title;
 
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
 
-  profile_name = terminal_preferences_dialog_get_new_profile_name (dialog);
+  model = GTK_TREE_MODEL (dialog->store);
+  selection = gtk_tree_view_get_selection (dialog->view);
+  gtk_tree_selection_get_selected (selection, &model, &iter);
+
+  gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter,
+                      COLUMN_PROFILE_NAME, &profile_name, -1);
+
+  dialog_title = g_strdup_printf ("Clone/Copy/Duplicate Profile - %s", profile_name);
+  profile_name = terminal_preferences_dialog_get_profile_name (dialog, dialog_title, profile_name);
 
   if (profile_name == NULL || terminal_preferences_has_profile (dialog->preferences, profile_name))
     return;
@@ -2443,6 +2455,7 @@ terminal_preferences_dialog_clone_new_profile (TerminalPreferencesDialog *dialog
   terminal_preferences_add_profile (dialog->preferences, profile_name, TRUE);
 
   g_free (profile_name);
+  g_free (dialog_title);
 }
 
 
@@ -2517,7 +2530,9 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
 
 
 static gchar *
-terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dialog)
+terminal_preferences_dialog_get_profile_name (TerminalPreferencesDialog *dialog,
+                                              const gchar               *dialog_title,
+                                              const gchar               *placeholder)
 {
   gchar       *profile_name = NULL;
   GtkWidget   *entry_dialog;
@@ -2527,7 +2542,7 @@ terminal_preferences_dialog_get_new_profile_name (TerminalPreferencesDialog *dia
 
   /* Create the prompt dialog which will contain the GtkEntry */
   entry_dialog = xfce_titled_dialog_new ();
-  gtk_window_set_title (GTK_WINDOW (entry_dialog), _("New Profile"));
+  gtk_window_set_title (GTK_WINDOW (entry_dialog), _(dialog_title));
   gtk_window_set_default_size (GTK_WINDOW (entry_dialog), 300, 50);
 
   /* Add cancel & accept action buttons */
@@ -2627,20 +2642,23 @@ terminal_preferences_dialog_rename_profile (TerminalPreferencesDialog *dialog)
   GtkTreeIter       iter;
   gchar            *profile_name;
   gchar            *new_profile_name;
-
-  /* get new profile name from user */
-  new_profile_name = terminal_preferences_dialog_get_new_profile_name (dialog);
-
-  if (new_profile_name == NULL || terminal_preferences_has_profile (dialog->preferences, new_profile_name))
-    return;
+  gchar            *dialog_title;
 
   model = GTK_TREE_MODEL (dialog->store);
   selection = gtk_tree_view_get_selection (dialog->view);
   gtk_tree_selection_get_selected (selection, &model, &iter);
 
-  /* change the profile name in the view */
   gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter,
                       COLUMN_PROFILE_NAME, &profile_name, -1);
+
+  dialog_title = g_strdup_printf ("Rename Profile - %s", profile_name);
+  /* get new profile name from user */
+  new_profile_name = terminal_preferences_dialog_get_profile_name (dialog, dialog_title, profile_name);
+
+  if (new_profile_name == NULL || terminal_preferences_has_profile (dialog->preferences, new_profile_name))
+    return;
+
+  /* change the profile name in the view */
   gtk_list_store_set (GTK_LIST_STORE (dialog->store), &iter,
                       COLUMN_PROFILE_NAME, new_profile_name, -1);
   gtk_label_set_text(GTK_LABEL (dialog->profile_label), new_profile_name);
@@ -2649,4 +2667,5 @@ terminal_preferences_dialog_rename_profile (TerminalPreferencesDialog *dialog)
   terminal_preferences_rename_profile (dialog->preferences, profile_name, new_profile_name);
 
   g_free (profile_name);
+  g_free (dialog_title);
 }
