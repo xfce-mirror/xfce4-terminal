@@ -225,7 +225,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
   GdkRGBA                 selected_color;
   gboolean                invalidate = FALSE;
   gchar                  *selected_color_spec;
-  gchar                  *selected_path = g_strdup (loader->background_image_file);
+  const gchar            *selected_path = loader->background_image_file;
 
   terminal_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
 
@@ -279,7 +279,6 @@ terminal_image_loader_check (TerminalImageLoader *loader)
     }
 
   g_free (selected_color_spec);
-  g_free (selected_path);
 }
 
 

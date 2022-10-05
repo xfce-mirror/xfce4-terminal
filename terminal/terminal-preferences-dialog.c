@@ -238,8 +238,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gint               row = 0;
 
   /* have a separate instance of preferences so as to not affect  other components */
-  dialog->preferences = g_object_new (terminal_preferences_get_type (), NULL);
-  g_object_ref (dialog->preferences);
+  dialog->preferences = g_object_ref (g_object_new (terminal_preferences_get_type (), NULL));
 
   g_signal_connect (G_OBJECT (dialog), "realize",
                     G_CALLBACK (terminal_preferences_dialog_after_realize), NULL);
@@ -293,14 +292,12 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_free (profile);
 
   /* append the dropdown icon to the button */
-  dialog->go_up_image   = gtk_image_new_from_icon_name ("go-up", GTK_ICON_SIZE_BUTTON);
-  g_object_ref_sink (dialog->go_up_image);
+  dialog->go_up_image = g_object_ref_sink (gtk_image_new_from_icon_name ("go-up", GTK_ICON_SIZE_BUTTON));
   gtk_box_pack_start (GTK_BOX (box), dialog->go_up_image, FALSE, TRUE, 0);
   gtk_widget_set_halign (dialog->go_up_image, GTK_ALIGN_END);
   gtk_widget_hide (dialog->go_up_image);
 
-  dialog->go_down_image = gtk_image_new_from_icon_name ("go-down", GTK_ICON_SIZE_BUTTON);
-  g_object_ref_sink (dialog->go_down_image);
+  dialog->go_down_image = g_object_ref_sink (gtk_image_new_from_icon_name ("go-down", GTK_ICON_SIZE_BUTTON));
   gtk_box_pack_start (GTK_BOX (box), dialog->go_down_image, FALSE, TRUE, 0);
   gtk_widget_set_halign (dialog->go_down_image, GTK_ALIGN_END);
   gtk_widget_show (dialog->go_down_image);
@@ -2522,7 +2519,6 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
                           COLUMN_PROFILE_IS_DEFAULT, g_strcmp0 (str[i], def) == 0 ? "object-select-symbolic" : NULL, -1);
     }
 
-  /* TODO: g_strfreev doesn't seem to work but individual g_free calls seem to work */
   g_strfreev (str);
   g_free (def);
 }

@@ -3460,15 +3460,15 @@ terminal_window_update_profiles (TerminalWindow *window)
   TerminalScreen *screen;
   gchar          *default_profile;
   gchar          *active_profile;
-  gint            N;
+  gint            n_profiles;
   
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (window->priv->preferences));
 
   default_profile = terminal_preferences_get_default_profile (window->priv->preferences);
-  N = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
+  n_profiles = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
 
-  for (gint i = 0; i < N; i++)
+  for (gint i = 0; i < n_profiles; i++)
     {
       screen = TERMINAL_SCREEN (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), i));
       active_profile = terminal_screen_get_profile_name (screen);
