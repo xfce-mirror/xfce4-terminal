@@ -3472,7 +3472,6 @@ terminal_window_update_profiles (TerminalWindow *window)
     {
       screen = TERMINAL_SCREEN (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), i));
       active_profile = terminal_screen_get_profile_name (screen);
-      g_print ("%s %s\n", default_profile, active_profile);
       if (!terminal_preferences_has_profile (window->priv->preferences, active_profile))
         terminal_screen_change_profile_to (screen, default_profile);
       g_free (active_profile);

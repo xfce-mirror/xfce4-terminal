@@ -964,8 +964,8 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 static void
 terminal_screen_update_background (TerminalScreen *screen)
 {
-  TerminalBackground       background_mode;
-  gdouble                  background_alpha;
+  TerminalBackground background_mode;
+  gdouble            background_alpha;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
