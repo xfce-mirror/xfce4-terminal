@@ -77,7 +77,7 @@ static void      terminal_preferences_dialog_activate_profile            (Termin
 static void      terminal_preferences_dialog_set_profile_as_default      (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_populate_store              (TerminalPreferencesDialog  *dialog,
                                                                           GtkListStore               *store);
-static gchar    *terminal_preferences_dialog_get_profile_name        (TerminalPreferencesDialog  *dialog,
+static gchar    *terminal_preferences_dialog_get_profile_name            (TerminalPreferencesDialog  *dialog,
                                                                           const gchar                *dialog_title,
                                                                           const gchar                *placeholder);
 static void      terminal_preferences_dialog_after_realize               (TerminalPreferencesDialog  *dialog);
@@ -142,6 +142,7 @@ struct _TerminalPreferencesDialog
   GtkWidget           *go_down_image;
   GtkWidget           *profile_label;
   GtkTreeIter         *default_profile_iter;
+  GtkWidget           *profile_name_accept;
 
   gulong               bg_image_notify_signal_id;
   gulong               bg_image_set_signal_id;
@@ -2529,10 +2530,69 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
 
 
 
+static void
+validate_profile_name_dialog_input (TerminalPreferences *preferences,
+                                    GParamSpec          *spec,
+                                    GtkWidget           *entry)
+{
+  const gchar *input;
+  gchar       *invalid_tooltip_profile_exists = "A profile with this name already exists. Please choose a different name.";
+  gchar       *invalid_tooltip_input_null = "A profile name has to be atleast 1 character long.";
+  gchar       *valid_tooltip_text = "This is a fine name ;)";
+  gboolean     input_is_invalid;
+  gint         len;
+
+  terminal_return_if_fail (TERMINAL_IS_TERMINAL_PREFERENCES (preferences));
+  terminal_return_if_fail (GTK_IS_ENTRY (entry));
+
+  input = gtk_entry_get_text (GTK_ENTRY (entry));
+  len = gtk_entry_get_text_length (GTK_ENTRY (entry));
+  input_is_invalid = len == 0 || terminal_preferences_has_profile (preferences, input);
+  gtk_entry_set_icon_from_icon_name (GTK_ENTRY (entry), GTK_ENTRY_ICON_PRIMARY, input_is_invalid ? "emblem-important-symbolic" : "emblem-ok-symbolic");
+  gtk_entry_set_icon_tooltip_text (GTK_ENTRY (entry), GTK_ENTRY_ICON_PRIMARY,
+                                   input_is_invalid ? 
+                                   (len == 0 ? invalid_tooltip_input_null : invalid_tooltip_profile_exists)
+                                   : valid_tooltip_text);
+}
+
+
+
+static void
+change_accpet_button_sensitive (GtkWidget  *entry,
+                                GParamSpec *spec,
+                                GtkWidget  *button)
+{
+  gint len;
+
+  terminal_return_if_fail (GTK_IS_ENTRY (entry));
+  terminal_return_if_fail (GTK_IS_BUTTON (button));
+
+  len = gtk_entry_get_text_length (GTK_ENTRY (entry));
+  gtk_widget_set_sensitive (button, len > 0);
+}
+
+
+
+static gboolean
+transform_text_to_bool (GBinding     *binding,
+                        const GValue *from,
+                        GValue       *to,
+                        gpointer      user_data)
+{
+  TerminalPreferences *preferences = TERMINAL_PREFERENCES (user_data);
+  gboolean             profile_exists = terminal_preferences_has_profile (preferences, g_value_get_string (from));
+
+  g_value_set_boolean (to, !profile_exists);
+
+  return TRUE;
+}
+
+
+
 static gchar *
 terminal_preferences_dialog_get_profile_name (TerminalPreferencesDialog *dialog,
                                               const gchar               *dialog_title,
-                                              const gchar               *placeholder)
+                                              const gchar               *buffer_text)
 {
   gchar       *profile_name = NULL;
   GtkWidget   *entry_dialog;
@@ -2552,6 +2612,8 @@ terminal_preferences_dialog_get_profile_name (TerminalPreferencesDialog *dialog,
 
   /* Add the GtkEntry to the prompt dialog */
   entry = gtk_entry_new ();
+  if (buffer_text != NULL)
+    gtk_entry_set_text (GTK_ENTRY (entry), buffer_text);
   gtk_widget_set_margin_start (entry, 15);
   gtk_widget_set_margin_end (entry, 15);
   gtk_widget_show (entry);
@@ -2564,10 +2626,21 @@ terminal_preferences_dialog_get_profile_name (TerminalPreferencesDialog *dialog,
   /* without this you can still interact with the popover */
   gtk_popover_set_modal (GTK_POPOVER (dialog->profile_popover), FALSE);
 
+  /* make accept button in-sensitive if a profile with the input string already exists */
+  g_object_bind_property_full (G_OBJECT (entry), "text",
+                               G_OBJECT (accept_button), "sensitive",
+                               G_BINDING_SYNC_CREATE,
+                               transform_text_to_bool, NULL,
+                               dialog->preferences, NULL);
   /* make accept button in-sensitive if the input string is 0 in length */
-  g_object_bind_property (G_OBJECT (entry), "text-length",
-                          G_OBJECT (accept_button), "sensitive",
-                          G_BINDING_SYNC_CREATE);
+  g_signal_connect (G_OBJECT (entry), "notify::text",
+                            G_CALLBACK (change_accpet_button_sensitive), accept_button);
+  change_accpet_button_sensitive (entry, NULL, accept_button);
+
+  /* validate the user's input */
+  g_signal_connect_swapped (G_OBJECT (entry), "notify::text",
+                            G_CALLBACK (validate_profile_name_dialog_input), dialog->preferences);
+  validate_profile_name_dialog_input (dialog->preferences, NULL, entry);
 
   /* Run the prompt */
   response = gtk_dialog_run (GTK_DIALOG (entry_dialog));
