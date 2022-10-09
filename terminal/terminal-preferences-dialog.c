@@ -2531,9 +2531,9 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
 
 
 static void
-validate_profile_name_dialog_input (TerminalPreferences *preferences,
-                                    GParamSpec          *spec,
-                                    GtkWidget           *entry)
+validate_profile_name_dialog_input (TerminalPreferencesDialog *dialog,
+                                    GParamSpec                *spec,
+                                    GtkWidget                 *entry)
 {
   const gchar *input;
   gchar       *invalid_tooltip_profile_exists = "A profile with this name already exists. Please choose a different name.";
@@ -2547,28 +2547,13 @@ validate_profile_name_dialog_input (TerminalPreferences *preferences,
 
   input = gtk_entry_get_text (GTK_ENTRY (entry));
   len = gtk_entry_get_text_length (GTK_ENTRY (entry));
-  input_is_invalid = len == 0 || terminal_preferences_has_profile (preferences, input);
+  input_is_invalid = len == 0 || terminal_preferences_has_profile (dialog->preferences, input);
   gtk_entry_set_icon_from_icon_name (GTK_ENTRY (entry), GTK_ENTRY_ICON_PRIMARY, input_is_invalid ? "emblem-important-symbolic" : "emblem-ok-symbolic");
   gtk_entry_set_icon_tooltip_text (GTK_ENTRY (entry), GTK_ENTRY_ICON_PRIMARY,
                                    input_is_invalid ? 
                                    (len == 0 ? invalid_tooltip_input_null : invalid_tooltip_profile_exists)
                                    : valid_tooltip_text);
-}
-
-
-
-static void
-change_accpet_button_sensitive (GtkWidget  *entry,
-                                GParamSpec *spec,
-                                GtkWidget  *button)
-{
-  gint len;
-
-  terminal_return_if_fail (GTK_IS_ENTRY (entry));
-  terminal_return_if_fail (GTK_IS_BUTTON (button));
-
-  len = gtk_entry_get_text_length (GTK_ENTRY (entry));
-  gtk_widget_set_sensitive (button, len > 0);
+  gtk_widget_set_sensitive (dialog->profile_name_accept, !input_is_invalid);
 }
 
 
@@ -2609,6 +2594,7 @@ terminal_preferences_dialog_get_profile_name (TerminalPreferencesDialog *dialog,
   xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (entry_dialog));
   xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Cancel"), GTK_RESPONSE_CANCEL);
   accept_button = xfce_titled_dialog_add_button (XFCE_TITLED_DIALOG (entry_dialog), _("Accept"), GTK_RESPONSE_APPLY);
+  dialog->profile_name_accept = accept_button;
 
   /* Add the GtkEntry to the prompt dialog */
   entry = gtk_entry_new ();
@@ -2632,15 +2618,11 @@ terminal_preferences_dialog_get_profile_name (TerminalPreferencesDialog *dialog,
                                G_BINDING_SYNC_CREATE,
                                transform_text_to_bool, NULL,
                                dialog->preferences, NULL);
-  /* make accept button in-sensitive if the input string is 0 in length */
-  g_signal_connect (G_OBJECT (entry), "notify::text",
-                            G_CALLBACK (change_accpet_button_sensitive), accept_button);
-  change_accpet_button_sensitive (entry, NULL, accept_button);
 
   /* validate the user's input */
   g_signal_connect_swapped (G_OBJECT (entry), "notify::text",
-                            G_CALLBACK (validate_profile_name_dialog_input), dialog->preferences);
-  validate_profile_name_dialog_input (dialog->preferences, NULL, entry);
+                            G_CALLBACK (validate_profile_name_dialog_input), dialog);
+  validate_profile_name_dialog_input (dialog, NULL, entry);
 
   /* Run the prompt */
   response = gtk_dialog_run (GTK_DIALOG (entry_dialog));
