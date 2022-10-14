@@ -240,7 +240,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   /* have a separate instance of preferences so as to not affect  other components */
   dialog->preferences = g_object_new (terminal_preferences_get_type (), NULL);
-  g_object_ref (dialog->preferences);
 
   g_signal_connect (G_OBJECT (dialog), "realize",
                     G_CALLBACK (terminal_preferences_dialog_after_realize), NULL);
@@ -294,14 +293,12 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_free (profile);
 
   /* append the dropdown icon to the button */
-  dialog->go_up_image   = gtk_image_new_from_icon_name ("go-up", GTK_ICON_SIZE_BUTTON);
-  g_object_ref_sink (dialog->go_up_image);
+  dialog->go_up_image   = gtk_image_new_from_icon_name ("pan-up-symbolic", GTK_ICON_SIZE_BUTTON);
   gtk_box_pack_start (GTK_BOX (box), dialog->go_up_image, FALSE, TRUE, 0);
   gtk_widget_set_halign (dialog->go_up_image, GTK_ALIGN_END);
   gtk_widget_hide (dialog->go_up_image);
 
-  dialog->go_down_image = gtk_image_new_from_icon_name ("go-down", GTK_ICON_SIZE_BUTTON);
-  g_object_ref_sink (dialog->go_down_image);
+  dialog->go_down_image = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_BUTTON);
   gtk_box_pack_start (GTK_BOX (box), dialog->go_down_image, FALSE, TRUE, 0);
   gtk_widget_set_halign (dialog->go_down_image, GTK_ALIGN_END);
   gtk_widget_show (dialog->go_down_image);
@@ -2520,6 +2517,8 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
       gtk_list_store_append (store, &iter);
       gtk_list_store_set (store, &iter,
                           COLUMN_PROFILE_NAME, str[i],
+                          /* This Column has a PixbufRenderer. "object-select-symbolic" stands for the 'tick' symbol.
+                           * If NULL is set then nothing is drawn by the PixbufRenderer. */
                           COLUMN_PROFILE_IS_DEFAULT, g_strcmp0 (str[i], def) == 0 ? "object-select-symbolic" : NULL, -1);
     }
 
@@ -2662,7 +2661,7 @@ terminal_preferences_dialog_set_profile_as_default (TerminalPreferencesDialog  *
   /* unmark the currently set */
   gtk_list_store_set (dialog->store, dialog->default_profile_iter, COLUMN_PROFILE_IS_DEFAULT, NULL, -1);
 
-  /* set selection */
+  /* This column has a PixbufRenderer. So we set the symbol to be drawn. In this case the 'tick' symbol. */
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_IS_DEFAULT, "object-select-symbolic", -1);
 
   /* release previous default iter & set current default iter */
