@@ -565,9 +565,20 @@ terminal_screen_unrealize (GtkWidget *widget)
 static void
 terminal_screen_style_updated (GtkWidget *widget)
 {
+  TerminalScreen *screen = TERMINAL_SCREEN (widget);
+  gchar          *active_profile;
+
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
+
   (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->style_updated) (widget);
 
-  terminal_screen_update_colors (TERMINAL_SCREEN (widget));
+  active_profile = terminal_preferences_get_active_profile (screen->preferences);
+
+  /* update colors iff the change comes from the profile that screen is currently using */
+  if (g_strcmp0 (active_profile, screen->profile) == 0)
+    terminal_screen_update_colors (TERMINAL_SCREEN (widget));
+
+  g_free (active_profile);
 }
 
 
