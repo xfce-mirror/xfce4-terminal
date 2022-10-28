@@ -73,7 +73,8 @@ xfce4_terminal_LDADD = \
 	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCE4KBD_PRIVATE_LIBS) \
 	$(XFCONF_LIBS) \
-	$(TERMINAL_LIBS)
+	$(TERMINAL_LIBS) \
+	$(PCRE2_LIBS)
 
 if HAVE_UTEMPTER
 xfce4_terminal_LDADD += -lutempter
