@@ -117,6 +117,7 @@ enum
   PROP_MISC_SEARCH_DIALOG_OPACITY,
   PROP_MISC_SHOW_UNSAFE_PASTE_DIALOG,
   PROP_MISC_RIGHT_CLICK_ACTION,
+  PROP_MISC_HYPERLINKS_ENABLED,
   PROP_SCROLLING_BAR,
   PROP_OVERLAY_SCROLLING,
   PROP_SCROLLING_LINES,
@@ -1085,6 +1086,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          TERMINAL_TYPE_RIGHT_CLICK_ACTION,
                          TERMINAL_RIGHT_CLICK_ACTION_CONTEXT_MENU,
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-hyperlinks-enabled:
+   **/
+  preferences_props[PROP_MISC_HYPERLINKS_ENABLED] =
+      g_param_spec_boolean ("misc-hyperlinks-enabled",
+                            NULL,
+                            "MiscHyperlinksEnabled",
+                            TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:scrolling-bar:

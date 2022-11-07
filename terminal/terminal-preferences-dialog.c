@@ -1567,6 +1567,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
 
+  /* next row */
+  row++;
+
+  button = gtk_check_button_new_with_mnemonic (_("Enable Hyperlinks"));
+  gtk_widget_set_tooltip_text (button, _("Enable support for hyperlinks."));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-hyperlinks-enabled",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
+  gtk_widget_show (button);
+
 
 
   /*
