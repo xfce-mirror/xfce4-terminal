@@ -1583,8 +1583,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (frame);
 
   grid = xfce_shortcuts_editor_new (7,
-                                    _("Window"), terminal_window_get_action_entries (), TERMINAL_WINDOW_ACTION_N,
-                                    _("Terminal"), terminal_widget_get_action_entries (), TERMINAL_WIDGET_ACTION_N);
+                                    _("Window"), terminal_window_get_action_entries (), (size_t) TERMINAL_WINDOW_ACTION_N,
+                                    _("Terminal"), terminal_widget_get_action_entries (), (size_t) TERMINAL_WIDGET_ACTION_N);
   gtk_container_add (GTK_CONTAINER (frame), grid);
   gtk_widget_show (grid);
 }
