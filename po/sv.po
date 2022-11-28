@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-24 00:51+0200\n"
+"POT-Creation-Date: 2022-11-28 15:06+0100\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Luna Jernberg <bittin@cafe8bitar.se>, 2020-2022\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfce-apps/language/sv/)\n"
@@ -693,8 +693,8 @@ msgid ""
 msgstr "Aktivera detta för att tillåta program som körs i terminalfönster att använda fet text."
 
 #: ../terminal/terminal-preferences-dialog.c:773
-msgid "Text blinks:"
-msgstr "Text blinkning:"
+msgid "Cursor blinks:"
+msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:779
 msgid "Never"
@@ -1009,23 +1009,31 @@ msgstr "Klistra in urklipp"
 msgid "Paste selection"
 msgstr "Klistra in markering"
 
+#: ../terminal/terminal-preferences-dialog.c:1573
+msgid "Enable Hyperlinks"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1574
+msgid "Enable support for hyperlinks."
+msgstr ""
+
 #. * Shortcuts
-#: ../terminal/terminal-preferences-dialog.c:1575
+#: ../terminal/terminal-preferences-dialog.c:1586
 msgid "Shortcuts"
 msgstr "Genvägar"
 
-#: ../terminal/terminal-preferences-dialog.c:1586
+#: ../terminal/terminal-preferences-dialog.c:1597
 msgid "Window"
 msgstr "Fönster"
 
-#: ../terminal/terminal-preferences-dialog.c:1587
-#: ../terminal/terminal-preferences.c:1179
-#: ../terminal/terminal-preferences.c:1260
+#: ../terminal/terminal-preferences-dialog.c:1598
+#: ../terminal/terminal-preferences.c:1190
+#: ../terminal/terminal-preferences.c:1271
 msgid "Terminal"
 msgstr "Terminal"
 
 #. default item + separator
-#: ../terminal/terminal-preferences-dialog.c:1994
+#: ../terminal/terminal-preferences-dialog.c:2005
 msgid "Select Preset"
 msgstr "Välj Förinställning"
 
@@ -1049,72 +1057,72 @@ msgstr "Inaktivera tills programmet startar om"
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Inaktivera dialogrutan (kan återaktiveras i Inställningar)"
 
-#: ../terminal/terminal-screen.c:492 ../terminal/terminal-screen.c:871
-#: ../terminal/terminal-screen.c:2344
+#: ../terminal/terminal-screen.c:496 ../terminal/terminal-screen.c:875
+#: ../terminal/terminal-screen.c:2348
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: ../terminal/terminal-screen.c:772
+#: ../terminal/terminal-screen.c:776
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Det gick inte att bestämma ditt inloggningsskal."
 
-#: ../terminal/terminal-screen.c:1462
+#: ../terminal/terminal-screen.c:1466
 msgid "_Relaunch"
 msgstr "Sta_rta om"
 
-#: ../terminal/terminal-screen.c:1468
+#: ../terminal/terminal-screen.c:1472
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Barnprocessen avslutades normalt med status %d."
 
-#: ../terminal/terminal-screen.c:1470
+#: ../terminal/terminal-screen.c:1474
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Barnprocessen avbröts av signal %d."
 
-#: ../terminal/terminal-screen.c:1472
+#: ../terminal/terminal-screen.c:1476
 msgid "The child process was aborted."
 msgstr "Barnprocessen avbröts."
 
-#: ../terminal/terminal-screen.c:1478 ../terminal/terminal-window.c:874
+#: ../terminal/terminal-screen.c:1482 ../terminal/terminal-window.c:874
 msgid "Do _not ask me again"
 msgstr "Fråga mig _inte igen"
 
-#: ../terminal/terminal-screen.c:1792
+#: ../terminal/terminal-screen.c:1796
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Varning: Potentiellt osäker inklistring"
 
-#: ../terminal/terminal-screen.c:1795
+#: ../terminal/terminal-screen.c:1799
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Att klistra in den här texten till terminalen kan vara farligt eftersom det ser ut som att vissa kommandon kan utföras som kan kräva rootåtkomst ('sudo')."
 
-#: ../terminal/terminal-screen.c:1798
+#: ../terminal/terminal-screen.c:1802
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Kllistra in denna text till terminalen kan vara farligt eftersom det ser ut som att vissa kommandon kan köras."
 
-#: ../terminal/terminal-screen.c:1808 ../terminal/terminal-window.c:797
+#: ../terminal/terminal-screen.c:1812 ../terminal/terminal-window.c:797
 #: ../terminal/terminal-window.c:2271
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: ../terminal/terminal-screen.c:1811 ../terminal/terminal-window.c:326
+#: ../terminal/terminal-screen.c:1815 ../terminal/terminal-window.c:326
 msgid "_Paste"
 msgstr "Klistra _in"
 
-#: ../terminal/terminal-screen.c:1962 ../terminal/terminal-screen.c:2045
+#: ../terminal/terminal-screen.c:1966 ../terminal/terminal-screen.c:2049
 msgid "Failed to execute child"
 msgstr "Misslyckades att köra barnprocess"
 
-#: ../terminal/terminal-screen.c:2701
+#: ../terminal/terminal-screen.c:2705
 msgid "Close this tab"
 msgstr "Stäng denna flik"
 
-#: ../terminal/terminal-screen.c:2754
+#: ../terminal/terminal-screen.c:2758
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Misslyckades ställa in kodning %s\n"
@@ -1167,55 +1175,55 @@ msgstr "Daniel Nylander <po@danielnylander.se>\nJens Hagerman <godhet@gmail.com>
 msgid "Visit Xfce Terminal website"
 msgstr "Besök Xfce-terminalens hemsida"
 
-#: ../terminal/terminal-widget.c:155
+#: ../terminal/terminal-widget.c:171
 msgid "Scroll one line Up"
 msgstr "Rulla en rad upp"
 
-#: ../terminal/terminal-widget.c:156
+#: ../terminal/terminal-widget.c:172
 msgid "Scroll one line Down"
 msgstr "Rulla en rad ner"
 
-#: ../terminal/terminal-widget.c:410
+#: ../terminal/terminal-widget.c:444
 msgid "Copy Email Address"
 msgstr "Kopiera e-postadress"
 
-#: ../terminal/terminal-widget.c:411
+#: ../terminal/terminal-widget.c:445
 msgid "Compose Email"
 msgstr "Skriv e-postmeddelande"
 
-#: ../terminal/terminal-widget.c:415
+#: ../terminal/terminal-widget.c:449 ../terminal/terminal-widget.c:455
 msgid "Copy Link Address"
 msgstr "Kopiera länkadress"
 
-#: ../terminal/terminal-widget.c:416
+#: ../terminal/terminal-widget.c:451 ../terminal/terminal-widget.c:456
 msgid "Open Link"
 msgstr "Öppna länk"
 
-#: ../terminal/terminal-widget.c:588
+#: ../terminal/terminal-widget.c:628
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Det gick inte att släppa markering av typen text/plain i terminal: Felaktigt format (%d) eller längd (%d)\n"
 
-#: ../terminal/terminal-widget.c:604
+#: ../terminal/terminal-widget.c:644
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Det gick inte att släppa Mozilla-URL i terminal: Felaktigt format (%d) eller längd (%d)\n"
 
-#: ../terminal/terminal-widget.c:631
+#: ../terminal/terminal-widget.c:671
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Det gick inte att släppa URI-lista i terminal: Felaktigt format (%d) eller längd (%d)\n"
 
-#: ../terminal/terminal-widget.c:668
+#: ../terminal/terminal-widget.c:708
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Tog emot felaktigt färgdata: Felaktigt format (%d) eller längd (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:778
+#: ../terminal/terminal-widget.c:812
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Misslyckades med att öppna URL '%s'"
