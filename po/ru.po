@@ -7,19 +7,19 @@
 # Andrey Fedoseev <andrey.fedoseev@gmail.com>, 2006
 # Anthony Ivanoff <a-i@bk.ru>, 2005
 # Dima Smirnov <arch@cnc-parts.info>, 2010
-# Alexander Filёv, 2020
+# AlexanderFilev, 2020
 # Igor <f2404@yandex.ru>, 2016-2019
 # Igor Vornovskii, 2022
 # Kyrill Detinov <lazy.kent@opensuse.org>, 2013
 # Sergey Alyoshin <alyoshin.s@gmail.com>, 2013
 # Styopa Semenukha <semenukha@gmail.com>, 2009
-# Alexander Filёv, 2017
+# AlexanderFilev, 2017
 # Виктор, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-24 00:51+0200\n"
+"POT-Creation-Date: 2022-11-28 15:06+0100\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Andrei Stepanov, 2022\n"
 "Language-Team: Russian (http://www.transifex.com/xfce/xfce-apps/language/ru/)\n"
@@ -700,8 +700,8 @@ msgid ""
 msgstr "Включите, чтобы разрешить приложениям, работающим в окнах терминала, использовать полужирный шрифт."
 
 #: ../terminal/terminal-preferences-dialog.c:773
-msgid "Text blinks:"
-msgstr "Мерцающий текст:"
+msgid "Cursor blinks:"
+msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:779
 msgid "Never"
@@ -1016,23 +1016,31 @@ msgstr "Вставить буфер обмена"
 msgid "Paste selection"
 msgstr "Вставить выделенное"
 
+#: ../terminal/terminal-preferences-dialog.c:1573
+msgid "Enable Hyperlinks"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1574
+msgid "Enable support for hyperlinks."
+msgstr ""
+
 #. * Shortcuts
-#: ../terminal/terminal-preferences-dialog.c:1575
+#: ../terminal/terminal-preferences-dialog.c:1586
 msgid "Shortcuts"
 msgstr "Быстрые клавиши"
 
-#: ../terminal/terminal-preferences-dialog.c:1586
+#: ../terminal/terminal-preferences-dialog.c:1597
 msgid "Window"
 msgstr "Окно"
 
-#: ../terminal/terminal-preferences-dialog.c:1587
-#: ../terminal/terminal-preferences.c:1179
-#: ../terminal/terminal-preferences.c:1260
+#: ../terminal/terminal-preferences-dialog.c:1598
+#: ../terminal/terminal-preferences.c:1190
+#: ../terminal/terminal-preferences.c:1271
 msgid "Terminal"
 msgstr "Терминал"
 
 #. default item + separator
-#: ../terminal/terminal-preferences-dialog.c:1994
+#: ../terminal/terminal-preferences-dialog.c:2005
 msgid "Select Preset"
 msgstr "Выбрать Предустановку"
 
@@ -1056,72 +1064,72 @@ msgstr "Отключить до следующего перезапуска пр
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Отключить диалоговое окно (можно снова включить в настройках)"
 
-#: ../terminal/terminal-screen.c:492 ../terminal/terminal-screen.c:871
-#: ../terminal/terminal-screen.c:2344
+#: ../terminal/terminal-screen.c:496 ../terminal/terminal-screen.c:875
+#: ../terminal/terminal-screen.c:2348
 msgid "Untitled"
 msgstr "Без названия"
 
-#: ../terminal/terminal-screen.c:772
+#: ../terminal/terminal-screen.c:776
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Невозможно определить оболочку входа в систему."
 
-#: ../terminal/terminal-screen.c:1462
+#: ../terminal/terminal-screen.c:1466
 msgid "_Relaunch"
 msgstr "_Перезапустить"
 
-#: ../terminal/terminal-screen.c:1468
+#: ../terminal/terminal-screen.c:1472
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Дочерний процесс завершился нормально с кодом %d."
 
-#: ../terminal/terminal-screen.c:1470
+#: ../terminal/terminal-screen.c:1474
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Дочерний процесс был прерван по сигналу %d."
 
-#: ../terminal/terminal-screen.c:1472
+#: ../terminal/terminal-screen.c:1476
 msgid "The child process was aborted."
 msgstr "Дочерний процесс был прерван."
 
-#: ../terminal/terminal-screen.c:1478 ../terminal/terminal-window.c:874
+#: ../terminal/terminal-screen.c:1482 ../terminal/terminal-window.c:874
 msgid "Do _not ask me again"
 msgstr "_Больше не спрашивать"
 
-#: ../terminal/terminal-screen.c:1792
+#: ../terminal/terminal-screen.c:1796
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Внимание: потенциально небезопасная вставка"
 
-#: ../terminal/terminal-screen.c:1795
+#: ../terminal/terminal-screen.c:1799
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Вставка этого текста в терминал может быть опасной, так как похоже, что могут быть выполнены некоторые команды из-под рута ('sudo')."
 
-#: ../terminal/terminal-screen.c:1798
+#: ../terminal/terminal-screen.c:1802
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Вставка этого текста в терминал может быть опасной, так как некоторые команды могут быть исполняемыми."
 
-#: ../terminal/terminal-screen.c:1808 ../terminal/terminal-window.c:797
+#: ../terminal/terminal-screen.c:1812 ../terminal/terminal-window.c:797
 #: ../terminal/terminal-window.c:2271
 msgid "_Cancel"
 msgstr "_Отмена"
 
-#: ../terminal/terminal-screen.c:1811 ../terminal/terminal-window.c:326
+#: ../terminal/terminal-screen.c:1815 ../terminal/terminal-window.c:326
 msgid "_Paste"
 msgstr "_Вставить"
 
-#: ../terminal/terminal-screen.c:1962 ../terminal/terminal-screen.c:2045
+#: ../terminal/terminal-screen.c:1966 ../terminal/terminal-screen.c:2049
 msgid "Failed to execute child"
 msgstr "Ошибка выполнения дочернего процесса"
 
-#: ../terminal/terminal-screen.c:2701
+#: ../terminal/terminal-screen.c:2705
 msgid "Close this tab"
 msgstr "Закрыть эту вкладку"
 
-#: ../terminal/terminal-screen.c:2754
+#: ../terminal/terminal-screen.c:2758
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Не удалось задать кодировку %s\n"
@@ -1174,55 +1182,55 @@ msgstr "Anthony Ivanoff <a-i@bk.ru>\nAndrey Fedoseev <andrey.fedoseev@gmail.com>
 msgid "Visit Xfce Terminal website"
 msgstr "Посетить сайт программы Xfce Терминал"
 
-#: ../terminal/terminal-widget.c:155
+#: ../terminal/terminal-widget.c:171
 msgid "Scroll one line Up"
 msgstr "Прокрутить Вверх на одну строку"
 
-#: ../terminal/terminal-widget.c:156
+#: ../terminal/terminal-widget.c:172
 msgid "Scroll one line Down"
 msgstr "Прокрутить Вниз на одну строку"
 
-#: ../terminal/terminal-widget.c:410
+#: ../terminal/terminal-widget.c:444
 msgid "Copy Email Address"
 msgstr "Копировать адрес электронной почты"
 
-#: ../terminal/terminal-widget.c:411
+#: ../terminal/terminal-widget.c:445
 msgid "Compose Email"
 msgstr "Написать письмо"
 
-#: ../terminal/terminal-widget.c:415
+#: ../terminal/terminal-widget.c:449 ../terminal/terminal-widget.c:455
 msgid "Copy Link Address"
 msgstr "Копировать адрес ссылки"
 
-#: ../terminal/terminal-widget.c:416
+#: ../terminal/terminal-widget.c:451 ../terminal/terminal-widget.c:456
 msgid "Open Link"
 msgstr "Открыть ссылку"
 
-#: ../terminal/terminal-widget.c:588
+#: ../terminal/terminal-widget.c:628
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Невозможно перетащить выделенный текст в терминал: неверный формат (%d) или длина (%d)\n"
 
-#: ../terminal/terminal-widget.c:604
+#: ../terminal/terminal-widget.c:644
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Невозможно перетащить интернет-адрес в терминал: неверный формат (%d) или длина (%d)\n"
 
-#: ../terminal/terminal-widget.c:631
+#: ../terminal/terminal-widget.c:671
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Невозможно перетащить список адресов: неверный формат (%d) или длина (%d)\n"
 
-#: ../terminal/terminal-widget.c:668
+#: ../terminal/terminal-widget.c:708
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Получены неверные данные о цвете: неверный формат (%d) или длина (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:778
+#: ../terminal/terminal-widget.c:812
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Не удалось открыть адрес \"%s\""
