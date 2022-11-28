@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-24 00:51+0200\n"
+"POT-Creation-Date: 2022-11-28 15:06+0100\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2020-2022\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
@@ -697,8 +697,8 @@ msgid ""
 msgstr "הפעל את זה כדי לאפשר לישומים הפועלים בתוך חלונות המסוף להשתמש בגופן מודגש."
 
 #: ../terminal/terminal-preferences-dialog.c:773
-msgid "Text blinks:"
-msgstr "טקסט מהבהב:"
+msgid "Cursor blinks:"
+msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:779
 msgid "Never"
@@ -1013,23 +1013,31 @@ msgstr "הדבק לוח גזירים"
 msgid "Paste selection"
 msgstr "הדבק בחירה"
 
+#: ../terminal/terminal-preferences-dialog.c:1573
+msgid "Enable Hyperlinks"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1574
+msgid "Enable support for hyperlinks."
+msgstr ""
+
 #. * Shortcuts
-#: ../terminal/terminal-preferences-dialog.c:1575
+#: ../terminal/terminal-preferences-dialog.c:1586
 msgid "Shortcuts"
 msgstr "קיצורים"
 
-#: ../terminal/terminal-preferences-dialog.c:1586
+#: ../terminal/terminal-preferences-dialog.c:1597
 msgid "Window"
 msgstr "חלון"
 
-#: ../terminal/terminal-preferences-dialog.c:1587
-#: ../terminal/terminal-preferences.c:1179
-#: ../terminal/terminal-preferences.c:1260
+#: ../terminal/terminal-preferences-dialog.c:1598
+#: ../terminal/terminal-preferences.c:1190
+#: ../terminal/terminal-preferences.c:1271
 msgid "Terminal"
 msgstr "מסוף"
 
 #. default item + separator
-#: ../terminal/terminal-preferences-dialog.c:1994
+#: ../terminal/terminal-preferences-dialog.c:2005
 msgid "Select Preset"
 msgstr "בחר ערך קבוע מראש"
 
@@ -1053,72 +1061,72 @@ msgstr "השבת עד להפעלת התוכנית מחדש"
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "השבּת דו־שיח (ניתן להפעילו מחדש במסך ההעדפות)"
 
-#: ../terminal/terminal-screen.c:492 ../terminal/terminal-screen.c:871
-#: ../terminal/terminal-screen.c:2344
+#: ../terminal/terminal-screen.c:496 ../terminal/terminal-screen.c:875
+#: ../terminal/terminal-screen.c:2348
 msgid "Untitled"
 msgstr "ללא כותרת"
 
-#: ../terminal/terminal-screen.c:772
+#: ../terminal/terminal-screen.c:776
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "לא מסוגל לקבוע את מעטפת הכניסה שלך."
 
-#: ../terminal/terminal-screen.c:1462
+#: ../terminal/terminal-screen.c:1466
 msgid "_Relaunch"
 msgstr "הפעל מ_חדש"
 
-#: ../terminal/terminal-screen.c:1468
+#: ../terminal/terminal-screen.c:1472
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "יציאה נורמלית של תהליך הבן עם סטטוס %d."
 
-#: ../terminal/terminal-screen.c:1470
+#: ../terminal/terminal-screen.c:1474
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "תהליך הבן הופסק ע\"י סיגנל %d."
 
-#: ../terminal/terminal-screen.c:1472
+#: ../terminal/terminal-screen.c:1476
 msgid "The child process was aborted."
 msgstr "תהליך הבן הופסק."
 
-#: ../terminal/terminal-screen.c:1478 ../terminal/terminal-window.c:874
+#: ../terminal/terminal-screen.c:1482 ../terminal/terminal-window.c:874
 msgid "Do _not ask me again"
 msgstr "_אל תשאל אותי שוב"
 
-#: ../terminal/terminal-screen.c:1792
+#: ../terminal/terminal-screen.c:1796
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "אזהרה: הדבקה עלולה להיות לא בטוחה"
 
-#: ../terminal/terminal-screen.c:1795
+#: ../terminal/terminal-screen.c:1799
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "הדבקת טקסט זה למסוף יכולה להיות מסוכנת כי נראה שיופעלו פקודות, יתכן הכוללות גישה של משתמש על ('sudo')."
 
-#: ../terminal/terminal-screen.c:1798
+#: ../terminal/terminal-screen.c:1802
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "הדבקת טקסט זה למסוף עלולה להיות מסוכנת מכיוון שנראה שפקודות יופעלו."
 
-#: ../terminal/terminal-screen.c:1808 ../terminal/terminal-window.c:797
+#: ../terminal/terminal-screen.c:1812 ../terminal/terminal-window.c:797
 #: ../terminal/terminal-window.c:2271
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: ../terminal/terminal-screen.c:1811 ../terminal/terminal-window.c:326
+#: ../terminal/terminal-screen.c:1815 ../terminal/terminal-window.c:326
 msgid "_Paste"
 msgstr "ה_דבק"
 
-#: ../terminal/terminal-screen.c:1962 ../terminal/terminal-screen.c:2045
+#: ../terminal/terminal-screen.c:1966 ../terminal/terminal-screen.c:2049
 msgid "Failed to execute child"
 msgstr "אין אפשרות להריץ צאצא"
 
-#: ../terminal/terminal-screen.c:2701
+#: ../terminal/terminal-screen.c:2705
 msgid "Close this tab"
 msgstr "סגור כרטיסייה זו"
 
-#: ../terminal/terminal-screen.c:2754
+#: ../terminal/terminal-screen.c:2758
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "נכשל לקבוע קידוד %s\n"
@@ -1171,55 +1179,55 @@ msgstr "גינגס חאן וכנופייתו"
 msgid "Visit Xfce Terminal website"
 msgstr "בקר באתר מסוף Xfce "
 
-#: ../terminal/terminal-widget.c:155
+#: ../terminal/terminal-widget.c:171
 msgid "Scroll one line Up"
 msgstr "גלול שורה אחת מעלה"
 
-#: ../terminal/terminal-widget.c:156
+#: ../terminal/terminal-widget.c:172
 msgid "Scroll one line Down"
 msgstr "גלול שורה אחת מטה"
 
-#: ../terminal/terminal-widget.c:410
+#: ../terminal/terminal-widget.c:444
 msgid "Copy Email Address"
 msgstr "העתק כתובת דוא״ל"
 
-#: ../terminal/terminal-widget.c:411
+#: ../terminal/terminal-widget.c:445
 msgid "Compose Email"
 msgstr "חבר דוא״ל"
 
-#: ../terminal/terminal-widget.c:415
+#: ../terminal/terminal-widget.c:449 ../terminal/terminal-widget.c:455
 msgid "Copy Link Address"
 msgstr "העתק כתובת קישור"
 
-#: ../terminal/terminal-widget.c:416
+#: ../terminal/terminal-widget.c:451 ../terminal/terminal-widget.c:456
 msgid "Open Link"
 msgstr "פתח קישור"
 
-#: ../terminal/terminal-widget.c:588
+#: ../terminal/terminal-widget.c:628
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "אין אפשרות להשליך בחירה של טקסט למסוף. תסדיר לא תקין (%d) או אורך (%d)\n"
 
-#: ../terminal/terminal-widget.c:604
+#: ../terminal/terminal-widget.c:644
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "אין אפשרות להשליך כתובת מוזילה על המסוף.  תסדיר לא תקין (%d) או אורך (%d)\n"
 
-#: ../terminal/terminal-widget.c:631
+#: ../terminal/terminal-widget.c:671
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "אין אפשרות להשליך רשימת כתובות על המסוף.  תסדיר לא תקין (%d) או אורך (%d)\n"
 
-#: ../terminal/terminal-widget.c:668
+#: ../terminal/terminal-widget.c:708
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "התקבל מידע שגוי אודות הצבע: תסדיר שגוי (%d) או אורך (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:778
+#: ../terminal/terminal-widget.c:812
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "נכשל לפתוח את ה-URL '%s' "
