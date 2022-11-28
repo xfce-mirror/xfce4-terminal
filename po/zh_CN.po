@@ -15,7 +15,7 @@
 # Cally Mal <zhouxiaobo.500@gmail.com>, 2017-2018
 # Cally Mal <zhouxiaobo.500@gmail.com>, 2018
 # 玉堂白鹤 <yjwork@qq.com>, 2014
-# YuHeng Chou <wojiushixxx@126.com>, 2022
+# Zhou Yuheng <wojiushixxx@126.com>, 2022
 # Cally Mal <zhouxiaobo.500@gmail.com>, 2013
 # Cally Mal <zhouxiaobo.500@gmail.com>, 2014
 # 张诚 <xxzhangcheng1@gmail.com>, 2017
@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-24 00:51+0200\n"
+"POT-Creation-Date: 2022-11-28 15:06+0100\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2016-2022\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
@@ -705,8 +705,8 @@ msgid ""
 msgstr "启用此项让在终端窗口中运行的应用程序使用粗体字。"
 
 #: ../terminal/terminal-preferences-dialog.c:773
-msgid "Text blinks:"
-msgstr "文字闪烁："
+msgid "Cursor blinks:"
+msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:779
 msgid "Never"
@@ -1021,23 +1021,31 @@ msgstr "粘贴剪贴板内容"
 msgid "Paste selection"
 msgstr "粘贴所选内容"
 
+#: ../terminal/terminal-preferences-dialog.c:1573
+msgid "Enable Hyperlinks"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1574
+msgid "Enable support for hyperlinks."
+msgstr ""
+
 #. * Shortcuts
-#: ../terminal/terminal-preferences-dialog.c:1575
+#: ../terminal/terminal-preferences-dialog.c:1586
 msgid "Shortcuts"
 msgstr "快捷键"
 
-#: ../terminal/terminal-preferences-dialog.c:1586
+#: ../terminal/terminal-preferences-dialog.c:1597
 msgid "Window"
 msgstr "窗口"
 
-#: ../terminal/terminal-preferences-dialog.c:1587
-#: ../terminal/terminal-preferences.c:1179
-#: ../terminal/terminal-preferences.c:1260
+#: ../terminal/terminal-preferences-dialog.c:1598
+#: ../terminal/terminal-preferences.c:1190
+#: ../terminal/terminal-preferences.c:1271
 msgid "Terminal"
 msgstr "Terminal 终端"
 
 #. default item + separator
-#: ../terminal/terminal-preferences-dialog.c:1994
+#: ../terminal/terminal-preferences-dialog.c:2005
 msgid "Select Preset"
 msgstr "选择预设"
 
@@ -1061,72 +1069,72 @@ msgstr "禁用至程序重启"
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "禁用对话框（可在首选项中重新启用）"
 
-#: ../terminal/terminal-screen.c:492 ../terminal/terminal-screen.c:871
-#: ../terminal/terminal-screen.c:2344
+#: ../terminal/terminal-screen.c:496 ../terminal/terminal-screen.c:875
+#: ../terminal/terminal-screen.c:2348
 msgid "Untitled"
 msgstr "无标题"
 
-#: ../terminal/terminal-screen.c:772
+#: ../terminal/terminal-screen.c:776
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "未能确定您的登录 shell。"
 
-#: ../terminal/terminal-screen.c:1462
+#: ../terminal/terminal-screen.c:1466
 msgid "_Relaunch"
 msgstr "重新运行(_R)"
 
-#: ../terminal/terminal-screen.c:1468
+#: ../terminal/terminal-screen.c:1472
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "子进程返回状态%d并正常退出"
 
-#: ../terminal/terminal-screen.c:1470
+#: ../terminal/terminal-screen.c:1474
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "子进程已被信号%d所终止"
 
-#: ../terminal/terminal-screen.c:1472
+#: ../terminal/terminal-screen.c:1476
 msgid "The child process was aborted."
 msgstr "子进程已被终止。"
 
-#: ../terminal/terminal-screen.c:1478 ../terminal/terminal-window.c:874
+#: ../terminal/terminal-screen.c:1482 ../terminal/terminal-window.c:874
 msgid "Do _not ask me again"
 msgstr "不再询问(_N)"
 
-#: ../terminal/terminal-screen.c:1792
+#: ../terminal/terminal-screen.c:1796
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "警告：潜在的不安全粘贴 "
 
-#: ../terminal/terminal-screen.c:1795
+#: ../terminal/terminal-screen.c:1799
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "将此文本粘贴到终端可能有存在危险，因为它看起来像会执行某些命令，可能涉及 root 访问权限 ('sudo')。"
 
-#: ../terminal/terminal-screen.c:1798
+#: ../terminal/terminal-screen.c:1802
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "将此文本粘贴到终端可能有存在危险，因为它看起来像会执行某些命令。"
 
-#: ../terminal/terminal-screen.c:1808 ../terminal/terminal-window.c:797
+#: ../terminal/terminal-screen.c:1812 ../terminal/terminal-window.c:797
 #: ../terminal/terminal-window.c:2271
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: ../terminal/terminal-screen.c:1811 ../terminal/terminal-window.c:326
+#: ../terminal/terminal-screen.c:1815 ../terminal/terminal-window.c:326
 msgid "_Paste"
 msgstr "粘贴(_P)"
 
-#: ../terminal/terminal-screen.c:1962 ../terminal/terminal-screen.c:2045
+#: ../terminal/terminal-screen.c:1966 ../terminal/terminal-screen.c:2049
 msgid "Failed to execute child"
 msgstr "无法执行子进程"
 
-#: ../terminal/terminal-screen.c:2701
+#: ../terminal/terminal-screen.c:2705
 msgid "Close this tab"
 msgstr "关闭此标签"
 
-#: ../terminal/terminal-screen.c:2754
+#: ../terminal/terminal-screen.c:2758
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "设置编码 %s 失败\n"
@@ -1179,55 +1187,55 @@ msgstr "Hunt Xu <huntxu@live.cn>, 2009.\nChipong Luo <chipong.luo@yahoo.com>, 20
 msgid "Visit Xfce Terminal website"
 msgstr "访问 Xfce 终端官方网站"
 
-#: ../terminal/terminal-widget.c:155
+#: ../terminal/terminal-widget.c:171
 msgid "Scroll one line Up"
 msgstr "向上滚动一行"
 
-#: ../terminal/terminal-widget.c:156
+#: ../terminal/terminal-widget.c:172
 msgid "Scroll one line Down"
 msgstr "向下滚动一行"
 
-#: ../terminal/terminal-widget.c:410
+#: ../terminal/terminal-widget.c:444
 msgid "Copy Email Address"
 msgstr "复制邮件地址"
 
-#: ../terminal/terminal-widget.c:411
+#: ../terminal/terminal-widget.c:445
 msgid "Compose Email"
 msgstr "撰写邮件"
 
-#: ../terminal/terminal-widget.c:415
+#: ../terminal/terminal-widget.c:449 ../terminal/terminal-widget.c:455
 msgid "Copy Link Address"
 msgstr "复制链接地址"
 
-#: ../terminal/terminal-widget.c:416
+#: ../terminal/terminal-widget.c:451 ../terminal/terminal-widget.c:456
 msgid "Open Link"
 msgstr "打开链接"
 
-#: ../terminal/terminal-widget.c:588
+#: ../terminal/terminal-widget.c:628
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "未能将类型 text/plain 所选内容放入终端：错误的格式(%d)或长度(%d)\n"
 
-#: ../terminal/terminal-widget.c:604
+#: ../terminal/terminal-widget.c:644
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "未能将 Mozilla 地址放入终端：错误的格式(%d)或长度(%d)\n"
 
-#: ../terminal/terminal-widget.c:631
+#: ../terminal/terminal-widget.c:671
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "未能将 URI 列表放入终端：错误的格式(%d)或长度(%d)\n"
 
-#: ../terminal/terminal-widget.c:668
+#: ../terminal/terminal-widget.c:708
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "收到了无效的颜色数据：错误的格式(%d)或长度(%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:778
+#: ../terminal/terminal-widget.c:812
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "无法打开 URL “%s”"
