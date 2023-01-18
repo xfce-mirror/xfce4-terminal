@@ -22,7 +22,7 @@
 #endif
 
 #include <libxfce4ui/libxfce4ui.h>
-#include <libxfce4kbd-private-3/libxfce4kbd-private/xfce-shortcuts-editor.h>
+#include <libxfce4kbd-private/xfce-shortcuts-editor.h>
 
 #include <terminal/terminal-util.h>
 #include <terminal/terminal-enum-types.h>
