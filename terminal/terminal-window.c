@@ -3034,7 +3034,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
 
   if (sections & MENU_SECTION_SIGNAL)
     {
-      AS_SUBMENU ("Send Signal")
+      AS_SUBMENU (_("Send Signal"))
       for (int i = 1; i < n_signal_names; i++)
         {
           gchar          *label;
@@ -3051,7 +3051,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
 
   if (sections & MENU_SECTION_ZOOM)
     {
-      AS_SUBMENU ("Zoom");
+      AS_SUBMENU (_("Zoom"));
 
       item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_ZOOM_IN), G_OBJECT (window), GTK_MENU_SHELL (insert_to_menu));
       gtk_widget_set_sensitive (item, window->priv->zoom != TERMINAL_ZOOM_LEVEL_MAXIMUM);
@@ -3063,7 +3063,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
 
   if (sections & MENU_SECTION_COPY)
     {
-      AS_SUBMENU ("Copy");
+      AS_SUBMENU (_("Copy"));
 
       item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY), G_OBJECT (window), GTK_MENU_SHELL (insert_to_menu));
       gtk_widget_set_sensitive (item, terminal_screen_has_selection (window->priv->active));
@@ -3074,7 +3074,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
 
   if (sections & MENU_SECTION_PASTE)
     {
-      AS_SUBMENU ("Paste");
+      AS_SUBMENU (_("Paste"));
 
       item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PASTE), G_OBJECT (window), GTK_MENU_SHELL (insert_to_menu));
       gtk_widget_set_sensitive (item, terminal_screen_get_input_enabled (window->priv->active));
@@ -3085,7 +3085,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
 
   if (sections & MENU_SECTION_VIEW)
     {
-      AS_SUBMENU ("View Options");
+      AS_SUBMENU (_("View Options"));
 
       xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_MENUBAR), G_OBJECT (window), gtk_widget_is_visible (window->menubar), GTK_MENU_SHELL (insert_to_menu));
       xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_TOOLBAR), G_OBJECT (window), gtk_widget_is_visible (window->toolbar), GTK_MENU_SHELL (insert_to_menu));
