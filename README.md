@@ -21,12 +21,7 @@ See [NEWS](https://gitlab.xfce.org/apps/xfce4-terminal/-/blob/master/NEWS) for d
 Xfce Terminal is based on the Vte terminal widget library, just like
 gnome-terminal. Vte is probably not the fastest terminal emulation library on
 earth, but it's one of the best when it comes to Unicode support, and not to
-forget, it's actively developed. That said, performance is still an important
-issue for a terminal emulator and Vte with font-antialiasing enabled can be
-very slow even on decent systems. Xfce Terminal therefore offers a possibility
-to explicitly disable anti-aliasing for the terminal font. If you are
-experiencing problems with the terminal rendering speed, you might want to
-disable the anti-aliasing for the terminal font.
+forget, it's actively developed.
 
 ### Source Code Repository
 
