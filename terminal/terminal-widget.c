@@ -115,6 +115,8 @@ static void               terminal_widget_open_uri                    (TerminalW
 static void               terminal_widget_update_highlight_urls       (TerminalWidget   *widget);
 static gboolean           terminal_widget_action_shift_scroll_up      (TerminalWidget   *widget);
 static gboolean           terminal_widget_action_shift_scroll_down    (TerminalWidget   *widget);
+static gboolean           terminal_widget_action_scroll_page_up       (TerminalWidget   *widget);
+static gboolean           terminal_widget_action_scroll_page_down     (TerminalWidget   *widget);
 static void               terminal_widget_connect_accelerators        (TerminalWidget   *widget);
 static void               terminal_widget_disconnect_accelerators     (TerminalWidget   *widget);
 static TerminalHyperlink  terminal_widget_get_link                    (TerminalWidget   *widget,
@@ -170,6 +172,8 @@ static XfceGtkActionEntry action_entries[] =
 {
   { TERMINAL_WIDGET_ACTION_SCROLL_UP,   "<Actions>/terminal-widget/shift-up",   "<Shift>Up",   XFCE_GTK_MENU_ITEM, N_ ("Scroll one line Up"),   NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_up),   },
   { TERMINAL_WIDGET_ACTION_SCROLL_DOWN, "<Actions>/terminal-widget/shift-down", "<Shift>Down", XFCE_GTK_MENU_ITEM, N_ ("Scroll one line Down"), NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_down), },
+  { TERMINAL_WIDGET_ACTION_SCROLL_PAGE_UP,   "<Actions>/terminal-widget/shift-pageup",   "<Shift>Page_Up",   XFCE_GTK_MENU_ITEM, N_ ("Scroll one Page Up"),   NULL, NULL, G_CALLBACK (terminal_widget_action_scroll_page_up),   },
+  { TERMINAL_WIDGET_ACTION_SCROLL_PAGE_DOWN, "<Actions>/terminal-widget/shift-pagedown", "<Shift>Page_Down", XFCE_GTK_MENU_ITEM, N_ ("Scroll one Page Down"), NULL, NULL, G_CALLBACK (terminal_widget_action_scroll_page_down), },
 };
 
 #define get_action_entry(id) xfce_gtk_get_action_entry_by_id(action_entries, G_N_ELEMENTS(action_entries), id)
@@ -882,6 +886,28 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
           vte_regex_unref (regex);
         }
     }
+}
+
+
+
+static gboolean
+terminal_widget_action_scroll_page_up (TerminalWidget *widget)
+{
+  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
+
+  gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - gtk_adjustment_get_page_size (adjustment));
+  return TRUE;
+}
+
+
+
+static gboolean
+terminal_widget_action_scroll_page_down (TerminalWidget *widget)
+{
+  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
+
+  gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) + gtk_adjustment_get_page_size (adjustment));
+  return TRUE;
 }
 
 
