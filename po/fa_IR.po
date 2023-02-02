@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Goudarz Jafari <goudarz.jafari@gmail.com>, 2020
-# K2latmanesh <sudo.k2latmanesh@tutamail.com>, 2022
+# K2latmanesh <sudo.k2latmanesh@tutamail.com>, 2022-2023
 # MohammadSaleh Kamyab <mskf1383@protonmail.com>, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:50+0100\n"
+"POT-Creation-Date: 2023-01-31 09:51+0100\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
-"Last-Translator: K2latmanesh <sudo.k2latmanesh@tutamail.com>, 2022\n"
+"Last-Translator: K2latmanesh <sudo.k2latmanesh@tutamail.com>, 2022-2023\n"
 "Language-Team: Persian (Iran) (http://www.transifex.com/xfce/xfce-apps/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -318,7 +318,7 @@ msgstr ""
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
-msgstr ""
+msgstr "«دستور اجرایی» باید به عنوان مؤلفهٔ گزینهٔ «command/-e--» تعریف شود"
 
 #: ../terminal/terminal-options.c:319
 #, c-format
@@ -518,7 +518,7 @@ msgstr ""
 #: ../terminal/terminal-preferences-dialog.c:383
 msgid ""
 "This controls whether scrollbar is drawn as an overlay (auto-hide) or not."
-msgstr ""
+msgstr "تعیین می‌کند که نوار پیمایش به طور خودکار مخفی شود یا خیر. "
 
 #: ../terminal/terminal-preferences-dialog.c:388
 msgid "_Scroll on keystroke"
@@ -692,7 +692,7 @@ msgstr "این گزینه را فعّال کنید تا به کاره‌هایی
 
 #: ../terminal/terminal-preferences-dialog.c:773
 msgid "Cursor blinks:"
-msgstr ""
+msgstr "نشانگر چشمک‌زن:"
 
 #: ../terminal/terminal-preferences-dialog.c:779
 msgid "Never"
@@ -1009,11 +1009,11 @@ msgstr "چسباندن متن انتخاب‌شده"
 
 #: ../terminal/terminal-preferences-dialog.c:1573
 msgid "Enable Hyperlinks"
-msgstr ""
+msgstr "فعّال‌سازی فراپیوند‌ها"
 
 #: ../terminal/terminal-preferences-dialog.c:1574
 msgid "Enable support for hyperlinks."
-msgstr ""
+msgstr "فعّال‌سازی پشتیبانی از فراپیوند‌ها."
 
 #. * Shortcuts
 #: ../terminal/terminal-preferences-dialog.c:1586
@@ -1173,55 +1173,63 @@ msgstr "Goudarz Jafari <goudarz.jafari@gmail.com>\nK2latmanesh <sudo.k2latmanesh
 msgid "Visit Xfce Terminal website"
 msgstr "مشاهدهٔ تارنمای پایانهٔ Xfce"
 
-#: ../terminal/terminal-widget.c:171
+#: ../terminal/terminal-widget.c:173
 msgid "Scroll one line Up"
 msgstr "یک خط به بالا پیمایش کن"
 
-#: ../terminal/terminal-widget.c:172
+#: ../terminal/terminal-widget.c:174
 msgid "Scroll one line Down"
 msgstr "یک خط به پایین پیمایش کن"
 
-#: ../terminal/terminal-widget.c:444
+#: ../terminal/terminal-widget.c:175
+msgid "Scroll one Page Up"
+msgstr ""
+
+#: ../terminal/terminal-widget.c:176
+msgid "Scroll one Page Down"
+msgstr ""
+
+#: ../terminal/terminal-widget.c:448
 msgid "Copy Email Address"
 msgstr "رونویسی نشانی رایانامه"
 
-#: ../terminal/terminal-widget.c:445
+#: ../terminal/terminal-widget.c:449
 msgid "Compose Email"
 msgstr "تنظیم رایانامه"
 
-#: ../terminal/terminal-widget.c:449 ../terminal/terminal-widget.c:455
+#: ../terminal/terminal-widget.c:453 ../terminal/terminal-widget.c:459
 msgid "Copy Link Address"
 msgstr "رونویسی نشانی پیوند"
 
-#: ../terminal/terminal-widget.c:451 ../terminal/terminal-widget.c:456
+#: ../terminal/terminal-widget.c:455 ../terminal/terminal-widget.c:460
 msgid "Open Link"
 msgstr "باز کردن پیوند"
 
-#: ../terminal/terminal-widget.c:628
+#: ../terminal/terminal-widget.c:632
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr ""
 
-#: ../terminal/terminal-widget.c:644
+#: ../terminal/terminal-widget.c:648
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 
-#: ../terminal/terminal-widget.c:671
+#: ../terminal/terminal-widget.c:675
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 
-#: ../terminal/terminal-widget.c:708
+#: ../terminal/terminal-widget.c:712
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "دادهٔ رنگ نامعتبری دریافت شد: قالب (%d) یا درازای (%d) نادرست\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:812
+#: ../terminal/terminal-widget.c:816
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "خطا در باز کردن پیوند '%s'"
@@ -1661,11 +1669,11 @@ msgstr "کپی"
 
 #: ../terminal/terminal-window.c:3077
 msgid "Paste"
-msgstr ""
+msgstr "چسباندن"
 
 #: ../terminal/terminal-window.c:3088
 msgid "View Options"
-msgstr ""
+msgstr "نمایش گزینه‌ها"
 
 #: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
