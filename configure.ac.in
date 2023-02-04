@@ -104,7 +104,7 @@ XDT_CHECK_PACKAGE([LIBXFCE4KBD_PRIVATE], [libxfce4kbd-private-3], [4.16.0])
 dnl ****************************************
 dnl *** Check if we need to use utempter ***
 dnl ****************************************
-AC_ARG_WITH([utempter], [AC_HELP_STRING([--with-utempter],
+AC_ARG_WITH([utempter], [AS_HELP_STRING([--with-utempter],
             [Support for utmp/wtmp files (requires libutempter) [default=no]])],, [with_utempter=no])
 if test x"$with_utempter" = x"yes"; then
     AC_CHECK_LIB([utempter],[utempter_add_record],,[with_utempter=no])
@@ -119,7 +119,7 @@ dnl ****************************************
 dnl *** Register in Gnome Control Center ***
 dnl ****************************************
 AC_ARG_WITH([gnome-default-appsdir],
-            [AC_HELP_STRING([--with-gnome-default-appsdir=PATH],
+            [AS_HELP_STRING([--with-gnome-default-appsdir=PATH],
                             [Specify where to install the Gnome default applications file (default=autodetect)])],
             [gnome_default_appsdir="$withval"])
 AC_MSG_CHECKING([for Gnome default applications dir])
