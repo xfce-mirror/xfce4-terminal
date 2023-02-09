@@ -335,7 +335,10 @@ terminal_screen_init (TerminalScreen *screen)
   screen->session_id = ++screen_last_session_id;
   screen->pid = -1;
 
-  screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
+  screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET,
+                                   "enable-fallback-scrolling", FALSE,
+                                   "scroll-unit-is-pixels", TRUE,
+                                   NULL);
   g_signal_connect (G_OBJECT (screen->terminal), "child-exited",
       G_CALLBACK (terminal_screen_vte_child_exited), screen);
   g_signal_connect (G_OBJECT (screen->terminal), "eof",
