@@ -376,21 +376,21 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
   gtk_widget_show (button);
 
-  button = gtk_check_button_new_with_mnemonic (_("_Enable overlay scrolling (Requires restart)"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "overlay-scrolling",
-                          G_OBJECT (button), "active",
-                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  gtk_widget_set_tooltip_text (button, _("This controls whether scrollbar is drawn as an overlay (auto-hide) or not."));
-  gtk_widget_set_hexpand (button, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
-  gtk_widget_show (button);
-
   button = gtk_check_button_new_with_mnemonic (_("_Scroll on keystroke"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "scrolling-on-keystroke",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enables you to press any key on the keyboard to scroll down the terminal"
                                          " to the command prompt."));
+  gtk_widget_set_hexpand (button, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
+  gtk_widget_show (button);
+
+  button = gtk_check_button_new_with_mnemonic (_("_Enable kinetic scrolling"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "kinetic-scrolling",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_tooltip_text (button, _("This controls whether scrolling \"coasts\" to a stop when releasing a touchpad or touchscreen."));
   gtk_widget_set_hexpand (button, TRUE);
   gtk_grid_attach (GTK_GRID (grid), button, 2, row, 1, 1);
   gtk_widget_show (button);
@@ -441,6 +441,18 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("This controls whether the terminal will have no limits on scrollback."));
   gtk_grid_attach (GTK_GRID (grid), button, 2, row, 1, 1);
+  gtk_widget_show (button);
+
+  /* next row */
+  row++;
+
+  button = gtk_check_button_new_with_mnemonic (_("_Enable overlay scrolling (Requires restart)"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "overlay-scrolling",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_tooltip_text (button, _("This controls whether scrollbar is drawn as an overlay (auto-hide) or not."));
+  gtk_widget_set_hexpand (button, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 3, 1);
   gtk_widget_show (button);
 
 
