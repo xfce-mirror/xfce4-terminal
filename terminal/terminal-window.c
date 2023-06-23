@@ -182,6 +182,7 @@ static void         terminal_window_action_set_encoding           (GtkAction    
                                                                    TerminalWindow      *window);
 static gboolean     terminal_window_action_new_tab                (TerminalWindow      *window);
 static gboolean     terminal_window_action_new_window             (TerminalWindow      *window);
+static gboolean     terminal_window_action_open_folder            (TerminalWindow      *window);
 static gboolean     terminal_window_action_undo_close_tab         (TerminalWindow      *window);
 static gboolean     terminal_window_action_detach_tab             (TerminalWindow      *window);
 static gboolean     terminal_window_action_close_tab              (TerminalWindow      *window);
@@ -315,6 +316,7 @@ static XfceGtkActionEntry action_entries[] =
     { TERMINAL_WINDOW_ACTION_FILE_MENU,             "<Actions>/terminal-window/file-menu",             "",                          XFCE_GTK_MENU_ITEM,       N_ ("_File"),                         NULL,                                     NULL,                     NULL, },
     { TERMINAL_WINDOW_ACTION_NEW_TAB,               "<Actions>/terminal-window/new-tab",               "<control><shift>t",         XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Open _Tab"),                     N_ ("Open a new terminal tab"),           "tab-new",                G_CALLBACK (terminal_window_action_new_tab), },
     { TERMINAL_WINDOW_ACTION_NEW_WINDOW,            "<Actions>/terminal-window/new-window",            "<control><shift>n",         XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Open T_erminal"),                N_ ("Open a new terminal window"),        "window-new",             G_CALLBACK (terminal_window_action_new_window), },
+    { TERMINAL_WINDOW_ACTION_OPEN_FOLDER,           "<Actions>/terminal-window/open-folder",          "",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("_Open File Manager Here"),        N_ ("Open the current directory"),        "folder-open",            G_CALLBACK (terminal_window_action_open_folder), },
     { TERMINAL_WINDOW_ACTION_UNDO_CLOSE_TAB,        "<Actions>/terminal-window/undo-close-tab",        "<control><shift>d",         XFCE_GTK_IMAGE_MENU_ITEM, N_ ("_Undo Close Tab"),               NULL,                                     "document-revert",        G_CALLBACK (terminal_window_action_undo_close_tab), },
     { TERMINAL_WINDOW_ACTION_DETACH_TAB,            "<Actions>/terminal-window/detach-tab",            "",                          XFCE_GTK_MENU_ITEM,       N_ ("_Detach Tab"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_detach_tab), },
     { TERMINAL_WINDOW_ACTION_CLOSE_TAB,             "<Actions>/terminal-window/close-tab",             "<control><shift>w",         XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Close T_ab"),                    NULL,                                     "window-close",           G_CALLBACK (terminal_window_action_close_tab), },
@@ -1434,6 +1436,7 @@ terminal_window_get_context_menu (TerminalScreen  *screen,
 
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_TAB), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_WINDOW), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_OPEN_FOLDER), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
   xfce_gtk_menu_append_separator (GTK_MENU_SHELL (context_menu));
 
   terminal_window_menu_add_section (window, context_menu, MENU_SECTION_COPY | MENU_SECTION_PASTE, FALSE);
@@ -1551,6 +1554,33 @@ terminal_window_action_new_window (TerminalWindow *window)
     {
       g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW], 0, directory);
       g_free (directory);
+    }
+
+  return TRUE;
+}
+
+
+
+static gboolean
+terminal_window_action_open_folder (TerminalWindow *window)
+{
+  GError *error = NULL;
+  const gchar *directory = terminal_screen_get_working_directory (window->priv->active);
+
+  if (directory != NULL)
+    {
+      gchar *dir = g_shell_quote (directory);
+      gchar *cmd = g_strdup_printf ("xdg-open %s", dir);
+
+      if (!g_spawn_command_line_async (cmd, &error))
+        {
+          xfce_dialog_show_error (GTK_WINDOW (window), error,
+                                  _("Failed to open directory"));
+          g_error_free (error);
+        }
+
+      g_free (cmd);
+      g_free (dir);
     }
 
   return TRUE;
@@ -3117,6 +3147,7 @@ terminal_window_update_file_menu (TerminalWindow      *window,
   terminal_window_menu_clean (GTK_MENU (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_WINDOW), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_OPEN_FOLDER), G_OBJECT (window), GTK_MENU_SHELL (menu));
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_UNDO_CLOSE_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, !g_queue_is_empty (window->priv->closed_tabs_list));
   xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
