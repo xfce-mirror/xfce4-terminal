@@ -31,6 +31,7 @@
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-widget.h>
+#include <terminal/terminal-profile-manager.h>
 
 
 
@@ -127,6 +128,7 @@ struct _TerminalPreferencesDialog
 {
   XfceTitledDialog     __parent__;
   TerminalPreferences *preferences;
+  TerminalProfileManager *manager;
 
   GtkColorButton      *palette_button[N_PALETTE_BUTTONS];
   GtkSpinButton       *geometry_button[N_GEOMETRY_BUTTONS];
@@ -240,6 +242,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   /* have a separate instance of preferences so as to not affect  other components */
   dialog->preferences = terminal_preferences_new ();
+  dialog->manager = terminal_profile_manager_get();
 
   g_signal_connect (G_OBJECT (dialog), "realize",
                     G_CALLBACK (terminal_preferences_dialog_after_realize), NULL);
@@ -286,7 +289,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
   /* label to signify active profile */
-  profile = terminal_preferences_get_default_profile (dialog->preferences);
+  profile = terminal_profile_manager_get_default_profile (dialog->manager);
   dialog->profile_label = gtk_label_new_with_mnemonic (_(profile));
   gtk_box_pack_start (GTK_BOX (box), dialog->profile_label, TRUE, TRUE, 0);
   gtk_widget_show (dialog->profile_label);
@@ -2423,12 +2426,12 @@ terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
 
   profile_name = terminal_preferences_dialog_get_profile_name (dialog, "New Profile", NULL);
 
-  if (profile_name == NULL || terminal_preferences_has_profile (dialog->preferences, profile_name))
+  if (profile_name == NULL || terminal_profile_manager_has_profile (dialog->manager, profile_name))
     return;
 
   gtk_list_store_append (dialog->store, &iter);
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
-  terminal_preferences_add_profile (dialog->preferences, profile_name, FALSE);
+  terminal_profile_manager_create_profile (dialog->manager, profile_name, NULL);
 
   g_free (profile_name);
 }
@@ -2456,12 +2459,12 @@ terminal_preferences_dialog_clone_new_profile (TerminalPreferencesDialog *dialog
   dialog_title = g_strdup_printf ("Clone/Copy/Duplicate Profile - %s", profile_name);
   profile_name = terminal_preferences_dialog_get_profile_name (dialog, dialog_title, profile_name);
 
-  if (profile_name == NULL || terminal_preferences_has_profile (dialog->preferences, profile_name))
+  if (profile_name == NULL || terminal_profile_manager_has_profile (dialog->manager, profile_name))
     return;
 
   gtk_list_store_append (dialog->store, &iter);
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
-  terminal_preferences_add_profile (dialog->preferences, profile_name, TRUE);
+  terminal_profile_manager_create_profile (dialog->manager, profile_name, NULL);
 
   g_free (profile_name);
   g_free (dialog_title);
@@ -2485,7 +2488,7 @@ terminal_preferences_dialog_remove_profile (TerminalPreferencesDialog *dialog)
   gtk_tree_selection_get_selected (selection, &model, &iter);
   gtk_tree_model_get (model, &iter,
                       COLUMN_PROFILE_NAME, &name, -1);
-  success = terminal_preferences_remove_profile (dialog->preferences, name);
+  success = terminal_profile_manager_delete_profile (dialog->manager, name);
   if (G_LIKELY(success))
     gtk_list_store_remove (dialog->store, &iter);
 
@@ -2498,18 +2501,6 @@ static void
 terminal_preferences_dialog_activate_profile (TerminalPreferencesDialog *dialog,
                                               GtkTreeSelection          *selection)
 {
-  GtkTreeModel     *model;
-  GtkTreeIter       iter;
-  gchar            *profile_name;
-
-  gtk_tree_selection_get_selected (selection, &model, &iter);
-
-  gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
-  
-  terminal_preferences_switch_profile (dialog->preferences, profile_name);
-  gtk_label_set_text (GTK_LABEL (dialog->profile_label), profile_name);
-
-  g_free (profile_name);
 }
 
 
@@ -2519,22 +2510,19 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
                                             GtkListStore              *store)
 {
   GtkTreeIter  iter;
-  gchar       *def = terminal_preferences_get_default_profile (dialog->preferences);
-  gchar      **str = terminal_preferences_get_profiles (dialog->preferences);
-  gint         n   = terminal_preferences_get_n_profiles (dialog->preferences);
+  gchar       *def = terminal_profile_manager_get_default_profile (dialog->manager);
+  const GList *profiles = terminal_profile_manager_get_profiles (dialog->manager);
 
-  for (gint i = 0; i < n; i++)
+  for (const GList *lp = profiles; lp != NULL; lp = lp->next)
     {
       gtk_list_store_append (store, &iter);
       gtk_list_store_set (store, &iter,
-                          COLUMN_PROFILE_NAME, str[i],
+                          COLUMN_PROFILE_NAME, lp->data,
                           /* This Column has a PixbufRenderer. "object-select-symbolic" stands for the 'tick' symbol.
                            * If NULL is set then nothing is drawn by the PixbufRenderer. */
-                          COLUMN_PROFILE_IS_DEFAULT, g_strcmp0 (str[i], def) == 0 ? "object-select-symbolic" : NULL, -1);
+                          COLUMN_PROFILE_IS_DEFAULT, g_strcmp0 (lp->data, def) == 0 ? "object-select-symbolic" : NULL, -1);
     }
 
-  /* TODO: g_strfreev doesn't seem to work but individual g_free calls seem to work */
-  g_strfreev (str);
   g_free (def);
 }
 
@@ -2557,7 +2545,7 @@ validate_profile_name_dialog_input (TerminalPreferencesDialog *dialog,
 
   input = gtk_entry_get_text (GTK_ENTRY (entry));
   len = gtk_entry_get_text_length (GTK_ENTRY (entry));
-  input_is_invalid = len == 0 || terminal_preferences_has_profile (dialog->preferences, input);
+  input_is_invalid = len == 0 || terminal_profile_manager_has_profile  (dialog->manager, input);
   gtk_entry_set_icon_from_icon_name (GTK_ENTRY (entry), GTK_ENTRY_ICON_PRIMARY, input_is_invalid ? "emblem-important-symbolic" : "emblem-ok-symbolic");
   gtk_entry_set_icon_tooltip_text (GTK_ENTRY (entry), GTK_ENTRY_ICON_PRIMARY,
                                    input_is_invalid ? 
@@ -2574,8 +2562,8 @@ transform_text_to_bool (GBinding     *binding,
                         GValue       *to,
                         gpointer      user_data)
 {
-  TerminalPreferences *preferences = TERMINAL_PREFERENCES (user_data);
-  gboolean             profile_exists = terminal_preferences_has_profile (preferences, g_value_get_string (from));
+  TerminalProfileManager *manager = terminal_profile_manager_get();
+  gboolean             profile_exists = terminal_profile_manager_has_profile (manager, g_value_get_string (from));
 
   g_value_set_boolean (to, !profile_exists);
 
@@ -2680,7 +2668,7 @@ terminal_preferences_dialog_set_profile_as_default (TerminalPreferencesDialog  *
   dialog->default_profile_iter = gtk_tree_iter_copy (&iter);
   
   gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_PROFILE_NAME, &profile_name, -1);
-  terminal_preferences_set_default_profile (dialog->preferences, profile_name);
+  terminal_profile_manager_set_default_profile (dialog->manager, profile_name);
 
   g_free (profile_name);
   gtk_tree_path_free (default_path);
@@ -2692,9 +2680,7 @@ terminal_preferences_dialog_set_profile_as_default (TerminalPreferencesDialog  *
 static void
 terminal_preferences_dialog_after_realize (TerminalPreferencesDialog *dialog)
 {
-  gchar *default_profile = terminal_preferences_get_default_profile (dialog->preferences);
-  terminal_preferences_switch_profile (dialog->preferences, default_profile);
-  g_free (default_profile);
+  /* TODO */
 }
 
 
@@ -2720,7 +2706,7 @@ terminal_preferences_dialog_rename_profile (TerminalPreferencesDialog *dialog)
   /* get new profile name from user */
   new_profile_name = terminal_preferences_dialog_get_profile_name (dialog, dialog_title, profile_name);
 
-  if (new_profile_name == NULL || terminal_preferences_has_profile (dialog->preferences, new_profile_name))
+  if (new_profile_name == NULL || terminal_profile_manager_has_profile (dialog->manager, new_profile_name))
     return;
 
   /* change the profile name in the view */
@@ -2729,7 +2715,7 @@ terminal_preferences_dialog_rename_profile (TerminalPreferencesDialog *dialog)
   gtk_label_set_text(GTK_LABEL (dialog->profile_label), new_profile_name);
 
   /* reflect the changes on the backend */
-  terminal_preferences_rename_profile (dialog->preferences, profile_name, new_profile_name);
+  terminal_profile_manager_rename_profile (dialog->manager, profile_name, new_profile_name);
 
   g_free (profile_name);
   g_free (dialog_title);

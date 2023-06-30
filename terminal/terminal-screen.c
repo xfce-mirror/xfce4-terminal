@@ -58,6 +58,7 @@
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-window-dropdown.h>
+#include <terminal/terminal-profile-manager.h>
 
 #if defined(GDK_WINDOWING_X11)
 #include <gdk/gdkx.h>
@@ -127,9 +128,6 @@ static void       terminal_screen_style_updated                 (GtkWidget      
 static gboolean   terminal_screen_draw                          (GtkWidget             *widget,
                                                                  cairo_t               *cr,
                                                                  gpointer               user_data);
-static void       terminal_screen_preferences_changed           (TerminalPreferences   *preferences,
-                                                                 GParamSpec            *pspec,
-                                                                 TerminalScreen        *screen);
 static gboolean   terminal_screen_get_child_command             (TerminalScreen        *screen,
                                                                  gchar                **command,
                                                                  gchar               ***argv,
@@ -337,6 +335,7 @@ static void
 terminal_screen_init (TerminalScreen *screen)
 {
   gboolean scrollbar;
+  TerminalProfileManager *manager;
 
   screen->loader = terminal_image_loader_get ();
   screen->working_directory = g_get_current_dir ();
@@ -366,11 +365,11 @@ terminal_screen_init (TerminalScreen *screen)
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "paste-clipboard-request",
       G_CALLBACK (terminal_screen_paste_clipboard), screen);
 
-  screen->preferences = terminal_preferences_new ();
+  manager = terminal_profile_manager_get ();
 
   /* initialize profile to the default profile */
-  screen->profile = terminal_preferences_get_default_profile (screen->preferences);
-  terminal_preferences_switch_profile (screen->preferences, screen->profile);
+  screen->profile = terminal_profile_manager_get_default_profile (manager);
+  screen->preferences = terminal_profile_manager_get_profile (manager, screen->profile);
 
   g_object_get (G_OBJECT (screen->preferences),
    "scrolling-bar", &scrollbar,
@@ -387,10 +386,6 @@ terminal_screen_init (TerminalScreen *screen)
 
   screen->scrollbar = gtk_scrolled_window_get_vscrollbar (GTK_SCROLLED_WINDOW (screen->swin));
   g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
-
-  /* watch preferences changes */
-  g_signal_connect (G_OBJECT (screen->preferences), "notify",
-      G_CALLBACK (terminal_screen_preferences_changed), screen);
 
   /* show the terminal */
   gtk_widget_show_all (screen->swin);
@@ -419,9 +414,6 @@ terminal_screen_finalize (GObject *object)
   if (screen->activity_timeout_id != 0)
     g_source_remove (screen->activity_timeout_id);
 
-  /* detach from preferences */
-  g_signal_handlers_disconnect_by_func (screen->preferences,
-      G_CALLBACK (terminal_screen_preferences_changed), screen);
   g_object_unref (G_OBJECT (screen->preferences));
 
   if (screen->loader != NULL)
@@ -629,73 +621,6 @@ terminal_screen_draw (GtkWidget *widget,
       G_CALLBACK (terminal_screen_draw), screen);
 
   return TRUE;
-}
-
-
-
-static void
-terminal_screen_preferences_changed (TerminalPreferences *preferences,
-                                     GParamSpec          *pspec,
-                                     TerminalScreen      *screen)
-{
-  const gchar *name;
-  gchar       *current_profile;
-  gboolean     needs_change = FALSE;
-
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
-  terminal_return_if_fail (screen->preferences == preferences);
-
-  current_profile = terminal_preferences_get_active_profile (preferences);
-  needs_change = g_strcmp0 (screen->profile, current_profile) == 0;
-  g_free (current_profile);
-  if (!needs_change)
-    return;
-
-  /* get name */
-  name = g_param_spec_get_name (pspec);
-  terminal_assert (name != NULL);
-
-  if (strncmp ("background-", name, strlen ("background-")) == 0)
-    terminal_screen_update_background (screen);
-  else if (strcmp ("binding-backspace", name) == 0)
-    terminal_screen_update_binding_backspace (screen);
-  else if (strcmp ("binding-delete", name) == 0)
-    terminal_screen_update_binding_delete (screen);
-  else if (strcmp ("binding-ambiguous-width", name) == 0)
-    terminal_screen_update_binding_ambiguous_width (screen);
-  else if (strcmp ("cell-width-scale", name) == 0 || strcmp ("cell-height-scale", name) == 0)
-    terminal_screen_update_font (screen);
-  else if (strncmp ("color-", name, strlen ("color-")) == 0)
-    terminal_screen_update_colors (screen);
-  else if (strncmp ("font-", name, strlen ("font-")) == 0)
-    terminal_screen_update_font (screen);
-  else if (strncmp ("misc-bell", name, strlen ("misc-bell")) == 0)
-    terminal_screen_update_misc_bell (screen);
-  else if (strcmp ("misc-cursor-blinks", name) == 0)
-    terminal_screen_update_misc_cursor_blinks (screen);
-  else if (strcmp ("misc-cursor-shape", name) == 0)
-    terminal_screen_update_misc_cursor_shape (screen);
-  else if (strcmp ("misc-mouse-autohide", name) == 0)
-    terminal_screen_update_misc_mouse_autohide (screen);
-  else if (strcmp ("misc-rewrap-on-resize", name) == 0)
-    terminal_screen_update_misc_rewrap_on_resize (screen);
-  else if (strcmp ("scrolling-bar", name) == 0 || strcmp ("overlay-scrolling", name) == 0)
-    terminal_screen_update_scrolling_bar (screen);
-  else if (strcmp ("scrolling-lines", name) == 0 || strcmp ("scrolling-unlimited", name) == 0)
-    terminal_screen_update_scrolling_lines (screen);
-  else if (strcmp ("scrolling-on-output", name) == 0)
-    terminal_screen_update_scrolling_on_output (screen);
-  else if (strcmp ("scrolling-on-keystroke", name) == 0)
-    terminal_screen_update_scrolling_on_keystroke (screen);
-  else if (strcmp ("text-blink-mode", name) == 0)
-    terminal_screen_update_text_blink_mode (screen);
-  else if (strncmp ("title-", name, strlen ("title-")) == 0)
-    terminal_screen_update_title (screen);
-  else if (strcmp ("word-chars", name) == 0)
-    terminal_screen_update_word_chars (screen);
-  else if (strcmp ("misc-tab-position", name) == 0)
-    terminal_screen_update_label_orientation (screen);
 }
 
 
@@ -3169,25 +3094,7 @@ void
 terminal_screen_change_profile_to (TerminalScreen *screen,
                                    const gchar    *name)
 {
-  gchar *preferences_active_profile;
-
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-
-  /* No change required */
-  if (g_strcmp0 (screen->profile, name) == 0)
-    return;
-
-  preferences_active_profile = terminal_preferences_get_active_profile (screen->preferences);
-  g_free (screen->profile);
-  screen->profile = g_strdup (name);
-
-  if (g_strcmp0 (name, preferences_active_profile) != 0)
-    terminal_preferences_switch_profile (screen->preferences, name);
-
-  /* update all the settings */
-  terminal_screen_update_all (screen);
-
-  g_free (preferences_active_profile);
+  /* TODO */
 }
 
 

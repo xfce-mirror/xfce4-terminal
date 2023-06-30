@@ -42,6 +42,7 @@
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-options.h>
 #include <terminal/terminal-preferences-dialog.h>
+#include <terminal/terminal-profile-manager.h>
 #include <terminal/terminal-search-dialog.h>
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-marshal.h>
@@ -3335,28 +3336,27 @@ terminal_window_update_profiles_menu (TerminalWindow      *window,
   GtkWidget  *item;
   GSList     *group = NULL;
   gchar      *current_profile;
-  gchar     **profiles;
-  gint        n_profiles;
+  const GList *profiles;
+  TerminalProfileManager *manager;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
   terminal_window_menu_clean (GTK_MENU (menu));
   current_profile = terminal_screen_get_profile_name (TERMINAL_SCREEN (window->priv->active));
-  profiles = terminal_preferences_get_profiles (window->priv->preferences);
-  n_profiles = terminal_preferences_get_n_profiles (window->priv->preferences);
+  manager = terminal_profile_manager_get ();
+  profiles = terminal_profile_manager_get_profiles (manager);
 
-  for (gint i = 0; i < n_profiles; i++)
+  for (const GList *lp = profiles; lp != NULL; lp = lp->next)
     {
-      item = gtk_radio_menu_item_new_with_mnemonic (group, _(profiles[i]));
+      item = gtk_radio_menu_item_new_with_mnemonic (group, _(lp->data));
       group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item));
-      if (g_strcmp0 (profiles [i], current_profile) == 0)
+      if (g_strcmp0 (lp->data, current_profile) == 0)
         gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
       g_signal_connect_swapped (G_OBJECT (item), "toggled",
                                 G_CALLBACK (terminal_window_action_set_profile), window);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
     }
 
-  g_strfreev (profiles);
   g_free (current_profile);
 
   gtk_widget_show_all (GTK_WIDGET (menu));
@@ -3457,25 +3457,5 @@ terminal_window_get_action_entries (void)
 static void
 terminal_window_update_profiles (TerminalWindow *window)
 {
-  TerminalScreen *screen;
-  gchar          *default_profile;
-  gchar          *active_profile;
-  gint            N;
-  
-  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (window->priv->preferences));
-
-  default_profile = terminal_preferences_get_default_profile (window->priv->preferences);
-  N = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
-
-  for (gint i = 0; i < N; i++)
-    {
-      screen = TERMINAL_SCREEN (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), i));
-      active_profile = terminal_screen_get_profile_name (screen);
-      if (!terminal_preferences_has_profile (window->priv->preferences, active_profile))
-        terminal_screen_change_profile_to (screen, default_profile);
-      g_free (active_profile);
-    }
-
-  g_free (default_profile);
+  /* TODO */
 }

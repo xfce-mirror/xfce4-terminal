@@ -960,3 +960,22 @@ terminal_app_process (TerminalApp  *app,
 
   return TRUE;
 }
+
+
+
+gboolean nxf = FALSE;
+
+
+
+void
+terminal_app_found_no_xfconf (void)
+{
+  nxf = TRUE;
+}
+
+
+gboolean
+no_xfconf (void)
+{
+  return nxf;
+}
