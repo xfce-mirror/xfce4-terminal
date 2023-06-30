@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define TERMINAL_TYPE_PROFILE_MANAGER             (terminal_preferences_get_type ())
+#define TERMINAL_TYPE_PROFILE_MANAGER             (terminal_profile_manager_get_type ())
 #define TERMINAL_PROFILE_MANAGER(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_PROFILE_MANAGER, TerminalProfileManager))
 #define TERMINAL_IS_PROFILE_MANAGER(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_PROFILE_MANAGER))
 

@@ -1270,54 +1270,12 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
-  const gchar  check_prop[] = "/profiles";
-  gchar      **profiles;
-
   /* don't set a channel if xfconf init failed */
   if (no_xfconf())
     return;
 
   /* load the channel */
   preferences->channel = xfconf_channel_get ("xfce4-terminal");
-  /* Using the following as a set. hence key & value will be same string. Thus only setting GDestryFunc for key.
-   * Otherwise we would be double freeing the strings. */
-  preferences->profiles = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
-
-  /* check one of the property to see if there are values */
-  if (!xfconf_channel_has_property (preferences->channel, check_prop))
-    {
-      /* Reset Xfconf channel for the New Format */
-      xfconf_channel_reset_property (preferences->channel, "/", TRUE);
-
-      /* Intialize the default-properties property in the channel */
-      preferences->active_profile = g_strdup ("default-properties");
-      for (gint prop = 1; prop < N_PROPERTIES; prop++)
-        terminal_preferences_set_property (G_OBJECT (preferences), prop, g_param_spec_get_default_value (preferences_props [prop]), preferences_props [prop]);
-      g_free (preferences->active_profile);
-
-      /* create & store a new default profile named default */
-      preferences->active_profile = g_strdup ("default");
-
-      /* try to load the old config file & save changes */
-      terminal_preferences_load_rc_file (preferences);
-
-      /* save the name of the default profile user /default-profile */
-      xfconf_channel_set_string (preferences->channel, "/default-profile", "default");
-
-      /* create & store the g_ptr_array for storing the different profile names */
-      preferences->profiles_string = g_strdup ("default");
-      g_hash_table_add (preferences->profiles, g_strdup ("default"));
-
-      xfconf_channel_set_string (preferences->channel, "/profiles", preferences->profiles_string);
-    }
-  else
-    {
-      preferences->profiles_string = xfconf_channel_get_string (preferences->channel, "/profiles", "default");
-      preferences->active_profile = xfconf_channel_get_string (preferences->channel, "/default-profile", "default");
-      profiles = g_strsplit (preferences->profiles_string, ";", -1);
-      for (guint i = 0; profiles [i] != NULL; i++)
-        g_hash_table_add (preferences->profiles, profiles [i]);
-    }
 
   preferences->property_changed_id =
     g_signal_connect (G_OBJECT (preferences->channel), "property-changed",
