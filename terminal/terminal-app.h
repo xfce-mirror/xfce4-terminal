@@ -58,6 +58,8 @@ gboolean     terminal_app_process             (TerminalApp        *app,
                                                gchar             **argv,
                                                gint                argc,
                                                GError            **error);
+void         terminal_app_found_no_xfconf     (void);
+gboolean     no_xfconf (void);
 
 G_END_DECLS
 

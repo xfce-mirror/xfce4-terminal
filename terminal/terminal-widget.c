@@ -37,6 +37,7 @@
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-marshal.h>
 #include <terminal/terminal-preferences.h>
+#include <terminal/terminal-profile-manager.h>
 #include <terminal/terminal-widget.h>
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-regex.h>
@@ -251,8 +252,10 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
 static void
 terminal_widget_init (TerminalWidget *widget)
 {
+  TerminalProfileManager *manager = terminal_profile_manager_get ();
+
   /* query preferences connection */
-  widget->preferences = terminal_preferences_get ();
+  widget->preferences = terminal_profile_manager_get_default_profile (manager);
 
   /* unset tags */
   memset (widget->regex_tags, -1, sizeof (widget->regex_tags));
@@ -289,6 +292,8 @@ terminal_widget_init (TerminalWidget *widget)
       if (widget->regex_pcre[i] == NULL)
         g_warning ("Failed to compile regex, error code \"%d\".", error_number);
     }
+  
+  g_object_unref (manager);
 }
 
 
