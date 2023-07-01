@@ -17,6 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "terminal-profile-manager.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -138,12 +139,6 @@ enum
   N_PROPERTIES,
 };
 
-enum
-{
-  PROFILES_CHANGED,
-  LAST_SIGNAL
-};
-
 
 
 static void     terminal_preferences_finalize      (GObject             *object);
@@ -159,7 +154,6 @@ static void     terminal_preferences_prop_changed  (XfconfChannel       *channel
                                                     const gchar         *prop_name,
                                                     const GValue        *value,
                                                     TerminalPreferences *preferences);
-static void     terminal_preferences_load_rc_file  (TerminalPreferences *preferences);
 
 
 
@@ -173,9 +167,7 @@ struct _TerminalPreferences
   GObject        __parent__;
 
   XfconfChannel *channel;
-  gchar         *active_profile;
-  GHashTable    *profiles;
-  gchar         *profiles_string;
+  gchar         *profile;
 
   gulong         property_changed_id;
 };
@@ -259,10 +251,6 @@ transform_string_to_enum (const GValue *src,
   g_value_set_enum (dst, genum_value->value);
 }
 
-
-
-/* don't do anything in case xfconf_init() failed */
-static guint    preferences_signals[LAST_SIGNAL];
 
 
 G_DEFINE_TYPE (TerminalPreferences, terminal_preferences, G_TYPE_OBJECT)
@@ -1253,16 +1241,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 
   /* install all properties */
   g_object_class_install_properties (gobject_class, N_PROPERTIES, preferences_props);
-
-  /**
-   * TerminalPreferences::profiles-changed
-   **/
-  preferences_signals[PROFILES_CHANGED] =
-    g_signal_new (I_("profiles-changed"),
-                  G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_RUN_LAST,
-                  0, NULL, NULL,NULL,
-                  G_TYPE_NONE, 0);
 }
 
 
@@ -1270,12 +1248,15 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
+  TerminalProfileManager *manager = terminal_profile_manager_get ();
   /* don't set a channel if xfconf init failed */
-  if (no_xfconf())
+  if (no_xfconf ())
     return;
 
   /* load the channel */
   preferences->channel = xfconf_channel_get ("xfce4-terminal");
+
+  preferences->profile = terminal_profile_manager_get_default_profile_name (manager);
 
   preferences->property_changed_id =
     g_signal_connect (G_OBJECT (preferences->channel), "property-changed",
@@ -1287,12 +1268,6 @@ terminal_preferences_init (TerminalPreferences *preferences)
 static void
 terminal_preferences_finalize (GObject *object)
 {
-  TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
-
-  g_free (preferences->active_profile);
-  g_free (preferences->profiles_string);
-  g_hash_table_destroy (preferences->profiles);
-
   (*G_OBJECT_CLASS (terminal_preferences_parent_class)->finalize) (object);
 }
 
@@ -1306,7 +1281,7 @@ terminal_preferences_get_property (GObject    *object,
 {
   TerminalPreferences  *preferences = TERMINAL_PREFERENCES (object);
   GValue                src = { 0, };
-  gchar                *prop_name;
+  gchar                 prop_name[64];
   gchar               **array;
 
   terminal_return_if_fail (prop_id < N_PROPERTIES);
@@ -1319,7 +1294,7 @@ terminal_preferences_get_property (GObject    *object,
     }
 
   /* build property name */
-  prop_name = g_strdup_printf ("/%s/%s", preferences->active_profile, g_param_spec_get_name (pspec));
+  g_snprintf (prop_name, sizeof (prop_name), "/%s/%s", preferences->profile, g_param_spec_get_name (pspec));
 
   if (G_VALUE_TYPE (value) == G_TYPE_STRV)
     {
@@ -1352,7 +1327,7 @@ terminal_preferences_set_property (GObject      *object,
 {
   TerminalPreferences  *preferences = TERMINAL_PREFERENCES (object);
   GValue                dst = { 0, };
-  gchar                *prop_name;
+  gchar                 prop_name[64];
   gchar               **array;
 
   /* leave if the channel is not set */
@@ -1360,7 +1335,7 @@ terminal_preferences_set_property (GObject      *object,
     return;
 
   /* build property name */
-  prop_name = g_strdup_printf ("/%s/%s", preferences->active_profile, g_param_spec_get_name (pspec));
+  g_snprintf (prop_name, sizeof (prop_name), "/%s/%s", preferences->profile, g_param_spec_get_name (pspec));
 
   if (G_VALUE_HOLDS_ENUM (value))
     {
@@ -1394,149 +1369,124 @@ terminal_preferences_prop_changed (XfconfChannel       *channel,
                                    const GValue        *value,
                                    TerminalPreferences *preferences)
 {
-  GParamSpec  *pspec;
-  gchar      **prop_name_split;
-  gchar      **profiles;
+  GParamSpec *pspec;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
-
-  /* split the prop_name by the delimiter "/" to get active_profile (1) & actual prop name (2) */
-  prop_name_split = g_strsplit (prop_name, "/", -1);
-
-  /* update iff the change is for the currently active profile */
-  if (prop_name_split [1] != NULL && g_strcmp0 (prop_name_split [1], preferences->active_profile) == 0)
-    {
-      /* check if the property exists and emit change */
-      pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (preferences), prop_name_split [2]);
-      if (G_LIKELY (pspec != NULL))
-        g_object_notify_by_pspec (G_OBJECT (preferences), pspec);
-    }
-  else if (prop_name_split [1] != NULL && g_strcmp0 (prop_name_split [1], "profiles") == 0)
-    {
-      /* fetch & update profiles & n_profiles */
-      g_free (preferences->profiles_string);
-      preferences->profiles_string = xfconf_channel_get_string (preferences->channel, "/profiles", "default");
-      profiles = g_strsplit (preferences->profiles_string, ";", -1);
-      g_hash_table_remove_all (preferences->profiles);
-      for (gint i = 0; profiles [i] != NULL; i++)
-        g_hash_table_add (preferences->profiles, profiles [i]);
-
-      g_signal_emit (G_OBJECT (preferences), preferences_signals [PROFILES_CHANGED], 0);
-    }
-
-  g_strfreev (prop_name_split);
+  /* check if the property exists and emit change */
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (preferences), prop_name + 1);
+  if (G_LIKELY (pspec != NULL))
+    g_object_notify_by_pspec (G_OBJECT (preferences), pspec);
 }
 
 
 
-static void
-terminal_preferences_load_rc_file (TerminalPreferences *preferences)
-{
-  gchar       *filename;
-  const gchar *string, *name;
-  GParamSpec  *pspec;
-  XfceRc      *rc;
-  GValue       dst = { 0, };
-  GValue       src = { 0, };
-  guint        n;
-  gboolean     migrate_colors = FALSE;
-  gchar        color_name[16];
-  GString     *array;
-
-  /* find file */
-  filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC);
-  if (G_UNLIKELY (filename == NULL))
-    {
-      /* old location of the Terminal days */
-      filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC_OLD);
-      migrate_colors = TRUE;
-      if (G_UNLIKELY (filename == NULL))
-        return;
-    }
-
-  /* look for preferences */
-  rc = xfce_rc_simple_open (filename, TRUE);
-  if (G_UNLIKELY (rc == NULL))
-    return;
-
-  g_object_freeze_notify (G_OBJECT (preferences));
-
-  xfce_rc_set_group (rc, "Configuration");
-
-  g_value_init (&src, G_TYPE_STRING);
-
-  for (n = PROP_0 + 1; n < N_PROPERTIES; ++n)
-    {
-      pspec = preferences_props[n];
-      name = g_param_spec_get_name (pspec);
-
-#ifdef G_ENABLE_DEBUG
-      terminal_assert (g_param_spec_get_nick (pspec) != NULL);
-      terminal_preferences_check_blurb (pspec);
-#endif
-
-      string = xfce_rc_read_entry (rc, g_param_spec_get_blurb (pspec), NULL);
-      if (G_UNLIKELY (string == NULL))
-        {
-          g_object_notify_by_pspec (G_OBJECT (preferences), pspec);
-        }
-      else
-        {
-          g_value_set_static_string (&src, string);
-
-          if (G_PARAM_SPEC_VALUE_TYPE (pspec) == G_TYPE_STRING)
-            {
-              /* set the string property */
-              g_object_set_property (G_OBJECT (preferences), name, &src);
-            }
-          else
-            {
-              g_value_init (&dst, G_PARAM_SPEC_VALUE_TYPE (pspec));
-              if (G_LIKELY (g_value_transform (&src, &dst)))
-                g_object_set_property (G_OBJECT (preferences), name, &dst);
-              else
-                g_warning ("Unable to load property \"%s\"", name);
-              g_value_unset (&dst);
-            }
-        }
-    }
-
-  /* migrate old terminal color properties into a single string */
-  if (G_UNLIKELY (migrate_colors))
-    {
-      /* concat all values */
-      array = g_string_sized_new (225);
-      for (n = 1; n <= 16; n++)
-        {
-          g_snprintf (color_name, sizeof (color_name), "ColorPalette%d", n);
-          string = xfce_rc_read_entry (rc, color_name, NULL);
-          if (string == NULL)
-            break;
-
-          g_string_append (array, string);
-          if (n != 16)
-            g_string_append_c (array, ';');
-        }
-
-      /* set property if 16 colors were found */
-      if (n >= 16)
-        g_object_set (G_OBJECT (preferences), "color-palette", array->str, NULL);
-      g_string_free (array, TRUE);
-    }
-
-  g_value_unset (&src);
-
-  xfce_rc_close (rc);
-
-  g_object_thaw_notify (G_OBJECT (preferences));
-
-  g_print ("\n\n"
-           "Your Terminal settings have been migrated to Xfconf.\n"
-           "The config file \"%s\"\n"
-           "is not used anymore.\n\n", filename);
-
-  g_free (filename);
-}
+// static void
+// terminal_preferences_load_rc_file (TerminalPreferences *preferences)
+// {
+//   gchar       *filename;
+//   const gchar *string, *name;
+//   GParamSpec  *pspec;
+//   XfceRc      *rc;
+//   GValue       dst = { 0, };
+//   GValue       src = { 0, };
+//   guint        n;
+//   gboolean     migrate_colors = FALSE;
+//   gchar        color_name[16];
+//   GString     *array;
+// 
+//   /* find file */
+//   filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC);
+//   if (G_UNLIKELY (filename == NULL))
+//     {
+//       /* old location of the Terminal days */
+//       filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC_OLD);
+//       migrate_colors = TRUE;
+//       if (G_UNLIKELY (filename == NULL))
+//         return;
+//     }
+// 
+//   /* look for preferences */
+//   rc = xfce_rc_simple_open (filename, TRUE);
+//   if (G_UNLIKELY (rc == NULL))
+//     return;
+// 
+//   g_object_freeze_notify (G_OBJECT (preferences));
+// 
+//   xfce_rc_set_group (rc, "Configuration");
+// 
+//   g_value_init (&src, G_TYPE_STRING);
+// 
+//   for (n = PROP_0 + 1; n < N_PROPERTIES; ++n)
+//     {
+//       pspec = preferences_props[n];
+//       name = g_param_spec_get_name (pspec);
+// 
+// #ifdef G_ENABLE_DEBUG
+//       terminal_assert (g_param_spec_get_nick (pspec) != NULL);
+//       terminal_preferences_check_blurb (pspec);
+// #endif
+// 
+//       string = xfce_rc_read_entry (rc, g_param_spec_get_blurb (pspec), NULL);
+//       if (G_UNLIKELY (string == NULL))
+//         {
+//           g_object_notify_by_pspec (G_OBJECT (preferences), pspec);
+//         }
+//       else
+//         {
+//           g_value_set_static_string (&src, string);
+// 
+//           if (G_PARAM_SPEC_VALUE_TYPE (pspec) == G_TYPE_STRING)
+//             {
+//               /* set the string property */
+//               g_object_set_property (G_OBJECT (preferences), name, &src);
+//             }
+//           else
+//             {
+//               g_value_init (&dst, G_PARAM_SPEC_VALUE_TYPE (pspec));
+//               if (G_LIKELY (g_value_transform (&src, &dst)))
+//                 g_object_set_property (G_OBJECT (preferences), name, &dst);
+//               else
+//                 g_warning ("Unable to load property \"%s\"", name);
+//               g_value_unset (&dst);
+//             }
+//         }
+//     }
+// 
+//   /* migrate old terminal color properties into a single string */
+//   if (G_UNLIKELY (migrate_colors))
+//     {
+//       /* concat all values */
+//       array = g_string_sized_new (225);
+//       for (n = 1; n <= 16; n++)
+//         {
+//           g_snprintf (color_name, sizeof (color_name), "ColorPalette%d", n);
+//           string = xfce_rc_read_entry (rc, color_name, NULL);
+//           if (string == NULL)
+//             break;
+// 
+//           g_string_append (array, string);
+//           if (n != 16)
+//             g_string_append_c (array, ';');
+//         }
+// 
+//       /* set property if 16 colors were found */
+//       if (n >= 16)
+//         g_object_set (G_OBJECT (preferences), "color-palette", array->str, NULL);
+//       g_string_free (array, TRUE);
+//     }
+// 
+//   g_value_unset (&src);
+// 
+//   xfce_rc_close (rc);
+// 
+//   g_object_thaw_notify (G_OBJECT (preferences));
+// 
+//   g_print ("\n\n"
+//            "Your Terminal settings have been migrated to Xfconf.\n"
+//            "The config file \"%s\"\n"
+//            "is not used anymore.\n\n", filename);
+// 
+//   g_free (filename);
+// }
 
 
 
@@ -1583,9 +1533,6 @@ terminal_preferences_check_blurb (GParamSpec *spec)
 /**
  * terminal_preferences_get:
  *
- * Returns the a ref of the preferences object if it already exists.
- * Otherwise creates a new preferences object and returns this.
- *
  * Return value :
  **/
 TerminalPreferences*
@@ -1605,21 +1552,6 @@ terminal_preferences_get (void)
     }
 
   return preferences;
-}
-
-
-
-/**
- * terminal_preferences_new:
- *
- * Returns a newly created preferences object.
- *
- * Return value :
- **/
-TerminalPreferences*
-terminal_preferences_new (void)
-{
-  return g_object_new (TERMINAL_TYPE_PREFERENCES, NULL);
 }
 
 
@@ -1645,7 +1577,15 @@ terminal_preferences_get_color (TerminalPreferences *preferences,
 
 
 void
-terminal_preferences_set_profile(TerminalPreferences *preferences, const gchar *name)
+terminal_preferences_set_profile (TerminalPreferences *preferences,
+                                  const gchar         *name)
 {
-  /* TODO */
+  if (preferences->profile != NULL)
+    g_free (preferences->profile);
+  preferences->profile = NULL;
+
+  preferences->profile = g_strdup (name);
+
+  for (gint i = PROP_0 + 1; i < N_PROPERTIES; i++)
+    g_object_notify_by_pspec (G_OBJECT (preferences), preferences_props[i]);
 }

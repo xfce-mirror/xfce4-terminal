@@ -163,7 +163,7 @@ terminal_profile_manager_get_profile (TerminalProfileManager *manager,
 
   if (preferences == NULL)
     {
-      preferences = terminal_preferences_new ();
+      preferences = g_object_new (TERMINAL_TYPE_PREFERENCES, NULL);
       terminal_preferences_set_profile (preferences, name);
       g_hash_table_insert (manager->hashmap, g_strdup (name), preferences);
     }
