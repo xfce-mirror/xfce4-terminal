@@ -152,6 +152,8 @@ struct _TerminalPreferencesDialog
   gulong               palette_set_signal_id[N_PALETTE_BUTTONS];
   gulong               geometry_notify_signal_id;
   gulong               geometry_set_signal_id[N_GEOMETRY_BUTTONS];
+
+  GList               *bindings;
 };
 
 
@@ -238,11 +240,12 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gboolean           has_next;
   gchar             *current;
   gchar             *profile;
+  GBinding          *binding;
   gint               row = 0;
 
   /* have a separate instance of preferences so as to not affect  other components */
-  dialog->preferences = terminal_preferences_new ();
-  dialog->manager = terminal_profile_manager_get();
+  dialog->manager = terminal_profile_manager_get ();
+  dialog->preferences = terminal_profile_manager_get_default_profile (dialog->manager);
 
   g_signal_connect (G_OBJECT (dialog), "realize",
                     G_CALLBACK (terminal_preferences_dialog_after_realize), NULL);
@@ -289,7 +292,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
   /* label to signify active profile */
-  profile = terminal_profile_manager_get_default_profile (dialog->manager);
+  profile = terminal_profile_manager_get_default_profile_name (dialog->manager);
   dialog->profile_label = gtk_label_new_with_mnemonic (_(profile));
   gtk_box_pack_start (GTK_BOX (box), dialog->profile_label, TRUE, TRUE, 0);
   gtk_widget_show (dialog->profile_label);
@@ -2431,7 +2434,7 @@ terminal_preferences_dialog_add_new_profile (TerminalPreferencesDialog *dialog)
 
   gtk_list_store_append (dialog->store, &iter);
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
-  terminal_profile_manager_create_profile (dialog->manager, profile_name, NULL);
+  terminal_profile_manager_create_profile (dialog->manager, profile_name, NULL, FALSE);
 
   g_free (profile_name);
 }
@@ -2464,7 +2467,8 @@ terminal_preferences_dialog_clone_new_profile (TerminalPreferencesDialog *dialog
 
   gtk_list_store_append (dialog->store, &iter);
   gtk_list_store_set (dialog->store, &iter, COLUMN_PROFILE_NAME, profile_name, -1);
-  terminal_profile_manager_create_profile (dialog->manager, profile_name, NULL);
+  /* TODO: Create a dialog box to enter clone from profile name */
+  terminal_profile_manager_create_profile (dialog->manager, profile_name, NULL, FALSE);
 
   g_free (profile_name);
   g_free (dialog_title);
@@ -2501,6 +2505,7 @@ static void
 terminal_preferences_dialog_activate_profile (TerminalPreferencesDialog *dialog,
                                               GtkTreeSelection          *selection)
 {
+
 }
 
 
@@ -2510,7 +2515,7 @@ terminal_preferences_dialog_populate_store (TerminalPreferencesDialog *dialog,
                                             GtkListStore              *store)
 {
   GtkTreeIter  iter;
-  gchar       *def = terminal_profile_manager_get_default_profile (dialog->manager);
+  gchar       *def = terminal_profile_manager_get_default_profile_name (dialog->manager);
   const GList *profiles = terminal_profile_manager_get_profiles (dialog->manager);
 
   for (const GList *lp = profiles; lp != NULL; lp = lp->next)

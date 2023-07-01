@@ -451,10 +451,11 @@ terminal_window_init (TerminalWindow *window)
   GdkVisual       *visual;
   GtkStyleContext *context;
   GtkToolItem     *item;
+  TerminalProfileManager *manager = terminal_profile_manager_get ();
 
   window->priv = terminal_window_get_instance_private (window);
 
-  window->priv->preferences = terminal_preferences_get ();
+  window->priv->preferences = terminal_profile_manager_get_default_profile (manager);
 
   window->priv->font = NULL;
   window->priv->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;

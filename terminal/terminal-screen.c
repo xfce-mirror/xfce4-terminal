@@ -368,8 +368,8 @@ terminal_screen_init (TerminalScreen *screen)
   manager = terminal_profile_manager_get ();
 
   /* initialize profile to the default profile */
-  screen->profile = terminal_profile_manager_get_default_profile (manager);
-  screen->preferences = terminal_profile_manager_get_profile (manager, screen->profile);
+  screen->profile = terminal_profile_manager_get_default_profile_name (manager);
+  screen->preferences = terminal_profile_manager_get_default_profile (manager);
 
   g_object_get (G_OBJECT (screen->preferences),
    "scrolling-bar", &scrollbar,

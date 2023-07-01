@@ -37,7 +37,8 @@ TerminalPreferences         *terminal_profile_manager_get_profile               
                                                                                  const gchar            *name);
 gboolean                     terminal_profile_manager_create_profile            (TerminalProfileManager *manager,
                                                                                  const gchar            *name,
-                                                                                 const gchar            *from);
+                                                                                 const gchar            *from,
+                                                                                 gboolean                delete_from);
 gboolean                     terminal_profile_manager_delete_profile            (TerminalProfileManager *manager,
                                                                                  const gchar            *name);
 gboolean                     terminal_profile_manager_rename_profile            (TerminalProfileManager *manager,
@@ -45,7 +46,8 @@ gboolean                     terminal_profile_manager_rename_profile            
                                                                                  const gchar            *to);
 gboolean                     terminal_profile_manager_has_profile               (TerminalProfileManager *manager,
                                                                                  const gchar            *name);
-gchar                       *terminal_profile_manager_get_default_profile       (TerminalProfileManager *manager);
+TerminalPreferences         *terminal_profile_manager_get_default_profile       (TerminalProfileManager *manager);
+gchar                       *terminal_profile_manager_get_default_profile_name  (TerminalProfileManager *manager);
 gboolean                     terminal_profile_manager_set_default_profile       (TerminalProfileManager *manager,
                                                                                  const gchar            *name);
 
