@@ -42,6 +42,7 @@
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-options.h>
 #include <terminal/terminal-preferences-dialog.h>
+#include <terminal/terminal-profile-manager.h>
 #include <terminal/terminal-search-dialog.h>
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-marshal.h>
@@ -49,6 +50,7 @@
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-window-dropdown.h>
 #include <terminal/terminal-widget.h>
+#include <terminal/terminal-screen.h>
 
 
 
@@ -209,6 +211,8 @@ static gboolean     terminal_window_action_move_tab_left          (TerminalWindo
 static gboolean     terminal_window_action_move_tab_right         (TerminalWindow      *window);
 static gboolean     terminal_window_action_goto_tab               (GtkRadioAction      *action,
                                                                    GtkNotebook         *notebook);
+static gboolean     terminal_window_action_set_profile            (TerminalWindow      *window,
+                                                                   GtkRadioMenuItem    *item);
 static gboolean     terminal_window_action_set_title              (TerminalWindow      *window);
 static gboolean     terminal_window_action_set_title_color        (TerminalWindow      *window);
 static gboolean     terminal_window_action_search                 (TerminalWindow      *window);
@@ -250,10 +254,13 @@ static void         terminal_window_update_terminal_menu          (TerminalWindo
                                                                    GtkWidget           *menu);
 static void         terminal_window_update_tabs_menu              (TerminalWindow      *window,
                                                                    GtkWidget           *menu);
+static void         terminal_window_update_profiles_menu          (TerminalWindow      *window,
+                                                                   GtkWidget           *menu);
 static void         terminal_window_update_help_menu              (TerminalWindow      *window,
                                                                    GtkWidget           *menu);
 static gboolean     terminal_window_can_go_left                   (TerminalWindow      *window);
 static gboolean     terminal_window_can_go_right                  (TerminalWindow      *window);
+static void         terminal_window_update_profiles               (TerminalWindow      *window);
 
 
 struct _TerminalWindowPrivate
@@ -275,6 +282,8 @@ struct _TerminalWindowPrivate
 
   GtkWidget           *search_dialog;
   GtkWidget           *title_popover;
+
+  GtkWidget           *profile_selector;
 
   /* pushed size of screen */
   glong                grid_width;
@@ -362,6 +371,7 @@ static XfceGtkActionEntry action_entries[] =
     { TERMINAL_WINDOW_ACTION_FULLSCREEN,            "<Actions>/terminal-window/fullscreen",            "F11",                       XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Fullscreen"),                   N_ ("Toggle fullscreen mode"),            "view-fullscreen",        G_CALLBACK (terminal_window_action_fullscreen), },
     { TERMINAL_WINDOW_ACTION_READ_ONLY,             "<Actions>/terminal-window/read-only",             "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Read-Only"),                    N_ ("Toggle read-only mode"),             NULL,                     G_CALLBACK (terminal_window_action_readonly), },
     { TERMINAL_WINDOW_ACTION_SCROLL_ON_OUTPUT,      "<Actions>/terminal-window/scroll-on-output",      "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Scroll on _Output"),             N_ ("Toggle scroll on output"),           NULL,                     G_CALLBACK (terminal_window_action_scroll_on_output), },
+    { TERMINAL_WINDOW_ACTION_PROFILES_MENU,         "<Actions>/terminal-window/profiles-menu",         "<control><alt>t",           XFCE_GTK_MENU_ITEM,       N_ ("_Profiles"),                     N_ ("Switch Profile for active tab"),     NULL,                     NULL, },
     /* used for changing the accelerator keys via the ShortcutsEditor, the logic is still handle by GtkActionEntries */
     { TERMINAL_WINDOW_ACTION_GOTO_TAB_1,            "<Actions>/terminal-window/goto-tab-1",            "<Alt>1",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 1"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
     { TERMINAL_WINDOW_ACTION_GOTO_TAB_2,            "<Actions>/terminal-window/goto-tab-2",            "<Alt>2",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 2"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
@@ -441,10 +451,11 @@ terminal_window_init (TerminalWindow *window)
   GdkVisual       *visual;
   GtkStyleContext *context;
   GtkToolItem     *item;
+  TerminalProfileManager *manager = terminal_profile_manager_get ();
 
   window->priv = terminal_window_get_instance_private (window);
 
-  window->priv->preferences = terminal_preferences_get ();
+  window->priv->preferences = terminal_profile_manager_get_default_profile (manager);
 
   window->priv->font = NULL;
   window->priv->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
@@ -474,6 +485,7 @@ terminal_window_init (TerminalWindow *window)
   terminal_window_create_menu (window, TERMINAL_WINDOW_ACTION_VIEW_MENU, G_CALLBACK (terminal_window_update_view_menu));
   terminal_window_create_menu (window, TERMINAL_WINDOW_ACTION_TERMINAL_MENU, G_CALLBACK (terminal_window_update_terminal_menu));
   terminal_window_create_menu (window, TERMINAL_WINDOW_ACTION_TABS_MENU, G_CALLBACK (terminal_window_update_tabs_menu));
+  terminal_window_create_menu (window, TERMINAL_WINDOW_ACTION_PROFILES_MENU, G_CALLBACK (terminal_window_update_profiles_menu));
   terminal_window_create_menu (window, TERMINAL_WINDOW_ACTION_HELP_MENU, G_CALLBACK (terminal_window_update_help_menu));
   gtk_widget_show_all (window->menubar);
   
@@ -553,6 +565,10 @@ terminal_window_init (TerminalWindow *window)
   terminal_window_update_mnemonic_modifier (window);
   g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "notify::shortcuts-no-mnemonics",
                             G_CALLBACK (terminal_window_update_mnemonic_modifier), window);
+
+  /* update the active profiles in screens when profiles have been altered */
+  g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "profiles-changed",
+                            G_CALLBACK (terminal_window_update_profiles), window);
 
   window->fullscreen_supported = TRUE;
 #if defined(GDK_WINDOWING_X11)
@@ -2017,6 +2033,23 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 
 
+static
+gboolean
+terminal_window_action_set_profile (TerminalWindow   *window,
+                                    GtkRadioMenuItem *item)
+{
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  terminal_return_if_fail (GTK_IS_RADIO_MENU_ITEM (item));
+
+  if (gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (item)))
+    terminal_screen_change_profile_to (TERMINAL_SCREEN (window->priv->active),
+                                       gtk_menu_item_get_label (GTK_MENU_ITEM (item)));
+
+  return TRUE;
+}
+
+
+
 static void
 title_popover_close (GtkWidget      *popover,
                      TerminalWindow *window)
@@ -3297,6 +3330,41 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 
 
+static void
+terminal_window_update_profiles_menu (TerminalWindow      *window,
+                                      GtkWidget           *menu)
+{
+  GtkWidget  *item;
+  GSList     *group = NULL;
+  gchar      *current_profile;
+  const GList *profiles;
+  TerminalProfileManager *manager;
+
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+
+  terminal_window_menu_clean (GTK_MENU (menu));
+  current_profile = terminal_screen_get_profile_name (TERMINAL_SCREEN (window->priv->active));
+  manager = terminal_profile_manager_get ();
+  profiles = terminal_profile_manager_get_profiles (manager);
+
+  for (const GList *lp = profiles; lp != NULL; lp = lp->next)
+    {
+      item = gtk_radio_menu_item_new_with_mnemonic (group, _(lp->data));
+      group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item));
+      if (g_strcmp0 (lp->data, current_profile) == 0)
+        gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
+      g_signal_connect_swapped (G_OBJECT (item), "toggled",
+                                G_CALLBACK (terminal_window_action_set_profile), window);
+      gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+    }
+
+  g_free (current_profile);
+
+  gtk_widget_show_all (GTK_WIDGET (menu));
+}
+
+
+
 /**
  * terminal_window_update_goto_accels:
  * @window  : A #TerminalWindow.
@@ -3383,4 +3451,12 @@ XfceGtkActionEntry*
 terminal_window_get_action_entries (void)
 {
   return action_entries;
+}
+
+
+
+static void
+terminal_window_update_profiles (TerminalWindow *window)
+{
+  /* TODO */
 }
