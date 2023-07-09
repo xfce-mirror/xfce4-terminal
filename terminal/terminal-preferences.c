@@ -124,6 +124,7 @@ enum
   PROP_SCROLLING_ON_OUTPUT,
   PROP_SCROLLING_ON_KEYSTROKE,
   PROP_SCROLLING_UNLIMITED,
+  PROP_KINETIC_SCROLLING,
   PROP_SHORTCUTS_NO_MENUKEY,
   PROP_SHORTCUTS_NO_MNEMONICS,
   PROP_TITLE_INITIAL,
@@ -1135,6 +1136,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_boolean ("scrolling-unlimited",
                             NULL,
                             "ScrollingUnlimited",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:kinetic-scrolling:
+   **/
+  preferences_props[PROP_KINETIC_SCROLLING] =
+      g_param_spec_boolean ("kinetic-scrolling",
+                            NULL,
+                            "KineticScrolling",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
