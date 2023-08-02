@@ -182,6 +182,7 @@ static GtkWidget* terminal_screen_unsafe_paste_dialog_new       (TerminalScreen 
 static void       terminal_screen_paste_unsafe_text             (TerminalScreen        *screen,
                                                                  const gchar           *text,
                                                                  GdkAtom                original_clipboard);
+static void       terminal_screen_update_sixel                  (TerminalScreen        *screen);
 
 
 
@@ -396,6 +397,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_word_chars (screen);
   terminal_screen_update_background (screen);
   terminal_screen_update_colors (screen);
+  terminal_screen_update_sixel (screen);
 
 #if VTE_CHECK_VERSION (0, 50, 0)
   vte_terminal_set_allow_hyperlink(VTE_TERMINAL (screen->terminal), TRUE);
@@ -689,6 +691,8 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_word_chars (screen);
   else if (strcmp ("misc-tab-position", name) == 0)
     terminal_screen_update_label_orientation (screen);
+  else if (strcmp ("enable-sixel", name) == 0)
+    terminal_screen_update_sixel (screen);
 }
 
 
@@ -3124,4 +3128,17 @@ terminal_screen_widget_append_accels (TerminalScreen *screen,
 
   if (G_LIKELY (G_IS_OBJECT (screen->terminal)))
     g_object_set (G_OBJECT (screen->terminal), "accel-group", accel_group, NULL);
+}
+
+
+
+void terminal_screen_update_sixel (TerminalScreen *screen)
+{
+#if VTE_CHECK_VERSION (0, 61, 90)
+  gboolean enable_sixel;
+  g_object_get (G_OBJECT (screen->preferences),
+                "enable-sixel", &enable_sixel,
+                NULL);
+  vte_terminal_set_enable_sixel (VTE_TERMINAL (screen->terminal), enable_sixel);
+#endif
 }
