@@ -150,6 +150,7 @@ static void       terminal_screen_update_misc_rewrap_on_resize  (TerminalScreen 
 static void       terminal_screen_update_scrolling_lines        (TerminalScreen        *screen);
 static void       terminal_screen_update_scrolling_on_output    (TerminalScreen        *screen);
 static void       terminal_screen_update_scrolling_on_keystroke (TerminalScreen        *screen);
+static void       terminal_screen_update_kinetic_scrolling      (TerminalScreen        *screen);
 static void       terminal_screen_update_text_blink_mode        (TerminalScreen        *screen);
 static void       terminal_screen_update_title                  (TerminalScreen        *screen);
 static void       terminal_screen_update_word_chars             (TerminalScreen        *screen);
@@ -393,6 +394,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_scrolling_lines (screen);
   terminal_screen_update_scrolling_on_output (screen);
   terminal_screen_update_scrolling_on_keystroke (screen);
+  terminal_screen_update_kinetic_scrolling (screen);
   terminal_screen_update_text_blink_mode (screen);
   terminal_screen_update_word_chars (screen);
   terminal_screen_update_background (screen);
@@ -683,6 +685,8 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_scrolling_on_output (screen);
   else if (strcmp ("scrolling-on-keystroke", name) == 0)
     terminal_screen_update_scrolling_on_keystroke (screen);
+  else if (strcmp ("kinetic-scrolling", name) == 0)
+    terminal_screen_update_kinetic_scrolling (screen);
   else if (strcmp ("text-blink-mode", name) == 0)
     terminal_screen_update_text_blink_mode (screen);
   else if (strncmp ("title-", name, strlen ("title-")) == 0)
@@ -1356,6 +1360,19 @@ terminal_screen_update_scrolling_on_keystroke (TerminalScreen *screen)
   gboolean scroll;
   g_object_get (G_OBJECT (screen->preferences), "scrolling-on-keystroke", &scroll, NULL);
   vte_terminal_set_scroll_on_keystroke (VTE_TERMINAL (screen->terminal), scroll);
+}
+
+
+
+static void
+terminal_screen_update_kinetic_scrolling (TerminalScreen *screen)
+{
+  gboolean kinetic;
+  g_object_get (G_OBJECT (screen->preferences), "kinetic-scrolling", &kinetic, NULL);
+  g_object_set (screen->terminal,
+                "enable-fallback-scrolling", !kinetic,
+                "scroll-unit-is-pixels", kinetic,
+                NULL);
 }
 
 
