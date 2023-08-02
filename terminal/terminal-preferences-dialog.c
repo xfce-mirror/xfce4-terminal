@@ -386,9 +386,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
-  if (vte_get_major_version() > 0 ||
-      (vte_get_major_version() == 0 && vte_get_minor_version() > 69) ||
-      (vte_get_major_version() == 0 && vte_get_minor_version() == 69 && vte_get_micro_version() >= 90))
+  if (vte_get_major_version () > 0 ||
+      (vte_get_major_version () == 0 && vte_get_minor_version () > 69) ||
+      (vte_get_major_version () == 0 && vte_get_minor_version () == 69 && vte_get_micro_version () >= 90))
     {
       button = gtk_check_button_new_with_mnemonic (_("_Enable kinetic scrolling"));
       g_object_bind_property (G_OBJECT (dialog->preferences), "kinetic-scrolling",
