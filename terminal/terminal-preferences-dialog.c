@@ -1162,7 +1162,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 6, 1);
   gtk_widget_show (button);
 
-#if VTE_CHECK_VERSION(0, 69, 90)
+#if VTE_CHECK_VERSION(0, 61, 90)
   if (vte_get_feature_flags () & VTE_FEATURE_FLAG_SIXEL)
     {
       /* next row */
@@ -1172,7 +1172,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
       g_object_bind_property (G_OBJECT (dialog->preferences), "enable-sixel",
                               G_OBJECT (button), "active",
                               G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-      gtk_widget_set_tooltip_text (button, _("Enable sixel graphics"));
       gtk_grid_attach (GTK_GRID (grid), button, 0, row, 6, 1);
       gtk_widget_show (button);
     }

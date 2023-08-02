@@ -3134,7 +3134,7 @@ terminal_screen_widget_append_accels (TerminalScreen *screen,
 
 void terminal_screen_update_sixel (TerminalScreen *screen)
 {
-#if VTE_CHECK_VERSION (0, 69, 90)
+#if VTE_CHECK_VERSION (0, 61, 90)
   gboolean enable_sixel;
   g_object_get (G_OBJECT (screen->preferences),
                 "enable-sixel", &enable_sixel,
