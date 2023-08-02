@@ -246,7 +246,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Title */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Title");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Title"));
 
   label = gtk_label_new_with_mnemonic (_("_Initial title:"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
@@ -285,7 +285,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Command */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Command");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Command"));
 
   button = gtk_check_button_new_with_mnemonic (_("_Run command as login shell"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "command-login-shell",
@@ -364,7 +364,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Scrolling */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Scrolling");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Scrolling"));
 
   button = gtk_check_button_new_with_mnemonic (_("_Scroll on output"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "scrolling-on-output",
@@ -445,7 +445,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Cursor */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Cursor");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Cursor"));
 
   label = gtk_label_new_with_mnemonic (_("Cursor shape:"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
@@ -476,7 +476,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Clipboard */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Clipboard");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Clipboard"));
 
   button = gtk_check_button_new_with_mnemonic (_("Automatically copy selection to clipboard"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "misc-copy-on-select",
@@ -507,7 +507,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Behavior */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Behavior");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Behavior"));
 
   button = gtk_check_button_new_with_mnemonic (_("_Keep window open when it loses focus"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-keep-open-default",
@@ -550,7 +550,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Appearance & Animation */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Appearance and Animation");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Appearance and Animation"));
 
   label = gtk_label_new_with_mnemonic (_("Width:"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
@@ -659,7 +659,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Position */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Position");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Position"));
 
   label = gtk_label_new_with_mnemonic (_("Left"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
@@ -733,7 +733,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Font */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Font");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Font"));
 
   button = gtk_check_button_new_with_mnemonic (_("_Use system font"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "font-use-system",
@@ -832,7 +832,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Background */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Background");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Background"));
 
   combo = gtk_combo_box_text_new ();
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("None (use solid color)"));
@@ -974,7 +974,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Opening new windows */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Opening New Nindows");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Opening New Nindows"));
 
   button = gtk_check_button_new_with_mnemonic (_("_Display menubar in new windows"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "misc-menubar-default",
@@ -1051,7 +1051,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Tabs */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Tabs");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Tabs"));
 
   label = gtk_label_new_with_mnemonic (_("Reset tab activity indicator after"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
@@ -1094,7 +1094,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: General */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "General");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("General"));
 
   label = gtk_label_new ("Text Color:");
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
@@ -1178,7 +1178,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 #endif
 
   /* section: Custom colors */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Custom Colors");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Custom Colors"));
 
   button = gtk_check_button_new_with_mnemonic (_("_Cursor color:"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "color-cursor-use-default",
@@ -1269,7 +1269,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Palette */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Palette");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Palette"));
 
   for (gint i = 0; i < N_PALETTE_BUTTONS; i++)
     {
@@ -1302,7 +1302,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   /* section: Presets */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Presets");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Presets"));
 
   combo = gtk_combo_box_text_new ();
   terminal_preferences_dialog_presets_load (dialog, combo);
@@ -1324,7 +1324,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
   gtk_widget_show (vbox);
 
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Compatibility");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Compatibility"));
 
   infobar = gtk_info_bar_new ();
   gtk_container_set_border_width (GTK_CONTAINER (infobar), 1);
@@ -1428,7 +1428,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Double Click */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Double Click");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Double Click"));
 
   label = gtk_label_new_with_mnemonic (_("Consider the following characters part of a word when double clicking:"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
@@ -1454,7 +1454,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Encoding */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Encoding");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Encoding"));
 
   label = gtk_label_new_with_mnemonic (_("Default character encoding"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
@@ -1480,7 +1480,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Shortcuts */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Shortcuts");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Shortcuts"));
 
   button = gtk_check_button_new_with_mnemonic (_("_Disable all menu access keys (such as Alt + f)"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "shortcuts-no-mnemonics",
@@ -1501,7 +1501,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Misc */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "Misc");
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Misc"));
 
   button = gtk_check_button_new_with_mnemonic (_("_Use middle mouse click to close tabs"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "misc-tab-close-middle-click",
@@ -1642,7 +1642,7 @@ terminal_preferences_dialog_new_section (GtkWidget   **frame,
   gtk_box_pack_start (GTK_BOX (*vbox), *frame, FALSE, TRUE, 0);
   gtk_widget_show (*frame);
 
-  *label = gtk_label_new (_(header));
+  *label = gtk_label_new (header);
   /* For bold text */
   gtk_label_set_attributes (GTK_LABEL (*label), terminal_pango_attr_list_bold ());
   gtk_frame_set_label_widget (GTK_FRAME (*frame), *label);
