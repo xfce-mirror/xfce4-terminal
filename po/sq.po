@@ -10,10 +10,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-31 09:51+0100\n"
+"POT-Creation-Date: 2023-08-03 00:48+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2007,2019-2023\n"
-"Language-Team: Albanian (http://www.transifex.com/xfce/xfce-apps/language/sq/)\n"
+"Language-Team: Albanian (http://app.transifex.com/xfce/xfce-apps/language/sq/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -436,9 +436,16 @@ msgid "_Help"
 msgstr "_Ndihmë"
 
 #. * General
+#. section: General
 #: ../terminal/terminal-preferences-dialog.c:241
+#: ../terminal/terminal-preferences-dialog.c:1114
 msgid "General"
 msgstr "Të përgjithshme"
+
+#. section: Title
+#: ../terminal/terminal-preferences-dialog.c:249
+msgid "Title"
+msgstr "Titull"
 
 #: ../terminal/terminal-preferences-dialog.c:251
 msgid "_Initial title:"
@@ -463,6 +470,11 @@ msgstr "Hyn pas titullit fillestar"
 #: ../terminal/terminal-preferences-dialog.c:276
 msgid "Isn't displayed"
 msgstr "S'paraqitet"
+
+#. section: Command
+#: ../terminal/terminal-preferences-dialog.c:288
+msgid "Command"
+msgstr "Urdhër"
 
 #: ../terminal/terminal-preferences-dialog.c:290
 msgid "_Run command as login shell"
@@ -500,6 +512,11 @@ msgid ""
 "working directory. Otherwise, current working directory will be used."
 msgstr "Përzgjidheni këtë mundësi për t’i bërë terminalet e rinj (skeda apo dritare) të përdorin drejtori vetjake pune. Përndryshe, do të përdoret drejtoria e tanishme e punës."
 
+#. section: Scrolling
+#: ../terminal/terminal-preferences-dialog.c:367
+msgid "Scrolling"
+msgstr "Rrëshqitje"
+
 #: ../terminal/terminal-preferences-dialog.c:369
 msgid "_Scroll on output"
 msgstr ""
@@ -512,615 +529,707 @@ msgid ""
 msgstr "Kjo mundësi kontrollon nëse terminali do të rrëshqasë vetvetiu poshtë, sa herë që prodhohen përfundime të reja nga urdhra që xhirojnë brenda terminalit."
 
 #: ../terminal/terminal-preferences-dialog.c:379
-msgid "_Enable overlay scrolling (Requires restart)"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:383
-msgid ""
-"This controls whether scrollbar is drawn as an overlay (auto-hide) or not."
-msgstr "Kjo kontroll nëse shtylla e rrëshqitjes vizatohet si një shtresë përsipër (vetëfshehje) apo jo."
-
-#: ../terminal/terminal-preferences-dialog.c:388
 msgid "_Scroll on keystroke"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:392
+#: ../terminal/terminal-preferences-dialog.c:383
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal to "
 "the command prompt."
 msgstr "Ju bën të mundur të shtypni çfarëdo tasti te tastiera që të rrëshqitni poshtë në terminal deri te rreshti i urdhrave."
 
-#: ../terminal/terminal-preferences-dialog.c:401
+#: ../terminal/terminal-preferences-dialog.c:393
+msgid "_Enable kinetic scrolling"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:397
+msgid ""
+"This controls whether scrolling \"coasts\" to a stop when releasing a "
+"touchpad or touchscreen."
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:406
 msgid "Scrollbar is:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:407
+#: ../terminal/terminal-preferences-dialog.c:412
 msgid "Disabled"
 msgstr "Çaktivizuar"
 
-#: ../terminal/terminal-preferences-dialog.c:408
+#: ../terminal/terminal-preferences-dialog.c:413
 msgid "On the left side"
 msgstr "Në anën e majtë"
 
-#: ../terminal/terminal-preferences-dialog.c:409
+#: ../terminal/terminal-preferences-dialog.c:414
 msgid "On the right side"
 msgstr "Në anën e djathtë"
 
-#: ../terminal/terminal-preferences-dialog.c:422
+#: ../terminal/terminal-preferences-dialog.c:427
 msgid "Scrollback:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:438
+#: ../terminal/terminal-preferences-dialog.c:443
 msgid "_Unlimited Scrollback"
 msgstr "Rrëshqitje e _Pakufizuar"
 
-#: ../terminal/terminal-preferences-dialog.c:442
+#: ../terminal/terminal-preferences-dialog.c:447
 msgid "This controls whether the terminal will have no limits on scrollback."
 msgstr "Kjo kontroll nëse terminali do të ketë a jo kufij mbi rrëshqitjen nëpër të."
 
-#: ../terminal/terminal-preferences-dialog.c:450
-msgid "Cursor shape:"
-msgstr "Formë kursori:"
-
-#: ../terminal/terminal-preferences-dialog.c:456
-msgid "Block"
-msgstr "Bllokoje"
-
-#: ../terminal/terminal-preferences-dialog.c:457
-msgid "I-Beam"
+#: ../terminal/terminal-preferences-dialog.c:454
+msgid "_Enable overlay scrolling (Requires restart)"
 msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:458
+msgid ""
+"This controls whether scrollbar is drawn as an overlay (auto-hide) or not."
+msgstr "Kjo kontroll nëse shtylla e rrëshqitjes vizatohet si një shtresë përsipër (vetëfshehje) apo jo."
+
+#. section: Cursor
+#: ../terminal/terminal-preferences-dialog.c:465
+msgid "Cursor"
+msgstr "Kursor"
+
+#: ../terminal/terminal-preferences-dialog.c:467
+msgid "Cursor shape:"
+msgstr "Formë kursori:"
+
+#: ../terminal/terminal-preferences-dialog.c:473
+msgid "Block"
+msgstr "Bllokoje"
+
+#: ../terminal/terminal-preferences-dialog.c:474
+msgid "I-Beam"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:475
 msgid "Underline"
 msgstr "Të nënvizuara"
 
-#: ../terminal/terminal-preferences-dialog.c:468
+#: ../terminal/terminal-preferences-dialog.c:485
 msgid "Cursor blinks"
 msgstr "Xixëllim kursori"
 
-#: ../terminal/terminal-preferences-dialog.c:472
+#: ../terminal/terminal-preferences-dialog.c:489
 msgid "This option controls whether the cursor will be blinking or not."
 msgstr "Kjo mundësi kontrollon nëse kursori do të xixëllojë apo jo."
 
-#: ../terminal/terminal-preferences-dialog.c:481
+#. section: Clipboard
+#: ../terminal/terminal-preferences-dialog.c:496
+msgid "Clipboard"
+msgstr "E papastër"
+
+#: ../terminal/terminal-preferences-dialog.c:498
 msgid "Automatically copy selection to clipboard"
 msgstr "Kopjoje vetvetiu në të papastër përzgjedhjen"
 
-#: ../terminal/terminal-preferences-dialog.c:488
+#: ../terminal/terminal-preferences-dialog.c:505
 msgid "Show unsafe paste dialog"
 msgstr "Shfaq dialog për ngjitje jo të parrezik"
 
-#: ../terminal/terminal-preferences-dialog.c:492
+#: ../terminal/terminal-preferences-dialog.c:509
 msgid ""
 "Show a dialog that allows to edit text that is considered unsafe for pasting"
 msgstr "Shfaq një dialog që ju lejon të përpunoni tekst i cili konsiderohet jo i parrezik për ta ngjitur"
 
 #. * Drop-down
-#: ../terminal/terminal-preferences-dialog.c:501
+#: ../terminal/terminal-preferences-dialog.c:518
 msgid "Drop-down"
 msgstr "Hapmbyll"
 
-#: ../terminal/terminal-preferences-dialog.c:512
+#. section: Behavior
+#: ../terminal/terminal-preferences-dialog.c:527
+msgid "Behavior"
+msgstr "Sjellje"
+
+#: ../terminal/terminal-preferences-dialog.c:529
 msgid "_Keep window open when it loses focus"
 msgstr "_Mbaje dritaren të hapur kur humbet fokusin"
 
-#: ../terminal/terminal-preferences-dialog.c:522
+#: ../terminal/terminal-preferences-dialog.c:539
 msgid "_Always keep window on top"
 msgstr "Mbaje për_herë dritaren sipër"
 
-#: ../terminal/terminal-preferences-dialog.c:532
+#: ../terminal/terminal-preferences-dialog.c:549
 msgid "_Use shortcut to focus visible window"
 msgstr "Përdor shkurtore për të kaluar _fokusin në dritare të dukshme"
 
-#: ../terminal/terminal-preferences-dialog.c:536
+#: ../terminal/terminal-preferences-dialog.c:553
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus\n"
 ", rather than close it, if it had previously lost focus."
 msgstr "Në u aktivizoftë, shkurtorja për hapje dhe tërheqje të dritares do të japë\nfokus, në vend se ta mbyllë, nëse më parë ish humbur fokusi."
 
-#: ../terminal/terminal-preferences-dialog.c:544
+#: ../terminal/terminal-preferences-dialog.c:561
 msgid "_Show status icon in notification area"
 msgstr "_Shfaq ikonë gjendjeje te zona e njoftimeve"
 
-#: ../terminal/terminal-preferences-dialog.c:555
+#. section: Appearance & Animation
+#: ../terminal/terminal-preferences-dialog.c:570
+msgid "Appearance and Animation"
+msgstr "Dukje dhe Animacion"
+
+#: ../terminal/terminal-preferences-dialog.c:572
 msgid "Width:"
 msgstr "Gjerësi:"
 
-#: ../terminal/terminal-preferences-dialog.c:577
+#: ../terminal/terminal-preferences-dialog.c:594
 msgid "Height:"
 msgstr "Lartësi:"
 
-#: ../terminal/terminal-preferences-dialog.c:599
-#: ../terminal/terminal-preferences-dialog.c:874
+#: ../terminal/terminal-preferences-dialog.c:616
+#: ../terminal/terminal-preferences-dialog.c:891
 msgid "Opacity:"
 msgstr "Patejdukshmëri:"
 
-#: ../terminal/terminal-preferences-dialog.c:621
+#: ../terminal/terminal-preferences-dialog.c:638
 msgid "Duration:"
 msgstr "Kohëzgjatje:"
 
-#: ../terminal/terminal-preferences-dialog.c:643
+#: ../terminal/terminal-preferences-dialog.c:660
 msgid "_Always show tabs"
 msgstr "Shfaq skeda _përherë"
 
-#: ../terminal/terminal-preferences-dialog.c:653
+#: ../terminal/terminal-preferences-dialog.c:670
 msgid "_Show window borders"
 msgstr "_Shfaq anë dritareje"
 
-#: ../terminal/terminal-preferences-dialog.c:664
+#. section: Position
+#: ../terminal/terminal-preferences-dialog.c:679
+msgid "Position"
+msgstr "Pozicion"
+
+#: ../terminal/terminal-preferences-dialog.c:681
 msgid "Left"
 msgstr "Majtas"
 
-#: ../terminal/terminal-preferences-dialog.c:686
+#: ../terminal/terminal-preferences-dialog.c:703
 msgid "Right"
 msgstr "Djathtas"
 
-#: ../terminal/terminal-preferences-dialog.c:694
+#: ../terminal/terminal-preferences-dialog.c:711
 msgid "Up"
 msgstr "Sipër"
 
-#: ../terminal/terminal-preferences-dialog.c:708
+#: ../terminal/terminal-preferences-dialog.c:725
 msgid "Down"
 msgstr "Poshtë"
 
-#: ../terminal/terminal-preferences-dialog.c:716
+#: ../terminal/terminal-preferences-dialog.c:733
 msgid "_Move to monitor with pointer"
 msgstr "_Kalo te monitori që ka kursorin"
 
 #. * Appearance
-#: ../terminal/terminal-preferences-dialog.c:728
+#: ../terminal/terminal-preferences-dialog.c:745
 msgid "Appearance"
 msgstr "Dukje"
 
-#: ../terminal/terminal-preferences-dialog.c:738
+#. section: Font
+#: ../terminal/terminal-preferences-dialog.c:753
+msgid "Font"
+msgstr "Shkronja"
+
+#: ../terminal/terminal-preferences-dialog.c:755
 msgid "_Use system font"
 msgstr "_Përdor shkronja sistemi"
 
-#: ../terminal/terminal-preferences-dialog.c:742
+#: ../terminal/terminal-preferences-dialog.c:759
 msgid "Enable this to use system-wide monospace font."
 msgstr "Aktivizojeni këtë që të përdoren shkronja Monospace që përdor sistemi."
 
-#: ../terminal/terminal-preferences-dialog.c:762
+#: ../terminal/terminal-preferences-dialog.c:779
 msgid "_Allow bold text"
 msgstr "_Lejo tekst me të trasha"
 
-#: ../terminal/terminal-preferences-dialog.c:766
+#: ../terminal/terminal-preferences-dialog.c:783
 msgid ""
 "Enable this to allow applications running inside the terminal windows to use"
 " bold font."
 msgstr "Aktivizojeni këtë mundësi për të lejuar aplikacione që xhirojnë brenda dritaresh terminali të përdorin tekst me shkronja të trasha."
 
-#: ../terminal/terminal-preferences-dialog.c:773
+#: ../terminal/terminal-preferences-dialog.c:790
 msgid "Cursor blinks:"
 msgstr "Kursori xixëllon kur:"
 
-#: ../terminal/terminal-preferences-dialog.c:779
+#: ../terminal/terminal-preferences-dialog.c:796
 msgid "Never"
 msgstr "Kurrë"
 
-#: ../terminal/terminal-preferences-dialog.c:780
+#: ../terminal/terminal-preferences-dialog.c:797
 msgid "When focused"
 msgstr "Nën fokus"
 
-#: ../terminal/terminal-preferences-dialog.c:781
+#: ../terminal/terminal-preferences-dialog.c:798
 msgid "When unfocused"
 msgstr "Jashtë fokusi"
 
-#: ../terminal/terminal-preferences-dialog.c:782
+#: ../terminal/terminal-preferences-dialog.c:799
 msgid "Always"
 msgstr "Përherë"
 
-#: ../terminal/terminal-preferences-dialog.c:795
+#: ../terminal/terminal-preferences-dialog.c:812
 msgid "Cell spacing:"
 msgstr "Hapësirë kutie:"
 
-#: ../terminal/terminal-preferences-dialog.c:808
+#: ../terminal/terminal-preferences-dialog.c:825
 msgid "x width"
 msgstr "gjerësi x"
 
-#: ../terminal/terminal-preferences-dialog.c:821
+#: ../terminal/terminal-preferences-dialog.c:838
 msgid "x height"
 msgstr "lartësi x"
 
-#: ../terminal/terminal-preferences-dialog.c:826
-#: ../terminal/terminal-preferences-dialog.c:1435
+#: ../terminal/terminal-preferences-dialog.c:843
+#: ../terminal/terminal-preferences-dialog.c:1466
 #: ../terminal/terminal-window.c:2098
 msgid "Reset"
 msgstr "Riktheje në fillimet"
 
-#: ../terminal/terminal-preferences-dialog.c:838
+#. section: Background
+#: ../terminal/terminal-preferences-dialog.c:852
+msgid "Background"
+msgstr "Sfond"
+
+#: ../terminal/terminal-preferences-dialog.c:855
 msgid "None (use solid color)"
 msgstr "Asnjë (përdor ngjyrë të plotë)"
 
-#: ../terminal/terminal-preferences-dialog.c:839
+#: ../terminal/terminal-preferences-dialog.c:856
 msgid "Background image"
 msgstr "Figurë sfond"
 
-#: ../terminal/terminal-preferences-dialog.c:840
+#: ../terminal/terminal-preferences-dialog.c:857
 msgid "Transparent Background"
 msgstr "Sfond i Tejdukshëm"
 
-#: ../terminal/terminal-preferences-dialog.c:909
+#: ../terminal/terminal-preferences-dialog.c:926
 msgid "File:"
 msgstr "Kartelë:"
 
-#: ../terminal/terminal-preferences-dialog.c:926
+#: ../terminal/terminal-preferences-dialog.c:943
 msgid "All Files"
 msgstr "Tërë Kartelat"
 
-#: ../terminal/terminal-preferences-dialog.c:932
+#: ../terminal/terminal-preferences-dialog.c:949
 msgid "Image Files"
 msgstr "Kartela Figurë"
 
-#: ../terminal/terminal-preferences-dialog.c:940
+#: ../terminal/terminal-preferences-dialog.c:957
 msgid "Adjustment:"
 msgstr "Përimtim:"
 
-#: ../terminal/terminal-preferences-dialog.c:946
+#: ../terminal/terminal-preferences-dialog.c:963
 msgid "Tiled"
 msgstr "Tjegullzuar"
 
-#: ../terminal/terminal-preferences-dialog.c:947
+#: ../terminal/terminal-preferences-dialog.c:964
 msgid "Centered"
 msgstr "Qendërzuar"
 
-#: ../terminal/terminal-preferences-dialog.c:948
+#: ../terminal/terminal-preferences-dialog.c:965
 msgid "Scaled"
 msgstr "Shkallëzuar"
 
-#: ../terminal/terminal-preferences-dialog.c:949
+#: ../terminal/terminal-preferences-dialog.c:966
 msgid "Stretched"
 msgstr "Shformuar"
 
-#: ../terminal/terminal-preferences-dialog.c:950
+#: ../terminal/terminal-preferences-dialog.c:967
 msgid "Filled"
 msgstr "I mbushur"
 
-#: ../terminal/terminal-preferences-dialog.c:961
+#: ../terminal/terminal-preferences-dialog.c:978
 msgid "Shading:"
 msgstr "Hije:"
 
-#: ../terminal/terminal-preferences-dialog.c:979
+#. section: Opening new windows
+#: ../terminal/terminal-preferences-dialog.c:994
+msgid "Opening New Nindows"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:996
 msgid "_Display menubar in new windows"
 msgstr "_Shfaq shtyllë menush në dritare të reja"
 
-#: ../terminal/terminal-preferences-dialog.c:983
+#: ../terminal/terminal-preferences-dialog.c:1000
 msgid "Enable this option to show menubars in newly created terminal windows."
 msgstr "Aktivizojeni këtë mundësi për të shfaqur shtyllën e menuve në dritare terminali të krijuara rishtazi."
 
-#: ../terminal/terminal-preferences-dialog.c:990
+#: ../terminal/terminal-preferences-dialog.c:1007
 msgid "_Display toolbar in new windows"
 msgstr "Shfaq _panel në dritare të reja"
 
-#: ../terminal/terminal-preferences-dialog.c:994
+#: ../terminal/terminal-preferences-dialog.c:1011
 msgid "Enable this option to show toolbar in newly created terminal windows."
 msgstr "Aktivizojeni këtë mundësi për ta shfaqur panelin në dritare terminali të sapokrijuara."
 
-#: ../terminal/terminal-preferences-dialog.c:1001
+#: ../terminal/terminal-preferences-dialog.c:1018
 msgid "_Display borders around new windows"
 msgstr "Shfaq a_në rreth dritaresh të reja"
 
-#: ../terminal/terminal-preferences-dialog.c:1005
+#: ../terminal/terminal-preferences-dialog.c:1022
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Aktivizojeni këtë mundësi për të shfaqur zbukurime dritaresh përreth dritaresh terminali të krijuara rishtazi."
 
-#: ../terminal/terminal-preferences-dialog.c:1012
+#: ../terminal/terminal-preferences-dialog.c:1029
 msgid "Default geometry"
 msgstr "Gjeometri parazgjedhje"
 
-#: ../terminal/terminal-preferences-dialog.c:1027
+#: ../terminal/terminal-preferences-dialog.c:1044
 msgid "columns"
 msgstr "shtylla"
 
-#: ../terminal/terminal-preferences-dialog.c:1042
+#: ../terminal/terminal-preferences-dialog.c:1059
 msgid "rows"
 msgstr "rreshta"
 
-#: ../terminal/terminal-preferences-dialog.c:1056
+#. section: Tabs
+#: ../terminal/terminal-preferences-dialog.c:1071
+msgid "Tabs"
+msgstr "Skeda"
+
+#: ../terminal/terminal-preferences-dialog.c:1073
 msgid "Reset tab activity indicator after"
 msgstr "Zero _tregues veprimtarie skedash pas"
 
-#: ../terminal/terminal-preferences-dialog.c:1069
+#: ../terminal/terminal-preferences-dialog.c:1086
 msgid "seconds"
 msgstr "sekonda"
 
-#: ../terminal/terminal-preferences-dialog.c:1077
+#: ../terminal/terminal-preferences-dialog.c:1094
 msgid "_Use custom styling to make tabs slim (restart required)"
 msgstr "_Përdor stilizim vetjak për t’i bërë skedat të hajthme (lyp rinisje)"
 
 #. * Colors
-#: ../terminal/terminal-preferences-dialog.c:1089
+#: ../terminal/terminal-preferences-dialog.c:1106
 msgid "Colors"
 msgstr "Ngjyra"
 
-#: ../terminal/terminal-preferences-dialog.c:1147
+#: ../terminal/terminal-preferences-dialog.c:1164
 msgid "_Use system theme colors for text and background"
 msgstr "_Përdor ngjyra teme sistemi për tekst dhe sfond"
 
-#: ../terminal/terminal-preferences-dialog.c:1157
+#: ../terminal/terminal-preferences-dialog.c:1174
 msgid "_Vary the background color for each tab"
 msgstr "_Ndryshoje ngjyrën e sfondit për çdo skedë"
 
-#: ../terminal/terminal-preferences-dialog.c:1161
+#: ../terminal/terminal-preferences-dialog.c:1178
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness."
 msgstr "Ngjyra kuturu bazohet te ngjyra e përzgjedhur për sfondin, duke ruajtur të njëjtin ndriçim."
 
-#: ../terminal/terminal-preferences-dialog.c:1169
+#: ../terminal/terminal-preferences-dialog.c:1188
+msgid "_Enable sixel graphics"
+msgstr ""
+
+#. section: Custom colors
+#: ../terminal/terminal-preferences-dialog.c:1198
+msgid "Custom Colors"
+msgstr "Ngjyra Vetjake"
+
+#: ../terminal/terminal-preferences-dialog.c:1200
 msgid "_Cursor color:"
 msgstr "Ngjyrë _kursori:"
 
-#: ../terminal/terminal-preferences-dialog.c:1173
-#: ../terminal/terminal-preferences-dialog.c:1207
+#: ../terminal/terminal-preferences-dialog.c:1204
+#: ../terminal/terminal-preferences-dialog.c:1238
 msgid ""
 "Enable this option to set custom text and background colors for cursor. If "
 "disabled the background and text colors will be reversed."
 msgstr "Aktivizojeni këtë mundësi që të caktoni për kursorin ngjyra vetjake teksti dhe sfondi. Në qoftë e çaktivizuar, do të rikthehen ngjyrat për sfond dhe tekst."
 
-#: ../terminal/terminal-preferences-dialog.c:1203
+#: ../terminal/terminal-preferences-dialog.c:1234
 msgid "_Text selection color:"
 msgstr "Ngjyrë përzgjedhje _teksti:"
 
-#: ../terminal/terminal-preferences-dialog.c:1237
+#: ../terminal/terminal-preferences-dialog.c:1268
 msgid "_Bold selection color:"
 msgstr "Përzgjedhje ngjyre të tr_ashash:"
 
-#: ../terminal/terminal-preferences-dialog.c:1241
+#: ../terminal/terminal-preferences-dialog.c:1272
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Aktivizojeni këtë mundësi për të caktua një ngjyrë vetjake për shkronja me të trasha. Në qoftë e çaktivizuar, do të përdoret ngjyra e tekstit."
 
-#: ../terminal/terminal-preferences-dialog.c:1281
+#. section: Palette
+#: ../terminal/terminal-preferences-dialog.c:1289
+msgid "Palette"
+msgstr "Paletë"
+
+#: ../terminal/terminal-preferences-dialog.c:1312
 msgid "_Show bold text in bright colors:"
 msgstr "Tekstin me të trasha shfaqe me ngjyra të n_dritshme:"
 
-#: ../terminal/terminal-preferences-dialog.c:1285
+#: ../terminal/terminal-preferences-dialog.c:1316
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
 "intact."
 msgstr "Aktivizojeni këtë mundësi për të lejuar sekuenca paraprijëse, të tilla si '\\e[1;35m', të kalojnë në shfaqje me tekst me ngjyra të ndritshme, përveçse të trasha. Në qoftë e çaktivizuar, ngjyra e tekstit do të mbetet e paprekur."
 
+#. section: Presets
+#: ../terminal/terminal-preferences-dialog.c:1322
+msgid "Presets"
+msgstr "Paracaktime"
+
 #. * Compatibility
-#: ../terminal/terminal-preferences-dialog.c:1307
+#: ../terminal/terminal-preferences-dialog.c:1338
+#: ../terminal/terminal-preferences-dialog.c:1344
 msgid "Compatibility"
 msgstr "Përputhshmëri"
 
-#: ../terminal/terminal-preferences-dialog.c:1318
+#: ../terminal/terminal-preferences-dialog.c:1349
 msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
 msgstr "Këto mundësi mund të shkaktojnë sjellje të pasaktë\ntë ndonjë aplikacioni. Gjenden këtu vetëm për t’ju lejuar\nnjë rrugëzgjidhje rreth disa aplikacionesh dhe sistemesh\noperativë që presin tjetër sjellje nga terminali."
 
-#: ../terminal/terminal-preferences-dialog.c:1331
+#: ../terminal/terminal-preferences-dialog.c:1362
 msgid "Backspace key generates:"
 msgstr "Tasti Backspace prodhon:"
 
-#: ../terminal/terminal-preferences-dialog.c:1337
-#: ../terminal/terminal-preferences-dialog.c:1360
+#: ../terminal/terminal-preferences-dialog.c:1368
+#: ../terminal/terminal-preferences-dialog.c:1391
 msgid "Auto-detect"
 msgstr "Vetëzbulo"
 
-#: ../terminal/terminal-preferences-dialog.c:1338
-#: ../terminal/terminal-preferences-dialog.c:1361
+#: ../terminal/terminal-preferences-dialog.c:1369
+#: ../terminal/terminal-preferences-dialog.c:1392
 msgid "ASCII Del"
 msgstr "ASCII Del"
 
-#: ../terminal/terminal-preferences-dialog.c:1339
-#: ../terminal/terminal-preferences-dialog.c:1362
+#: ../terminal/terminal-preferences-dialog.c:1370
+#: ../terminal/terminal-preferences-dialog.c:1393
 msgid "Escape sequence"
 msgstr "Sekuencë paraprirjeje"
 
-#: ../terminal/terminal-preferences-dialog.c:1340
-#: ../terminal/terminal-preferences-dialog.c:1363
+#: ../terminal/terminal-preferences-dialog.c:1371
+#: ../terminal/terminal-preferences-dialog.c:1394
 msgid "Control-H"
 msgstr "Control-H"
 
-#: ../terminal/terminal-preferences-dialog.c:1341
-#: ../terminal/terminal-preferences-dialog.c:1364
+#: ../terminal/terminal-preferences-dialog.c:1372
+#: ../terminal/terminal-preferences-dialog.c:1395
 msgid "Erase TTY"
 msgstr "Fshi TTY"
 
-#: ../terminal/terminal-preferences-dialog.c:1354
+#: ../terminal/terminal-preferences-dialog.c:1385
 msgid "Delete key generates:"
 msgstr "Tasti Delete prodhon:"
 
-#: ../terminal/terminal-preferences-dialog.c:1377
+#: ../terminal/terminal-preferences-dialog.c:1408
 msgid "Ambiguous-width characters:"
 msgstr "Shenja me gjerësi të paqartë:"
 
-#: ../terminal/terminal-preferences-dialog.c:1383
+#: ../terminal/terminal-preferences-dialog.c:1414
 msgid "Narrow"
 msgstr "I ngushtë"
 
-#: ../terminal/terminal-preferences-dialog.c:1384
+#: ../terminal/terminal-preferences-dialog.c:1415
 msgid "Wide"
 msgstr "I gjerë"
 
-#: ../terminal/terminal-preferences-dialog.c:1398
+#: ../terminal/terminal-preferences-dialog.c:1429
 msgid "Reset compatibility options to defaults"
 msgstr "Rikthe te parazgjedhjet mundësi përputhjeje"
 
 #. * Advanced
-#: ../terminal/terminal-preferences-dialog.c:1409
+#: ../terminal/terminal-preferences-dialog.c:1440
 msgid "Advanced"
 msgstr "E thelluar"
 
-#: ../terminal/terminal-preferences-dialog.c:1419
+#. section: Double Click
+#: ../terminal/terminal-preferences-dialog.c:1448
+msgid "Double Click"
+msgstr "Dyklikim"
+
+#: ../terminal/terminal-preferences-dialog.c:1450
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Shenjat vijuese shihi si pjesë të një fjale, gjatë dyklikimesh:"
 
-#: ../terminal/terminal-preferences-dialog.c:1445
+#. section: Encoding
+#: ../terminal/terminal-preferences-dialog.c:1474
+msgid "Encoding"
+msgstr "Kodim"
+
+#: ../terminal/terminal-preferences-dialog.c:1476
 msgid "Default character encoding"
 msgstr "Kodim parazgjedhje shkronjash"
 
-#: ../terminal/terminal-preferences-dialog.c:1471
-msgid "_Disable all menu access keys (such as Alt + f)"
-msgstr "_Çaktivizo tërë tastet e hyrjes në menu (bie fjala, Alt+f)"
-
-#: ../terminal/terminal-preferences-dialog.c:1481
-msgid "_Disable menu shortcut key (F10 by default)"
-msgstr "_Çaktivizo tastin shkurtore për menu (si parazgjedhje, F10)"
-
-#: ../terminal/terminal-preferences-dialog.c:1492
-msgid "_Use middle mouse click to close tabs"
-msgstr "_Përdor klikim me butonin e mesit të miut për mbyllje skedash"
-
-#: ../terminal/terminal-preferences-dialog.c:1502
-msgid "_Use middle mouse click to open urls"
-msgstr "_Përdor klikim me butonin e mesit të miut për hapje URL-sh"
-
-#: ../terminal/terminal-preferences-dialog.c:1512
-msgid "_Auto-hide mouse pointer"
-msgstr "_Vetëfshih shigjetën e miut"
-
-#: ../terminal/terminal-preferences-dialog.c:1522
-msgid "_Open new tab to the right of the active tab"
-msgstr "_Hap skedë të re në të djathtë të skedës aktive"
-
-#: ../terminal/terminal-preferences-dialog.c:1532
-msgid "_Audible bell"
-msgstr "Zile e _dëgjueshme"
-
-#: ../terminal/terminal-preferences-dialog.c:1542
-msgid "_Visual bell"
-msgstr "Zile _pamore"
-
-#: ../terminal/terminal-preferences-dialog.c:1552
-msgid "Right click action:"
-msgstr "Veprim klikimi me të djathtin:"
-
-#: ../terminal/terminal-preferences-dialog.c:1558
-msgid "Context Menu"
-msgstr "Menu Konteksti"
-
-#: ../terminal/terminal-preferences-dialog.c:1559
-msgid "Paste clipboard"
-msgstr "Ngjit lëndën e të papastrës"
-
-#: ../terminal/terminal-preferences-dialog.c:1560
-msgid "Paste selection"
-msgstr "Ngjit përzgjedhjen"
-
-#: ../terminal/terminal-preferences-dialog.c:1573
-msgid "Enable Hyperlinks"
-msgstr "Aktivizo Tejlidhje"
-
-#: ../terminal/terminal-preferences-dialog.c:1574
-msgid "Enable support for hyperlinks."
-msgstr "Aktivizo mbulim të tejlidhjeve."
-
+#. section: Shortcuts
 #. * Shortcuts
-#: ../terminal/terminal-preferences-dialog.c:1586
+#: ../terminal/terminal-preferences-dialog.c:1500
+#: ../terminal/terminal-preferences-dialog.c:1617
 msgid "Shortcuts"
 msgstr "Shkurtore"
 
-#: ../terminal/terminal-preferences-dialog.c:1597
+#: ../terminal/terminal-preferences-dialog.c:1502
+msgid "_Disable all menu access keys (such as Alt + f)"
+msgstr "_Çaktivizo tërë tastet e hyrjes në menu (bie fjala, Alt+f)"
+
+#: ../terminal/terminal-preferences-dialog.c:1512
+msgid "_Disable menu shortcut key (F10 by default)"
+msgstr "_Çaktivizo tastin shkurtore për menu (si parazgjedhje, F10)"
+
+#. section: Misc
+#: ../terminal/terminal-preferences-dialog.c:1521
+msgid "Misc"
+msgstr "Të ndryshme"
+
+#: ../terminal/terminal-preferences-dialog.c:1523
+msgid "_Use middle mouse click to close tabs"
+msgstr "_Përdor klikim me butonin e mesit të miut për mbyllje skedash"
+
+#: ../terminal/terminal-preferences-dialog.c:1533
+msgid "_Use middle mouse click to open urls"
+msgstr "_Përdor klikim me butonin e mesit të miut për hapje URL-sh"
+
+#: ../terminal/terminal-preferences-dialog.c:1543
+msgid "_Auto-hide mouse pointer"
+msgstr "_Vetëfshih shigjetën e miut"
+
+#: ../terminal/terminal-preferences-dialog.c:1553
+msgid "_Open new tab to the right of the active tab"
+msgstr "_Hap skedë të re në të djathtë të skedës aktive"
+
+#: ../terminal/terminal-preferences-dialog.c:1563
+msgid "_Audible bell"
+msgstr "Zile e _dëgjueshme"
+
+#: ../terminal/terminal-preferences-dialog.c:1573
+msgid "_Visual bell"
+msgstr "Zile _pamore"
+
+#: ../terminal/terminal-preferences-dialog.c:1583
+msgid "Right click action:"
+msgstr "Veprim klikimi me të djathtin:"
+
+#: ../terminal/terminal-preferences-dialog.c:1589
+msgid "Context Menu"
+msgstr "Menu Konteksti"
+
+#: ../terminal/terminal-preferences-dialog.c:1590
+msgid "Paste clipboard"
+msgstr "Ngjit lëndën e të papastrës"
+
+#: ../terminal/terminal-preferences-dialog.c:1591
+msgid "Paste selection"
+msgstr "Ngjit përzgjedhjen"
+
+#: ../terminal/terminal-preferences-dialog.c:1604
+msgid "Enable Hyperlinks"
+msgstr "Aktivizo Tejlidhje"
+
+#: ../terminal/terminal-preferences-dialog.c:1605
+msgid "Enable support for hyperlinks."
+msgstr "Aktivizo mbulim të tejlidhjeve."
+
+#: ../terminal/terminal-preferences-dialog.c:1628
 msgid "Window"
 msgstr "Dritare"
 
-#: ../terminal/terminal-preferences-dialog.c:1598
-#: ../terminal/terminal-preferences.c:1190
-#: ../terminal/terminal-preferences.c:1271
+#: ../terminal/terminal-preferences-dialog.c:1629
+#: ../terminal/terminal-preferences.c:1202
+#: ../terminal/terminal-preferences.c:1293
 msgid "Terminal"
 msgstr "Terminal"
 
 #. default item + separator
-#: ../terminal/terminal-preferences-dialog.c:2005
+#: ../terminal/terminal-preferences-dialog.c:2036
 msgid "Select Preset"
 msgstr "Përzgjidhni Paracaktim"
 
-#: ../terminal/terminal-screen.c:240
+#: ../terminal/terminal-screen.c:242
 msgid "Do not disable dialog"
 msgstr "Mos e çaktivizo dialogun"
 
-#: ../terminal/terminal-screen.c:241
+#: ../terminal/terminal-screen.c:243
 msgid "Disable for 5 minutes"
 msgstr "Çaktivizoje për 5 minuta"
 
-#: ../terminal/terminal-screen.c:242
+#: ../terminal/terminal-screen.c:244
 msgid "Disable for 15 minutes"
 msgstr "Çaktivizoje për 15 minuta"
 
-#: ../terminal/terminal-screen.c:243
+#: ../terminal/terminal-screen.c:245
 msgid "Disable until program restart"
 msgstr "Çaktivizoje deri sa ta riniset programi"
 
-#: ../terminal/terminal-screen.c:244
+#: ../terminal/terminal-screen.c:246
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Çaktivizoje dialogun (mund të riaktivizohet te Parapëlqimet)"
 
-#: ../terminal/terminal-screen.c:496 ../terminal/terminal-screen.c:875
-#: ../terminal/terminal-screen.c:2348
+#: ../terminal/terminal-screen.c:500 ../terminal/terminal-screen.c:883
+#: ../terminal/terminal-screen.c:2369
 msgid "Untitled"
 msgstr "Pa titull"
 
-#: ../terminal/terminal-screen.c:776
+#: ../terminal/terminal-screen.c:784
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "S’arrihet të përcaktohet shell juaji për hyrje."
 
-#: ../terminal/terminal-screen.c:1466
+#: ../terminal/terminal-screen.c:1487
 msgid "_Relaunch"
 msgstr "_Rinise"
 
-#: ../terminal/terminal-screen.c:1472
+#: ../terminal/terminal-screen.c:1493
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Procesi pjellë përfundoi normalisht, me gjendjen %d."
 
-#: ../terminal/terminal-screen.c:1474
+#: ../terminal/terminal-screen.c:1495
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Procesi pjellë u ndërpre nga sinjali %d."
 
-#: ../terminal/terminal-screen.c:1476
+#: ../terminal/terminal-screen.c:1497
 msgid "The child process was aborted."
 msgstr "Procesi pjellë u ndërpre."
 
-#: ../terminal/terminal-screen.c:1482 ../terminal/terminal-window.c:874
+#: ../terminal/terminal-screen.c:1503 ../terminal/terminal-window.c:874
 msgid "Do _not ask me again"
 msgstr "Mos _më pyet sërish"
 
-#: ../terminal/terminal-screen.c:1796
+#: ../terminal/terminal-screen.c:1817
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Kujdes: Ngjitje Potencialisht Jo e Sigurt"
 
-#: ../terminal/terminal-screen.c:1799
+#: ../terminal/terminal-screen.c:1820
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Hedhja e këtij teksti te terminali mund të jetë e rrezikshme, ngaqë duket se mund të ekzekutohen disa urdhra, që përfshijnë potencialisht përdorim përdoruesi rrënjë ('sudo')."
 
-#: ../terminal/terminal-screen.c:1802
+#: ../terminal/terminal-screen.c:1823
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Hedhja e këtij teksti te terminali mund të jetë e rrezikshme, ngaqë duket se mund të ekzekutohen disa urdhra."
 
-#: ../terminal/terminal-screen.c:1812 ../terminal/terminal-window.c:797
+#: ../terminal/terminal-screen.c:1833 ../terminal/terminal-window.c:797
 #: ../terminal/terminal-window.c:2271
 msgid "_Cancel"
 msgstr "_Anuloje"
 
-#: ../terminal/terminal-screen.c:1815 ../terminal/terminal-window.c:326
+#: ../terminal/terminal-screen.c:1836 ../terminal/terminal-window.c:326
 msgid "_Paste"
 msgstr "_Ngjite"
 
-#: ../terminal/terminal-screen.c:1966 ../terminal/terminal-screen.c:2049
+#: ../terminal/terminal-screen.c:1987 ../terminal/terminal-screen.c:2070
 msgid "Failed to execute child"
 msgstr "S’u arrit të ekzekutohej pjella"
 
-#: ../terminal/terminal-screen.c:2705
+#: ../terminal/terminal-screen.c:2726
 msgid "Close this tab"
 msgstr "Mbylle këtë skedë"
 
-#: ../terminal/terminal-screen.c:2758
+#: ../terminal/terminal-screen.c:2779
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "S’u arrit të caktohej kodimi %s\n"
