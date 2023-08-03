@@ -251,6 +251,8 @@ main (int argc, char **argv)
 
       /* load the AccelMap for the XfceShortcutsEditor */
       app = g_object_new (TERMINAL_TYPE_APP, NULL);
+      xfce_gtk_translate_action_entries (terminal_window_get_action_entries (), TERMINAL_WINDOW_ACTION_N);
+      xfce_gtk_translate_action_entries (terminal_widget_get_action_entries (), TERMINAL_WIDGET_ACTION_N);
       xfce_gtk_accel_map_add_entries (terminal_window_get_action_entries (), TERMINAL_WINDOW_ACTION_N);
       xfce_gtk_accel_map_add_entries (terminal_widget_get_action_entries (), TERMINAL_WIDGET_ACTION_N);
       terminal_app_load_accels (app); /* manual execution, instead of the typical idle function */
