@@ -12,10 +12,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-31 09:51+0100\n"
+"POT-Creation-Date: 2023-08-03 00:48+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2020-2023\n"
-"Language-Team: Slovenian (http://www.transifex.com/xfce/xfce-apps/language/sl/)\n"
+"Language-Team: Slovenian (http://app.transifex.com/xfce/xfce-apps/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -438,9 +438,16 @@ msgid "_Help"
 msgstr "Pomoč"
 
 #. * General
+#. section: General
 #: ../terminal/terminal-preferences-dialog.c:241
+#: ../terminal/terminal-preferences-dialog.c:1114
 msgid "General"
 msgstr "Splošno"
+
+#. section: Title
+#: ../terminal/terminal-preferences-dialog.c:249
+msgid "Title"
+msgstr "Naslov"
 
 #: ../terminal/terminal-preferences-dialog.c:251
 msgid "_Initial title:"
@@ -465,6 +472,11 @@ msgstr "Se postavi po začetnemu naslovu"
 #: ../terminal/terminal-preferences-dialog.c:276
 msgid "Isn't displayed"
 msgstr "Ni prikazano"
+
+#. section: Command
+#: ../terminal/terminal-preferences-dialog.c:288
+msgid "Command"
+msgstr "Ukaz"
 
 #: ../terminal/terminal-preferences-dialog.c:290
 msgid "_Run command as login shell"
@@ -502,6 +514,11 @@ msgid ""
 "working directory. Otherwise, current working directory will be used."
 msgstr "Izberite to možnost za ustvarjanje novih terminalov (zavihkov ali oken)  z uporabo lastne delovne mape. Sicer bo uporabljena trenutna delovna mapa."
 
+#. section: Scrolling
+#: ../terminal/terminal-preferences-dialog.c:367
+msgid "Scrolling"
+msgstr "Pomikanje"
+
 #: ../terminal/terminal-preferences-dialog.c:369
 msgid "_Scroll on output"
 msgstr "Drsenje _ob izpisovanju"
@@ -514,615 +531,707 @@ msgid ""
 msgstr "Z vklopom te možnosti bo terminal samodejno drsel navzdol, kadarkoli bodo ukazi, ki se izvajajo v terminalu, podali nov izpis."
 
 #: ../terminal/terminal-preferences-dialog.c:379
-msgid "_Enable overlay scrolling (Requires restart)"
-msgstr "_Vklopi prekrivni drsnik (zahteva ponovni zagon)"
-
-#: ../terminal/terminal-preferences-dialog.c:383
-msgid ""
-"This controls whether scrollbar is drawn as an overlay (auto-hide) or not."
-msgstr "Ta možnost nadzoruje, ali naj bo drsnik narisan kot prekrivni element (s samodejnim skrivanjem) ali ne."
-
-#: ../terminal/terminal-preferences-dialog.c:388
 msgid "_Scroll on keystroke"
 msgstr "Dr_senje s tipkami"
 
-#: ../terminal/terminal-preferences-dialog.c:392
+#: ../terminal/terminal-preferences-dialog.c:383
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal to "
 "the command prompt."
 msgstr "Omogoči pomik po terminalu do ukazne vrstice s pomočjo poljubne tipke."
 
-#: ../terminal/terminal-preferences-dialog.c:401
+#: ../terminal/terminal-preferences-dialog.c:393
+msgid "_Enable kinetic scrolling"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:397
+msgid ""
+"This controls whether scrolling \"coasts\" to a stop when releasing a "
+"touchpad or touchscreen."
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:406
 msgid "Scrollbar is:"
 msgstr "Drsnik je:"
 
-#: ../terminal/terminal-preferences-dialog.c:407
+#: ../terminal/terminal-preferences-dialog.c:412
 msgid "Disabled"
 msgstr "izklopljen"
 
-#: ../terminal/terminal-preferences-dialog.c:408
+#: ../terminal/terminal-preferences-dialog.c:413
 msgid "On the left side"
 msgstr "na levi strani"
 
-#: ../terminal/terminal-preferences-dialog.c:409
+#: ../terminal/terminal-preferences-dialog.c:414
 msgid "On the right side"
 msgstr "na desni strani"
 
-#: ../terminal/terminal-preferences-dialog.c:422
+#: ../terminal/terminal-preferences-dialog.c:427
 msgid "Scrollback:"
 msgstr "Pomik nazaj:"
 
-#: ../terminal/terminal-preferences-dialog.c:438
+#: ../terminal/terminal-preferences-dialog.c:443
 msgid "_Unlimited Scrollback"
 msgstr "_Nomejen pomik nazaj"
 
-#: ../terminal/terminal-preferences-dialog.c:442
+#: ../terminal/terminal-preferences-dialog.c:447
 msgid "This controls whether the terminal will have no limits on scrollback."
 msgstr "To določa se lahko po vsebini terminala vrnemo nazaj brez omejitev."
 
-#: ../terminal/terminal-preferences-dialog.c:450
+#: ../terminal/terminal-preferences-dialog.c:454
+msgid "_Enable overlay scrolling (Requires restart)"
+msgstr "_Vklopi prekrivni drsnik (zahteva ponovni zagon)"
+
+#: ../terminal/terminal-preferences-dialog.c:458
+msgid ""
+"This controls whether scrollbar is drawn as an overlay (auto-hide) or not."
+msgstr "Ta možnost nadzoruje, ali naj bo drsnik narisan kot prekrivni element (s samodejnim skrivanjem) ali ne."
+
+#. section: Cursor
+#: ../terminal/terminal-preferences-dialog.c:465
+msgid "Cursor"
+msgstr "Kazalka"
+
+#: ../terminal/terminal-preferences-dialog.c:467
 msgid "Cursor shape:"
 msgstr "Oblika kazalke:"
 
-#: ../terminal/terminal-preferences-dialog.c:456
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "Block"
 msgstr "Blok"
 
-#: ../terminal/terminal-preferences-dialog.c:457
+#: ../terminal/terminal-preferences-dialog.c:474
 msgid "I-Beam"
 msgstr "I-Beam"
 
-#: ../terminal/terminal-preferences-dialog.c:458
+#: ../terminal/terminal-preferences-dialog.c:475
 msgid "Underline"
 msgstr "Podčrtaj"
 
-#: ../terminal/terminal-preferences-dialog.c:468
+#: ../terminal/terminal-preferences-dialog.c:485
 msgid "Cursor blinks"
 msgstr "Utripanje kurzorja"
 
-#: ../terminal/terminal-preferences-dialog.c:472
+#: ../terminal/terminal-preferences-dialog.c:489
 msgid "This option controls whether the cursor will be blinking or not."
 msgstr "Ta možnost določa ali bo kurzor utripal ali ne."
 
-#: ../terminal/terminal-preferences-dialog.c:481
+#. section: Clipboard
+#: ../terminal/terminal-preferences-dialog.c:496
+msgid "Clipboard"
+msgstr "Odložišče"
+
+#: ../terminal/terminal-preferences-dialog.c:498
 msgid "Automatically copy selection to clipboard"
 msgstr "Samodejno kopiranje izbora na odložišče"
 
-#: ../terminal/terminal-preferences-dialog.c:488
+#: ../terminal/terminal-preferences-dialog.c:505
 msgid "Show unsafe paste dialog"
 msgstr "Prikaži dialog za nevarno lepljenje"
 
-#: ../terminal/terminal-preferences-dialog.c:492
+#: ../terminal/terminal-preferences-dialog.c:509
 msgid ""
 "Show a dialog that allows to edit text that is considered unsafe for pasting"
 msgstr "Prikaži dialog, ki omogoča urejanje besedila, ki se smatra nevarno za lepljenje"
 
 #. * Drop-down
-#: ../terminal/terminal-preferences-dialog.c:501
+#: ../terminal/terminal-preferences-dialog.c:518
 msgid "Drop-down"
 msgstr "Spustni"
 
-#: ../terminal/terminal-preferences-dialog.c:512
+#. section: Behavior
+#: ../terminal/terminal-preferences-dialog.c:527
+msgid "Behavior"
+msgstr "Obnašanje"
+
+#: ../terminal/terminal-preferences-dialog.c:529
 msgid "_Keep window open when it loses focus"
 msgstr "_Ko okno ni v fokusu, ga pusti odprtega"
 
-#: ../terminal/terminal-preferences-dialog.c:522
+#: ../terminal/terminal-preferences-dialog.c:539
 msgid "_Always keep window on top"
 msgstr "Okno naj bo vedno n_a vrhu"
 
-#: ../terminal/terminal-preferences-dialog.c:532
+#: ../terminal/terminal-preferences-dialog.c:549
 msgid "_Use shortcut to focus visible window"
 msgstr "_Uporabi bližnjice za fokusiranje vidnega okna"
 
-#: ../terminal/terminal-preferences-dialog.c:536
+#: ../terminal/terminal-preferences-dialog.c:553
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus\n"
 ", rather than close it, if it had previously lost focus."
 msgstr "Če je vklopljeno, bo bližnjica za odpiranje in odmik okna tega fokusirala,\nče je fokus prej izgubil, ne da bi ga zaprla."
 
-#: ../terminal/terminal-preferences-dialog.c:544
+#: ../terminal/terminal-preferences-dialog.c:561
 msgid "_Show status icon in notification area"
 msgstr "V območju za obvestila prikaži _statusno ikono"
 
-#: ../terminal/terminal-preferences-dialog.c:555
+#. section: Appearance & Animation
+#: ../terminal/terminal-preferences-dialog.c:570
+msgid "Appearance and Animation"
+msgstr "Videz in animacija"
+
+#: ../terminal/terminal-preferences-dialog.c:572
 msgid "Width:"
 msgstr "Širina:"
 
-#: ../terminal/terminal-preferences-dialog.c:577
+#: ../terminal/terminal-preferences-dialog.c:594
 msgid "Height:"
 msgstr "Višina:"
 
-#: ../terminal/terminal-preferences-dialog.c:599
-#: ../terminal/terminal-preferences-dialog.c:874
+#: ../terminal/terminal-preferences-dialog.c:616
+#: ../terminal/terminal-preferences-dialog.c:891
 msgid "Opacity:"
 msgstr "Prekrivnost:"
 
-#: ../terminal/terminal-preferences-dialog.c:621
+#: ../terminal/terminal-preferences-dialog.c:638
 msgid "Duration:"
 msgstr "Trajanje:"
 
-#: ../terminal/terminal-preferences-dialog.c:643
+#: ../terminal/terminal-preferences-dialog.c:660
 msgid "_Always show tabs"
 msgstr "Vedno pokaži zavihke"
 
-#: ../terminal/terminal-preferences-dialog.c:653
+#: ../terminal/terminal-preferences-dialog.c:670
 msgid "_Show window borders"
 msgstr "_Pokaži obrobe oken"
 
-#: ../terminal/terminal-preferences-dialog.c:664
+#. section: Position
+#: ../terminal/terminal-preferences-dialog.c:679
+msgid "Position"
+msgstr "Položaj"
+
+#: ../terminal/terminal-preferences-dialog.c:681
 msgid "Left"
 msgstr "Leva"
 
-#: ../terminal/terminal-preferences-dialog.c:686
+#: ../terminal/terminal-preferences-dialog.c:703
 msgid "Right"
 msgstr "Desno"
 
-#: ../terminal/terminal-preferences-dialog.c:694
+#: ../terminal/terminal-preferences-dialog.c:711
 msgid "Up"
 msgstr "Gor"
 
-#: ../terminal/terminal-preferences-dialog.c:708
+#: ../terminal/terminal-preferences-dialog.c:725
 msgid "Down"
 msgstr "Dol"
 
-#: ../terminal/terminal-preferences-dialog.c:716
+#: ../terminal/terminal-preferences-dialog.c:733
 msgid "_Move to monitor with pointer"
 msgstr "Prema_kni na zaslon s kazalcem"
 
 #. * Appearance
-#: ../terminal/terminal-preferences-dialog.c:728
+#: ../terminal/terminal-preferences-dialog.c:745
 msgid "Appearance"
 msgstr "Videz"
 
-#: ../terminal/terminal-preferences-dialog.c:738
+#. section: Font
+#: ../terminal/terminal-preferences-dialog.c:753
+msgid "Font"
+msgstr "Pisava"
+
+#: ../terminal/terminal-preferences-dialog.c:755
 msgid "_Use system font"
 msgstr "_Uporabi sistemsko pisavo"
 
-#: ../terminal/terminal-preferences-dialog.c:742
+#: ../terminal/terminal-preferences-dialog.c:759
 msgid "Enable this to use system-wide monospace font."
 msgstr "Vklopite to možnost, da na nivoju sistema izberete monospace pisavo."
 
-#: ../terminal/terminal-preferences-dialog.c:762
+#: ../terminal/terminal-preferences-dialog.c:779
 msgid "_Allow bold text"
 msgstr "D_ovoli krepko besedilo"
 
-#: ../terminal/terminal-preferences-dialog.c:766
+#: ../terminal/terminal-preferences-dialog.c:783
 msgid ""
 "Enable this to allow applications running inside the terminal windows to use"
 " bold font."
 msgstr "Omogočite to možnost, da omogočite aplikacijam, ki se izvajajajo v oknu terminala, uporabo krepke pisave."
 
-#: ../terminal/terminal-preferences-dialog.c:773
+#: ../terminal/terminal-preferences-dialog.c:790
 msgid "Cursor blinks:"
 msgstr "Utripanje kurzorja:"
 
-#: ../terminal/terminal-preferences-dialog.c:779
+#: ../terminal/terminal-preferences-dialog.c:796
 msgid "Never"
 msgstr "Nikoli"
 
-#: ../terminal/terminal-preferences-dialog.c:780
+#: ../terminal/terminal-preferences-dialog.c:797
 msgid "When focused"
 msgstr "Ko je v fokusu"
 
-#: ../terminal/terminal-preferences-dialog.c:781
+#: ../terminal/terminal-preferences-dialog.c:798
 msgid "When unfocused"
 msgstr "Ko ni v fokusu"
 
-#: ../terminal/terminal-preferences-dialog.c:782
+#: ../terminal/terminal-preferences-dialog.c:799
 msgid "Always"
 msgstr "Vedno"
 
-#: ../terminal/terminal-preferences-dialog.c:795
+#: ../terminal/terminal-preferences-dialog.c:812
 msgid "Cell spacing:"
 msgstr "Razmik celic:"
 
-#: ../terminal/terminal-preferences-dialog.c:808
+#: ../terminal/terminal-preferences-dialog.c:825
 msgid "x width"
 msgstr "širina x"
 
-#: ../terminal/terminal-preferences-dialog.c:821
+#: ../terminal/terminal-preferences-dialog.c:838
 msgid "x height"
 msgstr "višina y"
 
-#: ../terminal/terminal-preferences-dialog.c:826
-#: ../terminal/terminal-preferences-dialog.c:1435
+#: ../terminal/terminal-preferences-dialog.c:843
+#: ../terminal/terminal-preferences-dialog.c:1466
 #: ../terminal/terminal-window.c:2098
 msgid "Reset"
 msgstr "Ponastavitev"
 
-#: ../terminal/terminal-preferences-dialog.c:838
+#. section: Background
+#: ../terminal/terminal-preferences-dialog.c:852
+msgid "Background"
+msgstr "Ozdaje"
+
+#: ../terminal/terminal-preferences-dialog.c:855
 msgid "None (use solid color)"
 msgstr "Brez (uporaba polne barve)"
 
-#: ../terminal/terminal-preferences-dialog.c:839
+#: ../terminal/terminal-preferences-dialog.c:856
 msgid "Background image"
 msgstr "Slika ozadja"
 
-#: ../terminal/terminal-preferences-dialog.c:840
+#: ../terminal/terminal-preferences-dialog.c:857
 msgid "Transparent Background"
 msgstr "Prosojno ozadje"
 
-#: ../terminal/terminal-preferences-dialog.c:909
+#: ../terminal/terminal-preferences-dialog.c:926
 msgid "File:"
 msgstr "Datoteka:"
 
-#: ../terminal/terminal-preferences-dialog.c:926
+#: ../terminal/terminal-preferences-dialog.c:943
 msgid "All Files"
 msgstr "Vse datoteke"
 
-#: ../terminal/terminal-preferences-dialog.c:932
+#: ../terminal/terminal-preferences-dialog.c:949
 msgid "Image Files"
 msgstr "Slikovne datoteke"
 
-#: ../terminal/terminal-preferences-dialog.c:940
+#: ../terminal/terminal-preferences-dialog.c:957
 msgid "Adjustment:"
 msgstr "Prilagoditev:"
 
-#: ../terminal/terminal-preferences-dialog.c:946
+#: ../terminal/terminal-preferences-dialog.c:963
 msgid "Tiled"
 msgstr "Razpostavljeno"
 
-#: ../terminal/terminal-preferences-dialog.c:947
+#: ../terminal/terminal-preferences-dialog.c:964
 msgid "Centered"
 msgstr "Sredinsko"
 
-#: ../terminal/terminal-preferences-dialog.c:948
+#: ../terminal/terminal-preferences-dialog.c:965
 msgid "Scaled"
 msgstr "Prilagojeno"
 
-#: ../terminal/terminal-preferences-dialog.c:949
+#: ../terminal/terminal-preferences-dialog.c:966
 msgid "Stretched"
 msgstr "Raztegnjeno"
 
-#: ../terminal/terminal-preferences-dialog.c:950
+#: ../terminal/terminal-preferences-dialog.c:967
 msgid "Filled"
 msgstr "Napolnjeno"
 
-#: ../terminal/terminal-preferences-dialog.c:961
+#: ../terminal/terminal-preferences-dialog.c:978
 msgid "Shading:"
 msgstr "Senčenje:"
 
-#: ../terminal/terminal-preferences-dialog.c:979
+#. section: Opening new windows
+#: ../terminal/terminal-preferences-dialog.c:994
+msgid "Opening New Nindows"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:996
 msgid "_Display menubar in new windows"
 msgstr "Po_kaži menijsko vrstico v novih oknih"
 
-#: ../terminal/terminal-preferences-dialog.c:983
+#: ../terminal/terminal-preferences-dialog.c:1000
 msgid "Enable this option to show menubars in newly created terminal windows."
 msgstr "Omogočite to možnost za prikaz menijev v novo odprtih terminalih."
 
-#: ../terminal/terminal-preferences-dialog.c:990
+#: ../terminal/terminal-preferences-dialog.c:1007
 msgid "_Display toolbar in new windows"
 msgstr "_V na novo odprtih oknih prikaži orodno vrstico"
 
-#: ../terminal/terminal-preferences-dialog.c:994
+#: ../terminal/terminal-preferences-dialog.c:1011
 msgid "Enable this option to show toolbar in newly created terminal windows."
 msgstr "Vklopite to možnost, če želite da se v novo odprtih terminalih prikaže orodna vrstica"
 
-#: ../terminal/terminal-preferences-dialog.c:1001
+#: ../terminal/terminal-preferences-dialog.c:1018
 msgid "_Display borders around new windows"
 msgstr "_Prikaži okoli na na novo odprtih oken"
 
-#: ../terminal/terminal-preferences-dialog.c:1005
+#: ../terminal/terminal-preferences-dialog.c:1022
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Omogoča za prikaz okenskih okraskov na novo ustvarjenih oknih terminala."
 
-#: ../terminal/terminal-preferences-dialog.c:1012
+#: ../terminal/terminal-preferences-dialog.c:1029
 msgid "Default geometry"
 msgstr "Privzeta geometrija"
 
-#: ../terminal/terminal-preferences-dialog.c:1027
+#: ../terminal/terminal-preferences-dialog.c:1044
 msgid "columns"
 msgstr "stolpcev"
 
-#: ../terminal/terminal-preferences-dialog.c:1042
+#: ../terminal/terminal-preferences-dialog.c:1059
 msgid "rows"
 msgstr "vrstic"
 
-#: ../terminal/terminal-preferences-dialog.c:1056
+#. section: Tabs
+#: ../terminal/terminal-preferences-dialog.c:1071
+msgid "Tabs"
+msgstr "Zavihki"
+
+#: ../terminal/terminal-preferences-dialog.c:1073
 msgid "Reset tab activity indicator after"
 msgstr "Ponastavi indikator dejavnosti zavihkov po"
 
-#: ../terminal/terminal-preferences-dialog.c:1069
+#: ../terminal/terminal-preferences-dialog.c:1086
 msgid "seconds"
 msgstr "sekunde"
 
-#: ../terminal/terminal-preferences-dialog.c:1077
+#: ../terminal/terminal-preferences-dialog.c:1094
 msgid "_Use custom styling to make tabs slim (restart required)"
 msgstr "_Uporabi oblikovanje po meri za ožje zavihke (zahteva ponovni zagon)"
 
 #. * Colors
-#: ../terminal/terminal-preferences-dialog.c:1089
+#: ../terminal/terminal-preferences-dialog.c:1106
 msgid "Colors"
 msgstr "Barve"
 
-#: ../terminal/terminal-preferences-dialog.c:1147
+#: ../terminal/terminal-preferences-dialog.c:1164
 msgid "_Use system theme colors for text and background"
 msgstr "_Uporabite barve sistemske teme za besedilo in ozadje"
 
-#: ../terminal/terminal-preferences-dialog.c:1157
+#: ../terminal/terminal-preferences-dialog.c:1174
 msgid "_Vary the background color for each tab"
 msgstr "Različna barva ozadja za vsak zavihek"
 
-#: ../terminal/terminal-preferences-dialog.c:1161
+#: ../terminal/terminal-preferences-dialog.c:1178
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness."
 msgstr "Naključna barva temelji na izbrani barvi ozadja, ob tem pa ohrani enako svetlost."
 
-#: ../terminal/terminal-preferences-dialog.c:1169
+#: ../terminal/terminal-preferences-dialog.c:1188
+msgid "_Enable sixel graphics"
+msgstr ""
+
+#. section: Custom colors
+#: ../terminal/terminal-preferences-dialog.c:1198
+msgid "Custom Colors"
+msgstr "Barve po meri"
+
+#: ../terminal/terminal-preferences-dialog.c:1200
 msgid "_Cursor color:"
 msgstr "Barva _kazalke:"
 
-#: ../terminal/terminal-preferences-dialog.c:1173
-#: ../terminal/terminal-preferences-dialog.c:1207
+#: ../terminal/terminal-preferences-dialog.c:1204
+#: ../terminal/terminal-preferences-dialog.c:1238
 msgid ""
 "Enable this option to set custom text and background colors for cursor. If "
 "disabled the background and text colors will be reversed."
 msgstr "Vklopite to možnost za nastavitev po meri prilagojenih barv besedila in ozadja kurzorja. Če je izključeno, se bosta barvi ozadja in besedila povrnili."
 
-#: ../terminal/terminal-preferences-dialog.c:1203
+#: ../terminal/terminal-preferences-dialog.c:1234
 msgid "_Text selection color:"
 msgstr "Barva izbora _besedila:"
 
-#: ../terminal/terminal-preferences-dialog.c:1237
+#: ../terminal/terminal-preferences-dialog.c:1268
 msgid "_Bold selection color:"
 msgstr "Barva _krepkega izbora:"
 
-#: ../terminal/terminal-preferences-dialog.c:1241
+#: ../terminal/terminal-preferences-dialog.c:1272
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Omogoča nastavitev barve krepkega besedila po meri. če je možnost onemogočena, bo uporabljena barva običajnega besedila."
 
-#: ../terminal/terminal-preferences-dialog.c:1281
+#. section: Palette
+#: ../terminal/terminal-preferences-dialog.c:1289
+msgid "Palette"
+msgstr "Paleta"
+
+#: ../terminal/terminal-preferences-dialog.c:1312
 msgid "_Show bold text in bright colors:"
 msgstr "_Pokaži krepko besedilo v svetlih barvah:"
 
-#: ../terminal/terminal-preferences-dialog.c:1285
+#: ../terminal/terminal-preferences-dialog.c:1316
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
 "intact."
 msgstr "Vključite to možnost, da omogočite ubežnim sekvencam tipa  '\\e[1;35m' preklopiti besedilo v svetle barve, kot dodatek poudarjenosti. Če je izklopljeno, bo barva besedila ostala nespremenjena."
 
+#. section: Presets
+#: ../terminal/terminal-preferences-dialog.c:1322
+msgid "Presets"
+msgstr "Prednstavitve"
+
 #. * Compatibility
-#: ../terminal/terminal-preferences-dialog.c:1307
+#: ../terminal/terminal-preferences-dialog.c:1338
+#: ../terminal/terminal-preferences-dialog.c:1344
 msgid "Compatibility"
 msgstr "Združljivost"
 
-#: ../terminal/terminal-preferences-dialog.c:1318
+#: ../terminal/terminal-preferences-dialog.c:1349
 msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
 msgstr "Nekateri programi se lahko zaradi teh nastavitev obnašajo nepravilno.\nNamenjene so zgolj kot obvod za delovanje določenih aplikacij in\noperacijskih sistemov, ki od terminala pričakujejo drugačno obnašanje."
 
-#: ../terminal/terminal-preferences-dialog.c:1331
+#: ../terminal/terminal-preferences-dialog.c:1362
 msgid "Backspace key generates:"
 msgstr "Tipka Backspace ustvari:"
 
-#: ../terminal/terminal-preferences-dialog.c:1337
-#: ../terminal/terminal-preferences-dialog.c:1360
+#: ../terminal/terminal-preferences-dialog.c:1368
+#: ../terminal/terminal-preferences-dialog.c:1391
 msgid "Auto-detect"
 msgstr "Samodejna zaznava"
 
-#: ../terminal/terminal-preferences-dialog.c:1338
-#: ../terminal/terminal-preferences-dialog.c:1361
+#: ../terminal/terminal-preferences-dialog.c:1369
+#: ../terminal/terminal-preferences-dialog.c:1392
 msgid "ASCII Del"
 msgstr "ASCII Del"
 
-#: ../terminal/terminal-preferences-dialog.c:1339
-#: ../terminal/terminal-preferences-dialog.c:1362
+#: ../terminal/terminal-preferences-dialog.c:1370
+#: ../terminal/terminal-preferences-dialog.c:1393
 msgid "Escape sequence"
 msgstr "Ubežno zaporedje"
 
-#: ../terminal/terminal-preferences-dialog.c:1340
-#: ../terminal/terminal-preferences-dialog.c:1363
+#: ../terminal/terminal-preferences-dialog.c:1371
+#: ../terminal/terminal-preferences-dialog.c:1394
 msgid "Control-H"
 msgstr "Krmilka-H"
 
-#: ../terminal/terminal-preferences-dialog.c:1341
-#: ../terminal/terminal-preferences-dialog.c:1364
+#: ../terminal/terminal-preferences-dialog.c:1372
+#: ../terminal/terminal-preferences-dialog.c:1395
 msgid "Erase TTY"
 msgstr "Izbriši TTY"
 
-#: ../terminal/terminal-preferences-dialog.c:1354
+#: ../terminal/terminal-preferences-dialog.c:1385
 msgid "Delete key generates:"
 msgstr "Tipka Del ustvari:"
 
-#: ../terminal/terminal-preferences-dialog.c:1377
+#: ../terminal/terminal-preferences-dialog.c:1408
 msgid "Ambiguous-width characters:"
 msgstr "Znaki z nestalno širino:"
 
-#: ../terminal/terminal-preferences-dialog.c:1383
+#: ../terminal/terminal-preferences-dialog.c:1414
 msgid "Narrow"
 msgstr "Ozko"
 
-#: ../terminal/terminal-preferences-dialog.c:1384
+#: ../terminal/terminal-preferences-dialog.c:1415
 msgid "Wide"
 msgstr "Široko"
 
-#: ../terminal/terminal-preferences-dialog.c:1398
+#: ../terminal/terminal-preferences-dialog.c:1429
 msgid "Reset compatibility options to defaults"
 msgstr "Ponastavi nastavitve združlijvosti na privzete"
 
 #. * Advanced
-#: ../terminal/terminal-preferences-dialog.c:1409
+#: ../terminal/terminal-preferences-dialog.c:1440
 msgid "Advanced"
 msgstr "Napredno"
 
-#: ../terminal/terminal-preferences-dialog.c:1419
+#. section: Double Click
+#: ../terminal/terminal-preferences-dialog.c:1448
+msgid "Double Click"
+msgstr "Dvoklik"
+
+#: ../terminal/terminal-preferences-dialog.c:1450
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Ob dvojnem kliku obravnavaj naslednje znake kot del besede:"
 
-#: ../terminal/terminal-preferences-dialog.c:1445
+#. section: Encoding
+#: ../terminal/terminal-preferences-dialog.c:1474
+msgid "Encoding"
+msgstr "Kodiranje"
+
+#: ../terminal/terminal-preferences-dialog.c:1476
 msgid "Default character encoding"
 msgstr "Privzeto kodiranje znakov"
 
-#: ../terminal/terminal-preferences-dialog.c:1471
-msgid "_Disable all menu access keys (such as Alt + f)"
-msgstr "O_nemogoči vse tipke za dostop do menija (kot npr. Alt+F)"
-
-#: ../terminal/terminal-preferences-dialog.c:1481
-msgid "_Disable menu shortcut key (F10 by default)"
-msgstr "Onemogoči bližnjico do m_enija (privzeta je tipka F10)"
-
-#: ../terminal/terminal-preferences-dialog.c:1492
-msgid "_Use middle mouse click to close tabs"
-msgstr "Uporabi klik na srednjo tipko _miške za zapiranje zavihkov"
-
-#: ../terminal/terminal-preferences-dialog.c:1502
-msgid "_Use middle mouse click to open urls"
-msgstr "_Uporabi klik na srednjo tipko miške za odpiranje spletnih URL naslovov"
-
-#: ../terminal/terminal-preferences-dialog.c:1512
-msgid "_Auto-hide mouse pointer"
-msgstr "S_amodejno skrij kurzor miške"
-
-#: ../terminal/terminal-preferences-dialog.c:1522
-msgid "_Open new tab to the right of the active tab"
-msgstr "_odpri nov zavihek desno od aktivnega zavihka"
-
-#: ../terminal/terminal-preferences-dialog.c:1532
-msgid "_Audible bell"
-msgstr "_Slišno opozorilo"
-
-#: ../terminal/terminal-preferences-dialog.c:1542
-msgid "_Visual bell"
-msgstr "_Vidno opozorilo"
-
-#: ../terminal/terminal-preferences-dialog.c:1552
-msgid "Right click action:"
-msgstr "Dejanje ob desnem kliku:"
-
-#: ../terminal/terminal-preferences-dialog.c:1558
-msgid "Context Menu"
-msgstr "Vsebinski meni"
-
-#: ../terminal/terminal-preferences-dialog.c:1559
-msgid "Paste clipboard"
-msgstr "Prilepi odložišče"
-
-#: ../terminal/terminal-preferences-dialog.c:1560
-msgid "Paste selection"
-msgstr "Prilepi izbor"
-
-#: ../terminal/terminal-preferences-dialog.c:1573
-msgid "Enable Hyperlinks"
-msgstr "Vklopi hiper-povezave"
-
-#: ../terminal/terminal-preferences-dialog.c:1574
-msgid "Enable support for hyperlinks."
-msgstr "Vklopi podporo za hiper-povezave."
-
+#. section: Shortcuts
 #. * Shortcuts
-#: ../terminal/terminal-preferences-dialog.c:1586
+#: ../terminal/terminal-preferences-dialog.c:1500
+#: ../terminal/terminal-preferences-dialog.c:1617
 msgid "Shortcuts"
 msgstr "Bližnjice"
 
-#: ../terminal/terminal-preferences-dialog.c:1597
+#: ../terminal/terminal-preferences-dialog.c:1502
+msgid "_Disable all menu access keys (such as Alt + f)"
+msgstr "O_nemogoči vse tipke za dostop do menija (kot npr. Alt+F)"
+
+#: ../terminal/terminal-preferences-dialog.c:1512
+msgid "_Disable menu shortcut key (F10 by default)"
+msgstr "Onemogoči bližnjico do m_enija (privzeta je tipka F10)"
+
+#. section: Misc
+#: ../terminal/terminal-preferences-dialog.c:1521
+msgid "Misc"
+msgstr "Razno"
+
+#: ../terminal/terminal-preferences-dialog.c:1523
+msgid "_Use middle mouse click to close tabs"
+msgstr "Uporabi klik na srednjo tipko _miške za zapiranje zavihkov"
+
+#: ../terminal/terminal-preferences-dialog.c:1533
+msgid "_Use middle mouse click to open urls"
+msgstr "_Uporabi klik na srednjo tipko miške za odpiranje spletnih URL naslovov"
+
+#: ../terminal/terminal-preferences-dialog.c:1543
+msgid "_Auto-hide mouse pointer"
+msgstr "S_amodejno skrij kurzor miške"
+
+#: ../terminal/terminal-preferences-dialog.c:1553
+msgid "_Open new tab to the right of the active tab"
+msgstr "_odpri nov zavihek desno od aktivnega zavihka"
+
+#: ../terminal/terminal-preferences-dialog.c:1563
+msgid "_Audible bell"
+msgstr "_Slišno opozorilo"
+
+#: ../terminal/terminal-preferences-dialog.c:1573
+msgid "_Visual bell"
+msgstr "_Vidno opozorilo"
+
+#: ../terminal/terminal-preferences-dialog.c:1583
+msgid "Right click action:"
+msgstr "Dejanje ob desnem kliku:"
+
+#: ../terminal/terminal-preferences-dialog.c:1589
+msgid "Context Menu"
+msgstr "Vsebinski meni"
+
+#: ../terminal/terminal-preferences-dialog.c:1590
+msgid "Paste clipboard"
+msgstr "Prilepi odložišče"
+
+#: ../terminal/terminal-preferences-dialog.c:1591
+msgid "Paste selection"
+msgstr "Prilepi izbor"
+
+#: ../terminal/terminal-preferences-dialog.c:1604
+msgid "Enable Hyperlinks"
+msgstr "Vklopi hiper-povezave"
+
+#: ../terminal/terminal-preferences-dialog.c:1605
+msgid "Enable support for hyperlinks."
+msgstr "Vklopi podporo za hiper-povezave."
+
+#: ../terminal/terminal-preferences-dialog.c:1628
 msgid "Window"
 msgstr "Okno"
 
-#: ../terminal/terminal-preferences-dialog.c:1598
-#: ../terminal/terminal-preferences.c:1190
-#: ../terminal/terminal-preferences.c:1271
+#: ../terminal/terminal-preferences-dialog.c:1629
+#: ../terminal/terminal-preferences.c:1202
+#: ../terminal/terminal-preferences.c:1293
 msgid "Terminal"
 msgstr "Terminal"
 
 #. default item + separator
-#: ../terminal/terminal-preferences-dialog.c:2005
+#: ../terminal/terminal-preferences-dialog.c:2036
 msgid "Select Preset"
 msgstr "Izeberi prednastavitev"
 
-#: ../terminal/terminal-screen.c:240
+#: ../terminal/terminal-screen.c:242
 msgid "Do not disable dialog"
 msgstr "Ne onemogoči pogovornega okna"
 
-#: ../terminal/terminal-screen.c:241
+#: ../terminal/terminal-screen.c:243
 msgid "Disable for 5 minutes"
 msgstr "Onemogoči Onemogoči za 5 minut"
 
-#: ../terminal/terminal-screen.c:242
+#: ../terminal/terminal-screen.c:244
 msgid "Disable for 15 minutes"
 msgstr "Onemogoči za 15 minut"
 
-#: ../terminal/terminal-screen.c:243
+#: ../terminal/terminal-screen.c:245
 msgid "Disable until program restart"
 msgstr "Onomeogoči do ponovnega zagona programa"
 
-#: ../terminal/terminal-screen.c:244
+#: ../terminal/terminal-screen.c:246
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Onemogoči pogovorno okno (ponoven vklop v Nastavitvah)"
 
-#: ../terminal/terminal-screen.c:496 ../terminal/terminal-screen.c:875
-#: ../terminal/terminal-screen.c:2348
+#: ../terminal/terminal-screen.c:500 ../terminal/terminal-screen.c:883
+#: ../terminal/terminal-screen.c:2369
 msgid "Untitled"
 msgstr "Neimenovano"
 
-#: ../terminal/terminal-screen.c:776
+#: ../terminal/terminal-screen.c:784
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Ni mogoče določiti vaše lupine za prijavo."
 
-#: ../terminal/terminal-screen.c:1466
+#: ../terminal/terminal-screen.c:1487
 msgid "_Relaunch"
 msgstr "_Ponovni zagon"
 
-#: ../terminal/terminal-screen.c:1472
+#: ../terminal/terminal-screen.c:1493
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Podrejeni proces se je normalno zaključil s statusom %d."
 
-#: ../terminal/terminal-screen.c:1474
+#: ../terminal/terminal-screen.c:1495
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Podrejeni proces je bil prekinjen zaradi signala %d."
 
-#: ../terminal/terminal-screen.c:1476
+#: ../terminal/terminal-screen.c:1497
 msgid "The child process was aborted."
 msgstr "Podrejeni proces je bil prekinjen."
 
-#: ../terminal/terminal-screen.c:1482 ../terminal/terminal-window.c:874
+#: ../terminal/terminal-screen.c:1503 ../terminal/terminal-window.c:874
 msgid "Do _not ask me again"
 msgstr "_Ne vprašaj ponovno"
 
-#: ../terminal/terminal-screen.c:1796
+#: ../terminal/terminal-screen.c:1817
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Opozorilo: možno nevarno vstavljanje"
 
-#: ../terminal/terminal-screen.c:1799
+#: ../terminal/terminal-screen.c:1820
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Lepljenje teksta v terminal je lahko nevarno, ker bodo izvedeni določeni ukazi, ki vključujejo korenski dostop ('sudo')."
 
-#: ../terminal/terminal-screen.c:1802
+#: ../terminal/terminal-screen.c:1823
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Lepljenje tega teksta v terminal je lahko nevarno, ker je videti, kot da bodo izvedeni nekateri ukazi."
 
-#: ../terminal/terminal-screen.c:1812 ../terminal/terminal-window.c:797
+#: ../terminal/terminal-screen.c:1833 ../terminal/terminal-window.c:797
 #: ../terminal/terminal-window.c:2271
 msgid "_Cancel"
 msgstr "_Prekliči"
 
-#: ../terminal/terminal-screen.c:1815 ../terminal/terminal-window.c:326
+#: ../terminal/terminal-screen.c:1836 ../terminal/terminal-window.c:326
 msgid "_Paste"
 msgstr "Prilepi"
 
-#: ../terminal/terminal-screen.c:1966 ../terminal/terminal-screen.c:2049
+#: ../terminal/terminal-screen.c:1987 ../terminal/terminal-screen.c:2070
 msgid "Failed to execute child"
 msgstr "Ni mogoče izvesti podrejenega opravila"
 
-#: ../terminal/terminal-screen.c:2705
+#: ../terminal/terminal-screen.c:2726
 msgid "Close this tab"
 msgstr "Zapri ta zavihek"
 
-#: ../terminal/terminal-screen.c:2758
+#: ../terminal/terminal-screen.c:2779
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Neuspešno nastavljanje kodiranja %s\n"
