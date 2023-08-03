@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:50+0100\n"
+"POT-Creation-Date: 2023-08-03 00:48+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Ammuu5, 2018,2022\n"
-"Language-Team: Finnish (http://www.transifex.com/xfce/xfce-apps/language/fi/)\n"
+"Language-Team: Finnish (http://app.transifex.com/xfce/xfce-apps/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -437,9 +437,16 @@ msgid "_Help"
 msgstr "_Ohje"
 
 #. * General
+#. section: General
 #: ../terminal/terminal-preferences-dialog.c:241
+#: ../terminal/terminal-preferences-dialog.c:1114
 msgid "General"
 msgstr "Yleiset"
+
+#. section: Title
+#: ../terminal/terminal-preferences-dialog.c:249
+msgid "Title"
+msgstr "Kappale"
 
 #: ../terminal/terminal-preferences-dialog.c:251
 msgid "_Initial title:"
@@ -464,6 +471,11 @@ msgstr "Ensiotsakkeen jälkeen"
 #: ../terminal/terminal-preferences-dialog.c:276
 msgid "Isn't displayed"
 msgstr "Ei näytetä"
+
+#. section: Command
+#: ../terminal/terminal-preferences-dialog.c:288
+msgid "Command"
+msgstr "Komento"
 
 #: ../terminal/terminal-preferences-dialog.c:290
 msgid "_Run command as login shell"
@@ -501,6 +513,11 @@ msgid ""
 "working directory. Otherwise, current working directory will be used."
 msgstr "Valitse tämä jos haluat että uudet päätteet (välilehdet tai ikkunat) käyttävät mukautettua työhakemistoa. Muussa tapauksessa käytetään nykyistä työhakemistoa."
 
+#. section: Scrolling
+#: ../terminal/terminal-preferences-dialog.c:367
+msgid "Scrolling"
+msgstr "Vieritys"
+
 #: ../terminal/terminal-preferences-dialog.c:369
 msgid "_Scroll on output"
 msgstr ""
@@ -513,615 +530,707 @@ msgid ""
 msgstr "Määrittää, vierittääkö päätteessä suoritettavien komentojen tuottama tulostus päätettä automaattisesti."
 
 #: ../terminal/terminal-preferences-dialog.c:379
-msgid "_Enable overlay scrolling (Requires restart)"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:383
-msgid ""
-"This controls whether scrollbar is drawn as an overlay (auto-hide) or not."
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:388
 msgid "_Scroll on keystroke"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:392
+#: ../terminal/terminal-preferences-dialog.c:383
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal to "
 "the command prompt."
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:401
+#: ../terminal/terminal-preferences-dialog.c:393
+msgid "_Enable kinetic scrolling"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:397
+msgid ""
+"This controls whether scrolling \"coasts\" to a stop when releasing a "
+"touchpad or touchscreen."
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:406
 msgid "Scrollbar is:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:407
+#: ../terminal/terminal-preferences-dialog.c:412
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
-#: ../terminal/terminal-preferences-dialog.c:408
+#: ../terminal/terminal-preferences-dialog.c:413
 msgid "On the left side"
 msgstr "Vasemmassa reunassa"
 
-#: ../terminal/terminal-preferences-dialog.c:409
+#: ../terminal/terminal-preferences-dialog.c:414
 msgid "On the right side"
 msgstr "Oikeassa reunassa"
 
-#: ../terminal/terminal-preferences-dialog.c:422
+#: ../terminal/terminal-preferences-dialog.c:427
 msgid "Scrollback:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:438
+#: ../terminal/terminal-preferences-dialog.c:443
 msgid "_Unlimited Scrollback"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:442
+#: ../terminal/terminal-preferences-dialog.c:447
 msgid "This controls whether the terminal will have no limits on scrollback."
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:450
+#: ../terminal/terminal-preferences-dialog.c:454
+msgid "_Enable overlay scrolling (Requires restart)"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:458
+msgid ""
+"This controls whether scrollbar is drawn as an overlay (auto-hide) or not."
+msgstr ""
+
+#. section: Cursor
+#: ../terminal/terminal-preferences-dialog.c:465
+msgid "Cursor"
+msgstr "Kursori"
+
+#: ../terminal/terminal-preferences-dialog.c:467
 msgid "Cursor shape:"
 msgstr "Kursorin muoto:"
 
-#: ../terminal/terminal-preferences-dialog.c:456
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "Block"
 msgstr "Laatikko"
 
-#: ../terminal/terminal-preferences-dialog.c:457
+#: ../terminal/terminal-preferences-dialog.c:474
 msgid "I-Beam"
 msgstr "I-palkki"
 
-#: ../terminal/terminal-preferences-dialog.c:458
+#: ../terminal/terminal-preferences-dialog.c:475
 msgid "Underline"
 msgstr "Alleviivaus"
 
-#: ../terminal/terminal-preferences-dialog.c:468
+#: ../terminal/terminal-preferences-dialog.c:485
 msgid "Cursor blinks"
 msgstr "Kursori vilkkuu"
 
-#: ../terminal/terminal-preferences-dialog.c:472
+#: ../terminal/terminal-preferences-dialog.c:489
 msgid "This option controls whether the cursor will be blinking or not."
 msgstr "Määrittää vilkkuuko kursori vai ei."
 
-#: ../terminal/terminal-preferences-dialog.c:481
+#. section: Clipboard
+#: ../terminal/terminal-preferences-dialog.c:496
+msgid "Clipboard"
+msgstr "Leikepöytä"
+
+#: ../terminal/terminal-preferences-dialog.c:498
 msgid "Automatically copy selection to clipboard"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:488
+#: ../terminal/terminal-preferences-dialog.c:505
 msgid "Show unsafe paste dialog"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:492
+#: ../terminal/terminal-preferences-dialog.c:509
 msgid ""
 "Show a dialog that allows to edit text that is considered unsafe for pasting"
 msgstr ""
 
 #. * Drop-down
-#: ../terminal/terminal-preferences-dialog.c:501
+#: ../terminal/terminal-preferences-dialog.c:518
 msgid "Drop-down"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:512
+#. section: Behavior
+#: ../terminal/terminal-preferences-dialog.c:527
+msgid "Behavior"
+msgstr "Toiminta"
+
+#: ../terminal/terminal-preferences-dialog.c:529
 msgid "_Keep window open when it loses focus"
 msgstr "_Pidä ikkuna avoinna kun se menettää kohdistuksen"
 
-#: ../terminal/terminal-preferences-dialog.c:522
+#: ../terminal/terminal-preferences-dialog.c:539
 msgid "_Always keep window on top"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:532
+#: ../terminal/terminal-preferences-dialog.c:549
 msgid "_Use shortcut to focus visible window"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:536
+#: ../terminal/terminal-preferences-dialog.c:553
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus\n"
 ", rather than close it, if it had previously lost focus."
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:544
+#: ../terminal/terminal-preferences-dialog.c:561
 msgid "_Show status icon in notification area"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:555
+#. section: Appearance & Animation
+#: ../terminal/terminal-preferences-dialog.c:570
+msgid "Appearance and Animation"
+msgstr "Ulkoasu ja animaatiot"
+
+#: ../terminal/terminal-preferences-dialog.c:572
 msgid "Width:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:577
+#: ../terminal/terminal-preferences-dialog.c:594
 msgid "Height:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:599
-#: ../terminal/terminal-preferences-dialog.c:874
+#: ../terminal/terminal-preferences-dialog.c:616
+#: ../terminal/terminal-preferences-dialog.c:891
 msgid "Opacity:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:621
+#: ../terminal/terminal-preferences-dialog.c:638
 msgid "Duration:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:643
+#: ../terminal/terminal-preferences-dialog.c:660
 msgid "_Always show tabs"
 msgstr "_Näytä aina välilehdet"
 
-#: ../terminal/terminal-preferences-dialog.c:653
+#: ../terminal/terminal-preferences-dialog.c:670
 msgid "_Show window borders"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:664
+#. section: Position
+#: ../terminal/terminal-preferences-dialog.c:679
+msgid "Position"
+msgstr "Sijainti"
+
+#: ../terminal/terminal-preferences-dialog.c:681
 msgid "Left"
 msgstr "Vasemmalla"
 
-#: ../terminal/terminal-preferences-dialog.c:686
+#: ../terminal/terminal-preferences-dialog.c:703
 msgid "Right"
 msgstr "Oikea"
 
-#: ../terminal/terminal-preferences-dialog.c:694
+#: ../terminal/terminal-preferences-dialog.c:711
 msgid "Up"
 msgstr "Ylös"
 
-#: ../terminal/terminal-preferences-dialog.c:708
+#: ../terminal/terminal-preferences-dialog.c:725
 msgid "Down"
 msgstr "Alas"
 
-#: ../terminal/terminal-preferences-dialog.c:716
+#: ../terminal/terminal-preferences-dialog.c:733
 msgid "_Move to monitor with pointer"
 msgstr ""
 
 #. * Appearance
-#: ../terminal/terminal-preferences-dialog.c:728
+#: ../terminal/terminal-preferences-dialog.c:745
 msgid "Appearance"
 msgstr "Ulkoasu"
 
-#: ../terminal/terminal-preferences-dialog.c:738
+#. section: Font
+#: ../terminal/terminal-preferences-dialog.c:753
+msgid "Font"
+msgstr "Kirjasin"
+
+#: ../terminal/terminal-preferences-dialog.c:755
 msgid "_Use system font"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:742
+#: ../terminal/terminal-preferences-dialog.c:759
 msgid "Enable this to use system-wide monospace font."
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:762
+#: ../terminal/terminal-preferences-dialog.c:779
 msgid "_Allow bold text"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:766
+#: ../terminal/terminal-preferences-dialog.c:783
 msgid ""
 "Enable this to allow applications running inside the terminal windows to use"
 " bold font."
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:773
+#: ../terminal/terminal-preferences-dialog.c:790
 msgid "Cursor blinks:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:779
+#: ../terminal/terminal-preferences-dialog.c:796
 msgid "Never"
 msgstr "Ei koskaan"
 
-#: ../terminal/terminal-preferences-dialog.c:780
+#: ../terminal/terminal-preferences-dialog.c:797
 msgid "When focused"
 msgstr "Kohdistettuna"
 
-#: ../terminal/terminal-preferences-dialog.c:781
+#: ../terminal/terminal-preferences-dialog.c:798
 msgid "When unfocused"
 msgstr "Kohdistamattomana"
 
-#: ../terminal/terminal-preferences-dialog.c:782
+#: ../terminal/terminal-preferences-dialog.c:799
 msgid "Always"
 msgstr "Aina"
 
-#: ../terminal/terminal-preferences-dialog.c:795
+#: ../terminal/terminal-preferences-dialog.c:812
 msgid "Cell spacing:"
 msgstr "Solun välistys:"
 
-#: ../terminal/terminal-preferences-dialog.c:808
+#: ../terminal/terminal-preferences-dialog.c:825
 msgid "x width"
 msgstr "x leveys"
 
-#: ../terminal/terminal-preferences-dialog.c:821
+#: ../terminal/terminal-preferences-dialog.c:838
 msgid "x height"
 msgstr "x korkeus"
 
-#: ../terminal/terminal-preferences-dialog.c:826
-#: ../terminal/terminal-preferences-dialog.c:1435
+#: ../terminal/terminal-preferences-dialog.c:843
+#: ../terminal/terminal-preferences-dialog.c:1466
 #: ../terminal/terminal-window.c:2098
 msgid "Reset"
 msgstr "Palauta oletusasetukset"
 
-#: ../terminal/terminal-preferences-dialog.c:838
+#. section: Background
+#: ../terminal/terminal-preferences-dialog.c:852
+msgid "Background"
+msgstr "Tausta"
+
+#: ../terminal/terminal-preferences-dialog.c:855
 msgid "None (use solid color)"
 msgstr "Ei mitään (tasainen väri)"
 
-#: ../terminal/terminal-preferences-dialog.c:839
+#: ../terminal/terminal-preferences-dialog.c:856
 msgid "Background image"
 msgstr "Taustakuva"
 
-#: ../terminal/terminal-preferences-dialog.c:840
+#: ../terminal/terminal-preferences-dialog.c:857
 msgid "Transparent Background"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:909
+#: ../terminal/terminal-preferences-dialog.c:926
 msgid "File:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:926
+#: ../terminal/terminal-preferences-dialog.c:943
 msgid "All Files"
 msgstr "Kaikki tiedostot"
 
-#: ../terminal/terminal-preferences-dialog.c:932
+#: ../terminal/terminal-preferences-dialog.c:949
 msgid "Image Files"
 msgstr "Kuvatiedostot"
 
-#: ../terminal/terminal-preferences-dialog.c:940
+#: ../terminal/terminal-preferences-dialog.c:957
 msgid "Adjustment:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:946
+#: ../terminal/terminal-preferences-dialog.c:963
 msgid "Tiled"
 msgstr "Vierekkäin"
 
-#: ../terminal/terminal-preferences-dialog.c:947
+#: ../terminal/terminal-preferences-dialog.c:964
 msgid "Centered"
 msgstr "Keskitetty"
 
-#: ../terminal/terminal-preferences-dialog.c:948
+#: ../terminal/terminal-preferences-dialog.c:965
 msgid "Scaled"
 msgstr "Skaalattu"
 
-#: ../terminal/terminal-preferences-dialog.c:949
+#: ../terminal/terminal-preferences-dialog.c:966
 msgid "Stretched"
 msgstr "Venytetty"
 
-#: ../terminal/terminal-preferences-dialog.c:950
+#: ../terminal/terminal-preferences-dialog.c:967
 msgid "Filled"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:961
+#: ../terminal/terminal-preferences-dialog.c:978
 msgid "Shading:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:979
+#. section: Opening new windows
+#: ../terminal/terminal-preferences-dialog.c:994
+msgid "Opening New Nindows"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:996
 msgid "_Display menubar in new windows"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:983
+#: ../terminal/terminal-preferences-dialog.c:1000
 msgid "Enable this option to show menubars in newly created terminal windows."
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:990
+#: ../terminal/terminal-preferences-dialog.c:1007
 msgid "_Display toolbar in new windows"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:994
+#: ../terminal/terminal-preferences-dialog.c:1011
 msgid "Enable this option to show toolbar in newly created terminal windows."
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1001
+#: ../terminal/terminal-preferences-dialog.c:1018
 msgid "_Display borders around new windows"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1005
+#: ../terminal/terminal-preferences-dialog.c:1022
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Uusien pääteikkunoiden ympärillä näytetään ikkunoiden reunukset."
 
-#: ../terminal/terminal-preferences-dialog.c:1012
+#: ../terminal/terminal-preferences-dialog.c:1029
 msgid "Default geometry"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1027
+#: ../terminal/terminal-preferences-dialog.c:1044
 msgid "columns"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1042
+#: ../terminal/terminal-preferences-dialog.c:1059
 msgid "rows"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1056
+#. section: Tabs
+#: ../terminal/terminal-preferences-dialog.c:1071
+msgid "Tabs"
+msgstr "Välilehdet"
+
+#: ../terminal/terminal-preferences-dialog.c:1073
 msgid "Reset tab activity indicator after"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1069
+#: ../terminal/terminal-preferences-dialog.c:1086
 msgid "seconds"
 msgstr "sekuntia"
 
-#: ../terminal/terminal-preferences-dialog.c:1077
+#: ../terminal/terminal-preferences-dialog.c:1094
 msgid "_Use custom styling to make tabs slim (restart required)"
 msgstr ""
 
 #. * Colors
-#: ../terminal/terminal-preferences-dialog.c:1089
+#: ../terminal/terminal-preferences-dialog.c:1106
 msgid "Colors"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1147
+#: ../terminal/terminal-preferences-dialog.c:1164
 msgid "_Use system theme colors for text and background"
 msgstr "_Käytä järjestelmän teeman värejä tekstille ja taustalle"
 
-#: ../terminal/terminal-preferences-dialog.c:1157
+#: ../terminal/terminal-preferences-dialog.c:1174
 msgid "_Vary the background color for each tab"
 msgstr "_Muuta taustaväriä joka välilehdelle"
 
-#: ../terminal/terminal-preferences-dialog.c:1161
+#: ../terminal/terminal-preferences-dialog.c:1178
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness."
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1169
+#: ../terminal/terminal-preferences-dialog.c:1188
+msgid "_Enable sixel graphics"
+msgstr ""
+
+#. section: Custom colors
+#: ../terminal/terminal-preferences-dialog.c:1198
+msgid "Custom Colors"
+msgstr "Omavalintaiset värit"
+
+#: ../terminal/terminal-preferences-dialog.c:1200
 msgid "_Cursor color:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1173
-#: ../terminal/terminal-preferences-dialog.c:1207
+#: ../terminal/terminal-preferences-dialog.c:1204
+#: ../terminal/terminal-preferences-dialog.c:1238
 msgid ""
 "Enable this option to set custom text and background colors for cursor. If "
 "disabled the background and text colors will be reversed."
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1203
+#: ../terminal/terminal-preferences-dialog.c:1234
 msgid "_Text selection color:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1237
+#: ../terminal/terminal-preferences-dialog.c:1268
 msgid "_Bold selection color:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1241
+#: ../terminal/terminal-preferences-dialog.c:1272
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Aseta oma lihavoidun tekstin väri. Jos asetus ei ole käytössä, käytetään tekstin väriä."
 
-#: ../terminal/terminal-preferences-dialog.c:1281
+#. section: Palette
+#: ../terminal/terminal-preferences-dialog.c:1289
+msgid "Palette"
+msgstr "Paletti"
+
+#: ../terminal/terminal-preferences-dialog.c:1312
 msgid "_Show bold text in bright colors:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1285
+#: ../terminal/terminal-preferences-dialog.c:1316
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
 "intact."
 msgstr ""
 
+#. section: Presets
+#: ../terminal/terminal-preferences-dialog.c:1322
+msgid "Presets"
+msgstr "Esiasetukset"
+
 #. * Compatibility
-#: ../terminal/terminal-preferences-dialog.c:1307
+#: ../terminal/terminal-preferences-dialog.c:1338
+#: ../terminal/terminal-preferences-dialog.c:1344
 msgid "Compatibility"
 msgstr "Yhteensopivuus"
 
-#: ../terminal/terminal-preferences-dialog.c:1318
+#: ../terminal/terminal-preferences-dialog.c:1349
 msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1331
+#: ../terminal/terminal-preferences-dialog.c:1362
 msgid "Backspace key generates:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1337
-#: ../terminal/terminal-preferences-dialog.c:1360
+#: ../terminal/terminal-preferences-dialog.c:1368
+#: ../terminal/terminal-preferences-dialog.c:1391
 msgid "Auto-detect"
 msgstr "Tunnista automaattisesti"
 
-#: ../terminal/terminal-preferences-dialog.c:1338
-#: ../terminal/terminal-preferences-dialog.c:1361
+#: ../terminal/terminal-preferences-dialog.c:1369
+#: ../terminal/terminal-preferences-dialog.c:1392
 msgid "ASCII Del"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1339
-#: ../terminal/terminal-preferences-dialog.c:1362
+#: ../terminal/terminal-preferences-dialog.c:1370
+#: ../terminal/terminal-preferences-dialog.c:1393
 msgid "Escape sequence"
 msgstr "Escape-merkkisarja"
 
-#: ../terminal/terminal-preferences-dialog.c:1340
-#: ../terminal/terminal-preferences-dialog.c:1363
+#: ../terminal/terminal-preferences-dialog.c:1371
+#: ../terminal/terminal-preferences-dialog.c:1394
 msgid "Control-H"
 msgstr "Ctrl-H"
 
-#: ../terminal/terminal-preferences-dialog.c:1341
-#: ../terminal/terminal-preferences-dialog.c:1364
+#: ../terminal/terminal-preferences-dialog.c:1372
+#: ../terminal/terminal-preferences-dialog.c:1395
 msgid "Erase TTY"
 msgstr "Tyhjennä TTY"
 
-#: ../terminal/terminal-preferences-dialog.c:1354
+#: ../terminal/terminal-preferences-dialog.c:1385
 msgid "Delete key generates:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1377
+#: ../terminal/terminal-preferences-dialog.c:1408
 msgid "Ambiguous-width characters:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1383
+#: ../terminal/terminal-preferences-dialog.c:1414
 msgid "Narrow"
 msgstr "Kapea"
 
-#: ../terminal/terminal-preferences-dialog.c:1384
+#: ../terminal/terminal-preferences-dialog.c:1415
 msgid "Wide"
 msgstr "Leveä"
 
-#: ../terminal/terminal-preferences-dialog.c:1398
+#: ../terminal/terminal-preferences-dialog.c:1429
 msgid "Reset compatibility options to defaults"
 msgstr ""
 
 #. * Advanced
-#: ../terminal/terminal-preferences-dialog.c:1409
+#: ../terminal/terminal-preferences-dialog.c:1440
 msgid "Advanced"
 msgstr "Edistynyt"
 
-#: ../terminal/terminal-preferences-dialog.c:1419
+#. section: Double Click
+#: ../terminal/terminal-preferences-dialog.c:1448
+msgid "Double Click"
+msgstr "Kaksoisnapsautus"
+
+#: ../terminal/terminal-preferences-dialog.c:1450
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1445
+#. section: Encoding
+#: ../terminal/terminal-preferences-dialog.c:1474
+msgid "Encoding"
+msgstr "Merkistö"
+
+#: ../terminal/terminal-preferences-dialog.c:1476
 msgid "Default character encoding"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1471
-msgid "_Disable all menu access keys (such as Alt + f)"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:1481
-msgid "_Disable menu shortcut key (F10 by default)"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:1492
-msgid "_Use middle mouse click to close tabs"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:1502
-msgid "_Use middle mouse click to open urls"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:1512
-msgid "_Auto-hide mouse pointer"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:1522
-msgid "_Open new tab to the right of the active tab"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:1532
-msgid "_Audible bell"
-msgstr "_Äänimerkki"
-
-#: ../terminal/terminal-preferences-dialog.c:1542
-msgid "_Visual bell"
-msgstr "_Visuaalinen äänimerkki"
-
-#: ../terminal/terminal-preferences-dialog.c:1552
-msgid "Right click action:"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:1558
-msgid "Context Menu"
-msgstr "Pikavalikko"
-
-#: ../terminal/terminal-preferences-dialog.c:1559
-msgid "Paste clipboard"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:1560
-msgid "Paste selection"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:1573
-msgid "Enable Hyperlinks"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:1574
-msgid "Enable support for hyperlinks."
-msgstr ""
-
+#. section: Shortcuts
 #. * Shortcuts
-#: ../terminal/terminal-preferences-dialog.c:1586
+#: ../terminal/terminal-preferences-dialog.c:1500
+#: ../terminal/terminal-preferences-dialog.c:1617
 msgid "Shortcuts"
 msgstr "Pikanäppäimet"
 
-#: ../terminal/terminal-preferences-dialog.c:1597
+#: ../terminal/terminal-preferences-dialog.c:1502
+msgid "_Disable all menu access keys (such as Alt + f)"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1512
+msgid "_Disable menu shortcut key (F10 by default)"
+msgstr ""
+
+#. section: Misc
+#: ../terminal/terminal-preferences-dialog.c:1521
+msgid "Misc"
+msgstr "Sekalaiset"
+
+#: ../terminal/terminal-preferences-dialog.c:1523
+msgid "_Use middle mouse click to close tabs"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1533
+msgid "_Use middle mouse click to open urls"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1543
+msgid "_Auto-hide mouse pointer"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1553
+msgid "_Open new tab to the right of the active tab"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1563
+msgid "_Audible bell"
+msgstr "_Äänimerkki"
+
+#: ../terminal/terminal-preferences-dialog.c:1573
+msgid "_Visual bell"
+msgstr "_Visuaalinen äänimerkki"
+
+#: ../terminal/terminal-preferences-dialog.c:1583
+msgid "Right click action:"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1589
+msgid "Context Menu"
+msgstr "Pikavalikko"
+
+#: ../terminal/terminal-preferences-dialog.c:1590
+msgid "Paste clipboard"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1591
+msgid "Paste selection"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1604
+msgid "Enable Hyperlinks"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1605
+msgid "Enable support for hyperlinks."
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1628
 msgid "Window"
 msgstr "Ikkuna"
 
-#: ../terminal/terminal-preferences-dialog.c:1598
-#: ../terminal/terminal-preferences.c:1190
-#: ../terminal/terminal-preferences.c:1271
+#: ../terminal/terminal-preferences-dialog.c:1629
+#: ../terminal/terminal-preferences.c:1202
+#: ../terminal/terminal-preferences.c:1293
 msgid "Terminal"
 msgstr "Pääte"
 
 #. default item + separator
-#: ../terminal/terminal-preferences-dialog.c:2005
+#: ../terminal/terminal-preferences-dialog.c:2036
 msgid "Select Preset"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:240
+#: ../terminal/terminal-screen.c:242
 msgid "Do not disable dialog"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:241
+#: ../terminal/terminal-screen.c:243
 msgid "Disable for 5 minutes"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:242
+#: ../terminal/terminal-screen.c:244
 msgid "Disable for 15 minutes"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:243
+#: ../terminal/terminal-screen.c:245
 msgid "Disable until program restart"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:244
+#: ../terminal/terminal-screen.c:246
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:496 ../terminal/terminal-screen.c:875
-#: ../terminal/terminal-screen.c:2348
+#: ../terminal/terminal-screen.c:500 ../terminal/terminal-screen.c:883
+#: ../terminal/terminal-screen.c:2369
 msgid "Untitled"
 msgstr "Nimetön"
 
-#: ../terminal/terminal-screen.c:776
+#: ../terminal/terminal-screen.c:784
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Ylimmän tason komentotulkkisi tunnistus ei onnistu."
 
-#: ../terminal/terminal-screen.c:1466
+#: ../terminal/terminal-screen.c:1487
 msgid "_Relaunch"
 msgstr "_Käynnistä uudelleen"
 
-#: ../terminal/terminal-screen.c:1472
+#: ../terminal/terminal-screen.c:1493
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Lapsiprosessi loppui normaalisti statuksella %d."
 
-#: ../terminal/terminal-screen.c:1474
+#: ../terminal/terminal-screen.c:1495
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Lapsiprosessi keskeytettiin signaalilla %d."
 
-#: ../terminal/terminal-screen.c:1476
+#: ../terminal/terminal-screen.c:1497
 msgid "The child process was aborted."
 msgstr "Lapsiprosessi keskeytettiin."
 
-#: ../terminal/terminal-screen.c:1482 ../terminal/terminal-window.c:874
+#: ../terminal/terminal-screen.c:1503 ../terminal/terminal-window.c:874
 msgid "Do _not ask me again"
 msgstr "_Älä kysy uudelleen"
 
-#: ../terminal/terminal-screen.c:1796
+#: ../terminal/terminal-screen.c:1817
 msgid "Warning: Potentially Unsafe Paste"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1799
+#: ../terminal/terminal-screen.c:1820
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1802
+#: ../terminal/terminal-screen.c:1823
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1812 ../terminal/terminal-window.c:797
+#: ../terminal/terminal-screen.c:1833 ../terminal/terminal-window.c:797
 #: ../terminal/terminal-window.c:2271
 msgid "_Cancel"
 msgstr "_Peru"
 
-#: ../terminal/terminal-screen.c:1815 ../terminal/terminal-window.c:326
+#: ../terminal/terminal-screen.c:1836 ../terminal/terminal-window.c:326
 msgid "_Paste"
 msgstr "_Liitä"
 
-#: ../terminal/terminal-screen.c:1966 ../terminal/terminal-screen.c:2049
+#: ../terminal/terminal-screen.c:1987 ../terminal/terminal-screen.c:2070
 msgid "Failed to execute child"
 msgstr "Lapsiprosessin suorittaminen ei onnistu"
 
-#: ../terminal/terminal-screen.c:2705
+#: ../terminal/terminal-screen.c:2726
 msgid "Close this tab"
 msgstr "Sulje tämä välilehti"
 
-#: ../terminal/terminal-screen.c:2758
+#: ../terminal/terminal-screen.c:2779
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Koodauksen %s asettaminen epäonnistui\n"
@@ -1174,55 +1283,63 @@ msgstr "Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\nJuhani Numminen <juhaninummin
 msgid "Visit Xfce Terminal website"
 msgstr "Käy Xfce-päätteen verkkosivustolla"
 
-#: ../terminal/terminal-widget.c:171
+#: ../terminal/terminal-widget.c:173
 msgid "Scroll one line Up"
 msgstr ""
 
-#: ../terminal/terminal-widget.c:172
+#: ../terminal/terminal-widget.c:174
 msgid "Scroll one line Down"
 msgstr ""
 
-#: ../terminal/terminal-widget.c:444
+#: ../terminal/terminal-widget.c:175
+msgid "Scroll one Page Up"
+msgstr ""
+
+#: ../terminal/terminal-widget.c:176
+msgid "Scroll one Page Down"
+msgstr ""
+
+#: ../terminal/terminal-widget.c:448
 msgid "Copy Email Address"
 msgstr "Kopioi sähköpostiosoite"
 
-#: ../terminal/terminal-widget.c:445
+#: ../terminal/terminal-widget.c:449
 msgid "Compose Email"
 msgstr "Kirjoita sähköpostiviesti"
 
-#: ../terminal/terminal-widget.c:449 ../terminal/terminal-widget.c:455
+#: ../terminal/terminal-widget.c:453 ../terminal/terminal-widget.c:459
 msgid "Copy Link Address"
 msgstr "Kopioi linkin osoite"
 
-#: ../terminal/terminal-widget.c:451 ../terminal/terminal-widget.c:456
+#: ../terminal/terminal-widget.c:455 ../terminal/terminal-widget.c:460
 msgid "Open Link"
 msgstr "Avaa linkki"
 
-#: ../terminal/terminal-widget.c:628
+#: ../terminal/terminal-widget.c:632
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "text/plain -muotoisen valinnan pudottaminen päätteeseen ei onnistu: väärä muoto (%d) tai pituus (%d)\n"
 
-#: ../terminal/terminal-widget.c:644
+#: ../terminal/terminal-widget.c:648
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Mozillan URL:n pudottaminen päätteeseen ei onnistu: Väärä muoto (%d) tai pituus (%d)\n"
 
-#: ../terminal/terminal-widget.c:671
+#: ../terminal/terminal-widget.c:675
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "URI-listan pudottaminen päätteeseen ei onnistu: Väärä muoto (%d) tai pituus (%d)\n"
 
-#: ../terminal/terminal-widget.c:708
+#: ../terminal/terminal-widget.c:712
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Saatu värimääritys ei kelpaa: Väärä muoto (%d) tai pituus (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:812
+#: ../terminal/terminal-widget.c:816
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "URL:in '%s' avaaminen epäonnistui"
