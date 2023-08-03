@@ -1572,7 +1572,7 @@ terminal_window_action_open_folder (TerminalWindow *window)
 
   if (directory != NULL)
     {
-      cmd = g_strdup_printf ("exo-open %s", directory);
+      cmd = g_strdup_printf ("xdg-open %s", directory);
 
       if (!g_spawn_command_line_async (cmd, &error))
         {
