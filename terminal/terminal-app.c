@@ -288,6 +288,18 @@ terminal_app_accel_map_load (gpointer user_data)
   return FALSE;
 }
 
+void
+terminal_app_load_accels (TerminalApp *app)
+{
+  if (G_UNLIKELY (app->accel_map_load_id != 0))
+    {
+      g_source_remove (app->accel_map_load_id);
+      app->accel_map_load_id = 0;
+    }
+
+  terminal_app_accel_map_load (app);
+}
+
 
 
 static gboolean
