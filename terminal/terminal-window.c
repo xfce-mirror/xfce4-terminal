@@ -1449,9 +1449,8 @@ terminal_window_get_context_menu (TerminalScreen  *screen,
   xfce_gtk_menu_append_separator (GTK_MENU_SHELL (context_menu));
 
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
-  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (context_menu));
 
-  /* hide labels */
+  /* hide accel labels */
   children = gtk_container_get_children (GTK_CONTAINER (context_menu));
   for (lp = children; lp != NULL; lp = lp->next)
     xfce_gtk_menu_item_set_accel_label (lp->data, NULL);
