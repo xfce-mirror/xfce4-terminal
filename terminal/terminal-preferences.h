@@ -110,8 +110,6 @@ TerminalPreferences *terminal_preferences_get                 (void);
 gboolean             terminal_preferences_get_color           (TerminalPreferences *preferences,
                                                                const gchar         *property,
                                                                GdkRGBA             *color_return);
-void                 terminal_preferences_xfconf_init_failed  (void);
-
 
 G_END_DECLS
 

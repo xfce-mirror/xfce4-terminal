@@ -2888,7 +2888,6 @@ terminal_screen_update_font (TerminalScreen *screen)
   PangoFontDescription *font_desc;
   glong                 grid_w = 0, grid_h = 0;
   GSettings            *settings;
-  XfconfChannel        *channel;
   gdouble               font_scale = PANGO_SCALE_MEDIUM;
   gdouble               cell_width_scale, cell_height_scale;
 
@@ -2904,11 +2903,13 @@ terminal_screen_update_font (TerminalScreen *screen)
   if (font_use_system)
     {
       /* read Xfce settings */
-      xfconf_init (NULL);
-      channel = xfconf_channel_get ("xsettings");
-      if (xfconf_channel_has_property (channel, "/Gtk/MonospaceFontName"))
-        font_name = xfconf_channel_get_string (channel, "/Gtk/MonospaceFontName", "");
-      xfconf_shutdown ();
+      if (xfconf_init (NULL))
+        {
+          XfconfChannel *channel = xfconf_channel_get ("xsettings");
+          if (xfconf_channel_has_property (channel, "/Gtk/MonospaceFontName"))
+            font_name = xfconf_channel_get_string (channel, "/Gtk/MonospaceFontName", "");
+          xfconf_shutdown ();
+        }
 
       /* if font isn't set, read GNOME settings */
       if (!IS_STRING (font_name))

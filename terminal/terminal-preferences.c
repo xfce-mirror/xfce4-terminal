@@ -253,11 +253,6 @@ transform_string_to_enum (const GValue *src,
 
 
 
-/* don't do anything in case xfconf_init() failed */
-static gboolean no_xfconf = FALSE;
-
-
-
 G_DEFINE_TYPE (TerminalPreferences, terminal_preferences, G_TYPE_OBJECT)
 
 
@@ -1273,11 +1268,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
+  GError *error = NULL;
   const gchar check_prop[] = "/title-initial";
 
   /* don't set a channel if xfconf init failed */
-  if (no_xfconf)
-    return;
+  if (!xfconf_init (&error))
+    {
+      g_warning ("Failed to initialize Xfconf: %s", error->message);
+      g_error_free (error);
+      return;
+    }
 
   /* load the channel */
   preferences->channel = xfconf_channel_get ("xfce4-terminal");
@@ -1303,6 +1303,11 @@ terminal_preferences_init (TerminalPreferences *preferences)
 static void
 terminal_preferences_finalize (GObject *object)
 {
+  TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
+
+  if (G_LIKELY (preferences->channel != NULL))
+    xfconf_shutdown ();
+
   (*G_OBJECT_CLASS (terminal_preferences_parent_class)->finalize) (object);
 }
 
@@ -1607,12 +1612,4 @@ terminal_preferences_get_color (TerminalPreferences *preferences,
   g_free (spec);
 
   return succeed;
-}
-
-
-
-void
-terminal_preferences_xfconf_init_failed (void)
-{
-  no_xfconf = TRUE;
 }
