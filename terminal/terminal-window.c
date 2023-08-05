@@ -3037,7 +3037,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
       for (int i = 1; i < n_signal_names; i++)
         {
           gchar          *label;
-          SendSignalData *p = malloc (sizeof (SendSignalData));
+          SendSignalData *p = g_new (SendSignalData, 1);
           p->window = window;
           p->signal = i;
           label = g_strdup_printf("%i - %s", i, signal_names[i]);
