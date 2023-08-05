@@ -86,6 +86,7 @@ terminal_search_dialog_class_init (TerminalSearchDialogClass *klass)
 static void
 terminal_search_dialog_init (TerminalSearchDialog *dialog)
 {
+  TerminalPreferences *preferences;
   GtkWidget     *close_button;
   GtkWidget     *hbox;
   GtkWidget     *vbox;
@@ -180,11 +181,13 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
 
   /* connect opacity properties */
   dialog->opacity_adjustment = gtk_range_get_adjustment (GTK_RANGE (opacity_scale));
-  g_object_bind_property (G_OBJECT (terminal_preferences_get ()), "misc-search-dialog-opacity",
+  preferences = terminal_preferences_get ();
+  g_object_bind_property (G_OBJECT (preferences), "misc-search-dialog-opacity",
                           G_OBJECT (dialog->opacity_adjustment), "value",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
   g_signal_connect_swapped (G_OBJECT (dialog->opacity_adjustment), "value-changed",
                             G_CALLBACK (terminal_search_dialog_opacity_changed), dialog);
+  g_object_unref (preferences);
 
   /* don't show opacity controls if compositing is not enabled */
   if (gdk_screen_is_composited (screen))
