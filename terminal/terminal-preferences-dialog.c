@@ -991,7 +991,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
 
   /* section: Opening new windows */
-  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Opening New Nindows"));
+  terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Opening New Windows"));
 
   button = gtk_check_button_new_with_mnemonic (_("_Display menubar in new windows"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "misc-menubar-default",
