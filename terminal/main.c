@@ -343,7 +343,7 @@ main (int argc, char **argv)
     {
       if (!terminal_gdbus_register_service (app, &error))
         {
-          g_printerr (_("Unable to register terminal service: %s\n"), error->message);
+          g_warning ("Unable to register terminal service: %s", error->message);
           g_clear_error (&error);
         }
     }

@@ -624,8 +624,8 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
     case TARGET_TEXT_PLAIN:
       if (gtk_selection_data_get_format (selection_data) != 8 || gtk_selection_data_get_length (selection_data) == 0)
         {
-          g_printerr (_("Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"),
-                      gtk_selection_data_get_format (selection_data), gtk_selection_data_get_length (selection_data));
+          g_warning ("Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)",
+                     gtk_selection_data_get_format (selection_data), gtk_selection_data_get_length (selection_data));
         }
       else
         {
@@ -640,8 +640,8 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
           || gtk_selection_data_get_length (selection_data) == 0
           || (gtk_selection_data_get_length (selection_data) % 2) != 0)
         {
-          g_printerr (_("Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"),
-                      gtk_selection_data_get_format (selection_data), gtk_selection_data_get_length (selection_data));
+          g_warning ("Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)",
+                     gtk_selection_data_get_format (selection_data), gtk_selection_data_get_length (selection_data));
         }
       else
         {
@@ -667,8 +667,8 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
     case TARGET_URI_LIST:
       if (gtk_selection_data_get_format (selection_data) != 8 || gtk_selection_data_get_length (selection_data) == 0)
         {
-          g_printerr (_("Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"),
-                      gtk_selection_data_get_format (selection_data), gtk_selection_data_get_length (selection_data));
+          g_warning ("Unable to drop URI list on terminal: Wrong format (%d) or length (%d)",
+                     gtk_selection_data_get_format (selection_data), gtk_selection_data_get_length (selection_data));
         }
       else
         {
@@ -704,8 +704,8 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
     case TARGET_APPLICATION_X_COLOR:
       if (gtk_selection_data_get_format (selection_data) != 16 || gtk_selection_data_get_length (selection_data) != 8)
         {
-          g_printerr (_("Received invalid color data: Wrong format (%d) or length (%d)\n"),
-                      gtk_selection_data_get_format (selection_data), gtk_selection_data_get_length (selection_data));
+          g_warning ("Received invalid color data: Wrong format (%d) or length (%d)",
+                     gtk_selection_data_get_format (selection_data), gtk_selection_data_get_length (selection_data));
         }
       else
         {

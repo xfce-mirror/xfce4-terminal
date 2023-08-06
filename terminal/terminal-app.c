@@ -874,7 +874,7 @@ terminal_app_open_window (TerminalApp        *app,
 #else
       if (!gtk_window_parse_geometry (GTK_WINDOW (window), geometry))
 #endif
-        g_printerr (_("Invalid geometry string \"%s\"\n"), geometry);
+        g_warning ("Invalid geometry string \"%s\"", geometry);
 
       /* cleanup */
       g_free (geometry);
@@ -954,7 +954,7 @@ terminal_app_process (TerminalApp  *app,
         }
       else
         {
-          g_printerr (_("Failed to connect to session manager: %s\n"), err->message);
+          g_warning ("Failed to connect to session manager: %s", err->message);
           g_error_free (err);
         }
     }

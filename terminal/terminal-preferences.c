@@ -1347,7 +1347,7 @@ terminal_preferences_get_property (GObject    *object,
       if (G_VALUE_TYPE (value) == G_VALUE_TYPE (&src))
         g_value_copy (&src, value);
       else if (!g_value_transform (&src, value))
-        g_printerr ("Terminal: Failed to transform property %s\n", prop_name);
+        g_warning ("Failed to transform property %s", prop_name);
       g_value_unset (&src);
     }
   else
@@ -1520,10 +1520,8 @@ terminal_preferences_load_rc_file (TerminalPreferences *preferences)
 
   g_object_thaw_notify (G_OBJECT (preferences));
 
-  g_print ("\n\n"
-           "Your Terminal settings have been migrated to Xfconf.\n"
-           "The config file \"%s\"\n"
-           "is not used anymore.\n\n", filename);
+  g_message ("Your Terminal settings have been migrated to Xfconf."
+             " The config file \"%s\" is not used anymore.", filename);
 
   g_free (filename);
 }
