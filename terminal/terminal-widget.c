@@ -123,11 +123,9 @@ static TerminalHyperlink  terminal_widget_get_link                    (TerminalW
                                                                        GdkEvent         *event);
 static gboolean           terminal_widget_link_clickable              (const gchar      *uri,
                                                                        PatternType       type);
-#if VTE_CHECK_VERSION (0, 50, 0)
 static void               terminal_widget_hyperlink_hover_uri_changed (TerminalWidget     *widget,
                                                                        const char         *uri,
                                                                        const GdkRectangle *bbox G_GNUC_UNUSED);
-#endif
 
 
 
@@ -269,11 +267,10 @@ terminal_widget_init (TerminalWidget *widget)
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-highlight-urls",
                             G_CALLBACK (terminal_widget_update_highlight_urls), widget);
 
-#if VTE_CHECK_VERSION (0, 50, 0)
+  /* monitor the misc-hyperlinks-enabled setting */
   g_object_bind_property (G_OBJECT (widget->preferences), "misc-hyperlinks-enabled",
                           G_OBJECT (widget), "allow-hyperlink",
                           G_BINDING_SYNC_CREATE);
-#endif
 
   /* apply the initial misc-highlight-urls setting */
   terminal_widget_update_highlight_urls (widget);
@@ -307,10 +304,8 @@ terminal_widget_finalize (GObject *object)
   /* disconnect the misc-highlight-urls watch */
   g_signal_handlers_disconnect_by_func (G_OBJECT (widget->preferences), G_CALLBACK (terminal_widget_update_highlight_urls), widget);
 
-#if VTE_CHECK_VERSION (0, 50, 0)
   /* disconnect the hyperlink-hover-uri-changed callback */
   g_signal_handlers_disconnect_by_func (G_OBJECT (widget), G_CALLBACK (terminal_widget_hyperlink_hover_uri_changed), widget);
-#endif
 
   /* disconnect from the preferences */
   g_object_unref (G_OBJECT (widget->preferences));
@@ -994,7 +989,6 @@ terminal_widget_get_link (TerminalWidget *widget,
 
   g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences), "misc-hyperlinks-enabled", &hyperlinks_enabled, NULL);
 
-#if VTE_CHECK_VERSION (0, 50, 0)
   /* check if we have an OSC 8 uri */
   if (hyperlinks_enabled && (uri = vte_terminal_hyperlink_check_event (VTE_TERMINAL (widget), (GdkEvent *) event)) != NULL)
     {
@@ -1019,7 +1013,6 @@ terminal_widget_get_link (TerminalWidget *widget,
           pcre2_match_data_free_8(match_data);
         }
     }
-#endif
 
   /* check if we have a regex match */
   if ((uri = vte_terminal_match_check_event (VTE_TERMINAL (widget), event, &tag)) != NULL)
@@ -1077,7 +1070,6 @@ terminal_widget_link_clickable (const gchar *uri,
 
 
 
-#if VTE_CHECK_VERSION (0, 50, 0)
 static void
 terminal_widget_hyperlink_hover_uri_changed (TerminalWidget     *widget,
                                              const char         *uri,
@@ -1088,4 +1080,3 @@ terminal_widget_hyperlink_hover_uri_changed (TerminalWidget     *widget,
 
   gtk_widget_set_tooltip_text (GTK_WIDGET (widget), uri);
 }
-#endif
