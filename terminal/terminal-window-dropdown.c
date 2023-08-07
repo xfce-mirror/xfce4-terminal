@@ -389,6 +389,13 @@ terminal_window_dropdown_set_property (GObject      *object,
       return;
 
     case PROP_DROPDOWN_STATUS_ICON:
+      /*
+       * FIXME: GtkStatusIcon is X11 only
+       * See also https://gitlab.xfce.org/apps/xfce4-terminal/-/issues/197
+       */
+      if (!GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+        return;
+
       if (g_value_get_boolean (value))
         {
           /* icon_name will be NULL initially after creation; will update it later */

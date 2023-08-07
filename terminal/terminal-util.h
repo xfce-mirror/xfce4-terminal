@@ -19,6 +19,11 @@
 #define TERMINAL_UTIL_H
 
 #include <gtk/gtk.h>
+#ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
+#else
+#define GDK_IS_X11_DISPLAY(display) FALSE
+#endif
 
 G_BEGIN_DECLS
 

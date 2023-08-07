@@ -555,16 +555,19 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
   gtk_widget_show (button);
 
-  /* next row */
-  row++;
+  /* see terminal_window_dropdown_set_property() */
+  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+    {
+      /* next row */
+      row++;
 
-  button = gtk_check_button_new_with_mnemonic (_("_Show status icon in notification area"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-status-icon",
-                          G_OBJECT (button), "active",
-                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
-  gtk_widget_show (button);
-
+      button = gtk_check_button_new_with_mnemonic (_("_Show status icon in notification area"));
+      g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-status-icon",
+                              G_OBJECT (button), "active",
+                              G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+      gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
+      gtk_widget_show (button);
+    }
 
   /* section: Appearance & Animation */
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Appearance and Animation"));
