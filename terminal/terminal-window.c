@@ -2212,6 +2212,10 @@ prepare_regex (TerminalWindow *window)
   GError   *error = NULL;
   gboolean  wrap_around;
 
+  /* may occur if next/prev actions are activated by keyboard shortcut */
+  if (window->priv->search_dialog == NULL)
+    return FALSE;
+
   regex = terminal_search_dialog_get_regex (TERMINAL_SEARCH_DIALOG (window->priv->search_dialog), &error);
   if (G_LIKELY (error == NULL))
     {
