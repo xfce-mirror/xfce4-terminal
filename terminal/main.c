@@ -204,6 +204,9 @@ main (int argc, char **argv)
   g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING);
 #endif
 
+  /* initialize GTK: do this before our parsing so GTK parses its options first */
+  gtk_init (&argc, &argv);
+
   /* parse some options we need in main, not the windows attrs */
   terminal_options_parse (argc, argv, &options);
 
@@ -234,8 +237,6 @@ main (int argc, char **argv)
   else if (G_UNLIKELY (options.show_preferences))
     {
       GtkWidget *dialog;
-
-      gtk_init (&argc, &argv);
 
       /* load the AccelMap for the XfceShortcutsEditor */
       app = g_object_new (TERMINAL_TYPE_APP, NULL);
@@ -330,9 +331,6 @@ main (int argc, char **argv)
           g_clear_error (&error);
         }
     }
-
-  /* initialize Gtk+ */
-  gtk_init (&argc, &argv);
 
   /* set default window icon */
   gtk_window_set_default_icon_name ("org.xfce.terminal");
