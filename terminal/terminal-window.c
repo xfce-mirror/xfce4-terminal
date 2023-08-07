@@ -194,6 +194,7 @@ static gboolean     terminal_window_action_paste_selection        (TerminalWindo
 static gboolean     terminal_window_action_select_all             (TerminalWindow      *window);
 static gboolean     terminal_window_action_copy_input             (TerminalWindow      *window);
 static gboolean     terminal_window_action_prefs                  (TerminalWindow      *window);
+static gboolean     terminal_window_action_toggle_menubar         (TerminalWindow      *window);
 static gboolean     terminal_window_action_show_menubar           (TerminalWindow      *window);
 static gboolean     terminal_window_action_toggle_toolbar         (TerminalWindow      *window);
 static gboolean     terminal_window_action_toggle_borders         (TerminalWindow      *window);
@@ -357,6 +358,7 @@ static XfceGtkActionEntry action_entries[] =
     { TERMINAL_WINDOW_ACTION_CONTENTS,              "<Actions>/terminal-window/contents",              "F1",                        XFCE_GTK_IMAGE_MENU_ITEM, N_ ("_Contents"),                     N_ ("Display help contents"),             "help-browser",           G_CALLBACK (terminal_window_action_contents), },
     { TERMINAL_WINDOW_ACTION_ABOUT,                 "<Actions>/terminal-window/about",                 "",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("_About"),                        NULL,                                     "help-about",             G_CALLBACK (terminal_window_action_about), },
     { TERMINAL_WINDOW_ACTION_ZOOM_MENU,             "<Actions>/terminal-window/zoom-menu",             "",                          XFCE_GTK_MENU_ITEM,       N_ ("_Zoom"),                         NULL,                                     NULL,                     NULL, },
+    { TERMINAL_WINDOW_ACTION_TOGGLE_MENUBAR,        "<Actions>/terminal-window/toggle-menubar",        "F10",                       XFCE_GTK_MENU_ITEM,       N_ ("Show Menubar Temporarily"),      "",                                       NULL,                     G_CALLBACK (terminal_window_action_toggle_menubar), },
     { TERMINAL_WINDOW_ACTION_SHOW_MENUBAR,          "<Actions>/terminal-window/show-menubar",          "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Show _Menubar"),                 N_ ("Show/hide the menubar"),             NULL,                     G_CALLBACK (terminal_window_action_show_menubar), },
     { TERMINAL_WINDOW_ACTION_SHOW_TOOLBAR,          "<Actions>/terminal-window/show-toolbar",          "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Show _Toolbar"),                 N_ ("Show/hide the toolbar"),             NULL,                     G_CALLBACK (terminal_window_action_toggle_toolbar), },
     { TERMINAL_WINDOW_ACTION_SHOW_BORDERS,          "<Actions>/terminal-window/show-borders",          "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Show Window _Borders"),          N_ ("Show/hide the window decorations"),  NULL,                     G_CALLBACK (terminal_window_action_toggle_borders), },
@@ -1808,6 +1810,42 @@ terminal_window_action_prefs (TerminalWindow *window)
     }
 
   return TRUE;
+}
+
+
+
+static void
+hide_menubar (GtkMenuShell *menubar)
+{
+  g_signal_handlers_disconnect_by_func (menubar, hide_menubar, NULL);
+  gtk_widget_hide (GTK_WIDGET (menubar));
+}
+
+
+
+static gboolean
+terminal_window_action_toggle_menubar (TerminalWindow *window)
+{
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+
+  if (!gtk_widget_get_visible (window->menubar))
+    {
+      gboolean shortcuts_no_menukey;
+      g_object_get (G_OBJECT (window->priv->preferences),
+                    "shortcuts-no-menukey", &shortcuts_no_menukey,
+                    NULL);
+      if (!shortcuts_no_menukey)
+        {
+          GList *items = gtk_container_get_children (GTK_CONTAINER (window->menubar));
+          gtk_widget_show (window->menubar);
+          gtk_menu_shell_select_first (GTK_MENU_SHELL (window->menubar), TRUE);
+          g_signal_connect (window->menubar, "deactivate", G_CALLBACK (hide_menubar), NULL);
+          g_list_free (items);
+          return TRUE;
+        }
+    }
+
+  return FALSE;
 }
 
 

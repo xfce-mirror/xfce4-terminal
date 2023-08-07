@@ -55,7 +55,6 @@
 
 
 static void     terminal_app_finalize                 (GObject            *object);
-static void     terminal_app_update_accels            (TerminalApp        *app);
 static void     terminal_app_update_windows_accels    (gpointer            user_data);
 static gboolean terminal_app_accel_map_load           (gpointer            user_data);
 static gboolean terminal_app_accel_map_save           (gpointer            user_data);
@@ -129,15 +128,11 @@ static void
 terminal_app_init (TerminalApp *app)
 {
   app->preferences = terminal_preferences_get ();
-  g_signal_connect_swapped (G_OBJECT (app->preferences), "notify::shortcuts-no-menukey",
-                            G_CALLBACK (terminal_app_update_accels), app);
 
   /* remember the original menu bar accel */
   g_object_get (G_OBJECT (gtk_settings_get_default ()),
                 "gtk-menu-bar-accel", &app->initial_menu_bar_accel,
                 NULL);
-
-  terminal_app_update_accels (app);
 
   /* schedule accel map load and update windows when finished */
   app->accel_map_load_id = gdk_threads_add_idle_full (G_PRIORITY_LOW, terminal_app_accel_map_load, app,
@@ -173,7 +168,6 @@ terminal_app_finalize (GObject *object)
     }
   g_slist_free (app->windows);
 
-  g_signal_handlers_disconnect_by_func (G_OBJECT (app->preferences), G_CALLBACK (terminal_app_update_accels), app);
   g_object_unref (G_OBJECT (app->preferences));
 
   if (app->initial_menu_bar_accel != NULL)
@@ -183,27 +177,6 @@ terminal_app_finalize (GObject *object)
     g_object_unref (G_OBJECT (app->session_client));
 
   (*G_OBJECT_CLASS (terminal_app_parent_class)->finalize) (object);
-}
-
-
-
-static void
-terminal_app_update_accels (TerminalApp *app)
-{
-  gboolean        no_key;
-  GdkModifierType mod;
-  guint           key;
-
-  g_object_get (G_OBJECT (app->preferences),
-                "shortcuts-no-menukey", &no_key,
-                NULL);
-  g_object_set (G_OBJECT (gtk_settings_get_default ()),
-                "gtk-menu-bar-accel",
-                no_key ? NULL : app->initial_menu_bar_accel,
-                NULL);
-  gtk_accelerator_parse (app->initial_menu_bar_accel, &key, &mod);
-  gtk_accel_map_change_entry ("<Actions>/terminal-window/toggle-menubar",
-                              no_key ? 0 : key, no_key ? 0 : mod, TRUE);
 }
 
 
