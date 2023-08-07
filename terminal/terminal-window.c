@@ -194,6 +194,7 @@ static gboolean     terminal_window_action_paste_selection        (TerminalWindo
 static gboolean     terminal_window_action_select_all             (TerminalWindow      *window);
 static gboolean     terminal_window_action_copy_input             (TerminalWindow      *window);
 static gboolean     terminal_window_action_prefs                  (TerminalWindow      *window);
+static gboolean     terminal_window_action_show_menubar           (TerminalWindow      *window);
 static gboolean     terminal_window_action_toggle_toolbar         (TerminalWindow      *window);
 static gboolean     terminal_window_action_toggle_borders         (TerminalWindow      *window);
 static gboolean     terminal_window_action_fullscreen             (TerminalWindow      *window);
@@ -1812,6 +1813,25 @@ terminal_window_action_prefs (TerminalWindow *window)
 
 
 static gboolean
+terminal_window_action_show_menubar (TerminalWindow *window)
+{
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+
+  terminal_window_size_push (window);
+
+  if (gtk_widget_is_visible (window->menubar) == FALSE)
+    gtk_widget_show (window->menubar);
+  else
+    gtk_widget_hide (window->menubar);
+
+  terminal_window_size_pop (window);
+
+  return TRUE;
+}
+
+
+
+static gboolean
 terminal_window_action_toggle_toolbar (TerminalWindow  *window)
 {
   terminal_return_if_fail (GTK_IS_UI_MANAGER (window->priv->ui_manager));
@@ -2944,29 +2964,6 @@ terminal_window_get_toolbar_height (TerminalWindow *window)
     gtk_widget_get_preferred_size (window->toolbar, &req, NULL);
 
   return req.height;
-}
-
-
-
-/**
- * terminal_window_action_show_menubar:
- * @action  : A toggle action.
- * @window  : A #TerminalWindow.
- **/
-void
-terminal_window_action_show_menubar (TerminalWindow  *window)
-{
-
-  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-
-  terminal_window_size_push (window);
-
-  if (gtk_widget_is_visible (window->menubar) == FALSE)
-    gtk_widget_show (window->menubar);
-  else
-    gtk_widget_hide (window->menubar);
-
-  terminal_window_size_pop (window);
 }
 
 

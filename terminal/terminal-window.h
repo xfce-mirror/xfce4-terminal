@@ -186,8 +186,6 @@ gint               terminal_window_get_menubar_height       (TerminalWindow     
 
 gint               terminal_window_get_toolbar_height       (TerminalWindow     *window);
 
-void               terminal_window_action_show_menubar      (TerminalWindow     *window);
-
 void               terminal_window_update_goto_accels       (TerminalWindow     *window);
 
 XfceGtkActionEntry *terminal_window_get_action_entry         (TerminalWindow      *window,
