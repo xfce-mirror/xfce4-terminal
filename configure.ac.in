@@ -115,28 +115,6 @@ if test x"$with_utempter" = x"yes"; then
 fi
 AM_CONDITIONAL([HAVE_UTEMPTER], [test x"$with_utempter" = x"yes"])
 
-dnl ****************************************
-dnl *** Register in Gnome Control Center ***
-dnl ****************************************
-AC_ARG_WITH([gnome-default-appsdir],
-            [AS_HELP_STRING([--with-gnome-default-appsdir=PATH],
-                            [Specify where to install the Gnome default applications file (default=autodetect)])],
-            [gnome_default_appsdir="$withval"])
-AC_MSG_CHECKING([for Gnome default applications dir])
-if test x"$gnome_default_appsdir" = x""; then
-  GNOME_DEFAULT_APPSDIR="`$PKG_CONFIG --variable=defappsdir gnome-default-applications`"
-  if test -n "$GNOME_DEFAULT_APPSDIR"; then
-    AC_MSG_RESULT([Using path supplied by gnome-control-center])
-  else
-    AC_MSG_RESULT([Using prefix of terminal])
-  fi
-else
-  GNOME_DEFAULT_APPSDIR="$gnome_default_appsdir"
-  AC_MSG_RESULT([Using path supplied by user])
-fi
-AM_CONDITIONAL([HAVE_GNOME_DEFAULT_APPSDIR], [test -n "$GNOME_DEFAULT_APPSDIR"])
-AC_SUBST([GNOME_DEFAULT_APPSDIR])
-
 dnl *************************
 dnl *** Check for gtk-doc ***
 dnl *************************
