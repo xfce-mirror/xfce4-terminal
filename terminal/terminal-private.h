@@ -18,7 +18,13 @@
 #ifndef TERMINAL_PRIVATE_H
 #define TERMINAL_PRIVATE_H
 
-#include <glib-object.h>
+#include <gtk/gtk.h>
+#ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
+#else
+#define GDK_IS_X11_DISPLAY(display) FALSE
+#endif
+
 #include <vte/vte.h>
 
 #define PCRE2_CODE_UNIT_WIDTH 0
