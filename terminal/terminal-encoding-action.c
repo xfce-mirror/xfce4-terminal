@@ -405,7 +405,7 @@ terminal_encoding_model_new (const gchar *current,
                                      ENCODING_COLUMN_IS_CHARSET, TRUE,
                                      -1);
   g_free (default_label);
-  found = (current == NULL || g_strcmp0 (current, charset) == 0);
+  found = (!IS_STRING (current) || g_strcmp0 (current, charset) == 0);
   if (found)
     *current_iter = iter;
 

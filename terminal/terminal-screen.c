@@ -2771,7 +2771,7 @@ terminal_screen_set_encoding (TerminalScreen *screen,
                               const gchar    *charset)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  if (charset == NULL)
+  if (!IS_STRING (charset))
     g_get_charset (&charset);
   if (!vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), charset, NULL))
     g_warning ("Failed to set encoding %s", charset);
