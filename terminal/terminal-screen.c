@@ -586,6 +586,7 @@ terminal_screen_draw (GtkWidget *widget,
   gint                width, height;
   cairo_surface_t    *surface;
   cairo_t            *ctx;
+  gint                scale_factor;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
@@ -595,8 +596,9 @@ terminal_screen_draw (GtkWidget *widget,
   if (G_LIKELY (background_mode != TERMINAL_BACKGROUND_IMAGE))
     return FALSE;
 
-  width = gtk_widget_get_allocated_width (screen->terminal);
-  height = gtk_widget_get_allocated_height (screen->terminal);
+  scale_factor = gtk_widget_get_scale_factor (widget);
+  width = scale_factor * gtk_widget_get_allocated_width (screen->terminal);
+  height = scale_factor * gtk_widget_get_allocated_height (screen->terminal);
 
   if (screen->loader == NULL)
     screen->loader = terminal_image_loader_get ();
@@ -612,12 +614,15 @@ terminal_screen_draw (GtkWidget *widget,
 
   /* draw background image; cairo_set_operator() allows PNG transparency */
   gdk_cairo_set_source_pixbuf (cr, image, 0, 0);
+  cairo_pattern_get_surface (cairo_get_source (cr), &surface);
+  cairo_surface_set_device_scale (surface, scale_factor, scale_factor);
   cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
   cairo_paint (cr);
   g_object_unref (G_OBJECT (image));
 
   /* draw vte terminal */
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, width, height);
+  cairo_surface_set_device_scale (surface, scale_factor, scale_factor);
   ctx = cairo_create (surface);
   gtk_widget_draw (screen->terminal, ctx);
   cairo_set_source_surface (cr, surface, 0, 0);
