@@ -168,8 +168,6 @@ struct _TerminalPreferences
   GObject        __parent__;
 
   XfconfChannel *channel;
-
-  gulong         property_changed_id;
 };
 
 
@@ -1290,9 +1288,8 @@ terminal_preferences_init (TerminalPreferences *preferences)
     }
   g_strfreev (channels);
 
-  preferences->property_changed_id =
-    g_signal_connect (G_OBJECT (preferences->channel), "property-changed",
-                      G_CALLBACK (terminal_preferences_prop_changed), preferences);
+  g_signal_connect (G_OBJECT (preferences->channel), "property-changed",
+                    G_CALLBACK (terminal_preferences_prop_changed), preferences);
 }
 
 
