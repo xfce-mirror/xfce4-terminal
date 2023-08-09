@@ -28,6 +28,7 @@
 /* max image resolution is 8K */
 #define MAX_IMAGE_WIDTH  7680
 #define MAX_IMAGE_HEIGHT 4320
+#define CACHE_SIZE 10
 
 
 
@@ -68,7 +69,6 @@ struct _TerminalImageLoader
   /* the cached image data */
   gchar                   *path;
   GSList                  *cache;
-  GSList                  *cache_invalid;
   GdkRGBA                  bgcolor;
   GdkPixbuf               *pixbuf;
   TerminalBackgroundStyle  style;
@@ -105,7 +105,6 @@ terminal_image_loader_finalize (GObject *object)
   TerminalImageLoader *loader = TERMINAL_IMAGE_LOADER (object);
 
   g_slist_free_full (loader->cache, g_object_unref);
-  g_slist_free_full (loader->cache_invalid, g_object_unref);
 
   g_object_unref (G_OBJECT (loader->preferences));
 
@@ -175,8 +174,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
 
   if (invalidate)
     {
-      loader->cache_invalid = g_slist_concat (loader->cache_invalid,
-                                              loader->cache);
+      g_slist_free_full (loader->cache, g_object_unref);
       loader->cache = NULL;
     }
 
@@ -432,7 +430,6 @@ terminal_image_loader_load (TerminalImageLoader *loader,
   g_debug ("Image Loader Memory Status: %d images in valid "
            "cache, %d in invalid cache",
            g_slist_length (loader->cache),
-           g_slist_length (loader->cache_invalid));
 #endif
 
   /* check for a cached version */
@@ -482,6 +479,12 @@ terminal_image_loader_load (TerminalImageLoader *loader,
     }
 
   loader->cache = g_slist_prepend (loader->cache, pixbuf);
+  lp = g_slist_nth (loader->cache, CACHE_SIZE - 1);
+  if (lp != NULL)
+    {
+      g_object_unref (lp->data);
+      loader->cache = g_slist_delete_link (loader->cache, lp);
+    }
 
   return GDK_PIXBUF (g_object_ref (G_OBJECT (pixbuf)));
 }
