@@ -37,6 +37,7 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
+#include <gdk/gdk.h>
 #ifdef GDK_WINDOWING_X11
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>

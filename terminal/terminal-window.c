@@ -34,10 +34,6 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#if defined(GDK_WINDOWING_X11)
-#include <gdk/gdkx.h>
-#endif
-
 #include <terminal/terminal-util.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-options.h>

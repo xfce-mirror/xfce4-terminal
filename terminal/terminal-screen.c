@@ -49,6 +49,7 @@
 #include <libxfce4ui/libxfce4ui.h>
 #include <xfconf/xfconf.h>
 
+#include <terminal/terminal-private.h>
 #include <terminal/terminal-util.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-image-loader.h>
@@ -58,9 +59,6 @@
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-window-dropdown.h>
 
-#if defined(GDK_WINDOWING_X11)
-#include <gdk/gdkx.h>
-#endif
 #include <glib/gstdio.h>
 
 /* offset of saturation random value */
