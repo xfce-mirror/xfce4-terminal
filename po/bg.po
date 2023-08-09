@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-08 12:50+0200\n"
+"POT-Creation-Date: 2023-08-09 00:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>, 2013,2016-2023\n"
 "Language-Team: Bulgarian (http://app.transifex.com/xfce/xfce-apps/language/bg/)\n"
@@ -405,7 +405,7 @@ msgid "Unknown option \"%s\""
 msgstr "Непозната опция „%s“"
 
 #: ../terminal/terminal-preferences-dialog.c:211
-#: ../xfce4-terminal.desktop.in.h:3
+#: ../xfce4-terminal.desktop.in.h:4
 msgid "Terminal Preferences"
 msgstr "Настройки на терминала"
 
@@ -1150,68 +1150,68 @@ msgstr "Деактивиране при рестартиране на прогр
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Деактивиране на диалога (може да бъде активиран отново от настройките)"
 
-#: ../terminal/terminal-screen.c:498 ../terminal/terminal-screen.c:881
-#: ../terminal/terminal-screen.c:2367
+#: ../terminal/terminal-screen.c:498 ../terminal/terminal-screen.c:886
+#: ../terminal/terminal-screen.c:2372
 msgid "Untitled"
 msgstr "Без име"
 
-#: ../terminal/terminal-screen.c:782
+#: ../terminal/terminal-screen.c:787
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Не може да се определи средата за вход."
 
-#: ../terminal/terminal-screen.c:1485
+#: ../terminal/terminal-screen.c:1490
 msgid "_Relaunch"
 msgstr "_Рестартиране"
 
-#: ../terminal/terminal-screen.c:1491
+#: ../terminal/terminal-screen.c:1496
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Дъщерният процес се изключи нормално със статус %d."
 
-#: ../terminal/terminal-screen.c:1493
+#: ../terminal/terminal-screen.c:1498
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Дъщерният процес беше отхвърлен от сигнал %d."
 
-#: ../terminal/terminal-screen.c:1495
+#: ../terminal/terminal-screen.c:1500
 msgid "The child process was aborted."
 msgstr "Дъщерният процес беше отхвърлен."
 
-#: ../terminal/terminal-screen.c:1501 ../terminal/terminal-window.c:879
+#: ../terminal/terminal-screen.c:1506 ../terminal/terminal-window.c:879
 msgid "Do _not ask me again"
 msgstr "Не ме питай отново"
 
-#: ../terminal/terminal-screen.c:1815
+#: ../terminal/terminal-screen.c:1820
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Предупреждение: Потенциално опасно Поставяне"
 
-#: ../terminal/terminal-screen.c:1818
+#: ../terminal/terminal-screen.c:1823
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Поставянето на този текст в терминала може да бъде опасно, тъй като изглежда, че някои команди могат да бъдат изпълнени, потенциално включващи root достъп ('sudo'). "
 
-#: ../terminal/terminal-screen.c:1821
+#: ../terminal/terminal-screen.c:1826
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Поставянето на този текст в терминала може да бъде опасно, защото някои команди могат да бъдат изпълнени."
 
-#: ../terminal/terminal-screen.c:1831 ../terminal/terminal-window.c:802
+#: ../terminal/terminal-screen.c:1836 ../terminal/terminal-window.c:802
 #: ../terminal/terminal-window.c:2362
 msgid "_Cancel"
 msgstr "_Отмяна"
 
-#: ../terminal/terminal-screen.c:1834 ../terminal/terminal-window.c:330
+#: ../terminal/terminal-screen.c:1839 ../terminal/terminal-window.c:330
 msgid "_Paste"
 msgstr "Поставяне"
 
-#: ../terminal/terminal-screen.c:1985 ../terminal/terminal-screen.c:2068
+#: ../terminal/terminal-screen.c:1990 ../terminal/terminal-screen.c:2073
 msgid "Failed to execute child"
 msgstr "Не може да се изпълни дъщерен процес"
 
-#: ../terminal/terminal-screen.c:2724
+#: ../terminal/terminal-screen.c:2729
 msgid "Close this tab"
 msgstr "Затваряне този подпрозорец"
 
@@ -1251,7 +1251,7 @@ msgstr "Ограждане"
 msgid "_Opacity:"
 msgstr "Непрозрачност:"
 
-#: ../terminal/terminal-util.c:81 ../xfce4-terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-util.c:81
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce Терминален Емулатор"
 
@@ -1762,6 +1762,10 @@ msgstr "Преглед на опциите"
 msgid "Terminal Emulator"
 msgstr "Терминален Емулатор"
 
+#: ../xfce4-terminal.desktop.in.h:3
+msgid "terminal;command line;prompt;cli;cmd;xterm;bash;shell;dos;"
+msgstr "терминал;команден ред;подкана;cli;cmd;xterm;bash;shell;dos;"
+
 #: ../xfce4-terminal-settings.desktop.in.h:1
 msgid "Xfce Terminal Settings"
 msgstr "Настройки на терминала на Xfce"
@@ -1769,3 +1773,7 @@ msgstr "Настройки на терминала на Xfce"
 #: ../xfce4-terminal-settings.desktop.in.h:2
 msgid "Configure Xfce Terminal"
 msgstr "Конфигуриране на Xfce Терминал"
+
+#: ../xfce4-terminal-settings.desktop.in.h:3
+msgid "terminal;settings;preferences;configuration;configure;"
+msgstr "терминал;настройки;предпочитания;конфигурация;конфигуриране;"
