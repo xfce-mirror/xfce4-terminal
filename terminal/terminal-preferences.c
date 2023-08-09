@@ -1269,7 +1269,7 @@ static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
   GError *error = NULL;
-  const gchar check_prop[] = "/title-initial";
+  gchar **channels;
 
   /* don't set a channel if xfconf init failed */
   if (!xfconf_init (&error))
@@ -1282,16 +1282,13 @@ terminal_preferences_init (TerminalPreferences *preferences)
   /* load the channel */
   preferences->channel = xfconf_channel_get ("xfce4-terminal");
 
-  /* check one of the property to see if there are values */
-  if (!xfconf_channel_has_property (preferences->channel, check_prop))
+  channels = xfconf_list_channels ();
+  if (!g_strv_contains ((const gchar * const *) channels, "xfce4-terminal"))
     {
       /* try to load the old config file & save changes */
       terminal_preferences_load_rc_file (preferences);
-
-      /* set the string we check */
-      if (!xfconf_channel_has_property (preferences->channel, check_prop))
-        xfconf_channel_set_string (preferences->channel, check_prop, _("Terminal"));
     }
+  g_strfreev (channels);
 
   preferences->property_changed_id =
     g_signal_connect (G_OBJECT (preferences->channel), "property-changed",
