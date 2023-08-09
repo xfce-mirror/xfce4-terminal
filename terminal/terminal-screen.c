@@ -350,8 +350,6 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_vte_window_title_changed), screen);
   g_signal_connect (G_OBJECT (screen->terminal), "resize-window",
       G_CALLBACK (terminal_screen_vte_resize_window), screen);
-  g_signal_connect (G_OBJECT (screen->terminal), "draw",
-      G_CALLBACK (terminal_screen_draw), screen);
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "paste-selection-request",
       G_CALLBACK (terminal_screen_paste_primary), screen);
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "paste-clipboard-request",
@@ -581,7 +579,6 @@ terminal_screen_draw (GtkWidget *widget,
                       gpointer   user_data)
 {
   TerminalScreen     *screen = TERMINAL_SCREEN (user_data);
-  TerminalBackground  background_mode;
   GdkPixbuf          *image;
   gint                width, height;
   cairo_surface_t    *surface;
@@ -591,19 +588,11 @@ terminal_screen_draw (GtkWidget *widget,
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
 
-  g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
-
-  if (G_LIKELY (background_mode != TERMINAL_BACKGROUND_IMAGE))
-    return FALSE;
-
   scale_factor = gtk_widget_get_scale_factor (widget);
   width = scale_factor * gtk_widget_get_allocated_width (screen->terminal);
   height = scale_factor * gtk_widget_get_allocated_height (screen->terminal);
 
-  if (screen->loader == NULL)
-    screen->loader = terminal_image_loader_get ();
   image = terminal_image_loader_load (screen->loader, width, height);
-
   if (G_UNLIKELY (image == NULL))
     return FALSE;
 
@@ -978,12 +967,23 @@ terminal_screen_update_background (TerminalScreen *screen)
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
 
+  if (screen->loader != NULL)
+    {
+      g_signal_handlers_disconnect_by_func (screen->terminal, terminal_screen_draw, screen);
+      g_object_unref (screen->loader);
+      screen->loader = NULL;
+    }
+
   g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
 
   if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_TRANSPARENT))
     g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_alpha, NULL);
   else if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE))
-    g_object_get (G_OBJECT (screen->preferences), "background-image-shading", &background_alpha, NULL);
+    {
+      screen->loader = terminal_image_loader_get ();
+      g_signal_connect (G_OBJECT (screen->terminal), "draw", G_CALLBACK (terminal_screen_draw), screen);
+      g_object_get (G_OBJECT (screen->preferences), "background-image-shading", &background_alpha, NULL);
+    }
   else
     background_alpha = 1.0;
 
