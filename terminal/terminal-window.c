@@ -516,6 +516,8 @@ terminal_window_init (TerminalWindow *window)
                                    "show-tabs", always_show_tabs,
                                    NULL);
   gtk_widget_add_events (window->priv->notebook, GDK_SCROLL_MASK);
+  g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "notify::misc-always-show-tabs",
+                            G_CALLBACK (terminal_window_notebook_show_tabs), window);
 
   /* set the notebook group id */
   gtk_notebook_set_group_name (GTK_NOTEBOOK (window->priv->notebook), window_notebook_group);
@@ -573,9 +575,11 @@ terminal_window_finalize (GObject *object)
 {
   TerminalWindow *window = TERMINAL_WINDOW (object);
 
-  /* disconnect shortcuts-no-mnemonics watches */
+  /* disconnect prefs signal handlers */
   g_signal_handlers_disconnect_by_func (G_OBJECT (window->priv->preferences),
                                         G_CALLBACK (terminal_window_update_mnemonic_modifier), window);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (window->priv->preferences),
+                                        G_CALLBACK (terminal_window_notebook_show_tabs), window);
 
   if (window->priv->preferences_dialog != NULL)
     gtk_widget_destroy (window->priv->preferences_dialog);
