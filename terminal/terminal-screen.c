@@ -1859,7 +1859,7 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
 
   combo = gtk_combo_box_text_new ();
   for (gint i = 0; i < DISABLE_PASTE_DIALOG_N; i++)
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), disable_unsafe_past_dialog_texts[i].string);
+    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _(disable_unsafe_past_dialog_texts[i].string));
   gtk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
   gtk_container_add (GTK_CONTAINER (box), combo);
 
