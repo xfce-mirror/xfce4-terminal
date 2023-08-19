@@ -730,7 +730,16 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
           g_object_get (G_OBJECT (screen->preferences),
                         "custom-command", &custom_command,
                         NULL);
-          shell_fullpath = custom_command;
+
+          if (!g_shell_parse_argv (custom_command, NULL, argv, error)) {
+            g_free (custom_command);
+            return FALSE;
+          }
+
+          *command = g_strdup (*argv[0]);
+
+          g_free (custom_command);
+          return TRUE;
         }
       else
         {
@@ -792,9 +801,6 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
       else
         (*argv)[0] = g_strdup (shell_name);
       (*argv)[1] = NULL;
-
-      if (custom_command != NULL)
-        g_free (custom_command);
     }
 
   return TRUE;
