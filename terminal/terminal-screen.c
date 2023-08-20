@@ -731,10 +731,11 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
                         "custom-command", &custom_command,
                         NULL);
 
-          if (!g_shell_parse_argv (custom_command, NULL, argv, error)) {
-            g_free (custom_command);
-            return FALSE;
-          }
+          if (!g_shell_parse_argv (custom_command, NULL, argv, error))
+            {
+              g_free (custom_command);
+              return FALSE;
+            }
 
           *command = g_strdup (*argv[0]);
 
