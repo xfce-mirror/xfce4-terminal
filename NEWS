@@ -1,3 +1,82 @@
+1.1.0 (2023-08-22)
+=====
+- Update copyright year
+- Allow passing arguments to custom commands
+- Fully translate strings in unsafe paste dialog
+- window: Properly sync always-show-tabs
+- cleanup: Include gdkx.h in one place
+- preferences: Remove unused class member
+- preferences: Check if channel itself exists instead of check property
+- screen: Review image loader memory management
+- image-loader: Review cache management
+- Add keywords to .desktop files (Fixes #50)
+- screen: Take window scaling into account when drawing (Fixes #71)
+- Remove obsolete GNOME default-app file (Fixes #109)
+- Add "Open File Manager Here" action (Fixes #133)
+- Properly manage default encoding (Fixes #128)
+- Move general include in private.h
+- dropdown: Disable systray icon on Wayland
+- Fix startup with GDK_BACKEND=x11 (Fixes #177)
+- shortcuts: Restore broken action toggle-menubar
+- shortcuts: Fix non-consumed key event for show-menubar
+- main: Allow GTK to parse its options first (Fixes #216)
+- search: Add missing sanity check
+- Use GLib logging functions and do not translate warnings
+- Fix typo
+- Remove obsolete CHECK_VERSION()
+- Use g_new() instead of malloc()
+- Fix Xfconf memory management
+- search-dialog: Fix memory leak
+- Remove extra separator at the end of context menu
+- Missing shortcut keys in the standalone preferences dialog (Issue 
+#198)
+- Apply 1 suggestion(s) to 1 file(s)
+- Enable kinetic scrolling in VteTerminal
+- Extend --disable-server description wrt. process model
+- End all full sentences with a period
+- Drop obsolete --disable-server translations
+- prefs-dialog: Fix untranslated strings
+- Add sixel support
+- Add icons at missing sizes, clean up SVG metadata
+- build: Fix autoconf warnings
+- build: Add GLib requirement
+- Add accel entries for scrolling pages (Issue #221)
+- Remove documentation for dead anti-aliasing option
+- Make strings translatable (Issue #222)
+- Fix shortcuts-editor include
+- Indentation
+- Support hyperlinks (Issue #21)
+- fix typo
+- Fix argument type for xfce_shortcuts_editor_new
+- fix background_notify
+- fixed typo
+- Remove disable-help preference.
+- MR: !51 transitioned to Xfconf (#134)
+- typos in MR !48 fixed
+- Remove all references to terminal-preferences.glade
+- Remove one more mention of terminal-preferences.glade
+- Remove trailing slash
+- Remove terminal-preferences-ui.h from makefile
+- Remove terminal-preferences.glade
+- MR: !48 shortcuts editor embedded into preferences-dialog (#195)
+- MR: !48 preferences-dialog rewritten in C (#195)
+- MR: !46 Change in implementation for TAB accels (#150)
+- Implementation of MiscShiftArrowsToScroll as accelerators.
+- Add PCRE2 build dependency
+- Remove libxfce4ui 4.17 version guards
+- Replace with xfce_gtk_menu_append_separator
+- Tweak toolbar
+- Translation Updates:
+  , Albanian, Arabic, Armenian (Armenia), Basque, Belarusian,
+  Bulgarian, Catalan, Chinese (China), Chinese (Taiwan), Croatian,
+  Czech, Danish, Dutch, Eastern Armenian, English (Australia), English
+  (United Kingdom), Estonian, Finnish, French, Galician, German, Greek,
+  Hebrew, Hungarian, Icelandic, Indonesian, Interlingue, Italian,
+  Japanese, Kazakh, Korean, Lithuanian, Malay, Norwegian Bokmål,
+  Occitan (post 1500), Persian (Iran), Polish, Portuguese, Portuguese
+  (Brazil), Romanian, Russian, Serbian, Slovak, Slovenian, Spanish,
+  Swedish, Thai, Turkish, Ukrainian
+
 1.0.4
 ======
 Fixes a regression introduced in 1.0.1.
