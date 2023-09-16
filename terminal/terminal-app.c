@@ -39,7 +39,6 @@
 
 #include <gdk/gdk.h>
 #ifdef GDK_WINDOWING_X11
-#include <gdk/gdkx.h>
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 #include <X11/Xutil.h>
@@ -79,8 +78,6 @@ static void     terminal_app_save_yourself            (XfceSMClient       *clien
                                                        TerminalApp        *app);
 static void     terminal_app_open_window              (TerminalApp        *app,
                                                        TerminalWindowAttr *attr);
-static void     move_window_to_saved_workspace        (GtkWidget          *window,
-                                                       gpointer            user_data);
 
 
 
@@ -666,7 +663,6 @@ move_window_to_saved_workspace (GtkWidget *window,
                                 gpointer   user_data)
 {
 #ifdef GDK_WINDOWING_X11
-  GdkWindow  *gdk_window;
   GdkDisplay *gdk_display;
   GdkScreen  *gdk_screen;
   Display    *display;
@@ -681,9 +677,8 @@ move_window_to_saved_workspace (GtkWidget *window,
                                         user_data);
 
 #ifdef GDK_WINDOWING_X11
-  gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
-
-  if (GDK_IS_X11_WINDOW (gdk_window))
+  gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
+  if (GDK_IS_X11_DISPLAY (gdk_display))
     {
       // EWMH says that we can set _NET_WM_DESKTOP on our own window before
       // mapping it, and the WM should honor our request.  However, xfwm4
@@ -692,14 +687,13 @@ move_window_to_saved_workspace (GtkWidget *window,
       // Firefox does) is to wait until the window is mapped, and then send a
       // ClientMessage to the root window to ask the WM to move us.
 
-      gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
       gdk_screen = gtk_widget_get_screen (GTK_WIDGET (window));
 
       gdk_x11_display_error_trap_push (gdk_display);
 
       display = gdk_x11_display_get_xdisplay (gdk_display);
       rootwin = gdk_x11_window_get_xid (gdk_screen_get_root_window (gdk_screen));
-      xwin = gdk_x11_window_get_xid (gdk_window);
+      xwin = gdk_x11_window_get_xid (gtk_widget_get_window (GTK_WIDGET (window)));
       message = XInternAtom (display, "_NET_WM_DESKTOP", False);
 
       event.type = ClientMessage;
