@@ -28,8 +28,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include <gdk/gdk.h>
-#ifdef GDK_WINDOWING_X11
+#ifdef HAVE_LIBX11
 #include <X11/Xlib.h>
 #endif
 
@@ -95,7 +94,7 @@ terminal_util_show_about_dialog (GtkWindow *parent)
 void
 terminal_util_activate_window (GtkWindow *window)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef HAVE_LIBX11
   guint32              timestamp;
   XClientMessageEvent  event;
   GdkWindow           *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
