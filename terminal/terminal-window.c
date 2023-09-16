@@ -558,8 +558,8 @@ terminal_window_init (TerminalWindow *window)
                             G_CALLBACK (terminal_window_update_mnemonic_modifier), window);
 
   window->fullscreen_supported = TRUE;
-#if defined(GDK_WINDOWING_X11)
-  if (GDK_IS_X11_SCREEN (screen))
+#ifdef GDK_WINDOWING_X11
+  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
     {
       /* setup fullscreen mode */
       if (!gdk_x11_screen_supports_net_wm_hint (screen, gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
