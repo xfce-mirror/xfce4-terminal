@@ -671,10 +671,11 @@ terminal_app_open_window (TerminalApp        *app,
   GdkDisplay      *attr_display;
   gint             attr_screen_num;
   gint             active_tab = -1, i, existing_tabs = 0;
+  guint            width = 1, height = 1;
 #ifdef GDK_WINDOWING_X11
   GdkGravity       gravity = GDK_GRAVITY_NORTH_WEST;
   gint             mask = NoValue, x, y, new_x, new_y;
-  guint            width = 1, height = 1, new_width, new_height;
+  guint            new_width, new_height;
   gint             screen_width = 0, screen_height = 0;
   gint             window_width, window_height;
 #endif
