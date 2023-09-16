@@ -34,7 +34,6 @@
 
 #include <gdk/gdk.h>
 #ifdef GDK_WINDOWING_X11
-#include <gdk/gdkx.h>
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 #endif
@@ -565,8 +564,8 @@ terminal_window_init (TerminalWindow *window)
                             G_CALLBACK (terminal_window_update_mnemonic_modifier), window);
 
   window->fullscreen_supported = TRUE;
-#if defined(GDK_WINDOWING_X11)
-  if (GDK_IS_X11_SCREEN (screen))
+#ifdef GDK_WINDOWING_X11
+  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
     {
       /* setup fullscreen mode */
       if (!gdk_x11_screen_supports_net_wm_hint (screen, gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
@@ -2603,9 +2602,9 @@ terminal_window_get_workspace (TerminalWindow *window)
   if (gdk_window == NULL)
     return -1;
 
-  if (GDK_IS_X11_WINDOW (gdk_window))
+  gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
+  if (GDK_IS_X11_DISPLAY (gdk_display))
     {
-      gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
       gdk_x11_display_error_trap_push (gdk_display);
 
       display = gdk_x11_display_get_xdisplay (gdk_display);
