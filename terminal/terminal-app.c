@@ -37,8 +37,7 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <gdk/gdk.h>
-#ifdef GDK_WINDOWING_X11
+#ifdef HAVE_LIBX11
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #endif
@@ -470,7 +469,7 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
   if (G_UNLIKELY (terminal_window_is_drop_down (existing)))
     {
       /* resize new window to the default geometry */
-#ifdef GDK_WINDOWING_X11
+#ifdef HAVE_LIBX11
       gchar *geo;
       guint  w, h;
       g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geo, NULL);
@@ -672,7 +671,7 @@ terminal_app_open_window (TerminalApp        *app,
   gint             attr_screen_num;
   gint             active_tab = -1, i, existing_tabs = 0;
   guint            width = 1, height = 1;
-#ifdef GDK_WINDOWING_X11
+#ifdef HAVE_LIBX11
   GdkGravity       gravity = GDK_GRAVITY_NORTH_WEST;
   gint             mask = NoValue, x, y, new_x, new_y;
   guint            new_width, new_height;
@@ -800,7 +799,7 @@ terminal_app_open_window (TerminalApp        *app,
     {
       /* try to apply the geometry to the window */
       g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geometry, NULL);
-#ifdef GDK_WINDOWING_X11
+#ifdef HAVE_LIBX11
       /* defaults */
       mask = XParseGeometry (geometry, &x, &y, &width, &height);
 
@@ -847,7 +846,7 @@ terminal_app_open_window (TerminalApp        *app,
   if (!attr->drop_down)
     {
       /* move the window to desired position */
-#ifdef GDK_WINDOWING_X11
+#ifdef HAVE_LIBX11
       if ((mask & XValue) || (mask & YValue))
         {
           screen = gtk_window_get_screen (GTK_WINDOW (window));
