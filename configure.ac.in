@@ -84,10 +84,11 @@ dnl *** Check for i18n support ***
 dnl ******************************
 XDT_I18N([@LINGUAS@])
 
-dnl ********************************
-dnl *** Check for X11 (optional) ***
-dnl ********************************
+dnl ***********************************
+dnl *** Check for optional packages ***
+dnl ***********************************
 XDT_CHECK_OPTIONAL_PACKAGE([LIBX11], [x11], [1.6.7], [libx11], [Libx11 support])
+XDT_CHECK_OPTIONAL_PACKAGE([GTK_LAYER_SHELL], [gtk-layer-shell-0], [0.7.0], [gtk-layer-shell], [Gtk Layer Shell support])
 
 dnl ***********************************
 dnl *** Check for required packages ***
@@ -170,4 +171,5 @@ echo "Build Configuration:"
 echo
 echo "* Debug support:           $enable_debug"
 echo "* Libx11 support:          ${LIBX11_FOUND:-no}"
+echo "* Gtk Layer Shell support: ${GTK_LAYER_SHELL_FOUND:-no}"
 echo
