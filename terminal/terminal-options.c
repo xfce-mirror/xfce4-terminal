@@ -472,6 +472,20 @@ terminal_window_attr_parse (gint              argc,
               win_attr->role = g_strdup (s);
             }
         }
+      else if (terminal_option_cmp ("workspace", 0, argc, argv, &n, &s, &short_offset))
+        {
+          if (G_UNLIKELY (s == NULL))
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--workspace\" requires specifying "
+                             "the workspace number as its parameter"));
+              goto failed;
+            }
+          else
+            {
+              win_attr->workspace = strtol (s, &end_ptr, 0);
+            }
+        }
       else if (terminal_option_cmp ("sm-client-id", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
@@ -684,6 +698,7 @@ terminal_window_attr_new (void)
 {
   TerminalWindowAttr *win_attr = g_slice_new0 (TerminalWindowAttr);
 
+  win_attr->workspace = -1;
   win_attr->fullscreen = FALSE;
   win_attr->menubar = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->borders = TERMINAL_VISIBILITY_DEFAULT;
