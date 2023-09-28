@@ -39,7 +39,9 @@
 
 #include <gdk/gdk.h>
 #ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
 #include <X11/Xlib.h>
+#include <X11/Xatom.h>
 #include <X11/Xutil.h>
 #endif
 
@@ -77,6 +79,9 @@ static void     terminal_app_save_yourself            (XfceSMClient       *clien
                                                        TerminalApp        *app);
 static void     terminal_app_open_window              (TerminalApp        *app,
                                                        TerminalWindowAttr *attr);
+
+static void     move_window_to_saved_workspace        (GtkWidget          *window,
+                                                       gpointer            user_data);
 
 
 
@@ -658,6 +663,71 @@ terminal_app_find_screen_by_name (const gchar *display_name)
 
 
 static void
+move_window_to_saved_workspace (GtkWidget *window,
+                                gpointer   user_data)
+{
+#ifdef GDK_WINDOWING_X11
+  GdkWindow  *gdk_window;
+  GdkDisplay *gdk_display;
+  GdkScreen  *gdk_screen;
+  Display    *display;
+  Window      xwin;
+  Window      rootwin;
+  Atom        message;
+  XEvent      event;
+#endif
+
+  g_signal_handlers_disconnect_by_func (window,
+                                        move_window_to_saved_workspace,
+                                        user_data);
+
+#ifdef GDK_WINDOWING_X11
+  gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+
+  if (GDK_IS_X11_WINDOW (gdk_window))
+    {
+      // EWMH says that we can set _NET_WM_DESKTOP on our own window before
+      // mapping it, and the WM should honor our request.  However, xfwm4
+      // doesn't appear to do that (even though an inspection of the code seems
+      // to suggest it does).  What seems more reliable (and I believe what
+      // Firefox does) is to wait until the window is mapped, and then send a
+      // ClientMessage to the root window to ask the WM to move us.
+
+      gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
+      gdk_screen = gtk_widget_get_screen (GTK_WIDGET (window));
+
+      gdk_x11_display_error_trap_push (gdk_display);
+
+      display = gdk_x11_display_get_xdisplay (gdk_display);
+      rootwin = gdk_x11_window_get_xid (gdk_screen_get_root_window (gdk_screen));
+      xwin = gdk_x11_window_get_xid (gdk_window);
+      message = XInternAtom (display, "_NET_WM_DESKTOP", False);
+
+      event.type = ClientMessage;
+      event.xclient.serial = 0;
+      event.xclient.send_event = True;
+      event.xclient.display = display;
+      event.xclient.window = xwin;
+      event.xclient.message_type = message;
+      event.xclient.format = 32;
+      event.xclient.data.l[0] = GPOINTER_TO_INT(user_data);
+      event.xclient.data.l[1] = 1;  // Source type: application
+      event.xclient.data.l[2] = 0;
+      event.xclient.data.l[3] = 0;
+      event.xclient.data.l[4] = 0;
+
+      XSendEvent(display, rootwin, False,
+                 SubstructureNotifyMask | SubstructureRedirectMask,
+                 &event);
+
+      gdk_x11_display_error_trap_pop_ignored (gdk_display);
+    }
+#endif
+}
+
+
+
+static void
 terminal_app_open_window (TerminalApp        *app,
                           TerminalWindowAttr *attr)
 {
@@ -782,6 +852,14 @@ terminal_app_open_window (TerminalApp        *app,
         {
           gtk_window_set_screen (GTK_WINDOW (window), screen);
           g_object_unref (G_OBJECT (screen));
+        }
+
+      if (attr->workspace >= 0)
+        {
+          g_signal_connect_after (window,
+                                  "map",
+                                  G_CALLBACK (move_window_to_saved_workspace),
+                                  GINT_TO_POINTER(attr->workspace));
         }
     }
 
