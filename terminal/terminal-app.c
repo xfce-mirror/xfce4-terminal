@@ -39,7 +39,9 @@
 
 #include <gdk/gdk.h>
 #ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
 #include <X11/Xlib.h>
+#include <X11/Xatom.h>
 #include <X11/Xutil.h>
 #endif
 
@@ -658,6 +660,68 @@ terminal_app_find_screen_by_name (const gchar *display_name)
 
 
 static void
+terminal_app_set_intial_window_workspace (TerminalWindow *window,
+                                          gint            workspace)
+{
+#ifdef GDK_WINDOWING_X11
+  GdkWindow  *gdk_window;
+  GdkDisplay *gdk_display;
+  GdkScreen  *gdk_screen;
+  Display    *display;
+  Window      xwin;
+  Window      rootwin;
+  Atom        property;
+  long        value = workspace;
+  XEvent      event;
+
+  gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+  if (gdk_window == NULL)
+      return;
+
+  if (GDK_IS_X11_WINDOW (gdk_window))
+    {
+      // Setting the property on our own window should work (since the window
+      // isn't mapped yet, but that seems to not work in some situations, so
+      // also ask the WM (via a client message to the root window) to change
+      // its desktop).
+
+      gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
+      gdk_x11_display_error_trap_push (gdk_display);
+
+      display = gdk_x11_display_get_xdisplay (gdk_display);
+      xwin = gdk_x11_window_get_xid (gdk_window);
+      property = XInternAtom (display, "_NET_WM_DESKTOP", False);
+
+      XChangeProperty(display, xwin, property, XA_CARDINAL, 32,
+                      PropModeReplace, (unsigned char *)&value, 1);
+
+      event.type = ClientMessage;
+      event.xclient.serial = 0;
+      event.xclient.send_event = True;
+      event.xclient.display = display;
+      event.xclient.window = xwin;
+      event.xclient.message_type = property;
+      event.xclient.format = 32;
+      event.xclient.data.l[0] = workspace;
+      event.xclient.data.l[1] = 1;  // Source type: application
+      event.xclient.data.l[2] = 0;
+      event.xclient.data.l[3] = 0;
+      event.xclient.data.l[4] = 0;
+
+      gdk_screen = gtk_widget_get_screen (GTK_WIDGET (window));
+      rootwin = gdk_x11_window_get_xid (gdk_screen_get_root_window (gdk_screen));
+      XSendEvent(display, rootwin, False,
+                 SubstructureNotifyMask | SubstructureRedirectMask,
+                 &event);
+
+      gdk_x11_display_error_trap_pop_ignored (gdk_display);
+    }
+#endif
+}
+
+
+
+static void
 terminal_app_open_window (TerminalApp        *app,
                           TerminalWindowAttr *attr)
 {
@@ -782,6 +846,12 @@ terminal_app_open_window (TerminalApp        *app,
         {
           gtk_window_set_screen (GTK_WINDOW (window), screen);
           g_object_unref (G_OBJECT (screen));
+        }
+
+      if (attr->workspace >= 0)
+        {
+          gtk_widget_realize (GTK_WIDGET (window));
+          terminal_app_set_intial_window_workspace (TERMINAL_WINDOW (window), attr->workspace);
         }
     }
 
