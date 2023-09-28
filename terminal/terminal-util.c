@@ -28,8 +28,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include <gdk/gdk.h>
-#ifdef GDK_WINDOWING_X11
+#ifdef HAVE_LIBX11
 #include <X11/Xlib.h>
 #endif
 
@@ -95,51 +94,51 @@ terminal_util_show_about_dialog (GtkWindow *parent)
 void
 terminal_util_activate_window (GtkWindow *window)
 {
-#ifdef GDK_WINDOWING_X11
-  guint32              timestamp;
-  XClientMessageEvent  event;
-  GdkWindow           *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
-  GdkDisplay          *display = gdk_window_get_display (gdk_window);
-
   terminal_return_if_fail (GTK_IS_WINDOW (window));
   terminal_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (window)));
-
-  if (!GDK_IS_X11_WINDOW (gdk_window))
-    return;
 
   /* leave if the window is already active */
   if (gtk_window_is_active (window))
     return;
 
-  timestamp = gtk_get_current_event_time ();
-  if (timestamp == 0)
-    timestamp = gdk_x11_get_server_time (gdk_window);
+#ifdef HAVE_LIBX11
+  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+    {
+      guint32              timestamp;
+      XClientMessageEvent  event;
+      GdkWindow           *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+      GdkDisplay          *display = gdk_window_get_display (gdk_window);
 
-  /* we need a slightly custom version of the call through Gtk+ to
-   * properly focus the panel when a plugin calls
-   * xfce_panel_plugin_focus_widget() */
-  event.type = ClientMessage;
-  event.window = GDK_WINDOW_XID (gdk_window);
-  event.message_type = gdk_x11_get_xatom_by_name ("_NET_ACTIVE_WINDOW");
-  event.format = 32;
-  event.data.l[0] = 1; /* app */
-  event.data.l[1] = timestamp;
-  event.data.l[2] = event.data.l[3] = event.data.l[4] = 0;
+      timestamp = gtk_get_current_event_time ();
+      if (timestamp == 0)
+        timestamp = gdk_x11_get_server_time (gdk_window);
 
-  gdk_x11_display_error_trap_push (display);
+      /* we need a slightly custom version of the call through Gtk+ to
+       * properly focus the panel when a plugin calls
+       * xfce_panel_plugin_focus_widget() */
+      event.type = ClientMessage;
+      event.window = GDK_WINDOW_XID (gdk_window);
+      event.message_type = gdk_x11_get_xatom_by_name ("_NET_ACTIVE_WINDOW");
+      event.format = 32;
+      event.data.l[0] = 1; /* app */
+      event.data.l[1] = timestamp;
+      event.data.l[2] = event.data.l[3] = event.data.l[4] = 0;
 
-  XSendEvent (gdk_x11_get_default_xdisplay (),
-              gdk_x11_get_default_root_xwindow (), False,
-              StructureNotifyMask, (XEvent *) &event);
+      gdk_x11_display_error_trap_push (display);
 
-  gdk_display_flush (display);
+      XSendEvent (gdk_x11_get_default_xdisplay (),
+                  gdk_x11_get_default_root_xwindow (), False,
+                  StructureNotifyMask, (XEvent *) &event);
 
-  if (gdk_x11_display_error_trap_pop (display) != 0)
-    g_critical ("Failed to focus window");
-#else
-  /* our best guess on non-x11 clients */
-  gtk_window_present (window);
+      gdk_display_flush (display);
+
+      if (gdk_x11_display_error_trap_pop (display) != 0)
+        g_critical ("Failed to focus window");
+    }
+  else
 #endif
+    /* our best guess on non-x11 clients */
+    gtk_window_present (window);
 }
 
 
