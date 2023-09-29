@@ -32,6 +32,13 @@
 #include <unistd.h>
 #endif
 
+#include <gdk/gdk.h>
+#ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
+#endif
+
 #include <libxfce4ui/libxfce4ui.h>
 
 #include <terminal/terminal-util.h>
@@ -2576,6 +2583,65 @@ terminal_window_do_close_tab (TerminalScreen *screen,
 
 
 
+static gint
+terminal_window_get_workspace (TerminalWindow *window)
+{
+#ifdef GDK_WINDOWING_X11
+  GdkWindow    *gdk_window;
+  gint          workspace = -1;
+  GdkDisplay   *gdk_display;
+  Display      *display;
+  Window        xwin;
+  Atom          property;
+  Atom          actual_type = None;
+  int           actual_format = 0;
+  unsigned long nitems = 0;
+  unsigned long bytes_after = 0;
+  unsigned char *data_p = NULL;
+
+  gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+  if (gdk_window == NULL)
+    return -1;
+
+  if (GDK_IS_X11_WINDOW (gdk_window))
+    {
+      gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
+      gdk_x11_display_error_trap_push (gdk_display);
+
+      display = gdk_x11_display_get_xdisplay (gdk_display);
+      xwin = gdk_x11_window_get_xid (gdk_window);
+      property = XInternAtom (display, "_NET_WM_DESKTOP", False);
+
+      if (Success == XGetWindowProperty (display, xwin, property, 0, 1, False,
+                                         XA_CARDINAL, &actual_type,
+                                         &actual_format, &nitems,
+                                         &bytes_after, &data_p))
+        {
+          if (actual_type == XA_CARDINAL &&
+              actual_format == 32 &&
+              nitems == 1 &&
+              data_p != NULL)
+            {
+              workspace = *(unsigned int *) data_p;
+            }
+
+          if (data_p != NULL)
+            XFree (data_p);
+        }
+
+      gdk_x11_display_error_trap_pop_ignored (gdk_display);
+
+      return workspace;
+    }
+  else
+#endif
+    {
+      return -1;
+    }
+}
+
+
+
 /**
  * terminal_window_new:
  * @fullscreen: Whether to set the window to fullscreen.
@@ -2756,6 +2822,7 @@ terminal_window_get_restart_command (TerminalWindow *window)
   GSList      *result = NULL;
   glong        w;
   glong        h;
+  gint         workspace;
 
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
 
@@ -2775,6 +2842,13 @@ terminal_window_get_restart_command (TerminalWindow *window)
   role = gtk_window_get_role (GTK_WINDOW (window));
   if (G_LIKELY (role != NULL))
     result = g_slist_prepend (result, g_strdup_printf ("--role=%s", role));
+
+  workspace = terminal_window_get_workspace (window);
+  if (workspace != -1)
+    {
+      result = g_slist_prepend (result, g_strdup ("--workspace"));
+      result = g_slist_prepend (result, g_strdup_printf ("%d", workspace));
+    }
 
   if (window->is_fullscreen)
     result = g_slist_prepend (result, g_strdup ("--fullscreen"));
