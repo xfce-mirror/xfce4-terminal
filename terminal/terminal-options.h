@@ -73,6 +73,7 @@ typedef struct
   gchar              *display;
   gchar              *geometry;
   gchar              *role;
+  gint                workspace;
   gchar              *startup_id;
   gchar              *sm_client_id;
   gchar              *icon;
