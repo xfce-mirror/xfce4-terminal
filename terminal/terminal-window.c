@@ -2622,7 +2622,7 @@ terminal_window_get_workspace (TerminalWindow *window)
               nitems == 1 &&
               data_p != NULL)
             {
-              workspace = *(unsigned int *)data_p;
+              workspace = *(unsigned int *) data_p;
             }
 
           if (data_p != NULL)
@@ -2632,7 +2632,8 @@ terminal_window_get_workspace (TerminalWindow *window)
       gdk_x11_display_error_trap_pop_ignored (gdk_display);
 
       return workspace;
-    } else
+    }
+  else
 #endif
     {
       return -1;
@@ -2845,8 +2846,8 @@ terminal_window_get_restart_command (TerminalWindow *window)
   workspace = terminal_window_get_workspace (window);
   if (workspace != -1)
     {
-      result = g_slist_prepend (result, g_strdup("--workspace"));
-      result = g_slist_prepend (result, g_strdup_printf("%d", workspace));
+      result = g_slist_prepend (result, g_strdup ("--workspace"));
+      result = g_slist_prepend (result, g_strdup_printf ("%d", workspace));
     }
 
   if (window->is_fullscreen)

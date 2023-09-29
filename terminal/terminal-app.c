@@ -79,7 +79,6 @@ static void     terminal_app_save_yourself            (XfceSMClient       *clien
                                                        TerminalApp        *app);
 static void     terminal_app_open_window              (TerminalApp        *app,
                                                        TerminalWindowAttr *attr);
-
 static void     move_window_to_saved_workspace        (GtkWidget          *window,
                                                        gpointer            user_data);
 
@@ -710,15 +709,15 @@ move_window_to_saved_workspace (GtkWidget *window,
       event.xclient.window = xwin;
       event.xclient.message_type = message;
       event.xclient.format = 32;
-      event.xclient.data.l[0] = GPOINTER_TO_INT(user_data);
+      event.xclient.data.l[0] = GPOINTER_TO_INT (user_data);
       event.xclient.data.l[1] = 1;  // Source type: application
       event.xclient.data.l[2] = 0;
       event.xclient.data.l[3] = 0;
       event.xclient.data.l[4] = 0;
 
-      XSendEvent(display, rootwin, False,
-                 SubstructureNotifyMask | SubstructureRedirectMask,
-                 &event);
+      XSendEvent (display, rootwin, False,
+                  SubstructureNotifyMask | SubstructureRedirectMask,
+                  &event);
 
       gdk_x11_display_error_trap_pop_ignored (gdk_display);
     }
@@ -859,7 +858,7 @@ terminal_app_open_window (TerminalApp        *app,
           g_signal_connect_after (window,
                                   "map",
                                   G_CALLBACK (move_window_to_saved_workspace),
-                                  GINT_TO_POINTER(attr->workspace));
+                                  GINT_TO_POINTER (attr->workspace));
         }
     }
 
