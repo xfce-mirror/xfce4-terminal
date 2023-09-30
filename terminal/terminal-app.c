@@ -743,7 +743,7 @@ terminal_app_open_window (TerminalApp        *app,
 #ifdef GDK_WINDOWING_X11
   GdkGravity       gravity = GDK_GRAVITY_NORTH_WEST;
   gint             mask = NoValue, x, y, new_x, new_y;
-  guint            width = 1, height = 1, new_width, new_height;
+  guint            width = 80, height = 24, new_width, new_height;
   gint             screen_width = 0, screen_height = 0;
   gint             window_width, window_height;
 #endif

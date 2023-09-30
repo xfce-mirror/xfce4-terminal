@@ -1054,9 +1054,9 @@ terminal_window_dropdown_get_size (TerminalWindowDropdown *dropdown,
 
   /* return grid size */
   if (G_LIKELY (grid_width != NULL))
-    *grid_width = ((monitor_geo.width * dropdown->rel_width) - xpad) / char_width;
+    *grid_width = MAX (1, ((monitor_geo.width * dropdown->rel_width) - xpad) / char_width);
   if (G_LIKELY (grid_height != NULL))
-    *grid_height = ((monitor_geo.height * dropdown->rel_height) - ypad) / char_height;
+    *grid_height = MAX (1, ((monitor_geo.height * dropdown->rel_height) - ypad) / char_height);
 }
 
 
