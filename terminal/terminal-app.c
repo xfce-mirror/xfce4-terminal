@@ -39,7 +39,6 @@
 
 #include <gdk/gdk.h>
 #ifdef GDK_WINDOWING_X11
-#include <gdk/gdkx.h>
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 #include <X11/Xutil.h>
@@ -79,8 +78,6 @@ static void     terminal_app_save_yourself            (XfceSMClient       *clien
                                                        TerminalApp        *app);
 static void     terminal_app_open_window              (TerminalApp        *app,
                                                        TerminalWindowAttr *attr);
-static void     move_window_to_saved_workspace        (GtkWidget          *window,
-                                                       gpointer            user_data);
 
 
 
@@ -433,6 +430,207 @@ terminal_app_new_window (TerminalWindow *window,
 
 
 
+/*
+  Derived from XParseGeometry() in XFree86  
+
+  Copyright 1985, 1986, 1987,1998  The Open Group
+
+  All Rights Reserved.
+
+  The above copyright notice and this permission notice shall be included
+  in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
+  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+  OTHER DEALINGS IN THE SOFTWARE.
+
+  Except as contained in this notice, the name of The Open Group shall
+  not be used in advertising or otherwise to promote the sale, use or
+  other dealings in this Software without prior written authorization
+  from The Open Group.
+*/
+
+
+/*
+ *    XParseGeometry parses strings of the form
+ *   "=<width>x<height>{+-}<xoffset>{+-}<yoffset>", where
+ *   width, height, xoffset, and yoffset are unsigned integers.
+ *   Example:  “=80x24+300-49”
+ *   The equal sign is optional.
+ *   It returns a bitmask that indicates which of the four values
+ *   were actually found in the string.  For each value found,
+ *   the corresponding argument is updated;  for each value
+ *   not found, the corresponding argument is left unchanged. 
+ */
+
+/* The following code is from Xlib, and is minimally modified, so we
+ * can track any upstream changes if required.  Don’t change this
+ * code. Or if you do, put in a huge comment marking which thing
+ * changed.
+ */
+
+static int
+read_int (gchar   *string,
+          gchar  **next)
+{
+  int result = 0;
+  int sign = 1;
+  
+  if (*string == '+')
+    string++;
+  else if (*string == '-')
+    {
+      string++;
+      sign = -1;
+    }
+
+  for (; (*string >= '0') && (*string <= '9'); string++)
+    {
+      result = (result * 10) + (*string - '0');
+    }
+
+  *next = string;
+
+  if (sign >= 0)
+    return (result);
+  else
+    return (-result);
+}
+
+/* 
+ * Bitmask returned by XParseGeometry().  Each bit tells if the corresponding
+ * value (x, y, width, height) was found in the parsed string.
+ */
+#ifndef GDK_WINDOWING_X11
+#define NoValue         0x0000
+#define XValue          0x0001
+#define YValue          0x0002
+#define WidthValue      0x0004
+#define HeightValue     0x0008
+#define AllValues       0x000F
+#define XNegative       0x0010
+#define YNegative       0x0020
+#endif
+
+/* Try not to reformat/modify, so we can compare/sync with X sources */
+static int
+gtk_XParseGeometry (const char   *string,
+                    int          *x,
+                    int          *y,
+                    unsigned int *width,   
+                    unsigned int *height)  
+{
+  int mask = NoValue;
+  char *strind;
+  unsigned int tempWidth, tempHeight;
+  int tempX, tempY;
+  char *nextCharacter;
+
+  /* These initializations are just to silence gcc */
+  tempWidth = 0;
+  tempHeight = 0;
+  tempX = 0;
+  tempY = 0;
+  
+  if ( (string == NULL) || (*string == '\0')) return(mask);
+  if (*string == '=')
+    string++;  /* ignore possible '=' at beg of geometry spec */
+
+  strind = (char *)string;
+  if (*strind != '+' && *strind != '-' && *strind != 'x') {
+    tempWidth = read_int(strind, &nextCharacter);
+    if (strind == nextCharacter) 
+      return (0);
+    strind = nextCharacter;
+    mask |= WidthValue;
+  }
+
+  if (*strind == 'x' || *strind == 'X') {	
+    strind++;
+    tempHeight = read_int(strind, &nextCharacter);
+    if (strind == nextCharacter)
+      return (0);
+    strind = nextCharacter;
+    mask |= HeightValue;
+  }
+
+  if ((*strind == '+') || (*strind == '-')) {
+    if (*strind == '-') {
+      strind++;
+      tempX = -read_int(strind, &nextCharacter);
+      if (strind == nextCharacter)
+        return (0);
+      strind = nextCharacter;
+      mask |= XNegative;
+
+    }
+    else
+      {	strind++;
+      tempX = read_int(strind, &nextCharacter);
+      if (strind == nextCharacter)
+        return(0);
+      strind = nextCharacter;
+      }
+    mask |= XValue;
+    if ((*strind == '+') || (*strind == '-')) {
+      if (*strind == '-') {
+        strind++;
+        tempY = -read_int(strind, &nextCharacter);
+        if (strind == nextCharacter)
+          return(0);
+        strind = nextCharacter;
+        mask |= YNegative;
+
+      }
+      else
+        {
+          strind++;
+          tempY = read_int(strind, &nextCharacter);
+          if (strind == nextCharacter)
+            return(0);
+          strind = nextCharacter;
+        }
+      mask |= YValue;
+    }
+  }
+	
+  /* If strind isn't at the end of the string the it's an invalid
+		geometry specification. */
+
+  if (*strind != '\0') return (0);
+
+  if (mask & XValue)
+    *x = tempX;
+  if (mask & YValue)
+    *y = tempY;
+  if (mask & WidthValue)
+    *width = tempWidth;
+  if (mask & HeightValue)
+    *height = tempHeight;
+  return (mask);
+}
+
+static int
+parse_geometry (const char   *string,
+                int          *x,
+                int          *y,
+                unsigned int *width,
+                unsigned int *height)
+{
+#ifdef GDK_WINDOWING_X11
+  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+    return XParseGeometry (string, x, y, width, height);
+#endif
+  /* stolen from GTK 3.24.38 */
+  return gtk_XParseGeometry (string, x, y, width, height);
+}
+
+
+
 static void
 terminal_app_new_window_with_terminal (TerminalWindow *existing,
                                        TerminalScreen *terminal,
@@ -474,17 +672,15 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
   if (G_UNLIKELY (terminal_window_is_drop_down (existing)))
     {
       /* resize new window to the default geometry */
-#ifdef GDK_WINDOWING_X11
       gchar *geo;
       guint  w, h;
       g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geo, NULL);
       if (G_LIKELY (geo != NULL))
         {
-          XParseGeometry (geo, NULL, NULL, &w, &h);
+          parse_geometry (geo, NULL, NULL, &w, &h);
           g_free (geo);
           terminal_screen_force_resize_window (terminal, GTK_WINDOW (window), w, h);
         }
-#endif
     }
   else
     {
@@ -666,7 +862,6 @@ move_window_to_saved_workspace (GtkWidget *window,
                                 gpointer   user_data)
 {
 #ifdef GDK_WINDOWING_X11
-  GdkWindow  *gdk_window;
   GdkDisplay *gdk_display;
   GdkScreen  *gdk_screen;
   Display    *display;
@@ -681,9 +876,8 @@ move_window_to_saved_workspace (GtkWidget *window,
                                         user_data);
 
 #ifdef GDK_WINDOWING_X11
-  gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
-
-  if (GDK_IS_X11_WINDOW (gdk_window))
+  gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
+  if (GDK_IS_X11_DISPLAY (gdk_display))
     {
       // EWMH says that we can set _NET_WM_DESKTOP on our own window before
       // mapping it, and the WM should honor our request.  However, xfwm4
@@ -692,14 +886,13 @@ move_window_to_saved_workspace (GtkWidget *window,
       // Firefox does) is to wait until the window is mapped, and then send a
       // ClientMessage to the root window to ask the WM to move us.
 
-      gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
       gdk_screen = gtk_widget_get_screen (GTK_WIDGET (window));
 
       gdk_x11_display_error_trap_push (gdk_display);
 
       display = gdk_x11_display_get_xdisplay (gdk_display);
       rootwin = gdk_x11_window_get_xid (gdk_screen_get_root_window (gdk_screen));
-      xwin = gdk_x11_window_get_xid (gdk_window);
+      xwin = gdk_x11_window_get_xid (gtk_widget_get_window (GTK_WIDGET (window)));
       message = XInternAtom (display, "_NET_WM_DESKTOP", False);
 
       event.type = ClientMessage;
@@ -740,13 +933,12 @@ terminal_app_open_window (TerminalApp        *app,
   GdkDisplay      *attr_display;
   gint             attr_screen_num;
   gint             active_tab = -1, i, existing_tabs = 0;
-#ifdef GDK_WINDOWING_X11
+  guint            width = 80, height = 24;
   GdkGravity       gravity = GDK_GRAVITY_NORTH_WEST;
   gint             mask = NoValue, x, y, new_x, new_y;
-  guint            width = 80, height = 24, new_width, new_height;
+  guint            new_width, new_height;
   gint             screen_width = 0, screen_height = 0;
   gint             window_width, window_height;
-#endif
 
   terminal_return_if_fail (TERMINAL_IS_APP (app));
   terminal_return_if_fail (attr != NULL);
@@ -876,16 +1068,16 @@ terminal_app_open_window (TerminalApp        *app,
     {
       /* try to apply the geometry to the window */
       g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geometry, NULL);
-#ifdef GDK_WINDOWING_X11
+
       /* defaults */
-      mask = XParseGeometry (geometry, &x, &y, &width, &height);
+      mask = parse_geometry (geometry, &x, &y, &width, &height);
 
       /* geometry provided via command line parameter */
       if (G_UNLIKELY (attr->geometry != NULL))
         {
           g_free (geometry);
           geometry = g_strdup (attr->geometry);
-          mask = XParseGeometry (geometry, &new_x, &new_y, &new_width, &new_height);
+          mask = parse_geometry (geometry, &new_x, &new_y, &new_width, &new_height);
 
           if (mask & WidthValue)
             width = new_width;
@@ -896,7 +1088,6 @@ terminal_app_open_window (TerminalApp        *app,
           if (mask & YValue)
             y = new_y;
         }
-#endif
     }
 
   /* special handling for --active-tab in case we are adding tabs to an existing window */
@@ -923,7 +1114,6 @@ terminal_app_open_window (TerminalApp        *app,
   if (!attr->drop_down)
     {
       /* move the window to desired position */
-#ifdef GDK_WINDOWING_X11
       if ((mask & XValue) || (mask & YValue))
         {
           screen = gtk_window_get_screen (GTK_WINDOW (window));
@@ -944,9 +1134,6 @@ terminal_app_open_window (TerminalApp        *app,
           gtk_window_move (GTK_WINDOW (window), x, y);
         }
       else if (!(mask & WidthValue) && !(mask & XValue))
-#else
-      if (!gtk_window_parse_geometry (GTK_WINDOW (window), geometry))
-#endif
         g_warning ("Invalid geometry string \"%s\"", geometry);
 
       /* cleanup */

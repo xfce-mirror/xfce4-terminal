@@ -33,6 +33,10 @@
 #include <stdlib.h>
 #endif
 
+#ifdef HAVE_GTK_LAYER_SHELL
+#include <gtk-layer-shell/gtk-layer-shell.h>
+#endif
+
 #include <libxfce4ui/libxfce4ui.h>
 
 #include <terminal/terminal-private.h>
@@ -138,6 +142,10 @@ struct _TerminalWindowDropdown
   /* last screen and monitor */
   GdkScreen         *screen;
   gint               monitor_num;
+#ifdef HAVE_GTK_LAYER_SHELL
+  GdkMonitor        *monitor;
+  gboolean           move_to_active;
+#endif
 
   /* server time of focus out with grab */
   gint64             focus_out_time;
@@ -236,6 +244,106 @@ terminal_window_dropdown_class_init (TerminalWindowDropdownClass *klass)
 
 
 
+#ifdef HAVE_GTK_LAYER_SHELL
+static gboolean
+monitor_changed (TerminalWindowDropdown *dropdown)
+{
+  GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (dropdown));
+  GdkMonitor *monitor = gdk_display_get_monitor_at_window (gdk_display_get_default (), window);
+
+  if (monitor != dropdown->monitor)
+    {
+      /* reposition and/or resize the window */
+      dropdown->monitor = monitor;
+      dropdown->monitor_num = -1;
+      terminal_window_dropdown_show (dropdown, 0, FALSE);
+    }
+
+  return FALSE;
+}
+
+
+
+static void
+set_monitor (TerminalWindowDropdown *dropdown)
+{
+  g_signal_handlers_disconnect_by_func (dropdown, set_monitor, NULL);
+
+  if (dropdown->move_to_active)
+    {
+      /* let the compositor position the window where it sees fit, and with a bit of luck
+       * (and/or configuration) it'll position it where the pointer is */
+      gtk_layer_set_monitor (GTK_WINDOW (dropdown), NULL);
+    }
+  else
+    {
+      /* we should now have the right monitor, let's fix it */
+      g_signal_handlers_disconnect_by_func (dropdown, monitor_changed, NULL);
+      gtk_layer_set_monitor (GTK_WINDOW (dropdown), dropdown->monitor);
+    }
+}
+
+
+
+static void
+move_to_active_changed (TerminalWindowDropdown *dropdown)
+{
+  /* in any case, it's best to wait until the window is hidden before setting the monitor,
+   * as gtk_layer_set_monitor() remaps the window and causes it to blink if shown */
+  g_signal_connect (dropdown, "hide", G_CALLBACK (set_monitor), NULL);
+
+  g_object_get (terminal_window_get_preferences (TERMINAL_WINDOW (dropdown)),
+                "dropdown-move-to-active", &dropdown->move_to_active, NULL);
+  if (dropdown->move_to_active)
+    {
+      /* there doesn't seem to be a better signal for tracking monitor changes */
+      g_signal_connect_after (dropdown, "draw", G_CALLBACK (monitor_changed), NULL);
+      if (dropdown->monitor == NULL)
+        dropdown->monitor = gdk_display_get_monitor (gdk_display_get_default (), 0);
+    }
+  else
+    {
+      /* !move_to_active at startup: we have to wait until the window has been drawn a few
+       * times before gdk_display_get_monitor_at_window() returns the correct result */
+      if (dropdown->monitor == NULL)
+        g_signal_connect_after (dropdown, "draw", G_CALLBACK (monitor_changed), NULL);
+    }
+}
+
+
+
+static void
+prefs_dialog_hidden (TerminalWindow *window)
+{
+  gboolean keep_above;
+  g_object_get (terminal_window_get_preferences (window), "dropdown-keep-above", &keep_above, NULL);
+  gtk_layer_set_layer (GTK_WINDOW (window), keep_above ? GTK_LAYER_SHELL_LAYER_TOP
+                                                       : GTK_LAYER_SHELL_LAYER_BOTTOM);
+  g_signal_handlers_disconnect_by_func (terminal_window_get_preferences_dialog (window),
+                                        prefs_dialog_hidden, window);
+}
+#endif
+
+
+
+static void
+show_prefs_dialog (TerminalWindow *window)
+{
+  XfceGtkActionEntry *entry = terminal_window_get_action_entry (window, TERMINAL_WINDOW_ACTION_PREFERENCES);
+  ((gboolean (*) (TerminalWindow *)) entry->callback) (window);
+#ifdef HAVE_GTK_LAYER_SHELL
+  if (gtk_layer_is_supported ())
+    {
+      /* ensure the prefs dialog is above the terminal the time it's shown */
+      gtk_layer_set_layer (GTK_WINDOW (window), GTK_LAYER_SHELL_LAYER_BOTTOM);
+      g_signal_connect_swapped (terminal_window_get_preferences_dialog (window), "hide",
+                                G_CALLBACK (prefs_dialog_hidden), window);
+    }
+#endif
+}
+
+
+
 static void
 terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 {
@@ -256,6 +364,30 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   dropdown->animation_dir = ANIMATION_DIR_NONE;
 
   preferences = terminal_preferences_get();
+
+#ifdef HAVE_GTK_LAYER_SHELL
+  if (gtk_layer_is_supported ())
+    {
+      gtk_layer_init_for_window (GTK_WINDOW (window));
+      gtk_layer_set_keyboard_mode (GTK_WINDOW (window), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
+      gtk_layer_set_exclusive_zone (GTK_WINDOW (window), -1);
+      gtk_layer_set_anchor (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
+      gtk_layer_set_anchor (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+      g_signal_connect_object (preferences, "notify::dropdown-move-to-active",
+                               G_CALLBACK (move_to_active_changed), dropdown, G_CONNECT_SWAPPED);
+      move_to_active_changed (dropdown);
+    }
+  else
+#endif
+  if (GDK_IS_WAYLAND_DISPLAY (gdk_display_get_default ()))
+    {
+      static gboolean warn = TRUE;
+      if (warn)
+        {
+          g_warning ("Gtk Layer Shell unsupported: drop-down terminal won't work properly");
+          warn = FALSE;
+        }
+    }
 
   /* shared setting to disable some functionality in TerminalWindow */
   terminal_window_set_drop_down (window, TRUE);
@@ -303,7 +435,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_widget_set_tooltip_text (button, entry->menu_item_tooltip_text);
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
   gtk_widget_set_focus_on_click (button, FALSE);
-  g_signal_connect_swapped (G_OBJECT (button), "clicked", entry->callback, window);
+  g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (show_prefs_dialog), window);
 
   img = gtk_image_new_from_icon_name (entry->menu_item_icon_name, GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
@@ -426,6 +558,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       gtk_window_set_keep_above (GTK_WINDOW (dropdown), g_value_get_boolean (value));
       if (terminal_window_get_preferences_dialog (window) != NULL)
         terminal_util_activate_window (GTK_WINDOW (terminal_window_get_preferences_dialog (window)));
+#ifdef HAVE_GTK_LAYER_SHELL
+      else if (gtk_layer_is_supported ())
+        gtk_layer_set_layer (GTK_WINDOW (dropdown),
+                             g_value_get_boolean (value) ? GTK_LAYER_SHELL_LAYER_TOP : GTK_LAYER_SHELL_LAYER_BOTTOM);
+#endif
       return;
 
     case PROP_DROPDOWN_ANIMATION_TIME:
@@ -746,6 +883,49 @@ terminal_window_dropdown_hide (TerminalWindowDropdown *dropdown)
 
 
 static void
+terminal_window_dropdown_move (GtkWindow *window,
+                               gint x,
+                               gint y,
+                               GdkRectangle monitor_geo)
+{
+#ifdef HAVE_GTK_LAYER_SHELL
+  if (gtk_layer_is_supported ())
+    {
+      gtk_layer_set_margin (window, GTK_LAYER_SHELL_EDGE_LEFT, x - monitor_geo.x);
+      gtk_layer_set_margin (window, GTK_LAYER_SHELL_EDGE_TOP, y - monitor_geo.y);
+    }
+  else
+#endif
+    gtk_window_move (window, x, y);
+}
+
+
+
+static void
+terminal_window_dropdown_gdk_screen_get_active (TerminalWindowDropdown *dropdown)
+{
+#ifdef HAVE_GTK_LAYER_SHELL
+  if (gtk_layer_is_supported ())
+    {
+      GdkDisplay *display = gdk_display_get_default ();
+      gint n_monitors = gdk_display_get_n_monitors (display);
+
+      for (gint i = 0; i < n_monitors; i++)
+        if (gdk_display_get_monitor (display, i) == dropdown->monitor)
+          {
+            dropdown->monitor_num = i;
+            break;
+          }
+      dropdown->screen = gdk_screen_get_default ();
+    }
+  else
+#endif
+    dropdown->screen = xfce_gdk_screen_get_active (&dropdown->monitor_num);
+}
+
+
+
+static void
 terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
                                guint32                 timestamp,
                                gboolean                activate)
@@ -784,7 +964,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
                                               G_CALLBACK (terminal_dropdown_window_screen_size_changed),
                                               dropdown);
 
-      dropdown->screen = xfce_gdk_screen_get_active (&dropdown->monitor_num);
+      terminal_window_dropdown_gdk_screen_get_active (dropdown);
 
       /* watch for screen size changes to update terminal geometry accordingly*/
       g_signal_connect (G_OBJECT (dropdown->screen), "size-changed",
@@ -843,14 +1023,14 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   y = monitor_geo.y + (monitor_geo.height - h) * dropdown->rel_position_vertical;
 
   /* move */
-  gtk_window_move (GTK_WINDOW (dropdown), x, y);
+  terminal_window_dropdown_move (GTK_WINDOW (dropdown), x, y, monitor_geo);
 
   /* show window */
   if (!visible)
     gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
 
   /* move window after showing: https://bugzilla.xfce.org/show_bug.cgi?id=10713 */
-  gtk_window_move (GTK_WINDOW (dropdown), x, y);
+  terminal_window_dropdown_move (GTK_WINDOW (dropdown), x, y, monitor_geo);
 
   /* force focus to the window */
   if (activate)
