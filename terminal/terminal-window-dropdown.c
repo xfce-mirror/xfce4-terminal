@@ -309,7 +309,38 @@ move_to_active_changed (TerminalWindowDropdown *dropdown)
         g_signal_connect_after (dropdown, "draw", G_CALLBACK (monitor_changed), NULL);
     }
 }
+
+
+
+static void
+prefs_dialog_hidden (TerminalWindow *window)
+{
+  gboolean keep_above;
+  g_object_get (terminal_window_get_preferences (window), "dropdown-keep-above", &keep_above, NULL);
+  gtk_layer_set_layer (GTK_WINDOW (window), keep_above ? GTK_LAYER_SHELL_LAYER_TOP
+                                                       : GTK_LAYER_SHELL_LAYER_BOTTOM);
+  g_signal_handlers_disconnect_by_func (terminal_window_get_preferences_dialog (window),
+                                        prefs_dialog_hidden, window);
+}
 #endif
+
+
+
+static void
+show_prefs_dialog (TerminalWindow *window)
+{
+  XfceGtkActionEntry *entry = terminal_window_get_action_entry (window, TERMINAL_WINDOW_ACTION_PREFERENCES);
+  ((gboolean (*) (TerminalWindow *)) entry->callback) (window);
+#ifdef HAVE_GTK_LAYER_SHELL
+  if (gtk_layer_is_supported ())
+    {
+      /* ensure the prefs dialog is above the terminal the time it's shown */
+      gtk_layer_set_layer (GTK_WINDOW (window), GTK_LAYER_SHELL_LAYER_BOTTOM);
+      g_signal_connect_swapped (terminal_window_get_preferences_dialog (window), "hide",
+                                G_CALLBACK (prefs_dialog_hidden), window);
+    }
+#endif
+}
 
 
 
@@ -404,7 +435,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_widget_set_tooltip_text (button, entry->menu_item_tooltip_text);
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
   gtk_widget_set_focus_on_click (button, FALSE);
-  g_signal_connect_swapped (G_OBJECT (button), "clicked", entry->callback, window);
+  g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK (show_prefs_dialog), window);
 
   img = gtk_image_new_from_icon_name (entry->menu_item_icon_name, GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
@@ -527,6 +558,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       gtk_window_set_keep_above (GTK_WINDOW (dropdown), g_value_get_boolean (value));
       if (terminal_window_get_preferences_dialog (window) != NULL)
         terminal_util_activate_window (GTK_WINDOW (terminal_window_get_preferences_dialog (window)));
+#ifdef HAVE_GTK_LAYER_SHELL
+      else if (gtk_layer_is_supported ())
+        gtk_layer_set_layer (GTK_WINDOW (dropdown),
+                             g_value_get_boolean (value) ? GTK_LAYER_SHELL_LAYER_TOP : GTK_LAYER_SHELL_LAYER_BOTTOM);
+#endif
       return;
 
     case PROP_DROPDOWN_ANIMATION_TIME:
