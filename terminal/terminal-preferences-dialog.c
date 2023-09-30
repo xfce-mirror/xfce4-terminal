@@ -536,22 +536,25 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* next row */
   row++;
 
-  button = gtk_check_button_new_with_mnemonic (_("_Always keep window on top"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-keep-above",
+  button = gtk_check_button_new_with_mnemonic (_("_Use app shortcut to focus the window"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-toggle-focus",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_tooltip_text (button, _("If enabled, the app shortcut for 'xfce4-terminal --drop-down',"
+                                         " which normally opens and closes the window, will give it focus"
+                                         " if the option to keep the window open is checked."));
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
-  gtk_widget_show (button);
+  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-keep-open-default",
+                          G_OBJECT (button), "visible",
+                          G_BINDING_SYNC_CREATE);
 
   /* next row */
   row++;
 
-  button = gtk_check_button_new_with_mnemonic (_("_Use shortcut to focus visible window"));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-toggle-focus",
+  button = gtk_check_button_new_with_mnemonic (_("_Always keep window above"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "dropdown-keep-above",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  gtk_widget_set_tooltip_text (button, _("If enabled, the shortcut to open and retract the window will give focus\n"
-                                         ", rather than close it, if it had previously lost focus."));
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
   gtk_widget_show (button);
 
