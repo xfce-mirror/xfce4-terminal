@@ -1254,6 +1254,22 @@ terminal_window_dropdown_update_geometry (TerminalWindowDropdown *dropdown)
 
 
 
+#ifdef HAVE_GTK_LAYER_SHELL
+static gboolean
+focus_in_event (TerminalWindow *window)
+{
+  gboolean keep_above;
+  g_object_get (terminal_window_get_preferences (window), "dropdown-keep-above", &keep_above, NULL);
+  gtk_layer_set_layer (GTK_WINDOW (window), keep_above ? GTK_LAYER_SHELL_LAYER_TOP
+                                                       : GTK_LAYER_SHELL_LAYER_BOTTOM);
+  g_signal_handlers_disconnect_by_func (window, focus_in_event, NULL);
+
+  return FALSE;
+}
+#endif
+
+
+
 /**
  * terminal_window_dropdown_ignore_next_focus_out_event:
  * @dropdown  : A #TerminalWindowDropdown.
@@ -1264,4 +1280,12 @@ void
 terminal_window_dropdown_ignore_next_focus_out_event (TerminalWindowDropdown *dropdown)
 {
   dropdown->ignore_next_focus_out_event = TRUE;
+#ifdef HAVE_GTK_LAYER_SHELL
+  if (gtk_layer_is_supported ())
+    {
+      /* ensure opened dialog is above the terminal at least until next focus-in event */
+      gtk_layer_set_layer (GTK_WINDOW (dropdown), GTK_LAYER_SHELL_LAYER_BOTTOM);
+      g_signal_connect (dropdown, "focus-in-event", G_CALLBACK (focus_in_event), NULL);
+    }
+#endif
 }
