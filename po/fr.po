@@ -9,6 +9,7 @@
 # Charles Monzat <c.monzat@laposte.net>, 2016-2018
 # Charles Monzat <c.monzat@laposte.net>, 2018
 # Charles Monzat <c.monzat@laposte.net>, 2018
+# Gaël Bonithon <gael@xfce.org>, 2023
 # Guillaume Laville <laville.guillaume@gmail.com>, 2013
 # jc1 <jc1.quebecos@gmail.com>, 2013,2017-2018,2021-2023
 # Jérôme Guelfucci <jeromeg@»fce.org>, 2009
@@ -25,9 +26,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-30 00:50+0200\n"
+"POT-Creation-Date: 2023-10-01 00:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
-"Last-Translator: Wallon Wallon, 2022-2023\n"
+"Last-Translator: Gaël Bonithon <gael@xfce.org>, 2023\n"
 "Language-Team: French (http://app.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -438,14 +439,14 @@ msgstr "_Fermer"
 
 #. add the "Help" button
 #: ../terminal/terminal-preferences-dialog.c:224
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:361
 msgid "_Help"
 msgstr "Aid_e"
 
 #. * General
 #. section: General
 #: ../terminal/terminal-preferences-dialog.c:241
-#: ../terminal/terminal-preferences-dialog.c:1117
+#: ../terminal/terminal-preferences-dialog.c:1120
 msgid "General"
 msgstr "Général"
 
@@ -654,324 +655,325 @@ msgid "_Keep window open when it loses focus"
 msgstr "Gar_der la fenêtre ouverte quand elle perd le focus"
 
 #: ../terminal/terminal-preferences-dialog.c:539
-msgid "_Always keep window on top"
-msgstr "G_arder toujours la fenêtre vers le haut"
+msgid "_Use app shortcut to focus the window"
+msgstr "_Utiliser le raccourci d’application pour donner le focus à la fenêtre"
 
-#: ../terminal/terminal-preferences-dialog.c:549
-msgid "_Use shortcut to focus visible window"
-msgstr "_Utiliser le raccourci pour donner le focus à la fenêtre"
-
-#: ../terminal/terminal-preferences-dialog.c:553
+#: ../terminal/terminal-preferences-dialog.c:543
 msgid ""
-"If enabled, the shortcut to open and retract the window will give focus\n"
-", rather than close it, if it had previously lost focus."
-msgstr "Si activé, le raccourci pour ouvrir et rétracter la fenêtre donnera le focus\n, plutôt que de le fermer, s’il avait précédemment perdu le focus."
+"If enabled, the app shortcut for 'xfce4-terminal --drop-down', which "
+"normally opens and closes the window, will give it focus if the option to "
+"keep the window open is checked."
+msgstr "Si activé, le raccourci d’application pour \"xfce4-terminal --drop-down\", qui ouvre et ferme normalement la fenêtre, lui donnera le focus si l’option pour garder la fenêtre ouverte est cochée."
 
-#: ../terminal/terminal-preferences-dialog.c:564
+#: ../terminal/terminal-preferences-dialog.c:554
+msgid "_Always keep window above"
+msgstr "G_arder toujours la fenêtre au dessus"
+
+#: ../terminal/terminal-preferences-dialog.c:567
 msgid "_Show status icon in notification area"
 msgstr "_Afficher l’icône d’état dans la zone de notification"
 
 #. section: Appearance & Animation
-#: ../terminal/terminal-preferences-dialog.c:573
+#: ../terminal/terminal-preferences-dialog.c:576
 msgid "Appearance and Animation"
 msgstr "Apparence et animation"
 
-#: ../terminal/terminal-preferences-dialog.c:575
+#: ../terminal/terminal-preferences-dialog.c:578
 msgid "Width:"
 msgstr "Largeur :"
 
-#: ../terminal/terminal-preferences-dialog.c:597
+#: ../terminal/terminal-preferences-dialog.c:600
 msgid "Height:"
 msgstr "Hauteur :"
 
-#: ../terminal/terminal-preferences-dialog.c:619
-#: ../terminal/terminal-preferences-dialog.c:894
+#: ../terminal/terminal-preferences-dialog.c:622
+#: ../terminal/terminal-preferences-dialog.c:897
 msgid "Opacity:"
 msgstr "Opacité :"
 
-#: ../terminal/terminal-preferences-dialog.c:641
+#: ../terminal/terminal-preferences-dialog.c:644
 msgid "Duration:"
 msgstr "Durée :"
 
-#: ../terminal/terminal-preferences-dialog.c:663
+#: ../terminal/terminal-preferences-dialog.c:666
 msgid "_Always show tabs"
 msgstr "_Toujours afficher les onglets"
 
-#: ../terminal/terminal-preferences-dialog.c:673
+#: ../terminal/terminal-preferences-dialog.c:676
 msgid "_Show window borders"
 msgstr "Afficher les bordure_s de la fenêtre"
 
 #. section: Position
-#: ../terminal/terminal-preferences-dialog.c:682
+#: ../terminal/terminal-preferences-dialog.c:685
 msgid "Position"
 msgstr "Position"
 
-#: ../terminal/terminal-preferences-dialog.c:684
+#: ../terminal/terminal-preferences-dialog.c:687
 msgid "Left"
 msgstr "À gauche"
 
-#: ../terminal/terminal-preferences-dialog.c:706
+#: ../terminal/terminal-preferences-dialog.c:709
 msgid "Right"
 msgstr "Droite"
 
-#: ../terminal/terminal-preferences-dialog.c:714
+#: ../terminal/terminal-preferences-dialog.c:717
 msgid "Up"
 msgstr "Vers le haut"
 
-#: ../terminal/terminal-preferences-dialog.c:728
+#: ../terminal/terminal-preferences-dialog.c:731
 msgid "Down"
 msgstr "Vers le bas"
 
-#: ../terminal/terminal-preferences-dialog.c:736
+#: ../terminal/terminal-preferences-dialog.c:739
 msgid "_Move to monitor with pointer"
 msgstr "Déplacer sur le _moniteur avec le pointeur"
 
 #. * Appearance
-#: ../terminal/terminal-preferences-dialog.c:748
+#: ../terminal/terminal-preferences-dialog.c:751
 msgid "Appearance"
 msgstr "Apparence"
 
 #. section: Font
-#: ../terminal/terminal-preferences-dialog.c:756
+#: ../terminal/terminal-preferences-dialog.c:759
 msgid "Font"
 msgstr "Fonte"
 
-#: ../terminal/terminal-preferences-dialog.c:758
+#: ../terminal/terminal-preferences-dialog.c:761
 msgid "_Use system font"
 msgstr "_Utiliser la police du système"
 
-#: ../terminal/terminal-preferences-dialog.c:762
+#: ../terminal/terminal-preferences-dialog.c:765
 msgid "Enable this to use system-wide monospace font."
 msgstr "Activer ceci pour utiliser la police à espacement fixe du système."
 
-#: ../terminal/terminal-preferences-dialog.c:782
+#: ../terminal/terminal-preferences-dialog.c:785
 msgid "_Allow bold text"
 msgstr "_Autoriser le texte en gras"
 
-#: ../terminal/terminal-preferences-dialog.c:786
+#: ../terminal/terminal-preferences-dialog.c:789
 msgid ""
 "Enable this to allow applications running inside the terminal windows to use"
 " bold font."
 msgstr "Activer ceci pour autoriser les applications en cours d’exécution dans le terminal à utiliser du texte en gras."
 
-#: ../terminal/terminal-preferences-dialog.c:793
+#: ../terminal/terminal-preferences-dialog.c:796
 msgid "Cursor blinks:"
 msgstr "Le curseur clignote :"
 
-#: ../terminal/terminal-preferences-dialog.c:799
+#: ../terminal/terminal-preferences-dialog.c:802
 msgid "Never"
 msgstr "Jamais"
 
-#: ../terminal/terminal-preferences-dialog.c:800
+#: ../terminal/terminal-preferences-dialog.c:803
 msgid "When focused"
 msgstr "Lorsqu’il a le focus"
 
-#: ../terminal/terminal-preferences-dialog.c:801
+#: ../terminal/terminal-preferences-dialog.c:804
 msgid "When unfocused"
 msgstr "Lorsqu’il n’a pas le focus"
 
-#: ../terminal/terminal-preferences-dialog.c:802
+#: ../terminal/terminal-preferences-dialog.c:805
 msgid "Always"
 msgstr "Toujours"
 
-#: ../terminal/terminal-preferences-dialog.c:815
+#: ../terminal/terminal-preferences-dialog.c:818
 msgid "Cell spacing:"
 msgstr "Espacement des cellules :"
 
-#: ../terminal/terminal-preferences-dialog.c:828
+#: ../terminal/terminal-preferences-dialog.c:831
 msgid "x width"
 msgstr "Largeur x"
 
-#: ../terminal/terminal-preferences-dialog.c:841
+#: ../terminal/terminal-preferences-dialog.c:844
 msgid "x height"
 msgstr "hauteur x"
 
-#: ../terminal/terminal-preferences-dialog.c:846
-#: ../terminal/terminal-preferences-dialog.c:1469
-#: ../terminal/terminal-window.c:2192
+#: ../terminal/terminal-preferences-dialog.c:849
+#: ../terminal/terminal-preferences-dialog.c:1472
+#: ../terminal/terminal-window.c:2191
 msgid "Reset"
 msgstr "Réinitialiser"
 
 #. section: Background
-#: ../terminal/terminal-preferences-dialog.c:855
+#: ../terminal/terminal-preferences-dialog.c:858
 msgid "Background"
 msgstr "Image d’arrière-plan"
 
-#: ../terminal/terminal-preferences-dialog.c:858
+#: ../terminal/terminal-preferences-dialog.c:861
 msgid "None (use solid color)"
 msgstr "Aucune (utiliser une couleur unie)"
 
-#: ../terminal/terminal-preferences-dialog.c:859
+#: ../terminal/terminal-preferences-dialog.c:862
 msgid "Background image"
 msgstr "Image d’arrière-plan"
 
-#: ../terminal/terminal-preferences-dialog.c:860
+#: ../terminal/terminal-preferences-dialog.c:863
 msgid "Transparent Background"
 msgstr "Arrière-plan Transparent"
 
-#: ../terminal/terminal-preferences-dialog.c:929
+#: ../terminal/terminal-preferences-dialog.c:932
 msgid "File:"
 msgstr "Fichier :"
 
-#: ../terminal/terminal-preferences-dialog.c:946
+#: ../terminal/terminal-preferences-dialog.c:949
 msgid "All Files"
 msgstr "Tous les fichiers"
 
-#: ../terminal/terminal-preferences-dialog.c:952
+#: ../terminal/terminal-preferences-dialog.c:955
 msgid "Image Files"
 msgstr "Fichiers image"
 
-#: ../terminal/terminal-preferences-dialog.c:960
+#: ../terminal/terminal-preferences-dialog.c:963
 msgid "Adjustment:"
 msgstr "Ajustement :"
 
-#: ../terminal/terminal-preferences-dialog.c:966
+#: ../terminal/terminal-preferences-dialog.c:969
 msgid "Tiled"
 msgstr "Mosaïque"
 
-#: ../terminal/terminal-preferences-dialog.c:967
+#: ../terminal/terminal-preferences-dialog.c:970
 msgid "Centered"
 msgstr "Centré"
 
-#: ../terminal/terminal-preferences-dialog.c:968
+#: ../terminal/terminal-preferences-dialog.c:971
 msgid "Scaled"
 msgstr "Mise à l’échelle"
 
-#: ../terminal/terminal-preferences-dialog.c:969
+#: ../terminal/terminal-preferences-dialog.c:972
 msgid "Stretched"
 msgstr "Étendue"
 
-#: ../terminal/terminal-preferences-dialog.c:970
+#: ../terminal/terminal-preferences-dialog.c:973
 msgid "Filled"
 msgstr "Rempli"
 
-#: ../terminal/terminal-preferences-dialog.c:981
+#: ../terminal/terminal-preferences-dialog.c:984
 msgid "Shading:"
 msgstr "Ombrage :"
 
 #. section: Opening new windows
-#: ../terminal/terminal-preferences-dialog.c:997
+#: ../terminal/terminal-preferences-dialog.c:1000
 msgid "Opening New Windows"
 msgstr "Ouverture des nouvelles fenêtres"
 
-#: ../terminal/terminal-preferences-dialog.c:999
+#: ../terminal/terminal-preferences-dialog.c:1002
 msgid "_Display menubar in new windows"
 msgstr "Afficher la barre _de menu dans les nouvelles fenêtres"
 
-#: ../terminal/terminal-preferences-dialog.c:1003
+#: ../terminal/terminal-preferences-dialog.c:1006
 msgid "Enable this option to show menubars in newly created terminal windows."
 msgstr "Activer cette option pour afficher les barres de menu dans les fenêtres nouvellement créées."
 
-#: ../terminal/terminal-preferences-dialog.c:1010
+#: ../terminal/terminal-preferences-dialog.c:1013
 msgid "_Display toolbar in new windows"
 msgstr "Afficher la barre _d’outils dans les nouvelles fenêtres"
 
-#: ../terminal/terminal-preferences-dialog.c:1014
+#: ../terminal/terminal-preferences-dialog.c:1017
 msgid "Enable this option to show toolbar in newly created terminal windows."
 msgstr "Activer cette option pour afficher la barre d’outils dans les fenêtres nouvellement créées."
 
-#: ../terminal/terminal-preferences-dialog.c:1021
+#: ../terminal/terminal-preferences-dialog.c:1024
 msgid "_Display borders around new windows"
 msgstr "Afficher les bordures autour _des nouvelles fenêtres"
 
-#: ../terminal/terminal-preferences-dialog.c:1025
+#: ../terminal/terminal-preferences-dialog.c:1028
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Activer cette option pour afficher des décorations autour des fenêtres nouvellement créées."
 
-#: ../terminal/terminal-preferences-dialog.c:1032
+#: ../terminal/terminal-preferences-dialog.c:1035
 msgid "Default geometry"
 msgstr "Géométrie par défaut"
 
-#: ../terminal/terminal-preferences-dialog.c:1047
+#: ../terminal/terminal-preferences-dialog.c:1050
 msgid "columns"
 msgstr "colonnes"
 
-#: ../terminal/terminal-preferences-dialog.c:1062
+#: ../terminal/terminal-preferences-dialog.c:1065
 msgid "rows"
 msgstr "lignes"
 
 #. section: Tabs
-#: ../terminal/terminal-preferences-dialog.c:1074
+#: ../terminal/terminal-preferences-dialog.c:1077
 msgid "Tabs"
 msgstr "Onglets"
 
-#: ../terminal/terminal-preferences-dialog.c:1076
+#: ../terminal/terminal-preferences-dialog.c:1079
 msgid "Reset tab activity indicator after"
 msgstr "Réinitialiser l’indication d’activité de l’onglet après"
 
-#: ../terminal/terminal-preferences-dialog.c:1089
+#: ../terminal/terminal-preferences-dialog.c:1092
 msgid "seconds"
 msgstr "secondes"
 
-#: ../terminal/terminal-preferences-dialog.c:1097
+#: ../terminal/terminal-preferences-dialog.c:1100
 msgid "_Use custom styling to make tabs slim (restart required)"
 msgstr "_Utiliser un style personnalisé pour rendre les onglets fins (redémarrage requis)"
 
 #. * Colors
-#: ../terminal/terminal-preferences-dialog.c:1109
+#: ../terminal/terminal-preferences-dialog.c:1112
 msgid "Colors"
 msgstr "Couleurs"
 
-#: ../terminal/terminal-preferences-dialog.c:1167
+#: ../terminal/terminal-preferences-dialog.c:1170
 msgid "_Use system theme colors for text and background"
 msgstr "_Utiliser les couleurs du thème du système pour le texte et l’arrière-plan"
 
-#: ../terminal/terminal-preferences-dialog.c:1177
+#: ../terminal/terminal-preferences-dialog.c:1180
 msgid "_Vary the background color for each tab"
 msgstr "_Changer la couleur d’arrière-plan pour chaque onglet"
 
-#: ../terminal/terminal-preferences-dialog.c:1181
+#: ../terminal/terminal-preferences-dialog.c:1184
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness."
 msgstr "La couleur aléatoire est basée sur la couleur d’arrière-plan sélectionnée, en gardant la même luminosité."
 
-#: ../terminal/terminal-preferences-dialog.c:1191
+#: ../terminal/terminal-preferences-dialog.c:1194
 msgid "_Enable sixel graphics"
 msgstr "_Activer les graphiques sixel"
 
 #. section: Custom colors
-#: ../terminal/terminal-preferences-dialog.c:1201
+#: ../terminal/terminal-preferences-dialog.c:1204
 msgid "Custom Colors"
 msgstr "Couleurs personnalisées"
 
-#: ../terminal/terminal-preferences-dialog.c:1203
+#: ../terminal/terminal-preferences-dialog.c:1206
 msgid "_Cursor color:"
 msgstr "_Couleur du curseur :"
 
-#: ../terminal/terminal-preferences-dialog.c:1207
-#: ../terminal/terminal-preferences-dialog.c:1241
+#: ../terminal/terminal-preferences-dialog.c:1210
+#: ../terminal/terminal-preferences-dialog.c:1244
 msgid ""
 "Enable this option to set custom text and background colors for cursor. If "
 "disabled the background and text colors will be reversed."
 msgstr "Activer cette option pour définir des couleurs de texte et d’arrière-plan personnalisées pour le curseur. Si désactivée, les couleurs de l’arrière-plan et du texte seront inversées."
 
-#: ../terminal/terminal-preferences-dialog.c:1237
+#: ../terminal/terminal-preferences-dialog.c:1240
 msgid "_Text selection color:"
 msgstr "Couleur de sélection du _texte :"
 
-#: ../terminal/terminal-preferences-dialog.c:1271
+#: ../terminal/terminal-preferences-dialog.c:1274
 msgid "_Bold selection color:"
 msgstr "Couleur de sélection du _Gras :"
 
-#: ../terminal/terminal-preferences-dialog.c:1275
+#: ../terminal/terminal-preferences-dialog.c:1278
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Activer cette option pour définir une couleur gras personnalisée. Si elle est désactivée, la couleur du texte sera utilisée."
 
 #. section: Palette
-#: ../terminal/terminal-preferences-dialog.c:1292
+#: ../terminal/terminal-preferences-dialog.c:1295
 msgid "Palette"
 msgstr "Palette"
 
-#: ../terminal/terminal-preferences-dialog.c:1315
+#: ../terminal/terminal-preferences-dialog.c:1318
 msgid "_Show bold text in bright colors:"
 msgstr "Afficher le texte en gra_s dans des couleurs vives :"
 
-#: ../terminal/terminal-preferences-dialog.c:1319
+#: ../terminal/terminal-preferences-dialog.c:1322
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
@@ -979,174 +981,174 @@ msgid ""
 msgstr "Activer cette option pour autoriser les séquences d’échappement telles que « \\e[1;35m » à appliquer des couleurs vives au texte en plus du gras. Si désactivée, la couleur du texte reste inchangée."
 
 #. section: Presets
-#: ../terminal/terminal-preferences-dialog.c:1325
+#: ../terminal/terminal-preferences-dialog.c:1328
 msgid "Presets"
 msgstr "Préréglages"
 
 #. * Compatibility
-#: ../terminal/terminal-preferences-dialog.c:1341
-#: ../terminal/terminal-preferences-dialog.c:1347
+#: ../terminal/terminal-preferences-dialog.c:1344
+#: ../terminal/terminal-preferences-dialog.c:1350
 msgid "Compatibility"
 msgstr "Compatibilité"
 
-#: ../terminal/terminal-preferences-dialog.c:1352
+#: ../terminal/terminal-preferences-dialog.c:1355
 msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
 msgstr "Ces options peuvent gêner le fonctionnement de certaines\napplications.\nElles sont seulement là pour vous permettre de faire fonctionner certaines applications et systèmes\nd’exploitation qui attendent un comportement différent du terminal."
 
-#: ../terminal/terminal-preferences-dialog.c:1365
+#: ../terminal/terminal-preferences-dialog.c:1368
 msgid "Backspace key generates:"
 msgstr "La touche Retour arrière émet :"
 
-#: ../terminal/terminal-preferences-dialog.c:1371
-#: ../terminal/terminal-preferences-dialog.c:1394
+#: ../terminal/terminal-preferences-dialog.c:1374
+#: ../terminal/terminal-preferences-dialog.c:1397
 msgid "Auto-detect"
 msgstr "Détection automatique"
 
-#: ../terminal/terminal-preferences-dialog.c:1372
-#: ../terminal/terminal-preferences-dialog.c:1395
+#: ../terminal/terminal-preferences-dialog.c:1375
+#: ../terminal/terminal-preferences-dialog.c:1398
 msgid "ASCII Del"
 msgstr "Suppr ASCII"
 
-#: ../terminal/terminal-preferences-dialog.c:1373
-#: ../terminal/terminal-preferences-dialog.c:1396
+#: ../terminal/terminal-preferences-dialog.c:1376
+#: ../terminal/terminal-preferences-dialog.c:1399
 msgid "Escape sequence"
 msgstr "Séquence d’échappement"
 
-#: ../terminal/terminal-preferences-dialog.c:1374
-#: ../terminal/terminal-preferences-dialog.c:1397
+#: ../terminal/terminal-preferences-dialog.c:1377
+#: ../terminal/terminal-preferences-dialog.c:1400
 msgid "Control-H"
 msgstr "Control-H"
 
-#: ../terminal/terminal-preferences-dialog.c:1375
-#: ../terminal/terminal-preferences-dialog.c:1398
+#: ../terminal/terminal-preferences-dialog.c:1378
+#: ../terminal/terminal-preferences-dialog.c:1401
 msgid "Erase TTY"
 msgstr "Effacer le TTY"
 
-#: ../terminal/terminal-preferences-dialog.c:1388
+#: ../terminal/terminal-preferences-dialog.c:1391
 msgid "Delete key generates:"
 msgstr "La touche Supprimer émet :"
 
-#: ../terminal/terminal-preferences-dialog.c:1411
+#: ../terminal/terminal-preferences-dialog.c:1414
 msgid "Ambiguous-width characters:"
 msgstr "Caractères à largeur ambiguë :"
 
-#: ../terminal/terminal-preferences-dialog.c:1417
+#: ../terminal/terminal-preferences-dialog.c:1420
 msgid "Narrow"
 msgstr "Étroits"
 
-#: ../terminal/terminal-preferences-dialog.c:1418
+#: ../terminal/terminal-preferences-dialog.c:1421
 msgid "Wide"
 msgstr "Larges"
 
-#: ../terminal/terminal-preferences-dialog.c:1432
+#: ../terminal/terminal-preferences-dialog.c:1435
 msgid "Reset compatibility options to defaults"
 msgstr "Réinitialiser les options de compatibilité aux valeurs par défaut"
 
 #. * Advanced
-#: ../terminal/terminal-preferences-dialog.c:1443
+#: ../terminal/terminal-preferences-dialog.c:1446
 msgid "Advanced"
 msgstr "Avancé"
 
 #. section: Double Click
-#: ../terminal/terminal-preferences-dialog.c:1451
+#: ../terminal/terminal-preferences-dialog.c:1454
 msgid "Double Click"
 msgstr "Double-clic"
 
-#: ../terminal/terminal-preferences-dialog.c:1453
+#: ../terminal/terminal-preferences-dialog.c:1456
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Lors d’un doucle-clic, considérer que les caractères suivants font partie d’un mot :"
 
 #. section: Encoding
-#: ../terminal/terminal-preferences-dialog.c:1477
+#: ../terminal/terminal-preferences-dialog.c:1480
 msgid "Encoding"
 msgstr "Encodage"
 
-#: ../terminal/terminal-preferences-dialog.c:1479
+#: ../terminal/terminal-preferences-dialog.c:1482
 msgid "Default character encoding"
 msgstr "Encodage des caractères par défaut"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: ../terminal/terminal-preferences-dialog.c:1503
-#: ../terminal/terminal-preferences-dialog.c:1620
+#: ../terminal/terminal-preferences-dialog.c:1506
+#: ../terminal/terminal-preferences-dialog.c:1623
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
-#: ../terminal/terminal-preferences-dialog.c:1505
+#: ../terminal/terminal-preferences-dialog.c:1508
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "_Désactiver les touches d’accès des menus (comme Alt+f)"
 
-#: ../terminal/terminal-preferences-dialog.c:1515
+#: ../terminal/terminal-preferences-dialog.c:1518
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "_Désactiver le raccourci clavier du menu (F10 par défaut)"
 
 #. section: Misc
-#: ../terminal/terminal-preferences-dialog.c:1524
+#: ../terminal/terminal-preferences-dialog.c:1527
 msgid "Misc"
 msgstr "Divers"
 
-#: ../terminal/terminal-preferences-dialog.c:1526
+#: ../terminal/terminal-preferences-dialog.c:1529
 msgid "_Use middle mouse click to close tabs"
 msgstr "_Utiliser le clic molette pour fermer les onglets"
 
-#: ../terminal/terminal-preferences-dialog.c:1536
+#: ../terminal/terminal-preferences-dialog.c:1539
 msgid "_Use middle mouse click to open urls"
 msgstr "_Utiliser le clic molette pour ouvrir les URL"
 
-#: ../terminal/terminal-preferences-dialog.c:1546
+#: ../terminal/terminal-preferences-dialog.c:1549
 msgid "_Auto-hide mouse pointer"
 msgstr "M_asquer automatiquement le pointeur de la souris"
 
-#: ../terminal/terminal-preferences-dialog.c:1556
+#: ../terminal/terminal-preferences-dialog.c:1559
 msgid "_Open new tab to the right of the active tab"
 msgstr "_Ouvrir un nouvel onglet à droite de l’onglet actif"
 
-#: ../terminal/terminal-preferences-dialog.c:1566
+#: ../terminal/terminal-preferences-dialog.c:1569
 msgid "_Audible bell"
 msgstr "Cloche _sonore"
 
-#: ../terminal/terminal-preferences-dialog.c:1576
+#: ../terminal/terminal-preferences-dialog.c:1579
 msgid "_Visual bell"
 msgstr "Cloche _visuelle"
 
-#: ../terminal/terminal-preferences-dialog.c:1586
+#: ../terminal/terminal-preferences-dialog.c:1589
 msgid "Right click action:"
 msgstr "Action clic droit :"
 
-#: ../terminal/terminal-preferences-dialog.c:1592
+#: ../terminal/terminal-preferences-dialog.c:1595
 msgid "Context Menu"
 msgstr "Menu contextuel"
 
-#: ../terminal/terminal-preferences-dialog.c:1593
+#: ../terminal/terminal-preferences-dialog.c:1596
 msgid "Paste clipboard"
 msgstr "Coller le presse-papiers"
 
-#: ../terminal/terminal-preferences-dialog.c:1594
+#: ../terminal/terminal-preferences-dialog.c:1597
 msgid "Paste selection"
 msgstr "Coller la sélection"
 
-#: ../terminal/terminal-preferences-dialog.c:1607
+#: ../terminal/terminal-preferences-dialog.c:1610
 msgid "Enable Hyperlinks"
 msgstr "Activer les hyperliens"
 
-#: ../terminal/terminal-preferences-dialog.c:1608
+#: ../terminal/terminal-preferences-dialog.c:1611
 msgid "Enable support for hyperlinks."
 msgstr "Activer la prise en charge des hyperliens."
 
-#: ../terminal/terminal-preferences-dialog.c:1631
+#: ../terminal/terminal-preferences-dialog.c:1634
 msgid "Window"
 msgstr "Fenêtre"
 
-#: ../terminal/terminal-preferences-dialog.c:1632
+#: ../terminal/terminal-preferences-dialog.c:1635
 #: ../terminal/terminal-preferences.c:1195
 msgid "Terminal"
 msgstr "Terminal"
 
 #. default item + separator
-#: ../terminal/terminal-preferences-dialog.c:2039
+#: ../terminal/terminal-preferences-dialog.c:2042
 msgid "Select Preset"
 msgstr "Sélectionner le préréglage"
 
@@ -1171,7 +1173,7 @@ msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Désactiver la boîte de dialogue (peut être réactivée dans les préférences)"
 
 #: ../terminal/terminal-screen.c:494 ../terminal/terminal-screen.c:880
-#: ../terminal/terminal-screen.c:2377
+#: ../terminal/terminal-screen.c:2374
 msgid "Untitled"
 msgstr "Sans titre"
 
@@ -1180,58 +1182,58 @@ msgstr "Sans titre"
 msgid "Unable to determine your login shell."
 msgstr "Impossible de déterminer votre shell de connexion."
 
-#: ../terminal/terminal-screen.c:1495
+#: ../terminal/terminal-screen.c:1492
 msgid "_Relaunch"
 msgstr "_Relancer"
 
-#: ../terminal/terminal-screen.c:1501
+#: ../terminal/terminal-screen.c:1498
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Le processus fils s’est terminé normalement avec l’état %d."
 
-#: ../terminal/terminal-screen.c:1503
+#: ../terminal/terminal-screen.c:1500
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Le processus fils a été interrompu par le signal %d."
 
-#: ../terminal/terminal-screen.c:1505
+#: ../terminal/terminal-screen.c:1502
 msgid "The child process was aborted."
 msgstr "Le processus fils a été interrompu."
 
-#: ../terminal/terminal-screen.c:1511 ../terminal/terminal-window.c:886
+#: ../terminal/terminal-screen.c:1508 ../terminal/terminal-window.c:885
 msgid "Do _not ask me again"
 msgstr "_Ne plus me poser la question"
 
-#: ../terminal/terminal-screen.c:1825
+#: ../terminal/terminal-screen.c:1822
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Avertissement : collage potentiellement dangereux"
 
-#: ../terminal/terminal-screen.c:1828
+#: ../terminal/terminal-screen.c:1825
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Coller ce texte dans le terminal peut s’avérer dangereux car il semble que certaines commandes risquent de s’exécuter, impliquant potentiellement un accès root (« sudo »)."
 
-#: ../terminal/terminal-screen.c:1831
+#: ../terminal/terminal-screen.c:1828
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Coller ce texte dans le terminal peut s’avérer dangereux car il semble que certaines commandes risquent de s’exécuter."
 
-#: ../terminal/terminal-screen.c:1841 ../terminal/terminal-window.c:809
-#: ../terminal/terminal-window.c:2369
+#: ../terminal/terminal-screen.c:1838 ../terminal/terminal-window.c:808
+#: ../terminal/terminal-window.c:2368
 msgid "_Cancel"
 msgstr "_Annuler"
 
-#: ../terminal/terminal-screen.c:1844 ../terminal/terminal-window.c:333
+#: ../terminal/terminal-screen.c:1841 ../terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "C_oller"
 
-#: ../terminal/terminal-screen.c:1995 ../terminal/terminal-screen.c:2078
+#: ../terminal/terminal-screen.c:1992 ../terminal/terminal-screen.c:2075
 msgid "Failed to execute child"
 msgstr "Impossible d’exécuter un fils"
 
-#: ../terminal/terminal-screen.c:2734
+#: ../terminal/terminal-screen.c:2731
 msgid "Close this tab"
 msgstr "Fermer cet onglet"
 
@@ -1271,15 +1273,15 @@ msgstr "En_velopper"
 msgid "_Opacity:"
 msgstr "_Opacité :"
 
-#: ../terminal/terminal-util.c:80
+#: ../terminal/terminal-util.c:82
 msgid "Xfce Terminal Emulator"
 msgstr "Émulateur de terminal Xfce"
 
-#: ../terminal/terminal-util.c:86
+#: ../terminal/terminal-util.c:88
 msgid "translator-credits"
 msgstr "L’équipe de traduction francophone de Xfce"
 
-#: ../terminal/terminal-util.c:89
+#: ../terminal/terminal-util.c:91
 msgid "Visit Xfce Terminal website"
 msgstr "Visiter le site web du Terminal Xfce"
 
@@ -1321,460 +1323,460 @@ msgstr "Ouvrir le lien"
 msgid "Failed to open the URL '%s'"
 msgstr "Impossible d’ouvrir l’URL « %s »"
 
-#: ../terminal/terminal-window-dropdown.c:284
+#: ../terminal/terminal-window-dropdown.c:416
 msgid "Keep window open when it loses focus"
 msgstr "Garder la fenêtre ouverte quand elle perd le focus"
 
-#: ../terminal/terminal-window-dropdown.c:409
+#: ../terminal/terminal-window-dropdown.c:541
 msgid "Drop-down Terminal"
 msgstr "Terminal déroulant"
 
-#: ../terminal/terminal-window-dropdown.c:410
+#: ../terminal/terminal-window-dropdown.c:542
 msgid "Toggle Drop-down Terminal"
 msgstr "(Dés)activer le terminal déroulant"
 
 #. Use old accelerator paths for backwards compatibility
-#: ../terminal/terminal-window.c:321
+#: ../terminal/terminal-window.c:320
 msgid "_File"
 msgstr "_Fichier"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:321
 msgid "Open _Tab"
 msgstr "Ouvrir un _onglet"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:321
 msgid "Open a new terminal tab"
 msgstr "Ouvrir un terminal dans un nouvel onglet"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:322
 msgid "Open T_erminal"
 msgstr "Ouvrir un _terminal"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:322
 msgid "Open a new terminal window"
 msgstr "Ouvrir un terminal dans une nouvelle fenêtre"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:323
 msgid "_Open File Manager Here"
 msgstr "_Ouvrir le gestionnaire de fichiers ici"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:323
 msgid "Open the current directory"
 msgstr "Ouvrir le répertoire actuel"
 
-#: ../terminal/terminal-window.c:325
+#: ../terminal/terminal-window.c:324
 msgid "_Undo Close Tab"
 msgstr "_Annuler la fermeture de l’onglet"
 
-#: ../terminal/terminal-window.c:326
+#: ../terminal/terminal-window.c:325
 msgid "_Detach Tab"
 msgstr "_Détacher l’onglet"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:850
+#: ../terminal/terminal-window.c:326 ../terminal/terminal-window.c:849
 msgid "Close T_ab"
 msgstr "Fermer _l’onglet"
 
-#: ../terminal/terminal-window.c:328
+#: ../terminal/terminal-window.c:327
 msgid "Close Other Ta_bs"
 msgstr "Fermer les autres on_glets"
 
-#: ../terminal/terminal-window.c:329 ../terminal/terminal-window.c:857
+#: ../terminal/terminal-window.c:328 ../terminal/terminal-window.c:856
 msgid "Close _Window"
 msgstr "Fermer la _fenêtre"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:329
 msgid "_Edit"
 msgstr "É_dition"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:330
 msgid "_Copy"
 msgstr "_Copier"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:330
 msgid "Copy to clipboard"
 msgstr "Copier vers le presse-papiers"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:331
 msgid "Copy as _HTML"
 msgstr "Copier en tant que _HTML"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:331
 msgid "Copy to clipboard as HTML"
 msgstr "Copier vers le presse-papiers en tant que HTML"
 
-#: ../terminal/terminal-window.c:333
+#: ../terminal/terminal-window.c:332
 msgid "Paste from clipboard"
 msgstr "Coller depuis le presse-papiers"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:333
 msgid "_Paste Alt"
 msgstr "C_oller alt"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:334
 msgid "Paste _Selection"
 msgstr "Coller la _sélection"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:335
 msgid "Paste _Selection Alt"
 msgstr "Coller la _sélection alt"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:336
 msgid "Select _All"
 msgstr "Tout _sélectionner"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:337
 msgid "Copy _Input To All Tabs..."
 msgstr "Copier l’_entrée dans tous les onglets…"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:338
 msgid "Pr_eferences..."
 msgstr "Pr_éférences…"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:338
 msgid "Open the preferences dialog"
 msgstr "Ouvrir la fenêtre des préférences"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:339
 msgid "_View"
 msgstr "_Affichage"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:340
 msgid "Zoom _In"
 msgstr "Zoom _avant"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:340
 msgid "Zoom in with larger font"
 msgstr "Zoom avant avec une police plus grande"
 
-#: ../terminal/terminal-window.c:342
+#: ../terminal/terminal-window.c:341
 msgid "Zoom In Alt"
 msgstr "Zoom avant alt"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:342
 msgid "Zoom _Out"
 msgstr "Zoom a_rrière"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:342
 msgid "Zoom out with smaller font"
 msgstr "Zoom arrière avec une police plus petite"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:343
 msgid "Zoom Out Alt"
 msgstr "Zoom arrière alt"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:344
 msgid "_Normal Size"
 msgstr "Taille _normale"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:344
 msgid "Zoom to default size"
 msgstr "Zoom à la taille par défaut"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:345
 msgid "_Normal Size Alt"
 msgstr "Taille _normale alt"
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:346
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:347
 msgid "_Set Title..."
 msgstr "_Définir le titre…"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:348
 msgid "Set Title Co_lor..."
 msgstr "Définir la cou_leur de titre…"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:349
 msgid "_Find..."
 msgstr "_Trouver…"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:349
 msgid "Search terminal contents"
 msgstr "Rechercher des contenus du terminal"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:350
 msgid "Find Ne_xt"
 msgstr "Trouver _suivant"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:351
 msgid "Find Pre_vious"
 msgstr "Trouver _précédent"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:352
 msgid "Sa_ve Contents..."
 msgstr "Enre_gistrer le contenu…"
 
-#: ../terminal/terminal-window.c:354 ../terminal/terminal-window.c:2232
+#: ../terminal/terminal-window.c:353 ../terminal/terminal-window.c:2231
 msgid "_Reset"
 msgstr "_Réinitialiser"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:354
 msgid "_Clear Scrollback and Reset"
 msgstr "Effa_cer le défilement et réinitialiser"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:355
 msgid "T_abs"
 msgstr "_Onglets"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:356
 msgid "_Previous Tab"
 msgstr "Onglet _précédent"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:356
 msgid "Switch to previous tab"
 msgstr "Revenir à l’onglet précédent"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:357
 msgid "_Next Tab"
 msgstr "Onglet _suivant"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:357
 msgid "Switch to next tab"
 msgstr "Passer à l’onglet suivant"
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:358
 msgid "Last _Active Tab"
 msgstr "Dernier onglet _actif"
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:358
 msgid "Switch to last active tab"
 msgstr "Basculer sur le dernier onglet actif"
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:359
 msgid "Move Tab _Left"
 msgstr "Déplacer _l’onglet vers la gauche"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:360
 msgid "Move Tab _Right"
 msgstr "Déplacer _l’onglet vers la droite"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:362
 msgid "_Contents"
 msgstr "_Guide d’utilisation"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:362
 msgid "Display help contents"
 msgstr "Affiche le guide d’utilisation"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:363
 msgid "_About"
 msgstr "À _propos"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:364
 msgid "_Zoom"
 msgstr "_Zoom"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:365
 msgid "Show Menubar Temporarily"
 msgstr "Afficher la barre de menus temporairement"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:366
 msgid "Show _Menubar"
 msgstr "Afficher la _barre de menus"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:366
 msgid "Show/hide the menubar"
 msgstr "Afficher / cacher la barre de menus"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:367
 msgid "Show _Toolbar"
 msgstr "Afficher la barre d’_outils"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:367
 msgid "Show/hide the toolbar"
 msgstr "Afficher / cacher la barre d’outils"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:368
 msgid "Show Window _Borders"
 msgstr "Afficher les _bordures de la fenêtre"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:368
 msgid "Show/hide the window decorations"
 msgstr "Afficher / cacher les décorations de la fenêtre"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:369
 msgid "_Fullscreen"
 msgstr "_Plein écran"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:369
 msgid "Toggle fullscreen mode"
 msgstr "(Dés)activer le mode plein écran"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:370
 msgid "_Read-Only"
 msgstr "_Lecture seule"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:370
 msgid "Toggle read-only mode"
 msgstr "Bascule en mode lecture seule"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:371
 msgid "Scroll on _Output"
 msgstr "Défiler sur la s_ortie"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:371
 msgid "Toggle scroll on output"
 msgstr "Basculer le défilement sur la sortie"
 
 #. used for changing the accelerator keys via the ShortcutsEditor, the logic
 #. is still handle by GtkActionEntries
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:373
 msgid "Go to Tab 1"
 msgstr "Aller à l’onglet 1"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:374
 msgid "Go to Tab 2"
 msgstr "Aller à l’onglet 2"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:375
 msgid "Go to Tab 3"
 msgstr "Aller à l’onglet 3"
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:376
 msgid "Go to Tab 4"
 msgstr "Aller à l’onglet 4"
 
-#: ../terminal/terminal-window.c:378
+#: ../terminal/terminal-window.c:377
 msgid "Go to Tab 5"
 msgstr "Aller à l’onglet 5"
 
-#: ../terminal/terminal-window.c:379
+#: ../terminal/terminal-window.c:378
 msgid "Go to Tab 6"
 msgstr "Aller à l’onglet 6"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:379
 msgid "Go to Tab 7"
 msgstr "Aller à l’onglet 7"
 
-#: ../terminal/terminal-window.c:381
+#: ../terminal/terminal-window.c:380
 msgid "Go to Tab 8"
 msgstr "Aller à l’onglet 8"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:381
 msgid "Go to Tab 9"
 msgstr "Aller à l’onglet 9"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:558
+#: ../terminal/terminal-window.c:557
 msgid "Set _Encoding"
 msgstr "Définir l’_encodage"
 
-#: ../terminal/terminal-window.c:807
+#: ../terminal/terminal-window.c:806
 msgid "Warning"
 msgstr "Attention"
 
 #. and process running
-#: ../terminal/terminal-window.c:818
+#: ../terminal/terminal-window.c:817
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Il y a encore des processus en cours d’exécution dans certains onglets.\nIls seront tous interrompus à la fermeture de cette fenêtre."
 
 #. and no process running
-#: ../terminal/terminal-window.c:824
+#: ../terminal/terminal-window.c:823
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Cette fenêtre a %d onglets ouverts. Fermer\ncette fenêtre fermera aussi tous ses onglets."
 
-#: ../terminal/terminal-window.c:828
+#: ../terminal/terminal-window.c:827
 msgid "Close all tabs?"
 msgstr "Fermer tous les onglets ?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:835
+#: ../terminal/terminal-window.c:834
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Un processus est encore en cours d’exécution.\nIl sera interrompu à la fermeture de cet onglet."
 
-#: ../terminal/terminal-window.c:837
+#: ../terminal/terminal-window.c:836
 msgid "Close tab?"
 msgstr "Fermer l’onglet ?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:842
+#: ../terminal/terminal-window.c:841
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Un processus est encore en cours d’exécution.\nIl sera interrompu à la fermeture de cette fenêtre."
 
-#: ../terminal/terminal-window.c:844
+#: ../terminal/terminal-window.c:843
 msgid "Close window?"
 msgstr "Fermer la fenêtre ?"
 
-#: ../terminal/terminal-window.c:1587
+#: ../terminal/terminal-window.c:1586
 msgid "Failed to open directory"
 msgstr "Impossible d’ouvrir le répertoire"
 
-#: ../terminal/terminal-window.c:1789
+#: ../terminal/terminal-window.c:1788
 msgid "Copy _Input:"
 msgstr "Copier l’_entrée :"
 
-#: ../terminal/terminal-window.c:1793
+#: ../terminal/terminal-window.c:1792
 msgid "Enter the text to be copied to all tabs"
 msgstr "Saisir le texte à copier dans tous les onglets"
 
-#: ../terminal/terminal-window.c:1801
+#: ../terminal/terminal-window.c:1800
 msgid "Copy input"
 msgstr "Copier l’entrée"
 
-#: ../terminal/terminal-window.c:2183
+#: ../terminal/terminal-window.c:2182
 msgid "_Title:"
 msgstr "_Titre :"
 
-#: ../terminal/terminal-window.c:2187
+#: ../terminal/terminal-window.c:2186
 msgid "Enter the title for the current terminal tab"
 msgstr "Entrer le titre pour l’onglet courant du terminal"
 
-#: ../terminal/terminal-window.c:2202
+#: ../terminal/terminal-window.c:2201
 msgid "Help"
 msgstr "Aide"
 
-#: ../terminal/terminal-window.c:2208
+#: ../terminal/terminal-window.c:2207
 msgid "Close"
 msgstr "Fermer"
 
-#: ../terminal/terminal-window.c:2231
+#: ../terminal/terminal-window.c:2230
 msgid "Choose title color"
 msgstr "Choisir la couleur de titre"
 
-#: ../terminal/terminal-window.c:2326
+#: ../terminal/terminal-window.c:2325
 msgid "Failed to create the regular expression"
 msgstr "Impossible de créer l’expression régulière"
 
-#: ../terminal/terminal-window.c:2366
+#: ../terminal/terminal-window.c:2365
 msgid "Save contents..."
 msgstr "Enregistrer le contenu…"
 
-#: ../terminal/terminal-window.c:2370
+#: ../terminal/terminal-window.c:2369
 msgid "_Save"
 msgstr "_Enregistrer"
 
-#: ../terminal/terminal-window.c:2407
+#: ../terminal/terminal-window.c:2406
 msgid "Failed to save terminal contents"
 msgstr "Impossible d’enregistrer le contenu du terminal"
 
-#: ../terminal/terminal-window.c:3179
+#: ../terminal/terminal-window.c:3178
 msgid "Send Signal"
 msgstr "Envoyer un signal"
 
-#: ../terminal/terminal-window.c:3196
+#: ../terminal/terminal-window.c:3195
 msgid "Zoom"
 msgstr "Zoom"
 
-#: ../terminal/terminal-window.c:3208
+#: ../terminal/terminal-window.c:3207
 msgid "Copy"
 msgstr "Copier"
 
-#: ../terminal/terminal-window.c:3219
+#: ../terminal/terminal-window.c:3218
 msgid "Paste"
 msgstr "Coller"
 
-#: ../terminal/terminal-window.c:3230
+#: ../terminal/terminal-window.c:3229
 msgid "View Options"
 msgstr "Afficher les options"
 
