@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-09 00:49+0200\n"
+"POT-Creation-Date: 2023-10-01 00:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Gordon Freeman, 2023\n"
 "Language-Team: Ukrainian (http://app.transifex.com/xfce/xfce-apps/language/uk/)\n"
@@ -372,39 +372,46 @@ msgstr "Для параметра \"--role\" потрібно вказати а�
 #: ../terminal/terminal-options.c:480
 #, c-format
 msgid ""
+"Option \"--workspace\" requires specifying the workspace number as its "
+"parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:494
+#, c-format
+msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "Для параметра \"--sm-client-id\" потрібно вказати аргумент з ідентифікатором сеансу"
 
-#: ../terminal/terminal-options.c:495
+#: ../terminal/terminal-options.c:509
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Для параметра \"--startup-id\" потрібно вказати аргумент з ідентифікатором запуску"
 
-#: ../terminal/terminal-options.c:511
+#: ../terminal/terminal-options.c:525
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "Опція \"--icon/-I\" потребує визначення назви значка чи назви файлу як його параметру"
 
-#: ../terminal/terminal-options.c:593
+#: ../terminal/terminal-options.c:607
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "Опція \"--font\" вимагає вказати назву шрифта як її параметр"
 
-#: ../terminal/terminal-options.c:611
+#: ../terminal/terminal-options.c:625
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Опція \"--zoom\" вимагає вказати ступінь збільшення/зменшення (%d .. %d) як її параметр"
 
-#: ../terminal/terminal-options.c:634
+#: ../terminal/terminal-options.c:648
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr "Невідомий параметр \"-%c\""
 
-#: ../terminal/terminal-options.c:637
+#: ../terminal/terminal-options.c:651
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Невідомий параметр \"%s\""
@@ -422,14 +429,14 @@ msgstr "_Закрити"
 
 #. add the "Help" button
 #: ../terminal/terminal-preferences-dialog.c:224
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:361
 msgid "_Help"
 msgstr "_Довідка"
 
 #. * General
 #. section: General
 #: ../terminal/terminal-preferences-dialog.c:241
-#: ../terminal/terminal-preferences-dialog.c:1117
+#: ../terminal/terminal-preferences-dialog.c:1120
 msgid "General"
 msgstr "Загальні"
 
@@ -638,324 +645,325 @@ msgid "_Keep window open when it loses focus"
 msgstr "_Зберігати вікно відкритим при втраті фокусу"
 
 #: ../terminal/terminal-preferences-dialog.c:539
-msgid "_Always keep window on top"
-msgstr "Завжди відображати вікно звер_ху"
+msgid "_Use app shortcut to focus the window"
+msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:549
-msgid "_Use shortcut to focus visible window"
-msgstr "Використовувати _ярлик, щоб сфокусувати видиме вікно"
-
-#: ../terminal/terminal-preferences-dialog.c:553
+#: ../terminal/terminal-preferences-dialog.c:543
 msgid ""
-"If enabled, the shortcut to open and retract the window will give focus\n"
-", rather than close it, if it had previously lost focus."
-msgstr "Якщо ввімкнено, ярлик для відкриття та закриття вікна надаватиме фокус\n, замість того, щоб закривати його, якщо раніше воно втратило фокус."
+"If enabled, the app shortcut for 'xfce4-terminal --drop-down', which "
+"normally opens and closes the window, will give it focus if the option to "
+"keep the window open is checked."
+msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:564
+#: ../terminal/terminal-preferences-dialog.c:554
+msgid "_Always keep window above"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:567
 msgid "_Show status icon in notification area"
 msgstr "Показувати іконку _статусу в області совіщень"
 
 #. section: Appearance & Animation
-#: ../terminal/terminal-preferences-dialog.c:573
+#: ../terminal/terminal-preferences-dialog.c:576
 msgid "Appearance and Animation"
 msgstr "Поява і анімація"
 
-#: ../terminal/terminal-preferences-dialog.c:575
+#: ../terminal/terminal-preferences-dialog.c:578
 msgid "Width:"
 msgstr "Ширина:"
 
-#: ../terminal/terminal-preferences-dialog.c:597
+#: ../terminal/terminal-preferences-dialog.c:600
 msgid "Height:"
 msgstr "Висота:"
 
-#: ../terminal/terminal-preferences-dialog.c:619
-#: ../terminal/terminal-preferences-dialog.c:894
+#: ../terminal/terminal-preferences-dialog.c:622
+#: ../terminal/terminal-preferences-dialog.c:897
 msgid "Opacity:"
 msgstr "Непрозорість:"
 
-#: ../terminal/terminal-preferences-dialog.c:641
+#: ../terminal/terminal-preferences-dialog.c:644
 msgid "Duration:"
 msgstr "Тривалість:"
 
-#: ../terminal/terminal-preferences-dialog.c:663
+#: ../terminal/terminal-preferences-dialog.c:666
 msgid "_Always show tabs"
 msgstr "_Завжди показувати вкладки"
 
-#: ../terminal/terminal-preferences-dialog.c:673
+#: ../terminal/terminal-preferences-dialog.c:676
 msgid "_Show window borders"
 msgstr "Показувати _рамки вікон"
 
 #. section: Position
-#: ../terminal/terminal-preferences-dialog.c:682
+#: ../terminal/terminal-preferences-dialog.c:685
 msgid "Position"
 msgstr "Позиція"
 
-#: ../terminal/terminal-preferences-dialog.c:684
+#: ../terminal/terminal-preferences-dialog.c:687
 msgid "Left"
 msgstr "Зліва"
 
-#: ../terminal/terminal-preferences-dialog.c:706
+#: ../terminal/terminal-preferences-dialog.c:709
 msgid "Right"
 msgstr "Вправо"
 
-#: ../terminal/terminal-preferences-dialog.c:714
+#: ../terminal/terminal-preferences-dialog.c:717
 msgid "Up"
 msgstr "Вгору"
 
-#: ../terminal/terminal-preferences-dialog.c:728
+#: ../terminal/terminal-preferences-dialog.c:731
 msgid "Down"
 msgstr "Вниз"
 
-#: ../terminal/terminal-preferences-dialog.c:736
+#: ../terminal/terminal-preferences-dialog.c:739
 msgid "_Move to monitor with pointer"
 msgstr "Перемістити до монітора з _вказівником"
 
 #. * Appearance
-#: ../terminal/terminal-preferences-dialog.c:748
+#: ../terminal/terminal-preferences-dialog.c:751
 msgid "Appearance"
 msgstr "Зовнішній вигляд"
 
 #. section: Font
-#: ../terminal/terminal-preferences-dialog.c:756
+#: ../terminal/terminal-preferences-dialog.c:759
 msgid "Font"
 msgstr "Шрифт"
 
-#: ../terminal/terminal-preferences-dialog.c:758
+#: ../terminal/terminal-preferences-dialog.c:761
 msgid "_Use system font"
 msgstr "Використовувати системний _шрифт"
 
-#: ../terminal/terminal-preferences-dialog.c:762
+#: ../terminal/terminal-preferences-dialog.c:765
 msgid "Enable this to use system-wide monospace font."
 msgstr "Увімкніть це, щоб використовувати загальносистемний моноширинний шрифт."
 
-#: ../terminal/terminal-preferences-dialog.c:782
+#: ../terminal/terminal-preferences-dialog.c:785
 msgid "_Allow bold text"
 msgstr "Дозволити жирний текс_т"
 
-#: ../terminal/terminal-preferences-dialog.c:786
+#: ../terminal/terminal-preferences-dialog.c:789
 msgid ""
 "Enable this to allow applications running inside the terminal windows to use"
 " bold font."
 msgstr "Увімкніть це, щоб дозволити програмам, які працюють у вікнах терміналу, використовувати жирний шрифт."
 
-#: ../terminal/terminal-preferences-dialog.c:793
+#: ../terminal/terminal-preferences-dialog.c:796
 msgid "Cursor blinks:"
 msgstr "Блимаючий курсор:"
 
-#: ../terminal/terminal-preferences-dialog.c:799
+#: ../terminal/terminal-preferences-dialog.c:802
 msgid "Never"
 msgstr "Ніколи"
 
-#: ../terminal/terminal-preferences-dialog.c:800
+#: ../terminal/terminal-preferences-dialog.c:803
 msgid "When focused"
 msgstr "Коли сфокусовано"
 
-#: ../terminal/terminal-preferences-dialog.c:801
+#: ../terminal/terminal-preferences-dialog.c:804
 msgid "When unfocused"
 msgstr "Коли не сфокусовано"
 
-#: ../terminal/terminal-preferences-dialog.c:802
+#: ../terminal/terminal-preferences-dialog.c:805
 msgid "Always"
 msgstr "Завжди"
 
-#: ../terminal/terminal-preferences-dialog.c:815
+#: ../terminal/terminal-preferences-dialog.c:818
 msgid "Cell spacing:"
 msgstr "Розмір клітинки:"
 
-#: ../terminal/terminal-preferences-dialog.c:828
+#: ../terminal/terminal-preferences-dialog.c:831
 msgid "x width"
 msgstr "довжина x"
 
-#: ../terminal/terminal-preferences-dialog.c:841
+#: ../terminal/terminal-preferences-dialog.c:844
 msgid "x height"
 msgstr "висота x"
 
-#: ../terminal/terminal-preferences-dialog.c:846
-#: ../terminal/terminal-preferences-dialog.c:1469
-#: ../terminal/terminal-window.c:2185
+#: ../terminal/terminal-preferences-dialog.c:849
+#: ../terminal/terminal-preferences-dialog.c:1472
+#: ../terminal/terminal-window.c:2191
 msgid "Reset"
 msgstr "Скинути"
 
 #. section: Background
-#: ../terminal/terminal-preferences-dialog.c:855
+#: ../terminal/terminal-preferences-dialog.c:858
 msgid "Background"
 msgstr "Зображення тла"
 
-#: ../terminal/terminal-preferences-dialog.c:858
+#: ../terminal/terminal-preferences-dialog.c:861
 msgid "None (use solid color)"
 msgstr "Немає (суцільний колір)"
 
-#: ../terminal/terminal-preferences-dialog.c:859
+#: ../terminal/terminal-preferences-dialog.c:862
 msgid "Background image"
 msgstr "Зображення тла"
 
-#: ../terminal/terminal-preferences-dialog.c:860
+#: ../terminal/terminal-preferences-dialog.c:863
 msgid "Transparent Background"
 msgstr "Прозорий фон"
 
-#: ../terminal/terminal-preferences-dialog.c:929
+#: ../terminal/terminal-preferences-dialog.c:932
 msgid "File:"
 msgstr "Файл:"
 
-#: ../terminal/terminal-preferences-dialog.c:946
+#: ../terminal/terminal-preferences-dialog.c:949
 msgid "All Files"
 msgstr "Усі файли"
 
-#: ../terminal/terminal-preferences-dialog.c:952
+#: ../terminal/terminal-preferences-dialog.c:955
 msgid "Image Files"
 msgstr "Файли зображення"
 
-#: ../terminal/terminal-preferences-dialog.c:960
+#: ../terminal/terminal-preferences-dialog.c:963
 msgid "Adjustment:"
 msgstr "Коригування:"
 
-#: ../terminal/terminal-preferences-dialog.c:966
+#: ../terminal/terminal-preferences-dialog.c:969
 msgid "Tiled"
 msgstr "Плиткою"
 
-#: ../terminal/terminal-preferences-dialog.c:967
+#: ../terminal/terminal-preferences-dialog.c:970
 msgid "Centered"
 msgstr "По центру"
 
-#: ../terminal/terminal-preferences-dialog.c:968
+#: ../terminal/terminal-preferences-dialog.c:971
 msgid "Scaled"
 msgstr "Масштабоване"
 
-#: ../terminal/terminal-preferences-dialog.c:969
+#: ../terminal/terminal-preferences-dialog.c:972
 msgid "Stretched"
 msgstr "Розтягнуте"
 
-#: ../terminal/terminal-preferences-dialog.c:970
+#: ../terminal/terminal-preferences-dialog.c:973
 msgid "Filled"
 msgstr "Заповнений"
 
-#: ../terminal/terminal-preferences-dialog.c:981
+#: ../terminal/terminal-preferences-dialog.c:984
 msgid "Shading:"
 msgstr "Затінення:"
 
 #. section: Opening new windows
-#: ../terminal/terminal-preferences-dialog.c:997
+#: ../terminal/terminal-preferences-dialog.c:1000
 msgid "Opening New Windows"
 msgstr "Відкриття нових вікон"
 
-#: ../terminal/terminal-preferences-dialog.c:999
+#: ../terminal/terminal-preferences-dialog.c:1002
 msgid "_Display menubar in new windows"
 msgstr "_Відображати панель меню в нових вікнах"
 
-#: ../terminal/terminal-preferences-dialog.c:1003
+#: ../terminal/terminal-preferences-dialog.c:1006
 msgid "Enable this option to show menubars in newly created terminal windows."
 msgstr "Увімкніть цей параметр, щоб відображати панелі меню у щойно створених вікнах терміналу."
 
-#: ../terminal/terminal-preferences-dialog.c:1010
+#: ../terminal/terminal-preferences-dialog.c:1013
 msgid "_Display toolbar in new windows"
 msgstr "Показувати у нових вікнах панель _меню"
 
-#: ../terminal/terminal-preferences-dialog.c:1014
+#: ../terminal/terminal-preferences-dialog.c:1017
 msgid "Enable this option to show toolbar in newly created terminal windows."
 msgstr "Увімкніть цей параметр, щоб у нових вікнах терміналу відображалась панель меню."
 
-#: ../terminal/terminal-preferences-dialog.c:1021
+#: ../terminal/terminal-preferences-dialog.c:1024
 msgid "_Display borders around new windows"
 msgstr "Відображати _рамки навколо нового вікна"
 
-#: ../terminal/terminal-preferences-dialog.c:1025
+#: ../terminal/terminal-preferences-dialog.c:1028
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Увімкніть цей параметр, щоб у нових вікнах терміналу відображалась рамка."
 
-#: ../terminal/terminal-preferences-dialog.c:1032
+#: ../terminal/terminal-preferences-dialog.c:1035
 msgid "Default geometry"
 msgstr "Геометрія за замовчуванням"
 
-#: ../terminal/terminal-preferences-dialog.c:1047
+#: ../terminal/terminal-preferences-dialog.c:1050
 msgid "columns"
 msgstr "колонки"
 
-#: ../terminal/terminal-preferences-dialog.c:1062
+#: ../terminal/terminal-preferences-dialog.c:1065
 msgid "rows"
 msgstr "рядки"
 
 #. section: Tabs
-#: ../terminal/terminal-preferences-dialog.c:1074
+#: ../terminal/terminal-preferences-dialog.c:1077
 msgid "Tabs"
 msgstr "Вкладки"
 
-#: ../terminal/terminal-preferences-dialog.c:1076
+#: ../terminal/terminal-preferences-dialog.c:1079
 msgid "Reset tab activity indicator after"
 msgstr "Скинути _індикатор активності вкладки після"
 
-#: ../terminal/terminal-preferences-dialog.c:1089
+#: ../terminal/terminal-preferences-dialog.c:1092
 msgid "seconds"
 msgstr "секунд"
 
-#: ../terminal/terminal-preferences-dialog.c:1097
+#: ../terminal/terminal-preferences-dialog.c:1100
 msgid "_Use custom styling to make tabs slim (restart required)"
 msgstr "Використовувати _користувацький стиль, щоб зробити вкладки тонкими (потрібен перезапуск)"
 
 #. * Colors
-#: ../terminal/terminal-preferences-dialog.c:1109
+#: ../terminal/terminal-preferences-dialog.c:1112
 msgid "Colors"
 msgstr "Кольори"
 
-#: ../terminal/terminal-preferences-dialog.c:1167
+#: ../terminal/terminal-preferences-dialog.c:1170
 msgid "_Use system theme colors for text and background"
 msgstr "_Використати кольори системної теми для тексту та фону"
 
-#: ../terminal/terminal-preferences-dialog.c:1177
+#: ../terminal/terminal-preferences-dialog.c:1180
 msgid "_Vary the background color for each tab"
 msgstr "_Міняти колір тла для кожної вкладки"
 
-#: ../terminal/terminal-preferences-dialog.c:1181
+#: ../terminal/terminal-preferences-dialog.c:1184
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness."
 msgstr "Випадковий колір базується на вибраному фоновому кольорі, зберігаючи однакову яскравість."
 
-#: ../terminal/terminal-preferences-dialog.c:1191
+#: ../terminal/terminal-preferences-dialog.c:1194
 msgid "_Enable sixel graphics"
 msgstr "_Увімкнути графіку Sixel"
 
 #. section: Custom colors
-#: ../terminal/terminal-preferences-dialog.c:1201
+#: ../terminal/terminal-preferences-dialog.c:1204
 msgid "Custom Colors"
 msgstr "Інші кольори:"
 
-#: ../terminal/terminal-preferences-dialog.c:1203
+#: ../terminal/terminal-preferences-dialog.c:1206
 msgid "_Cursor color:"
 msgstr "Колір в_казівника:"
 
-#: ../terminal/terminal-preferences-dialog.c:1207
-#: ../terminal/terminal-preferences-dialog.c:1241
+#: ../terminal/terminal-preferences-dialog.c:1210
+#: ../terminal/terminal-preferences-dialog.c:1244
 msgid ""
 "Enable this option to set custom text and background colors for cursor. If "
 "disabled the background and text colors will be reversed."
 msgstr "Ввімкнути цей параметр для встановлення іншого кольору тексту і тла для вибору. Якщо вимкнено, тоді колір тла і колір тексту поміняються місцями."
 
-#: ../terminal/terminal-preferences-dialog.c:1237
+#: ../terminal/terminal-preferences-dialog.c:1240
 msgid "_Text selection color:"
 msgstr "Колір виділеного _тексту:"
 
-#: ../terminal/terminal-preferences-dialog.c:1271
+#: ../terminal/terminal-preferences-dialog.c:1274
 msgid "_Bold selection color:"
 msgstr "Колір напів_жирного тексту:"
 
-#: ../terminal/terminal-preferences-dialog.c:1275
+#: ../terminal/terminal-preferences-dialog.c:1278
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Включити цей параметр для встановлення іншого кольору жирного тексту. Якщо виключено, тоді буде використовуватися колір тексту."
 
 #. section: Palette
-#: ../terminal/terminal-preferences-dialog.c:1292
+#: ../terminal/terminal-preferences-dialog.c:1295
 msgid "Palette"
 msgstr "Палітра"
 
-#: ../terminal/terminal-preferences-dialog.c:1315
+#: ../terminal/terminal-preferences-dialog.c:1318
 msgid "_Show bold text in bright colors:"
 msgstr "Показувати жирний текст _яскравими кольорами:"
 
-#: ../terminal/terminal-preferences-dialog.c:1319
+#: ../terminal/terminal-preferences-dialog.c:1322
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
@@ -963,260 +971,259 @@ msgid ""
 msgstr "Увімкніть цей параметр, щоб дозволити керуючі послідовності, такі як '\\e[1;35m', для перемикання яскравих кольорів тексту на додаток до жирного. Якщо вимкнено, колір тексту залишиться незмінним."
 
 #. section: Presets
-#: ../terminal/terminal-preferences-dialog.c:1325
+#: ../terminal/terminal-preferences-dialog.c:1328
 msgid "Presets"
 msgstr "Скинути до типових"
 
 #. * Compatibility
-#: ../terminal/terminal-preferences-dialog.c:1341
-#: ../terminal/terminal-preferences-dialog.c:1347
+#: ../terminal/terminal-preferences-dialog.c:1344
+#: ../terminal/terminal-preferences-dialog.c:1350
 msgid "Compatibility"
 msgstr "Сумісність"
 
-#: ../terminal/terminal-preferences-dialog.c:1352
+#: ../terminal/terminal-preferences-dialog.c:1355
 msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
 msgstr "Ці параметри можуть призвести до неправильної роботи деяких програм.\nВони тут лише для того, щоб дозволити вам працювати з певними програмами\nі операційними системами, які очікують іншу поведінку терміналу."
 
-#: ../terminal/terminal-preferences-dialog.c:1365
+#: ../terminal/terminal-preferences-dialog.c:1368
 msgid "Backspace key generates:"
 msgstr "Клавіша Backspace генерує:"
 
-#: ../terminal/terminal-preferences-dialog.c:1371
-#: ../terminal/terminal-preferences-dialog.c:1394
+#: ../terminal/terminal-preferences-dialog.c:1374
+#: ../terminal/terminal-preferences-dialog.c:1397
 msgid "Auto-detect"
 msgstr "Автовизначення"
 
-#: ../terminal/terminal-preferences-dialog.c:1372
-#: ../terminal/terminal-preferences-dialog.c:1395
+#: ../terminal/terminal-preferences-dialog.c:1375
+#: ../terminal/terminal-preferences-dialog.c:1398
 msgid "ASCII Del"
 msgstr "ASCII Del"
 
-#: ../terminal/terminal-preferences-dialog.c:1373
-#: ../terminal/terminal-preferences-dialog.c:1396
+#: ../terminal/terminal-preferences-dialog.c:1376
+#: ../terminal/terminal-preferences-dialog.c:1399
 msgid "Escape sequence"
 msgstr "Escape-послідовність"
 
-#: ../terminal/terminal-preferences-dialog.c:1374
-#: ../terminal/terminal-preferences-dialog.c:1397
+#: ../terminal/terminal-preferences-dialog.c:1377
+#: ../terminal/terminal-preferences-dialog.c:1400
 msgid "Control-H"
 msgstr "Control-H"
 
-#: ../terminal/terminal-preferences-dialog.c:1375
-#: ../terminal/terminal-preferences-dialog.c:1398
+#: ../terminal/terminal-preferences-dialog.c:1378
+#: ../terminal/terminal-preferences-dialog.c:1401
 msgid "Erase TTY"
 msgstr "Очистити TTY"
 
-#: ../terminal/terminal-preferences-dialog.c:1388
+#: ../terminal/terminal-preferences-dialog.c:1391
 msgid "Delete key generates:"
 msgstr "Клавіша Delete генерує:"
 
-#: ../terminal/terminal-preferences-dialog.c:1411
+#: ../terminal/terminal-preferences-dialog.c:1414
 msgid "Ambiguous-width characters:"
 msgstr "Символи з неоднозначною шириною:"
 
-#: ../terminal/terminal-preferences-dialog.c:1417
+#: ../terminal/terminal-preferences-dialog.c:1420
 msgid "Narrow"
 msgstr "Вузький"
 
-#: ../terminal/terminal-preferences-dialog.c:1418
+#: ../terminal/terminal-preferences-dialog.c:1421
 msgid "Wide"
 msgstr "Широкий"
 
-#: ../terminal/terminal-preferences-dialog.c:1432
+#: ../terminal/terminal-preferences-dialog.c:1435
 msgid "Reset compatibility options to defaults"
 msgstr "Скинути значення опцій сумісності на початкові"
 
 #. * Advanced
-#: ../terminal/terminal-preferences-dialog.c:1443
+#: ../terminal/terminal-preferences-dialog.c:1446
 msgid "Advanced"
 msgstr "Додатково"
 
 #. section: Double Click
-#: ../terminal/terminal-preferences-dialog.c:1451
+#: ../terminal/terminal-preferences-dialog.c:1454
 msgid "Double Click"
 msgstr "Подвійне клацання"
 
-#: ../terminal/terminal-preferences-dialog.c:1453
+#: ../terminal/terminal-preferences-dialog.c:1456
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Наступні символи вважаються частиною слова при подвійному клацанні:"
 
 #. section: Encoding
-#: ../terminal/terminal-preferences-dialog.c:1477
+#: ../terminal/terminal-preferences-dialog.c:1480
 msgid "Encoding"
 msgstr "Кодування"
 
-#: ../terminal/terminal-preferences-dialog.c:1479
+#: ../terminal/terminal-preferences-dialog.c:1482
 msgid "Default character encoding"
 msgstr "Кодування символів за замовчуванням"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: ../terminal/terminal-preferences-dialog.c:1503
-#: ../terminal/terminal-preferences-dialog.c:1620
+#: ../terminal/terminal-preferences-dialog.c:1506
+#: ../terminal/terminal-preferences-dialog.c:1623
 msgid "Shortcuts"
 msgstr "Швидкі кнопки"
 
-#: ../terminal/terminal-preferences-dialog.c:1505
+#: ../terminal/terminal-preferences-dialog.c:1508
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "Відключити _усі клавіші доступу до меню (такі як Alt + f)"
 
-#: ../terminal/terminal-preferences-dialog.c:1515
+#: ../terminal/terminal-preferences-dialog.c:1518
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "Вимкнути швидку клавішу доступу до _меню (зазвичай F10)"
 
 #. section: Misc
-#: ../terminal/terminal-preferences-dialog.c:1524
+#: ../terminal/terminal-preferences-dialog.c:1527
 msgid "Misc"
 msgstr "Різне"
 
-#: ../terminal/terminal-preferences-dialog.c:1526
+#: ../terminal/terminal-preferences-dialog.c:1529
 msgid "_Use middle mouse click to close tabs"
 msgstr "Використовувати _клацання середньою кнопкою миші для закриття вкладок"
 
-#: ../terminal/terminal-preferences-dialog.c:1536
+#: ../terminal/terminal-preferences-dialog.c:1539
 msgid "_Use middle mouse click to open urls"
 msgstr "Використовувати середню кнопку миші для _відкриття посилань"
 
-#: ../terminal/terminal-preferences-dialog.c:1546
+#: ../terminal/terminal-preferences-dialog.c:1549
 msgid "_Auto-hide mouse pointer"
 msgstr "Автопри_ховування вказівника миші"
 
-#: ../terminal/terminal-preferences-dialog.c:1556
+#: ../terminal/terminal-preferences-dialog.c:1559
 msgid "_Open new tab to the right of the active tab"
 msgstr "Відкривати нову вкладку _справа від активної вкладки"
 
-#: ../terminal/terminal-preferences-dialog.c:1566
+#: ../terminal/terminal-preferences-dialog.c:1569
 msgid "_Audible bell"
 msgstr "_Звукове повідомлення"
 
-#: ../terminal/terminal-preferences-dialog.c:1576
+#: ../terminal/terminal-preferences-dialog.c:1579
 msgid "_Visual bell"
 msgstr "_Візуальне повідомлення"
 
-#: ../terminal/terminal-preferences-dialog.c:1586
+#: ../terminal/terminal-preferences-dialog.c:1589
 msgid "Right click action:"
 msgstr "Дія правою кнопкою миші:"
 
-#: ../terminal/terminal-preferences-dialog.c:1592
+#: ../terminal/terminal-preferences-dialog.c:1595
 msgid "Context Menu"
 msgstr "Контекстне меню"
 
-#: ../terminal/terminal-preferences-dialog.c:1593
+#: ../terminal/terminal-preferences-dialog.c:1596
 msgid "Paste clipboard"
 msgstr "Вставити з буфера"
 
-#: ../terminal/terminal-preferences-dialog.c:1594
+#: ../terminal/terminal-preferences-dialog.c:1597
 msgid "Paste selection"
 msgstr "Вставити виділене"
 
-#: ../terminal/terminal-preferences-dialog.c:1607
+#: ../terminal/terminal-preferences-dialog.c:1610
 msgid "Enable Hyperlinks"
 msgstr "Увімкнути гіперпосилання"
 
-#: ../terminal/terminal-preferences-dialog.c:1608
+#: ../terminal/terminal-preferences-dialog.c:1611
 msgid "Enable support for hyperlinks."
 msgstr "Увімкнути пдтримку гіперпосилань."
 
-#: ../terminal/terminal-preferences-dialog.c:1631
+#: ../terminal/terminal-preferences-dialog.c:1634
 msgid "Window"
 msgstr "Вікно"
 
-#: ../terminal/terminal-preferences-dialog.c:1632
-#: ../terminal/terminal-preferences.c:1197
-#: ../terminal/terminal-preferences.c:1293
+#: ../terminal/terminal-preferences-dialog.c:1635
+#: ../terminal/terminal-preferences.c:1195
 msgid "Terminal"
 msgstr "Термінал"
 
 #. default item + separator
-#: ../terminal/terminal-preferences-dialog.c:2039
+#: ../terminal/terminal-preferences-dialog.c:2042
 msgid "Select Preset"
 msgstr "Вибрати Передустановку"
 
-#: ../terminal/terminal-screen.c:242
+#: ../terminal/terminal-screen.c:240
 msgid "Do not disable dialog"
 msgstr "Не вимикати вікно"
 
-#: ../terminal/terminal-screen.c:243
+#: ../terminal/terminal-screen.c:241
 msgid "Disable for 5 minutes"
 msgstr "Вимкнути на 5 хв"
 
-#: ../terminal/terminal-screen.c:244
+#: ../terminal/terminal-screen.c:242
 msgid "Disable for 15 minutes"
 msgstr "Вимкнути на 15 хв"
 
-#: ../terminal/terminal-screen.c:245
+#: ../terminal/terminal-screen.c:243
 msgid "Disable until program restart"
 msgstr "Вимкнути до перезавантаження програми"
 
-#: ../terminal/terminal-screen.c:246
+#: ../terminal/terminal-screen.c:244
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Вимкнути діалогове вікно (може бути ввімкнуте в Парамерах)"
 
-#: ../terminal/terminal-screen.c:498 ../terminal/terminal-screen.c:886
-#: ../terminal/terminal-screen.c:2372
+#: ../terminal/terminal-screen.c:494 ../terminal/terminal-screen.c:880
+#: ../terminal/terminal-screen.c:2374
 msgid "Untitled"
 msgstr "Без назви"
 
-#: ../terminal/terminal-screen.c:787
+#: ../terminal/terminal-screen.c:784
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Не вдається визначити оболонку входу  у систему."
 
-#: ../terminal/terminal-screen.c:1490
+#: ../terminal/terminal-screen.c:1492
 msgid "_Relaunch"
 msgstr "_Перезапустити"
 
-#: ../terminal/terminal-screen.c:1496
+#: ../terminal/terminal-screen.c:1498
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Дочірній процес закінчився нормально зі статусом %d."
 
-#: ../terminal/terminal-screen.c:1498
+#: ../terminal/terminal-screen.c:1500
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Дочірній процес перервано з сигналом %d."
 
-#: ../terminal/terminal-screen.c:1500
+#: ../terminal/terminal-screen.c:1502
 msgid "The child process was aborted."
 msgstr "Дочірній процес був перерваний."
 
-#: ../terminal/terminal-screen.c:1506 ../terminal/terminal-window.c:879
+#: ../terminal/terminal-screen.c:1508 ../terminal/terminal-window.c:885
 msgid "Do _not ask me again"
 msgstr "_Не питати знову"
 
-#: ../terminal/terminal-screen.c:1820
+#: ../terminal/terminal-screen.c:1822
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Увага: Потенційно Небезпечна Вставка"
 
-#: ../terminal/terminal-screen.c:1823
+#: ../terminal/terminal-screen.c:1825
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Вставлення цього тексту в термінал може бути небезпечним, оскільки схоже на те, що можуть виконуватися деякі команди, що включає root доступ ('sudo')."
 
-#: ../terminal/terminal-screen.c:1826
+#: ../terminal/terminal-screen.c:1828
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Вставка цього тексту в термінал може бути небезпечною, оскільки схоже, що деякі команди можуть бути виконані."
 
-#: ../terminal/terminal-screen.c:1836 ../terminal/terminal-window.c:802
-#: ../terminal/terminal-window.c:2362
+#: ../terminal/terminal-screen.c:1838 ../terminal/terminal-window.c:808
+#: ../terminal/terminal-window.c:2368
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: ../terminal/terminal-screen.c:1839 ../terminal/terminal-window.c:330
+#: ../terminal/terminal-screen.c:1841 ../terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "Вст_авити"
 
-#: ../terminal/terminal-screen.c:1990 ../terminal/terminal-screen.c:2073
+#: ../terminal/terminal-screen.c:1992 ../terminal/terminal-screen.c:2075
 msgid "Failed to execute child"
 msgstr "Помилка виконання дочірнього процес"
 
-#: ../terminal/terminal-screen.c:2729
+#: ../terminal/terminal-screen.c:2731
 msgid "Close this tab"
 msgstr "Закрити вкладку"
 
@@ -1256,15 +1263,15 @@ msgstr "_Перенести всюди"
 msgid "_Opacity:"
 msgstr "_Непрозорість:"
 
-#: ../terminal/terminal-util.c:81
+#: ../terminal/terminal-util.c:82
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce-імітатор терміналу"
 
-#: ../terminal/terminal-util.c:90
+#: ../terminal/terminal-util.c:88
 msgid "translator-credits"
 msgstr "Максим Дзюманенко <dziumanenko@gmail.com>/nЯрема aka Knedlyk <yupadmin@gmail.com>"
 
-#: ../terminal/terminal-util.c:93
+#: ../terminal/terminal-util.c:91
 msgid "Visit Xfce Terminal website"
 msgstr "Відвідати вебсайт терміналу Xfce"
 
@@ -1306,460 +1313,460 @@ msgstr "Відкрити посилання"
 msgid "Failed to open the URL '%s'"
 msgstr "Помилка при відкритті посилання URL '%s'"
 
-#: ../terminal/terminal-window-dropdown.c:284
+#: ../terminal/terminal-window-dropdown.c:416
 msgid "Keep window open when it loses focus"
 msgstr "Зберегти вікно відкритим при втраті фокусу"
 
-#: ../terminal/terminal-window-dropdown.c:409
+#: ../terminal/terminal-window-dropdown.c:541
 msgid "Drop-down Terminal"
 msgstr "Вигулькний термінал"
 
-#: ../terminal/terminal-window-dropdown.c:410
+#: ../terminal/terminal-window-dropdown.c:542
 msgid "Toggle Drop-down Terminal"
 msgstr "Включити вигулькний термінал"
 
 #. Use old accelerator paths for backwards compatibility
-#: ../terminal/terminal-window.c:318
+#: ../terminal/terminal-window.c:320
 msgid "_File"
 msgstr "_Файл"
 
-#: ../terminal/terminal-window.c:319
+#: ../terminal/terminal-window.c:321
 msgid "Open _Tab"
 msgstr "Відкрити в_кладку"
 
-#: ../terminal/terminal-window.c:319
+#: ../terminal/terminal-window.c:321
 msgid "Open a new terminal tab"
 msgstr "Відкрити нову вкладку терміналу"
 
-#: ../terminal/terminal-window.c:320
+#: ../terminal/terminal-window.c:322
 msgid "Open T_erminal"
 msgstr "Відкрити _термінал"
 
-#: ../terminal/terminal-window.c:320
+#: ../terminal/terminal-window.c:322
 msgid "Open a new terminal window"
 msgstr "Відкрити нове вікно терміналу"
 
-#: ../terminal/terminal-window.c:321
+#: ../terminal/terminal-window.c:323
 msgid "_Open File Manager Here"
 msgstr "Ві_дкрити файловий менеджер тут"
 
-#: ../terminal/terminal-window.c:321
+#: ../terminal/terminal-window.c:323
 msgid "Open the current directory"
 msgstr "Відкрити поточний каталог"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:324
 msgid "_Undo Close Tab"
 msgstr "_Скасувати Закрити Вкладку"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:325
 msgid "_Detach Tab"
 msgstr "_Відкріпити вкладку"
 
-#: ../terminal/terminal-window.c:324 ../terminal/terminal-window.c:843
+#: ../terminal/terminal-window.c:326 ../terminal/terminal-window.c:849
 msgid "Close T_ab"
 msgstr "Закрити _вкладку"
 
-#: ../terminal/terminal-window.c:325
+#: ../terminal/terminal-window.c:327
 msgid "Close Other Ta_bs"
 msgstr "Закрити _інші вкладки"
 
-#: ../terminal/terminal-window.c:326 ../terminal/terminal-window.c:850
+#: ../terminal/terminal-window.c:328 ../terminal/terminal-window.c:856
 msgid "Close _Window"
 msgstr "Закрити ві_кно"
 
-#: ../terminal/terminal-window.c:327
+#: ../terminal/terminal-window.c:329
 msgid "_Edit"
 msgstr "З_міни"
 
-#: ../terminal/terminal-window.c:328
+#: ../terminal/terminal-window.c:330
 msgid "_Copy"
 msgstr "_Копіювати"
 
-#: ../terminal/terminal-window.c:328
+#: ../terminal/terminal-window.c:330
 msgid "Copy to clipboard"
 msgstr "Скопіювати у буфер обміну"
 
-#: ../terminal/terminal-window.c:329
+#: ../terminal/terminal-window.c:331
 msgid "Copy as _HTML"
 msgstr "Скопіювати як _HTML"
 
-#: ../terminal/terminal-window.c:329
+#: ../terminal/terminal-window.c:331
 msgid "Copy to clipboard as HTML"
 msgstr "Скопіювати в буфер обміну як HTML"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:332
 msgid "Paste from clipboard"
 msgstr "Вставити з буферу обміну"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:333
 msgid "_Paste Alt"
 msgstr "_Вставка Alt"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:334
 msgid "Paste _Selection"
 msgstr "Вставити вибра_не"
 
-#: ../terminal/terminal-window.c:333
+#: ../terminal/terminal-window.c:335
 msgid "Paste _Selection Alt"
 msgstr "Вставка _Виділення Alt"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:336
 msgid "Select _All"
 msgstr "Позначити _все"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:337
 msgid "Copy _Input To All Tabs..."
 msgstr "Скопіювати _ввід на всі вкладки "
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:338
 msgid "Pr_eferences..."
 msgstr "_Параметри"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:338
 msgid "Open the preferences dialog"
 msgstr "Відкрити діалог налаштування"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:339
 msgid "_View"
 msgstr "_Вигляд"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:340
 msgid "Zoom _In"
 msgstr "Збіль_шити"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:340
 msgid "Zoom in with larger font"
 msgstr "Збільшення за допомогою більшого шрифта"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:341
 msgid "Zoom In Alt"
 msgstr "Збільшити в Alt"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:342
 msgid "Zoom _Out"
 msgstr "З_меншити"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:342
 msgid "Zoom out with smaller font"
 msgstr "Зменшення за допомогою меншого шрифта"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:343
 msgid "Zoom Out Alt"
 msgstr "Зменшити в Alt"
 
-#: ../terminal/terminal-window.c:342
+#: ../terminal/terminal-window.c:344
 msgid "_Normal Size"
 msgstr "_Нормальний розмір"
 
-#: ../terminal/terminal-window.c:342
+#: ../terminal/terminal-window.c:344
 msgid "Zoom to default size"
 msgstr "Відновити типовий розмір"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:345
 msgid "_Normal Size Alt"
 msgstr "_Нормальний Розмір Alt"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:346
 msgid "_Terminal"
 msgstr "_Термінал"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:347
 msgid "_Set Title..."
 msgstr "Встанов_ити заголовок..."
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:348
 msgid "Set Title Co_lor..."
 msgstr "Встановлення ко_льору назви..."
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:349
 msgid "_Find..."
 msgstr "_Знайти..."
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:349
 msgid "Search terminal contents"
 msgstr "Пошук у змісті терміналу"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:350
 msgid "Find Ne_xt"
 msgstr "Знайти _наступне"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:351
 msgid "Find Pre_vious"
 msgstr "Знайти _попереднє"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:352
 msgid "Sa_ve Contents..."
 msgstr "Збе_регти вміст..."
 
-#: ../terminal/terminal-window.c:351 ../terminal/terminal-window.c:2225
+#: ../terminal/terminal-window.c:353 ../terminal/terminal-window.c:2231
 msgid "_Reset"
 msgstr "Скин_ути"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:354
 msgid "_Clear Scrollback and Reset"
 msgstr "_Очистити прокрутку і скинути на типове"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:355
 msgid "T_abs"
 msgstr "В_кладки"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:356
 msgid "_Previous Tab"
 msgstr "Поп_ередня вкладка"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:356
 msgid "Switch to previous tab"
 msgstr "Перейти на попередню вкладку"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:357
 msgid "_Next Tab"
 msgstr "_Наступна вкладка"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:357
 msgid "Switch to next tab"
 msgstr "Перейти на наступну вкладку"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:358
 msgid "Last _Active Tab"
 msgstr "Остання _активна вкладка"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:358
 msgid "Switch to last active tab"
 msgstr "Перемкнутися на останню активну вкладку"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:359
 msgid "Move Tab _Left"
 msgstr "Пересунути вкладку _вліво"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:360
 msgid "Move Tab _Right"
 msgstr "Пересунути вкладку в_право"
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:362
 msgid "_Contents"
 msgstr "_Зміст"
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:362
 msgid "Display help contents"
 msgstr "Показати зміст довідки"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:363
 msgid "_About"
 msgstr "_Про програму"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:364
 msgid "_Zoom"
 msgstr "_Масштаб"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:365
 msgid "Show Menubar Temporarily"
 msgstr "Тимчасово показати панель меню"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:366
 msgid "Show _Menubar"
 msgstr "Показувати панель _меню"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:366
 msgid "Show/hide the menubar"
 msgstr "Показати чи сховати панель меню"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:367
 msgid "Show _Toolbar"
 msgstr "Показувати панель"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:367
 msgid "Show/hide the toolbar"
 msgstr "Показати/сховати панель"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:368
 msgid "Show Window _Borders"
 msgstr "Показувати _рамки вікон"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:368
 msgid "Show/hide the window decorations"
 msgstr "Показати чи приховати рамки навколо вікон"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:369
 msgid "_Fullscreen"
 msgstr "На весь _екран"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:369
 msgid "Toggle fullscreen mode"
 msgstr "Перемикання повноекранного режиму"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:370
 msgid "_Read-Only"
 msgstr "_Лише для читання"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:370
 msgid "Toggle read-only mode"
 msgstr "Переключити режим лише для читання"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:371
 msgid "Scroll on _Output"
 msgstr "Про_кручувати при виводі"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:371
 msgid "Toggle scroll on output"
 msgstr "Включити прокручування при виводі"
 
 #. used for changing the accelerator keys via the ShortcutsEditor, the logic
 #. is still handle by GtkActionEntries
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:373
 msgid "Go to Tab 1"
 msgstr "До вкладки 1"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:374
 msgid "Go to Tab 2"
 msgstr "До вкладки 2"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:375
 msgid "Go to Tab 3"
 msgstr "До вкладки 3"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:376
 msgid "Go to Tab 4"
 msgstr "До вкладки 4"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:377
 msgid "Go to Tab 5"
 msgstr "До вкладки 5"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:378
 msgid "Go to Tab 6"
 msgstr "До вкладки 6"
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:379
 msgid "Go to Tab 7"
 msgstr "До вкладки 7"
 
-#: ../terminal/terminal-window.c:378
+#: ../terminal/terminal-window.c:380
 msgid "Go to Tab 8"
 msgstr "До вкладки 8"
 
-#: ../terminal/terminal-window.c:379
+#: ../terminal/terminal-window.c:381
 msgid "Go to Tab 9"
 msgstr "До вкладки 9"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:553
+#: ../terminal/terminal-window.c:557
 msgid "Set _Encoding"
 msgstr "Встановити _кодування "
 
-#: ../terminal/terminal-window.c:800
+#: ../terminal/terminal-window.c:806
 msgid "Warning"
 msgstr "Попередження"
 
 #. and process running
-#: ../terminal/terminal-window.c:811
+#: ../terminal/terminal-window.c:817
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Існують запущені процеси у вкладках.\nЗамикання цього вікна знищить їх всі."
 
 #. and no process running
-#: ../terminal/terminal-window.c:817
+#: ../terminal/terminal-window.c:823
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "У вікні відкрито %d вкладок. Закриття вікна\nпризведе до закриття усіх його вкладок."
 
-#: ../terminal/terminal-window.c:821
+#: ../terminal/terminal-window.c:827
 msgid "Close all tabs?"
 msgstr "Закрити усі вкладки?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:828
+#: ../terminal/terminal-window.c:834
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Існує запущений процес.\nЗамикання цієї вкладки знищить його."
 
-#: ../terminal/terminal-window.c:830
+#: ../terminal/terminal-window.c:836
 msgid "Close tab?"
 msgstr "Закрити вкладку?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:835
+#: ../terminal/terminal-window.c:841
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Існує запущений процес.\nЗамикання цього вікна знищить його."
 
-#: ../terminal/terminal-window.c:837
+#: ../terminal/terminal-window.c:843
 msgid "Close window?"
 msgstr "Закрити вікно?"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1586
 msgid "Failed to open directory"
 msgstr "Не вдалося відкрити каталог"
 
-#: ../terminal/terminal-window.c:1782
+#: ../terminal/terminal-window.c:1788
 msgid "Copy _Input:"
 msgstr "Скопіювати вв_ід:"
 
-#: ../terminal/terminal-window.c:1786
+#: ../terminal/terminal-window.c:1792
 msgid "Enter the text to be copied to all tabs"
 msgstr "Введіть текст для копіювання на всіх вкладках"
 
-#: ../terminal/terminal-window.c:1794
+#: ../terminal/terminal-window.c:1800
 msgid "Copy input"
 msgstr "Скопіювати ввід:"
 
-#: ../terminal/terminal-window.c:2176
+#: ../terminal/terminal-window.c:2182
 msgid "_Title:"
 msgstr "_Назва:"
 
-#: ../terminal/terminal-window.c:2180
+#: ../terminal/terminal-window.c:2186
 msgid "Enter the title for the current terminal tab"
 msgstr "Введіть заголовок поточної вкладки"
 
-#: ../terminal/terminal-window.c:2195
+#: ../terminal/terminal-window.c:2201
 msgid "Help"
 msgstr "Допомога"
 
-#: ../terminal/terminal-window.c:2201
+#: ../terminal/terminal-window.c:2207
 msgid "Close"
 msgstr "Закрити"
 
-#: ../terminal/terminal-window.c:2224
+#: ../terminal/terminal-window.c:2230
 msgid "Choose title color"
 msgstr "Вибір кольору назви"
 
-#: ../terminal/terminal-window.c:2319
+#: ../terminal/terminal-window.c:2325
 msgid "Failed to create the regular expression"
 msgstr "Неможливо створити регулярний вираз"
 
-#: ../terminal/terminal-window.c:2359
+#: ../terminal/terminal-window.c:2365
 msgid "Save contents..."
 msgstr "Зберегти вміст..."
 
-#: ../terminal/terminal-window.c:2363
+#: ../terminal/terminal-window.c:2369
 msgid "_Save"
 msgstr "_Зберегти"
 
-#: ../terminal/terminal-window.c:2400
+#: ../terminal/terminal-window.c:2406
 msgid "Failed to save terminal contents"
 msgstr "Не вдалося зберегти вміст терміналу"
 
-#: ../terminal/terminal-window.c:3105
+#: ../terminal/terminal-window.c:3178
 msgid "Send Signal"
 msgstr "Передати сигнал"
 
-#: ../terminal/terminal-window.c:3122
+#: ../terminal/terminal-window.c:3195
 msgid "Zoom"
 msgstr "Зміна розміру"
 
-#: ../terminal/terminal-window.c:3134
+#: ../terminal/terminal-window.c:3207
 msgid "Copy"
 msgstr "Копіювати"
 
-#: ../terminal/terminal-window.c:3145
+#: ../terminal/terminal-window.c:3218
 msgid "Paste"
 msgstr "Вставити"
 
-#: ../terminal/terminal-window.c:3156
+#: ../terminal/terminal-window.c:3229
 msgid "View Options"
 msgstr "Налаштування"
 
