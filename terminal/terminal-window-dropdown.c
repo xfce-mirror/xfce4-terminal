@@ -379,7 +379,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
     }
   else
 #endif
-  if (GDK_IS_WAYLAND_DISPLAY (gdk_display_get_default ()))
+  if (WINDOWING_IS_WAYLAND ())
     {
       static gboolean warn = TRUE;
       if (warn)
@@ -525,7 +525,7 @@ terminal_window_dropdown_set_property (GObject      *object,
        * FIXME: GtkStatusIcon is X11 only
        * See also https://gitlab.xfce.org/apps/xfce4-terminal/-/issues/197
        */
-      if (!GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+      if (!WINDOWING_IS_X11 ())
         return;
 
       if (g_value_get_boolean (value))

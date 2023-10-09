@@ -116,7 +116,7 @@ terminal_util_activate_window (GtkWindow *window)
     return;
 
 #ifdef HAVE_LIBX11
-  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+  if (WINDOWING_IS_X11 ())
     {
       guint32              timestamp;
       XClientMessageEvent  event;

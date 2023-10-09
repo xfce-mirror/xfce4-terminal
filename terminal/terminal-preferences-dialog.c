@@ -559,7 +559,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   /* see terminal_window_dropdown_set_property() */
-  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+  if (WINDOWING_IS_X11 ())
     {
       /* next row */
       row++;
