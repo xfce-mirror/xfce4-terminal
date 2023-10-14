@@ -259,7 +259,7 @@ terminal_search_dialog_entry_changed (GtkWidget            *entry,
   gtk_widget_set_sensitive (dialog->button_prev, has_text);
   gtk_widget_set_sensitive (dialog->button_next, has_text);
 
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog),
+  xfce_titled_dialog_set_default_response (XFCE_TITLED_DIALOG (dialog),
     has_text ? TERMINAL_RESPONSE_SEARCH_PREV : GTK_RESPONSE_CLOSE);
 }
 
