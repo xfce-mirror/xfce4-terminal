@@ -941,7 +941,7 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 
   result[n++] = g_strdup_printf ("COLORTERM=%s", PACKAGE_NAME);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef ENABLE_X11
   if (WINDOWING_IS_X11 ())
     {
       GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));

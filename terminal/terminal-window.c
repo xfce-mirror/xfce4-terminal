@@ -33,7 +33,7 @@
 #endif
 
 #include <gdk/gdk.h>
-#ifdef GDK_WINDOWING_X11
+#ifdef ENABLE_X11
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 #endif
@@ -564,7 +564,7 @@ terminal_window_init (TerminalWindow *window)
                             G_CALLBACK (terminal_window_update_mnemonic_modifier), window);
 
   window->fullscreen_supported = TRUE;
-#ifdef GDK_WINDOWING_X11
+#ifdef ENABLE_X11
   if (WINDOWING_IS_X11 ())
     {
       /* setup fullscreen mode */
@@ -2585,7 +2585,7 @@ terminal_window_do_close_tab (TerminalScreen *screen,
 static gint
 terminal_window_get_workspace (TerminalWindow *window)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef ENABLE_X11
   GdkWindow    *gdk_window;
   gint          workspace = -1;
   GdkDisplay   *gdk_display;

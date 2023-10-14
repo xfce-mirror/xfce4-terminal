@@ -38,7 +38,7 @@
 #include <libxfce4ui/libxfce4ui.h>
 
 #include <gdk/gdk.h>
-#ifdef GDK_WINDOWING_X11
+#ifdef ENABLE_X11
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 #include <X11/Xutil.h>
@@ -505,7 +505,7 @@ read_int (gchar   *string,
  * Bitmask returned by XParseGeometry().  Each bit tells if the corresponding
  * value (x, y, width, height) was found in the parsed string.
  */
-#ifndef GDK_WINDOWING_X11
+#ifndef ENABLE_X11
 #define NoValue         0x0000
 #define XValue          0x0001
 #define YValue          0x0002
@@ -621,7 +621,7 @@ parse_geometry (const char   *string,
                 unsigned int *width,
                 unsigned int *height)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef ENABLE_X11
   if (WINDOWING_IS_X11 ())
     return XParseGeometry (string, x, y, width, height);
 #endif
@@ -861,7 +861,7 @@ static void
 move_window_to_saved_workspace (GtkWidget *window,
                                 gpointer   user_data)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef ENABLE_X11
   GdkDisplay *gdk_display;
   GdkScreen  *gdk_screen;
   Display    *display;
@@ -875,7 +875,7 @@ move_window_to_saved_workspace (GtkWidget *window,
                                         move_window_to_saved_workspace,
                                         user_data);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef ENABLE_X11
   if (WINDOWING_IS_X11 ())
     {
       // EWMH says that we can set _NET_WM_DESKTOP on our own window before

@@ -28,7 +28,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
 #include <X11/Xlib.h>
 #endif
 #ifdef HAVE_GTK_LAYER_SHELL
@@ -115,7 +115,7 @@ terminal_util_activate_window (GtkWindow *window)
   if (gtk_window_is_active (window))
     return;
 
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
   if (WINDOWING_IS_X11 ())
     {
       guint32              timestamp;

@@ -17,6 +17,17 @@ m4_define([terminal_version_tag], [git])
 m4_define([terminal_version_dbus], [5])
 m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()ifelse(terminal_version_nano(), [], [], [.terminal_version_nano()])ifelse(terminal_version_tag(), [git], [terminal_version_tag()-terminal_version_build()], [terminal_version_tag()])])
 
+dnl minimum required versions
+m4_define([glib_min_version], [2.44.0])
+m4_define([gtk_min_version], [3.22.0])
+m4_define([vte_min_version], [0.51.3])
+m4_define([pcre2_min_version], [10.00])
+m4_define([libxfce4ui_min_version], [4.17.5])
+m4_define([xfconf_min_version], [4.16.0])
+
+m4_define([libx11_min_version], [1.6.7])
+m4_define([gtk_layer_shell_min_version], [0.7.0])
+
 dnl *******************************************
 dnl *** Debugging support for GIT snapshots ***
 dnl *******************************************
@@ -87,20 +98,39 @@ XDT_I18N([@LINGUAS@])
 dnl ***********************************
 dnl *** Check for optional packages ***
 dnl ***********************************
-XDT_CHECK_OPTIONAL_PACKAGE([LIBX11], [x11], [1.6.7], [libx11], [Libx11 support])
-XDT_CHECK_OPTIONAL_PACKAGE([GTK_LAYER_SHELL], [gtk-layer-shell-0], [0.7.0], [gtk-layer-shell], [Gtk Layer Shell support])
+XDT_CHECK_OPTIONAL_FEATURE([X11],
+                           [x11],
+                           [
+                             XDT_FEATURE_DEPENDENCY([LIBX11], [x11], [libx11_min_version])
+                             XDT_FEATURE_DEPENDENCY([GDK_X11], [gdk-x11-3.0], [gtk_min_version])
+                           ],
+                           [the X11 windowing system])
+XDT_CHECK_OPTIONAL_FEATURE([WAYLAND],
+                           [wayland],
+                           [
+                             XDT_FEATURE_DEPENDENCY([GDK_WAYLAND], [gdk-wayland-3.0], [gtk_min_version])
+                           ],
+                           [the Wayland windowing system])
+if test x"$ENABLE_X11" != x"yes" -a x"$ENABLE_WAYLAND" != x"yes"; then
+  AC_MSG_ERROR([Either both X11 and Wayland support was disabled, or required dependencies are missing. One of the two must be enabled.])
+fi
+if test x"$ENABLE_WAYLAND" != x"yes"; then
+  dnl Do not check for optional Wayland packages if Wayland is disabled
+  enable_gtk_layer_shell=no
+fi
+XDT_CHECK_OPTIONAL_PACKAGE([GTK_LAYER_SHELL], [gtk-layer-shell-0], [gtk_layer_shell_min_version], [gtk-layer-shell], [Gtk Layer Shell support])
 
 dnl ***********************************
 dnl *** Check for required packages ***
 dnl ***********************************
-XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.44.0])
-XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.44.0])
-XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [3.22.0])
-XDT_CHECK_PACKAGE([VTE], [vte-2.91], [0.51.3])
+XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_min_version])
+XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_min_version])
+XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [gtk_min_version])
+XDT_CHECK_PACKAGE([VTE], [vte-2.91], [vte_min_version])
 XDT_CHECK_PACKAGE([PCRE2], [libpcre2-8], [10.00])
-XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.17.5])
-XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.16.0])
-XDT_CHECK_PACKAGE([LIBXFCE4KBD_PRIVATE], [libxfce4kbd-private-3], [4.16.0])
+XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [libxfce4ui_min_version])
+XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [xfconf_min_version])
+XDT_CHECK_PACKAGE([LIBXFCE4KBD_PRIVATE], [libxfce4kbd-private-3], [libxfce4ui_min_version])
 
 dnl ****************************************
 dnl *** Check if we need to use utempter ***
@@ -169,7 +199,10 @@ dnl ***************************
 echo
 echo "Build Configuration:"
 echo
-echo "* Debug support:           $enable_debug"
-echo "* Libx11 support:          ${LIBX11_FOUND:-no}"
-echo "* Gtk Layer Shell support: ${GTK_LAYER_SHELL_FOUND:-no}"
+echo "* Debug support:             $enable_debug"
+echo "* X11 support:               ${ENABLE_X11:-no}"
+echo "* Wayland support:           ${ENABLE_WAYLAND:-no}"
+if test x"$ENABLE_WAYLAND" = x"yes"; then
+echo "  * Gtk Layer Shell support: ${GTK_LAYER_SHELL_FOUND:-no}"
+fi
 echo
