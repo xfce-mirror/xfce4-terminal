@@ -103,7 +103,9 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
   gtk_window_set_default_size (GTK_WINDOW (dialog), 400, -1);
   gtk_window_add_accel_group (GTK_WINDOW (dialog), group);
 
+#if !LIBXFCE4UI_CHECK_VERSION (4, 19, 3)
   xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (dialog));
+#endif
 
   close_button = xfce_gtk_button_new_mixed ("window-close", _("_Close"));
   xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), close_button, GTK_RESPONSE_CLOSE);
