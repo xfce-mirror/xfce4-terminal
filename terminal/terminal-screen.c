@@ -3151,8 +3151,7 @@ terminal_screen_widget_append_accels (TerminalScreen *screen,
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
-  if (G_LIKELY (G_IS_OBJECT (screen->terminal)))
-    g_object_set (G_OBJECT (screen->terminal), "accel-group", accel_group, NULL);
+  g_object_set (G_OBJECT (screen->terminal), "accel-group", accel_group, NULL);
 }
 
 
