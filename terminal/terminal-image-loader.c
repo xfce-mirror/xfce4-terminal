@@ -126,7 +126,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
   gchar                  *selected_color_spec;
   gchar                  *selected_path;
 
-  terminal_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
+  g_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
 
   g_object_get (G_OBJECT (loader->preferences),
                 "background-image-file", &selected_path,
@@ -417,20 +417,17 @@ terminal_image_loader_load (TerminalImageLoader *loader,
   GdkPixbuf *pixbuf;
   GSList    *lp;
 
-  terminal_return_val_if_fail (TERMINAL_IS_IMAGE_LOADER (loader), NULL);
-  terminal_return_val_if_fail (width > 0, NULL);
-  terminal_return_val_if_fail (height > 0, NULL);
+  g_return_val_if_fail (TERMINAL_IS_IMAGE_LOADER (loader), NULL);
+  g_return_val_if_fail (width > 0, NULL);
+  g_return_val_if_fail (height > 0, NULL);
 
   terminal_image_loader_check (loader);
 
   if (G_UNLIKELY (loader->pixbuf == NULL || width <= 1 || height <= 1))
     return NULL;
 
-#ifdef G_ENABLE_DEBUG
-  g_debug ("Image Loader Memory Status: %d images in valid "
-           "cache, %d in invalid cache",
-           g_slist_length (loader->cache),
-#endif
+  g_debug ("Image Loader Memory Status: %d images in valid cache",
+           g_slist_length (loader->cache));
 
   /* check for a cached version */
   for (lp = loader->cache; lp != NULL; lp = lp->next)
@@ -475,7 +472,7 @@ terminal_image_loader_load (TerminalImageLoader *loader,
       break;
 
     default:
-      terminal_assert_not_reached ();
+      g_assert_not_reached ();
     }
 
   loader->cache = g_slist_prepend (loader->cache, pixbuf);

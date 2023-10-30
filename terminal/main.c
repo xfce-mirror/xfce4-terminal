@@ -197,13 +197,6 @@ main (int argc, char **argv)
 
   g_set_application_name (_("Xfce Terminal"));
 
-#ifdef G_ENABLE_DEBUG
-  /* Do NOT remove this line for now, If something doesn't work,
-   * fix your code instead!
-   */
-  g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING);
-#endif
-
   /* initialize GTK: do this before our parsing so GTK parses its options first */
   gtk_init (&argc, &argv);
 
@@ -297,11 +290,9 @@ main (int argc, char **argv)
               /* don't try to establish another service here */
               options.disable_server = 1;
 
-#ifdef G_ENABLE_DEBUG
               g_debug ("%s mismatch when invoking remote terminal: %s",
                        error->code == TERMINAL_ERROR_USER_MISMATCH ? "User" : "Display",
                        error->message);
-#endif
             }
           else if (g_error_matches (error, TERMINAL_ERROR, TERMINAL_ERROR_OPTIONS))
             {
@@ -318,13 +309,11 @@ main (int argc, char **argv)
               g_strfreev (nargv);
               return EXIT_FAILURE;
             }
-#ifdef G_ENABLE_DEBUG
           else if (error != NULL)
             {
               g_debug ("D-Bus reply error: %s (%s: %d)", error->message,
                        g_quark_to_string (error->domain), error->code);
             }
-#endif
 
           g_clear_error (&error);
         }

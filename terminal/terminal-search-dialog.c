@@ -279,7 +279,7 @@ terminal_search_dialog_new (GtkWindow *parent)
 gboolean
 terminal_search_dialog_get_wrap_around (TerminalSearchDialog *dialog)
 {
-  terminal_return_val_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog), FALSE);
+  g_return_val_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog), FALSE);
   return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->wrap_around));
 }
 
@@ -295,8 +295,8 @@ terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
   gchar              *word_regex = NULL;
   VteRegex           *regex;
 
-  terminal_return_val_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog), NULL);
-  terminal_return_val_if_fail (error == NULL || *error == NULL, NULL);
+  g_return_val_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog), NULL);
+  g_return_val_if_fail (error == NULL || *error == NULL, NULL);
 
   /* if not cleared, use the old regex */
   if (dialog->last_gregex != NULL)
@@ -344,7 +344,7 @@ terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
 void
 terminal_search_dialog_present (TerminalSearchDialog *dialog)
 {
-  terminal_return_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog));
+  g_return_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog));
 
   gtk_widget_show_all (GTK_WIDGET (dialog));
 

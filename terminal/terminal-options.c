@@ -101,7 +101,7 @@ terminal_option_cmp (const gchar   *long_name,
       return FALSE;
     }
 
-  terminal_assert (return_string != NULL);
+  g_assert (return_string != NULL);
   if (*(arg + offset) == '\0')
     *return_string = argv[++*argv_offset];
   else if (short_option)
@@ -126,8 +126,8 @@ terminal_option_show_hide_cmp (const gchar         *long_name,
   gchar *arg = argv[*argv_offset];
   const size_t pref_len = strlen ("--show-");
 
-  terminal_return_val_if_fail (long_name != NULL, FALSE);
-  terminal_return_val_if_fail (return_visibility != NULL, FALSE);
+  g_return_val_if_fail (long_name != NULL, FALSE);
+  g_return_val_if_fail (return_visibility != NULL, FALSE);
 
   if ((strncmp (arg, "--show-", pref_len) == 0 || strncmp (arg, "--hide-", pref_len) == 0)
       && strcmp (arg + pref_len, long_name) == 0)
@@ -734,7 +734,7 @@ terminal_tab_attr_new (void)
 void
 terminal_tab_attr_free (TerminalTabAttr *attr)
 {
-  terminal_return_if_fail (attr != NULL);
+  g_return_if_fail (attr != NULL);
 
   g_strfreev (attr->command);
   g_free (attr->directory);
@@ -755,7 +755,7 @@ terminal_tab_attr_free (TerminalTabAttr *attr)
 void
 terminal_window_attr_free (TerminalWindowAttr *attr)
 {
-  terminal_return_if_fail (attr != NULL);
+  g_return_if_fail (attr != NULL);
 
   g_slist_free_full (attr->tabs, (GDestroyNotify) terminal_tab_attr_free);
   g_free (attr->startup_id);

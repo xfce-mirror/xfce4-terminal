@@ -1244,7 +1244,7 @@ terminal_window_dropdown_get_size (TerminalWindowDropdown *dropdown,
 void
 terminal_window_dropdown_update_geometry (TerminalWindowDropdown *dropdown)
 {
-  terminal_return_if_fail (TERMINAL_IS_WINDOW_DROPDOWN (dropdown));
+  g_return_if_fail (TERMINAL_IS_WINDOW_DROPDOWN (dropdown));
 
   /* update geometry if toolbar or menu is shown */
   if (gtk_widget_get_visible (GTK_WIDGET (dropdown))

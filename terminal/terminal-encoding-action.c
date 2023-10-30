@@ -204,7 +204,7 @@ terminal_encoding_action_create_menu_item (GtkAction *action)
   GtkWidget *item;
   GtkWidget *menu;
 
-  terminal_return_val_if_fail (TERMINAL_IS_ENCODING_ACTION (action), NULL);
+  g_return_val_if_fail (TERMINAL_IS_ENCODING_ACTION (action), NULL);
 
   /* let GtkAction allocate the menu item */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -227,7 +227,7 @@ terminal_encoding_action_activated (GtkWidget              *item,
 {
   const gchar *charset;
 
-  terminal_return_if_fail (GTK_IS_CHECK_MENU_ITEM (item));
+  g_return_if_fail (GTK_IS_CHECK_MENU_ITEM (item));
 
   if (!gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (item)))
     return;
@@ -258,8 +258,8 @@ terminal_encoding_action_menu_shown (GtkWidget              *menu,
   const gchar   *default_charset;
   gchar         *default_label;
 
-  terminal_return_if_fail (TERMINAL_IS_ENCODING_ACTION (action));
-  terminal_return_if_fail (GTK_IS_MENU_SHELL (menu));
+  g_return_if_fail (TERMINAL_IS_ENCODING_ACTION (action));
+  g_return_if_fail (GTK_IS_MENU_SHELL (menu));
 
   /* drop all existing children of the menu first */
   children = gtk_container_get_children (GTK_CONTAINER (menu));
@@ -348,8 +348,8 @@ GtkAction*
 terminal_encoding_action_new (const gchar *name,
                               const gchar *label)
 {
-  terminal_return_val_if_fail (name != NULL, NULL);
-  terminal_return_val_if_fail (label != NULL, NULL);
+  g_return_val_if_fail (name != NULL, NULL);
+  g_return_val_if_fail (label != NULL, NULL);
 
   return g_object_new (TERMINAL_TYPE_ENCODING_ACTION,
                        "hide-if-empty", FALSE,
@@ -366,7 +366,7 @@ terminal_encoding_action_set_charset (GtkAction   *gtkaction,
 {
   TerminalEncodingAction *action = TERMINAL_ENCODING_ACTION (gtkaction);
 
-  terminal_return_if_fail (TERMINAL_IS_ENCODING_ACTION (action));
+  g_return_if_fail (TERMINAL_IS_ENCODING_ACTION (action));
 
   g_free (action->current);
   action->current = g_strdup (charset);

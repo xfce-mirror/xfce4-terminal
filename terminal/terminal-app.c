@@ -318,7 +318,7 @@ terminal_app_take_window (TerminalApp *app,
 {
   GtkWindowGroup *group;
 
-  terminal_return_if_fail (GTK_IS_WINDOW (window));
+  g_return_if_fail (GTK_IS_WINDOW (window));
 
   group = gtk_window_group_new ();
   gtk_window_group_add_window (group, window);
@@ -642,9 +642,9 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
   GdkScreen *screen;
   glong      width, height;
 
-  terminal_return_if_fail (TERMINAL_IS_WINDOW (existing));
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (terminal));
-  terminal_return_if_fail (TERMINAL_IS_APP (app));
+  g_return_if_fail (TERMINAL_IS_WINDOW (existing));
+  g_return_if_fail (TERMINAL_IS_SCREEN (terminal));
+  g_return_if_fail (TERMINAL_IS_APP (app));
 
   window = terminal_app_create_window (app, NULL, FALSE,
                                        TERMINAL_VISIBILITY_DEFAULT,
@@ -698,7 +698,7 @@ static void
 terminal_app_window_destroyed (GtkWidget   *window,
                                TerminalApp *app)
 {
-  terminal_return_if_fail (g_slist_find (app->windows, window) != NULL);
+  g_return_if_fail (g_slist_find (app->windows, window) != NULL);
 
   app->windows = g_slist_remove (app->windows, window);
 
@@ -744,7 +744,7 @@ terminal_app_save_yourself (XfceSMClient *client,
   oargv = xfce_sm_client_get_restart_command (client);
   if (oargv != NULL)
     {
-      terminal_assert (oargv[0] != NULL);
+      g_assert (oargv[0] != NULL);
       argv[0] = g_strdup (oargv[0]);
     }
   else
@@ -940,8 +940,8 @@ terminal_app_open_window (TerminalApp        *app,
   gint             screen_width = 0, screen_height = 0;
   gint             window_width, window_height;
 
-  terminal_return_if_fail (TERMINAL_IS_APP (app));
-  terminal_return_if_fail (attr != NULL);
+  g_return_if_fail (TERMINAL_IS_APP (app));
+  g_return_if_fail (attr != NULL);
 
   if (attr->drop_down)
     {

@@ -51,21 +51,8 @@ G_BEGIN_DECLS
              __time / G_USEC_PER_SEC, __time % G_USEC_PER_SEC, desc); \
   } G_END_DECLS
 
-/* support macros for debugging */
-#ifdef G_ENABLE_DEBUG
-#define terminal_assert(expr)                  g_assert (expr)
-#define terminal_assert_not_reached()          g_assert_not_reached ()
-#define terminal_return_if_fail(expr)          g_return_if_fail (expr)
-#define terminal_return_val_if_fail(expr, val) g_return_val_if_fail (expr, (val))
-#else
-#define terminal_assert(expr)                  G_STMT_START{ (void)0; }G_STMT_END
-#define terminal_assert_not_reached()          G_STMT_START{ (void)0; }G_STMT_END
-#define terminal_return_if_fail(expr)          G_STMT_START{ (void)0; }G_STMT_END
-#define terminal_return_val_if_fail(expr, val) G_STMT_START{ (void)0; }G_STMT_END
-#endif
-
 /* avoid trivial g_value_get_*() function calls */
-#ifdef G_ENABLE_DEBUG
+#ifdef NDEBUG
 #define g_value_get_boolean(v)  (((const GValue *) (v))->data[0].v_int)
 #define g_value_get_char(v)     (((const GValue *) (v))->data[0].v_int)
 #define g_value_get_uchar(v)    (((const GValue *) (v))->data[0].v_uint)

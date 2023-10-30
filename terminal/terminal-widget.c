@@ -934,7 +934,7 @@ terminal_widget_action_shift_scroll_down (TerminalWidget *widget)
 static void
 terminal_widget_connect_accelerators (TerminalWidget *widget)
 {
-  terminal_return_if_fail (TERMINAL_IS_WIDGET (widget));
+  g_return_if_fail (TERMINAL_IS_WIDGET (widget));
 
   if (widget->accel_group == NULL)
     return;
@@ -951,7 +951,7 @@ terminal_widget_connect_accelerators (TerminalWidget *widget)
 static void
 terminal_widget_disconnect_accelerators (TerminalWidget *widget)
 {
-  terminal_return_if_fail (TERMINAL_IS_WIDGET (widget));
+  g_return_if_fail (TERMINAL_IS_WIDGET (widget));
 
   if (widget->accel_group == NULL)
     return;

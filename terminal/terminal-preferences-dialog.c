@@ -1692,7 +1692,7 @@ terminal_preferences_dialog_background_notify (TerminalPreferencesDialog *dialog
 {
   gchar *button_file, *prop_file;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
 
   button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog->file_chooser));
   g_object_get (G_OBJECT (dialog->preferences), "background-image-file", &prop_file, NULL);
@@ -1710,8 +1710,8 @@ terminal_preferences_dialog_background_set (TerminalPreferencesDialog *dialog,
 {
   gchar *filename;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
+  g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  g_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
 
   filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
   g_signal_handler_block (dialog->preferences, dialog->bg_image_signal_id);
@@ -1728,7 +1728,7 @@ terminal_preferences_dialog_geometry_notify (TerminalPreferencesDialog *dialog)
   gchar  *geometry = NULL;
   gchar **split = NULL;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
 
   g_object_get (G_OBJECT (dialog->preferences), "misc-default-geometry", &geometry, NULL);
 
@@ -1764,8 +1764,8 @@ terminal_preferences_dialog_geometry_changed (TerminalPreferencesDialog *dialog,
   gint   cols;
   gchar *geometry;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  terminal_return_if_fail (GTK_IS_SPIN_BUTTON (widget));
+  g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  g_return_if_fail (GTK_IS_SPIN_BUTTON (widget));
 
   cols = gtk_spin_button_get_value_as_int (dialog->geometry_button[GEOMETRY_COLUMN]);
   rows = gtk_spin_button_get_value_as_int (dialog->geometry_button[GEOMETRY_ROW]);
@@ -1793,7 +1793,7 @@ terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
   gchar    *color_str = NULL;
   gchar   **colors = NULL;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
 
   g_object_get (dialog->preferences, "color-palette", &color_str, NULL);
 
@@ -1832,8 +1832,8 @@ terminal_preferences_dialog_palette_changed (TerminalPreferencesDialog *dialog,
   gchar   *color_str;
   GString *array;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  terminal_return_if_fail (GTK_IS_COLOR_BUTTON (widget));
+  g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  g_return_if_fail (GTK_IS_COLOR_BUTTON (widget));
 
   array = g_string_sized_new (225);
 
@@ -1893,8 +1893,8 @@ terminal_preferences_dialog_presets_changed (TerminalPreferencesDialog *dialog,
   GValue        src = { 0, };
   GValue        dst = { 0, };
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (widget));
-  terminal_return_if_fail (GTK_IS_COMBO_BOX (widget));
+  g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (widget));
+  g_return_if_fail (GTK_IS_COMBO_BOX (widget));
 
   combobox = GTK_COMBO_BOX (widget);
 
@@ -1981,8 +1981,8 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog,
   const gchar  *title;
   gchar        *path;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  terminal_return_if_fail (GTK_IS_COMBO_BOX (widget));
+  g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  g_return_if_fail (GTK_IS_COMBO_BOX (widget));
 
   combobox = GTK_COMBO_BOX (widget);
 
@@ -2124,8 +2124,8 @@ terminal_preferences_dialog_encoding_changed (TerminalPreferencesDialog *dialog,
   GtkTreeIter   child_iter;
   GtkComboBox  *combobox;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  terminal_return_if_fail (GTK_IS_COMBO_BOX (widget));
+  g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  g_return_if_fail (GTK_IS_COMBO_BOX (widget));
 
   combobox = GTK_COMBO_BOX (widget);
 
@@ -2158,8 +2158,8 @@ terminal_gtk_label_set_a11y_relation (GtkLabel  *label,
   AtkRelation    *relation;
   AtkObject      *object;
 
-  terminal_return_if_fail (GTK_IS_WIDGET (widget));
-  terminal_return_if_fail (GTK_IS_LABEL (label));
+  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (GTK_IS_LABEL (label));
 
   object = gtk_widget_get_accessible (widget);
   relations = atk_object_ref_relation_set (gtk_widget_get_accessible (GTK_WIDGET (label)));

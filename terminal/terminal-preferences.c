@@ -1318,7 +1318,7 @@ terminal_preferences_get_property (GObject    *object,
   gchar                 prop_name[64];
   gchar               **array;
 
-  terminal_return_if_fail (prop_id < N_PROPERTIES);
+  g_return_if_fail (prop_id < N_PROPERTIES);
 
   /* only set defaults if channel is not set */
   if (G_UNLIKELY (preferences->channel == NULL))
@@ -1454,11 +1454,6 @@ terminal_preferences_load_rc_file (TerminalPreferences *preferences)
       pspec = preferences_props[n];
       name = g_param_spec_get_name (pspec);
 
-#ifdef G_ENABLE_DEBUG
-      terminal_assert (g_param_spec_get_nick (pspec) != NULL);
-      terminal_preferences_check_blurb (pspec);
-#endif
-
       string = xfce_rc_read_entry (rc, g_param_spec_get_blurb (pspec), NULL);
       if (G_UNLIKELY (string == NULL))
         {
@@ -1522,46 +1517,6 @@ terminal_preferences_load_rc_file (TerminalPreferences *preferences)
 
 
 
-#ifdef G_ENABLE_DEBUG
-static void
-terminal_preferences_check_blurb (GParamSpec *spec)
-{
-  const gchar *s, *name;
-  gboolean     upper = TRUE;
-  gchar       *option, *t;
-
-  /* generate the option name */
-  name = g_param_spec_get_name (spec);
-  option = g_new (gchar, strlen (name) + 1);
-  for (s = name, t = option; *s != '\0'; ++s)
-    {
-      if (*s == '-')
-        {
-          upper = TRUE;
-        }
-      else if (upper)
-        {
-          *t++ = g_ascii_toupper (*s);
-          upper = FALSE;
-        }
-      else
-        {
-          *t++ = *s;
-        }
-    }
-  *t = '\0';
-
-  /* check if the generated option name is equal to the blurb */
-  if (g_strcmp0 (option, g_param_spec_get_blurb (spec)) != 0)
-    g_error ("The blurb of property \"%s\" does not match option name", name);
-
-  /* cleanup */
-  g_free (option);
-}
-#endif
-
-
-
 /**
  * terminal_preferences_get:
  *
@@ -1596,7 +1551,7 @@ terminal_preferences_get_color (TerminalPreferences *preferences,
   gchar    *spec;
   gboolean  succeed = FALSE;
 
-  terminal_return_val_if_fail (TERMINAL_IS_PREFERENCES (preferences), FALSE);
+  g_return_val_if_fail (TERMINAL_IS_PREFERENCES (preferences), FALSE);
 
   g_object_get (G_OBJECT (preferences), property, &spec, NULL);
   if (G_LIKELY (spec != NULL))

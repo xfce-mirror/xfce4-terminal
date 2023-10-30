@@ -108,8 +108,8 @@ is_active_changed (GtkWindow *window)
 void
 terminal_util_activate_window (GtkWindow *window)
 {
-  terminal_return_if_fail (GTK_IS_WINDOW (window));
-  terminal_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (window)));
+  g_return_if_fail (GTK_IS_WINDOW (window));
+  g_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (window)));
 
   /* leave if the window is already active */
   if (gtk_window_is_active (window))

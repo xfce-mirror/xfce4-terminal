@@ -86,9 +86,9 @@ terminal_gdbus_method_call (GDBusConnection       *connection,
   GError       *error = NULL;
   gchar        *display_name2;
 
-  terminal_return_if_fail (TERMINAL_IS_APP (app));
-  terminal_return_if_fail (!g_strcmp0 (object_path, TERMINAL_DBUS_PATH));
-  terminal_return_if_fail (!g_strcmp0 (interface_name, TERMINAL_DBUS_INTERFACE));
+  g_return_if_fail (TERMINAL_IS_APP (app));
+  g_return_if_fail (!g_strcmp0 (object_path, TERMINAL_DBUS_PATH));
+  g_return_if_fail (!g_strcmp0 (interface_name, TERMINAL_DBUS_INTERFACE));
 
   if (g_strcmp0 (method_name, TERMINAL_DBUS_METHOD_LAUNCH) == 0)
     {
@@ -155,8 +155,8 @@ terminal_gdbus_bus_acquired (GDBusConnection *connection,
   GError        *error = NULL;
 
   info = g_dbus_node_info_new_for_xml (terminal_gdbus_introspection_xml, NULL);
-  terminal_assert (info != NULL);
-  terminal_assert (*info->interfaces != NULL);
+  g_assert (info != NULL);
+  g_assert (*info->interfaces != NULL);
 
   register_id = g_dbus_connection_register_object (connection,
                                                    TERMINAL_DBUS_PATH,
@@ -183,7 +183,7 @@ terminal_gdbus_register_service (TerminalApp *app,
 {
   guint owner_id;
 
-  terminal_return_val_if_fail (TERMINAL_IS_APP (app), FALSE);
+  g_return_val_if_fail (TERMINAL_IS_APP (app), FALSE);
 
   owner_id = g_bus_own_name (G_BUS_TYPE_SESSION,
                              TERMINAL_DBUS_SERVICE,
@@ -211,7 +211,7 @@ terminal_gdbus_invoke_launch (gint     argc,
   guint32          uid;
   gchar           *display_name;
 
-  terminal_return_val_if_fail (argc == (gint) g_strv_length (argv), FALSE);
+  g_return_val_if_fail (argc == (gint) g_strv_length (argv), FALSE);
 
   connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, error);
   if (G_UNLIKELY (connection == NULL))
