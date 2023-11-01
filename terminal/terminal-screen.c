@@ -2412,11 +2412,13 @@ terminal_screen_get_title (TerminalScreen *screen)
 const gchar*
 terminal_screen_get_working_directory (TerminalScreen *screen)
 {
-  gchar        buffer[4096 + 1];
-  gchar       *file;
   gchar       *cwd;
   const gchar *uri;
+#ifndef __FreeBSD__
+  gchar        buffer[4096 + 1];
+  gchar       *file;
   gint         length;
+#endif
 
   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
@@ -2429,14 +2431,29 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
     }
   else if (screen->pid >= 0)
     {
-      /* make sure that we use linprocfs on all systems */
-#if defined(__FreeBSD__)
-      file = g_strdup_printf ("/compat/linux/proc/%d/cwd", screen->pid);
-#elif defined(__NetBSD__) || defined(__OpenBSD__)
-      file = g_strdup_printf ("/emul/linux/proc/%d/cwd", screen->pid);
+#ifdef __FreeBSD__
+      cwd = terminal_util_get_process_cwd (screen->pid);
+      if (cwd == NULL)
+        cwd = g_get_current_dir ();
+
+      if (G_LIKELY (cwd != NULL))
+       {
+          if (chdir (cwd) == 0)
+            {
+              g_free (screen->working_directory);
+              screen->working_directory = g_get_current_dir ();
+              if (chdir (cwd) == 0) {};
+            }
+
+          g_free (cwd);
+        }
 #else
+      /* make sure that we use linprocfs on all systems */
+#  if defined(__NetBSD__) || defined(__OpenBSD__)
+      file = g_strdup_printf ("/emul/linux/proc/%d/cwd", screen->pid);
+#  else
       file = g_strdup_printf ("/proc/%d/cwd", screen->pid);
-#endif
+#  endif
 
       length = readlink (file, buffer, sizeof (buffer) - 1);
       if (length > 0 && *buffer == '/')
@@ -2462,6 +2479,7 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
         }
 
       g_free (file);
+#endif
     }
 
   return screen->working_directory;

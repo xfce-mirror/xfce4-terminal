@@ -146,6 +146,16 @@ if test x"$with_utempter" = x"yes"; then
 fi
 AM_CONDITIONAL([HAVE_UTEMPTER], [test x"$with_utempter" = x"yes"])
 
+dnl ****************
+dnl *** Check OS ***
+dnl ****************
+AC_CANONICAL_HOST
+AS_CASE([$host],
+		[*-*freebsd*], [freebsd=yes],
+		[freebsd=no])
+
+AM_CONDITIONAL([FREEBSD], [test x$freebsd = xyes])
+
 dnl *************************
 dnl *** Check for gtk-doc ***
 dnl *************************
