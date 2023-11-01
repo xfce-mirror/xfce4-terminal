@@ -20,6 +20,10 @@
 
 #include <gtk/gtk.h>
 
+#ifdef __FreeBSD__
+#include <sys/types.h>
+#endif
+
 G_BEGIN_DECLS
 
 void terminal_util_show_about_dialog  (GtkWindow    *parent);
@@ -28,6 +32,10 @@ void terminal_util_activate_window    (GtkWindow    *window);
 
 void terminal_util_free_data          (gpointer      data,
                                        GClosure     *closure);
+
+#ifdef __FreeBSD__
+gchar* terminal_util_get_process_cwd (pid_t pid);
+#endif
 
 G_END_DECLS
 
