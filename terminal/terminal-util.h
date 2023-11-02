@@ -29,6 +29,10 @@ void terminal_util_activate_window    (GtkWindow    *window);
 void terminal_util_free_data          (gpointer      data,
                                        GClosure     *closure);
 
+#ifdef __FreeBSD__
+gchar* terminal_util_get_process_cwd (GPid pid);
+#endif
+
 G_END_DECLS
 
 #endif /* !TERMINAL_UTIL_H */
