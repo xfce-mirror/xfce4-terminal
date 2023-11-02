@@ -182,14 +182,15 @@ terminal_util_free_data (gpointer  data,
 }
 
 
+
 #ifdef __FreeBSD__
 gchar*
-terminal_util_get_process_cwd (pid_t pid)
+terminal_util_get_process_cwd (GPid pid)
 {
   gchar *cwd;
 
   struct procstat *procstat = procstat_open_sysctl ();
-  struct kinfo_proc *kipp = kinfo_getproc (pid);
+  struct kinfo_proc *kipp = kinfo_getproc ((pid_t)pid);
 
   if (procstat == NULL || kipp == NULL)
     goto fail;
