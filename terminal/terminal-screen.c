@@ -2436,17 +2436,8 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
       if (cwd == NULL)
         cwd = g_get_current_dir ();
 
-      if (G_LIKELY (cwd != NULL))
-       {
-          if (chdir (cwd) == 0)
-            {
-              g_free (screen->working_directory);
-              screen->working_directory = g_get_current_dir ();
-              if (chdir (cwd) == 0) {};
-            }
-
-          g_free (cwd);
-        }
+      g_free (screen->working_directory);
+      screen->working_directory = cwd;
 #else
       /* make sure that we use linprocfs on all systems */
 #  if defined(__NetBSD__) || defined(__OpenBSD__)
