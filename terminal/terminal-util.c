@@ -187,40 +187,36 @@ terminal_util_free_data (gpointer  data,
 gchar*
 terminal_util_get_process_cwd (GPid pid)
 {
-  gchar *cwd;
-
   struct procstat *procstat = procstat_open_sysctl ();
-  struct kinfo_proc *kipp = kinfo_getproc ((pid_t)pid);
+  struct kinfo_proc *kipp = kinfo_getproc ((pid_t) pid);
+  struct filestat_list *head;
+  struct filestat *fst;
+  gchar *cwd = NULL;
 
   if (procstat == NULL || kipp == NULL)
-    goto fail;
+    goto cleanup;
 
-  struct filestat_list *head = procstat_getfiles (procstat, kipp, 0);
-  struct filestat *fst;
-
+  head = procstat_getfiles (procstat, kipp, 0);
   if (head == NULL)
-    goto fail;
+    goto cleanup;
 
-  STAILQ_FOREACH(fst, head, next)
+  STAILQ_FOREACH (fst, head, next)
     {
       if ((fst->fs_uflags & PS_FST_UFLAG_CDIR) && (fst->fs_path != NULL))
         {
           cwd = g_strdup (fst->fs_path);
-
-          procstat_freefiles (procstat, head);
-          free (kipp);
-          procstat_close (procstat);
-
-          return cwd;
-      }
+          goto cleanup;
+        }
     }
 
-fail:
-  if (procstat)
+cleanup:
+  if (head != NULL)
+    procstat_freefiles (procstat, head);
+  if (procstat != NULL)
     procstat_close (procstat);
-  if (kipp)
+  if (kipp != NULL)
     free (kipp);
 
-  return NULL;
+  return cwd;
 }
 #endif
