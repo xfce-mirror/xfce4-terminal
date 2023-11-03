@@ -38,6 +38,15 @@
 #include <terminal/terminal-util.h>
 #include <terminal/terminal-private.h>
 
+#ifdef __FreeBSD__
+#include <sys/param.h>
+#include <sys/queue.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <sys/user.h>
+#include <libprocstat.h>
+#include <libutil.h>
+#endif
 
 
 /**
@@ -171,3 +180,43 @@ terminal_util_free_data (gpointer  data,
 {
   g_free (data);
 }
+
+
+
+#ifdef __FreeBSD__
+gchar*
+terminal_util_get_process_cwd (GPid pid)
+{
+  struct procstat *procstat = procstat_open_sysctl ();
+  struct kinfo_proc *kipp = kinfo_getproc ((pid_t) pid);
+  struct filestat_list *head;
+  struct filestat *fst;
+  gchar *cwd = NULL;
+
+  if (procstat == NULL || kipp == NULL)
+    goto cleanup;
+
+  head = procstat_getfiles (procstat, kipp, 0);
+  if (head == NULL)
+    goto cleanup;
+
+  STAILQ_FOREACH (fst, head, next)
+    {
+      if ((fst->fs_uflags & PS_FST_UFLAG_CDIR) && (fst->fs_path != NULL))
+        {
+          cwd = g_strdup (fst->fs_path);
+          goto cleanup;
+        }
+    }
+
+cleanup:
+  if (head != NULL)
+    procstat_freefiles (procstat, head);
+  if (procstat != NULL)
+    procstat_close (procstat);
+  if (kipp != NULL)
+    free (kipp);
+
+  return cwd;
+}
+#endif

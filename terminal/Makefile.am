@@ -82,6 +82,10 @@ if HAVE_UTEMPTER
 xfce4_terminal_LDADD += -lutempter
 endif
 
+if FREEBSD
+xfce4_terminal_LDADD += -lprocstat -lutil
+endif
+
 ##
 ## Rules to auto-generate built sources
 ##
