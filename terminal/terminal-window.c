@@ -577,6 +577,21 @@ terminal_window_init (TerminalWindow *window)
 
 
 static void
+terminal_window_action_prefs_died (gpointer  user_data,
+                                   GObject  *where_the_object_was)
+{
+  TerminalWindow *window = TERMINAL_WINDOW (user_data);
+
+  window->priv->preferences_dialog = NULL;
+  window->priv->n_child_windows--;
+
+  if (window->priv->drop_down)
+    terminal_util_activate_window (GTK_WINDOW (window));
+}
+
+
+
+static void
 terminal_window_finalize (GObject *object)
 {
   TerminalWindow *window = TERMINAL_WINDOW (object);
@@ -588,7 +603,11 @@ terminal_window_finalize (GObject *object)
                                         G_CALLBACK (terminal_window_notebook_show_tabs), window);
 
   if (window->priv->preferences_dialog != NULL)
-    gtk_widget_destroy (window->priv->preferences_dialog);
+    {
+      g_object_weak_unref (G_OBJECT (window->priv->preferences_dialog),
+                           terminal_window_action_prefs_died, window);
+      gtk_widget_destroy (window->priv->preferences_dialog);
+    }
   g_object_unref (G_OBJECT (window->priv->preferences));
   g_object_unref (G_OBJECT (window->priv->accel_group));
   g_object_unref (G_OBJECT (window->priv->encoding_action));
@@ -1806,21 +1825,6 @@ terminal_window_action_copy_input (TerminalWindow *window)
   gtk_widget_show_all (popover);
 
   return TRUE;
-}
-
-
-
-static void
-terminal_window_action_prefs_died (gpointer  user_data,
-                                   GObject  *where_the_object_was)
-{
-  TerminalWindow *window = TERMINAL_WINDOW (user_data);
-
-  window->priv->preferences_dialog = NULL;
-  window->priv->n_child_windows--;
-
-  if (window->priv->drop_down)
-    terminal_util_activate_window (GTK_WINDOW (window));
 }
 
 
