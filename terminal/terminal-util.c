@@ -219,7 +219,7 @@ cleanup:
 
   return cwd;
 #else
-  gchar *cwd;
+  gchar *cwd = NULL;
   gchar buffer[4096 + 1];
   gchar *file;
   gint length;
@@ -232,8 +232,24 @@ cleanup:
 #endif
 
   length = readlink (file, buffer, sizeof (buffer) - 1);
+  if (length > 0 && *buffer == '/')
+    {
+      buffer[length] = '\0';
+      cwd = g_strdup (buffer);
+    }
+  else if (length <= 0)
+    {
+      cwd = g_get_current_dir ();
+      if (chdir (file) == 0)
+        {
+          gchar *temp = g_get_current_dir ();
+          chdir (cwd);
+          g_free (cwd);
+          cwd = temp;
+        }
+    }
+
   g_free (file);
-  cwd = (length > 0 && *buffer == '/') ? g_strdup (buffer) : NULL;
 
   return cwd;
 #endif
