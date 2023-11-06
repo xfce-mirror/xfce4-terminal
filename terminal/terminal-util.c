@@ -183,10 +183,10 @@ terminal_util_free_data (gpointer  data,
 
 
 
-#ifdef __FreeBSD__
 gchar*
 terminal_util_get_process_cwd (GPid pid)
 {
+#ifdef __FreeBSD__
   struct procstat *procstat = procstat_open_sysctl ();
   struct kinfo_proc *kipp = kinfo_getproc ((pid_t) pid);
   struct filestat_list *head;
@@ -218,5 +218,23 @@ cleanup:
     free (kipp);
 
   return cwd;
-}
+#else
+  gchar *cwd;
+  gchar buffer[4096 + 1];
+  gchar *file;
+  gint length;
+
+  /* make sure that we use linprocfs on all systems */
+#if defined(__NetBSD__) || defined(__OpenBSD__)
+  file = g_strdup_printf ("/emul/linux/proc/%d/cwd", pid);
+#else
+  file = g_strdup_printf ("/proc/%d/cwd", pid);
 #endif
+
+  length = readlink (file, buffer, sizeof (buffer) - 1);
+  g_free (file);
+  cwd = (length > 0 && *buffer == '/') ? g_strdup (buffer) : NULL;
+
+  return cwd;
+#endif
+}
