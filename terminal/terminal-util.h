@@ -29,6 +29,8 @@ void terminal_util_activate_window    (GtkWindow    *window);
 void terminal_util_free_data          (gpointer      data,
                                        GClosure     *closure);
 
+gchar* terminal_util_get_process_cwd  (GPid pid);
+
 G_END_DECLS
 
 #endif /* !TERMINAL_UTIL_H */
