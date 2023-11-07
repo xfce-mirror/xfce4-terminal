@@ -2427,11 +2427,11 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
   else if (screen->pid >= 0)
     {
       cwd = terminal_util_get_process_cwd (screen->pid);
-      if (G_UNLIKELY (cwd == NULL))
-        cwd = g_get_home_dir ();
-
-      g_free (screen->working_directory);
-      screen->working_directory = cwd;
+      if (G_LIKELY (cwd != NULL))
+        {
+          g_free (screen->working_directory);
+          screen->working_directory = cwd;
+        }
     }
 
   return screen->working_directory;
