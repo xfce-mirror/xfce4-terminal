@@ -38,6 +38,15 @@
 #include <terminal/terminal-util.h>
 #include <terminal/terminal-private.h>
 
+#ifdef __FreeBSD__
+#include <sys/param.h>
+#include <sys/queue.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <sys/user.h>
+#include <libprocstat.h>
+#include <libutil.h>
+#endif
 
 
 /**
@@ -170,4 +179,78 @@ terminal_util_free_data (gpointer  data,
                          GClosure *closure)
 {
   g_free (data);
+}
+
+
+
+gchar*
+terminal_util_get_process_cwd (GPid pid)
+{
+#ifdef __FreeBSD__
+  struct procstat *procstat = procstat_open_sysctl ();
+  struct kinfo_proc *kipp = kinfo_getproc ((pid_t) pid);
+  struct filestat_list *head;
+  struct filestat *fst;
+  gchar *cwd = NULL;
+
+  if (procstat == NULL || kipp == NULL)
+    goto cleanup;
+
+  head = procstat_getfiles (procstat, kipp, 0);
+  if (head == NULL)
+    goto cleanup;
+
+  STAILQ_FOREACH (fst, head, next)
+    {
+      if ((fst->fs_uflags & PS_FST_UFLAG_CDIR) && (fst->fs_path != NULL))
+        {
+          cwd = g_strdup (fst->fs_path);
+          goto cleanup;
+        }
+    }
+
+cleanup:
+  if (head != NULL)
+    procstat_freefiles (procstat, head);
+  if (procstat != NULL)
+    procstat_close (procstat);
+  if (kipp != NULL)
+    free (kipp);
+
+  return cwd;
+#else
+  gchar *cwd = NULL;
+  gchar buffer[4096 + 1];
+  gchar *file;
+  gint length;
+
+  /* make sure that we use linprocfs on all systems */
+#if defined(__NetBSD__) || defined(__OpenBSD__)
+  file = g_strdup_printf ("/emul/linux/proc/%d/cwd", pid);
+#else
+  file = g_strdup_printf ("/proc/%d/cwd", pid);
+#endif
+
+  length = readlink (file, buffer, sizeof (buffer) - 1);
+  if (length > 0 && *buffer == '/')
+    {
+      buffer[length] = '\0';
+      cwd = g_strdup (buffer);
+    }
+  else if (length <= 0)
+    {
+      cwd = g_get_current_dir ();
+      if (chdir (file) == 0)
+        {
+          gchar *temp = g_get_current_dir ();
+          chdir (cwd);
+          g_free (cwd);
+          cwd = temp;
+        }
+    }
+
+  g_free (file);
+
+  return cwd;
+#endif
 }
