@@ -247,6 +247,11 @@ cleanup:
           g_free (cwd);
           cwd = temp;
         }
+      else
+        {
+          g_free (cwd);
+          cwd = NULL;
+        }
     }
 
   g_free (file);
