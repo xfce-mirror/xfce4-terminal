@@ -1191,7 +1191,7 @@ terminal_app_process (TerminalApp  *app,
 
 #ifdef ENABLE_X11
   /* Connect to session manager first before starting any other windows */
-  if (G_LIKELY (app->session_client == NULL))
+  if (app->session_client == NULL && WINDOWING_IS_X11 ())
     {
       GError *err = NULL;
       gchar *sm_client_id = NULL;
