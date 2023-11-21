@@ -74,8 +74,10 @@ static void     terminal_app_new_window_with_terminal (TerminalWindow     *exist
                                                        TerminalApp        *app);
 static void     terminal_app_window_destroyed         (GtkWidget          *window,
                                                        TerminalApp        *app);
+#ifdef ENABLE_X11
 static void     terminal_app_save_yourself            (XfceSMClient       *client,
                                                        TerminalApp        *app);
+#endif
 static void     terminal_app_open_window              (TerminalApp        *app,
                                                        TerminalWindowAttr *attr);
 
@@ -90,7 +92,9 @@ struct _TerminalApp
 {
   GObject              parent_instance;
   TerminalPreferences *preferences;
+#ifdef ENABLE_X11
   XfceSMClient        *session_client;
+#endif
   gchar               *initial_menu_bar_accel;
   GSList              *windows;
 
@@ -181,8 +185,10 @@ terminal_app_finalize (GObject *object)
   if (app->initial_menu_bar_accel != NULL)
     g_free (app->initial_menu_bar_accel);
 
+#ifdef ENABLE_X11
   if (app->session_client != NULL)
     g_object_unref (G_OBJECT (app->session_client));
+#endif
 
   (*G_OBJECT_CLASS (terminal_app_parent_class)->finalize) (object);
 }
@@ -708,6 +714,7 @@ terminal_app_window_destroyed (GtkWidget   *window,
 
 
 
+#ifdef ENABLE_X11
 static void
 terminal_app_save_yourself (XfceSMClient *client,
                             TerminalApp  *app)
@@ -757,6 +764,7 @@ terminal_app_save_yourself (XfceSMClient *client,
   g_slist_free (result);
   g_strfreev (argv);
 }
+#endif
 
 
 
@@ -1175,29 +1183,30 @@ terminal_app_process (TerminalApp  *app,
                       GError      **error)
 {
   GSList             *attrs, *lp;
-  gchar              *sm_client_id = NULL;
   TerminalWindowAttr *attr;
-  GError             *err = NULL;
 
   attrs = terminal_window_attr_parse (argc, argv, app->windows != NULL, error);
   if (G_UNLIKELY (attrs == NULL))
     return FALSE;
 
+#ifdef ENABLE_X11
   /* Connect to session manager first before starting any other windows */
-  for (lp = attrs; lp != NULL; lp = lp->next)
-    {
-      attr = lp->data;
-
-      /* take first sm client id */
-      if (attr->sm_client_id != NULL)
-        {
-          sm_client_id = g_strdup (attr->sm_client_id);
-          break;
-        }
-    }
-
   if (G_LIKELY (app->session_client == NULL))
     {
+      GError *err = NULL;
+      gchar *sm_client_id = NULL;
+      for (lp = attrs; lp != NULL; lp = lp->next)
+        {
+          attr = lp->data;
+
+          /* take first sm client id */
+          if (attr->sm_client_id != NULL)
+            {
+              sm_client_id = g_strdup (attr->sm_client_id);
+              break;
+            }
+        }
+
       app->session_client = xfce_sm_client_get_full (XFCE_SM_CLIENT_RESTART_NORMAL,
                                                      XFCE_SM_CLIENT_PRIORITY_DEFAULT,
                                                      sm_client_id,
@@ -1217,7 +1226,9 @@ terminal_app_process (TerminalApp  *app,
           g_warning ("Failed to connect to session manager: %s", err->message);
           g_error_free (err);
         }
+      g_free (sm_client_id);
     }
+#endif
 
   for (lp = attrs; lp != NULL; lp = lp->next)
     {
@@ -1228,7 +1239,6 @@ terminal_app_process (TerminalApp  *app,
     }
 
   g_slist_free (attrs);
-  g_free (sm_client_id);
 
   return TRUE;
 }
