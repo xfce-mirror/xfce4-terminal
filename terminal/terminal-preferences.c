@@ -663,7 +663,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_boolean ("dropdown-toggle-focus",
                             NULL,
                             "DropdownToggleFocus",
-                            TRUE,
+                            FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
