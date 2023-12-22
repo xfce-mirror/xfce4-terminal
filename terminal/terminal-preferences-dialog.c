@@ -1121,7 +1121,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* section: General */
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("General"));
 
-  label = gtk_label_new ("Text Color:");
+  label = gtk_label_new (_("Text Color:"));
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
@@ -1136,7 +1136,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
-  label = gtk_label_new ("Background Color:");
+  label = gtk_label_new (_("Background Color:"));
   gtk_grid_attach (GTK_GRID (grid), label, 2, row, 1, 1);
   gtk_widget_show (label);
 
@@ -1151,7 +1151,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 3, row, 1, 1);
   gtk_widget_show (button);
 
-  label = gtk_label_new ("Tab activity color:");
+  label = gtk_label_new (_("Tab activity color:"));
   gtk_grid_attach (GTK_GRID (grid), label, 4, row, 1, 1);
   gtk_widget_show (label);
 
