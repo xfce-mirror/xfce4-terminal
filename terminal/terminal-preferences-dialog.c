@@ -797,6 +797,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   label = gtk_label_new_with_mnemonic (_("Text blinks:"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_widget_set_tooltip_text (label, _("Controls whether text in the terminal is allowed to blink when '\\e[5m' escape codes are used."));
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
