@@ -267,6 +267,10 @@ terminal_widget_init (TerminalWidget *widget)
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-highlight-urls",
                             G_CALLBACK (terminal_widget_update_highlight_urls), widget);
 
+  /* update tooltip when hovering over a hyperlink */
+  g_signal_connect (G_OBJECT (widget), "hyperlink-hover-uri-changed",
+                    G_CALLBACK (terminal_widget_hyperlink_hover_uri_changed), NULL);
+
   /* monitor the misc-hyperlinks-enabled setting */
   g_object_bind_property (G_OBJECT (widget->preferences), "misc-hyperlinks-enabled",
                           G_OBJECT (widget), "allow-hyperlink",
@@ -303,9 +307,6 @@ terminal_widget_finalize (GObject *object)
 
   /* disconnect the misc-highlight-urls watch */
   g_signal_handlers_disconnect_by_func (G_OBJECT (widget->preferences), G_CALLBACK (terminal_widget_update_highlight_urls), widget);
-
-  /* disconnect the hyperlink-hover-uri-changed callback */
-  g_signal_handlers_disconnect_by_func (G_OBJECT (widget), G_CALLBACK (terminal_widget_hyperlink_hover_uri_changed), widget);
 
   /* disconnect from the preferences */
   g_object_unref (G_OBJECT (widget->preferences));
