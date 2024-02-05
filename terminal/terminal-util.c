@@ -90,7 +90,7 @@ terminal_util_show_about_dialog (GtkWindow *parent)
                          "artists", artists,
                          "comments", _("Xfce Terminal Emulator"),
                          "documenters", documenters,
-                         "copyright", "Copyright \302\251 2003-2023 The Xfce development team",
+                         "copyright", "Copyright \302\251 2003-2024 The Xfce development team",
                          "license", XFCE_LICENSE_GPL,
                          "logo-icon-name", "org.xfce.terminal",
                          "program-name", PACKAGE_NAME,
