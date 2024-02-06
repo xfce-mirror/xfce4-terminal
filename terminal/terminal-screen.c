@@ -1892,7 +1892,7 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
 {
   GtkWidget *dialog;
 
-  g_return_if_fail (original_clipboard != GDK_SELECTION_CLIPBOARD && original_clipboard != GDK_SELECTION_PRIMARY);
+  g_return_if_fail (original_clipboard == GDK_SELECTION_CLIPBOARD || original_clipboard == GDK_SELECTION_PRIMARY);
 
   dialog = terminal_screen_unsafe_paste_dialog_new (screen, text);
   gtk_widget_show_all (dialog);
