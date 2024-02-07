@@ -1893,7 +1893,7 @@ terminal_preferences_dialog_presets_changed (TerminalPreferencesDialog *dialog,
   GValue        src = { 0, };
   GValue        dst = { 0, };
 
-  g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (widget));
+  g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
   g_return_if_fail (GTK_IS_COMBO_BOX (widget));
 
   combobox = GTK_COMBO_BOX (widget);
