@@ -33,11 +33,6 @@ dnl *** Debugging support for GIT snapshots ***
 dnl *******************************************
 m4_define([terminal_debug_default], [ifelse(terminal_version_tag(), [git], [yes], [minimum])])
 
-dnl ****************************
-dnl *** For intltool support ***
-dnl ****************************
-m4_define([intltool_minimum_version], [0.35])
-
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
@@ -77,7 +72,6 @@ dnl ********************************
 AC_PROG_CC()
 AM_PROG_CC_C_O()
 AC_PROG_INSTALL()
-IT_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 
 dnl **************************
 dnl *** Initialize libtool ***
@@ -93,7 +87,12 @@ AC_CHECK_HEADERS([ctype.h errno.h limits.h pwd.h signal.h time.h unistd.h locale
 dnl ******************************
 dnl *** Check for i18n support ***
 dnl ******************************
-XDT_I18N([@LINGUAS@])
+GETTEXT_PACKAGE="$PACKAGE"
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Name of default gettext domain])
+AC_SUBST([GETTEXT_PACKAGE])
+
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 
 dnl ***********************************
 dnl *** Check for optional packages ***
