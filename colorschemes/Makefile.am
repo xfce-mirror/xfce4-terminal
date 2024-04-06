@@ -12,7 +12,9 @@ presets_in_files = 							\
 
 presetsdir = $(datadir)/xfce4/terminal/colorschemes
 presets_DATA = $(presets_in_files:.theme.in=.theme)
-@INTLTOOL_THEME_RULE@
+
+%.theme: %.theme.in
+	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 EXTRA_DIST = $(presets_in_files)
 
