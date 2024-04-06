@@ -8,14 +8,8 @@ dnl
 dnl ***************************
 dnl *** Version information ***
 dnl ***************************
-m4_define([terminal_version_major], [1])
-m4_define([terminal_version_minor], [1])
-m4_define([terminal_version_micro], [3])
-m4_define([terminal_version_nano], [])
-m4_define([terminal_version_build], [@REVISION@])
-m4_define([terminal_version_tag], [git])
+XDT_VERSION_INIT([1.1.3], [git])
 m4_define([terminal_version_dbus], [5])
-m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()ifelse(terminal_version_nano(), [], [], [.terminal_version_nano()])ifelse(terminal_version_tag(), [git], [terminal_version_tag()-terminal_version_build()], [terminal_version_tag()])])
 
 dnl minimum required versions
 m4_define([glib_min_version], [2.44.0])
@@ -28,11 +22,6 @@ m4_define([xfconf_min_version], [4.16.0])
 m4_define([libx11_min_version], [1.6.7])
 m4_define([gtk_layer_shell_min_version], [0.7.0])
 
-dnl *******************************************
-dnl *** Debugging support for GIT snapshots ***
-dnl *******************************************
-m4_define([terminal_debug_default], [ifelse(terminal_version_tag(), [git], [yes], [minimum])])
-
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
@@ -41,8 +30,8 @@ AC_COPYRIGHT([Copyright (c) 2003-2024
         os-cillation e.K. All rights reserved.
 
 Written by Benedikt Meurer <benny@xfce.org>.])
-AC_INIT([xfce4-terminal], [terminal_version], [https://gitlab.xfce.org/apps/xfce4-terminal/])
-AC_REVISION([@REVISION@])
+AC_INIT([xfce4-terminal], [xdt_version], [https://gitlab.xfce.org/apps/xfce4-terminal/])
+AC_REVISION([xdt_version_build])
 AC_PREREQ([2.69])
 AC_ARG_PROGRAM()
 
@@ -163,7 +152,7 @@ GTK_DOC_CHECK([1.9])
 dnl ***********************************
 dnl *** Check for debugging support ***
 dnl ***********************************
-XDT_FEATURE_DEBUG([terminal_debug_default])
+XDT_FEATURE_DEBUG([xdt_debug_default])
 
 dnl **************************************
 dnl *** Check for linker optimizations ***
