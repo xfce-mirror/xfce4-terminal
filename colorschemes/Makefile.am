@@ -1,19 +1,21 @@
 
 
 presets_in_files = 							\
-	black-on-white.theme.in						\
-	dark-pastels.theme.in						\
-	green-on-black.theme.in						\
-	solarized-dark.theme.in						\
-	solarized-light.theme.in					\
-	tango.theme.in							\
-	white-on-black.theme.in						\
-	xterm.theme.in
+	black-on-white.desktop.in						\
+	dark-pastels.desktop.in						\
+	green-on-black.desktop.in						\
+	solarized-dark.desktop.in						\
+	solarized-light.desktop.in					\
+	tango.desktop.in							\
+	white-on-black.desktop.in						\
+	xterm.desktop.in
 
 presetsdir = $(datadir)/xfce4/terminal/colorschemes
-presets_DATA = $(presets_in_files:.theme.in=.theme)
+presets_DATA = $(presets_in_files:.desktop.in=.theme)
 
-%.theme: %.theme.in
+# FIXME: xgettext doesn't recognize .theme.in files as desktop files so we
+# use .desktop.in for the translation: is there a proper solution?
+%.theme: %.desktop.in
 	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 EXTRA_DIST = $(presets_in_files)
