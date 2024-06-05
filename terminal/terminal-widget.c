@@ -647,7 +647,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
       else
         {
           str = g_string_new (NULL);
-          ucs = (const gunichar2 *) gtk_selection_data_get_data (selection_data);
+          ucs = (const gunichar2 *) (gpointer) gtk_selection_data_get_data (selection_data);
           for (n = 0; n < gtk_selection_data_get_length (selection_data) / 2 && ucs[n] != '\n'; ++n)
             g_string_append_unichar (str, ucs[n]);
           filename = g_filename_from_uri (str->str, NULL, NULL);

@@ -2621,7 +2621,7 @@ terminal_window_get_workspace (TerminalWindow *window)
               nitems == 1 &&
               data_p != NULL)
             {
-              workspace = *(unsigned int *) data_p;
+              workspace = *(unsigned int *) (gpointer) data_p;
             }
 
           if (data_p != NULL)
