@@ -627,6 +627,24 @@ parse_geometry (const char   *string,
                 unsigned int *width,
                 unsigned int *height)
 {
+  int _x, _y;
+  unsigned int _width, _height;
+  if (x == NULL)
+    x = &_x;
+  else
+    *x = 0;
+  if (y == NULL)
+    y = &_y;
+  else
+    *y = 0;
+  if (width == NULL)
+    width = &_width;
+  else
+    *width = 0;
+  if (height == NULL)
+    height = &_height;
+  else
+    *height = 0;
 #ifdef ENABLE_X11
   if (WINDOWING_IS_X11 ())
     return XParseGeometry (string, x, y, width, height);
