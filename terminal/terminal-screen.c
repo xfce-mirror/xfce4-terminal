@@ -719,6 +719,7 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
     }
   else
     {
+      *argv = NULL;
       g_object_get (G_OBJECT (screen->preferences),
                     "command-login-shell", &command_login_shell,
                     "run-custom-command", &run_custom_command,
@@ -737,10 +738,9 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
               return FALSE;
             }
 
-          *command = g_strdup (*argv[0]);
+          shell_fullpath = *argv[0];
 
           g_free (custom_command);
-          return TRUE;
         }
       else
         {
@@ -796,7 +796,8 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
         shell_name = shell_fullpath;
       *command = g_strdup (shell_fullpath);
 
-      *argv = g_new (gchar *, 2);
+      if (*argv == NULL)
+        *argv = g_new (gchar *, 2);
       if (command_login_shell)
         (*argv)[0] = g_strconcat ("-", shell_name, NULL);
       else
