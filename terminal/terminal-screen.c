@@ -698,8 +698,8 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
                                    GError          **error)
 {
   struct passwd *pw;
-  const gchar   *shell_name;
   const gchar   *shell_fullpath = NULL;
+  gchar         *shell_name;
   gchar         *custom_command = NULL;
   gboolean       command_login_shell;
   gboolean       run_custom_command;
@@ -719,6 +719,7 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
     }
   else
     {
+      *argv = NULL;
       g_object_get (G_OBJECT (screen->preferences),
                     "command-login-shell", &command_login_shell,
                     "run-custom-command", &run_custom_command,
@@ -737,10 +738,9 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
               return FALSE;
             }
 
-          *command = g_strdup (*argv[0]);
+          shell_fullpath = *argv[0];
 
           g_free (custom_command);
-          return TRUE;
         }
       else
         {
@@ -789,19 +789,20 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
         }
 
       g_assert (shell_fullpath != NULL);
-      shell_name = strrchr (shell_fullpath, '/');
-      if (shell_name != NULL)
-        ++shell_name;
-      else
-        shell_name = shell_fullpath;
+      shell_name = g_path_get_basename (shell_fullpath);
       *command = g_strdup (shell_fullpath);
 
-      *argv = g_new (gchar *, 2);
+      if (*argv == NULL)
+        *argv = g_new0 (gchar *, 2);
+      else
+        g_free ((*argv)[0]);
+
       if (command_login_shell)
         (*argv)[0] = g_strconcat ("-", shell_name, NULL);
       else
         (*argv)[0] = g_strdup (shell_name);
-      (*argv)[1] = NULL;
+
+      g_free (shell_name);
     }
 
   return TRUE;
