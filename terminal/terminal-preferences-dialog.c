@@ -1038,12 +1038,26 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* Next row */
   row++;
 
+  button = gtk_check_button_new_with_mnemonic (_("_Maximize new windows"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-maximize-default",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_tooltip_text (button, _("Enable this option to maximize newly created terminal windows."));
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 5, 1);
+  gtk_widget_show (button);
+
+  /* Next row */
+  row++;
+
   label = gtk_label_new_with_mnemonic (_("Default geometry"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (10, 4000, 1);
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-maximize-default",
+                          G_OBJECT (button), "sensitive",
+                          G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
   dialog->geometry_set_signal_id[GEOMETRY_COLUMN] =
     g_signal_connect_swapped (button, "value-changed",
                               G_CALLBACK (terminal_preferences_dialog_geometry_changed), dialog);
@@ -1059,6 +1073,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (10, 3000, 1);
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-maximize-default",
+                          G_OBJECT (button), "sensitive",
+                          G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
   dialog->geometry_set_signal_id[GEOMETRY_ROW] =
     g_signal_connect_swapped (button, "value-changed",
                               G_CALLBACK (terminal_preferences_dialog_geometry_changed), dialog);
