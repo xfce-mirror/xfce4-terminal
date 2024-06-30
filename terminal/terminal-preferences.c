@@ -92,6 +92,7 @@ enum
   PROP_MISC_BELL,
   PROP_MISC_BELL_URGENT,
   PROP_MISC_BORDERS_DEFAULT,
+  PROP_MISC_MAXIMIZE_DEFAULT,
   PROP_MISC_CURSOR_BLINKS,
   PROP_MISC_CURSOR_SHAPE,
   PROP_MISC_DEFAULT_GEOMETRY,
@@ -848,6 +849,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             "MiscBordersDefault",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-maximize-default:
+   **/
+  preferences_props[PROP_MISC_MAXIMIZE_DEFAULT] =
+    g_param_spec_boolean ("misc-maximize-default",
+                         NULL,
+                         "MiscMaximizeDefault",
+                         FALSE,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:misc-cursor-blinks:
