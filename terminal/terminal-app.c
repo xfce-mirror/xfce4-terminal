@@ -1047,8 +1047,11 @@ terminal_app_open_window (TerminalApp        *app,
                                            attr->borders,
                                            attr->toolbar);
 
+      gboolean maximize_default;
+      g_object_get (G_OBJECT (app->preferences), "misc-maximize-default", &maximize_default, NULL);
+
       /* apply normal window properties */
-      if (attr->maximize)
+      if (maximize_default || attr->maximize)
         gtk_window_maximize (GTK_WINDOW (window));
       if (attr->minimize)
         gtk_window_iconify (GTK_WINDOW (window));
