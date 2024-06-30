@@ -854,11 +854,11 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    * TerminalPreferences:misc-maximize-default:
    **/
   preferences_props[PROP_MISC_MAXIMIZE_DEFAULT] =
-    g_param_spec_boolean ("misc-maximize-default",
-                         NULL,
-                         "MiscMaximizeDefault",
-                         FALSE,
-                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+      g_param_spec_boolean ("misc-maximize-default",
+                            NULL,
+                            "MiscMaximizeDefault",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:misc-cursor-blinks:

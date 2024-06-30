@@ -1040,8 +1040,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_check_button_new_with_mnemonic (_("_Maximize new windows"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "misc-maximize-default",
-                         G_OBJECT (button), "active",
-                         G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this option to maximize newly created terminal windows."));
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 5, 1);
   gtk_widget_show (button);
