@@ -1092,6 +1092,15 @@ terminal_app_open_window (TerminalApp        *app,
 
   if (!attr->drop_down)
     {
+      /* check if window should be maximized */
+      gboolean *maximize;
+      g_object_get (G_OBJECT (app->preferences), "misc-maximize-default", &maximize, NULL);
+
+      if (maximize)
+        {
+          gtk_window_maximize (GTK_WINDOW (window));
+        }
+
       /* try to apply the geometry to the window */
       g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geometry, NULL);
 
