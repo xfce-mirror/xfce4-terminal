@@ -1093,7 +1093,7 @@ terminal_app_open_window (TerminalApp        *app,
   if (!attr->drop_down)
     {
       /* check if window should be maximized */
-      gboolean *maximize;
+      gboolean maximize;
       g_object_get (G_OBJECT (app->preferences), "misc-maximize-default", &maximize, NULL);
 
       if (maximize)
