@@ -34,6 +34,7 @@
 
 
 static void terminal_search_dialog_finalize           (GObject              *object);
+static void terminal_search_dialog_show               (GtkWidget            *widget);
 static void terminal_search_dialog_opacity_changed    (TerminalSearchDialog *dialog);
 static void terminal_search_dialog_clear_gregex       (TerminalSearchDialog *dialog);
 static void terminal_search_dialog_entry_icon_release (GtkWidget            *entry,
@@ -76,9 +77,13 @@ static void
 terminal_search_dialog_class_init (TerminalSearchDialogClass *klass)
 {
   GObjectClass *gobject_class;
+  GtkWidgetClass *widget_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_search_dialog_finalize;
+
+  widget_class = GTK_WIDGET_CLASS (klass);
+  widget_class->show = terminal_search_dialog_show;
 }
 
 
@@ -206,6 +211,23 @@ terminal_search_dialog_finalize (GObject *object)
   terminal_search_dialog_clear_gregex (TERMINAL_SEARCH_DIALOG (object));
 
   (*G_OBJECT_CLASS (terminal_search_dialog_parent_class)->finalize) (object);
+}
+
+
+
+static void
+terminal_search_dialog_show (GtkWidget *widget)
+{
+  TerminalSearchDialog *dialog = TERMINAL_SEARCH_DIALOG (widget);
+
+  GTK_WIDGET_CLASS (terminal_search_dialog_parent_class)->show (widget);
+
+  if (!gtk_editable_get_selection_bounds (GTK_EDITABLE (dialog->entry), NULL, NULL))
+    {
+      size_t len = strlen (gtk_entry_get_text (GTK_ENTRY (dialog->entry)));
+      if (len > 0 && len <= G_MAXINT)
+        gtk_editable_select_region (GTK_EDITABLE (dialog->entry), 0, len);
+    }
 }
 
 
