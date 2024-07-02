@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-08 12:50+0200\n"
+"POT-Creation-Date: 2024-07-01 12:50+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2020-2024\n"
 "Language-Team: Estonian (http://app.transifex.com/xfce/xfce-apps/language/et/)\n"
@@ -411,7 +411,7 @@ msgstr "_Abi"
 #. * General
 #. section: General
 #: terminal/terminal-preferences-dialog.c:244
-#: terminal/terminal-preferences-dialog.c:1126
+#: terminal/terminal-preferences-dialog.c:1143
 msgid "General"
 msgstr "Üldine"
 
@@ -760,7 +760,7 @@ msgid "x height"
 msgstr "x kõrgus"
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1478 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2190
 msgid "Reset"
 msgstr "Lähtesta"
 
@@ -853,109 +853,117 @@ msgid ""
 msgstr "Lubage see valik, et äsja loodud terminaliakende ümber näidataks aknadekoratsioone."
 
 #: terminal/terminal-preferences-dialog.c:1041
+msgid "_Maximize new windows"
+msgstr "Ava uued aknad _maksimaalselt suures vaates"
+
+#: terminal/terminal-preferences-dialog.c:1045
+msgid "Enable this option to maximize newly created terminal windows."
+msgstr "Luba see valik, et äsja loodud terminaliakenad avataks maksimaalselt suures vaates."
+
+#: terminal/terminal-preferences-dialog.c:1052
 msgid "Default geometry"
 msgstr "Vaikimisi geomeetria"
 
-#: terminal/terminal-preferences-dialog.c:1056
+#: terminal/terminal-preferences-dialog.c:1070
 msgid "columns"
 msgstr "veerge"
 
-#: terminal/terminal-preferences-dialog.c:1071
+#: terminal/terminal-preferences-dialog.c:1088
 msgid "rows"
 msgstr "ridu"
 
 #. section: Tabs
-#: terminal/terminal-preferences-dialog.c:1083
+#: terminal/terminal-preferences-dialog.c:1100
 msgid "Tabs"
 msgstr "Kaardid"
 
-#: terminal/terminal-preferences-dialog.c:1085
+#: terminal/terminal-preferences-dialog.c:1102
 msgid "Reset tab activity indicator after"
 msgstr "Lähtesta kaartide aktiivsuse näitaja peale"
 
-#: terminal/terminal-preferences-dialog.c:1098
+#: terminal/terminal-preferences-dialog.c:1115
 msgid "seconds"
 msgstr "sekundit"
 
-#: terminal/terminal-preferences-dialog.c:1106
+#: terminal/terminal-preferences-dialog.c:1123
 msgid "_Use custom styling to make tabs slim (restart required)"
 msgstr "_Madalate kaartide jaoks kasuta eraldi kujundust (eeldab terminali restarti)"
 
 #. * Colors
-#: terminal/terminal-preferences-dialog.c:1118
+#: terminal/terminal-preferences-dialog.c:1135
 msgid "Colors"
 msgstr "Värvid"
 
-#: terminal/terminal-preferences-dialog.c:1128
+#: terminal/terminal-preferences-dialog.c:1145
 msgid "Text Color:"
 msgstr "Teksti värv:"
 
-#: terminal/terminal-preferences-dialog.c:1143
+#: terminal/terminal-preferences-dialog.c:1160
 msgid "Background Color:"
 msgstr "Taustavärv:"
 
-#: terminal/terminal-preferences-dialog.c:1158
+#: terminal/terminal-preferences-dialog.c:1175
 msgid "Tab activity color:"
 msgstr "Värv, mis näitab aktiivsust kaardil:"
 
-#: terminal/terminal-preferences-dialog.c:1176
+#: terminal/terminal-preferences-dialog.c:1193
 msgid "_Use system theme colors for text and background"
 msgstr "_Kasuta süsteemse teema värve teksti ja tausta jaoks"
 
-#: terminal/terminal-preferences-dialog.c:1186
+#: terminal/terminal-preferences-dialog.c:1203
 msgid "_Vary the background color for each tab"
 msgstr "_Varieeri iga kaardi taustavärvi"
 
-#: terminal/terminal-preferences-dialog.c:1190
+#: terminal/terminal-preferences-dialog.c:1207
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness."
 msgstr "Juhuslik värv põhineb valitud taustavärvil ning jääb sama erksustaseme juurde."
 
-#: terminal/terminal-preferences-dialog.c:1200
+#: terminal/terminal-preferences-dialog.c:1217
 msgid "_Enable sixel graphics"
 msgstr "_Luba sixel graafika kasutamine"
 
 #. section: Custom colors
-#: terminal/terminal-preferences-dialog.c:1210
+#: terminal/terminal-preferences-dialog.c:1227
 msgid "Custom Colors"
 msgstr "Kohandatud värvid"
 
-#: terminal/terminal-preferences-dialog.c:1212
+#: terminal/terminal-preferences-dialog.c:1229
 msgid "_Cursor color:"
 msgstr "_Kursori värv:"
 
-#: terminal/terminal-preferences-dialog.c:1216
-#: terminal/terminal-preferences-dialog.c:1250
+#: terminal/terminal-preferences-dialog.c:1233
+#: terminal/terminal-preferences-dialog.c:1267
 msgid ""
 "Enable this option to set custom text and background colors for cursor. If "
 "disabled the background and text colors will be reversed."
 msgstr "Kasuta seda valikut, et määrata kohandatud teksti- ja taustavärvid kursori jaoks. Kui valik pole kasutusel, siis on tausta ja teksti värvid pööratud."
 
-#: terminal/terminal-preferences-dialog.c:1246
+#: terminal/terminal-preferences-dialog.c:1263
 msgid "_Text selection color:"
 msgstr "_Tekstivaliku värv:"
 
-#: terminal/terminal-preferences-dialog.c:1280
+#: terminal/terminal-preferences-dialog.c:1297
 msgid "_Bold selection color:"
 msgstr "_Paksu kirja tekstivaliku värv:"
 
-#: terminal/terminal-preferences-dialog.c:1284
+#: terminal/terminal-preferences-dialog.c:1301
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Kasuta seda valikut, et määrata kohandatud värv paksu kirja jaoks. Määramata valiku puhul kasutatakse tavalist teksti värvi."
 
 #. section: Palette
-#: terminal/terminal-preferences-dialog.c:1301
+#: terminal/terminal-preferences-dialog.c:1318
 msgid "Palette"
 msgstr "Palett"
 
-#: terminal/terminal-preferences-dialog.c:1324
+#: terminal/terminal-preferences-dialog.c:1341
 msgid "_Show bold text in bright colors:"
 msgstr "Näita paksu kirja _erksama värviga:"
 
-#: terminal/terminal-preferences-dialog.c:1328
+#: terminal/terminal-preferences-dialog.c:1345
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
@@ -963,174 +971,174 @@ msgid ""
 msgstr "Kasuta seda valikut, et lubada paojadadel nagu näiteks '\\e[1;35m' muuta tekst lisaks paksule kirjale ka erksamaks. Kui valik on välja lülitatud, siis teksti värv jääb muutmata."
 
 #. section: Presets
-#: terminal/terminal-preferences-dialog.c:1334
+#: terminal/terminal-preferences-dialog.c:1351
 msgid "Presets"
 msgstr "Valmissätted"
 
 #. * Compatibility
-#: terminal/terminal-preferences-dialog.c:1350
-#: terminal/terminal-preferences-dialog.c:1356
+#: terminal/terminal-preferences-dialog.c:1367
+#: terminal/terminal-preferences-dialog.c:1373
 msgid "Compatibility"
 msgstr "Ühilduvus"
 
-#: terminal/terminal-preferences-dialog.c:1361
+#: terminal/terminal-preferences-dialog.c:1378
 msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
 msgstr "Antud valikud võivad mõnedes rakendustes põhjustada vigast käitumist.\nNeed on siin toodus ainult selleks, et võimaldada teatud rakenduste ja \noperatsioonisüsteemide kasutamist, mis eeldavad teistmoodi toimivat terminali."
 
-#: terminal/terminal-preferences-dialog.c:1374
+#: terminal/terminal-preferences-dialog.c:1391
 msgid "Backspace key generates:"
 msgstr "Tagasivõtuklahv tekitab:"
 
-#: terminal/terminal-preferences-dialog.c:1380
-#: terminal/terminal-preferences-dialog.c:1403
+#: terminal/terminal-preferences-dialog.c:1397
+#: terminal/terminal-preferences-dialog.c:1420
 msgid "Auto-detect"
 msgstr "Automaatne tuvastamine"
 
-#: terminal/terminal-preferences-dialog.c:1381
-#: terminal/terminal-preferences-dialog.c:1404
+#: terminal/terminal-preferences-dialog.c:1398
+#: terminal/terminal-preferences-dialog.c:1421
 msgid "ASCII Del"
 msgstr "ASCII Del"
 
-#: terminal/terminal-preferences-dialog.c:1382
-#: terminal/terminal-preferences-dialog.c:1405
+#: terminal/terminal-preferences-dialog.c:1399
+#: terminal/terminal-preferences-dialog.c:1422
 msgid "Escape sequence"
 msgstr "Katkestamise järjend"
 
-#: terminal/terminal-preferences-dialog.c:1383
-#: terminal/terminal-preferences-dialog.c:1406
+#: terminal/terminal-preferences-dialog.c:1400
+#: terminal/terminal-preferences-dialog.c:1423
 msgid "Control-H"
 msgstr "Ctrl-H"
 
-#: terminal/terminal-preferences-dialog.c:1384
-#: terminal/terminal-preferences-dialog.c:1407
+#: terminal/terminal-preferences-dialog.c:1401
+#: terminal/terminal-preferences-dialog.c:1424
 msgid "Erase TTY"
 msgstr "Kustuta TTY"
 
-#: terminal/terminal-preferences-dialog.c:1397
+#: terminal/terminal-preferences-dialog.c:1414
 msgid "Delete key generates:"
 msgstr "Kustutamisklahv tekitab:"
 
-#: terminal/terminal-preferences-dialog.c:1420
+#: terminal/terminal-preferences-dialog.c:1437
 msgid "Ambiguous-width characters:"
 msgstr "Ebamäärase laiusega tähemärgid:"
 
-#: terminal/terminal-preferences-dialog.c:1426
+#: terminal/terminal-preferences-dialog.c:1443
 msgid "Narrow"
 msgstr "Tõlgenda kitsana"
 
-#: terminal/terminal-preferences-dialog.c:1427
+#: terminal/terminal-preferences-dialog.c:1444
 msgid "Wide"
 msgstr "Tõlgenda laiana"
 
-#: terminal/terminal-preferences-dialog.c:1441
+#: terminal/terminal-preferences-dialog.c:1458
 msgid "Reset compatibility options to defaults"
 msgstr "Lähtesta ühilduvuse seadistused vaikeväärtustega"
 
 #. * Advanced
-#: terminal/terminal-preferences-dialog.c:1452
+#: terminal/terminal-preferences-dialog.c:1469
 msgid "Advanced"
 msgstr "Detailne"
 
 #. section: Double Click
-#: terminal/terminal-preferences-dialog.c:1460
+#: terminal/terminal-preferences-dialog.c:1477
 msgid "Double Click"
 msgstr "Topeltklõps"
 
-#: terminal/terminal-preferences-dialog.c:1462
+#: terminal/terminal-preferences-dialog.c:1479
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Topeltklõpsu puhul loe järgnevad tähemärgid sõna osaks:"
 
 #. section: Encoding
-#: terminal/terminal-preferences-dialog.c:1486
+#: terminal/terminal-preferences-dialog.c:1503
 msgid "Encoding"
 msgstr "Kodeering"
 
-#: terminal/terminal-preferences-dialog.c:1488
+#: terminal/terminal-preferences-dialog.c:1505
 msgid "Default character encoding"
 msgstr "Märkide vaikekodeering:"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: terminal/terminal-preferences-dialog.c:1512
-#: terminal/terminal-preferences-dialog.c:1629
+#: terminal/terminal-preferences-dialog.c:1529
+#: terminal/terminal-preferences-dialog.c:1646
 msgid "Shortcuts"
 msgstr "Kiirklahvid"
 
-#: terminal/terminal-preferences-dialog.c:1514
+#: terminal/terminal-preferences-dialog.c:1531
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "Keela kõik menüüde _juurdepääsuklahvid (nagu Alt+f)"
 
-#: terminal/terminal-preferences-dialog.c:1524
+#: terminal/terminal-preferences-dialog.c:1541
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "_Keela menüü kiirklahv (vaikimisi F10)"
 
 #. section: Misc
-#: terminal/terminal-preferences-dialog.c:1533
+#: terminal/terminal-preferences-dialog.c:1550
 msgid "Misc"
 msgstr "Varia"
 
-#: terminal/terminal-preferences-dialog.c:1535
+#: terminal/terminal-preferences-dialog.c:1552
 msgid "_Use middle mouse click to close tabs"
 msgstr "_Kasuta hiire keskmist klõpsu kaartide sulgemiseks"
 
-#: terminal/terminal-preferences-dialog.c:1545
+#: terminal/terminal-preferences-dialog.c:1562
 msgid "_Use middle mouse click to open urls"
 msgstr "Kasuta hiire keskmist klõpsu _URL'ide avamiseks"
 
-#: terminal/terminal-preferences-dialog.c:1555
+#: terminal/terminal-preferences-dialog.c:1572
 msgid "_Auto-hide mouse pointer"
 msgstr "Peida hiirekursor _automaatselt"
 
-#: terminal/terminal-preferences-dialog.c:1565
+#: terminal/terminal-preferences-dialog.c:1582
 msgid "_Open new tab to the right of the active tab"
 msgstr "Ava uus kaart aktiivsest kaardist _paremal"
 
-#: terminal/terminal-preferences-dialog.c:1575
+#: terminal/terminal-preferences-dialog.c:1592
 msgid "_Audible bell"
 msgstr "_Kuuldav kellahelin"
 
-#: terminal/terminal-preferences-dialog.c:1585
+#: terminal/terminal-preferences-dialog.c:1602
 msgid "_Visual bell"
 msgstr "_Nähtav kellahelin"
 
-#: terminal/terminal-preferences-dialog.c:1595
+#: terminal/terminal-preferences-dialog.c:1612
 msgid "Right click action:"
 msgstr "Parema hiireklahvi vajutusel:"
 
-#: terminal/terminal-preferences-dialog.c:1601
+#: terminal/terminal-preferences-dialog.c:1618
 msgid "Context Menu"
 msgstr "Kontekstimenüü"
 
-#: terminal/terminal-preferences-dialog.c:1602
+#: terminal/terminal-preferences-dialog.c:1619
 msgid "Paste clipboard"
 msgstr "Aseta lõikelaualt"
 
-#: terminal/terminal-preferences-dialog.c:1603
+#: terminal/terminal-preferences-dialog.c:1620
 msgid "Paste selection"
 msgstr "Aseta valik"
 
-#: terminal/terminal-preferences-dialog.c:1616
+#: terminal/terminal-preferences-dialog.c:1633
 msgid "Enable Hyperlinks"
 msgstr "Kasuta hüperlinke"
 
-#: terminal/terminal-preferences-dialog.c:1617
+#: terminal/terminal-preferences-dialog.c:1634
 msgid "Enable support for hyperlinks."
 msgstr "Kuva tekstilised lingid klõpsitavate hüperlinkidena."
 
-#: terminal/terminal-preferences-dialog.c:1640
+#: terminal/terminal-preferences-dialog.c:1657
 msgid "Window"
 msgstr "Aken"
 
-#: terminal/terminal-preferences-dialog.c:1641
-#: terminal/terminal-preferences.c:1195
+#: terminal/terminal-preferences-dialog.c:1658
+#: terminal/terminal-preferences.c:1206
 msgid "Terminal"
 msgstr "Terminal"
 
 #. default item + separator
-#: terminal/terminal-preferences-dialog.c:2048
+#: terminal/terminal-preferences-dialog.c:2065
 msgid "Select Preset"
 msgstr "Vali eelseadistus"
 
@@ -1154,8 +1162,8 @@ msgstr "Lülita välja kuni rakenduse uuesti käivitamiseni"
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Lülita välja jäädavalt (saad seda hiljem seadistustest muuta)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:880
-#: terminal/terminal-screen.c:2372
+#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:881
+#: terminal/terminal-screen.c:2373
 msgid "Untitled"
 msgstr "Pealkirjastamata"
 
@@ -1163,58 +1171,58 @@ msgstr "Pealkirjastamata"
 msgid "Unable to determine your login shell."
 msgstr "Sinu logimiskesta ei õnnestunud tuvastada."
 
-#: terminal/terminal-screen.c:1492
+#: terminal/terminal-screen.c:1493
 msgid "_Relaunch"
 msgstr "Taaskäivita"
 
-#: terminal/terminal-screen.c:1498
+#: terminal/terminal-screen.c:1499
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Alamprotsessi töö lõppes korrektselt olekuga %d."
 
-#: terminal/terminal-screen.c:1500
+#: terminal/terminal-screen.c:1501
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Alamprotsessi töö katkestati signaaliga %d."
 
-#: terminal/terminal-screen.c:1502
+#: terminal/terminal-screen.c:1503
 msgid "The child process was aborted."
 msgstr "Alamprotsessi töö katkestati."
 
-#: terminal/terminal-screen.c:1508 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1509 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "Ära küsi mi_nult seda uuesti"
 
-#: terminal/terminal-screen.c:1822
+#: terminal/terminal-screen.c:1823
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Hoiatus: võimalik ebaturvaline kopeerimine"
 
-#: terminal/terminal-screen.c:1825
+#: terminal/terminal-screen.c:1826
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Selle teksti asetamine terminaliaknasse võib olla ohtlik, sest mõnda osa võidakse tõlgendada käskudena, neist osa juurkasutaja õigustes ('sudo')."
 
-#: terminal/terminal-screen.c:1828
+#: terminal/terminal-screen.c:1829
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Selle teksti asetamine terminaliaknasse võib olla ohtlik, sest tundub, et mõnda osa võidakse tõlgendada käskudena."
 
-#: terminal/terminal-screen.c:1840 terminal/terminal-window.c:827
+#: terminal/terminal-screen.c:1841 terminal/terminal-window.c:827
 #: terminal/terminal-window.c:2367
 msgid "_Cancel"
 msgstr "_Tühista"
 
-#: terminal/terminal-screen.c:1846 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "_Aseta"
 
-#: terminal/terminal-screen.c:1995 terminal/terminal-screen.c:2073
+#: terminal/terminal-screen.c:1996 terminal/terminal-screen.c:2074
 msgid "Failed to execute child"
 msgstr "Alamprotsessi käivitamine ebaõnnestus"
 
-#: terminal/terminal-screen.c:2699
+#: terminal/terminal-screen.c:2700
 msgid "Close this tab"
 msgstr "Sulge see kaart"
 
