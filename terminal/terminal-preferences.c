@@ -1292,7 +1292,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
   preferences->channel = xfconf_channel_get ("xfce4-terminal");
 
   channels = xfconf_list_channels ();
-  if (!g_strv_contains ((const gchar * const *) channels, "xfce4-terminal"))
+  if (channels != NULL && !g_strv_contains ((const gchar * const *) channels, "xfce4-terminal"))
     {
       /* try to load the old config file & save changes */
       terminal_preferences_load_rc_file (preferences);
