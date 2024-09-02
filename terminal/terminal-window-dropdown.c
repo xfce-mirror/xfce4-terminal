@@ -34,7 +34,7 @@
 #endif
 
 #ifdef HAVE_GTK_LAYER_SHELL
-#include <gtk-layer-shell/gtk-layer-shell.h>
+#include <gtk-layer-shell.h>
 #endif
 
 #include <libxfce4ui/libxfce4ui.h>

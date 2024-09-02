@@ -32,7 +32,7 @@
 #include <X11/Xlib.h>
 #endif
 #ifdef HAVE_GTK_LAYER_SHELL
-#include <gtk-layer-shell/gtk-layer-shell.h>
+#include <gtk-layer-shell.h>
 #endif
 
 #include <terminal/terminal-util.h>
