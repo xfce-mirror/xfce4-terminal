@@ -509,7 +509,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_object_bind_property (G_OBJECT (dialog->preferences), "misc-show-unsafe-paste-dialog",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  gtk_widget_set_tooltip_text (button, _("Show a dialog that allows to edit text that is considered unsafe for pasting"));
+  gtk_widget_set_tooltip_text (button, _("Show a dialog that allows one to edit text that is considered unsafe for pasting"));
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
