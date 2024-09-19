@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-08 12:50+0200\n"
+"POT-Creation-Date: 2024-09-19 00:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Ioannis LM, 2023-2024\n"
 "Language-Team: Greek (http://app.transifex.com/xfce/xfce-apps/language/el/)\n"
@@ -424,7 +424,7 @@ msgstr "_Βοήθεια"
 #. * General
 #. section: General
 #: terminal/terminal-preferences-dialog.c:244
-#: terminal/terminal-preferences-dialog.c:1126
+#: terminal/terminal-preferences-dialog.c:1143
 msgid "General"
 msgstr "Γενικές"
 
@@ -615,8 +615,9 @@ msgstr "Εμφάνιση παραθύρου ασφαλείας στην επικ
 
 #: terminal/terminal-preferences-dialog.c:512
 msgid ""
-"Show a dialog that allows to edit text that is considered unsafe for pasting"
-msgstr "Εμφάνιση παραθύρου που σας επιτρέπει την επεξεργασία του κειμένου που θεωρήθηκε μη ασφαλές για επικόλληση"
+"Show a dialog that allows one to edit text that is considered unsafe for "
+"pasting"
+msgstr ""
 
 #. * Drop-down
 #: terminal/terminal-preferences-dialog.c:521
@@ -773,7 +774,7 @@ msgid "x height"
 msgstr "x ύψος"
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1478 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2190
 msgid "Reset"
 msgstr "Επαναφορά"
 
@@ -866,109 +867,117 @@ msgid ""
 msgstr "Ενεργοποιήστε αυτή την επιλογή για να εμφανίζονται τα περιθώρια του παραθύρου στα νέα παράθυρα τερματικού."
 
 #: terminal/terminal-preferences-dialog.c:1041
+msgid "_Maximize new windows"
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:1045
+msgid "Enable this option to maximize newly created terminal windows."
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:1052
 msgid "Default geometry"
 msgstr "Προκαθορισμένη γεωμετρία"
 
-#: terminal/terminal-preferences-dialog.c:1056
+#: terminal/terminal-preferences-dialog.c:1070
 msgid "columns"
 msgstr "στήλες"
 
-#: terminal/terminal-preferences-dialog.c:1071
+#: terminal/terminal-preferences-dialog.c:1088
 msgid "rows"
 msgstr "γραμμές"
 
 #. section: Tabs
-#: terminal/terminal-preferences-dialog.c:1083
+#: terminal/terminal-preferences-dialog.c:1100
 msgid "Tabs"
 msgstr "Καρτέλες"
 
-#: terminal/terminal-preferences-dialog.c:1085
+#: terminal/terminal-preferences-dialog.c:1102
 msgid "Reset tab activity indicator after"
 msgstr "Επαναφορά ένδειξης δραστηριότητας της καρτέλας έπειτα από"
 
-#: terminal/terminal-preferences-dialog.c:1098
+#: terminal/terminal-preferences-dialog.c:1115
 msgid "seconds"
 msgstr "δευτερόλεπτα"
 
-#: terminal/terminal-preferences-dialog.c:1106
+#: terminal/terminal-preferences-dialog.c:1123
 msgid "_Use custom styling to make tabs slim (restart required)"
 msgstr "Χρήση προσαρμοσμένου στ_υλ για κομψές καρτέλες (απαιτείται επανεκκίνηση)"
 
 #. * Colors
-#: terminal/terminal-preferences-dialog.c:1118
+#: terminal/terminal-preferences-dialog.c:1135
 msgid "Colors"
 msgstr "Χρώματα"
 
-#: terminal/terminal-preferences-dialog.c:1128
+#: terminal/terminal-preferences-dialog.c:1145
 msgid "Text Color:"
 msgstr "Χρώμα κειμένου:"
 
-#: terminal/terminal-preferences-dialog.c:1143
+#: terminal/terminal-preferences-dialog.c:1160
 msgid "Background Color:"
 msgstr "Χρώμα φόντου:"
 
-#: terminal/terminal-preferences-dialog.c:1158
+#: terminal/terminal-preferences-dialog.c:1175
 msgid "Tab activity color:"
 msgstr "Χρώμα δραστηριότητας καρτέλας:"
 
-#: terminal/terminal-preferences-dialog.c:1176
+#: terminal/terminal-preferences-dialog.c:1193
 msgid "_Use system theme colors for text and background"
 msgstr "Χρήση των χρωμάτων _θέματος του συστήματος για το κείμενο και το φόντο"
 
-#: terminal/terminal-preferences-dialog.c:1186
+#: terminal/terminal-preferences-dialog.c:1203
 msgid "_Vary the background color for each tab"
 msgstr "Διαφορο_ποίηση του χρώματος φόντου για κάθε καρτέλα"
 
-#: terminal/terminal-preferences-dialog.c:1190
+#: terminal/terminal-preferences-dialog.c:1207
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness."
 msgstr "Η τυχαία επιλογή χρώματος βασίζεται στο επιλεγμένο χρώμα του φόντου, διατηρώντας την ίδια φωτεινότητα."
 
-#: terminal/terminal-preferences-dialog.c:1200
+#: terminal/terminal-preferences-dialog.c:1217
 msgid "_Enable sixel graphics"
 msgstr "_Ενεργοποίηση γραφικής μορφής sixel"
 
 #. section: Custom colors
-#: terminal/terminal-preferences-dialog.c:1210
+#: terminal/terminal-preferences-dialog.c:1227
 msgid "Custom Colors"
 msgstr "Προσαρμοσμένα χρώματα"
 
-#: terminal/terminal-preferences-dialog.c:1212
+#: terminal/terminal-preferences-dialog.c:1229
 msgid "_Cursor color:"
 msgstr "Χρώμα _δείκτη:"
 
-#: terminal/terminal-preferences-dialog.c:1216
-#: terminal/terminal-preferences-dialog.c:1250
+#: terminal/terminal-preferences-dialog.c:1233
+#: terminal/terminal-preferences-dialog.c:1267
 msgid ""
 "Enable this option to set custom text and background colors for cursor. If "
 "disabled the background and text colors will be reversed."
 msgstr "Ενεργοποιήστε αυτή την επιλογή για να θέσετε χρώματα στο κείμενο και στο φόντο του δείκτη. Αν η επιλογή είναι ανενεργή τα χρώματα κειμένου και φόντου θα αντιστραφούν."
 
-#: terminal/terminal-preferences-dialog.c:1246
+#: terminal/terminal-preferences-dialog.c:1263
 msgid "_Text selection color:"
 msgstr "Επιλογή χρώματος _κειμένου:"
 
-#: terminal/terminal-preferences-dialog.c:1280
+#: terminal/terminal-preferences-dialog.c:1297
 msgid "_Bold selection color:"
 msgstr "Έν_τονο χρώμα:"
 
-#: terminal/terminal-preferences-dialog.c:1284
+#: terminal/terminal-preferences-dialog.c:1301
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Ενεργοποιήστε αυτή την επιλογή για να θέσετε χρώμα στο έντονο κείμενο. Αν η επιλογή είναι ανενεργή θα χρησιμοποιηθεί το χρώμα του κειμένου."
 
 #. section: Palette
-#: terminal/terminal-preferences-dialog.c:1301
+#: terminal/terminal-preferences-dialog.c:1318
 msgid "Palette"
 msgstr "Παλέτα"
 
-#: terminal/terminal-preferences-dialog.c:1324
+#: terminal/terminal-preferences-dialog.c:1341
 msgid "_Show bold text in bright colors:"
 msgstr "Εμ_φάνιση έντονου κειμένου με φωτεινά χρώματα:"
 
-#: terminal/terminal-preferences-dialog.c:1328
+#: terminal/terminal-preferences-dialog.c:1345
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
@@ -976,174 +985,174 @@ msgid ""
 msgstr "Ενεργοποιήστε αυτή την επιλογή για να επιτρέπετε στις ακολουθίες διαφυγής, όπως το '\\e[1;35m', να αλλάζουν και τη φωτεινότητα του χρώματος μαζί με το έντονο στο κείμενο. Αν η επιλογή είναι ανενεργή το χρώμα του κειμένου δεν θα επηρεαστεί."
 
 #. section: Presets
-#: terminal/terminal-preferences-dialog.c:1334
+#: terminal/terminal-preferences-dialog.c:1351
 msgid "Presets"
 msgstr "Προεπιλογές"
 
 #. * Compatibility
-#: terminal/terminal-preferences-dialog.c:1350
-#: terminal/terminal-preferences-dialog.c:1356
+#: terminal/terminal-preferences-dialog.c:1367
+#: terminal/terminal-preferences-dialog.c:1373
 msgid "Compatibility"
 msgstr "Συμβατότητα"
 
-#: terminal/terminal-preferences-dialog.c:1361
+#: terminal/terminal-preferences-dialog.c:1378
 msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
 msgstr "Αυτές οι επιλογές μπορεί να προκαλέσουν λανθασμένη συμπεριφορά σε κάποιες εφαρμογές.\nΥπάρχουν εδώ μόνο για να σας επιτρέψουν να εργαστείτε με συγκεκριμένες εφαρμογές\nκαι λειτουργικά συστήματα που αναμένουν διαφορετική συμπεριφορά τερματικού."
 
-#: terminal/terminal-preferences-dialog.c:1374
+#: terminal/terminal-preferences-dialog.c:1391
 msgid "Backspace key generates:"
 msgstr "Το πλήκτρο Backspace προκαλεί:"
 
-#: terminal/terminal-preferences-dialog.c:1380
-#: terminal/terminal-preferences-dialog.c:1403
+#: terminal/terminal-preferences-dialog.c:1397
+#: terminal/terminal-preferences-dialog.c:1420
 msgid "Auto-detect"
 msgstr "Αυτόματη αναγνώριση"
 
-#: terminal/terminal-preferences-dialog.c:1381
-#: terminal/terminal-preferences-dialog.c:1404
+#: terminal/terminal-preferences-dialog.c:1398
+#: terminal/terminal-preferences-dialog.c:1421
 msgid "ASCII Del"
 msgstr "ASCII Del"
 
-#: terminal/terminal-preferences-dialog.c:1382
-#: terminal/terminal-preferences-dialog.c:1405
+#: terminal/terminal-preferences-dialog.c:1399
+#: terminal/terminal-preferences-dialog.c:1422
 msgid "Escape sequence"
 msgstr "Ακολουθία διαφυγής"
 
-#: terminal/terminal-preferences-dialog.c:1383
-#: terminal/terminal-preferences-dialog.c:1406
+#: terminal/terminal-preferences-dialog.c:1400
+#: terminal/terminal-preferences-dialog.c:1423
 msgid "Control-H"
 msgstr "Control-H"
 
-#: terminal/terminal-preferences-dialog.c:1384
-#: terminal/terminal-preferences-dialog.c:1407
+#: terminal/terminal-preferences-dialog.c:1401
+#: terminal/terminal-preferences-dialog.c:1424
 msgid "Erase TTY"
 msgstr "Διαγραφή ΤΤΥ"
 
-#: terminal/terminal-preferences-dialog.c:1397
+#: terminal/terminal-preferences-dialog.c:1414
 msgid "Delete key generates:"
 msgstr "Το πλήκτρο Delete προκαλεί:"
 
-#: terminal/terminal-preferences-dialog.c:1420
+#: terminal/terminal-preferences-dialog.c:1437
 msgid "Ambiguous-width characters:"
 msgstr "Χαρακτήρες ασαφούς πλάτους:"
 
-#: terminal/terminal-preferences-dialog.c:1426
+#: terminal/terminal-preferences-dialog.c:1443
 msgid "Narrow"
 msgstr "Στενοί"
 
-#: terminal/terminal-preferences-dialog.c:1427
+#: terminal/terminal-preferences-dialog.c:1444
 msgid "Wide"
 msgstr "Φαρδείς"
 
-#: terminal/terminal-preferences-dialog.c:1441
+#: terminal/terminal-preferences-dialog.c:1458
 msgid "Reset compatibility options to defaults"
 msgstr "Επαναφορά επιλογών συμβατότητας"
 
 #. * Advanced
-#: terminal/terminal-preferences-dialog.c:1452
+#: terminal/terminal-preferences-dialog.c:1469
 msgid "Advanced"
 msgstr "Προχωρημένα"
 
 #. section: Double Click
-#: terminal/terminal-preferences-dialog.c:1460
+#: terminal/terminal-preferences-dialog.c:1477
 msgid "Double Click"
 msgstr "Διπλό κλικ"
 
-#: terminal/terminal-preferences-dialog.c:1462
+#: terminal/terminal-preferences-dialog.c:1479
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Θεωρήστε τους ακόλουθους χαρακτήρες μέρος μιας λέξης όταν κάνετε διπλό κλικ:"
 
 #. section: Encoding
-#: terminal/terminal-preferences-dialog.c:1486
+#: terminal/terminal-preferences-dialog.c:1503
 msgid "Encoding"
 msgstr "Κωδικοποίηση"
 
-#: terminal/terminal-preferences-dialog.c:1488
+#: terminal/terminal-preferences-dialog.c:1505
 msgid "Default character encoding"
 msgstr "Προκαθορισμένη κωδικοποίηση"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: terminal/terminal-preferences-dialog.c:1512
-#: terminal/terminal-preferences-dialog.c:1629
+#: terminal/terminal-preferences-dialog.c:1529
+#: terminal/terminal-preferences-dialog.c:1646
 msgid "Shortcuts"
 msgstr "Συντομεύσεις"
 
-#: terminal/terminal-preferences-dialog.c:1514
+#: terminal/terminal-preferences-dialog.c:1531
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "Απενεργοποίηση όλων των πλήκτων πρόσβασης στο με_νού (όπως το Alt + f)"
 
-#: terminal/terminal-preferences-dialog.c:1524
+#: terminal/terminal-preferences-dialog.c:1541
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "Απενεργοποίηση του πλήκτρου συντόμευσης μ_ενού (προεπιλογή F10)"
 
 #. section: Misc
-#: terminal/terminal-preferences-dialog.c:1533
+#: terminal/terminal-preferences-dialog.c:1550
 msgid "Misc"
 msgstr "Διάφορα"
 
-#: terminal/terminal-preferences-dialog.c:1535
+#: terminal/terminal-preferences-dialog.c:1552
 msgid "_Use middle mouse click to close tabs"
 msgstr "_Χρήση μεσαίου κλικ"
 
-#: terminal/terminal-preferences-dialog.c:1545
+#: terminal/terminal-preferences-dialog.c:1562
 msgid "_Use middle mouse click to open urls"
 msgstr "_Χρήση μεσαίου κλικ για το άνοιγμα διευθύνσεων"
 
-#: terminal/terminal-preferences-dialog.c:1555
+#: terminal/terminal-preferences-dialog.c:1572
 msgid "_Auto-hide mouse pointer"
 msgstr "_Αυτόματη απόκρυψη δείκτη ποντικιού"
 
-#: terminal/terminal-preferences-dialog.c:1565
+#: terminal/terminal-preferences-dialog.c:1582
 msgid "_Open new tab to the right of the active tab"
 msgstr "Άνοιγμα νέας καρτέλας δε_ξιά από την ενεργή καρτέλα"
 
-#: terminal/terminal-preferences-dialog.c:1575
+#: terminal/terminal-preferences-dialog.c:1592
 msgid "_Audible bell"
 msgstr "_Ηχητικό σήμα"
 
-#: terminal/terminal-preferences-dialog.c:1585
+#: terminal/terminal-preferences-dialog.c:1602
 msgid "_Visual bell"
 msgstr "_Οπτικό σήμα"
 
-#: terminal/terminal-preferences-dialog.c:1595
+#: terminal/terminal-preferences-dialog.c:1612
 msgid "Right click action:"
 msgstr "Ενέργεια δεξιού κλικ:"
 
-#: terminal/terminal-preferences-dialog.c:1601
+#: terminal/terminal-preferences-dialog.c:1618
 msgid "Context Menu"
 msgstr "Μενού"
 
-#: terminal/terminal-preferences-dialog.c:1602
+#: terminal/terminal-preferences-dialog.c:1619
 msgid "Paste clipboard"
 msgstr "Επικόλληση από το πρόχειρο"
 
-#: terminal/terminal-preferences-dialog.c:1603
+#: terminal/terminal-preferences-dialog.c:1620
 msgid "Paste selection"
 msgstr "Επικόλληση επιλογής"
 
-#: terminal/terminal-preferences-dialog.c:1616
+#: terminal/terminal-preferences-dialog.c:1633
 msgid "Enable Hyperlinks"
 msgstr "Ενεργοποίηση υπερσυνδέσμων"
 
-#: terminal/terminal-preferences-dialog.c:1617
+#: terminal/terminal-preferences-dialog.c:1634
 msgid "Enable support for hyperlinks."
 msgstr "Ενεργοποίηση υποστήριξης για τους υπερσυνδέσμους"
 
-#: terminal/terminal-preferences-dialog.c:1640
+#: terminal/terminal-preferences-dialog.c:1657
 msgid "Window"
 msgstr "Παράθυρο"
 
-#: terminal/terminal-preferences-dialog.c:1641
-#: terminal/terminal-preferences.c:1195
+#: terminal/terminal-preferences-dialog.c:1658
+#: terminal/terminal-preferences.c:1206
 msgid "Terminal"
 msgstr "Τερματικό"
 
 #. default item + separator
-#: terminal/terminal-preferences-dialog.c:2048
+#: terminal/terminal-preferences-dialog.c:2065
 msgid "Select Preset"
 msgstr "Επιλογή προεπιλογής"
 
@@ -1167,8 +1176,8 @@ msgstr "Απενεργοποίηση μέχρι την επανεκκίνηση 
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Απενεργοποίηση παραθύρου (μπορεί να ενεργοποιηθεί ξανά από τις Προτιμήσεις)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:880
-#: terminal/terminal-screen.c:2372
+#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:881
+#: terminal/terminal-screen.c:2373
 msgid "Untitled"
 msgstr "Ανώνυμο"
 
@@ -1176,58 +1185,58 @@ msgstr "Ανώνυμο"
 msgid "Unable to determine your login shell."
 msgstr "Δεν ήταν δυνατός ο προσδιορισμός του κελύφους εισόδου."
 
-#: terminal/terminal-screen.c:1492
+#: terminal/terminal-screen.c:1493
 msgid "_Relaunch"
 msgstr "_Επανεκκίνηση"
 
-#: terminal/terminal-screen.c:1498
+#: terminal/terminal-screen.c:1499
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Η υπο-διαδικασία τερματίστηκε κανονικά με κατάσταση %d."
 
-#: terminal/terminal-screen.c:1500
+#: terminal/terminal-screen.c:1501
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Η υπο-διαδικασία ματαιώθηκε με σήμα %d."
 
-#: terminal/terminal-screen.c:1502
+#: terminal/terminal-screen.c:1503
 msgid "The child process was aborted."
 msgstr "Η υπο-διαδικασία ματαιώθηκε."
 
-#: terminal/terminal-screen.c:1508 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1509 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "Να _μην ξαναγίνει η ερώτηση"
 
-#: terminal/terminal-screen.c:1822
+#: terminal/terminal-screen.c:1823
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Προσοχή: Πιθανώς μη ασφαλής επικόλληση"
 
-#: terminal/terminal-screen.c:1825
+#: terminal/terminal-screen.c:1826
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Η επικόλληση αυτού του κειμένου στο τερματικό μπορεί να είναι επικίνδυνη, φαίνεται κάποιες εντολές να μπορούν να εκτελεστούν με πρόσβαση στο root ('sudo')."
 
-#: terminal/terminal-screen.c:1828
+#: terminal/terminal-screen.c:1829
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Η επικόλληση αυτού του κειμένου στο τερματικό μπορεί να είναι επικίνδυνη, φαίνεται κάποιες εντολές να μπορούν να εκτελεστούν."
 
-#: terminal/terminal-screen.c:1840 terminal/terminal-window.c:827
+#: terminal/terminal-screen.c:1841 terminal/terminal-window.c:827
 #: terminal/terminal-window.c:2367
 msgid "_Cancel"
 msgstr "Άκ_υρο"
 
-#: terminal/terminal-screen.c:1846 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "_Επικόλληση"
 
-#: terminal/terminal-screen.c:1995 terminal/terminal-screen.c:2073
+#: terminal/terminal-screen.c:1996 terminal/terminal-screen.c:2074
 msgid "Failed to execute child"
 msgstr "Απέτυχε η εκτέλεση θυγατρικής διεργασίας"
 
-#: terminal/terminal-screen.c:2699
+#: terminal/terminal-screen.c:2700
 msgid "Close this tab"
 msgstr "Κλείσιμο αυτής της καρτέλας"
 
