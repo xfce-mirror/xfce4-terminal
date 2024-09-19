@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-08 12:50+0200\n"
+"POT-Creation-Date: 2024-09-19 00:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2014,2016-2019,2022-2024\n"
 "Language-Team: Korean (http://app.transifex.com/xfce/xfce-apps/language/ko/)\n"
@@ -412,7 +412,7 @@ msgstr "도움말(_H)"
 #. * General
 #. section: General
 #: terminal/terminal-preferences-dialog.c:244
-#: terminal/terminal-preferences-dialog.c:1126
+#: terminal/terminal-preferences-dialog.c:1143
 msgid "General"
 msgstr "일반"
 
@@ -603,8 +603,9 @@ msgstr "안전하지 않은 붙여넣기 대화상자 표시"
 
 #: terminal/terminal-preferences-dialog.c:512
 msgid ""
-"Show a dialog that allows to edit text that is considered unsafe for pasting"
-msgstr "붙여넣기에 안전하지 않은 텍스트인 경우 편집할 수 있는 대화상자 표시"
+"Show a dialog that allows one to edit text that is considered unsafe for "
+"pasting"
+msgstr ""
 
 #. * Drop-down
 #: terminal/terminal-preferences-dialog.c:521
@@ -761,7 +762,7 @@ msgid "x height"
 msgstr "x 높이"
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1478 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2190
 msgid "Reset"
 msgstr "초기화 "
 
@@ -854,109 +855,117 @@ msgid ""
 msgstr "새로 만든 창 주위에 창 테두리를 표시하는 옵션입니다."
 
 #: terminal/terminal-preferences-dialog.c:1041
+msgid "_Maximize new windows"
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:1045
+msgid "Enable this option to maximize newly created terminal windows."
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:1052
 msgid "Default geometry"
 msgstr "기본 크기"
 
-#: terminal/terminal-preferences-dialog.c:1056
+#: terminal/terminal-preferences-dialog.c:1070
 msgid "columns"
 msgstr "열"
 
-#: terminal/terminal-preferences-dialog.c:1071
+#: terminal/terminal-preferences-dialog.c:1088
 msgid "rows"
 msgstr "행"
 
 #. section: Tabs
-#: terminal/terminal-preferences-dialog.c:1083
+#: terminal/terminal-preferences-dialog.c:1100
 msgid "Tabs"
 msgstr "탭"
 
-#: terminal/terminal-preferences-dialog.c:1085
+#: terminal/terminal-preferences-dialog.c:1102
 msgid "Reset tab activity indicator after"
 msgstr "탭 활동 표시 다음 초기화"
 
-#: terminal/terminal-preferences-dialog.c:1098
+#: terminal/terminal-preferences-dialog.c:1115
 msgid "seconds"
 msgstr "초"
 
-#: terminal/terminal-preferences-dialog.c:1106
+#: terminal/terminal-preferences-dialog.c:1123
 msgid "_Use custom styling to make tabs slim (restart required)"
 msgstr "개별 모양새를 활용하여 탭 높이를 낮게(다시 시작 필요)(_U)"
 
 #. * Colors
-#: terminal/terminal-preferences-dialog.c:1118
+#: terminal/terminal-preferences-dialog.c:1135
 msgid "Colors"
 msgstr "색상"
 
-#: terminal/terminal-preferences-dialog.c:1128
+#: terminal/terminal-preferences-dialog.c:1145
 msgid "Text Color:"
 msgstr "글자색:"
 
-#: terminal/terminal-preferences-dialog.c:1143
+#: terminal/terminal-preferences-dialog.c:1160
 msgid "Background Color:"
 msgstr "배경색:"
 
-#: terminal/terminal-preferences-dialog.c:1158
+#: terminal/terminal-preferences-dialog.c:1175
 msgid "Tab activity color:"
 msgstr "탭 활동 색:"
 
-#: terminal/terminal-preferences-dialog.c:1176
+#: terminal/terminal-preferences-dialog.c:1193
 msgid "_Use system theme colors for text and background"
 msgstr "텍스트와 배경 색상 설정시 시스템 테마 색상 사용(_U)"
 
-#: terminal/terminal-preferences-dialog.c:1186
+#: terminal/terminal-preferences-dialog.c:1203
 msgid "_Vary the background color for each tab"
 msgstr "각 탭의 배경 색을 다르게(_V)"
 
-#: terminal/terminal-preferences-dialog.c:1190
+#: terminal/terminal-preferences-dialog.c:1207
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness."
 msgstr "동일한 밝기를 유지하려는 목적으로 선택한 배경 색상에 기반하여 임의의 색을 선택합니다."
 
-#: terminal/terminal-preferences-dialog.c:1200
+#: terminal/terminal-preferences-dialog.c:1217
 msgid "_Enable sixel graphics"
 msgstr "식셀 그래픽 활성(_E)"
 
 #. section: Custom colors
-#: terminal/terminal-preferences-dialog.c:1210
+#: terminal/terminal-preferences-dialog.c:1227
 msgid "Custom Colors"
 msgstr "사용자 정의 색상"
 
-#: terminal/terminal-preferences-dialog.c:1212
+#: terminal/terminal-preferences-dialog.c:1229
 msgid "_Cursor color:"
 msgstr "커서 색상(_C):"
 
-#: terminal/terminal-preferences-dialog.c:1216
-#: terminal/terminal-preferences-dialog.c:1250
+#: terminal/terminal-preferences-dialog.c:1233
+#: terminal/terminal-preferences-dialog.c:1267
 msgid ""
 "Enable this option to set custom text and background colors for cursor. If "
 "disabled the background and text colors will be reversed."
 msgstr "이 옵션을 사용하면 개별 텍스트 및 배경 색상을 커서에 설정할 수 있습니다. 이 옵션을 끄면 배경 색상과 텍스트 색상을 그대로 둡니다."
 
-#: terminal/terminal-preferences-dialog.c:1246
+#: terminal/terminal-preferences-dialog.c:1263
 msgid "_Text selection color:"
 msgstr "글자 선택 색상(_T):"
 
-#: terminal/terminal-preferences-dialog.c:1280
+#: terminal/terminal-preferences-dialog.c:1297
 msgid "_Bold selection color:"
 msgstr "굵은 글씨 선택 색상(_B):"
 
-#: terminal/terminal-preferences-dialog.c:1284
+#: terminal/terminal-preferences-dialog.c:1301
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "사용자 정의 강조 색상을 설정하려면 이 옵션을 활성화하십시오. 비활성화하면 글자 색상을 사용합니다."
 
 #. section: Palette
-#: terminal/terminal-preferences-dialog.c:1301
+#: terminal/terminal-preferences-dialog.c:1318
 msgid "Palette"
 msgstr "색상표"
 
-#: terminal/terminal-preferences-dialog.c:1324
+#: terminal/terminal-preferences-dialog.c:1341
 msgid "_Show bold text in bright colors:"
 msgstr "밝은 색상의 굵은 글씨 표시(_S):"
 
-#: terminal/terminal-preferences-dialog.c:1328
+#: terminal/terminal-preferences-dialog.c:1345
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
@@ -964,174 +973,174 @@ msgid ""
 msgstr "이 옵션을 켜면 '\\e[1;35m'와 같은 이스케이프 시퀀스로 색상을 밝게 하는 동시에 텍스트를 굵게 할 수 있습니다. 이 옵션을 끄면, 텍스트 색상을 그대로 유지합니다."
 
 #. section: Presets
-#: terminal/terminal-preferences-dialog.c:1334
+#: terminal/terminal-preferences-dialog.c:1351
 msgid "Presets"
 msgstr "설정"
 
 #. * Compatibility
-#: terminal/terminal-preferences-dialog.c:1350
-#: terminal/terminal-preferences-dialog.c:1356
+#: terminal/terminal-preferences-dialog.c:1367
+#: terminal/terminal-preferences-dialog.c:1373
 msgid "Compatibility"
 msgstr "호환성"
 
-#: terminal/terminal-preferences-dialog.c:1361
+#: terminal/terminal-preferences-dialog.c:1378
 msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
 msgstr "이 옵션을 사용하면 일부 프로그램이 오동작할 수 있습니다.\n특이한 터미널 동작을 원하는 프로그램과 운영체제에서\n이 옵션을 사용하세요."
 
-#: terminal/terminal-preferences-dialog.c:1374
+#: terminal/terminal-preferences-dialog.c:1391
 msgid "Backspace key generates:"
 msgstr "Backspace 키 생성문자:"
 
-#: terminal/terminal-preferences-dialog.c:1380
-#: terminal/terminal-preferences-dialog.c:1403
+#: terminal/terminal-preferences-dialog.c:1397
+#: terminal/terminal-preferences-dialog.c:1420
 msgid "Auto-detect"
 msgstr "자동 탐지"
 
-#: terminal/terminal-preferences-dialog.c:1381
-#: terminal/terminal-preferences-dialog.c:1404
+#: terminal/terminal-preferences-dialog.c:1398
+#: terminal/terminal-preferences-dialog.c:1421
 msgid "ASCII Del"
 msgstr "ASCII Del"
 
-#: terminal/terminal-preferences-dialog.c:1382
-#: terminal/terminal-preferences-dialog.c:1405
+#: terminal/terminal-preferences-dialog.c:1399
+#: terminal/terminal-preferences-dialog.c:1422
 msgid "Escape sequence"
 msgstr "이스케이프 문자"
 
-#: terminal/terminal-preferences-dialog.c:1383
-#: terminal/terminal-preferences-dialog.c:1406
+#: terminal/terminal-preferences-dialog.c:1400
+#: terminal/terminal-preferences-dialog.c:1423
 msgid "Control-H"
 msgstr "Control-H"
 
-#: terminal/terminal-preferences-dialog.c:1384
-#: terminal/terminal-preferences-dialog.c:1407
+#: terminal/terminal-preferences-dialog.c:1401
+#: terminal/terminal-preferences-dialog.c:1424
 msgid "Erase TTY"
 msgstr "TTY 지우기"
 
-#: terminal/terminal-preferences-dialog.c:1397
+#: terminal/terminal-preferences-dialog.c:1414
 msgid "Delete key generates:"
 msgstr "Delete 키 생성문자:"
 
-#: terminal/terminal-preferences-dialog.c:1420
+#: terminal/terminal-preferences-dialog.c:1437
 msgid "Ambiguous-width characters:"
 msgstr "모호한 폭 문자:"
 
-#: terminal/terminal-preferences-dialog.c:1426
+#: terminal/terminal-preferences-dialog.c:1443
 msgid "Narrow"
 msgstr "좁게"
 
-#: terminal/terminal-preferences-dialog.c:1427
+#: terminal/terminal-preferences-dialog.c:1444
 msgid "Wide"
 msgstr "넓게"
 
-#: terminal/terminal-preferences-dialog.c:1441
+#: terminal/terminal-preferences-dialog.c:1458
 msgid "Reset compatibility options to defaults"
 msgstr "호환성 옵션을 기본값으로 초기화"
 
 #. * Advanced
-#: terminal/terminal-preferences-dialog.c:1452
+#: terminal/terminal-preferences-dialog.c:1469
 msgid "Advanced"
 msgstr "복잡"
 
 #. section: Double Click
-#: terminal/terminal-preferences-dialog.c:1460
+#: terminal/terminal-preferences-dialog.c:1477
 msgid "Double Click"
 msgstr "두 번 누르기"
 
-#: terminal/terminal-preferences-dialog.c:1462
+#: terminal/terminal-preferences-dialog.c:1479
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "두번 누르면 다음 문자를 단어 일부로 간주:"
 
 #. section: Encoding
-#: terminal/terminal-preferences-dialog.c:1486
+#: terminal/terminal-preferences-dialog.c:1503
 msgid "Encoding"
 msgstr "인코딩"
 
-#: terminal/terminal-preferences-dialog.c:1488
+#: terminal/terminal-preferences-dialog.c:1505
 msgid "Default character encoding"
 msgstr "기본 문자 인코딩"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: terminal/terminal-preferences-dialog.c:1512
-#: terminal/terminal-preferences-dialog.c:1629
+#: terminal/terminal-preferences-dialog.c:1529
+#: terminal/terminal-preferences-dialog.c:1646
 msgid "Shortcuts"
 msgstr "단축키"
 
-#: terminal/terminal-preferences-dialog.c:1514
+#: terminal/terminal-preferences-dialog.c:1531
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "모든 메뉴 접근 키(예: Alt + f) 비활성(_D)"
 
-#: terminal/terminal-preferences-dialog.c:1524
+#: terminal/terminal-preferences-dialog.c:1541
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "메뉴 바로 가기 키(기본: F10) 비활성(_D)"
 
 #. section: Misc
-#: terminal/terminal-preferences-dialog.c:1533
+#: terminal/terminal-preferences-dialog.c:1550
 msgid "Misc"
 msgstr "기타"
 
-#: terminal/terminal-preferences-dialog.c:1535
+#: terminal/terminal-preferences-dialog.c:1552
 msgid "_Use middle mouse click to close tabs"
 msgstr "가운데 마우스 단추로 탭 닫기(_U)"
 
-#: terminal/terminal-preferences-dialog.c:1545
+#: terminal/terminal-preferences-dialog.c:1562
 msgid "_Use middle mouse click to open urls"
 msgstr "가운데 마우스 단추로 URL 열기(_U)"
 
-#: terminal/terminal-preferences-dialog.c:1555
+#: terminal/terminal-preferences-dialog.c:1572
 msgid "_Auto-hide mouse pointer"
 msgstr "마우스 포인터 자동 숨김(_A)"
 
-#: terminal/terminal-preferences-dialog.c:1565
+#: terminal/terminal-preferences-dialog.c:1582
 msgid "_Open new tab to the right of the active tab"
 msgstr "활성 탭 우측에 새 탭 열기(_O)"
 
-#: terminal/terminal-preferences-dialog.c:1575
+#: terminal/terminal-preferences-dialog.c:1592
 msgid "_Audible bell"
 msgstr "소리 알림(_A)"
 
-#: terminal/terminal-preferences-dialog.c:1585
+#: terminal/terminal-preferences-dialog.c:1602
 msgid "_Visual bell"
 msgstr "영상 알림(_V)"
 
-#: terminal/terminal-preferences-dialog.c:1595
+#: terminal/terminal-preferences-dialog.c:1612
 msgid "Right click action:"
 msgstr "오른쪽 단추 누름 동작:"
 
-#: terminal/terminal-preferences-dialog.c:1601
+#: terminal/terminal-preferences-dialog.c:1618
 msgid "Context Menu"
 msgstr "문맥 메뉴"
 
-#: terminal/terminal-preferences-dialog.c:1602
+#: terminal/terminal-preferences-dialog.c:1619
 msgid "Paste clipboard"
 msgstr "클립보드 붙여넣기"
 
-#: terminal/terminal-preferences-dialog.c:1603
+#: terminal/terminal-preferences-dialog.c:1620
 msgid "Paste selection"
 msgstr "선택 항목 붙여넣기"
 
-#: terminal/terminal-preferences-dialog.c:1616
+#: terminal/terminal-preferences-dialog.c:1633
 msgid "Enable Hyperlinks"
 msgstr "하이퍼링크 사용"
 
-#: terminal/terminal-preferences-dialog.c:1617
+#: terminal/terminal-preferences-dialog.c:1634
 msgid "Enable support for hyperlinks."
 msgstr "하이퍼링크 지원 기능을 사용합니다."
 
-#: terminal/terminal-preferences-dialog.c:1640
+#: terminal/terminal-preferences-dialog.c:1657
 msgid "Window"
 msgstr "창"
 
-#: terminal/terminal-preferences-dialog.c:1641
-#: terminal/terminal-preferences.c:1195
+#: terminal/terminal-preferences-dialog.c:1658
+#: terminal/terminal-preferences.c:1206
 msgid "Terminal"
 msgstr "터미널"
 
 #. default item + separator
-#: terminal/terminal-preferences-dialog.c:2048
+#: terminal/terminal-preferences-dialog.c:2065
 msgid "Select Preset"
 msgstr "사전 설정 선택"
 
@@ -1155,8 +1164,8 @@ msgstr "프로그램을 다시 시작하기 전까지 끔"
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "대화 상자 끔(기본 설정에서 다시 켤 수 있음)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:880
-#: terminal/terminal-screen.c:2372
+#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:881
+#: terminal/terminal-screen.c:2373
 msgid "Untitled"
 msgstr "제목 없음"
 
@@ -1164,58 +1173,58 @@ msgstr "제목 없음"
 msgid "Unable to determine your login shell."
 msgstr "로그인 셸을 정할 수 없습니다."
 
-#: terminal/terminal-screen.c:1492
+#: terminal/terminal-screen.c:1493
 msgid "_Relaunch"
 msgstr "재실행(_R)"
 
-#: terminal/terminal-screen.c:1498
+#: terminal/terminal-screen.c:1499
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "하위 프로세스에서 %d 상태로 정상적으로 빠져나왔습니다."
 
-#: terminal/terminal-screen.c:1500
+#: terminal/terminal-screen.c:1501
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "하위 프로세스를 %d상태로 중단했습니다."
 
-#: terminal/terminal-screen.c:1502
+#: terminal/terminal-screen.c:1503
 msgid "The child process was aborted."
 msgstr "하위 프로세스를 중단했습니다."
 
-#: terminal/terminal-screen.c:1508 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1509 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "다시 묻지 마십시오(_N)"
 
-#: terminal/terminal-screen.c:1822
+#: terminal/terminal-screen.c:1823
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "경고: 잠재적으로 안전하지 않은 붙여넣기"
 
-#: terminal/terminal-screen.c:1825
+#: terminal/terminal-screen.c:1826
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "이 텍스트를 터미널에 붙여넣으면 잠재적으로 루트 계정에 접근('sudo')하는 일부 명령을 실행하여 위험할 수 있습니다."
 
-#: terminal/terminal-screen.c:1828
+#: terminal/terminal-screen.c:1829
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "이 텍스트를 터미널에 붙여넣으면 일부 명령을 실행하여 위험할 수 있습니다."
 
-#: terminal/terminal-screen.c:1840 terminal/terminal-window.c:827
+#: terminal/terminal-screen.c:1841 terminal/terminal-window.c:827
 #: terminal/terminal-window.c:2367
 msgid "_Cancel"
 msgstr "취소(_C)"
 
-#: terminal/terminal-screen.c:1846 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "붙여넣기(_P)"
 
-#: terminal/terminal-screen.c:1995 terminal/terminal-screen.c:2073
+#: terminal/terminal-screen.c:1996 terminal/terminal-screen.c:2074
 msgid "Failed to execute child"
 msgstr "자식 프로세스 실행 실패"
 
-#: terminal/terminal-screen.c:2699
+#: terminal/terminal-screen.c:2700
 msgid "Close this tab"
 msgstr "이 탭 닫기"
 
