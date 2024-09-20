@@ -1544,6 +1544,8 @@ terminal_window_get_working_directory (TerminalWindow *window)
   if (use_default_dir && g_strcmp0 (default_dir, "") != 0)
     return default_dir;
 
+  g_free (default_dir);
+
   if (G_LIKELY (window->priv->active != NULL))
     return g_strdup (terminal_screen_get_working_directory (window->priv->active));
 
