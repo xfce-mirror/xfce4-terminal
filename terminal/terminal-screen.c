@@ -1945,6 +1945,7 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
           if (g_strcmp0 (combo_text, disable_unsafe_past_dialog_texts[i].string) == 0)
             break;
         }
+      g_free (combo_text);
 
       switch (i)
         {
