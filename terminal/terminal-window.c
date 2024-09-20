@@ -3184,6 +3184,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
           p->signal = i;
           label = g_strdup_printf("%i - %s", i, signal_names[i]);
           item = gtk_menu_item_new_with_mnemonic (label);
+          g_free (label);
           g_signal_connect_data (G_OBJECT (item), "activate", G_CALLBACK (terminal_window_action_send_signal), p, terminal_util_free_data, G_CONNECT_SWAPPED);
           gtk_menu_shell_append (GTK_MENU_SHELL (insert_to_menu), item);
         }
