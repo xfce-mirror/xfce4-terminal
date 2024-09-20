@@ -1906,15 +1906,27 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
     {
       GtkWidget     *content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
-      GtkWidget     *box = ((gtk_container_get_children (GTK_CONTAINER (content_area))))->data;
-      GtkWidget     *sw = gtk_container_get_children (GTK_CONTAINER (box))->next->data;
-      GtkTextView   *tv = GTK_TEXT_VIEW (gtk_bin_get_child (GTK_BIN (sw)));
-      GtkTextBuffer *buffer = gtk_text_view_get_buffer (tv);
-      GtkWidget     *combo = gtk_container_get_children (GTK_CONTAINER (box))->next->next->data;
+      GtkWidget     *box;
+      GtkWidget     *sw;
+      GtkTextView   *tv;
+      GtkTextBuffer *buffer;
+      GtkWidget     *combo;
       GtkTextIter    start, end;
+      GList         *children;
       gchar         *res_text;
       gchar         *combo_text;
       gint           i;
+
+      children = gtk_container_get_children (GTK_CONTAINER (content_area));
+      box = children->data;
+      g_list_free (children);
+
+      children = gtk_container_get_children (GTK_CONTAINER (box));
+      sw = children->next->data;
+      tv = GTK_TEXT_VIEW (gtk_bin_get_child (GTK_BIN (sw)));
+      buffer = gtk_text_view_get_buffer (tv);
+      combo = children->next->next->data;
+      g_list_free (children);
 
       gtk_text_buffer_get_bounds (buffer, &start, &end);
       res_text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
