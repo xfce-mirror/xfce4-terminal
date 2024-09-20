@@ -280,6 +280,7 @@ main (int argc, char **argv)
       /* try to connect to an existing Terminal service */
       if (terminal_gdbus_invoke_launch (nargc, nargv, &error))
         {
+          g_strfreev (nargv);
           return EXIT_SUCCESS;
         }
       else
