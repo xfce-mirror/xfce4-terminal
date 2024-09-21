@@ -88,6 +88,7 @@ enum
   PROP_FONT_ALLOW_BOLD,
   PROP_FONT_NAME,
   PROP_FONT_USE_SYSTEM,
+  PROP_FONT_ZOOM_FONT_ONLY,
   PROP_MISC_ALWAYS_SHOW_TABS,
   PROP_MISC_BELL,
   PROP_MISC_BELL_URGENT,
@@ -801,12 +802,22 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * TerminalPreferences:font-allow-bold:
+   * TerminalPreferences:font-use-system:
    **/
   preferences_props[PROP_FONT_USE_SYSTEM] =
       g_param_spec_boolean ("font-use-system",
                             NULL,
                             "FontUseSystem",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:font-zoom-font-only:
+   **/
+  preferences_props[PROP_FONT_ZOOM_FONT_ONLY] =
+      g_param_spec_boolean ("font-zoom-font-only",
+                            NULL,
+                            "FontZoomFontOnly",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
