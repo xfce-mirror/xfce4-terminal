@@ -2575,11 +2575,11 @@ terminal_window_do_close_tab (TerminalScreen *screen,
       gtk_notebook_set_current_page (notebook, page_num);
     }
 
-  gtk_widget_destroy (GTK_WIDGET (screen));
-
   /* reconnect the accels of the active terminal */
   if (screen != window->priv->active)
     terminal_screen_widget_append_accels (window->priv->active, window->priv->accel_group);
+
+  gtk_widget_destroy (GTK_WIDGET (screen));
 }
 
 
