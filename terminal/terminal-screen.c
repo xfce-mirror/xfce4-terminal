@@ -2082,7 +2082,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
 
   if (!terminal_screen_get_child_command (screen, &command, &argv, &error))
     {
-      if (error->domain == G_SHELL_ERROR && error->code == G_SHELL_ERROR_EMPTY_STRING)
+      if (error->code == G_SHELL_ERROR_EMPTY_STRING)
         {
           g_clear_error (&error);
           g_set_error (&error, G_SHELL_ERROR, G_SHELL_ERROR_EMPTY_STRING,
