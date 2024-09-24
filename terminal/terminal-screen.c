@@ -734,6 +734,9 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
 
           if (!g_shell_parse_argv (custom_command, NULL, argv, error))
             {
+              if (g_error_matches (*error, G_SHELL_ERROR, G_SHELL_ERROR_EMPTY_STRING))
+                (*error)->message = g_strdup(_("Empty custom command in the terminal preferences"));
+
               g_free (custom_command);
               return FALSE;
             }
@@ -2082,13 +2085,6 @@ terminal_screen_launch_child (TerminalScreen *screen)
 
   if (!terminal_screen_get_child_command (screen, &command, &argv, &error))
     {
-      if (error->code == G_SHELL_ERROR_EMPTY_STRING)
-        {
-          g_clear_error (&error);
-          g_set_error (&error, G_SHELL_ERROR, G_SHELL_ERROR_EMPTY_STRING,
-                       _("Empty custom command in the terminal preferences"));
-        }
-
       /* tell the user that we were unable to execute the command */
       xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
                               error, _("Failed to execute child"));
