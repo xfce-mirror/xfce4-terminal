@@ -734,6 +734,9 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
 
           if (!g_shell_parse_argv (custom_command, NULL, argv, error))
             {
+              if (g_error_matches (*error, G_SHELL_ERROR, G_SHELL_ERROR_EMPTY_STRING))
+                (*error)->message = g_strdup (_("Empty custom command in the terminal preferences"));
+
               g_free (custom_command);
               return FALSE;
             }
