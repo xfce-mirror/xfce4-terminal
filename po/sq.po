@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-09-19 00:49+0200\n"
+"POT-Creation-Date: 2024-09-25 00:50+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2007,2019-2024\n"
 "Language-Team: Albanian (http://app.transifex.com/xfce/xfce-apps/language/sq/)\n"
@@ -605,7 +605,7 @@ msgstr "Shfaq dialog për ngjitje jo të parrezik"
 msgid ""
 "Show a dialog that allows one to edit text that is considered unsafe for "
 "pasting"
-msgstr ""
+msgstr "Shfaq një dialog që lejon dikë të përpunojë tekst i cili konsiderohet jo i parrezik për ta ngjitur"
 
 #. * Drop-down
 #: terminal/terminal-preferences-dialog.c:521
@@ -762,7 +762,7 @@ msgid "x height"
 msgstr "lartësi x"
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2192
 msgid "Reset"
 msgstr "Riktheje në fillimet"
 
@@ -1164,67 +1164,71 @@ msgstr "Çaktivizoje deri sa ta riniset programi"
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Çaktivizoje dialogun (mund të riaktivizohet te Parapëlqimet)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:881
-#: terminal/terminal-screen.c:2373
+#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:887
+#: terminal/terminal-screen.c:2392
 msgid "Untitled"
 msgstr "Pa titull"
 
-#: terminal/terminal-screen.c:784
+#: terminal/terminal-screen.c:740
+msgid "Empty custom command in the terminal preferences"
+msgstr "Urdhër vetjak i zbrazët te parapëlqimet për terminalin"
+
+#: terminal/terminal-screen.c:790
 msgid "Unable to determine your login shell."
 msgstr "S’arrihet të përcaktohet shell juaji për hyrje."
 
-#: terminal/terminal-screen.c:1493
+#: terminal/terminal-screen.c:1499
 msgid "_Relaunch"
 msgstr "_Rinise"
 
-#: terminal/terminal-screen.c:1499
+#: terminal/terminal-screen.c:1505
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Procesi pjellë përfundoi normalisht, me gjendjen %d."
 
-#: terminal/terminal-screen.c:1501
+#: terminal/terminal-screen.c:1507
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Procesi pjellë u ndërpre nga sinjali %d."
 
-#: terminal/terminal-screen.c:1503
+#: terminal/terminal-screen.c:1509
 msgid "The child process was aborted."
 msgstr "Procesi pjellë u ndërpre."
 
-#: terminal/terminal-screen.c:1509 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1515 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "Mos _më pyet sërish"
 
-#: terminal/terminal-screen.c:1823
+#: terminal/terminal-screen.c:1829
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Kujdes: Ngjitje Potencialisht Jo e Sigurt"
 
-#: terminal/terminal-screen.c:1826
+#: terminal/terminal-screen.c:1832
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Hedhja e këtij teksti te terminali mund të jetë e rrezikshme, ngaqë duket se mund të ekzekutohen disa urdhra, që përfshijnë potencialisht përdorim përdoruesi rrënjë ('sudo')."
 
-#: terminal/terminal-screen.c:1829
+#: terminal/terminal-screen.c:1835
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Hedhja e këtij teksti te terminali mund të jetë e rrezikshme, ngaqë duket se mund të ekzekutohen disa urdhra."
 
-#: terminal/terminal-screen.c:1841 terminal/terminal-window.c:827
-#: terminal/terminal-window.c:2367
+#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:827
+#: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "_Anuloje"
 
-#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1853 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "_Ngjite"
 
-#: terminal/terminal-screen.c:1996 terminal/terminal-screen.c:2074
+#: terminal/terminal-screen.c:2015 terminal/terminal-screen.c:2093
 msgid "Failed to execute child"
 msgstr "S’u arrit të ekzekutohej pjella"
 
-#: terminal/terminal-screen.c:2700
+#: terminal/terminal-screen.c:2719
 msgid "Close this tab"
 msgstr "Mbylle këtë skedë"
 
@@ -1499,7 +1503,7 @@ msgstr "Gjej të _Mëparshmin"
 msgid "Sa_ve Contents..."
 msgstr "R_uani Lëndë…"
 
-#: terminal/terminal-window.c:353 terminal/terminal-window.c:2230
+#: terminal/terminal-window.c:353 terminal/terminal-window.c:2232
 msgid "_Reset"
 msgstr "_Riktheje te parazgjedhjet"
 
@@ -1699,75 +1703,75 @@ msgstr "Ka ende një proces në xhirim e sipër.\nMbyllja e kësaj dritareje do 
 msgid "Close window?"
 msgstr "Të mbyllet dritarja?"
 
-#: terminal/terminal-window.c:1605
+#: terminal/terminal-window.c:1607
 msgid "Failed to open directory"
 msgstr "S’u arrit të hapej drejtori"
 
-#: terminal/terminal-window.c:1807
+#: terminal/terminal-window.c:1809
 msgid "Copy _Input:"
 msgstr "Kopjoni Ç’jepet:"
 
-#: terminal/terminal-window.c:1811
+#: terminal/terminal-window.c:1813
 msgid "Enter the text to be copied to all tabs"
 msgstr "Jepni tekstin që duhet kopjuar te krejt skedat"
 
-#: terminal/terminal-window.c:1819
+#: terminal/terminal-window.c:1821
 msgid "Copy input"
 msgstr "Kopjoni ç’jepet"
 
-#: terminal/terminal-window.c:2181
+#: terminal/terminal-window.c:2183
 msgid "_Title:"
 msgstr "_Titull:"
 
-#: terminal/terminal-window.c:2185
+#: terminal/terminal-window.c:2187
 msgid "Enter the title for the current terminal tab"
 msgstr "Jepni titullin për skedën e çastit të terminalit"
 
-#: terminal/terminal-window.c:2200
+#: terminal/terminal-window.c:2202
 msgid "Help"
 msgstr "Ndihmë"
 
-#: terminal/terminal-window.c:2206
+#: terminal/terminal-window.c:2208
 msgid "Close"
 msgstr "Mbylle"
 
-#: terminal/terminal-window.c:2229
+#: terminal/terminal-window.c:2231
 msgid "Choose title color"
 msgstr "Zgjidhni ngjyrë titulli"
 
-#: terminal/terminal-window.c:2324
+#: terminal/terminal-window.c:2326
 msgid "Failed to create the regular expression"
 msgstr "S’u arrit të krijohej shprehje e rregullt"
 
-#: terminal/terminal-window.c:2364
+#: terminal/terminal-window.c:2366
 msgid "Save contents..."
 msgstr "Ruani lëndë…"
 
-#: terminal/terminal-window.c:2368
+#: terminal/terminal-window.c:2370
 msgid "_Save"
 msgstr "_Ruaje"
 
-#: terminal/terminal-window.c:2405
+#: terminal/terminal-window.c:2407
 msgid "Failed to save terminal contents"
 msgstr "S’u arrit të ruhej lëndë terminali"
 
-#: terminal/terminal-window.c:3178
+#: terminal/terminal-window.c:3180
 msgid "Send Signal"
 msgstr "Dërgo Sinjal"
 
-#: terminal/terminal-window.c:3195
+#: terminal/terminal-window.c:3198
 msgid "Zoom"
 msgstr ""
 
-#: terminal/terminal-window.c:3207
+#: terminal/terminal-window.c:3210
 msgid "Copy"
 msgstr "Kopjoje"
 
-#: terminal/terminal-window.c:3218
+#: terminal/terminal-window.c:3221
 msgid "Paste"
 msgstr "Ngjite"
 
-#: terminal/terminal-window.c:3229
+#: terminal/terminal-window.c:3232
 msgid "View Options"
 msgstr "Mundësi Parjeje"
 
