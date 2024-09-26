@@ -200,7 +200,7 @@ static void
 transform_string_to_color (const GValue *src,
                            GValue       *dst)
 {
-  GdkRGBA color;
+  GdkRGBA color = { 0 };
 
   gdk_rgba_parse (&color, g_value_get_string (src));
   g_value_set_boxed (dst, &color);
