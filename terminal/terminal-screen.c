@@ -206,6 +206,7 @@ struct _TerminalScreen
 
   GPid                 pid;
   gchar               *working_directory;
+  GCancellable        *cancellable;
 
   gchar              **custom_command;
   gchar               *custom_title;
@@ -334,6 +335,7 @@ terminal_screen_init (TerminalScreen *screen)
   screen->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
   screen->session_id = ++screen_last_session_id;
   screen->pid = -1;
+  screen->cancellable = g_cancellable_new ();
 
   screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
   g_signal_connect (G_OBJECT (screen->terminal), "child-exited",
@@ -423,6 +425,9 @@ terminal_screen_finalize (GObject *object)
 
   if (screen->loader != NULL)
     g_object_unref (G_OBJECT (screen->loader));
+
+  g_cancellable_cancel (screen->cancellable);
+  g_object_unref (screen->cancellable);
 
   g_strfreev (screen->custom_command);
   g_free (screen->working_directory);
@@ -2004,6 +2009,9 @@ terminal_screen_spawn_async_cb (VteTerminal *terminal,
 {
   TerminalScreen *screen = TERMINAL_SCREEN (user_data);
 
+  if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+    return;
+
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   g_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
 
@@ -2115,7 +2123,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
                                 spawn_flags,
                                 NULL, NULL,
                                 NULL, SPAWN_TIMEOUT,
-                                NULL,
+                                screen->cancellable,
                                 terminal_screen_spawn_async_cb,
                                 screen);
 
