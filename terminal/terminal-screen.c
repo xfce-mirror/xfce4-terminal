@@ -2007,7 +2007,7 @@ terminal_screen_spawn_async_cb (VteTerminal *terminal,
                                 GError      *error,
                                 gpointer     user_data)
 {
-  TerminalScreen *screen = TERMINAL_SCREEN (user_data);
+  TerminalScreen *screen = user_data;
 
   if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
     return;
