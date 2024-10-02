@@ -565,7 +565,7 @@ terminal_window_init (TerminalWindow *window)
 
   window->fullscreen_supported = TRUE;
 #ifdef ENABLE_X11
-  if (WINDOWING_IS_X11 ())
+  if (GDK_IS_X11_SCREEN (screen))
     {
       /* setup fullscreen mode */
       if (!gdk_x11_screen_supports_net_wm_hint (screen, gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
@@ -2603,10 +2603,10 @@ terminal_window_get_workspace (TerminalWindow *window)
   gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
   if (gdk_window == NULL)
     return -1;
+  gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
 
-  if (WINDOWING_IS_X11 ())
+  if (GDK_IS_X11_DISPLAY (gdk_display))
     {
-      gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
       gdk_x11_display_error_trap_push (gdk_display);
 
       display = gdk_x11_display_get_xdisplay (gdk_display);
