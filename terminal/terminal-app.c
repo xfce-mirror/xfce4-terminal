@@ -902,7 +902,8 @@ move_window_to_saved_workspace (GtkWidget *window,
                                         user_data);
 
 #ifdef ENABLE_X11
-  if (WINDOWING_IS_X11 ())
+  gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
+  if (GDK_IS_X11_DISPLAY (gdk_display))
     {
       // EWMH says that we can set _NET_WM_DESKTOP on our own window before
       // mapping it, and the WM should honor our request.  However, xfwm4
@@ -911,7 +912,6 @@ move_window_to_saved_workspace (GtkWidget *window,
       // Firefox does) is to wait until the window is mapped, and then send a
       // ClientMessage to the root window to ask the WM to move us.
 
-      gdk_display = gtk_widget_get_display (GTK_WIDGET (window));
       gdk_screen = gtk_widget_get_screen (GTK_WIDGET (window));
 
       gdk_x11_display_error_trap_push (gdk_display);

@@ -914,6 +914,8 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
   guint          n;
   gchar        **env;
   const gchar   *value;
+  GtkWidget     *toplevel;
+  GdkDisplay    *display;
 
   /* get all the environ variables */
   env = g_listenv ();
@@ -930,6 +932,7 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
           || strcmp (*p, "GNOME_DESKTOP_ICON") == 0
           || strcmp (*p, "COLORTERM") == 0
           || strcmp (*p, "DISPLAY") == 0
+          || strcmp (*p, "WAYLAND_DISPLAY") == 0
           || strcmp (*p, "TERM") == 0)
         continue;
 
@@ -953,17 +956,24 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 
   result[n++] = g_strdup_printf ("COLORTERM=%s", PACKAGE_NAME);
 
-#ifdef ENABLE_X11
-  if (WINDOWING_IS_X11 ())
+  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+  display = gtk_widget_get_display (toplevel);
+  if (toplevel != NULL && gtk_widget_get_realized (toplevel))
     {
-      GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-      if (toplevel != NULL && gtk_widget_get_realized (toplevel))
+#ifdef ENABLE_X11
+      if (GDK_IS_X11_DISPLAY (display))
         {
           result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) gdk_x11_window_get_xid (gtk_widget_get_window (toplevel)));
-          result[n++] = g_strdup_printf ("DISPLAY=%s", gdk_display_get_name (gdk_display_get_default ()));
+          result[n++] = g_strdup_printf ("DISPLAY=%s", gdk_display_get_name (display));
         }
-    }
 #endif
+#ifdef ENABLE_WAYLAND
+      if (GDK_IS_WAYLAND_DISPLAY (display))
+        {
+          result[n++] = g_strdup_printf ("WAYLAND_DISPLAY=%s", gdk_display_get_name (display));
+        }
+#endif
+    }
 
   result[n] = NULL;
 

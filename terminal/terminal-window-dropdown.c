@@ -249,7 +249,8 @@ static gboolean
 monitor_changed (TerminalWindowDropdown *dropdown)
 {
   GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (dropdown));
-  GdkMonitor *monitor = gdk_display_get_monitor_at_window (gdk_display_get_default (), window);
+  GdkDisplay *display = gdk_window_get_display (window);
+  GdkMonitor *monitor = gdk_display_get_monitor_at_window (display, window);
 
   if (monitor != dropdown->monitor)
     {
@@ -299,7 +300,10 @@ move_to_active_changed (TerminalWindowDropdown *dropdown)
       /* there doesn't seem to be a better signal for tracking monitor changes */
       g_signal_connect_after (dropdown, "draw", G_CALLBACK (monitor_changed), NULL);
       if (dropdown->monitor == NULL)
-        dropdown->monitor = gdk_display_get_monitor (gdk_display_get_default (), 0);
+        {
+          GdkDisplay *display = gtk_widget_get_display (GTK_WIDGET (dropdown));
+          dropdown->monitor = gdk_display_get_monitor (display, 0);
+        }
     }
   else
     {
@@ -907,7 +911,7 @@ terminal_window_dropdown_gdk_screen_get_active (TerminalWindowDropdown *dropdown
 #ifdef HAVE_GTK_LAYER_SHELL
   if (gtk_layer_is_supported ())
     {
-      GdkDisplay *display = gdk_display_get_default ();
+      GdkDisplay *display = gtk_widget_get_display (GTK_WIDGET (dropdown));
       gint n_monitors = gdk_display_get_n_monitors (display);
 
       for (gint i = 0; i < n_monitors; i++)
