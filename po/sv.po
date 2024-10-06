@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-09-19 00:49+0200\n"
+"POT-Creation-Date: 2024-09-25 00:50+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Luna Jernberg <droidbittin@gmail.com>, 2024\n"
 "Language-Team: Swedish (http://app.transifex.com/xfce/xfce-apps/language/sv/)\n"
@@ -765,7 +765,7 @@ msgid "x height"
 msgstr "x höjd"
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2192
 msgid "Reset"
 msgstr "Återställ"
 
@@ -1167,67 +1167,71 @@ msgstr "Inaktivera tills programmet startar om"
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Inaktivera dialogrutan (kan återaktiveras i Inställningar)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:881
-#: terminal/terminal-screen.c:2373
+#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:887
+#: terminal/terminal-screen.c:2392
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: terminal/terminal-screen.c:784
+#: terminal/terminal-screen.c:740
+msgid "Empty custom command in the terminal preferences"
+msgstr "Töm det anpassade kommandot i terminalinställningarna"
+
+#: terminal/terminal-screen.c:790
 msgid "Unable to determine your login shell."
 msgstr "Det gick inte att bestämma ditt inloggningsskal."
 
-#: terminal/terminal-screen.c:1493
+#: terminal/terminal-screen.c:1499
 msgid "_Relaunch"
 msgstr "Sta_rta om"
 
-#: terminal/terminal-screen.c:1499
+#: terminal/terminal-screen.c:1505
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Barnprocessen avslutades normalt med status %d."
 
-#: terminal/terminal-screen.c:1501
+#: terminal/terminal-screen.c:1507
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Barnprocessen avbröts av signal %d."
 
-#: terminal/terminal-screen.c:1503
+#: terminal/terminal-screen.c:1509
 msgid "The child process was aborted."
 msgstr "Barnprocessen avbröts."
 
-#: terminal/terminal-screen.c:1509 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1515 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "Fråga mig _inte igen"
 
-#: terminal/terminal-screen.c:1823
+#: terminal/terminal-screen.c:1829
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Varning: Potentiellt osäker inklistring"
 
-#: terminal/terminal-screen.c:1826
+#: terminal/terminal-screen.c:1832
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Att klistra in den här texten till terminalen kan vara farligt eftersom det ser ut som att vissa kommandon kan utföras som kan kräva rootåtkomst ('sudo')."
 
-#: terminal/terminal-screen.c:1829
+#: terminal/terminal-screen.c:1835
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Kllistra in denna text till terminalen kan vara farligt eftersom det ser ut som att vissa kommandon kan köras."
 
-#: terminal/terminal-screen.c:1841 terminal/terminal-window.c:827
-#: terminal/terminal-window.c:2367
+#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:827
+#: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1853 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "Klistra _in"
 
-#: terminal/terminal-screen.c:1996 terminal/terminal-screen.c:2074
+#: terminal/terminal-screen.c:2015 terminal/terminal-screen.c:2093
 msgid "Failed to execute child"
 msgstr "Misslyckades att köra barnprocess"
 
-#: terminal/terminal-screen.c:2700
+#: terminal/terminal-screen.c:2719
 msgid "Close this tab"
 msgstr "Stäng denna flik"
 
@@ -1502,7 +1506,7 @@ msgstr "Sök Föreg_ående"
 msgid "Sa_ve Contents..."
 msgstr "S_para Innehåll..."
 
-#: terminal/terminal-window.c:353 terminal/terminal-window.c:2230
+#: terminal/terminal-window.c:353 terminal/terminal-window.c:2232
 msgid "_Reset"
 msgstr "_Återställ"
 
@@ -1702,75 +1706,75 @@ msgstr "Det finns fortfarande en process som körs.\nAtt stänga detta fönster 
 msgid "Close window?"
 msgstr "Stäng fönster?"
 
-#: terminal/terminal-window.c:1605
+#: terminal/terminal-window.c:1607
 msgid "Failed to open directory"
 msgstr "Misslyckades med att öppna katalog"
 
-#: terminal/terminal-window.c:1807
+#: terminal/terminal-window.c:1809
 msgid "Copy _Input:"
 msgstr "Kopiera _Inmatning:"
 
-#: terminal/terminal-window.c:1811
+#: terminal/terminal-window.c:1813
 msgid "Enter the text to be copied to all tabs"
 msgstr "Ange texten som ska kopieras till alla flikar"
 
-#: terminal/terminal-window.c:1819
+#: terminal/terminal-window.c:1821
 msgid "Copy input"
 msgstr "kopiera inmatning"
 
-#: terminal/terminal-window.c:2181
+#: terminal/terminal-window.c:2183
 msgid "_Title:"
 msgstr "_Namn:"
 
-#: terminal/terminal-window.c:2185
+#: terminal/terminal-window.c:2187
 msgid "Enter the title for the current terminal tab"
 msgstr "Ange namn för den aktiva terminalfliken"
 
-#: terminal/terminal-window.c:2200
+#: terminal/terminal-window.c:2202
 msgid "Help"
 msgstr "Hjälp"
 
-#: terminal/terminal-window.c:2206
+#: terminal/terminal-window.c:2208
 msgid "Close"
 msgstr "Stäng"
 
-#: terminal/terminal-window.c:2229
+#: terminal/terminal-window.c:2231
 msgid "Choose title color"
 msgstr "Välj titelfärg"
 
-#: terminal/terminal-window.c:2324
+#: terminal/terminal-window.c:2326
 msgid "Failed to create the regular expression"
 msgstr "Det gick inte att skapa det reguljära uttrycket"
 
-#: terminal/terminal-window.c:2364
+#: terminal/terminal-window.c:2366
 msgid "Save contents..."
 msgstr "Spara innehåll..."
 
-#: terminal/terminal-window.c:2368
+#: terminal/terminal-window.c:2370
 msgid "_Save"
 msgstr "_Spara"
 
-#: terminal/terminal-window.c:2405
+#: terminal/terminal-window.c:2407
 msgid "Failed to save terminal contents"
 msgstr "Det gick inte att spara terminalinnehåll"
 
-#: terminal/terminal-window.c:3178
+#: terminal/terminal-window.c:3180
 msgid "Send Signal"
 msgstr "Skicka signal"
 
-#: terminal/terminal-window.c:3195
+#: terminal/terminal-window.c:3198
 msgid "Zoom"
 msgstr "Zoom"
 
-#: terminal/terminal-window.c:3207
+#: terminal/terminal-window.c:3210
 msgid "Copy"
 msgstr "Kopiera"
 
-#: terminal/terminal-window.c:3218
+#: terminal/terminal-window.c:3221
 msgid "Paste"
 msgstr "Klistra in"
 
-#: terminal/terminal-window.c:3229
+#: terminal/terminal-window.c:3232
 msgid "View Options"
 msgstr "Visa alternativ"
 
