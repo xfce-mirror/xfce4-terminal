@@ -26,7 +26,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-09-19 00:49+0200\n"
+"POT-Creation-Date: 2024-09-25 00:50+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Wallon Wallon, 2022-2024\n"
 "Language-Team: French (http://app.transifex.com/xfce/xfce-apps/language/fr/)\n"
@@ -778,7 +778,7 @@ msgid "x height"
 msgstr "hauteur x"
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2192
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -1180,67 +1180,71 @@ msgstr "Désactiver jusqu’au redémarrage du programme"
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Désactiver la boîte de dialogue (peut être réactivée dans les préférences)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:881
-#: terminal/terminal-screen.c:2373
+#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:887
+#: terminal/terminal-screen.c:2392
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: terminal/terminal-screen.c:784
+#: terminal/terminal-screen.c:740
+msgid "Empty custom command in the terminal preferences"
+msgstr "Commande personnalisée vide dans les préférences du terminal"
+
+#: terminal/terminal-screen.c:790
 msgid "Unable to determine your login shell."
 msgstr "Impossible de déterminer votre shell de connexion."
 
-#: terminal/terminal-screen.c:1493
+#: terminal/terminal-screen.c:1499
 msgid "_Relaunch"
 msgstr "_Relancer"
 
-#: terminal/terminal-screen.c:1499
+#: terminal/terminal-screen.c:1505
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Le processus fils s’est terminé normalement avec l’état %d."
 
-#: terminal/terminal-screen.c:1501
+#: terminal/terminal-screen.c:1507
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Le processus fils a été interrompu par le signal %d."
 
-#: terminal/terminal-screen.c:1503
+#: terminal/terminal-screen.c:1509
 msgid "The child process was aborted."
 msgstr "Le processus fils a été interrompu."
 
-#: terminal/terminal-screen.c:1509 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1515 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "_Ne plus me poser la question"
 
-#: terminal/terminal-screen.c:1823
+#: terminal/terminal-screen.c:1829
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Avertissement : collage potentiellement dangereux"
 
-#: terminal/terminal-screen.c:1826
+#: terminal/terminal-screen.c:1832
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Coller ce texte dans le terminal peut s’avérer dangereux car il semble que certaines commandes risquent de s’exécuter, impliquant potentiellement un accès root (« sudo »)."
 
-#: terminal/terminal-screen.c:1829
+#: terminal/terminal-screen.c:1835
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Coller ce texte dans le terminal peut s’avérer dangereux car il semble que certaines commandes risquent de s’exécuter."
 
-#: terminal/terminal-screen.c:1841 terminal/terminal-window.c:827
-#: terminal/terminal-window.c:2367
+#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:827
+#: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "_Annuler"
 
-#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1853 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "C_oller"
 
-#: terminal/terminal-screen.c:1996 terminal/terminal-screen.c:2074
+#: terminal/terminal-screen.c:2015 terminal/terminal-screen.c:2093
 msgid "Failed to execute child"
 msgstr "Impossible d’exécuter un fils"
 
-#: terminal/terminal-screen.c:2700
+#: terminal/terminal-screen.c:2719
 msgid "Close this tab"
 msgstr "Fermer cet onglet"
 
@@ -1515,7 +1519,7 @@ msgstr "Trouver _précédent"
 msgid "Sa_ve Contents..."
 msgstr "Enre_gistrer le contenu…"
 
-#: terminal/terminal-window.c:353 terminal/terminal-window.c:2230
+#: terminal/terminal-window.c:353 terminal/terminal-window.c:2232
 msgid "_Reset"
 msgstr "_Réinitialiser"
 
@@ -1715,75 +1719,75 @@ msgstr "Un processus est encore en cours d’exécution.\nIl sera interrompu à 
 msgid "Close window?"
 msgstr "Fermer la fenêtre ?"
 
-#: terminal/terminal-window.c:1605
+#: terminal/terminal-window.c:1607
 msgid "Failed to open directory"
 msgstr "Impossible d’ouvrir le répertoire"
 
-#: terminal/terminal-window.c:1807
+#: terminal/terminal-window.c:1809
 msgid "Copy _Input:"
 msgstr "Copier l’_entrée :"
 
-#: terminal/terminal-window.c:1811
+#: terminal/terminal-window.c:1813
 msgid "Enter the text to be copied to all tabs"
 msgstr "Saisir le texte à copier dans tous les onglets"
 
-#: terminal/terminal-window.c:1819
+#: terminal/terminal-window.c:1821
 msgid "Copy input"
 msgstr "Copier l’entrée"
 
-#: terminal/terminal-window.c:2181
+#: terminal/terminal-window.c:2183
 msgid "_Title:"
 msgstr "_Titre :"
 
-#: terminal/terminal-window.c:2185
+#: terminal/terminal-window.c:2187
 msgid "Enter the title for the current terminal tab"
 msgstr "Entrer le titre pour l’onglet courant du terminal"
 
-#: terminal/terminal-window.c:2200
+#: terminal/terminal-window.c:2202
 msgid "Help"
 msgstr "Aide"
 
-#: terminal/terminal-window.c:2206
+#: terminal/terminal-window.c:2208
 msgid "Close"
 msgstr "Fermer"
 
-#: terminal/terminal-window.c:2229
+#: terminal/terminal-window.c:2231
 msgid "Choose title color"
 msgstr "Choisir la couleur de titre"
 
-#: terminal/terminal-window.c:2324
+#: terminal/terminal-window.c:2326
 msgid "Failed to create the regular expression"
 msgstr "Impossible de créer l’expression régulière"
 
-#: terminal/terminal-window.c:2364
+#: terminal/terminal-window.c:2366
 msgid "Save contents..."
 msgstr "Enregistrer le contenu…"
 
-#: terminal/terminal-window.c:2368
+#: terminal/terminal-window.c:2370
 msgid "_Save"
 msgstr "_Enregistrer"
 
-#: terminal/terminal-window.c:2405
+#: terminal/terminal-window.c:2407
 msgid "Failed to save terminal contents"
 msgstr "Impossible d’enregistrer le contenu du terminal"
 
-#: terminal/terminal-window.c:3178
+#: terminal/terminal-window.c:3180
 msgid "Send Signal"
 msgstr "Envoyer un signal"
 
-#: terminal/terminal-window.c:3195
+#: terminal/terminal-window.c:3198
 msgid "Zoom"
 msgstr "Zoom"
 
-#: terminal/terminal-window.c:3207
+#: terminal/terminal-window.c:3210
 msgid "Copy"
 msgstr "Copier"
 
-#: terminal/terminal-window.c:3218
+#: terminal/terminal-window.c:3221
 msgid "Paste"
 msgstr "Coller"
 
-#: terminal/terminal-window.c:3229
+#: terminal/terminal-window.c:3232
 msgid "View Options"
 msgstr "Afficher les options"
 
