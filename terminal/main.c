@@ -144,7 +144,7 @@ usage (void)
            "  --startup-id=%s; -I, --icon=%s; --fullscreen; --maximize; --minimize;\n"
            "  --show-menubar, --hide-menubar; --show-borders, --hide-borders;\n"
            "  --show-toolbar, --hide-toolbar; --show-scrollbar, --hide-scrollbar;\n"
-           "  --font=%s; --zoom=%s\n\n",
+           "  --font=%s; --zoom=%s; --class=%s\n\n",
            _("Window Options"),
            /* parameter of --display */
            _("display"),
@@ -159,7 +159,9 @@ usage (void)
            /* parameter of --font */
            _("font"),
            /* parameter of --zoom */
-           _("zoom"));
+           _("zoom"),
+           /* parameter of --class */
+           _("class"));
 
   g_print (_("See the %s man page for full explanation of the options above."),
            PACKAGE_NAME);
