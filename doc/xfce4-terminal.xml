@@ -160,7 +160,8 @@
               <xref linkend="options-window-show-scrollbar"/>,
               <xref linkend="options-window-hide-scrollbar"/>;
               <xref linkend="options-window-font"/>;
-              <xref linkend="options-window-zoom"/>
+              <xref linkend="options-window-zoom"/>;
+              <xref linkend="options-window-class"/>
             </para>
           </listitem>
         </varlistentry>
@@ -606,6 +607,19 @@
               Set the zoom level: the font size will be multiplied by this level. The range
               is from -7 to 7, default is 0. Each step multiplies the size by 1.2, i.e.
               level 7 is 3.5831808 (1.2^7) times larger than the default size.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-class">
+            <option>--class=<replaceable>class</replaceable></option>
+          </term>
+          <listitem>
+            <para>
+              Set the window manager class of all terminal windows. Controls window grouping
+              in the panel. If a terminal instance is already open, requires
+              <xref linkend="options-general-disable-server"/> to be set.
             </para>
           </listitem>
         </varlistentry>

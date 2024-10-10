@@ -633,6 +633,17 @@ terminal_window_attr_parse (gint              argc,
               continue;
             }
         }
+      else if (terminal_option_cmp ("class", 0, argc, argv, &n, &s, &short_offset))
+        {
+          if (G_UNLIKELY (s == NULL))
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--class\" requires specifying "
+                             "the class name as its parameter"));
+              goto failed;
+            }
+            /* This option is handled elsewhere; no need to handle the success case */
+        }
       else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL, &short_offset)
                || terminal_option_cmp ("sync", 0, argc, argv, &n, NULL, &short_offset)
                || terminal_option_cmp ("g-fatal-warnings", 0, argc, argv, &n, NULL, &short_offset))
