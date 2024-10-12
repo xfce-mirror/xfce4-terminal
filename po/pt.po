@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-09-25 00:50+0200\n"
+"POT-Creation-Date: 2024-10-12 12:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>, 2016,2019-2024\n"
 "Language-Team: Portuguese (http://app.transifex.com/xfce/xfce-apps/language/pt/)\n"
@@ -142,39 +142,44 @@ msgstr "tipo de letra"
 msgid "zoom"
 msgstr "ampliar"
 
+#. parameter of --class
 #: terminal/main.c:164
+msgid "class"
+msgstr "classe"
+
+#: terminal/main.c:166
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Consulte o manual do %s para uma explicação completa sobre as opções acima."
 
-#: terminal/main.c:198 xfce4-terminal.desktop.in:4
+#: terminal/main.c:200 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
 msgstr "Terminal Xfce"
 
-#: terminal/main.c:210
+#: terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "A equipa de desenvolvimento do Xfce. Todos os direitos reservados."
 
-#: terminal/main.c:211
+#: terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Escrito por Benedikt Meurer <benny@xfce.org>,"
 
-#: terminal/main.c:212
+#: terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>,"
 msgstr "Nick Schermer <nick@xfce.org>,"
 
-#: terminal/main.c:213
+#: terminal/main.c:215
 msgid "Igor Zakharov <f2404@yandex.ru>,"
 msgstr "Igor Zakharov <f2404@yandex.ru>,"
 
-#: terminal/main.c:214
+#: terminal/main.c:216
 msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 msgstr "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 
-#: terminal/main.c:215
+#: terminal/main.c:217
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Agradece-se que relate erros em <%s>."
+msgstr "Reporte erros em <%s>."
 
 #: terminal/terminal-encoding-action.c:68
 msgid "Western European"
@@ -317,7 +322,7 @@ msgstr "A opção \"--title/-T\" requer que especifique o título como parâmetr
 msgid ""
 "Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
 "as its parameter"
-msgstr "Opção \"--dynamic-title-mode\" requer indicar o modo de título dinâmico como parâmetro"
+msgstr "A opção \"--dynamic-title-mode\" requer indicar o modo de título dinâmico como parâmetro"
 
 #: terminal/terminal-options.c:364
 #, c-format
@@ -328,12 +333,12 @@ msgstr "Argumento inválido para opção \"--dynamic-title-mode\": %s"
 msgid ""
 "Option \"--initial-title\" requires specifying the initial title as its "
 "parameter"
-msgstr "Opção \"--initial-title\" requer indicar o título inicial como seu parâmetro"
+msgstr "A opção \"--initial-title\" requer indicar o título inicial como seu parâmetro"
 
 #: terminal/terminal-options.c:398 terminal/terminal-options.c:417
 #, c-format
 msgid "Option \"%s\" requires specifying the color as its parameter"
-msgstr "Opção \"%s\" requer indicar a cor como parâmetro"
+msgstr "A opção \"%s\" requer indicar a cor como parâmetro"
 
 #: terminal/terminal-options.c:405 terminal/terminal-options.c:424
 #, c-format
@@ -342,7 +347,7 @@ msgstr "Incapaz de analisar cor: %s"
 
 #: terminal/terminal-options.c:435
 msgid "Option \"--display\" requires specifying the X display as its parameter"
-msgstr "Opção \"--display\" requer indicar o ecrã X como parâmetro"
+msgstr "A opção \"--display\" requer indicar o ecrã X como parâmetro"
 
 #: terminal/terminal-options.c:450
 msgid ""
@@ -384,14 +389,18 @@ msgstr "A opção \"--font\" requer que indique a fonte como parâmetro"
 #: terminal/terminal-options.c:625
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
-msgstr "Opção \"--zoom\" requer que indique o zoom (%d .. %d) como parâmetro"
+msgstr "A opção \"--zoom\" requer que indique o zoom (%d .. %d) como parâmetro"
 
-#: terminal/terminal-options.c:648
+#: terminal/terminal-options.c:641
+msgid "Option \"--class\" requires specifying the class name as its parameter"
+msgstr "A opção \"--class\" requer a especificação do nome da classe como parâmetro"
+
+#: terminal/terminal-options.c:659
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr "Opção desconhecida \"-%c\""
 
-#: terminal/terminal-options.c:651
+#: terminal/terminal-options.c:662
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Opção desconhecida \"%s\""
@@ -1023,7 +1032,7 @@ msgstr "Apagar TTY"
 
 #: terminal/terminal-preferences-dialog.c:1414
 msgid "Delete key generates:"
-msgstr "Tecla _delete gera:"
+msgstr "A tecla Delete gera:"
 
 #: terminal/terminal-preferences-dialog.c:1437
 msgid "Ambiguous-width characters:"
@@ -1146,91 +1155,91 @@ msgstr "Terminal"
 msgid "Select Preset"
 msgstr "Selecionar predefinição"
 
-#: terminal/terminal-screen.c:240
+#: terminal/terminal-screen.c:241
 msgid "Do not disable dialog"
 msgstr "Não desativar a caixa de diálogo"
 
-#: terminal/terminal-screen.c:241
+#: terminal/terminal-screen.c:242
 msgid "Disable for 5 minutes"
 msgstr "Desativar por 5 minutos"
 
-#: terminal/terminal-screen.c:242
+#: terminal/terminal-screen.c:243
 msgid "Disable for 15 minutes"
 msgstr "Desativar por 15 minutos"
 
-#: terminal/terminal-screen.c:243
+#: terminal/terminal-screen.c:244
 msgid "Disable until program restart"
 msgstr "Desativar até o programa reiniciar"
 
-#: terminal/terminal-screen.c:244
+#: terminal/terminal-screen.c:245
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Desativar caixa de diálogo (pode ser reativado nas Preferências)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:887
-#: terminal/terminal-screen.c:2392
+#: terminal/terminal-screen.c:499 terminal/terminal-screen.c:892
+#: terminal/terminal-screen.c:2410
 msgid "Untitled"
 msgstr "Sem título"
 
-#: terminal/terminal-screen.c:740
+#: terminal/terminal-screen.c:745
 msgid "Empty custom command in the terminal preferences"
 msgstr "Esvaziar comando personalizado nas preferências do terminal"
 
-#: terminal/terminal-screen.c:790
+#: terminal/terminal-screen.c:795
 msgid "Unable to determine your login shell."
 msgstr "Incapaz de determinar a shell de início de sessão."
 
-#: terminal/terminal-screen.c:1499
+#: terminal/terminal-screen.c:1514
 msgid "_Relaunch"
 msgstr "_Relançar"
 
-#: terminal/terminal-screen.c:1505
+#: terminal/terminal-screen.c:1520
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "O processo dependente terminad terminou normalmente no estado %d."
 
-#: terminal/terminal-screen.c:1507
+#: terminal/terminal-screen.c:1522
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "O processo dependente terminado foi abortado pelo sinal %d."
 
-#: terminal/terminal-screen.c:1509
+#: terminal/terminal-screen.c:1524
 msgid "The child process was aborted."
 msgstr "O processo dependente foi abortado."
 
-#: terminal/terminal-screen.c:1515 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1530 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "_Não perguntar novamente"
 
-#: terminal/terminal-screen.c:1829
+#: terminal/terminal-screen.c:1844
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Aviso: colar potencialmente inseguro"
 
-#: terminal/terminal-screen.c:1832
+#: terminal/terminal-screen.c:1847
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Colar este texto no terminal pode ser perigoso, pois parece que alguns comandos podem ser executados, envolvendo potencialmente o acesso root (\"sudo\")."
 
-#: terminal/terminal-screen.c:1835
+#: terminal/terminal-screen.c:1850
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Colar este texto no terminal pode ser perigoso, pois parece que alguns comandos podem ser executados."
 
-#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:827
+#: terminal/terminal-screen.c:1862 terminal/terminal-window.c:827
 #: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: terminal/terminal-screen.c:1853 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1868 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "C_olar"
 
-#: terminal/terminal-screen.c:2015 terminal/terminal-screen.c:2093
+#: terminal/terminal-screen.c:2033 terminal/terminal-screen.c:2111
 msgid "Failed to execute child"
 msgstr "Falha ao executar o processo dependente"
 
-#: terminal/terminal-screen.c:2719
+#: terminal/terminal-screen.c:2737
 msgid "Close this tab"
 msgstr "Fechar este separador"
 
@@ -1320,15 +1329,15 @@ msgstr "Abrir ligação"
 msgid "Failed to open the URL '%s'"
 msgstr "Falha ao abrir o URL '%s'"
 
-#: terminal/terminal-window-dropdown.c:416
+#: terminal/terminal-window-dropdown.c:420
 msgid "Keep window open when it loses focus"
 msgstr "Manter janela aberta se esta perder o foco"
 
-#: terminal/terminal-window-dropdown.c:541
+#: terminal/terminal-window-dropdown.c:545
 msgid "Drop-down Terminal"
 msgstr "Terminal suspenso"
 
-#: terminal/terminal-window-dropdown.c:542
+#: terminal/terminal-window-dropdown.c:546
 msgid "Toggle Drop-down Terminal"
 msgstr "Alternar terminal suspenso"
 
