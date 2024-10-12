@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-09-25 00:50+0200\n"
+"POT-Creation-Date: 2024-10-12 12:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020-2024\n"
 "Language-Team: Japanese (http://app.transifex.com/xfce/xfce-apps/language/ja/)\n"
@@ -142,36 +142,41 @@ msgstr "フォント"
 msgid "zoom"
 msgstr "ズーム"
 
+#. parameter of --class
 #: terminal/main.c:164
+msgid "class"
+msgstr "クラス"
+
+#: terminal/main.c:166
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "上記オプションの詳しい説明は man %s でご覧ください。"
 
-#: terminal/main.c:198 xfce4-terminal.desktop.in:4
+#: terminal/main.c:200 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
 msgstr "Xfce 端末"
 
-#: terminal/main.c:210
+#: terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. All rights reserved."
 
-#: terminal/main.c:211
+#: terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Written by Benedikt Meurer <benny@xfce.org>,"
 
-#: terminal/main.c:212
+#: terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>,"
 msgstr "Nick Schermer <nick@xfce.org>,"
 
-#: terminal/main.c:213
+#: terminal/main.c:215
 msgid "Igor Zakharov <f2404@yandex.ru>,"
 msgstr "Igor Zakharov <f2404@yandex.ru>,"
 
-#: terminal/main.c:214
+#: terminal/main.c:216
 msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 msgstr "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 
-#: terminal/main.c:215
+#: terminal/main.c:217
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "バグの報告は <%s> までお願いします。"
@@ -386,12 +391,16 @@ msgstr "オプション \"--font\" にはパラメーターとしてフォント
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "オプション \"--zoom\" にはパラメーターとしてズーム (%d .. %d)を指定する必要があります"
 
-#: terminal/terminal-options.c:648
+#: terminal/terminal-options.c:641
+msgid "Option \"--class\" requires specifying the class name as its parameter"
+msgstr "オプション「--class」では、パラメータとしてクラス名を指定する必要があります"
+
+#: terminal/terminal-options.c:659
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr "不明なオプション \"-%c\""
 
-#: terminal/terminal-options.c:651
+#: terminal/terminal-options.c:662
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "\"%s\" は不明なオプションです"
@@ -1146,91 +1155,91 @@ msgstr "端末"
 msgid "Select Preset"
 msgstr "プリセットを選択"
 
-#: terminal/terminal-screen.c:240
+#: terminal/terminal-screen.c:241
 msgid "Do not disable dialog"
 msgstr "ダイアログを無効にしない"
 
-#: terminal/terminal-screen.c:241
+#: terminal/terminal-screen.c:242
 msgid "Disable for 5 minutes"
 msgstr "5分間無効にする"
 
-#: terminal/terminal-screen.c:242
+#: terminal/terminal-screen.c:243
 msgid "Disable for 15 minutes"
 msgstr "15分間無効にする"
 
-#: terminal/terminal-screen.c:243
+#: terminal/terminal-screen.c:244
 msgid "Disable until program restart"
 msgstr "プログラムを再起動するまで無効にする"
 
-#: terminal/terminal-screen.c:244
+#: terminal/terminal-screen.c:245
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "ダイアログを無効にする（設定で再度有効にできます）"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:887
-#: terminal/terminal-screen.c:2392
+#: terminal/terminal-screen.c:499 terminal/terminal-screen.c:892
+#: terminal/terminal-screen.c:2410
 msgid "Untitled"
 msgstr "無題"
 
-#: terminal/terminal-screen.c:740
+#: terminal/terminal-screen.c:745
 msgid "Empty custom command in the terminal preferences"
 msgstr "ターミナル設定のカスタムコマンドが空です"
 
-#: terminal/terminal-screen.c:790
+#: terminal/terminal-screen.c:795
 msgid "Unable to determine your login shell."
 msgstr "あなたのログインシェルを特定できません。"
 
-#: terminal/terminal-screen.c:1499
+#: terminal/terminal-screen.c:1514
 msgid "_Relaunch"
 msgstr "再開(_R)"
 
-#: terminal/terminal-screen.c:1505
+#: terminal/terminal-screen.c:1520
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "子プロセスがステータス %d で正常に終了しました。"
 
-#: terminal/terminal-screen.c:1507
+#: terminal/terminal-screen.c:1522
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "子プロセスがシグナル %d で中断されました。"
 
-#: terminal/terminal-screen.c:1509
+#: terminal/terminal-screen.c:1524
 msgid "The child process was aborted."
 msgstr "子プロセスが中断されました。"
 
-#: terminal/terminal-screen.c:1515 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1530 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "次回から確認しない(_N)"
 
-#: terminal/terminal-screen.c:1829
+#: terminal/terminal-screen.c:1844
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "警告: 安全ではない可能性のある貼り付け"
 
-#: terminal/terminal-screen.c:1832
+#: terminal/terminal-screen.c:1847
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "このテキストを端末に貼り付けるのは危険かもしれません。いくつかのコマンドが実行され、ルートアクセス（sudo）が発生する可能性があります。"
 
-#: terminal/terminal-screen.c:1835
+#: terminal/terminal-screen.c:1850
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "このテキストを端末にペーストすると、何かしらのコマンドが実行されるように見えるため危険です。"
 
-#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:827
+#: terminal/terminal-screen.c:1862 terminal/terminal-window.c:827
 #: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: terminal/terminal-screen.c:1853 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1868 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "貼り付け(_P)"
 
-#: terminal/terminal-screen.c:2015 terminal/terminal-screen.c:2093
+#: terminal/terminal-screen.c:2033 terminal/terminal-screen.c:2111
 msgid "Failed to execute child"
 msgstr "子プロセスの実行に失敗しました。"
 
-#: terminal/terminal-screen.c:2719
+#: terminal/terminal-screen.c:2737
 msgid "Close this tab"
 msgstr "このタブを閉じる"
 
@@ -1320,15 +1329,15 @@ msgstr "リンクを開く"
 msgid "Failed to open the URL '%s'"
 msgstr "URL '%s' をブラウザーで開けませんでした"
 
-#: terminal/terminal-window-dropdown.c:416
+#: terminal/terminal-window-dropdown.c:420
 msgid "Keep window open when it loses focus"
 msgstr "フォーカスが他へ移動してもウィンドウを開いたままにする"
 
-#: terminal/terminal-window-dropdown.c:541
+#: terminal/terminal-window-dropdown.c:545
 msgid "Drop-down Terminal"
 msgstr "ドロップダウン端末"
 
-#: terminal/terminal-window-dropdown.c:542
+#: terminal/terminal-window-dropdown.c:546
 msgid "Toggle Drop-down Terminal"
 msgstr "ドロップダウン端末の切り替え"
 
