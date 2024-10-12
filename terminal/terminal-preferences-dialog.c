@@ -790,7 +790,15 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_set_tooltip_text (button, _("Enable this to allow applications running inside the terminal windows to use bold font."));
-  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 6, 1);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
+  gtk_widget_show (button);
+
+  button = gtk_check_button_new_with_mnemonic (_("_Zoom font only"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "font-zoom-font-only",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_tooltip_text (button, _("Enable this to prevent window resizing so only font is zoomed when zoom in or out. Will not affect the drop-down window."));
+  gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
   /* next row */
