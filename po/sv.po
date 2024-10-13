@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-09-25 00:50+0200\n"
+"POT-Creation-Date: 2024-10-12 12:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Luna Jernberg <droidbittin@gmail.com>, 2024\n"
 "Language-Team: Swedish (http://app.transifex.com/xfce/xfce-apps/language/sv/)\n"
@@ -143,36 +143,41 @@ msgstr "teckensnitt"
 msgid "zoom"
 msgstr "zoom"
 
+#. parameter of --class
 #: terminal/main.c:164
+msgid "class"
+msgstr "klass"
+
+#: terminal/main.c:166
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Se manualsidan för %s för en fullständig förklaring av flaggorna ovan."
 
-#: terminal/main.c:198 xfce4-terminal.desktop.in:4
+#: terminal/main.c:200 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
 msgstr "Xfce terminal"
 
-#: terminal/main.c:210
+#: terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "Utvecklingsgruppen för Xfce. Alla rättigheter är reserverade."
 
-#: terminal/main.c:211
+#: terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Skriven av Benedikt Meurer <benny@xfce.org>,"
 
-#: terminal/main.c:212
+#: terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>,"
 msgstr "Nick Schermer <nick@xfce.org>,"
 
-#: terminal/main.c:213
+#: terminal/main.c:215
 msgid "Igor Zakharov <f2404@yandex.ru>,"
 msgstr "Igor Zakharov <f2404@yandex.ru>,"
 
-#: terminal/main.c:214
+#: terminal/main.c:216
 msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 msgstr "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 
-#: terminal/main.c:215
+#: terminal/main.c:217
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Rapportera fel till <%s>.\r\nSkicka synpunkter på översättningen till <tp-sv@listor.tp-sv.se>."
@@ -387,12 +392,16 @@ msgstr "Alternativet \"--font\" kräver angivande av teckensnittsnamnet som dess
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Alternativet \"--zoom\" kräver specificering av zoom (%d .. %d) som dess parameter"
 
-#: terminal/terminal-options.c:648
+#: terminal/terminal-options.c:641
+msgid "Option \"--class\" requires specifying the class name as its parameter"
+msgstr "Alternativet \"--class\"  kräver att klassnamnet anges som dess parameter"
+
+#: terminal/terminal-options.c:659
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr "Okänd flagga \"-i%c\""
 
-#: terminal/terminal-options.c:651
+#: terminal/terminal-options.c:662
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Okänd flagga \"%s\""
@@ -1147,91 +1156,91 @@ msgstr "Terminal"
 msgid "Select Preset"
 msgstr "Välj Förinställning"
 
-#: terminal/terminal-screen.c:240
+#: terminal/terminal-screen.c:241
 msgid "Do not disable dialog"
 msgstr "Inaktivera inte dialogruta"
 
-#: terminal/terminal-screen.c:241
+#: terminal/terminal-screen.c:242
 msgid "Disable for 5 minutes"
 msgstr "Inaktivera i 5 minuter"
 
-#: terminal/terminal-screen.c:242
+#: terminal/terminal-screen.c:243
 msgid "Disable for 15 minutes"
 msgstr "Inaktivera i 15 minuter"
 
-#: terminal/terminal-screen.c:243
+#: terminal/terminal-screen.c:244
 msgid "Disable until program restart"
 msgstr "Inaktivera tills programmet startar om"
 
-#: terminal/terminal-screen.c:244
+#: terminal/terminal-screen.c:245
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Inaktivera dialogrutan (kan återaktiveras i Inställningar)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:887
-#: terminal/terminal-screen.c:2392
+#: terminal/terminal-screen.c:499 terminal/terminal-screen.c:892
+#: terminal/terminal-screen.c:2410
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: terminal/terminal-screen.c:740
+#: terminal/terminal-screen.c:745
 msgid "Empty custom command in the terminal preferences"
 msgstr "Töm det anpassade kommandot i terminalinställningarna"
 
-#: terminal/terminal-screen.c:790
+#: terminal/terminal-screen.c:795
 msgid "Unable to determine your login shell."
 msgstr "Det gick inte att bestämma ditt inloggningsskal."
 
-#: terminal/terminal-screen.c:1499
+#: terminal/terminal-screen.c:1514
 msgid "_Relaunch"
 msgstr "Sta_rta om"
 
-#: terminal/terminal-screen.c:1505
+#: terminal/terminal-screen.c:1520
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Barnprocessen avslutades normalt med status %d."
 
-#: terminal/terminal-screen.c:1507
+#: terminal/terminal-screen.c:1522
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Barnprocessen avbröts av signal %d."
 
-#: terminal/terminal-screen.c:1509
+#: terminal/terminal-screen.c:1524
 msgid "The child process was aborted."
 msgstr "Barnprocessen avbröts."
 
-#: terminal/terminal-screen.c:1515 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1530 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "Fråga mig _inte igen"
 
-#: terminal/terminal-screen.c:1829
+#: terminal/terminal-screen.c:1844
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Varning: Potentiellt osäker inklistring"
 
-#: terminal/terminal-screen.c:1832
+#: terminal/terminal-screen.c:1847
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Att klistra in den här texten till terminalen kan vara farligt eftersom det ser ut som att vissa kommandon kan utföras som kan kräva rootåtkomst ('sudo')."
 
-#: terminal/terminal-screen.c:1835
+#: terminal/terminal-screen.c:1850
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Kllistra in denna text till terminalen kan vara farligt eftersom det ser ut som att vissa kommandon kan köras."
 
-#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:827
+#: terminal/terminal-screen.c:1862 terminal/terminal-window.c:827
 #: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: terminal/terminal-screen.c:1853 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1868 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "Klistra _in"
 
-#: terminal/terminal-screen.c:2015 terminal/terminal-screen.c:2093
+#: terminal/terminal-screen.c:2033 terminal/terminal-screen.c:2111
 msgid "Failed to execute child"
 msgstr "Misslyckades att köra barnprocess"
 
-#: terminal/terminal-screen.c:2719
+#: terminal/terminal-screen.c:2737
 msgid "Close this tab"
 msgstr "Stäng denna flik"
 
@@ -1321,15 +1330,15 @@ msgstr "Öppna länk"
 msgid "Failed to open the URL '%s'"
 msgstr "Misslyckades med att öppna URL '%s'"
 
-#: terminal/terminal-window-dropdown.c:416
+#: terminal/terminal-window-dropdown.c:420
 msgid "Keep window open when it loses focus"
 msgstr "Behåll fönstret öppet då det tappar fokus"
 
-#: terminal/terminal-window-dropdown.c:541
+#: terminal/terminal-window-dropdown.c:545
 msgid "Drop-down Terminal"
 msgstr "Drop-down terminal"
 
-#: terminal/terminal-window-dropdown.c:542
+#: terminal/terminal-window-dropdown.c:546
 msgid "Toggle Drop-down Terminal"
 msgstr "Växla Drop-down terminal"
 
