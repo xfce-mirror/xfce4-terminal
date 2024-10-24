@@ -222,6 +222,8 @@ struct _TerminalScreen
 
   guint                activity_timeout_id;
   time_t               activity_resize_time;
+
+  GdkGeometry          hints;
 };
 
 typedef struct
@@ -2263,7 +2265,6 @@ void
 terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
                                            GtkWindow      *window)
 {
-  GdkGeometry    hints;
   glong          char_width, char_height;
   GtkRequisition vbox_request;
   GtkAllocation  toplevel_allocation, vbox_allocation;
@@ -2288,17 +2289,17 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
   csd_width = toplevel_allocation.width - vbox_allocation.width;
   csd_height = toplevel_allocation.height - vbox_allocation.height;
 
-  hints.base_width = chrome_width + csd_width;
-  hints.base_height = chrome_height + csd_height;
+  screen->hints.base_width = chrome_width + csd_width;
+  screen->hints.base_height = chrome_height + csd_height;
 
-  hints.width_inc = char_width;
-  hints.height_inc = char_height;
-  hints.min_width = hints.base_width + hints.width_inc * MIN_COLUMNS;
-  hints.min_height = hints.base_height + hints.height_inc * MIN_ROWS;
+  screen->hints.width_inc = char_width;
+  screen->hints.height_inc = char_height;
+  screen->hints.min_width = screen->hints.base_width + screen->hints.width_inc * MIN_COLUMNS;
+  screen->hints.min_height = screen->hints.base_height + screen->hints.height_inc * MIN_ROWS;
 
   gtk_window_set_geometry_hints (window,
                                  NULL,
-                                 &hints,
+                                 &screen->hints,
                                  GDK_HINT_RESIZE_INC
                                  | GDK_HINT_MIN_SIZE
                                  | GDK_HINT_BASE_SIZE);
@@ -2901,6 +2902,7 @@ terminal_screen_update_font (TerminalScreen *screen)
   GSettings            *settings;
   gdouble               font_scale = PANGO_SCALE_MEDIUM;
   gdouble               cell_width_scale, cell_height_scale;
+  gboolean              font_change = FALSE;
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   g_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
@@ -2934,46 +2936,50 @@ terminal_screen_update_font (TerminalScreen *screen)
   else
     g_object_get (G_OBJECT (screen->preferences), "font-name", &font_name, NULL);
 
-  if (TERMINAL_IS_WINDOW (toplevel))
+  if (TERMINAL_IS_WINDOW (toplevel) &&
+      terminal_window_get_font (TERMINAL_WINDOW (toplevel)))
     {
-      if (terminal_window_get_font (TERMINAL_WINDOW (toplevel)))
-        {
-          g_free (font_name);
-          font_name = g_strdup (terminal_window_get_font (TERMINAL_WINDOW (toplevel)));
-        }
-
-      switch (terminal_window_get_zoom_level (TERMINAL_WINDOW (toplevel)))
-        {
-          case TERMINAL_ZOOM_LEVEL_MINIMUM:     font_scale = PANGO_SCALE_XX_SMALL/1.2/1.2/1.2/1.2; break;
-          case TERMINAL_ZOOM_LEVEL_XXXXX_SMALL: font_scale = PANGO_SCALE_XX_SMALL/1.2/1.2/1.2;     break;
-          case TERMINAL_ZOOM_LEVEL_XXXX_SMALL:  font_scale = PANGO_SCALE_XX_SMALL/1.2/1.2;         break;
-          case TERMINAL_ZOOM_LEVEL_XXX_SMALL:   font_scale = PANGO_SCALE_XX_SMALL/1.2;             break;
-          case TERMINAL_ZOOM_LEVEL_XX_SMALL:    font_scale = PANGO_SCALE_XX_SMALL;                 break;
-          case TERMINAL_ZOOM_LEVEL_X_SMALL:     font_scale = PANGO_SCALE_X_SMALL;                  break;
-          case TERMINAL_ZOOM_LEVEL_SMALL:       font_scale = PANGO_SCALE_SMALL;                    break;
-          case TERMINAL_ZOOM_LEVEL_LARGE:       font_scale = PANGO_SCALE_LARGE;                    break;
-          case TERMINAL_ZOOM_LEVEL_X_LARGE:     font_scale = PANGO_SCALE_X_LARGE;                  break;
-          case TERMINAL_ZOOM_LEVEL_XX_LARGE:    font_scale = PANGO_SCALE_XX_LARGE;                 break;
-          case TERMINAL_ZOOM_LEVEL_XXX_LARGE:   font_scale = PANGO_SCALE_XX_LARGE*1.2;             break;
-          case TERMINAL_ZOOM_LEVEL_XXXX_LARGE:  font_scale = PANGO_SCALE_XX_LARGE*1.2*1.2;         break;
-          case TERMINAL_ZOOM_LEVEL_XXXXX_LARGE: font_scale = PANGO_SCALE_XX_LARGE*1.2*1.2*1.2;     break;
-          case TERMINAL_ZOOM_LEVEL_MAXIMUM:     font_scale = PANGO_SCALE_XX_LARGE*1.2*1.2*1.2*1.2; break;
-          default:                              font_scale = PANGO_SCALE_MEDIUM;                   break;
-        }
+      g_free (font_name);
+      font_name = g_strdup (terminal_window_get_font (TERMINAL_WINDOW (toplevel)));
     }
-
-  if (gtk_widget_get_realized (GTK_WIDGET (screen)))
-    terminal_screen_get_size (screen, &grid_w, &grid_h);
 
   if (G_LIKELY (font_name != NULL))
     {
       font_desc = pango_font_description_from_string (font_name);
+      font_change = !pango_font_description_equal (font_desc,
+                                                   vte_terminal_get_font (VTE_TERMINAL (screen->terminal)));
       vte_terminal_set_allow_bold (VTE_TERMINAL (screen->terminal), font_allow_bold);
       vte_terminal_set_font (VTE_TERMINAL (screen->terminal), font_desc);
-      vte_terminal_set_font_scale (VTE_TERMINAL (screen->terminal), font_scale);
       pango_font_description_free (font_desc);
       g_free (font_name);
     }
+
+  if (TERMINAL_IS_WINDOW (toplevel))
+    {
+      if (font_change)
+        terminal_window_set_zoom_level (TERMINAL_WINDOW (toplevel), TERMINAL_ZOOM_LEVEL_DEFAULT);
+
+      switch (terminal_window_get_zoom_level (TERMINAL_WINDOW (toplevel)))
+        {
+        case TERMINAL_ZOOM_LEVEL_MINIMUM:     font_scale = PANGO_SCALE_XX_SMALL/1.2/1.2/1.2/1.2; break;
+        case TERMINAL_ZOOM_LEVEL_XXXXX_SMALL: font_scale = PANGO_SCALE_XX_SMALL/1.2/1.2/1.2;     break;
+        case TERMINAL_ZOOM_LEVEL_XXXX_SMALL:  font_scale = PANGO_SCALE_XX_SMALL/1.2/1.2;         break;
+        case TERMINAL_ZOOM_LEVEL_XXX_SMALL:   font_scale = PANGO_SCALE_XX_SMALL/1.2;             break;
+        case TERMINAL_ZOOM_LEVEL_XX_SMALL:    font_scale = PANGO_SCALE_XX_SMALL;                 break;
+        case TERMINAL_ZOOM_LEVEL_X_SMALL:     font_scale = PANGO_SCALE_X_SMALL;                  break;
+        case TERMINAL_ZOOM_LEVEL_SMALL:       font_scale = PANGO_SCALE_SMALL;                    break;
+        case TERMINAL_ZOOM_LEVEL_LARGE:       font_scale = PANGO_SCALE_LARGE;                    break;
+        case TERMINAL_ZOOM_LEVEL_X_LARGE:     font_scale = PANGO_SCALE_X_LARGE;                  break;
+        case TERMINAL_ZOOM_LEVEL_XX_LARGE:    font_scale = PANGO_SCALE_XX_LARGE;                 break;
+        case TERMINAL_ZOOM_LEVEL_XXX_LARGE:   font_scale = PANGO_SCALE_XX_LARGE*1.2;             break;
+        case TERMINAL_ZOOM_LEVEL_XXXX_LARGE:  font_scale = PANGO_SCALE_XX_LARGE*1.2*1.2;         break;
+        case TERMINAL_ZOOM_LEVEL_XXXXX_LARGE: font_scale = PANGO_SCALE_XX_LARGE*1.2*1.2*1.2;     break;
+        case TERMINAL_ZOOM_LEVEL_MAXIMUM:     font_scale = PANGO_SCALE_XX_LARGE*1.2*1.2*1.2*1.2; break;
+        default:                              font_scale = PANGO_SCALE_MEDIUM;                   break;
+        }
+    }
+
+  vte_terminal_set_font_scale (VTE_TERMINAL (screen->terminal), font_scale);
 
   g_object_get (G_OBJECT (screen->preferences),
                 "cell-width-scale", &cell_width_scale,
@@ -2983,9 +2989,19 @@ terminal_screen_update_font (TerminalScreen *screen)
   vte_terminal_set_cell_width_scale (VTE_TERMINAL (screen->terminal), cell_width_scale);
   vte_terminal_set_cell_height_scale (VTE_TERMINAL (screen->terminal), cell_height_scale);
 
-  /* update window geometry it required (not needed for drop-down) */
-  if (TERMINAL_IS_WINDOW (toplevel) && !terminal_window_is_drop_down (TERMINAL_WINDOW (toplevel)) && grid_w > 0 && grid_h > 0)
-    terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), grid_w, grid_h);
+  /* update window geometry if required (not needed for drop-down), don't update when only zoomed in/out */
+  if (font_change &&
+      TERMINAL_IS_WINDOW (toplevel) &&
+      !terminal_window_is_drop_down (TERMINAL_WINDOW (toplevel)) &&
+      screen->hints.width_inc > 0 &&
+      screen->hints.height_inc > 0)
+    {
+      GtkAllocation toplevel_allocation;
+      gtk_widget_get_allocation (GTK_WIDGET (toplevel), &toplevel_allocation);
+      grid_w = (toplevel_allocation.width - screen->hints.base_width) / screen->hints.width_inc;
+      grid_h = (toplevel_allocation.height - screen->hints.base_height) / screen->hints.height_inc;
+      terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), grid_w, grid_h);
+    }
 }
 
 
