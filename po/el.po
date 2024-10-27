@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-09-19 00:49+0200\n"
+"POT-Creation-Date: 2024-10-12 12:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Ioannis LM, 2023-2024\n"
 "Language-Team: Greek (http://app.transifex.com/xfce/xfce-apps/language/el/)\n"
@@ -152,36 +152,41 @@ msgstr "γραμματοσειρά"
 msgid "zoom"
 msgstr "μεγέθυνση-σμίκρυνση"
 
+#. parameter of --class
 #: terminal/main.c:164
+msgid "class"
+msgstr ""
+
+#: terminal/main.c:166
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Δείτε την σελίδα οδηγιών %s για λεπτομερή εξήγηση όλων των παραπάνω επιλογών."
 
-#: terminal/main.c:198 xfce4-terminal.desktop.in:4
+#: terminal/main.c:200 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
 msgstr "Τερματικό Xfce"
 
-#: terminal/main.c:210
+#: terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "Η ομάδα ανάπτυξης του Xfce. Με την επιφύλαξη παντός νόμιμου δικαιώματος."
 
-#: terminal/main.c:211
+#: terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Γράφτηκε από τον Benedikt Meurer <benny@xfce.org>"
 
-#: terminal/main.c:212
+#: terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>,"
 msgstr "Nick Schermer <nick@xfce.org>,"
 
-#: terminal/main.c:213
+#: terminal/main.c:215
 msgid "Igor Zakharov <f2404@yandex.ru>,"
 msgstr "Igor Zakharov <f2404@yandex.ru>,"
 
-#: terminal/main.c:214
+#: terminal/main.c:216
 msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 msgstr "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 
-#: terminal/main.c:215
+#: terminal/main.c:217
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Παρακαλούμε αναφέρετε τα σφάλματα στο <%s>."
@@ -396,12 +401,16 @@ msgstr "Η επιλογή \"--font\" απαιτεί ως παράμετρο το
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Η επιλογή \"--zoom\" απαιτεί ως παράμετρο το προσδιορισμό μεγέθυνσης/σμίκρυνσης (%d .. %d)"
 
-#: terminal/terminal-options.c:648
+#: terminal/terminal-options.c:641
+msgid "Option \"--class\" requires specifying the class name as its parameter"
+msgstr ""
+
+#: terminal/terminal-options.c:659
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr "Άγνωστη επιλογή \"-%c\""
 
-#: terminal/terminal-options.c:651
+#: terminal/terminal-options.c:662
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Άγνωστη επιλογή \"%s\""
@@ -617,7 +626,7 @@ msgstr "Εμφάνιση παραθύρου ασφαλείας στην επικ
 msgid ""
 "Show a dialog that allows one to edit text that is considered unsafe for "
 "pasting"
-msgstr ""
+msgstr "Εμφάνιση παραθύρου που επιτρέπει την επεξεργασία του κειμένου που θεωρήθηκε μη ασφαλές για επικόλληση"
 
 #. * Drop-down
 #: terminal/terminal-preferences-dialog.c:521
@@ -774,7 +783,7 @@ msgid "x height"
 msgstr "x ύψος"
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2192
 msgid "Reset"
 msgstr "Επαναφορά"
 
@@ -868,11 +877,11 @@ msgstr "Ενεργοποιήστε αυτή την επιλογή για να ε
 
 #: terminal/terminal-preferences-dialog.c:1041
 msgid "_Maximize new windows"
-msgstr ""
+msgstr "_Μεγιστοποίηση νέων παραθύρων"
 
 #: terminal/terminal-preferences-dialog.c:1045
 msgid "Enable this option to maximize newly created terminal windows."
-msgstr ""
+msgstr "Ενεργοποιήστε αυτήν την επιλογή για την μεγιστοποίηση των νέων παραθύρων του τερματικού."
 
 #: terminal/terminal-preferences-dialog.c:1052
 msgid "Default geometry"
@@ -1156,87 +1165,91 @@ msgstr "Τερματικό"
 msgid "Select Preset"
 msgstr "Επιλογή προεπιλογής"
 
-#: terminal/terminal-screen.c:240
+#: terminal/terminal-screen.c:241
 msgid "Do not disable dialog"
 msgstr "Ενεργοποίηση παραθύρου"
 
-#: terminal/terminal-screen.c:241
+#: terminal/terminal-screen.c:242
 msgid "Disable for 5 minutes"
 msgstr "Απενεργοποίηση για 5 λεπτά"
 
-#: terminal/terminal-screen.c:242
+#: terminal/terminal-screen.c:243
 msgid "Disable for 15 minutes"
 msgstr "Απενεργοποίηση για 15 λεπτά"
 
-#: terminal/terminal-screen.c:243
+#: terminal/terminal-screen.c:244
 msgid "Disable until program restart"
 msgstr "Απενεργοποίηση μέχρι την επανεκκίνηση του προγράμματος"
 
-#: terminal/terminal-screen.c:244
+#: terminal/terminal-screen.c:245
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Απενεργοποίηση παραθύρου (μπορεί να ενεργοποιηθεί ξανά από τις Προτιμήσεις)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:881
-#: terminal/terminal-screen.c:2373
+#: terminal/terminal-screen.c:499 terminal/terminal-screen.c:892
+#: terminal/terminal-screen.c:2410
 msgid "Untitled"
 msgstr "Ανώνυμο"
 
-#: terminal/terminal-screen.c:784
+#: terminal/terminal-screen.c:745
+msgid "Empty custom command in the terminal preferences"
+msgstr ""
+
+#: terminal/terminal-screen.c:795
 msgid "Unable to determine your login shell."
 msgstr "Δεν ήταν δυνατός ο προσδιορισμός του κελύφους εισόδου."
 
-#: terminal/terminal-screen.c:1493
+#: terminal/terminal-screen.c:1514
 msgid "_Relaunch"
 msgstr "_Επανεκκίνηση"
 
-#: terminal/terminal-screen.c:1499
+#: terminal/terminal-screen.c:1520
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Η υπο-διαδικασία τερματίστηκε κανονικά με κατάσταση %d."
 
-#: terminal/terminal-screen.c:1501
+#: terminal/terminal-screen.c:1522
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Η υπο-διαδικασία ματαιώθηκε με σήμα %d."
 
-#: terminal/terminal-screen.c:1503
+#: terminal/terminal-screen.c:1524
 msgid "The child process was aborted."
 msgstr "Η υπο-διαδικασία ματαιώθηκε."
 
-#: terminal/terminal-screen.c:1509 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1530 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "Να _μην ξαναγίνει η ερώτηση"
 
-#: terminal/terminal-screen.c:1823
+#: terminal/terminal-screen.c:1844
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Προσοχή: Πιθανώς μη ασφαλής επικόλληση"
 
-#: terminal/terminal-screen.c:1826
+#: terminal/terminal-screen.c:1847
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Η επικόλληση αυτού του κειμένου στο τερματικό μπορεί να είναι επικίνδυνη, φαίνεται κάποιες εντολές να μπορούν να εκτελεστούν με πρόσβαση στο root ('sudo')."
 
-#: terminal/terminal-screen.c:1829
+#: terminal/terminal-screen.c:1850
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Η επικόλληση αυτού του κειμένου στο τερματικό μπορεί να είναι επικίνδυνη, φαίνεται κάποιες εντολές να μπορούν να εκτελεστούν."
 
-#: terminal/terminal-screen.c:1841 terminal/terminal-window.c:827
-#: terminal/terminal-window.c:2367
+#: terminal/terminal-screen.c:1862 terminal/terminal-window.c:827
+#: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "Άκ_υρο"
 
-#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1868 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "_Επικόλληση"
 
-#: terminal/terminal-screen.c:1996 terminal/terminal-screen.c:2074
+#: terminal/terminal-screen.c:2033 terminal/terminal-screen.c:2111
 msgid "Failed to execute child"
 msgstr "Απέτυχε η εκτέλεση θυγατρικής διεργασίας"
 
-#: terminal/terminal-screen.c:2700
+#: terminal/terminal-screen.c:2737
 msgid "Close this tab"
 msgstr "Κλείσιμο αυτής της καρτέλας"
 
@@ -1326,15 +1339,15 @@ msgstr "Άνοιγμα συνδέσμου"
 msgid "Failed to open the URL '%s'"
 msgstr "Απέτυχε το άνοιγμα της διεύθυνσης '%s'"
 
-#: terminal/terminal-window-dropdown.c:416
+#: terminal/terminal-window-dropdown.c:420
 msgid "Keep window open when it loses focus"
 msgstr "Διατήρηση του παραθύρου ανοιχτού όταν χάνεται η εστίαση"
 
-#: terminal/terminal-window-dropdown.c:541
+#: terminal/terminal-window-dropdown.c:545
 msgid "Drop-down Terminal"
 msgstr "Πτυσσόμενο τερματικό"
 
-#: terminal/terminal-window-dropdown.c:542
+#: terminal/terminal-window-dropdown.c:546
 msgid "Toggle Drop-down Terminal"
 msgstr "Άνοιγμα/κλείσιμο πτυσσόμενου τερματικού"
 
@@ -1511,7 +1524,7 @@ msgstr "Εύρεση _προηγούμενου"
 msgid "Sa_ve Contents..."
 msgstr "Α_ποθήκευση περιεχομένων"
 
-#: terminal/terminal-window.c:353 terminal/terminal-window.c:2230
+#: terminal/terminal-window.c:353 terminal/terminal-window.c:2232
 msgid "_Reset"
 msgstr "Επανα_φορά"
 
@@ -1711,75 +1724,75 @@ msgstr "Υπάρχει ακόμη μια ενεργή διαδικασία.\nΚ�
 msgid "Close window?"
 msgstr "Να κλείσει το παράθυρο;"
 
-#: terminal/terminal-window.c:1605
+#: terminal/terminal-window.c:1607
 msgid "Failed to open directory"
 msgstr "Απέτυχε το άνοιγμα του καταλόγου"
 
-#: terminal/terminal-window.c:1807
+#: terminal/terminal-window.c:1809
 msgid "Copy _Input:"
 msgstr "Αντι_γραφή εισαγωγής:"
 
-#: terminal/terminal-window.c:1811
+#: terminal/terminal-window.c:1813
 msgid "Enter the text to be copied to all tabs"
 msgstr "Εισάγετε το κείμενο που θα αντιγραφεί σε όλες τις καρτέλες"
 
-#: terminal/terminal-window.c:1819
+#: terminal/terminal-window.c:1821
 msgid "Copy input"
 msgstr "Αντιγραφή εισόδου"
 
-#: terminal/terminal-window.c:2181
+#: terminal/terminal-window.c:2183
 msgid "_Title:"
 msgstr "_Τίτλος:"
 
-#: terminal/terminal-window.c:2185
+#: terminal/terminal-window.c:2187
 msgid "Enter the title for the current terminal tab"
 msgstr "Εισάγετε τίτλο για την τρέχουσα καρτέλα"
 
-#: terminal/terminal-window.c:2200
+#: terminal/terminal-window.c:2202
 msgid "Help"
 msgstr "Βοήθεια"
 
-#: terminal/terminal-window.c:2206
+#: terminal/terminal-window.c:2208
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: terminal/terminal-window.c:2229
+#: terminal/terminal-window.c:2231
 msgid "Choose title color"
 msgstr "Επιλέξτε χρώμα τίτλου"
 
-#: terminal/terminal-window.c:2324
+#: terminal/terminal-window.c:2326
 msgid "Failed to create the regular expression"
 msgstr "Απέτυχε η δημιουργία κανονικής έκφρασης"
 
-#: terminal/terminal-window.c:2364
+#: terminal/terminal-window.c:2366
 msgid "Save contents..."
 msgstr "Αποθήκευση περιεχομένου..."
 
-#: terminal/terminal-window.c:2368
+#: terminal/terminal-window.c:2370
 msgid "_Save"
 msgstr "Α_ποθήκευση"
 
-#: terminal/terminal-window.c:2405
+#: terminal/terminal-window.c:2407
 msgid "Failed to save terminal contents"
 msgstr "Απέτυχε η αποθήκευση περιεχομένου του τερματικού"
 
-#: terminal/terminal-window.c:3178
+#: terminal/terminal-window.c:3180
 msgid "Send Signal"
 msgstr "Αποστολή σήματος"
 
-#: terminal/terminal-window.c:3195
+#: terminal/terminal-window.c:3198
 msgid "Zoom"
 msgstr "Μεγένθυνση"
 
-#: terminal/terminal-window.c:3207
+#: terminal/terminal-window.c:3210
 msgid "Copy"
 msgstr "Αντιγραφή"
 
-#: terminal/terminal-window.c:3218
+#: terminal/terminal-window.c:3221
 msgid "Paste"
 msgstr "Αντιγραφή"
 
-#: terminal/terminal-window.c:3229
+#: terminal/terminal-window.c:3232
 msgid "View Options"
 msgstr "Εμφάνιση επιλογών"
 
