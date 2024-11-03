@@ -8,15 +8,15 @@
 # Alois Nešpor <info@aloisnespor.info>, 2014
 # hsn <kolar.radim@gmail.com>, 2013
 # Martin Šiška <martin-siska@email.cz>, 2024
-# Michal Várady <miko.vaji@gmail.com>, 2014,2016-2022
+# Michal Várady <miko.vaji@gmail.com>, 2014,2016-2022,2024
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-09-19 00:49+0200\n"
+"POT-Creation-Date: 2024-10-12 12:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
-"Last-Translator: Martin Šiška <martin-siska@email.cz>, 2024\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2014,2016-2022,2024\n"
 "Language-Team: Czech (http://app.transifex.com/xfce/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -144,36 +144,41 @@ msgstr "písmo"
 msgid "zoom"
 msgstr "příblížení"
 
+#. parameter of --class
 #: terminal/main.c:164
+msgid "class"
+msgstr "třída"
+
+#: terminal/main.c:166
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Kompletní dokumentaci k volbám uvedeným výše, naleznete v manuálové stránce aplikace %s."
 
-#: terminal/main.c:198 xfce4-terminal.desktop.in:4
+#: terminal/main.c:200 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
 msgstr "Terminál Xfce"
 
-#: terminal/main.c:210
+#: terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "Tým vývojářů prostředí Xfce. Všechna právy vyhrazena."
 
-#: terminal/main.c:211
+#: terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Napsali Benedikt Meurer <benny@xfce.org>,"
 
-#: terminal/main.c:212
+#: terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>,"
 msgstr "Nick Schermer <nick@xfce.org>,"
 
-#: terminal/main.c:213
+#: terminal/main.c:215
 msgid "Igor Zakharov <f2404@yandex.ru>,"
 msgstr "Igor Zakharov <f2404@yandex.ru>,"
 
-#: terminal/main.c:214
+#: terminal/main.c:216
 msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 msgstr "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 
-#: terminal/main.c:215
+#: terminal/main.c:217
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Hlášení o chybách posílejte na adresu <%s>."
@@ -388,12 +393,16 @@ msgstr "Volba \"--font\" vyžaduje zadání názvu písma jako parametru"
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Volba \"--zoom\" vyžaduje zadání míry zvětšení (%d až %d) jako parametru"
 
-#: terminal/terminal-options.c:648
+#: terminal/terminal-options.c:641
+msgid "Option \"--class\" requires specifying the class name as its parameter"
+msgstr "Volba \"--class\" vyžaduje zadání názvu třídy jako parametru"
+
+#: terminal/terminal-options.c:659
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr "Neznámá volba \"-%c\""
 
-#: terminal/terminal-options.c:651
+#: terminal/terminal-options.c:662
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Neznámá volba \"%s\""
@@ -609,7 +618,7 @@ msgstr "Zobrazit dialogové okno pro nebezpečné vkládání"
 msgid ""
 "Show a dialog that allows one to edit text that is considered unsafe for "
 "pasting"
-msgstr ""
+msgstr "Zobrazí dialogové okno které umožní upravit text považovaný za nebezpečný pro vložení"
 
 #. * Drop-down
 #: terminal/terminal-preferences-dialog.c:521
@@ -766,7 +775,7 @@ msgid "x height"
 msgstr "výška x"
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2192
 msgid "Reset"
 msgstr "Resetovat"
 
@@ -1148,87 +1157,91 @@ msgstr "Terminal"
 msgid "Select Preset"
 msgstr "Vybrat předvolbu"
 
-#: terminal/terminal-screen.c:240
+#: terminal/terminal-screen.c:241
 msgid "Do not disable dialog"
 msgstr "Nezakazovat dialogové okno"
 
-#: terminal/terminal-screen.c:241
+#: terminal/terminal-screen.c:242
 msgid "Disable for 5 minutes"
 msgstr "Zakázat na 5 minut"
 
-#: terminal/terminal-screen.c:242
+#: terminal/terminal-screen.c:243
 msgid "Disable for 15 minutes"
 msgstr "Zakázat na 15 minut"
 
-#: terminal/terminal-screen.c:243
+#: terminal/terminal-screen.c:244
 msgid "Disable until program restart"
 msgstr "Zakázat do restartu programu"
 
-#: terminal/terminal-screen.c:244
+#: terminal/terminal-screen.c:245
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Zakázat dialogové okno (lze povolit v Nastavení)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:881
-#: terminal/terminal-screen.c:2373
+#: terminal/terminal-screen.c:499 terminal/terminal-screen.c:892
+#: terminal/terminal-screen.c:2410
 msgid "Untitled"
 msgstr "Bez názvu"
 
-#: terminal/terminal-screen.c:784
+#: terminal/terminal-screen.c:745
+msgid "Empty custom command in the terminal preferences"
+msgstr "Vyprázdní vlastní příkaz v předvolbách terminálu"
+
+#: terminal/terminal-screen.c:795
 msgid "Unable to determine your login shell."
 msgstr "Nelze zjistit vaše uživatelské jméno."
 
-#: terminal/terminal-screen.c:1493
+#: terminal/terminal-screen.c:1514
 msgid "_Relaunch"
 msgstr "_Spustit znovu"
 
-#: terminal/terminal-screen.c:1499
+#: terminal/terminal-screen.c:1520
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Podřízený proces byl řádně dokončen se stavem %d."
 
-#: terminal/terminal-screen.c:1501
+#: terminal/terminal-screen.c:1522
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Podřízený proces byl ukončen signálem %d."
 
-#: terminal/terminal-screen.c:1503
+#: terminal/terminal-screen.c:1524
 msgid "The child process was aborted."
 msgstr "Podřízený proces byl ukončen."
 
-#: terminal/terminal-screen.c:1509 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1530 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "Příště se již _nedotazovat"
 
-#: terminal/terminal-screen.c:1823
+#: terminal/terminal-screen.c:1844
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Varování: Možné nebezpečné vložení"
 
-#: terminal/terminal-screen.c:1826
+#: terminal/terminal-screen.c:1847
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Vložení tohoto textu do terminálu může být nebezpečné, protože by se některé z obsažených příkazů mohly spustit a to potenciálně i s přístupovými právy správce systému (sudo)."
 
-#: terminal/terminal-screen.c:1829
+#: terminal/terminal-screen.c:1850
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Vložení tohoto textu do terminálu může být nebezpečné, protože by se některé z obsažených příkazů mohly spustit."
 
-#: terminal/terminal-screen.c:1841 terminal/terminal-window.c:827
-#: terminal/terminal-window.c:2367
+#: terminal/terminal-screen.c:1862 terminal/terminal-window.c:827
+#: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "_Zrušit"
 
-#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1868 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "Vlož_it"
 
-#: terminal/terminal-screen.c:1996 terminal/terminal-screen.c:2074
+#: terminal/terminal-screen.c:2033 terminal/terminal-screen.c:2111
 msgid "Failed to execute child"
 msgstr "Spuštění procesu potomka se nezdařilo"
 
-#: terminal/terminal-screen.c:2700
+#: terminal/terminal-screen.c:2737
 msgid "Close this tab"
 msgstr "Zavřít tuto kartu"
 
@@ -1318,15 +1331,15 @@ msgstr "Otevřít odkaz"
 msgid "Failed to open the URL '%s'"
 msgstr "Nepodařilo se otevřít adresu URL '%s'"
 
-#: terminal/terminal-window-dropdown.c:416
+#: terminal/terminal-window-dropdown.c:420
 msgid "Keep window open when it loses focus"
 msgstr "Nechat okno otevřené i po ztrátě zaměření"
 
-#: terminal/terminal-window-dropdown.c:541
+#: terminal/terminal-window-dropdown.c:545
 msgid "Drop-down Terminal"
 msgstr "Otevřít T_erminál"
 
-#: terminal/terminal-window-dropdown.c:542
+#: terminal/terminal-window-dropdown.c:546
 msgid "Toggle Drop-down Terminal"
 msgstr "Přepnout drop-down terminál"
 
@@ -1503,7 +1516,7 @@ msgstr "Najít _předchozí"
 msgid "Sa_ve Contents..."
 msgstr "Uložit ob_sah..."
 
-#: terminal/terminal-window.c:353 terminal/terminal-window.c:2230
+#: terminal/terminal-window.c:353 terminal/terminal-window.c:2232
 msgid "_Reset"
 msgstr "_Inicializovat"
 
@@ -1703,75 +1716,75 @@ msgstr "Stále je spuštěn nějaký proces.\nZavřením tohoto okna jej ukonč�
 msgid "Close window?"
 msgstr "Chcete zavřít okno?"
 
-#: terminal/terminal-window.c:1605
+#: terminal/terminal-window.c:1607
 msgid "Failed to open directory"
 msgstr "Nepodařilo se otevřít adresář"
 
-#: terminal/terminal-window.c:1807
+#: terminal/terminal-window.c:1809
 msgid "Copy _Input:"
 msgstr "Kopírovat _vstup:"
 
-#: terminal/terminal-window.c:1811
+#: terminal/terminal-window.c:1813
 msgid "Enter the text to be copied to all tabs"
 msgstr "Vložte text ke zkopírování do všech karet"
 
-#: terminal/terminal-window.c:1819
+#: terminal/terminal-window.c:1821
 msgid "Copy input"
 msgstr "Kopírovat vstup"
 
-#: terminal/terminal-window.c:2181
+#: terminal/terminal-window.c:2183
 msgid "_Title:"
 msgstr "_Titulek:"
 
-#: terminal/terminal-window.c:2185
+#: terminal/terminal-window.c:2187
 msgid "Enter the title for the current terminal tab"
 msgstr "Vložte název pro aktuální kartu terminálu"
 
-#: terminal/terminal-window.c:2200
+#: terminal/terminal-window.c:2202
 msgid "Help"
 msgstr "Nápověda"
 
-#: terminal/terminal-window.c:2206
+#: terminal/terminal-window.c:2208
 msgid "Close"
 msgstr "Zavřít"
 
-#: terminal/terminal-window.c:2229
+#: terminal/terminal-window.c:2231
 msgid "Choose title color"
 msgstr "Nastavte barvu titulku"
 
-#: terminal/terminal-window.c:2324
+#: terminal/terminal-window.c:2326
 msgid "Failed to create the regular expression"
 msgstr "Vytvoření regulárního výrazu se nepodařilo"
 
-#: terminal/terminal-window.c:2364
+#: terminal/terminal-window.c:2366
 msgid "Save contents..."
 msgstr "Uložit obsah..."
 
-#: terminal/terminal-window.c:2368
+#: terminal/terminal-window.c:2370
 msgid "_Save"
 msgstr "_Uložit"
 
-#: terminal/terminal-window.c:2405
+#: terminal/terminal-window.c:2407
 msgid "Failed to save terminal contents"
 msgstr "Uložení obsahu terminálu se nezdařilo"
 
-#: terminal/terminal-window.c:3178
+#: terminal/terminal-window.c:3180
 msgid "Send Signal"
 msgstr "Poslat signál"
 
-#: terminal/terminal-window.c:3195
+#: terminal/terminal-window.c:3198
 msgid "Zoom"
 msgstr "Přiblížit"
 
-#: terminal/terminal-window.c:3207
+#: terminal/terminal-window.c:3210
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: terminal/terminal-window.c:3218
+#: terminal/terminal-window.c:3221
 msgid "Paste"
 msgstr "Vložit"
 
-#: terminal/terminal-window.c:3229
+#: terminal/terminal-window.c:3232
 msgid "View Options"
 msgstr "Zobrazit možnosti"
 
