@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Cédric Valmary <cvalmary@yahoo.fr>, 2013
-# Quentin PAGÈS, 2020,2022
+# Quentin PAGÈS, 2020,2022,2024
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-08 12:50+0200\n"
+"POT-Creation-Date: 2024-10-12 12:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
-"Last-Translator: Quentin PAGÈS, 2020,2022\n"
+"Last-Translator: Quentin PAGÈS, 2020,2022,2024\n"
 "Language-Team: Occitan (post 1500) (http://app.transifex.com/xfce/xfce-apps/language/oc/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -137,38 +137,43 @@ msgstr "poliça"
 #. parameter of --zoom
 #: terminal/main.c:162
 msgid "zoom"
-msgstr ""
+msgstr "agrandiment"
 
+#. parameter of --class
 #: terminal/main.c:164
+msgid "class"
+msgstr "classa"
+
+#: terminal/main.c:166
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Consultatz la pagina de manual %s per una explicacion completa de las opcions çaisús."
 
-#: terminal/main.c:198 xfce4-terminal.desktop.in:4
+#: terminal/main.c:200 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
 msgstr "Terminal Xfce"
 
-#: terminal/main.c:210
+#: terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "L'equipa de desvolopament Xfce. Totes los dreches reservats."
 
-#: terminal/main.c:211
+#: terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Escrich per Benedikt Meurer <benny@xfce.org>,"
 
-#: terminal/main.c:212
-msgid "Nick Schermer <nick@xfce.org>,"
-msgstr ""
-
-#: terminal/main.c:213
-msgid "Igor Zakharov <f2404@yandex.ru>,"
-msgstr ""
-
 #: terminal/main.c:214
-msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
-msgstr ""
+msgid "Nick Schermer <nick@xfce.org>,"
+msgstr "Nick Schermer <nick@xfce.org>,"
 
 #: terminal/main.c:215
+msgid "Igor Zakharov <f2404@yandex.ru>,"
+msgstr "Igor Zakharov <f2404@yandex.ru>,"
+
+#: terminal/main.c:216
+msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
+msgstr "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
+
+#: terminal/main.c:217
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Se vos plai, senhalatz los bugs a <%s>."
@@ -383,12 +388,16 @@ msgstr ""
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr ""
 
-#: terminal/terminal-options.c:648
+#: terminal/terminal-options.c:641
+msgid "Option \"--class\" requires specifying the class name as its parameter"
+msgstr ""
+
+#: terminal/terminal-options.c:659
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr ""
 
-#: terminal/terminal-options.c:651
+#: terminal/terminal-options.c:662
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Opcion « %s » desconeguda"
@@ -411,7 +420,7 @@ msgstr "_Ajuda"
 #. * General
 #. section: General
 #: terminal/terminal-preferences-dialog.c:244
-#: terminal/terminal-preferences-dialog.c:1126
+#: terminal/terminal-preferences-dialog.c:1143
 msgid "General"
 msgstr "General"
 
@@ -477,7 +486,7 @@ msgstr ""
 
 #: terminal/terminal-preferences-dialog.c:345
 msgid "_Working directory:"
-msgstr ""
+msgstr "_Repertòri de trabalh :"
 
 #: terminal/terminal-preferences-dialog.c:349
 msgid ""
@@ -602,7 +611,8 @@ msgstr ""
 
 #: terminal/terminal-preferences-dialog.c:512
 msgid ""
-"Show a dialog that allows to edit text that is considered unsafe for pasting"
+"Show a dialog that allows one to edit text that is considered unsafe for "
+"pasting"
 msgstr ""
 
 #. * Drop-down
@@ -760,7 +770,7 @@ msgid "x height"
 msgstr ""
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1478 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2192
 msgid "Reset"
 msgstr "Reïnicializar"
 
@@ -853,109 +863,117 @@ msgid ""
 msgstr "Activar aquesta opcion per afichar de decoracions a l'entorn de las fenèstras novèlament creadas."
 
 #: terminal/terminal-preferences-dialog.c:1041
+msgid "_Maximize new windows"
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:1045
+msgid "Enable this option to maximize newly created terminal windows."
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:1052
 msgid "Default geometry"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1056
+#: terminal/terminal-preferences-dialog.c:1070
 msgid "columns"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1071
+#: terminal/terminal-preferences-dialog.c:1088
 msgid "rows"
 msgstr ""
 
 #. section: Tabs
-#: terminal/terminal-preferences-dialog.c:1083
+#: terminal/terminal-preferences-dialog.c:1100
 msgid "Tabs"
 msgstr "Onglets"
 
-#: terminal/terminal-preferences-dialog.c:1085
+#: terminal/terminal-preferences-dialog.c:1102
 msgid "Reset tab activity indicator after"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1098
+#: terminal/terminal-preferences-dialog.c:1115
 msgid "seconds"
 msgstr "segondas"
 
-#: terminal/terminal-preferences-dialog.c:1106
+#: terminal/terminal-preferences-dialog.c:1123
 msgid "_Use custom styling to make tabs slim (restart required)"
 msgstr ""
 
 #. * Colors
-#: terminal/terminal-preferences-dialog.c:1118
+#: terminal/terminal-preferences-dialog.c:1135
 msgid "Colors"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1128
+#: terminal/terminal-preferences-dialog.c:1145
 msgid "Text Color:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1143
+#: terminal/terminal-preferences-dialog.c:1160
 msgid "Background Color:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1158
+#: terminal/terminal-preferences-dialog.c:1175
 msgid "Tab activity color:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1176
+#: terminal/terminal-preferences-dialog.c:1193
 msgid "_Use system theme colors for text and background"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1186
+#: terminal/terminal-preferences-dialog.c:1203
 msgid "_Vary the background color for each tab"
 msgstr "_Variar la color de fons per cada onglet"
 
-#: terminal/terminal-preferences-dialog.c:1190
+#: terminal/terminal-preferences-dialog.c:1207
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness."
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1200
+#: terminal/terminal-preferences-dialog.c:1217
 msgid "_Enable sixel graphics"
 msgstr ""
 
 #. section: Custom colors
-#: terminal/terminal-preferences-dialog.c:1210
+#: terminal/terminal-preferences-dialog.c:1227
 msgid "Custom Colors"
 msgstr "Colors personalizadas"
 
-#: terminal/terminal-preferences-dialog.c:1212
+#: terminal/terminal-preferences-dialog.c:1229
 msgid "_Cursor color:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1216
-#: terminal/terminal-preferences-dialog.c:1250
+#: terminal/terminal-preferences-dialog.c:1233
+#: terminal/terminal-preferences-dialog.c:1267
 msgid ""
 "Enable this option to set custom text and background colors for cursor. If "
 "disabled the background and text colors will be reversed."
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1246
+#: terminal/terminal-preferences-dialog.c:1263
 msgid "_Text selection color:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1280
+#: terminal/terminal-preferences-dialog.c:1297
 msgid "_Bold selection color:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1284
+#: terminal/terminal-preferences-dialog.c:1301
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Activar aquesta opcion per definir una color gras personalizada. Se es desactivada la color del tèxte serà utilizada."
 
 #. section: Palette
-#: terminal/terminal-preferences-dialog.c:1301
+#: terminal/terminal-preferences-dialog.c:1318
 msgid "Palette"
 msgstr "Paleta"
 
-#: terminal/terminal-preferences-dialog.c:1324
+#: terminal/terminal-preferences-dialog.c:1341
 msgid "_Show bold text in bright colors:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1328
+#: terminal/terminal-preferences-dialog.c:1345
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
@@ -963,258 +981,262 @@ msgid ""
 msgstr ""
 
 #. section: Presets
-#: terminal/terminal-preferences-dialog.c:1334
+#: terminal/terminal-preferences-dialog.c:1351
 msgid "Presets"
 msgstr "Prereglatges"
 
 #. * Compatibility
-#: terminal/terminal-preferences-dialog.c:1350
-#: terminal/terminal-preferences-dialog.c:1356
+#: terminal/terminal-preferences-dialog.c:1367
+#: terminal/terminal-preferences-dialog.c:1373
 msgid "Compatibility"
 msgstr "Compatibilitat"
 
-#: terminal/terminal-preferences-dialog.c:1361
+#: terminal/terminal-preferences-dialog.c:1378
 msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1374
+#: terminal/terminal-preferences-dialog.c:1391
 msgid "Backspace key generates:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1380
-#: terminal/terminal-preferences-dialog.c:1403
+#: terminal/terminal-preferences-dialog.c:1397
+#: terminal/terminal-preferences-dialog.c:1420
 msgid "Auto-detect"
 msgstr "Deteccion automatica"
 
-#: terminal/terminal-preferences-dialog.c:1381
-#: terminal/terminal-preferences-dialog.c:1404
+#: terminal/terminal-preferences-dialog.c:1398
+#: terminal/terminal-preferences-dialog.c:1421
 msgid "ASCII Del"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1382
-#: terminal/terminal-preferences-dialog.c:1405
+#: terminal/terminal-preferences-dialog.c:1399
+#: terminal/terminal-preferences-dialog.c:1422
 msgid "Escape sequence"
 msgstr "Sequéncia d'escapament"
 
-#: terminal/terminal-preferences-dialog.c:1383
-#: terminal/terminal-preferences-dialog.c:1406
+#: terminal/terminal-preferences-dialog.c:1400
+#: terminal/terminal-preferences-dialog.c:1423
 msgid "Control-H"
 msgstr "Contraròtle-H"
 
-#: terminal/terminal-preferences-dialog.c:1384
-#: terminal/terminal-preferences-dialog.c:1407
+#: terminal/terminal-preferences-dialog.c:1401
+#: terminal/terminal-preferences-dialog.c:1424
 msgid "Erase TTY"
 msgstr "Escafar lo TTY"
 
-#: terminal/terminal-preferences-dialog.c:1397
+#: terminal/terminal-preferences-dialog.c:1414
 msgid "Delete key generates:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1420
+#: terminal/terminal-preferences-dialog.c:1437
 msgid "Ambiguous-width characters:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1426
+#: terminal/terminal-preferences-dialog.c:1443
 msgid "Narrow"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1427
+#: terminal/terminal-preferences-dialog.c:1444
 msgid "Wide"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1441
+#: terminal/terminal-preferences-dialog.c:1458
 msgid "Reset compatibility options to defaults"
 msgstr ""
 
 #. * Advanced
-#: terminal/terminal-preferences-dialog.c:1452
+#: terminal/terminal-preferences-dialog.c:1469
 msgid "Advanced"
 msgstr "Avançat"
 
 #. section: Double Click
-#: terminal/terminal-preferences-dialog.c:1460
+#: terminal/terminal-preferences-dialog.c:1477
 msgid "Double Click"
 msgstr "Clic doble"
 
-#: terminal/terminal-preferences-dialog.c:1462
+#: terminal/terminal-preferences-dialog.c:1479
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr ""
 
 #. section: Encoding
-#: terminal/terminal-preferences-dialog.c:1486
+#: terminal/terminal-preferences-dialog.c:1503
 msgid "Encoding"
 msgstr "Encodatge"
 
-#: terminal/terminal-preferences-dialog.c:1488
+#: terminal/terminal-preferences-dialog.c:1505
 msgid "Default character encoding"
 msgstr ""
 
 #. section: Shortcuts
 #. * Shortcuts
-#: terminal/terminal-preferences-dialog.c:1512
-#: terminal/terminal-preferences-dialog.c:1629
+#: terminal/terminal-preferences-dialog.c:1529
+#: terminal/terminal-preferences-dialog.c:1646
 msgid "Shortcuts"
 msgstr "Acorchis"
 
-#: terminal/terminal-preferences-dialog.c:1514
+#: terminal/terminal-preferences-dialog.c:1531
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1524
+#: terminal/terminal-preferences-dialog.c:1541
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr ""
 
 #. section: Misc
-#: terminal/terminal-preferences-dialog.c:1533
+#: terminal/terminal-preferences-dialog.c:1550
 msgid "Misc"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1535
+#: terminal/terminal-preferences-dialog.c:1552
 msgid "_Use middle mouse click to close tabs"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1545
+#: terminal/terminal-preferences-dialog.c:1562
 msgid "_Use middle mouse click to open urls"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1555
+#: terminal/terminal-preferences-dialog.c:1572
 msgid "_Auto-hide mouse pointer"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1565
+#: terminal/terminal-preferences-dialog.c:1582
 msgid "_Open new tab to the right of the active tab"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1575
+#: terminal/terminal-preferences-dialog.c:1592
 msgid "_Audible bell"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1585
+#: terminal/terminal-preferences-dialog.c:1602
 msgid "_Visual bell"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1595
+#: terminal/terminal-preferences-dialog.c:1612
 msgid "Right click action:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1601
+#: terminal/terminal-preferences-dialog.c:1618
 msgid "Context Menu"
 msgstr "Menú contextual"
 
-#: terminal/terminal-preferences-dialog.c:1602
+#: terminal/terminal-preferences-dialog.c:1619
 msgid "Paste clipboard"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1603
+#: terminal/terminal-preferences-dialog.c:1620
 msgid "Paste selection"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1616
+#: terminal/terminal-preferences-dialog.c:1633
 msgid "Enable Hyperlinks"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1617
+#: terminal/terminal-preferences-dialog.c:1634
 msgid "Enable support for hyperlinks."
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1640
+#: terminal/terminal-preferences-dialog.c:1657
 msgid "Window"
 msgstr "Fenèstra"
 
-#: terminal/terminal-preferences-dialog.c:1641
-#: terminal/terminal-preferences.c:1195
+#: terminal/terminal-preferences-dialog.c:1658
+#: terminal/terminal-preferences.c:1206
 msgid "Terminal"
 msgstr "Terminal"
 
 #. default item + separator
-#: terminal/terminal-preferences-dialog.c:2048
+#: terminal/terminal-preferences-dialog.c:2065
 msgid "Select Preset"
 msgstr ""
 
-#: terminal/terminal-screen.c:240
+#: terminal/terminal-screen.c:241
 msgid "Do not disable dialog"
 msgstr ""
 
-#: terminal/terminal-screen.c:241
+#: terminal/terminal-screen.c:242
 msgid "Disable for 5 minutes"
 msgstr "Desactivar pendent 5 minutas"
 
-#: terminal/terminal-screen.c:242
+#: terminal/terminal-screen.c:243
 msgid "Disable for 15 minutes"
 msgstr "Desactivar pendent 15 minutas"
 
-#: terminal/terminal-screen.c:243
+#: terminal/terminal-screen.c:244
 msgid "Disable until program restart"
 msgstr ""
 
-#: terminal/terminal-screen.c:244
+#: terminal/terminal-screen.c:245
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr ""
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:880
-#: terminal/terminal-screen.c:2372
+#: terminal/terminal-screen.c:499 terminal/terminal-screen.c:892
+#: terminal/terminal-screen.c:2410
 msgid "Untitled"
 msgstr "Sens títol"
 
-#: terminal/terminal-screen.c:784
+#: terminal/terminal-screen.c:745
+msgid "Empty custom command in the terminal preferences"
+msgstr ""
+
+#: terminal/terminal-screen.c:795
 msgid "Unable to determine your login shell."
 msgstr "Impossible de determinar vòstre shell de connexion."
 
-#: terminal/terminal-screen.c:1492
+#: terminal/terminal-screen.c:1514
 msgid "_Relaunch"
 msgstr "_Relançar"
 
-#: terminal/terminal-screen.c:1498
+#: terminal/terminal-screen.c:1520
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr ""
 
-#: terminal/terminal-screen.c:1500
+#: terminal/terminal-screen.c:1522
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr ""
 
-#: terminal/terminal-screen.c:1502
+#: terminal/terminal-screen.c:1524
 msgid "The child process was aborted."
 msgstr ""
 
-#: terminal/terminal-screen.c:1508 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1530 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "Pausar pas _mai la question"
 
-#: terminal/terminal-screen.c:1822
+#: terminal/terminal-screen.c:1844
 msgid "Warning: Potentially Unsafe Paste"
 msgstr ""
 
-#: terminal/terminal-screen.c:1825
+#: terminal/terminal-screen.c:1847
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr ""
 
-#: terminal/terminal-screen.c:1828
+#: terminal/terminal-screen.c:1850
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr ""
 
-#: terminal/terminal-screen.c:1840 terminal/terminal-window.c:827
-#: terminal/terminal-window.c:2367
+#: terminal/terminal-screen.c:1862 terminal/terminal-window.c:827
+#: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "_Anullar"
 
-#: terminal/terminal-screen.c:1846 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1868 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "_Pegar"
 
-#: terminal/terminal-screen.c:1995 terminal/terminal-screen.c:2073
+#: terminal/terminal-screen.c:2033 terminal/terminal-screen.c:2111
 msgid "Failed to execute child"
 msgstr "Impossible d'executar un filh"
 
-#: terminal/terminal-screen.c:2699
+#: terminal/terminal-screen.c:2737
 msgid "Close this tab"
 msgstr "Tampar aqueste onglet"
 
@@ -1304,15 +1326,15 @@ msgstr "Dobrir lo ligam"
 msgid "Failed to open the URL '%s'"
 msgstr ""
 
-#: terminal/terminal-window-dropdown.c:416
+#: terminal/terminal-window-dropdown.c:420
 msgid "Keep window open when it loses focus"
 msgstr "Gardar la fenèstra dobèrta quand pèrd lo focus"
 
-#: terminal/terminal-window-dropdown.c:541
+#: terminal/terminal-window-dropdown.c:545
 msgid "Drop-down Terminal"
 msgstr "Menú desenrotlant del Terminal"
 
-#: terminal/terminal-window-dropdown.c:542
+#: terminal/terminal-window-dropdown.c:546
 msgid "Toggle Drop-down Terminal"
 msgstr "Bascuolar cap al menú desenrotlant del Terminal"
 
@@ -1489,7 +1511,7 @@ msgstr "Trobar precedent"
 msgid "Sa_ve Contents..."
 msgstr ""
 
-#: terminal/terminal-window.c:353 terminal/terminal-window.c:2230
+#: terminal/terminal-window.c:353 terminal/terminal-window.c:2232
 msgid "_Reset"
 msgstr "_Reïnicializar"
 
@@ -1689,75 +1711,75 @@ msgstr ""
 msgid "Close window?"
 msgstr "Tampar la fenèstra ?"
 
-#: terminal/terminal-window.c:1605
+#: terminal/terminal-window.c:1607
 msgid "Failed to open directory"
 msgstr ""
 
-#: terminal/terminal-window.c:1807
+#: terminal/terminal-window.c:1809
 msgid "Copy _Input:"
 msgstr ""
 
-#: terminal/terminal-window.c:1811
+#: terminal/terminal-window.c:1813
 msgid "Enter the text to be copied to all tabs"
 msgstr ""
 
-#: terminal/terminal-window.c:1819
+#: terminal/terminal-window.c:1821
 msgid "Copy input"
 msgstr "Copiar entrada"
 
-#: terminal/terminal-window.c:2181
+#: terminal/terminal-window.c:2183
 msgid "_Title:"
 msgstr "_Títol :"
 
-#: terminal/terminal-window.c:2185
+#: terminal/terminal-window.c:2187
 msgid "Enter the title for the current terminal tab"
 msgstr "Entrar lo títol per l'onglet corrent del terminal"
 
-#: terminal/terminal-window.c:2200
+#: terminal/terminal-window.c:2202
 msgid "Help"
 msgstr "Ajuda"
 
-#: terminal/terminal-window.c:2206
+#: terminal/terminal-window.c:2208
 msgid "Close"
 msgstr "Tampar"
 
-#: terminal/terminal-window.c:2229
+#: terminal/terminal-window.c:2231
 msgid "Choose title color"
 msgstr ""
 
-#: terminal/terminal-window.c:2324
+#: terminal/terminal-window.c:2326
 msgid "Failed to create the regular expression"
 msgstr "Impossible de crear l'expression regulara"
 
-#: terminal/terminal-window.c:2364
+#: terminal/terminal-window.c:2366
 msgid "Save contents..."
 msgstr "Enregistrar lo contengut..."
 
-#: terminal/terminal-window.c:2368
+#: terminal/terminal-window.c:2370
 msgid "_Save"
 msgstr "_Enregistrar"
 
-#: terminal/terminal-window.c:2405
+#: terminal/terminal-window.c:2407
 msgid "Failed to save terminal contents"
 msgstr ""
 
-#: terminal/terminal-window.c:3178
+#: terminal/terminal-window.c:3180
 msgid "Send Signal"
 msgstr ""
 
-#: terminal/terminal-window.c:3195
+#: terminal/terminal-window.c:3198
 msgid "Zoom"
 msgstr ""
 
-#: terminal/terminal-window.c:3207
+#: terminal/terminal-window.c:3210
 msgid "Copy"
 msgstr "Copiar"
 
-#: terminal/terminal-window.c:3218
+#: terminal/terminal-window.c:3221
 msgid "Paste"
 msgstr ""
 
-#: terminal/terminal-window.c:3229
+#: terminal/terminal-window.c:3232
 msgid "View Options"
 msgstr ""
 
