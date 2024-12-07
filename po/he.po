@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-09-19 00:49+0200\n"
+"POT-Creation-Date: 2024-10-12 12:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2020-2024\n"
 "Language-Team: Hebrew (http://app.transifex.com/xfce/xfce-apps/language/he/)\n"
@@ -146,36 +146,41 @@ msgstr "גופן"
 msgid "zoom"
 msgstr "זום"
 
+#. parameter of --class
 #: terminal/main.c:164
+msgid "class"
+msgstr "סיווג"
+
+#: terminal/main.c:166
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "ניתן לצפות בעמוד ה־man השלם של %s לקבלת הסבר מלא על האפשרויות שלהלן."
 
-#: terminal/main.c:198 xfce4-terminal.desktop.in:4
+#: terminal/main.c:200 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
 msgstr "מסוף Xfce"
 
-#: terminal/main.c:210
+#: terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "צוות הפיתוח של Xfce. כל הזכויות שמורות."
 
-#: terminal/main.c:211
+#: terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "נכתב ע\"י Benedikt Meurer <benny@xfce.org>,"
 
-#: terminal/main.c:212
+#: terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>,"
 msgstr "Nick Schermer <nick@xfce.org>,"
 
-#: terminal/main.c:213
+#: terminal/main.c:215
 msgid "Igor Zakharov <f2404@yandex.ru>,"
 msgstr "Igor Zakharov <f2404@yandex.ru>,"
 
-#: terminal/main.c:214
+#: terminal/main.c:216
 msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 msgstr "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 
-#: terminal/main.c:215
+#: terminal/main.c:217
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Please report bugs to <%s>."
@@ -390,12 +395,16 @@ msgstr "האפשרות \"--font\" דורשת ציון שם הגופן כפרמט
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "האפשרות \"--zoom\" דורשת ציון הזום (%d .. %d) כפרמטר שלה"
 
-#: terminal/terminal-options.c:648
+#: terminal/terminal-options.c:641
+msgid "Option \"--class\" requires specifying the class name as its parameter"
+msgstr "האפשרות \"--class\" דורשת פירוט שם סיווג כפרמטר"
+
+#: terminal/terminal-options.c:659
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr "אפשרות לא ידועה \"-%c\""
 
-#: terminal/terminal-options.c:651
+#: terminal/terminal-options.c:662
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "אפשרות לא ידועה \"%s\""
@@ -611,7 +620,7 @@ msgstr "הצג דו שיח הדבק לא בטוח"
 msgid ""
 "Show a dialog that allows one to edit text that is considered unsafe for "
 "pasting"
-msgstr ""
+msgstr "הצג דו שיח המאפשר עריכת טקסט שנחשב לא בטוח להעתקה"
 
 #. * Drop-down
 #: terminal/terminal-preferences-dialog.c:521
@@ -768,7 +777,7 @@ msgid "x height"
 msgstr "גובה x "
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2192
 msgid "Reset"
 msgstr "אתחול"
 
@@ -1150,87 +1159,91 @@ msgstr "מסוף"
 msgid "Select Preset"
 msgstr "בחר ערך קבוע מראש"
 
-#: terminal/terminal-screen.c:240
+#: terminal/terminal-screen.c:241
 msgid "Do not disable dialog"
 msgstr "לא להשבית את הדו־שיח"
 
-#: terminal/terminal-screen.c:241
+#: terminal/terminal-screen.c:242
 msgid "Disable for 5 minutes"
 msgstr "השבת למשך 5 דקות"
 
-#: terminal/terminal-screen.c:242
+#: terminal/terminal-screen.c:243
 msgid "Disable for 15 minutes"
 msgstr "השבת למשך 15 דקות"
 
-#: terminal/terminal-screen.c:243
+#: terminal/terminal-screen.c:244
 msgid "Disable until program restart"
 msgstr "השבת עד להפעלת התוכנית מחדש"
 
-#: terminal/terminal-screen.c:244
+#: terminal/terminal-screen.c:245
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "השבּת דו־שיח (ניתן להפעילו מחדש במסך ההעדפות)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:881
-#: terminal/terminal-screen.c:2373
+#: terminal/terminal-screen.c:499 terminal/terminal-screen.c:892
+#: terminal/terminal-screen.c:2410
 msgid "Untitled"
 msgstr "ללא כותרת"
 
-#: terminal/terminal-screen.c:784
+#: terminal/terminal-screen.c:745
+msgid "Empty custom command in the terminal preferences"
+msgstr "רוקן פקודה מותאמת אישית בהגדרות מסוף"
+
+#: terminal/terminal-screen.c:795
 msgid "Unable to determine your login shell."
 msgstr "לא מסוגל לקבוע את מעטפת הכניסה שלך."
 
-#: terminal/terminal-screen.c:1493
+#: terminal/terminal-screen.c:1514
 msgid "_Relaunch"
 msgstr "הפעל מ_חדש"
 
-#: terminal/terminal-screen.c:1499
+#: terminal/terminal-screen.c:1520
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "יציאה נורמלית של תהליך הבן עם סטטוס %d."
 
-#: terminal/terminal-screen.c:1501
+#: terminal/terminal-screen.c:1522
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "תהליך הבן הופסק ע\"י סיגנל %d."
 
-#: terminal/terminal-screen.c:1503
+#: terminal/terminal-screen.c:1524
 msgid "The child process was aborted."
 msgstr "תהליך הבן הופסק."
 
-#: terminal/terminal-screen.c:1509 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1530 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "_אל תשאל אותי שוב"
 
-#: terminal/terminal-screen.c:1823
+#: terminal/terminal-screen.c:1844
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "אזהרה: הדבקה עלולה להיות לא בטוחה"
 
-#: terminal/terminal-screen.c:1826
+#: terminal/terminal-screen.c:1847
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "הדבקת טקסט זה למסוף יכולה להיות מסוכנת כי נראה שיופעלו פקודות, יתכן הכוללות גישה של משתמש על ('sudo')."
 
-#: terminal/terminal-screen.c:1829
+#: terminal/terminal-screen.c:1850
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "הדבקת טקסט זה למסוף עלולה להיות מסוכנת מכיוון שנראה שפקודות יופעלו."
 
-#: terminal/terminal-screen.c:1841 terminal/terminal-window.c:827
-#: terminal/terminal-window.c:2367
+#: terminal/terminal-screen.c:1862 terminal/terminal-window.c:827
+#: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1868 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "ה_דבק"
 
-#: terminal/terminal-screen.c:1996 terminal/terminal-screen.c:2074
+#: terminal/terminal-screen.c:2033 terminal/terminal-screen.c:2111
 msgid "Failed to execute child"
 msgstr "אין אפשרות להריץ צאצא"
 
-#: terminal/terminal-screen.c:2700
+#: terminal/terminal-screen.c:2737
 msgid "Close this tab"
 msgstr "סגור כרטיסייה זו"
 
@@ -1320,15 +1333,15 @@ msgstr "פתח קישור"
 msgid "Failed to open the URL '%s'"
 msgstr "נכשל לפתוח את ה-URL '%s' "
 
-#: terminal/terminal-window-dropdown.c:416
+#: terminal/terminal-window-dropdown.c:420
 msgid "Keep window open when it loses focus"
 msgstr "השאר חלון פתוח כאשר זה מאבד מיקוד"
 
-#: terminal/terminal-window-dropdown.c:541
+#: terminal/terminal-window-dropdown.c:545
 msgid "Drop-down Terminal"
 msgstr "מסוף נפתח כלפי מטה"
 
-#: terminal/terminal-window-dropdown.c:542
+#: terminal/terminal-window-dropdown.c:546
 msgid "Toggle Drop-down Terminal"
 msgstr "החלף מסוף נפתח כלפי מטה"
 
@@ -1505,7 +1518,7 @@ msgstr "מצא את ה_קודם"
 msgid "Sa_ve Contents..."
 msgstr "שמ_ור תוכן..."
 
-#: terminal/terminal-window.c:353 terminal/terminal-window.c:2230
+#: terminal/terminal-window.c:353 terminal/terminal-window.c:2232
 msgid "_Reset"
 msgstr "_אפס"
 
@@ -1705,75 +1718,75 @@ msgstr "עדיין קיים תהליך פועל.\nסגירת החלון הזה �
 msgid "Close window?"
 msgstr "לסגור חלון?"
 
-#: terminal/terminal-window.c:1605
+#: terminal/terminal-window.c:1607
 msgid "Failed to open directory"
 msgstr "נכשל לפתוח ספרייה"
 
-#: terminal/terminal-window.c:1807
+#: terminal/terminal-window.c:1809
 msgid "Copy _Input:"
 msgstr "העתק _קלט:"
 
-#: terminal/terminal-window.c:1811
+#: terminal/terminal-window.c:1813
 msgid "Enter the text to be copied to all tabs"
 msgstr "הכנס את הטקסט להעתקה לכל הלשוניות"
 
-#: terminal/terminal-window.c:1819
+#: terminal/terminal-window.c:1821
 msgid "Copy input"
 msgstr "העתק קלט"
 
-#: terminal/terminal-window.c:2181
+#: terminal/terminal-window.c:2183
 msgid "_Title:"
 msgstr "_כותרת:"
 
-#: terminal/terminal-window.c:2185
+#: terminal/terminal-window.c:2187
 msgid "Enter the title for the current terminal tab"
 msgstr "הזן את הכותרת עבור לשונית המסוף הנוכחית"
 
-#: terminal/terminal-window.c:2200
+#: terminal/terminal-window.c:2202
 msgid "Help"
 msgstr "עזרה"
 
-#: terminal/terminal-window.c:2206
+#: terminal/terminal-window.c:2208
 msgid "Close"
 msgstr "סגור"
 
-#: terminal/terminal-window.c:2229
+#: terminal/terminal-window.c:2231
 msgid "Choose title color"
 msgstr "בחר צבע כותרת"
 
-#: terminal/terminal-window.c:2324
+#: terminal/terminal-window.c:2326
 msgid "Failed to create the regular expression"
 msgstr "נכשלה יצירת ביטוי רגולרי"
 
-#: terminal/terminal-window.c:2364
+#: terminal/terminal-window.c:2366
 msgid "Save contents..."
 msgstr "שמור תוכן..."
 
-#: terminal/terminal-window.c:2368
+#: terminal/terminal-window.c:2370
 msgid "_Save"
 msgstr "_שמור"
 
-#: terminal/terminal-window.c:2405
+#: terminal/terminal-window.c:2407
 msgid "Failed to save terminal contents"
 msgstr "נכשל לשמור תוכן מסוף"
 
-#: terminal/terminal-window.c:3178
+#: terminal/terminal-window.c:3180
 msgid "Send Signal"
 msgstr "שלח אות"
 
-#: terminal/terminal-window.c:3195
+#: terminal/terminal-window.c:3198
 msgid "Zoom"
 msgstr "זום"
 
-#: terminal/terminal-window.c:3207
+#: terminal/terminal-window.c:3210
 msgid "Copy"
 msgstr "העתק"
 
-#: terminal/terminal-window.c:3218
+#: terminal/terminal-window.c:3221
 msgid "Paste"
 msgstr "הדבק"
 
-#: terminal/terminal-window.c:3229
+#: terminal/terminal-window.c:3232
 msgid "View Options"
 msgstr "הצג אפשרויות"
 
