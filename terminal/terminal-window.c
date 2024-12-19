@@ -1119,7 +1119,8 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
   terminal_screen_widget_append_accels (TERMINAL_SCREEN (child), window->priv->accel_group);
 
   /* update the go-to accelerators */
-  terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
+  if (window->priv->tabs_menu != NULL)
+    terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
 }
 
 
@@ -1172,7 +1173,8 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
   terminal_window_notebook_page_switched (notebook, new_page, new_page_num, window);
 
   /* update the go-to accelerators */
-  terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
+  if (window->priv->tabs_menu != NULL)
+    terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
 }
 
 
@@ -3129,12 +3131,15 @@ terminal_window_create_menu (TerminalWindow        *window,
   g_signal_connect_swapped (G_OBJECT (submenu), "show", G_CALLBACK (cb_update_menu), window);
 
   if (action == TERMINAL_WINDOW_ACTION_TABS_MENU)
-    window->priv->tabs_menu = submenu;
+    {
+      window->priv->tabs_menu = submenu;
+      g_object_add_weak_pointer (G_OBJECT (submenu), (gpointer *) &window->priv->tabs_menu);
+    }
 }
 
 
 
-void
+static void
 terminal_window_menu_clean (GtkMenu *menu)
 {
   GList     *children, *lp;
@@ -3451,7 +3456,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 void
 terminal_window_update_goto_accels (TerminalWindow *window)
 {
-  terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
+  if (window->priv->tabs_menu != NULL)
+    terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
 }
 
 
