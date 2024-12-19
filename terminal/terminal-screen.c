@@ -2452,7 +2452,7 @@ terminal_screen_get_title (TerminalScreen *screen)
 const gchar*
 terminal_screen_get_working_directory (TerminalScreen *screen)
 {
-  gchar       *cwd;
+  gchar       *cwd = NULL;
   const gchar *uri;
 
   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
@@ -2461,17 +2461,17 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
   uri = vte_terminal_get_current_directory_uri (VTE_TERMINAL (screen->terminal));
   if (uri != NULL)
     {
-      g_free (screen->working_directory);
-      screen->working_directory = g_filename_from_uri (uri, NULL, NULL);
+      cwd = g_filename_from_uri (uri, NULL, NULL);
     }
   else if (screen->pid >= 0)
     {
       cwd = terminal_util_get_process_cwd (screen->pid);
-      if (G_LIKELY (cwd != NULL))
-        {
-          g_free (screen->working_directory);
-          screen->working_directory = cwd;
-        }
+    }
+
+  if (G_LIKELY (cwd != NULL))
+    {
+      g_free (screen->working_directory);
+      screen->working_directory = cwd;
     }
 
   return screen->working_directory;
