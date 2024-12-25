@@ -8,7 +8,7 @@ dnl
 dnl ***************************
 dnl *** Version information ***
 dnl ***************************
-XDT_VERSION_INIT([1.1.3], [git])
+XDT_VERSION_INIT([1.1.4])
 m4_define([terminal_version_dbus], [5])
 
 dnl minimum required versions

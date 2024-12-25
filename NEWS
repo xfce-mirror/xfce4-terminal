@@ -1,3 +1,50 @@
+1.1.4 (2024-12-25)
+=====
+- window: Ensure tabs_menu != NULL when updating
+- screen: Ensure working dir is not NULL
+- Do not resize the window on zoom
+- docs: added documentation and cli parsing for --class option
+- Use TerminalWindow's screen to test for windowing system
+- Use dropdown's display rather than default display
+- Avoid warning when widget display is not the default display
+- Fix segfault when there are both Wayland and X11 displays
+- screen: Avoid type check on released variable
+- preferences: Initialize GdkRGBA variable
+- screen: Cancel async spawn of child in finalize()
+- Improve error message for empty custom command
+- Check for screen pointers equality before destroying last screen
+- screen: Fix gtk_container_get_children leaks
+- screen: Fix string leak in terminal_screen_paste_unsafe_text
+- window: Fix leak in terminal_window_get_working_directory
+- window: Fix leak in terminal_window_menu_add_section
+- main: Fix string array leak
+- terminal: Fix spelling error
+- prefs-dialog: Fix AtkRelationSet leak
+- Fix gtk-layer-shell includes
+- preferences: Add missing sanity check
+- Preferences: maximize new windows
+- Fix running a command as a login shell
+- scan-build: Fix core.NullDereference and core.CallAndMessage
+- build: clang: Silence -Wcast-align
+- Update `.gitignore`
+- Rename theme file to desktop for gettext detection
+- I18n: Update po/LINGUAS list
+- build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+- build: Switch from intltool to gettext
+- Cancel by default in unsafe past dialog
+- Restore "Text blinks" tooltip
+- Revert "fix typo"
+- Translation Updates:
+  Albanian, Arabic, Armenian (Armenia), Basque, Belarusian, Bulgarian,
+  Catalan, Chinese (China), Chinese (Taiwan), Croatian, Czech, Danish,
+  Dutch, Eastern Armenian, English (Australia), English (United
+  Kingdom), Estonian, Finnish, French, Galician, German, Greek, Hebrew,
+  Hungarian, Icelandic, Indonesian, Interlingue, Italian, Japanese,
+  Kazakh, Korean, Lithuanian, Malay, Norwegian Bokmål, Occitan (post
+  1500), Persian (Iran), Polish, Portuguese, Portuguese (Brazil),
+  Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish,
+  Thai, Turkish, Ukrainian, Uyghur
+
 1.1.3 (2024-02-29)
 =====
 - prefs-dialog: Fix wrong assert
