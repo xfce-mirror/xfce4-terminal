@@ -401,8 +401,6 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_colors (screen);
   terminal_screen_update_sixel (screen);
 
-  vte_terminal_set_allow_hyperlink (VTE_TERMINAL (screen->terminal), TRUE);
-
   /* last, connect contents-changed to avoid a race with updates above */
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "contents-changed",
       G_CALLBACK (terminal_screen_vte_window_contents_changed), screen);
