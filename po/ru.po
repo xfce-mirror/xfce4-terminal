@@ -13,15 +13,16 @@
 # Kyrill Detinov <lazy.kent@opensuse.org>, 2013
 # Sergey Alyoshin <alyoshin.s@gmail.com>, 2013
 # Styopa Semenukha <semenukha@gmail.com>, 2009
+# vladiruzz, 2025
 # AlexanderFilev, 2017
 # Victor, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-09-19 00:49+0200\n"
+"POT-Creation-Date: 2024-10-12 12:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
-"Last-Translator: Andrei Stepanov, 2022-2024\n"
+"Last-Translator: vladiruzz, 2025\n"
 "Language-Team: Russian (http://app.transifex.com/xfce/xfce-apps/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -149,36 +150,41 @@ msgstr "шрифт"
 msgid "zoom"
 msgstr "масштаб"
 
+#. parameter of --class
 #: terminal/main.c:164
+msgid "class"
+msgstr "класс"
+
+#: terminal/main.c:166
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Смотрите man-страницу %s для полного описания параметров."
 
-#: terminal/main.c:198 xfce4-terminal.desktop.in:4
+#: terminal/main.c:200 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
 msgstr "Терминал Xfce"
 
-#: terminal/main.c:210
+#: terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "Команда разработчиков Xfce. Все права защищены."
 
-#: terminal/main.c:211
+#: terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Разработчики: Benedikt Meurer <benny@xfce.org>,"
 
-#: terminal/main.c:212
+#: terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>,"
 msgstr "Nick Schermer <nick@xfce.org>,"
 
-#: terminal/main.c:213
+#: terminal/main.c:215
 msgid "Igor Zakharov <f2404@yandex.ru>,"
 msgstr "Igor Zakharov <f2404@yandex.ru>,"
 
-#: terminal/main.c:214
+#: terminal/main.c:216
 msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 msgstr "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 
-#: terminal/main.c:215
+#: terminal/main.c:217
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Сообщайте об ошибках на <%s>."
@@ -393,12 +399,16 @@ msgstr "Для параметра \"--font\" в качестве значени�
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Для параметра \"--zoom\" в качестве значения требуется указать масштаб (%d .. %d)"
 
-#: terminal/terminal-options.c:648
+#: terminal/terminal-options.c:641
+msgid "Option \"--class\" requires specifying the class name as its parameter"
+msgstr "Опция \"--class\" требует указания имени класса в качестве параметра"
+
+#: terminal/terminal-options.c:659
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr "Неизвестный параметр «-%c»"
 
-#: terminal/terminal-options.c:651
+#: terminal/terminal-options.c:662
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Неизвестный параметр \"%s\""
@@ -614,7 +624,7 @@ msgstr "Показывать диалоговое окно небезопасн�
 msgid ""
 "Show a dialog that allows one to edit text that is considered unsafe for "
 "pasting"
-msgstr ""
+msgstr "Показывать диалог, который позволяет редактировать текст, который считается небезопасным для вставки"
 
 #. * Drop-down
 #: terminal/terminal-preferences-dialog.c:521
@@ -771,7 +781,7 @@ msgid "x height"
 msgstr "x высота"
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2192
 msgid "Reset"
 msgstr "Сбросить"
 
@@ -865,11 +875,11 @@ msgstr "Включите эту опцию, чтобы границы и заг�
 
 #: terminal/terminal-preferences-dialog.c:1041
 msgid "_Maximize new windows"
-msgstr ""
+msgstr "_Увеличивать новые окна"
 
 #: terminal/terminal-preferences-dialog.c:1045
 msgid "Enable this option to maximize newly created terminal windows."
-msgstr ""
+msgstr "Включите эту опцию, чтобы увеличить новые окна терминалов."
 
 #: terminal/terminal-preferences-dialog.c:1052
 msgid "Default geometry"
@@ -1153,87 +1163,91 @@ msgstr "Терминал"
 msgid "Select Preset"
 msgstr "Выбрать Предустановку"
 
-#: terminal/terminal-screen.c:240
+#: terminal/terminal-screen.c:241
 msgid "Do not disable dialog"
 msgstr "Не отключать диалог"
 
-#: terminal/terminal-screen.c:241
+#: terminal/terminal-screen.c:242
 msgid "Disable for 5 minutes"
 msgstr "Отключить на 5 минут"
 
-#: terminal/terminal-screen.c:242
+#: terminal/terminal-screen.c:243
 msgid "Disable for 15 minutes"
 msgstr "Отключить на 15 минут"
 
-#: terminal/terminal-screen.c:243
+#: terminal/terminal-screen.c:244
 msgid "Disable until program restart"
 msgstr "Отключить до следующего перезапуска программы"
 
-#: terminal/terminal-screen.c:244
+#: terminal/terminal-screen.c:245
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Отключить диалоговое окно (можно снова включить в настройках)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:881
-#: terminal/terminal-screen.c:2373
+#: terminal/terminal-screen.c:499 terminal/terminal-screen.c:892
+#: terminal/terminal-screen.c:2410
 msgid "Untitled"
 msgstr "Без названия"
 
-#: terminal/terminal-screen.c:784
+#: terminal/terminal-screen.c:745
+msgid "Empty custom command in the terminal preferences"
+msgstr "Опускать пользовательскую команду в настройках терминала"
+
+#: terminal/terminal-screen.c:795
 msgid "Unable to determine your login shell."
 msgstr "Невозможно определить оболочку входа в систему."
 
-#: terminal/terminal-screen.c:1493
+#: terminal/terminal-screen.c:1514
 msgid "_Relaunch"
 msgstr "_Перезапустить"
 
-#: terminal/terminal-screen.c:1499
+#: terminal/terminal-screen.c:1520
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Дочерний процесс завершился нормально с кодом %d."
 
-#: terminal/terminal-screen.c:1501
+#: terminal/terminal-screen.c:1522
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Дочерний процесс был прерван по сигналу %d."
 
-#: terminal/terminal-screen.c:1503
+#: terminal/terminal-screen.c:1524
 msgid "The child process was aborted."
 msgstr "Дочерний процесс был прерван."
 
-#: terminal/terminal-screen.c:1509 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1530 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "_Больше не спрашивать"
 
-#: terminal/terminal-screen.c:1823
+#: terminal/terminal-screen.c:1844
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Внимание: потенциально небезопасная вставка"
 
-#: terminal/terminal-screen.c:1826
+#: terminal/terminal-screen.c:1847
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Вставка этого текста в терминал может быть опасной, так как похоже, что могут быть выполнены некоторые команды из-под рута ('sudo')."
 
-#: terminal/terminal-screen.c:1829
+#: terminal/terminal-screen.c:1850
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Вставка этого текста в терминал может быть опасной, так как некоторые команды могут быть исполняемыми."
 
-#: terminal/terminal-screen.c:1841 terminal/terminal-window.c:827
-#: terminal/terminal-window.c:2367
+#: terminal/terminal-screen.c:1862 terminal/terminal-window.c:827
+#: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "_Отмена"
 
-#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1868 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "_Вставить"
 
-#: terminal/terminal-screen.c:1996 terminal/terminal-screen.c:2074
+#: terminal/terminal-screen.c:2033 terminal/terminal-screen.c:2111
 msgid "Failed to execute child"
 msgstr "Ошибка выполнения дочернего процесса"
 
-#: terminal/terminal-screen.c:2700
+#: terminal/terminal-screen.c:2737
 msgid "Close this tab"
 msgstr "Закрыть эту вкладку"
 
@@ -1323,15 +1337,15 @@ msgstr "Открыть ссылку"
 msgid "Failed to open the URL '%s'"
 msgstr "Не удалось открыть адрес \"%s\""
 
-#: terminal/terminal-window-dropdown.c:416
+#: terminal/terminal-window-dropdown.c:420
 msgid "Keep window open when it loses focus"
 msgstr "Сохранять окно открытым при потере фокуса"
 
-#: terminal/terminal-window-dropdown.c:541
+#: terminal/terminal-window-dropdown.c:545
 msgid "Drop-down Terminal"
 msgstr "Выпадающий терминал"
 
-#: terminal/terminal-window-dropdown.c:542
+#: terminal/terminal-window-dropdown.c:546
 msgid "Toggle Drop-down Terminal"
 msgstr "Включает выпадающее окно терминала"
 
@@ -1508,7 +1522,7 @@ msgstr "Найти _предыдущее"
 msgid "Sa_ve Contents..."
 msgstr "Со_хранить содержимое..."
 
-#: terminal/terminal-window.c:353 terminal/terminal-window.c:2230
+#: terminal/terminal-window.c:353 terminal/terminal-window.c:2232
 msgid "_Reset"
 msgstr "_Сбросить"
 
@@ -1708,75 +1722,75 @@ msgstr "Процесс всё ещё работает.\nЗакрытие это�
 msgid "Close window?"
 msgstr "Закрыть окно?"
 
-#: terminal/terminal-window.c:1605
+#: terminal/terminal-window.c:1607
 msgid "Failed to open directory"
 msgstr "Не удалось открыть каталог"
 
-#: terminal/terminal-window.c:1807
+#: terminal/terminal-window.c:1809
 msgid "Copy _Input:"
 msgstr "Копировать _ввод:"
 
-#: terminal/terminal-window.c:1811
+#: terminal/terminal-window.c:1813
 msgid "Enter the text to be copied to all tabs"
 msgstr "Введите текст, который будет скопирован во все вкладки"
 
-#: terminal/terminal-window.c:1819
+#: terminal/terminal-window.c:1821
 msgid "Copy input"
 msgstr "Скопировать ввод"
 
-#: terminal/terminal-window.c:2181
+#: terminal/terminal-window.c:2183
 msgid "_Title:"
 msgstr "_Заголовок:"
 
-#: terminal/terminal-window.c:2185
+#: terminal/terminal-window.c:2187
 msgid "Enter the title for the current terminal tab"
 msgstr "Введите заголовок для текущей вкладки"
 
-#: terminal/terminal-window.c:2200
+#: terminal/terminal-window.c:2202
 msgid "Help"
 msgstr "Справка"
 
-#: terminal/terminal-window.c:2206
+#: terminal/terminal-window.c:2208
 msgid "Close"
 msgstr "Закрыть"
 
-#: terminal/terminal-window.c:2229
+#: terminal/terminal-window.c:2231
 msgid "Choose title color"
 msgstr "Указать цвет заголовка"
 
-#: terminal/terminal-window.c:2324
+#: terminal/terminal-window.c:2326
 msgid "Failed to create the regular expression"
 msgstr "Не удалось создать регулярное выражение"
 
-#: terminal/terminal-window.c:2364
+#: terminal/terminal-window.c:2366
 msgid "Save contents..."
 msgstr "Сохранить содержимое..."
 
-#: terminal/terminal-window.c:2368
+#: terminal/terminal-window.c:2370
 msgid "_Save"
 msgstr "_Сохранить"
 
-#: terminal/terminal-window.c:2405
+#: terminal/terminal-window.c:2407
 msgid "Failed to save terminal contents"
 msgstr "Не удалось сохранить содержимое терминала"
 
-#: terminal/terminal-window.c:3178
+#: terminal/terminal-window.c:3180
 msgid "Send Signal"
 msgstr "Отправить сигнал"
 
-#: terminal/terminal-window.c:3195
+#: terminal/terminal-window.c:3198
 msgid "Zoom"
 msgstr "Масштаб"
 
-#: terminal/terminal-window.c:3207
+#: terminal/terminal-window.c:3210
 msgid "Copy"
 msgstr "Копировать"
 
-#: terminal/terminal-window.c:3218
+#: terminal/terminal-window.c:3221
 msgid "Paste"
 msgstr "Вставить"
 
-#: terminal/terminal-window.c:3229
+#: terminal/terminal-window.c:3232
 msgid "View Options"
 msgstr "Параметры вида"
 
