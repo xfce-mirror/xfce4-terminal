@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the xfce-apps.xfce4-terminal package.
 # 
 # Translators:
-# Davidmp <medipas@gmail.com>, 2015,2019
+# Davidmp <medipas@gmail.com>, 2015,2019,2025
 # Oscar Perez <oscarpc@gmail.com>, 2023-2024
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2016-2021
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2016
@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-09-19 00:49+0200\n"
+"POT-Creation-Date: 2024-10-12 12:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
-"Last-Translator: Oscar Perez <oscarpc@gmail.com>, 2023-2024\n"
+"Last-Translator: Davidmp <medipas@gmail.com>, 2015,2019,2025\n"
 "Language-Team: Catalan (http://app.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -141,36 +141,41 @@ msgstr "lletra"
 msgid "zoom"
 msgstr "zoom"
 
+#. parameter of --class
 #: terminal/main.c:164
+msgid "class"
+msgstr "class"
+
+#: terminal/main.c:166
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Consulteu la pàgina de man de %s per a una explicació detallada de les opcions anteriors."
 
-#: terminal/main.c:198 xfce4-terminal.desktop.in:4
+#: terminal/main.c:200 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
 msgstr "Terminal de Xfce"
 
-#: terminal/main.c:210
+#: terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "L'equip de desenvolupament de Xfce. Tots els drets reservats."
 
-#: terminal/main.c:211
+#: terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Escrit per Benedikt Meurer <benny@xfce.org>,"
 
-#: terminal/main.c:212
+#: terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>,"
 msgstr "Nick Schermer <nick@xfce.org>,"
 
-#: terminal/main.c:213
+#: terminal/main.c:215
 msgid "Igor Zakharov <f2404@yandex.ru>,"
 msgstr "Igor Zakharov <f2404@yandex.ru>,"
 
-#: terminal/main.c:214
+#: terminal/main.c:216
 msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 msgstr "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 
-#: terminal/main.c:215
+#: terminal/main.c:217
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Notifiqueu els errors a <%s>."
@@ -385,12 +390,16 @@ msgstr "A l'opció «--font» li cal que especifiqueu com a paràmetre el nom de
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "A l'opció «--zoom» li cal que especifiqueu com a paràmetre el zoom (%d .. %d)"
 
-#: terminal/terminal-options.c:648
+#: terminal/terminal-options.c:641
+msgid "Option \"--class\" requires specifying the class name as its parameter"
+msgstr "L'opció --class requereix especificar el nom de la classe com a paràmetre."
+
+#: terminal/terminal-options.c:659
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr "L'opció «-%c» és desconeguda"
 
-#: terminal/terminal-options.c:651
+#: terminal/terminal-options.c:662
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "L'opció «%s» és desconeguda"
@@ -606,7 +615,7 @@ msgstr "Mostra el diàleg d'enganxar no segura"
 msgid ""
 "Show a dialog that allows one to edit text that is considered unsafe for "
 "pasting"
-msgstr ""
+msgstr "Mostra un diàleg que permet editar text que es considera insegur per enganxar"
 
 #. * Drop-down
 #: terminal/terminal-preferences-dialog.c:521
@@ -763,7 +772,7 @@ msgid "x height"
 msgstr "alçada y"
 
 #: terminal/terminal-preferences-dialog.c:855
-#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2190
+#: terminal/terminal-preferences-dialog.c:1495 terminal/terminal-window.c:2192
 msgid "Reset"
 msgstr "Restableix"
 
@@ -857,11 +866,11 @@ msgstr "Habiliteu aquesta opció per mostrar la decoració de les finestres a le
 
 #: terminal/terminal-preferences-dialog.c:1041
 msgid "_Maximize new windows"
-msgstr ""
+msgstr "_Maximitza les finestres noves"
 
 #: terminal/terminal-preferences-dialog.c:1045
 msgid "Enable this option to maximize newly created terminal windows."
-msgstr ""
+msgstr "Activeu aquesta opció per maximitzar les finestres de terminal acabades de crear."
 
 #: terminal/terminal-preferences-dialog.c:1052
 msgid "Default geometry"
@@ -1145,87 +1154,91 @@ msgstr "Terminal"
 msgid "Select Preset"
 msgstr "Selecciona una preselecció"
 
-#: terminal/terminal-screen.c:240
+#: terminal/terminal-screen.c:241
 msgid "Do not disable dialog"
 msgstr "No deshabilitis el diàleg"
 
-#: terminal/terminal-screen.c:241
+#: terminal/terminal-screen.c:242
 msgid "Disable for 5 minutes"
 msgstr "Deshabilita durant 5 minuts"
 
-#: terminal/terminal-screen.c:242
+#: terminal/terminal-screen.c:243
 msgid "Disable for 15 minutes"
 msgstr "Deshabilita durant 15 minuts"
 
-#: terminal/terminal-screen.c:243
+#: terminal/terminal-screen.c:244
 msgid "Disable until program restart"
 msgstr "Deshabilita fins que es torni a iniciar el programa"
 
-#: terminal/terminal-screen.c:244
+#: terminal/terminal-screen.c:245
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Deshabilita el diàleg (es pot rehabilitar als Ajusts)"
 
-#: terminal/terminal-screen.c:494 terminal/terminal-screen.c:881
-#: terminal/terminal-screen.c:2373
+#: terminal/terminal-screen.c:499 terminal/terminal-screen.c:892
+#: terminal/terminal-screen.c:2410
 msgid "Untitled"
 msgstr "Sense títol"
 
-#: terminal/terminal-screen.c:784
+#: terminal/terminal-screen.c:745
+msgid "Empty custom command in the terminal preferences"
+msgstr "Ordre personalitzada buida a les preferències del terminal"
+
+#: terminal/terminal-screen.c:795
 msgid "Unable to determine your login shell."
 msgstr "No es pot determinar el vostre shell d'inici de sessió."
 
-#: terminal/terminal-screen.c:1493
+#: terminal/terminal-screen.c:1514
 msgid "_Relaunch"
 msgstr "To_rna a llançar"
 
-#: terminal/terminal-screen.c:1499
+#: terminal/terminal-screen.c:1520
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "S'ha sortit normalment del procés fill amb l'estat %d."
 
-#: terminal/terminal-screen.c:1501
+#: terminal/terminal-screen.c:1522
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "S'ha avortat el procés fill amb el senyal %d."
 
-#: terminal/terminal-screen.c:1503
+#: terminal/terminal-screen.c:1524
 msgid "The child process was aborted."
 msgstr "S'ha avortat el procés fill."
 
-#: terminal/terminal-screen.c:1509 terminal/terminal-window.c:904
+#: terminal/terminal-screen.c:1530 terminal/terminal-window.c:904
 msgid "Do _not ask me again"
 msgstr "_No tornis a mostrar aquest missatge"
 
-#: terminal/terminal-screen.c:1823
+#: terminal/terminal-screen.c:1844
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Atenció: operació d'enganxat potencialment insegura"
 
-#: terminal/terminal-screen.c:1826
+#: terminal/terminal-screen.c:1847
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Enganxar aquest text al terminal pot ser perillós, ja que sembla que es poden executar algunes ordres, que poden implicar l'accés de root ('sudo')."
 
-#: terminal/terminal-screen.c:1829
+#: terminal/terminal-screen.c:1850
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Enganxar aquest text al terminal pot ser perillós, ja que sembla que es podrien executar algunes comandes."
 
-#: terminal/terminal-screen.c:1841 terminal/terminal-window.c:827
-#: terminal/terminal-window.c:2367
+#: terminal/terminal-screen.c:1862 terminal/terminal-window.c:827
+#: terminal/terminal-window.c:2369
 msgid "_Cancel"
 msgstr "_Cancel·la"
 
-#: terminal/terminal-screen.c:1847 terminal/terminal-window.c:332
+#: terminal/terminal-screen.c:1868 terminal/terminal-window.c:332
 msgid "_Paste"
 msgstr "_Enganxa"
 
-#: terminal/terminal-screen.c:1996 terminal/terminal-screen.c:2074
+#: terminal/terminal-screen.c:2033 terminal/terminal-screen.c:2111
 msgid "Failed to execute child"
 msgstr "Ha fallat l'execució del fill"
 
-#: terminal/terminal-screen.c:2700
+#: terminal/terminal-screen.c:2737
 msgid "Close this tab"
 msgstr "Tanca aquesta pestanya"
 
@@ -1315,15 +1328,15 @@ msgstr "Obre l'enllaç"
 msgid "Failed to open the URL '%s'"
 msgstr "Ha fallat l'obriment de l'URL «%s»"
 
-#: terminal/terminal-window-dropdown.c:416
+#: terminal/terminal-window-dropdown.c:420
 msgid "Keep window open when it loses focus"
 msgstr "Mantén la finestra oberta quan perdi el focus"
 
-#: terminal/terminal-window-dropdown.c:541
+#: terminal/terminal-window-dropdown.c:545
 msgid "Drop-down Terminal"
 msgstr "Terminal desplegable"
 
-#: terminal/terminal-window-dropdown.c:542
+#: terminal/terminal-window-dropdown.c:546
 msgid "Toggle Drop-down Terminal"
 msgstr "Commuta a terminal desplegable"
 
@@ -1500,7 +1513,7 @@ msgstr "Troba l'_anterior"
 msgid "Sa_ve Contents..."
 msgstr "Desa el contin_gut..."
 
-#: terminal/terminal-window.c:353 terminal/terminal-window.c:2230
+#: terminal/terminal-window.c:353 terminal/terminal-window.c:2232
 msgid "_Reset"
 msgstr "_Restableix"
 
@@ -1700,75 +1713,75 @@ msgstr "Encara hi ha un procés en execució.\nEl tancament d'aquesta finestra e
 msgid "Close window?"
 msgstr "Voleu tancar la finestra?"
 
-#: terminal/terminal-window.c:1605
+#: terminal/terminal-window.c:1607
 msgid "Failed to open directory"
 msgstr "Ha fallat l'obertura del directori"
 
-#: terminal/terminal-window.c:1807
+#: terminal/terminal-window.c:1809
 msgid "Copy _Input:"
 msgstr "Cop_ia l'entrada:"
 
-#: terminal/terminal-window.c:1811
+#: terminal/terminal-window.c:1813
 msgid "Enter the text to be copied to all tabs"
 msgstr "Introduïu el text que voleu copiar a totes les pestanyes"
 
-#: terminal/terminal-window.c:1819
+#: terminal/terminal-window.c:1821
 msgid "Copy input"
 msgstr "Copia l'entrada"
 
-#: terminal/terminal-window.c:2181
+#: terminal/terminal-window.c:2183
 msgid "_Title:"
 msgstr "_Títol:"
 
-#: terminal/terminal-window.c:2185
+#: terminal/terminal-window.c:2187
 msgid "Enter the title for the current terminal tab"
 msgstr "Introduïu el títol de la pestanya del terminal actual"
 
-#: terminal/terminal-window.c:2200
+#: terminal/terminal-window.c:2202
 msgid "Help"
 msgstr "Ajuda"
 
-#: terminal/terminal-window.c:2206
+#: terminal/terminal-window.c:2208
 msgid "Close"
 msgstr "Tanca"
 
-#: terminal/terminal-window.c:2229
+#: terminal/terminal-window.c:2231
 msgid "Choose title color"
 msgstr "Trieu el color del títol"
 
-#: terminal/terminal-window.c:2324
+#: terminal/terminal-window.c:2326
 msgid "Failed to create the regular expression"
 msgstr "Ha fallat la creació de l'expressió regular"
 
-#: terminal/terminal-window.c:2364
+#: terminal/terminal-window.c:2366
 msgid "Save contents..."
 msgstr "Desa el contingut..."
 
-#: terminal/terminal-window.c:2368
+#: terminal/terminal-window.c:2370
 msgid "_Save"
 msgstr "De_sa"
 
-#: terminal/terminal-window.c:2405
+#: terminal/terminal-window.c:2407
 msgid "Failed to save terminal contents"
 msgstr "Ha fallat el desament del contingut del terminal"
 
-#: terminal/terminal-window.c:3178
+#: terminal/terminal-window.c:3180
 msgid "Send Signal"
 msgstr "Envia un senyal"
 
-#: terminal/terminal-window.c:3195
+#: terminal/terminal-window.c:3198
 msgid "Zoom"
 msgstr "Augment"
 
-#: terminal/terminal-window.c:3207
+#: terminal/terminal-window.c:3210
 msgid "Copy"
 msgstr "Copia"
 
-#: terminal/terminal-window.c:3218
+#: terminal/terminal-window.c:3221
 msgid "Paste"
 msgstr "Enganxa"
 
-#: terminal/terminal-window.c:3229
+#: terminal/terminal-window.c:3232
 msgid "View Options"
 msgstr "Opcions de visualització"
 
@@ -1786,7 +1799,7 @@ msgstr "Ajusts del terminal de Xfce"
 
 #: xfce4-terminal-settings.desktop.in:5
 msgid "Configure Xfce Terminal"
-msgstr ""
+msgstr "Configura el terminal de l'Xfce"
 
 #: xfce4-terminal-settings.desktop.in:6
 msgid "terminal;settings;preferences;configuration;configure;"
