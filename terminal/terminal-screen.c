@@ -1835,9 +1835,10 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   GtkWidget     *dialog = xfce_titled_dialog_new ();
   GtkWidget     *infobar = gtk_info_bar_new ();
   GtkWidget     *box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  GtkWidget     *button, *label;
+  GtkWidget     *button_paste, *button_cancel, *button_default, *label;
   GtkWidget     *combo;
   gint           parent_w, parent_h;
+  gchar         *button_default_name;
 
   gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
   gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
@@ -1859,14 +1860,24 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (dialog));
 #endif
 
-  button = xfce_gtk_button_new_mixed ("gtk-cancel", _("_Cancel"));
-  xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
-  gtk_widget_set_can_default (button, TRUE);
-  gtk_widget_grab_default (button);
-  gtk_widget_grab_focus (button);
 
-  button = xfce_gtk_button_new_mixed ("gtk-ok", _("_Paste"));
-  xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), button, GTK_RESPONSE_YES);
+  button_cancel = xfce_gtk_button_new_mixed ("gtk-cancel", _("_Cancel"));
+  xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), button_cancel, GTK_RESPONSE_CANCEL);
+
+  button_paste = xfce_gtk_button_new_mixed ("gtk-ok", _("_Paste"));
+  xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), button_paste, GTK_RESPONSE_YES);
+
+  g_object_get (G_OBJECT (screen->preferences),
+                "misc-unsafe-paste-dialog-default-button", &button_default_name,
+                NULL);
+
+  button_default = button_default_name && strcasecmp ("paste", button_default_name) == 0
+    ? button_paste
+    : button_cancel;
+
+  gtk_widget_set_can_default (button_default, TRUE);
+  gtk_widget_grab_default (button_default);
+  gtk_widget_grab_focus (button_default);
 
   gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (tv), TRUE);
   gtk_text_view_set_monospace (GTK_TEXT_VIEW (tv), TRUE);
