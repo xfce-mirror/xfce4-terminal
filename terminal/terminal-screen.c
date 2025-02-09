@@ -1861,12 +1861,11 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
 
   button = xfce_gtk_button_new_mixed ("gtk-cancel", _("_Cancel"));
   xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
-  gtk_widget_set_can_default (button, TRUE);
-  gtk_widget_grab_default (button);
-  gtk_widget_grab_focus (button);
 
   button = xfce_gtk_button_new_mixed ("gtk-ok", _("_Paste"));
   xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), button, GTK_RESPONSE_YES);
+
+  gtk_widget_grab_focus (button);
 
   gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (tv), TRUE);
   gtk_text_view_set_monospace (GTK_TEXT_VIEW (tv), TRUE);
