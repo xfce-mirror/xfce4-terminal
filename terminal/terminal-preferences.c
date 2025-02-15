@@ -100,6 +100,7 @@ enum
   PROP_MISC_MENUBAR_DEFAULT,
   PROP_MISC_MOUSE_AUTOHIDE,
   PROP_MISC_MOUSE_WHEEL_ZOOM,
+  PROP_MISC_RESIZE_ON_ZOOM,
   PROP_MISC_TOOLBAR_DEFAULT,
   PROP_MISC_CONFIRM_CLOSE,
   PROP_MISC_CYCLE_TABS,
@@ -928,6 +929,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_boolean ("misc-mouse-wheel-zoom",
                             NULL,
                             "MiscMouseWheelZoom",
+                            TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-resize-on-zoom:
+   **/
+  preferences_props[PROP_MISC_RESIZE_ON_ZOOM] =
+      g_param_spec_boolean ("misc-resize-on-zoom",
+                            NULL,
+                            "MiscResizeOnZoom",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 

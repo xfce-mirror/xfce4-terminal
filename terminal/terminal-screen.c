@@ -2892,7 +2892,7 @@ void
 terminal_screen_update_font (TerminalScreen *screen)
 {
   GtkWidget            *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-  gboolean              font_use_system, font_allow_bold;
+  gboolean              font_use_system, font_allow_bold, resize_on_zoom;
   gchar                *font_name = NULL;
   PangoFontDescription *font_desc;
   glong                 grid_w = 0, grid_h = 0;
@@ -2908,6 +2908,7 @@ terminal_screen_update_font (TerminalScreen *screen)
   g_object_get (G_OBJECT (screen->preferences),
                 "font-use-system", &font_use_system,
                 "font-allow-bold", &font_allow_bold,
+                "misc-resize-on-zoom", &resize_on_zoom,
                 NULL);
 
   if (TERMINAL_IS_WINDOW (toplevel) &&
@@ -2983,8 +2984,8 @@ terminal_screen_update_font (TerminalScreen *screen)
   vte_terminal_set_cell_width_scale (VTE_TERMINAL (screen->terminal), cell_width_scale);
   vte_terminal_set_cell_height_scale (VTE_TERMINAL (screen->terminal), cell_height_scale);
 
-  /* update window geometry if required (not needed for drop-down), don't update when only zoomed in/out */
-  if (font_change &&
+  /* update window geometry if required: not needed for drop-down, optional when only zoomed in/out */
+  if ((font_change || resize_on_zoom) &&
       TERMINAL_IS_WINDOW (toplevel) &&
       !terminal_window_is_drop_down (TERMINAL_WINDOW (toplevel)) &&
       screen->hints.width_inc > 0 &&
