@@ -18,6 +18,9 @@
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
+#endif
 
 #ifdef HAVE_STDARG_H
 #include <stdarg.h>
@@ -95,7 +98,7 @@ terminal_util_show_about_dialog (GtkWindow *parent)
                          "logo-icon-name", "org.xfce.terminal",
                          "program-name", PACKAGE_NAME,
                          "translator-credits", _("translator-credits"),
-                         "version", PACKAGE_VERSION,
+                         "version", VERSION_FULL,
                          "website", "https://docs.xfce.org/apps/terminal/start",
                          "website-label", _("Visit Xfce Terminal website"),
                          NULL);

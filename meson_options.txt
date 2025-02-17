@@ -1,0 +1,27 @@
+option(
+  'x11',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the X11 windowing system',
+)
+
+option(
+  'wayland',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the Wayland windowing system',
+)
+
+option(
+  'gtk-layer-shell',
+  type: 'feature',
+  value: 'auto',
+  description: 'Gtk Layer Shell support (Wayland only)',
+)
+
+option(
+  'libutempter',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for utmp/wtmp files',
+)
