@@ -18,7 +18,10 @@ presets_DATA = $(presets_in_files:.desktop.in=.theme)
 %.theme: %.desktop.in
 	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
-EXTRA_DIST = $(presets_in_files)
+EXTRA_DIST = \
+	$(presets_in_files) \
+	meson.build \
+	$(NULL)
 
 DISTCLEANFILES = $(presets_DATA)
 

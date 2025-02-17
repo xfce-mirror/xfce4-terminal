@@ -31,7 +31,12 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 EXTRA_DIST = \
 	HACKING \
-	$(desktop_in_files)
+	$(desktop_in_files) \
+	po/meson.build \
+	meson_options.txt \
+	meson.build \
+	xfce-revision.h.in \
+	$(NULL)
 
 DISTCLEANFILES = \
 	$(desktop_DATA)

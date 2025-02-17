@@ -161,6 +161,8 @@ clean-local:
 
 EXTRA_DIST = \
 	terminal-config.h.in \
-	terminal-marshal.list
+	terminal-marshal.list \
+	meson.build \
+	$(NULL)
 
 # vi:set ts=8 sw=8 noet ai nocindent:
