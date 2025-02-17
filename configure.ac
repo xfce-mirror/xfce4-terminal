@@ -35,6 +35,7 @@ AC_INIT([xfce4-terminal], [xdt_version], [https://gitlab.xfce.org/apps/xfce4-ter
 AC_REVISION([xdt_version_build])
 AC_PREREQ([2.69])
 AC_ARG_PROGRAM()
+AC_DEFINE([VERSION_FULL], [PACKAGE_VERSION], [Alias for VERSION and PACKAGE_VERSION for meson compatibility])
 
 dnl ***************************
 dnl *** Initialize automake ***
@@ -116,7 +117,7 @@ XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_min_version])
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_min_version])
 XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [gtk_min_version])
 XDT_CHECK_PACKAGE([VTE], [vte-2.91], [vte_min_version])
-XDT_CHECK_PACKAGE([PCRE2], [libpcre2-8], [10.00])
+XDT_CHECK_PACKAGE([PCRE2], [libpcre2-8], [pcre2_min_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [libxfce4ui_min_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [libxfce4util_min_version])
 XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [xfconf_min_version])

@@ -10,6 +10,8 @@ endif
 
 EXTRA_DIST = \
 	$(man_MANS) \
-	xfce4-terminal.xml
+	xfce4-terminal.xml \
+	meson.build \
+	$(NULL)
 
 # vi:set ts=8 sw=8 noet ai softtabstop=0 syntax=automake:
