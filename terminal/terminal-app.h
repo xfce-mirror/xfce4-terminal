@@ -27,7 +27,8 @@
 G_BEGIN_DECLS
 
 #define TERMINAL_ERROR (terminal_error_quark ())
-GQuark terminal_error_quark (void) G_GNUC_CONST;
+GQuark
+terminal_error_quark (void) G_GNUC_CONST;
 
 typedef enum
 {
@@ -44,22 +45,25 @@ typedef enum
 } TerminalError;
 
 
-#define TERMINAL_TYPE_APP         (terminal_app_get_type ())
-#define TERMINAL_APP(obj)         (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_APP, TerminalApp))
+#define TERMINAL_TYPE_APP (terminal_app_get_type ())
+#define TERMINAL_APP(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_APP, TerminalApp))
 #define TERMINAL_APP_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_APP, TerminalAppClass))
-#define TERMINAL_IS_APP(obj)      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_APP))
+#define TERMINAL_IS_APP(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_APP))
 
 typedef struct _TerminalAppClass TerminalAppClass;
-typedef struct _TerminalApp      TerminalApp;
+typedef struct _TerminalApp TerminalApp;
 
-GType        terminal_app_get_type            (void) G_GNUC_CONST;
+GType
+terminal_app_get_type (void) G_GNUC_CONST;
 
-gboolean     terminal_app_process             (TerminalApp        *app,
-                                               gchar             **argv,
-                                               gint                argc,
-                                               GError            **error);
+gboolean
+terminal_app_process (TerminalApp *app,
+                      gchar **argv,
+                      gint argc,
+                      GError **error);
 
-void         terminal_app_load_accels         (TerminalApp        *app);
+void
+terminal_app_load_accels (TerminalApp *app);
 
 G_END_DECLS
 

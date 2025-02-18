@@ -24,20 +24,22 @@
 
 G_BEGIN_DECLS
 
-#define TERMINAL_TYPE_PREFERENCES_DIALOG            (terminal_preferences_dialog_get_type ())
-#define TERMINAL_PREFERENCES_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG, TerminalPreferencesDialog))
-#define TERMINAL_PREFERENCES_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_PREFERENCES_DIALOG, TerminalPreferencesDialogClass))
-#define TERMINAL_IS_PREFERENCES_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG))
+#define TERMINAL_TYPE_PREFERENCES_DIALOG (terminal_preferences_dialog_get_type ())
+#define TERMINAL_PREFERENCES_DIALOG(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG, TerminalPreferencesDialog))
+#define TERMINAL_PREFERENCES_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_PREFERENCES_DIALOG, TerminalPreferencesDialogClass))
+#define TERMINAL_IS_PREFERENCES_DIALOG(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG))
 #define TERMINAL_IS_PREFERENCES_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG))
-#define TERMINAL_PREFERENCES_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG, TerminalPreferencesDialogClass))
+#define TERMINAL_PREFERENCES_DIALOG_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG, TerminalPreferencesDialogClass))
 
 typedef struct _TerminalPreferencesDialogClass TerminalPreferencesDialogClass;
-typedef struct _TerminalPreferencesDialog      TerminalPreferencesDialog;
+typedef struct _TerminalPreferencesDialog TerminalPreferencesDialog;
 
-GType      terminal_preferences_dialog_get_type (void) G_GNUC_CONST;
+GType
+terminal_preferences_dialog_get_type (void) G_GNUC_CONST;
 
-GtkWidget *terminal_preferences_dialog_new      (gboolean show_drop_down,
-                                                 gboolean drop_down_mode);
+GtkWidget *
+terminal_preferences_dialog_new (gboolean show_drop_down,
+                                 gboolean drop_down_mode);
 
 G_END_DECLS
 

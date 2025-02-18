@@ -45,7 +45,7 @@
 
 static void
 colortable_sub (const gchar *bright,
-                guint        start)
+                guint start)
 {
   guint n;
   guint fg;
@@ -101,6 +101,7 @@ colortable (void)
 
 
 
+// clang-format off: WhitespaceSensitiveMacros is buggy
 static void
 usage (void)
 {
@@ -171,25 +172,25 @@ usage (void)
 
   g_print ("\n\n");
 }
+// clang-format on
 
 
 
 int
 main (int argc, char **argv)
 {
-  TerminalOptions  options;
-  TerminalApp     *app;
-  const gchar     *startup_id;
-  GdkDisplay      *display;
-  GError          *error = NULL;
-  gchar          **nargv;
-  gint             nargc;
-  gint             n;
-  const gchar     *msg;
+  TerminalOptions options;
+  TerminalApp *app;
+  const gchar *startup_id;
+  GdkDisplay *display;
+  GError *error = NULL;
+  gchar **nargv;
+  gint nargc;
+  gint n;
+  const gchar *msg;
 
   /* initialize options */
-  options.disable_server = options.show_version = options.show_colors = options.show_help =
-      options.show_preferences = 0;
+  options.disable_server = options.show_version = options.show_colors = options.show_help = options.show_preferences = 0;
 
   /* install required signal handlers */
   signal (SIGPIPE, SIG_IGN);
@@ -246,8 +247,7 @@ main (int argc, char **argv)
 
       /* create and run the dialog */
       dialog = terminal_preferences_dialog_new (TRUE, FALSE);
-      g_signal_connect_after (G_OBJECT (dialog), "destroy",
-          G_CALLBACK (gtk_main_quit), NULL);
+      g_signal_connect_after (G_OBJECT (dialog), "destroy", G_CALLBACK (gtk_main_quit), NULL);
       gtk_window_present (GTK_WINDOW (dialog));
       gtk_main ();
 
@@ -257,7 +257,8 @@ main (int argc, char **argv)
     }
 
   /* create a copy of the standard arguments with our additional stuff */
-  nargv = g_new (gchar*, argc + 5); nargc = 0;
+  nargv = g_new (gchar *, argc + 5);
+  nargc = 0;
   nargv[nargc++] = g_strdup (argv[0]);
   nargv[nargc++] = g_strdup ("--default-working-directory");
   nargv[nargc++] = g_get_current_dir ();

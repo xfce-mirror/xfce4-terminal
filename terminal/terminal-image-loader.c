@@ -26,34 +26,41 @@
 #include "terminal-private.h"
 
 /* max image resolution is 8K */
-#define MAX_IMAGE_WIDTH  7680
+#define MAX_IMAGE_WIDTH 7680
 #define MAX_IMAGE_HEIGHT 4320
 #define CACHE_SIZE 10
 
 
 
-static void terminal_image_loader_finalize (GObject             *object);
-static void terminal_image_loader_check    (TerminalImageLoader *loader);
-static void terminal_image_loader_tile     (TerminalImageLoader *loader,
-                                            GdkPixbuf           *target,
-                                            gint                 width,
-                                            gint                 height);
-static void terminal_image_loader_center   (TerminalImageLoader *loader,
-                                            GdkPixbuf           *target,
-                                            gint                 width,
-                                            gint                 height);
-static void terminal_image_loader_scale    (TerminalImageLoader *loader,
-                                            GdkPixbuf           *target,
-                                            gint                 width,
-                                            gint                 height);
-static void terminal_image_loader_stretch  (TerminalImageLoader *loader,
-                                            GdkPixbuf           *target,
-                                            gint                 width,
-                                            gint                 height);
-static void terminal_image_loader_fill     (TerminalImageLoader *loader,
-                                            GdkPixbuf           *target,
-                                            gint                 width,
-                                            gint                 height);
+static void
+terminal_image_loader_finalize (GObject *object);
+static void
+terminal_image_loader_check (TerminalImageLoader *loader);
+static void
+terminal_image_loader_tile (TerminalImageLoader *loader,
+                            GdkPixbuf *target,
+                            gint width,
+                            gint height);
+static void
+terminal_image_loader_center (TerminalImageLoader *loader,
+                              GdkPixbuf *target,
+                              gint width,
+                              gint height);
+static void
+terminal_image_loader_scale (TerminalImageLoader *loader,
+                             GdkPixbuf *target,
+                             gint width,
+                             gint height);
+static void
+terminal_image_loader_stretch (TerminalImageLoader *loader,
+                               GdkPixbuf *target,
+                               gint width,
+                               gint height);
+static void
+terminal_image_loader_fill (TerminalImageLoader *loader,
+                            GdkPixbuf *target,
+                            gint width,
+                            gint height);
 
 
 struct _TerminalImageLoaderClass
@@ -63,15 +70,15 @@ struct _TerminalImageLoaderClass
 
 struct _TerminalImageLoader
 {
-  GObject                  parent_instance;
-  TerminalPreferences     *preferences;
+  GObject parent_instance;
+  TerminalPreferences *preferences;
 
   /* the cached image data */
-  gchar                   *path;
-  GSList                  *cache;
-  GdkRGBA                  bgcolor;
-  GdkPixbuf               *pixbuf;
-  TerminalBackgroundStyle  style;
+  gchar *path;
+  GSList *cache;
+  GdkRGBA bgcolor;
+  GdkPixbuf *pixbuf;
+  TerminalBackgroundStyle style;
 };
 
 
@@ -121,10 +128,10 @@ static void
 terminal_image_loader_check (TerminalImageLoader *loader)
 {
   TerminalBackgroundStyle selected_style;
-  GdkRGBA                 selected_color;
-  gboolean                invalidate = FALSE;
-  gchar                  *selected_color_spec;
-  gchar                  *selected_path;
+  GdkRGBA selected_color;
+  gboolean invalidate = FALSE;
+  gchar *selected_color_spec;
+  gchar *selected_path;
 
   g_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
 
@@ -186,15 +193,15 @@ terminal_image_loader_check (TerminalImageLoader *loader)
 
 static void
 terminal_image_loader_tile (TerminalImageLoader *loader,
-                            GdkPixbuf           *target,
-                            gint                 width,
-                            gint                 height)
+                            GdkPixbuf *target,
+                            gint width,
+                            gint height)
 {
   GdkRectangle area;
-  gint         source_width;
-  gint         source_height;
-  gint         i;
-  gint         j;
+  gint source_width;
+  gint source_height;
+  gint i;
+  gint j;
 
   source_width = gdk_pixbuf_get_width (loader->pixbuf);
   source_height = gdk_pixbuf_get_height (loader->pixbuf);
@@ -222,22 +229,23 @@ terminal_image_loader_tile (TerminalImageLoader *loader,
 
 static void
 terminal_image_loader_center (TerminalImageLoader *loader,
-                              GdkPixbuf           *target,
-                              gint                 width,
-                              gint                 height)
+                              GdkPixbuf *target,
+                              gint width,
+                              gint height)
 {
   guint32 rgba;
-  gint    source_width;
-  gint    source_height;
-  gint    dx;
-  gint    dy;
-  gint    x0;
-  gint    y0;
+  gint source_width;
+  gint source_height;
+  gint dx;
+  gint dy;
+  gint x0;
+  gint y0;
 
   /* fill with background color */
-  rgba = ((((guint)(loader->bgcolor.red * 65535) & 0xff00) << 8)
-        | (((guint)(loader->bgcolor.green * 65535) & 0xff00))
-        | (((guint)(loader->bgcolor.blue * 65535) & 0xff00) >> 8)) << 8;
+  rgba = ((((guint) (loader->bgcolor.red * 65535) & 0xff00) << 8)
+          | (((guint) (loader->bgcolor.green * 65535) & 0xff00))
+          | (((guint) (loader->bgcolor.blue * 65535) & 0xff00) >> 8))
+         << 8;
   gdk_pixbuf_fill (target, rgba);
 
   source_width = gdk_pixbuf_get_width (loader->pixbuf);
@@ -259,22 +267,23 @@ terminal_image_loader_center (TerminalImageLoader *loader,
 
 static void
 terminal_image_loader_scale (TerminalImageLoader *loader,
-                             GdkPixbuf           *target,
-                             gint                 width,
-                             gint                 height)
+                             GdkPixbuf *target,
+                             gint width,
+                             gint height)
 {
   gdouble xscale;
   gdouble yscale;
   guint32 rgba;
-  gint    source_width;
-  gint    source_height;
-  gint    x;
-  gint    y;
+  gint source_width;
+  gint source_height;
+  gint x;
+  gint y;
 
   /* fill with background color */
-  rgba = ((((guint)(loader->bgcolor.red * 65535) & 0xff00) << 8)
-        | (((guint)(loader->bgcolor.green * 65535) & 0xff00))
-        | (((guint)(loader->bgcolor.blue * 65535) & 0xff00) >> 8)) << 8;
+  rgba = ((((guint) (loader->bgcolor.red * 65535) & 0xff00) << 8)
+          | (((guint) (loader->bgcolor.green * 65535) & 0xff00))
+          | (((guint) (loader->bgcolor.blue * 65535) & 0xff00) >> 8))
+         << 8;
   gdk_pixbuf_fill (target, rgba);
 
   source_width = gdk_pixbuf_get_width (loader->pixbuf);
@@ -307,14 +316,14 @@ terminal_image_loader_scale (TerminalImageLoader *loader,
 
 static void
 terminal_image_loader_stretch (TerminalImageLoader *loader,
-                               GdkPixbuf           *target,
-                               gint                 width,
-                               gint                 height)
+                               GdkPixbuf *target,
+                               gint width,
+                               gint height)
 {
   gdouble xscale;
   gdouble yscale;
-  gint    source_width;
-  gint    source_height;
+  gint source_width;
+  gint source_height;
 
   source_width = gdk_pixbuf_get_width (loader->pixbuf);
   source_height = gdk_pixbuf_get_height (loader->pixbuf);
@@ -331,18 +340,18 @@ terminal_image_loader_stretch (TerminalImageLoader *loader,
 
 
 static void
-terminal_image_loader_fill    (TerminalImageLoader *loader,
-                               GdkPixbuf           *target,
-                               gint                 width,
-                               gint                 height)
+terminal_image_loader_fill (TerminalImageLoader *loader,
+                            GdkPixbuf *target,
+                            gint width,
+                            gint height)
 {
   gdouble xscale;
   gdouble yscale;
   gdouble scale;
   gdouble xoff;
   gdouble yoff;
-  gint    source_width;
-  gint    source_height;
+  gint source_width;
+  gint source_height;
 
   source_width = gdk_pixbuf_get_width (loader->pixbuf);
   source_height = gdk_pixbuf_get_height (loader->pixbuf);
@@ -351,22 +360,22 @@ terminal_image_loader_fill    (TerminalImageLoader *loader,
   yscale = (gdouble) height / source_height;
   if (xscale < yscale)
     {
-       scale = yscale;
-       xoff = ((scale - xscale) * source_width) * -0.5;
-       yoff = 0;
+      scale = yscale;
+      xoff = ((scale - xscale) * source_width) * -0.5;
+      yoff = 0;
     }
   else
     {
-       scale = xscale;
-       xoff = 0;
-       yoff = ((scale - yscale) * source_height) * -0.5;
+      scale = xscale;
+      xoff = 0;
+      yoff = ((scale - yscale) * source_height) * -0.5;
     }
-  scale = MAX(xscale,yscale);
+  scale = MAX (xscale, yscale);
 
   gdk_pixbuf_scale (loader->pixbuf, target,
-                        0, 0, width, height,
-                        xoff, yoff, scale, scale,
-                        GDK_INTERP_BILINEAR);
+                    0, 0, width, height,
+                    xoff, yoff, scale, scale,
+                    GDK_INTERP_BILINEAR);
 }
 
 
@@ -380,7 +389,7 @@ terminal_image_loader_fill    (TerminalImageLoader *loader,
  *
  * Return value : The default #TerminalImageLoader instance.
  **/
-TerminalImageLoader*
+TerminalImageLoader *
 terminal_image_loader_get (void)
 {
   static TerminalImageLoader *loader = NULL;
@@ -409,13 +418,13 @@ terminal_image_loader_get (void)
  * Return value : The image in the given @width and @height drawn with
  *                the configured style or %NULL on error.
  **/
-GdkPixbuf*
+GdkPixbuf *
 terminal_image_loader_load (TerminalImageLoader *loader,
-                            gint                 width,
-                            gint                 height)
+                            gint width,
+                            gint height)
 {
   GdkPixbuf *pixbuf;
-  GSList    *lp;
+  GSList *lp;
 
   g_return_val_if_fail (TERMINAL_IS_IMAGE_LOADER (loader), NULL);
   g_return_val_if_fail (width > 0, NULL);
@@ -437,8 +446,8 @@ terminal_image_loader_load (TerminalImageLoader *loader,
       w = gdk_pixbuf_get_width (pixbuf);
       h = gdk_pixbuf_get_height (pixbuf);
 
-      if ((w == width && h == height) ||
-          (w >= width && h >= height && loader->style == TERMINAL_BACKGROUND_STYLE_TILED))
+      if ((w == width && h == height)
+          || (w >= width && h >= height && loader->style == TERMINAL_BACKGROUND_STYLE_TILED))
         {
           return GDK_PIXBUF (g_object_ref (G_OBJECT (pixbuf)));
         }

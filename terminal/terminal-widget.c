@@ -43,7 +43,7 @@
 
 
 
-#define MAILTO          "mailto:"
+#define MAILTO "mailto:"
 
 
 
@@ -74,58 +74,74 @@ enum
 typedef struct
 {
   const gchar *pattern;
-  PatternType  type;
+  PatternType type;
 } TerminalRegexPattern;
 
-typedef struct {
-    gchar      *uri;
-    PatternType type;
+typedef struct
+{
+  gchar *uri;
+  PatternType type;
 } TerminalHyperlink;
 
-static const TerminalRegexPattern regex_patterns[] =
-{
+static const TerminalRegexPattern regex_patterns[] = {
   { REGEX_URL_AS_IS, PATTERN_TYPE_FULL_HTTP },
-  { REGEX_URL_HTTP,  PATTERN_TYPE_HTTP },
-  { REGEX_URL_FILE,  PATTERN_TYPE_FILE },
-  { REGEX_EMAIL,     PATTERN_TYPE_EMAIL },
-  { REGEX_NEWS_MAN,  PATTERN_TYPE_FULL_HTTP },
+  { REGEX_URL_HTTP, PATTERN_TYPE_HTTP },
+  { REGEX_URL_FILE, PATTERN_TYPE_FILE },
+  { REGEX_EMAIL, PATTERN_TYPE_EMAIL },
+  { REGEX_NEWS_MAN, PATTERN_TYPE_FULL_HTTP },
 };
 
 
 
-static void               terminal_widget_finalize                    (GObject          *object);
-static void               terminal_widget_set_property                (GObject          *object,
-                                                                       guint             prop_id,
-                                                                       const GValue     *value,
-                                                                       GParamSpec       *pspec);
-static gboolean           terminal_widget_button_press_event          (GtkWidget        *widget,
-                                                                       GdkEventButton   *event);
-static void               terminal_widget_drag_data_received          (GtkWidget        *widget,
-                                                                       GdkDragContext   *context,
-                                                                       gint              x,
-                                                                       gint              y,
-                                                                       GtkSelectionData *selection_data,
-                                                                       guint             info,
-                                                                       guint             time);
-static gboolean           terminal_widget_key_press_event             (GtkWidget        *widget,
-                                                                       GdkEventKey      *event);
-static void               terminal_widget_open_uri                    (TerminalWidget   *widget,
-                                                                       const gchar      *wlink,
-                                                                       PatternType       type);
-static void               terminal_widget_update_highlight_urls       (TerminalWidget   *widget);
-static gboolean           terminal_widget_action_shift_scroll_up      (TerminalWidget   *widget);
-static gboolean           terminal_widget_action_shift_scroll_down    (TerminalWidget   *widget);
-static gboolean           terminal_widget_action_scroll_page_up       (TerminalWidget   *widget);
-static gboolean           terminal_widget_action_scroll_page_down     (TerminalWidget   *widget);
-static void               terminal_widget_connect_accelerators        (TerminalWidget   *widget);
-static void               terminal_widget_disconnect_accelerators     (TerminalWidget   *widget);
-static TerminalHyperlink  terminal_widget_get_link                    (TerminalWidget   *widget,
-                                                                       GdkEvent         *event);
-static gboolean           terminal_widget_link_clickable              (const gchar      *uri,
-                                                                       PatternType       type);
-static void               terminal_widget_hyperlink_hover_uri_changed (TerminalWidget     *widget,
-                                                                       const char         *uri,
-                                                                       const GdkRectangle *bbox G_GNUC_UNUSED);
+static void
+terminal_widget_finalize (GObject *object);
+static void
+terminal_widget_set_property (GObject *object,
+                              guint prop_id,
+                              const GValue *value,
+                              GParamSpec *pspec);
+static gboolean
+terminal_widget_button_press_event (GtkWidget *widget,
+                                    GdkEventButton *event);
+static void
+terminal_widget_drag_data_received (GtkWidget *widget,
+                                    GdkDragContext *context,
+                                    gint x,
+                                    gint y,
+                                    GtkSelectionData *selection_data,
+                                    guint info,
+                                    guint time);
+static gboolean
+terminal_widget_key_press_event (GtkWidget *widget,
+                                 GdkEventKey *event);
+static void
+terminal_widget_open_uri (TerminalWidget *widget,
+                          const gchar *wlink,
+                          PatternType type);
+static void
+terminal_widget_update_highlight_urls (TerminalWidget *widget);
+static gboolean
+terminal_widget_action_shift_scroll_up (TerminalWidget *widget);
+static gboolean
+terminal_widget_action_shift_scroll_down (TerminalWidget *widget);
+static gboolean
+terminal_widget_action_scroll_page_up (TerminalWidget *widget);
+static gboolean
+terminal_widget_action_scroll_page_down (TerminalWidget *widget);
+static void
+terminal_widget_connect_accelerators (TerminalWidget *widget);
+static void
+terminal_widget_disconnect_accelerators (TerminalWidget *widget);
+static TerminalHyperlink
+terminal_widget_get_link (TerminalWidget *widget,
+                          GdkEvent *event);
+static gboolean
+terminal_widget_link_clickable (const gchar *uri,
+                                PatternType type);
+static void
+terminal_widget_hyperlink_hover_uri_changed (TerminalWidget *widget,
+                                             const char *uri,
+                                             const GdkRectangle *bbox G_GNUC_UNUSED);
 
 
 
@@ -136,13 +152,13 @@ struct _TerminalWidgetClass
 
 struct _TerminalWidget
 {
-  VteTerminal          parent_instance;
+  VteTerminal parent_instance;
 
   /*< private >*/
   TerminalPreferences *preferences;
-  GtkAccelGroup       *accel_group;
-  gint                 regex_tags[G_N_ELEMENTS (regex_patterns)];
-  pcre2_code_8        *regex_pcre[G_N_ELEMENTS (regex_patterns)];
+  GtkAccelGroup *accel_group;
+  gint regex_tags[G_N_ELEMENTS (regex_patterns)];
+  pcre2_code_8 *regex_pcre[G_N_ELEMENTS (regex_patterns)];
 };
 
 
@@ -151,8 +167,7 @@ static guint widget_signals[LAST_SIGNAL];
 
 
 
-static const GtkTargetEntry targets[] =
-{
+static const GtkTargetEntry targets[] = {
   { "text/uri-list", 0, TARGET_URI_LIST },
   { "text/x-moz-url", 0, TARGET_MOZ_URL },
   { "UTF8_STRING", 0, TARGET_UTF8_STRING },
@@ -166,17 +181,54 @@ static const GtkTargetEntry targets[] =
 
 
 
-static XfceGtkActionEntry action_entries[] =
-{
-  { TERMINAL_WIDGET_ACTION_SCROLL_UP,   "<Actions>/terminal-widget/shift-up",   "<Shift>Up",   XFCE_GTK_MENU_ITEM, N_ ("Scroll one line Up"),   NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_up),   },
-  { TERMINAL_WIDGET_ACTION_SCROLL_DOWN, "<Actions>/terminal-widget/shift-down", "<Shift>Down", XFCE_GTK_MENU_ITEM, N_ ("Scroll one line Down"), NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_down), },
-  { TERMINAL_WIDGET_ACTION_SCROLL_PAGE_UP,   "<Actions>/terminal-widget/shift-pageup",   "<Shift>Page_Up",   XFCE_GTK_MENU_ITEM, N_ ("Scroll one Page Up"),   NULL, NULL, G_CALLBACK (terminal_widget_action_scroll_page_up),   },
-  { TERMINAL_WIDGET_ACTION_SCROLL_PAGE_DOWN, "<Actions>/terminal-widget/shift-pagedown", "<Shift>Page_Down", XFCE_GTK_MENU_ITEM, N_ ("Scroll one Page Down"), NULL, NULL, G_CALLBACK (terminal_widget_action_scroll_page_down), },
+static XfceGtkActionEntry action_entries[] = {
+  {
+    TERMINAL_WIDGET_ACTION_SCROLL_UP,
+    "<Actions>/terminal-widget/shift-up",
+    "<Shift>Up",
+    XFCE_GTK_MENU_ITEM,
+    N_ ("Scroll one line Up"),
+    NULL,
+    NULL,
+    G_CALLBACK (terminal_widget_action_shift_scroll_up),
+  },
+  {
+    TERMINAL_WIDGET_ACTION_SCROLL_DOWN,
+    "<Actions>/terminal-widget/shift-down",
+    "<Shift>Down",
+    XFCE_GTK_MENU_ITEM,
+    N_ ("Scroll one line Down"),
+    NULL,
+    NULL,
+    G_CALLBACK (terminal_widget_action_shift_scroll_down),
+  },
+  {
+    TERMINAL_WIDGET_ACTION_SCROLL_PAGE_UP,
+    "<Actions>/terminal-widget/shift-pageup",
+    "<Shift>Page_Up",
+    XFCE_GTK_MENU_ITEM,
+    N_ ("Scroll one Page Up"),
+    NULL,
+    NULL,
+    G_CALLBACK (terminal_widget_action_scroll_page_up),
+  },
+  {
+    TERMINAL_WIDGET_ACTION_SCROLL_PAGE_DOWN,
+    "<Actions>/terminal-widget/shift-pagedown",
+    "<Shift>Page_Down",
+    XFCE_GTK_MENU_ITEM,
+    N_ ("Scroll one Page Down"),
+    NULL,
+    NULL,
+    G_CALLBACK (terminal_widget_action_scroll_page_down),
+  },
 };
 
-#define get_action_entry(id) xfce_gtk_get_action_entry_by_id(action_entries, G_N_ELEMENTS(action_entries), id)
+#define get_action_entry(id) xfce_gtk_get_action_entry_by_id (action_entries, G_N_ELEMENTS (action_entries), id)
 
-static GParamSpec *terminal_widget_props[N_PROPERTIES] = { NULL, };
+static GParamSpec *terminal_widget_props[N_PROPERTIES] = {
+  NULL,
+};
 
 
 
@@ -187,8 +239,8 @@ G_DEFINE_TYPE (TerminalWidget, terminal_widget, VTE_TYPE_TERMINAL)
 static void
 terminal_widget_class_init (TerminalWidgetClass *klass)
 {
-  GtkWidgetClass  *gtkwidget_class;
-  GObjectClass    *gobject_class;
+  GtkWidgetClass *gtkwidget_class;
+  GObjectClass *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_widget_finalize;
@@ -197,7 +249,7 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
   gtkwidget_class->button_press_event = terminal_widget_button_press_event;
   gtkwidget_class->drag_data_received = terminal_widget_drag_data_received;
-  gtkwidget_class->key_press_event    = terminal_widget_key_press_event;
+  gtkwidget_class->key_press_event = terminal_widget_key_press_event;
 
   xfce_gtk_translate_action_entries (action_entries, G_N_ELEMENTS (action_entries));
 
@@ -205,7 +257,7 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
    * TerminalWidget::get-context-menu:
    **/
   widget_signals[GET_CONTEXT_MENU] =
-    g_signal_new (I_("context-menu"),
+    g_signal_new (I_ ("context-menu"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
@@ -216,7 +268,7 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
    * TerminalWidget::paste-selection-request:
    **/
   widget_signals[PASTE_SELECTION_REQUEST] =
-    g_signal_new (I_("paste-selection-request"),
+    g_signal_new (I_ ("paste-selection-request"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
@@ -227,7 +279,7 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
    * TerminalWidget::paste-clipboard-request:
    **/
   widget_signals[PASTE_CLIPBOARD_REQUEST] =
-    g_signal_new (I_("paste-clipboard-request"),
+    g_signal_new (I_ ("paste-clipboard-request"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
@@ -257,9 +309,7 @@ terminal_widget_init (TerminalWidget *widget)
 
   /* setup Drag'n'Drop support */
   gtk_drag_dest_set (GTK_WIDGET (widget),
-                     GTK_DEST_DEFAULT_MOTION |
-                     GTK_DEST_DEFAULT_HIGHLIGHT |
-                     GTK_DEST_DEFAULT_DROP,
+                     GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT | GTK_DEST_DEFAULT_DROP,
                      targets, G_N_ELEMENTS (targets),
                      GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_MOVE);
 
@@ -283,8 +333,8 @@ terminal_widget_init (TerminalWidget *widget)
 
   for (guint i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
     {
-      gint         error_number;
-      PCRE2_SIZE   error_offset;
+      gint error_number;
+      PCRE2_SIZE error_offset;
 
       widget->regex_pcre[i] = pcre2_compile_8 ((PCRE2_SPTR8) regex_patterns[i].pattern, PCRE2_ZERO_TERMINATED, 0, &error_number, &error_offset, NULL);
       if (widget->regex_pcre[i] == NULL)
@@ -329,10 +379,10 @@ terminal_widget_finalize (GObject *object)
 
 
 static void
-terminal_widget_set_property (GObject      *object,
-                              guint         prop_id,
+terminal_widget_set_property (GObject *object,
+                              guint prop_id,
                               const GValue *value,
-                              GParamSpec   *pspec)
+                              GParamSpec *pspec)
 {
   TerminalWidget *widget = TERMINAL_WIDGET (object);
 
@@ -354,12 +404,12 @@ terminal_widget_set_property (GObject      *object,
 
 static void
 terminal_widget_context_menu_copy (TerminalWidget *widget,
-                                   GtkWidget      *item)
+                                   GtkWidget *item)
 {
   GtkClipboard *clipboard;
-  const gchar  *wlink;
-  GdkDisplay   *display;
-  gchar        *modified_wlink = NULL;
+  const gchar *wlink;
+  GdkDisplay *display;
+  gchar *modified_wlink = NULL;
 
   wlink = g_object_get_data (G_OBJECT (item), "terminal-widget-link");
   if (G_LIKELY (wlink != NULL))
@@ -389,7 +439,7 @@ terminal_widget_context_menu_copy (TerminalWidget *widget,
 
 static void
 terminal_widget_context_menu_open (TerminalWidget *widget,
-                                   GtkWidget      *item)
+                                   GtkWidget *item)
 {
   const gchar *wlink;
   PatternType *type;
@@ -405,17 +455,17 @@ terminal_widget_context_menu_open (TerminalWidget *widget,
 
 static void
 terminal_widget_context_menu (TerminalWidget *widget,
-                              gint            button,
-                              guint32         event_time,
-                              GdkEvent       *event)
+                              gint button,
+                              guint32 event_time,
+                              GdkEvent *event)
 {
-  GMainLoop        *loop;
-  GtkWidget        *menu            = NULL;
-  GtkWidget        *item_copy       = NULL;
-  GtkWidget        *item_open       = NULL;
-  GtkWidget        *item_separator  = NULL;
-  GList            *children;
-  guint             id;
+  GMainLoop *loop;
+  GtkWidget *menu = NULL;
+  GtkWidget *item_copy = NULL;
+  GtkWidget *item_open = NULL;
+  GtkWidget *item_separator = NULL;
+  GList *children;
+  guint id;
   TerminalHyperlink link;
 
   g_signal_emit (G_OBJECT (widget), widget_signals[GET_CONTEXT_MENU], 0, &menu);
@@ -457,15 +507,15 @@ terminal_widget_context_menu (TerminalWidget *widget,
         }
 
       /* prepend the "COPY" menu item */
-      g_object_set_data_full (G_OBJECT (item_copy), I_("terminal-widget-link"), g_strdup (link.uri), g_free);
+      g_object_set_data_full (G_OBJECT (item_copy), I_ ("terminal-widget-link"), g_strdup (link.uri), g_free);
       g_signal_connect_swapped (G_OBJECT (item_copy), "activate", G_CALLBACK (terminal_widget_context_menu_copy), widget);
       gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_copy);
 
       /* prepend the "OPEN" menu item */
       if (item_open != NULL)
         {
-          g_object_set_data_full (G_OBJECT (item_open), I_("terminal-widget-link"), g_strdup (link.uri), g_free);
-          g_object_set_data_full (G_OBJECT (item_open), I_("terminal-widget-link-type"), g_memdup (&link.type, sizeof (link.type)), g_free);
+          g_object_set_data_full (G_OBJECT (item_open), I_ ("terminal-widget-link"), g_strdup (link.uri), g_free);
+          g_object_set_data_full (G_OBJECT (item_open), I_ ("terminal-widget-link-type"), g_memdup (&link.type, sizeof (link.type)), g_free);
           g_signal_connect_swapped (G_OBJECT (item_open), "activate", G_CALLBACK (terminal_widget_context_menu_open), widget);
           gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_open);
         }
@@ -492,9 +542,12 @@ terminal_widget_context_menu (TerminalWidget *widget,
   g_main_loop_unref (loop);
 
   /* remove the additional items (if any) */
-  if (item_separator != NULL) gtk_widget_destroy (item_separator);
-  if (item_open != NULL) gtk_widget_destroy (item_open);
-  if (item_copy != NULL) gtk_widget_destroy (item_copy);
+  if (item_separator != NULL)
+    gtk_widget_destroy (item_separator);
+  if (item_open != NULL)
+    gtk_widget_destroy (item_open);
+  if (item_copy != NULL)
+    gtk_widget_destroy (item_copy);
 
   /* unlink this deactivate callback */
   g_signal_handler_disconnect (G_OBJECT (menu), id);
@@ -507,9 +560,9 @@ terminal_widget_context_menu (TerminalWidget *widget,
 
 static void
 terminal_widget_commit (TerminalWidget *widget,
-                        gchar          *data,
-                        guint           length,
-                        gboolean       *committed)
+                        gchar *data,
+                        guint length,
+                        gboolean *committed)
 {
   *committed = TRUE;
 }
@@ -517,13 +570,13 @@ terminal_widget_commit (TerminalWidget *widget,
 
 
 static gboolean
-terminal_widget_button_press_event (GtkWidget       *widget,
-                                    GdkEventButton  *event)
+terminal_widget_button_press_event (GtkWidget *widget,
+                                    GdkEventButton *event)
 {
   const GdkModifierType modifiers = gtk_accelerator_get_default_mod_mask ();
-  gboolean              committed = FALSE;
-  gboolean              middle_click_opens_uri;
-  guint                 signal_id = 0;
+  gboolean committed = FALSE;
+  gboolean middle_click_opens_uri;
+  guint signal_id = 0;
 
   if (event->type == GDK_BUTTON_PRESS)
     {
@@ -589,23 +642,23 @@ terminal_widget_button_press_event (GtkWidget       *widget,
 
 
 static void
-terminal_widget_drag_data_received (GtkWidget        *widget,
-                                    GdkDragContext   *context,
-                                    gint              x,
-                                    gint              y,
+terminal_widget_drag_data_received (GtkWidget *widget,
+                                    GdkDragContext *context,
+                                    gint x,
+                                    gint y,
                                     GtkSelectionData *selection_data,
-                                    guint             info,
-                                    guint             time)
+                                    guint info,
+                                    guint time)
 {
   const gunichar2 *ucs;
-  GdkRGBA        color;
-  GString       *str;
-  GValue         value = { 0, };
-  gchar        **uris;
-  gchar         *filename;
-  gchar         *text;
-  gint           n;
-  GtkWidget     *screen;
+  GdkRGBA color;
+  GString *str;
+  GValue value = G_VALUE_INIT;
+  gchar **uris;
+  gchar *filename;
+  gchar *text;
+  gint n;
+  GtkWidget *screen;
 
   switch (info)
     {
@@ -712,9 +765,9 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
         {
           /* get the color from the selection data (ignoring the alpha setting) */
           const guchar *data = gtk_selection_data_get_data (selection_data);
-          color.red   = (gdouble) data[0] / 65535.;
+          color.red = (gdouble) data[0] / 65535.;
           color.green = (gdouble) data[1] / 65535.;
-          color.blue  = (gdouble) data[2] / 65535.;
+          color.blue = (gdouble) data[2] / 65535.;
           color.alpha = 1.;
 
           /* prepare the value */
@@ -751,10 +804,10 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
 
 
 static gboolean
-terminal_widget_key_press_event (GtkWidget    *widget,
-                                 GdkEventKey  *event)
+terminal_widget_key_press_event (GtkWidget *widget,
+                                 GdkEventKey *event)
 {
-  gboolean       shortcuts_no_menukey;
+  gboolean shortcuts_no_menukey;
 
   /* determine current settings */
   g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
@@ -762,8 +815,10 @@ terminal_widget_key_press_event (GtkWidget    *widget,
                 NULL);
 
   /* popup context menu if "Menu" or "<Shift>F10" is pressed */
-  if (event->keyval == GDK_KEY_Menu ||
-      (!shortcuts_no_menukey && (event->state & GDK_SHIFT_MASK) != 0 && event->keyval == GDK_KEY_F10))
+  if (event->keyval == GDK_KEY_Menu
+      || (!shortcuts_no_menukey
+          && (event->state & GDK_SHIFT_MASK) != 0
+          && event->keyval == GDK_KEY_F10))
     {
       terminal_widget_context_menu (TERMINAL_WIDGET (widget), 0, event->time, (GdkEvent *) event);
       return TRUE;
@@ -776,33 +831,34 @@ terminal_widget_key_press_event (GtkWidget    *widget,
 
 static void
 terminal_widget_open_uri (TerminalWidget *widget,
-                          const gchar    *wlink,
-                          PatternType     type)
+                          const gchar *wlink,
+                          PatternType type)
 {
   GtkWindow *window = GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (widget)));
-  GError    *error = NULL;
-  gchar     *uri;
+  GError *error = NULL;
+  gchar *uri;
 
   /* handle the pattern type */
   switch (type)
     {
-      case PATTERN_TYPE_FULL_HTTP:
-      case PATTERN_TYPE_FILE:
-        uri = g_strdup (wlink);
-        break;
+    case PATTERN_TYPE_FULL_HTTP:
+    case PATTERN_TYPE_FILE:
+      uri = g_strdup (wlink);
+      break;
 
-      case PATTERN_TYPE_HTTP:
-        uri = g_strconcat ("http://", wlink, NULL);
-        break;
+    case PATTERN_TYPE_HTTP:
+      uri = g_strconcat ("http://", wlink, NULL);
+      break;
 
-      case PATTERN_TYPE_EMAIL:
-        uri = strncmp (wlink, MAILTO, strlen (MAILTO)) == 0
-            ? g_strdup (wlink) : g_strconcat (MAILTO, wlink, NULL);
-        break;
+    case PATTERN_TYPE_EMAIL:
+      uri = strncmp (wlink, MAILTO, strlen (MAILTO)) == 0
+              ? g_strdup (wlink)
+              : g_strconcat (MAILTO, wlink, NULL);
+      break;
 
-      default:
-        g_warning ("Invalid tag specified while trying to open link \"%s\".", wlink);
-        return;
+    default:
+      g_warning ("Invalid tag specified while trying to open link \"%s\".", wlink);
+      return;
     }
 
   /* try to open the URI with the responsible application */
@@ -821,11 +877,11 @@ terminal_widget_open_uri (TerminalWidget *widget,
 static void
 terminal_widget_update_highlight_urls (TerminalWidget *widget)
 {
-  guint                       i;
-  gboolean                    highlight_urls;
-  VteRegex                   *regex;
+  guint i;
+  gboolean highlight_urls;
+  VteRegex *regex;
   const TerminalRegexPattern *pattern;
-  GError                     *error;
+  GError *error;
 
   g_object_get (G_OBJECT (widget->preferences),
                 "misc-highlight-urls", &highlight_urls, NULL);
@@ -858,8 +914,9 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
                                            PCRE2_CASELESS | PCRE2_UTF | PCRE2_NO_UTF_CHECK | PCRE2_MULTILINE,
                                            &error);
 
-          if (error == NULL && (!vte_regex_jit (regex, PCRE2_JIT_COMPLETE, &error) ||
-                                !vte_regex_jit (regex, PCRE2_JIT_PARTIAL_SOFT, &error)))
+          if (error == NULL
+              && (!vte_regex_jit (regex, PCRE2_JIT_COMPLETE, &error)
+                  || !vte_regex_jit (regex, PCRE2_JIT_PARTIAL_SOFT, &error)))
             {
               g_critical ("Failed to JIT regular expression '%s': %s\n", pattern->pattern, error->message);
               g_clear_error (&error);
@@ -873,7 +930,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
 
           /* set the new regular expression */
           widget->regex_tags[i] = vte_terminal_match_add_regex (VTE_TERMINAL (widget), regex, 0);
-#if VTE_CHECK_VERSION (0, 53, 0)
+#if VTE_CHECK_VERSION(0, 53, 0)
           vte_terminal_match_set_cursor_name (VTE_TERMINAL (widget), widget->regex_tags[i], "hand2");
 #else
           vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget), widget->regex_tags[i], GDK_HAND2);
@@ -923,7 +980,7 @@ static gboolean
 terminal_widget_action_shift_scroll_down (TerminalWidget *widget)
 {
   GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
-  gdouble        value;
+  gdouble value;
 
   value = MIN (gtk_adjustment_get_value (adjustment) + 1, gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
   gtk_adjustment_set_value (adjustment, value);
@@ -969,7 +1026,7 @@ terminal_widget_disconnect_accelerators (TerminalWidget *widget)
 
 
 
-XfceGtkActionEntry*
+XfceGtkActionEntry *
 terminal_widget_get_action_entries (void)
 {
   return action_entries;
@@ -979,14 +1036,14 @@ terminal_widget_get_action_entries (void)
 
 static TerminalHyperlink
 terminal_widget_get_link (TerminalWidget *widget,
-                          GdkEvent       *event)
+                          GdkEvent *event)
 {
-  guint               i;
-  gint                tag;
-  gchar              *uri;
+  guint i;
+  gint tag;
+  gchar *uri;
   pcre2_match_data_8 *match_data;
-  TerminalHyperlink   result = {NULL, PATTERN_TYPE_NONE};
-  gboolean            hyperlinks_enabled;
+  TerminalHyperlink result = { NULL, PATTERN_TYPE_NONE };
+  gboolean hyperlinks_enabled;
 
   g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences), "misc-hyperlinks-enabled", &hyperlinks_enabled, NULL);
 
@@ -1011,7 +1068,7 @@ terminal_widget_get_link (TerminalWidget *widget,
           else if (rc != PCRE2_ERROR_NOMATCH)
             g_warning ("pcre2_match returned error code \"%d\".", rc);
 
-          pcre2_match_data_free_8(match_data);
+          pcre2_match_data_free_8 (match_data);
         }
     }
 
@@ -1047,11 +1104,11 @@ terminal_widget_get_link (TerminalWidget *widget,
  */
 static gboolean
 terminal_widget_link_clickable (const gchar *uri,
-                                PatternType  type)
+                                PatternType type)
 {
   gboolean result = FALSE;
-  gchar   *filename;
-  gchar   *hostname;
+  gchar *filename;
+  gchar *hostname;
 
   if (type != PATTERN_TYPE_FILE)
     return TRUE;
@@ -1063,8 +1120,8 @@ terminal_widget_link_clickable (const gchar *uri,
   else
     result = TRUE; /* consider it a local link */
 
-  g_free(filename);
-  g_free(hostname);
+  g_free (filename);
+  g_free (hostname);
 
   return result;
 }
@@ -1072,8 +1129,8 @@ terminal_widget_link_clickable (const gchar *uri,
 
 
 static void
-terminal_widget_hyperlink_hover_uri_changed (TerminalWidget     *widget,
-                                             const char         *uri,
+terminal_widget_hyperlink_hover_uri_changed (TerminalWidget *widget,
+                                             const char *uri,
                                              const GdkRectangle *bbox G_GNUC_UNUSED)
 {
   if (gtk_widget_get_realized (GTK_WIDGET (widget)) == FALSE)

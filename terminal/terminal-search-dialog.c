@@ -33,13 +33,18 @@
 
 
 
-static void terminal_search_dialog_finalize           (GObject              *object);
-static void terminal_search_dialog_opacity_changed    (TerminalSearchDialog *dialog);
-static void terminal_search_dialog_clear_gregex       (TerminalSearchDialog *dialog);
-static void terminal_search_dialog_entry_icon_release (GtkWidget            *entry,
-                                                       GtkEntryIconPosition  icon_pos);
-static void terminal_search_dialog_entry_changed      (GtkWidget            *entry,
-                                                       TerminalSearchDialog *dialog);
+static void
+terminal_search_dialog_finalize (GObject *object);
+static void
+terminal_search_dialog_opacity_changed (TerminalSearchDialog *dialog);
+static void
+terminal_search_dialog_clear_gregex (TerminalSearchDialog *dialog);
+static void
+terminal_search_dialog_entry_icon_release (GtkWidget *entry,
+                                           GtkEntryIconPosition icon_pos);
+static void
+terminal_search_dialog_entry_changed (GtkWidget *entry,
+                                      TerminalSearchDialog *dialog);
 
 
 struct _TerminalSearchDialogClass
@@ -51,17 +56,17 @@ struct _TerminalSearchDialog
 {
   XfceTitledDialog parent_instance;
 
-  VteRegex        *last_gregex;
+  VteRegex *last_gregex;
 
-  GtkWidget     *button_prev;
-  GtkWidget     *button_next;
+  GtkWidget *button_prev;
+  GtkWidget *button_next;
 
-  GtkWidget     *entry;
+  GtkWidget *entry;
 
-  GtkWidget     *match_case;
-  GtkWidget     *match_regex;
-  GtkWidget     *match_word;
-  GtkWidget     *wrap_around;
+  GtkWidget *match_case;
+  GtkWidget *match_regex;
+  GtkWidget *match_word;
+  GtkWidget *wrap_around;
 
   GtkAdjustment *opacity_adjustment;
 };
@@ -87,23 +92,23 @@ static void
 terminal_search_dialog_init (TerminalSearchDialog *dialog)
 {
   TerminalPreferences *preferences;
-  GtkWidget     *close_button;
-  GtkWidget     *hbox;
-  GtkWidget     *vbox;
-  GtkWidget     *label;
-  GtkWidget     *opacity_box;
-  GtkWidget     *opacity_scale;
-  GtkWidget     *opacity_label;
-  GtkWidget     *percent_label;
-  GdkScreen     *screen = gtk_widget_get_screen (GTK_WIDGET (dialog));
+  GtkWidget *close_button;
+  GtkWidget *hbox;
+  GtkWidget *vbox;
+  GtkWidget *label;
+  GtkWidget *opacity_box;
+  GtkWidget *opacity_scale;
+  GtkWidget *opacity_label;
+  GtkWidget *percent_label;
+  GdkScreen *screen = gtk_widget_get_screen (GTK_WIDGET (dialog));
   GtkAccelGroup *group = gtk_accel_group_new ();
-  GtkAccelKey    key_prev = {0}, key_next = {0};
+  GtkAccelKey key_prev = { 0 }, key_next = { 0 };
 
   gtk_window_set_title (GTK_WINDOW (dialog), _("Find"));
   gtk_window_set_default_size (GTK_WINDOW (dialog), 400, -1);
   gtk_window_add_accel_group (GTK_WINDOW (dialog), group);
 
-#if !LIBXFCE4UI_CHECK_VERSION (4, 19, 3)
+#if !LIBXFCE4UI_CHECK_VERSION(4, 19, 3)
   xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (dialog));
 #endif
 
@@ -141,30 +146,30 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
   gtk_entry_set_activates_default (GTK_ENTRY (dialog->entry), TRUE);
   gtk_entry_set_icon_from_icon_name (GTK_ENTRY (dialog->entry), GTK_ENTRY_ICON_SECONDARY, "edit-clear");
   g_signal_connect (G_OBJECT (dialog->entry), "icon-release",
-      G_CALLBACK (terminal_search_dialog_entry_icon_release), NULL);
+                    G_CALLBACK (terminal_search_dialog_entry_icon_release), NULL);
   g_signal_connect (G_OBJECT (dialog->entry), "changed",
-      G_CALLBACK (terminal_search_dialog_entry_changed), dialog);
+                    G_CALLBACK (terminal_search_dialog_entry_changed), dialog);
 
   dialog->match_case = gtk_check_button_new_with_mnemonic (_("C_ase sensitive"));
   gtk_box_pack_start (GTK_BOX (vbox), dialog->match_case, FALSE, FALSE, 0);
   g_signal_connect_swapped (G_OBJECT (dialog->match_case), "toggled",
-      G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
+                            G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
 
   dialog->match_regex = gtk_check_button_new_with_mnemonic (_("Match as _regular expression"));
   gtk_box_pack_start (GTK_BOX (vbox), dialog->match_regex, FALSE, FALSE, 0);
   g_signal_connect_swapped (G_OBJECT (dialog->match_regex), "toggled",
-      G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
+                            G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
 
   dialog->match_word = gtk_check_button_new_with_mnemonic (_("Match _entire word only"));
   gtk_box_pack_start (GTK_BOX (vbox), dialog->match_word, FALSE, FALSE, 0);
   g_signal_connect_swapped (G_OBJECT (dialog->match_word), "toggled",
-      G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
+                            G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
 
   dialog->wrap_around = gtk_check_button_new_with_mnemonic (_("_Wrap around"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->wrap_around), TRUE);
   gtk_box_pack_start (GTK_BOX (vbox), dialog->wrap_around, FALSE, FALSE, 0);
   g_signal_connect_swapped (G_OBJECT (dialog->wrap_around), "toggled",
-      G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
+                            G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
 
   opacity_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_widget_set_margin_start (opacity_box, 6);
@@ -214,9 +219,9 @@ static void
 terminal_search_dialog_opacity_changed (TerminalSearchDialog *dialog)
 {
   GdkScreen *screen = gtk_widget_get_screen (GTK_WIDGET (dialog));
-  gdouble    opacity = gdk_screen_is_composited (screen)
-                           ? gtk_adjustment_get_value (dialog->opacity_adjustment) / 100.0
-                           : 1.0;
+  gdouble opacity = gdk_screen_is_composited (screen)
+                      ? gtk_adjustment_get_value (dialog->opacity_adjustment) / 100.0
+                      : 1.0;
   gtk_widget_set_opacity (GTK_WIDGET (dialog), opacity);
 }
 
@@ -235,8 +240,8 @@ terminal_search_dialog_clear_gregex (TerminalSearchDialog *dialog)
 
 
 static void
-terminal_search_dialog_entry_icon_release (GtkWidget            *entry,
-                                           GtkEntryIconPosition  icon_pos)
+terminal_search_dialog_entry_icon_release (GtkWidget *entry,
+                                           GtkEntryIconPosition icon_pos)
 {
   if (icon_pos == GTK_ENTRY_ICON_SECONDARY)
     gtk_entry_set_text (GTK_ENTRY (entry), "");
@@ -245,11 +250,11 @@ terminal_search_dialog_entry_icon_release (GtkWidget            *entry,
 
 
 static void
-terminal_search_dialog_entry_changed (GtkWidget            *entry,
+terminal_search_dialog_entry_changed (GtkWidget *entry,
                                       TerminalSearchDialog *dialog)
 {
   const gchar *text;
-  gboolean     has_text;
+  gboolean has_text;
 
   text = gtk_entry_get_text (GTK_ENTRY (dialog->entry));
   has_text = IS_STRING (text);
@@ -260,7 +265,7 @@ terminal_search_dialog_entry_changed (GtkWidget            *entry,
   gtk_widget_set_sensitive (dialog->button_next, has_text);
 
   xfce_titled_dialog_set_default_response (XFCE_TITLED_DIALOG (dialog),
-    has_text ? TERMINAL_RESPONSE_SEARCH_PREV : GTK_RESPONSE_CLOSE);
+                                           has_text ? TERMINAL_RESPONSE_SEARCH_PREV : GTK_RESPONSE_CLOSE);
 }
 
 
@@ -286,14 +291,14 @@ terminal_search_dialog_get_wrap_around (TerminalSearchDialog *dialog)
 
 
 VteRegex *
-terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
-                                  GError               **error)
+terminal_search_dialog_get_regex (TerminalSearchDialog *dialog,
+                                  GError **error)
 {
-  const gchar        *pattern;
-  guint32             flags = PCRE2_UTF | PCRE2_NO_UTF_CHECK | PCRE2_MULTILINE;
-  gchar              *pattern_escaped = NULL;
-  gchar              *word_regex = NULL;
-  VteRegex           *regex;
+  const gchar *pattern;
+  guint32 flags = PCRE2_UTF | PCRE2_NO_UTF_CHECK | PCRE2_MULTILINE;
+  gchar *pattern_escaped = NULL;
+  gchar *word_regex = NULL;
+  VteRegex *regex;
 
   g_return_val_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog), NULL);
   g_return_val_if_fail (error == NULL || *error == NULL, NULL);
@@ -312,7 +317,7 @@ terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
 
   if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->match_regex)))
     {
-/* MULTILINE flag is always used for pcre2 */
+      /* MULTILINE flag is always used for pcre2 */
       flags |= G_REGEX_MULTILINE;
     }
   else

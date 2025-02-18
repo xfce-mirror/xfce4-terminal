@@ -67,7 +67,7 @@
 
 /* minimum terminal dimensions */
 #define MIN_COLUMNS 4
-#define MIN_ROWS    1
+#define MIN_ROWS 1
 
 
 
@@ -107,79 +107,123 @@ typedef enum
 
 
 
-static void       terminal_screen_finalize                      (GObject               *object);
-static void       terminal_screen_get_property                  (GObject               *object,
-                                                                 guint                  prop_id,
-                                                                 GValue                *value,
-                                                                 GParamSpec            *pspec);
-static void       terminal_screen_set_property                  (GObject               *object,
-                                                                 guint                  prop_id,
-                                                                 const GValue          *value,
-                                                                 GParamSpec            *pspec);
-static void       terminal_screen_realize                       (GtkWidget             *widget);
-static void       terminal_screen_unrealize                     (GtkWidget             *widget);
-static void       terminal_screen_style_updated                 (GtkWidget             *widget);
-static gboolean   terminal_screen_draw                          (GtkWidget             *widget,
-                                                                 cairo_t               *cr,
-                                                                 gpointer               user_data);
-static void       terminal_screen_preferences_changed           (TerminalPreferences   *preferences,
-                                                                 GParamSpec            *pspec,
-                                                                 TerminalScreen        *screen);
-static gboolean   terminal_screen_get_child_command             (TerminalScreen        *screen,
-                                                                 gchar                **command,
-                                                                 gchar               ***argv,
-                                                                 GError               **error);
-static gchar     *terminal_screen_parse_title                   (TerminalScreen        *screen,
-                                                                 const gchar           *title);
-static gchar    **terminal_screen_get_child_environment         (TerminalScreen        *screen);
-static void       terminal_screen_update_background             (TerminalScreen        *screen);
-static void       terminal_screen_update_binding_backspace      (TerminalScreen        *screen);
-static void       terminal_screen_update_binding_delete         (TerminalScreen        *screen);
-static void       terminal_screen_update_binding_ambiguous_width(TerminalScreen        *screen);
-static void       terminal_screen_update_encoding               (TerminalScreen        *screen);
-static void       terminal_screen_update_colors                 (TerminalScreen        *screen);
-static void       terminal_screen_update_misc_bell              (TerminalScreen        *screen);
-static void       terminal_screen_update_misc_cursor_blinks     (TerminalScreen        *screen);
-static void       terminal_screen_update_misc_cursor_shape      (TerminalScreen        *screen);
-static void       terminal_screen_update_misc_mouse_autohide    (TerminalScreen        *screen);
-static void       terminal_screen_update_misc_rewrap_on_resize  (TerminalScreen        *screen);
-static void       terminal_screen_update_scrolling_lines        (TerminalScreen        *screen);
-static void       terminal_screen_update_scrolling_on_output    (TerminalScreen        *screen);
-static void       terminal_screen_update_scrolling_on_keystroke (TerminalScreen        *screen);
-static void       terminal_screen_update_kinetic_scrolling      (TerminalScreen        *screen);
-static void       terminal_screen_update_text_blink_mode        (TerminalScreen        *screen);
-static void       terminal_screen_update_title                  (TerminalScreen        *screen);
-static void       terminal_screen_update_word_chars             (TerminalScreen        *screen);
-static void       terminal_screen_vte_child_exited              (VteTerminal           *terminal,
-                                                                 gint                   status,
-                                                                 TerminalScreen        *screen);
-static void       terminal_screen_vte_eof                       (VteTerminal           *terminal,
-                                                                 TerminalScreen        *screen);
-static GtkWidget *terminal_screen_vte_get_context_menu          (TerminalWidget        *widget,
-                                                                 TerminalScreen        *screen);
-static void       terminal_screen_vte_selection_changed         (VteTerminal           *terminal,
-                                                                 TerminalScreen        *screen);
-static void       terminal_screen_vte_window_title_changed      (VteTerminal           *terminal,
-                                                                 TerminalScreen        *screen);
-static void       terminal_screen_vte_resize_window             (VteTerminal           *terminal,
-                                                                 guint                  width,
-                                                                 guint                  height,
-                                                                 TerminalScreen        *screen);
-static void       terminal_screen_vte_window_contents_changed   (TerminalScreen        *screen);
-static void       terminal_screen_vte_window_contents_resized   (TerminalScreen        *screen);
-static void       terminal_screen_update_label_orientation      (TerminalScreen        *screen);
-static void       terminal_screen_urgent_bell                   (TerminalWidget        *widget,
-                                                                 TerminalScreen        *screen);
-static void       terminal_screen_set_custom_command            (TerminalScreen        *screen,
-                                                                 gchar                **command);
-static void       terminal_screen_set_tab_label_color           (TerminalScreen        *screen,
-                                                                 const GdkRGBA         *color);
-static GtkWidget* terminal_screen_unsafe_paste_dialog_new       (TerminalScreen        *screen,
-                                                                 const gchar           *text);
-static void       terminal_screen_paste_unsafe_text             (TerminalScreen        *screen,
-                                                                 const gchar           *text,
-                                                                 GdkAtom                original_clipboard);
-static void       terminal_screen_update_sixel                  (TerminalScreen        *screen);
+static void
+terminal_screen_finalize (GObject *object);
+static void
+terminal_screen_get_property (GObject *object,
+                              guint prop_id,
+                              GValue *value,
+                              GParamSpec *pspec);
+static void
+terminal_screen_set_property (GObject *object,
+                              guint prop_id,
+                              const GValue *value,
+                              GParamSpec *pspec);
+static void
+terminal_screen_realize (GtkWidget *widget);
+static void
+terminal_screen_unrealize (GtkWidget *widget);
+static void
+terminal_screen_style_updated (GtkWidget *widget);
+static gboolean
+terminal_screen_draw (GtkWidget *widget,
+                      cairo_t *cr,
+                      gpointer user_data);
+static void
+terminal_screen_preferences_changed (TerminalPreferences *preferences,
+                                     GParamSpec *pspec,
+                                     TerminalScreen *screen);
+static gboolean
+terminal_screen_get_child_command (TerminalScreen *screen,
+                                   gchar **command,
+                                   gchar ***argv,
+                                   GError **error);
+static gchar *
+terminal_screen_parse_title (TerminalScreen *screen,
+                             const gchar *title);
+static gchar **
+terminal_screen_get_child_environment (TerminalScreen *screen);
+static void
+terminal_screen_update_background (TerminalScreen *screen);
+static void
+terminal_screen_update_binding_backspace (TerminalScreen *screen);
+static void
+terminal_screen_update_binding_delete (TerminalScreen *screen);
+static void
+terminal_screen_update_binding_ambiguous_width (TerminalScreen *screen);
+static void
+terminal_screen_update_encoding (TerminalScreen *screen);
+static void
+terminal_screen_update_colors (TerminalScreen *screen);
+static void
+terminal_screen_update_misc_bell (TerminalScreen *screen);
+static void
+terminal_screen_update_misc_cursor_blinks (TerminalScreen *screen);
+static void
+terminal_screen_update_misc_cursor_shape (TerminalScreen *screen);
+static void
+terminal_screen_update_misc_mouse_autohide (TerminalScreen *screen);
+static void
+terminal_screen_update_misc_rewrap_on_resize (TerminalScreen *screen);
+static void
+terminal_screen_update_scrolling_lines (TerminalScreen *screen);
+static void
+terminal_screen_update_scrolling_on_output (TerminalScreen *screen);
+static void
+terminal_screen_update_scrolling_on_keystroke (TerminalScreen *screen);
+static void
+terminal_screen_update_kinetic_scrolling (TerminalScreen *screen);
+static void
+terminal_screen_update_text_blink_mode (TerminalScreen *screen);
+static void
+terminal_screen_update_title (TerminalScreen *screen);
+static void
+terminal_screen_update_word_chars (TerminalScreen *screen);
+static void
+terminal_screen_vte_child_exited (VteTerminal *terminal,
+                                  gint status,
+                                  TerminalScreen *screen);
+static void
+terminal_screen_vte_eof (VteTerminal *terminal,
+                         TerminalScreen *screen);
+static GtkWidget *
+terminal_screen_vte_get_context_menu (TerminalWidget *widget,
+                                      TerminalScreen *screen);
+static void
+terminal_screen_vte_selection_changed (VteTerminal *terminal,
+                                       TerminalScreen *screen);
+static void
+terminal_screen_vte_window_title_changed (VteTerminal *terminal,
+                                          TerminalScreen *screen);
+static void
+terminal_screen_vte_resize_window (VteTerminal *terminal,
+                                   guint width,
+                                   guint height,
+                                   TerminalScreen *screen);
+static void
+terminal_screen_vte_window_contents_changed (TerminalScreen *screen);
+static void
+terminal_screen_vte_window_contents_resized (TerminalScreen *screen);
+static void
+terminal_screen_update_label_orientation (TerminalScreen *screen);
+static void
+terminal_screen_urgent_bell (TerminalWidget *widget,
+                             TerminalScreen *screen);
+static void
+terminal_screen_set_custom_command (TerminalScreen *screen,
+                                    gchar **command);
+static void
+terminal_screen_set_tab_label_color (TerminalScreen *screen,
+                                     const GdkRGBA *color);
+static GtkWidget *
+terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
+                                         const gchar *text);
+static void
+terminal_screen_paste_unsafe_text (TerminalScreen *screen,
+                                   const gchar *text,
+                                   GdkAtom original_clipboard);
+static void
+terminal_screen_update_sixel (TerminalScreen *screen);
 
 
 
@@ -190,58 +234,57 @@ struct _TerminalScreenClass
 
 struct _TerminalScreen
 {
-  GtkOverlay           parent_instance;
+  GtkOverlay parent_instance;
   TerminalPreferences *preferences;
   TerminalImageLoader *loader;
-  GtkWidget           *swin;
-  GtkWidget           *terminal;
-  GtkWidget           *scrollbar;
-  GtkWidget           *tab_label;
+  GtkWidget *swin;
+  GtkWidget *terminal;
+  GtkWidget *scrollbar;
+  GtkWidget *tab_label;
 
-  GdkRGBA              background_color;
+  GdkRGBA background_color;
 
-  guint                session_id;
+  guint session_id;
 
-  GPid                 pid;
-  gchar               *working_directory;
-  GCancellable        *cancellable;
+  GPid pid;
+  gchar *working_directory;
+  GCancellable *cancellable;
 
-  gchar              **custom_command;
-  gchar               *custom_title;
-  gchar               *initial_title;
+  gchar **custom_command;
+  gchar *custom_title;
+  gchar *initial_title;
 
-  gchar               *custom_fg_color;
-  gchar               *custom_bg_color;
-  gchar               *custom_title_color;
+  gchar *custom_fg_color;
+  gchar *custom_bg_color;
+  gchar *custom_title_color;
 
-  TerminalTitle        dynamic_title_mode;
-  guint                hold : 1;
-  guint                has_random_bg_color : 1;
+  TerminalTitle dynamic_title_mode;
+  guint hold : 1;
+  guint has_random_bg_color : 1;
 
-  guint                activity_timeout_id;
-  time_t               activity_resize_time;
+  guint activity_timeout_id;
+  time_t activity_resize_time;
 
-  GdkGeometry          hints;
+  GdkGeometry hints;
 };
 
 typedef struct
 {
-  DisablePasteDialog  id;
-  gchar              *string;
+  DisablePasteDialog id;
+  gchar *string;
 } DisablePasteDialogEntry;
 
 
 
-static guint                   screen_signals[LAST_SIGNAL];
-static guint                   screen_last_session_id             = 0;
-static gboolean                disable_paste_dialog_temporarily   = FALSE;
-static gboolean                disable_paste_dialog_until_restart = FALSE;
-static DisablePasteDialogEntry disable_unsafe_past_dialog_texts[] =
-{
-  { DISABLE_PASTE_DIALOG_NOT,       N_ ("Do not disable dialog")                                 },
-  { DISABLE_PASTE_DIALOG_5,         N_ ("Disable for 5 minutes")                                 },
-  { DISABLE_PASTE_DIALOG_15,        N_ ("Disable for 15 minutes")                                },
-  { DISABLE_PASTE_DIALOG_RESTART,   N_ ("Disable until program restart")                         },
+static guint screen_signals[LAST_SIGNAL];
+static guint screen_last_session_id = 0;
+static gboolean disable_paste_dialog_temporarily = FALSE;
+static gboolean disable_paste_dialog_until_restart = FALSE;
+static DisablePasteDialogEntry disable_unsafe_past_dialog_texts[] = {
+  { DISABLE_PASTE_DIALOG_NOT, N_ ("Do not disable dialog") },
+  { DISABLE_PASTE_DIALOG_5, N_ ("Disable for 5 minutes") },
+  { DISABLE_PASTE_DIALOG_15, N_ ("Disable for 15 minutes") },
+  { DISABLE_PASTE_DIALOG_RESTART, N_ ("Disable until program restart") },
   { DISABLE_PASTE_DIALOG_PERMANENT, N_ ("Disable dialog (can be re-enabled in the Preferences)") }
 };
 
@@ -255,7 +298,7 @@ static void
 terminal_screen_class_init (TerminalScreenClass *klass)
 {
   GtkWidgetClass *gtkwidget_class;
-  GObjectClass   *gobject_class;
+  GObjectClass *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_screen_finalize;
@@ -293,7 +336,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
    * TerminalScreen::get-context-menu
    **/
   screen_signals[GET_CONTEXT_MENU] =
-    g_signal_new (I_("get-context-menu"),
+    g_signal_new (I_ ("get-context-menu"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
@@ -304,7 +347,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
    * TerminalScreen::selection-changed
    **/
   screen_signals[SELECTION_CHANGED] =
-    g_signal_new (I_("selection-changed"),
+    g_signal_new (I_ ("selection-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
@@ -315,7 +358,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
    * TerminalScreen::close-tab-request
    **/
   screen_signals[CLOSE_TAB] =
-    g_signal_new (I_("close-tab-request"),
+    g_signal_new (I_ ("close-tab-request"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
@@ -339,21 +382,21 @@ terminal_screen_init (TerminalScreen *screen)
 
   screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
   g_signal_connect (G_OBJECT (screen->terminal), "child-exited",
-      G_CALLBACK (terminal_screen_vte_child_exited), screen);
+                    G_CALLBACK (terminal_screen_vte_child_exited), screen);
   g_signal_connect (G_OBJECT (screen->terminal), "eof",
-      G_CALLBACK (terminal_screen_vte_eof), screen);
+                    G_CALLBACK (terminal_screen_vte_eof), screen);
   g_signal_connect (G_OBJECT (screen->terminal), "context-menu",
-      G_CALLBACK (terminal_screen_vte_get_context_menu), screen);
+                    G_CALLBACK (terminal_screen_vte_get_context_menu), screen);
   g_signal_connect (G_OBJECT (screen->terminal), "selection-changed",
-      G_CALLBACK (terminal_screen_vte_selection_changed), screen);
+                    G_CALLBACK (terminal_screen_vte_selection_changed), screen);
   g_signal_connect (G_OBJECT (screen->terminal), "window-title-changed",
-      G_CALLBACK (terminal_screen_vte_window_title_changed), screen);
+                    G_CALLBACK (terminal_screen_vte_window_title_changed), screen);
   g_signal_connect (G_OBJECT (screen->terminal), "resize-window",
-      G_CALLBACK (terminal_screen_vte_resize_window), screen);
+                    G_CALLBACK (terminal_screen_vte_resize_window), screen);
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "paste-selection-request",
-      G_CALLBACK (terminal_screen_paste_primary), screen);
+                            G_CALLBACK (terminal_screen_paste_primary), screen);
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "paste-clipboard-request",
-      G_CALLBACK (terminal_screen_paste_clipboard), screen);
+                            G_CALLBACK (terminal_screen_paste_clipboard), screen);
 
   screen->preferences = terminal_preferences_get ();
 
@@ -372,7 +415,7 @@ terminal_screen_init (TerminalScreen *screen)
 
   /* watch preferences changes */
   g_signal_connect (G_OBJECT (screen->preferences), "notify",
-      G_CALLBACK (terminal_screen_preferences_changed), screen);
+                    G_CALLBACK (terminal_screen_preferences_changed), screen);
 
   /* show the terminal */
   gtk_widget_show_all (screen->swin);
@@ -401,9 +444,9 @@ terminal_screen_init (TerminalScreen *screen)
 
   /* last, connect contents-changed to avoid a race with updates above */
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "contents-changed",
-      G_CALLBACK (terminal_screen_vte_window_contents_changed), screen);
+                            G_CALLBACK (terminal_screen_vte_window_contents_changed), screen);
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "size-allocate",
-      G_CALLBACK (terminal_screen_vte_window_contents_resized), screen);
+                            G_CALLBACK (terminal_screen_vte_window_contents_resized), screen);
 }
 
 
@@ -418,7 +461,7 @@ terminal_screen_finalize (GObject *object)
 
   /* detach from preferences */
   g_signal_handlers_disconnect_by_func (screen->preferences,
-      G_CALLBACK (terminal_screen_preferences_changed), screen);
+                                        G_CALLBACK (terminal_screen_preferences_changed), screen);
   g_object_unref (G_OBJECT (screen->preferences));
 
   if (screen->loader != NULL)
@@ -441,17 +484,17 @@ terminal_screen_finalize (GObject *object)
 
 
 static void
-terminal_screen_get_property (GObject    *object,
-                              guint       prop_id,
-                              GValue     *value,
+terminal_screen_get_property (GObject *object,
+                              guint prop_id,
+                              GValue *value,
                               GParamSpec *pspec)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (object);
-  const gchar    *title = NULL;
-  TerminalTitle   mode;
-  gchar          *initial;
-  gchar          *parsed_title = NULL;
-  gchar          *custom_title;
+  const gchar *title = NULL;
+  TerminalTitle mode;
+  gchar *initial;
+  gchar *parsed_title = NULL;
+  gchar *custom_title;
 
   switch (prop_id)
     {
@@ -511,10 +554,10 @@ terminal_screen_get_property (GObject    *object,
 
 
 static void
-terminal_screen_set_property (GObject      *object,
-                              guint         prop_id,
+terminal_screen_set_property (GObject *object,
+                              guint prop_id,
                               const GValue *value,
-                              GParamSpec   *pspec)
+                              GParamSpec *pspec)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (object);
 
@@ -576,15 +619,15 @@ terminal_screen_style_updated (GtkWidget *widget)
 
 static gboolean
 terminal_screen_draw (GtkWidget *widget,
-                      cairo_t   *cr,
-                      gpointer   user_data)
+                      cairo_t *cr,
+                      gpointer user_data)
 {
-  TerminalScreen     *screen = TERMINAL_SCREEN (user_data);
-  GdkPixbuf          *image;
-  gint                width, height;
-  cairo_surface_t    *surface;
-  cairo_t            *ctx;
-  gint                scale_factor;
+  TerminalScreen *screen = TERMINAL_SCREEN (user_data);
+  GdkPixbuf *image;
+  gint width, height;
+  cairo_surface_t *surface;
+  cairo_t *ctx;
+  gint scale_factor;
 
   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   g_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
@@ -598,7 +641,7 @@ terminal_screen_draw (GtkWidget *widget,
     return FALSE;
 
   g_signal_handlers_disconnect_by_func (G_OBJECT (screen->terminal),
-      G_CALLBACK (terminal_screen_draw), screen);
+                                        G_CALLBACK (terminal_screen_draw), screen);
 
   cairo_save (cr);
 
@@ -624,7 +667,7 @@ terminal_screen_draw (GtkWidget *widget,
   cairo_restore (cr);
 
   g_signal_connect (G_OBJECT (screen->terminal), "draw",
-      G_CALLBACK (terminal_screen_draw), screen);
+                    G_CALLBACK (terminal_screen_draw), screen);
 
   return TRUE;
 }
@@ -633,8 +676,8 @@ terminal_screen_draw (GtkWidget *widget,
 
 static void
 terminal_screen_preferences_changed (TerminalPreferences *preferences,
-                                     GParamSpec          *pspec,
-                                     TerminalScreen      *screen)
+                                     GParamSpec *pspec,
+                                     TerminalScreen *screen)
 {
   const gchar *name;
 
@@ -695,30 +738,32 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
 
 
 static gboolean
-terminal_screen_get_child_command (TerminalScreen   *screen,
-                                   gchar           **command,
-                                   gchar          ***argv,
-                                   GError          **error)
+terminal_screen_get_child_command (TerminalScreen *screen,
+                                   gchar **command,
+                                   gchar ***argv,
+                                   GError **error)
 {
   struct passwd *pw;
-  const gchar   *shell_fullpath = NULL;
-  gchar         *shell_name;
-  gchar         *custom_command = NULL;
-  gboolean       command_login_shell;
-  gboolean       run_custom_command;
-  guint          i;
-  const gchar   *shells[] = { "/bin/sh",
-                              "/bin/bash", "/usr/bin/bash",
-                              "/bin/dash", "/usr/bin/dash",
-                              "/bin/zsh",  "/usr/bin/zsh",
-                              "/bin/tcsh", "/usr/bin/tcsh",
-                              "/bin/csh",  "/usr/bin/csh",
-                              "/bin/ksh",  "/usr/bin/ksh" };
+  const gchar *shell_fullpath = NULL;
+  gchar *shell_name;
+  gchar *custom_command = NULL;
+  gboolean command_login_shell;
+  gboolean run_custom_command;
+  guint i;
+  const gchar *shells[] = {
+    "/bin/sh",
+    "/bin/bash", "/usr/bin/bash",
+    "/bin/dash", "/usr/bin/dash",
+    "/bin/zsh", "/usr/bin/zsh",
+    "/bin/tcsh", "/usr/bin/tcsh",
+    "/bin/csh", "/usr/bin/csh",
+    "/bin/ksh", "/usr/bin/ksh"
+  };
 
   if (screen->custom_command != NULL)
     {
       *command = g_strdup (screen->custom_command[0]);
-      *argv    = g_strdupv (screen->custom_command);
+      *argv = g_strdupv (screen->custom_command);
     }
   else
     {
@@ -754,7 +799,7 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
       else
         {
           /* use the SHELL environement variable if we're in
-          * non-setuid mode and the path is executable */
+           * non-setuid mode and the path is executable */
           if (geteuid () == getuid ()
               && getegid () == getgid ())
             {
@@ -779,9 +824,9 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
                   /* lookup a good fallback */
                   for (i = 0; i < G_N_ELEMENTS (shells); i++)
                     {
-                      if (access (shells [i], X_OK) == 0)
+                      if (access (shells[i], X_OK) == 0)
                         {
-                          shell_fullpath = shells [i];
+                          shell_fullpath = shells[i];
                           break;
                         }
                     }
@@ -793,7 +838,7 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
                                    _("Unable to determine your login shell."));
                       return FALSE;
                     }
-                 }
+                }
             }
         }
 
@@ -821,13 +866,13 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
 
 static gchar *
 terminal_screen_parse_title (TerminalScreen *screen,
-                             const gchar    *title)
+                             const gchar *title)
 {
-  GString     *string;
+  GString *string;
   const gchar *remainder;
   const gchar *percent;
   const gchar *directory = NULL;
-  gchar       *base_name;
+  gchar *base_name;
   const gchar *vte_title;
 
   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
@@ -904,16 +949,16 @@ terminal_screen_parse_title (TerminalScreen *screen,
 
 
 
-static gchar**
+static gchar **
 terminal_screen_get_child_environment (TerminalScreen *screen)
 {
-  gchar        **result;
-  gchar        **p;
-  guint          n;
-  gchar        **env;
-  const gchar   *value;
-  GtkWidget     *toplevel;
-  GdkDisplay    *display;
+  gchar **result;
+  gchar **p;
+  guint n;
+  gchar **env;
+  const gchar *value;
+  GtkWidget *toplevel;
+  GdkDisplay *display;
 
   /* get all the environ variables */
   env = g_listenv ();
@@ -934,7 +979,7 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
           || strcmp (*p, "TERM") == 0)
         continue;
 
-#if !VTE_CHECK_VERSION (0, 51, 90)
+#if !VTE_CHECK_VERSION(0, 51, 90)
       /* copy working directory to $PWD, to preserve symlinks
        * see https://bugzilla.gnome.org/show_bug.cgi?id=758452 */
       if (strcmp (*p, "PWD") == 0)
@@ -984,7 +1029,7 @@ static void
 terminal_screen_update_background (TerminalScreen *screen)
 {
   TerminalBackground background_mode;
-  gdouble            background_alpha;
+  gdouble background_alpha;
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   g_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
@@ -1053,7 +1098,7 @@ terminal_screen_update_binding_backspace (TerminalScreen *screen)
 
   g_object_get (G_OBJECT (screen->preferences), "binding-backspace", &binding, NULL);
   vte_terminal_set_backspace_binding (VTE_TERMINAL (screen->terminal),
-      terminal_screen_binding_vte (binding));
+                                      terminal_screen_binding_vte (binding));
 }
 
 
@@ -1097,26 +1142,26 @@ terminal_screen_update_encoding (TerminalScreen *screen)
 static void
 terminal_screen_update_colors (TerminalScreen *screen)
 {
-  GdkRGBA    palette[16];
-  GdkRGBA    bg;
-  GdkRGBA    fg;
-  GdkRGBA    cursor;
-  GdkRGBA    selection;
-  GdkRGBA    bold;
-  gboolean   cursor_use_default;
-  gboolean   selection_use_default;
-  gboolean   bold_use_default;
-  guint      n = 0;
-  gboolean   has_bg;
-  gboolean   has_fg;
-  gboolean   valid_palette = FALSE;
-  gchar     *palette_str;
-  gchar    **colors;
-  gboolean   vary_bg;
-  gdouble    hsv[N_HSV];
-  gdouble    sat_min, sat_max;
-  gboolean   bold_is_bright;
-  gboolean   use_theme;
+  GdkRGBA palette[16];
+  GdkRGBA bg;
+  GdkRGBA fg;
+  GdkRGBA cursor;
+  GdkRGBA selection;
+  GdkRGBA bold;
+  gboolean cursor_use_default;
+  gboolean selection_use_default;
+  gboolean bold_use_default;
+  guint n = 0;
+  gboolean has_bg;
+  gboolean has_fg;
+  gboolean valid_palette = FALSE;
+  gchar *palette_str;
+  gchar **colors;
+  gboolean vary_bg;
+  gdouble hsv[N_HSV];
+  gdouble sat_min, sat_max;
+  gboolean bold_is_bright;
+  gboolean use_theme;
 
   GtkStyleContext *context = gtk_widget_get_style_context (gtk_widget_get_toplevel (GTK_WIDGET (screen)));
 
@@ -1266,7 +1311,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
   /* bold color */
   if (!bold_use_default)
     bold_use_default = !terminal_preferences_get_color (screen->preferences, "color-bold", &bold);
-#if VTE_CHECK_VERSION (0, 52, 0)
+#if VTE_CHECK_VERSION(0, 52, 0)
   /* the meaning of NULL for bold color changed in vte 0.52: see bug #15019 */
   vte_terminal_set_color_bold (VTE_TERMINAL (screen->terminal), bold_use_default ? NULL : &bold);
 #else
@@ -1307,25 +1352,25 @@ static void
 terminal_screen_update_misc_cursor_shape (TerminalScreen *screen)
 {
   TerminalCursorShape val;
-  VteCursorShape      shape = VTE_CURSOR_SHAPE_BLOCK;
+  VteCursorShape shape = VTE_CURSOR_SHAPE_BLOCK;
 
   g_object_get (G_OBJECT (screen->preferences), "misc-cursor-shape", &val, NULL);
 
   switch (val)
     {
-      case TERMINAL_CURSOR_SHAPE_BLOCK:
-        break;
+    case TERMINAL_CURSOR_SHAPE_BLOCK:
+      break;
 
-      case TERMINAL_CURSOR_SHAPE_IBEAM:
-        shape = VTE_CURSOR_SHAPE_IBEAM;
-        break;
+    case TERMINAL_CURSOR_SHAPE_IBEAM:
+      shape = VTE_CURSOR_SHAPE_IBEAM;
+      break;
 
-      case TERMINAL_CURSOR_SHAPE_UNDERLINE:
-        shape = VTE_CURSOR_SHAPE_UNDERLINE;
-        break;
+    case TERMINAL_CURSOR_SHAPE_UNDERLINE:
+      shape = VTE_CURSOR_SHAPE_UNDERLINE;
+      break;
 
-      default:
-        g_assert_not_reached ();
+    default:
+      g_assert_not_reached ();
     }
 
   vte_terminal_set_cursor_shape (VTE_TERMINAL (screen->terminal), shape);
@@ -1347,7 +1392,7 @@ terminal_screen_update_misc_rewrap_on_resize (TerminalScreen *screen)
 {
   gboolean bval;
   g_object_get (G_OBJECT (screen->preferences), "misc-rewrap-on-resize", &bval, NULL);
-#if !VTE_CHECK_VERSION (0, 58, 0)
+#if !VTE_CHECK_VERSION(0, 58, 0)
   vte_terminal_set_rewrap_on_resize (VTE_TERMINAL (screen->terminal), bval);
 #endif
 }
@@ -1357,7 +1402,7 @@ terminal_screen_update_misc_rewrap_on_resize (TerminalScreen *screen)
 static void
 terminal_screen_update_scrolling_lines (TerminalScreen *screen)
 {
-  guint    lines;
+  guint lines;
   gboolean unlimited;
   g_object_get (G_OBJECT (screen->preferences),
                 "scrolling-lines", &lines,
@@ -1406,29 +1451,29 @@ static void
 terminal_screen_update_text_blink_mode (TerminalScreen *screen)
 {
   TerminalTextBlinkMode val;
-  VteTextBlinkMode      mode = VTE_TEXT_BLINK_ALWAYS;
+  VteTextBlinkMode mode = VTE_TEXT_BLINK_ALWAYS;
 
   g_object_get (G_OBJECT (screen->preferences), "text-blink-mode", &val, NULL);
 
   switch (val)
     {
-      case TERMINAL_TEXT_BLINK_MODE_ALWAYS:
-        break;
+    case TERMINAL_TEXT_BLINK_MODE_ALWAYS:
+      break;
 
-      case TERMINAL_TEXT_BLINK_MODE_NEVER:
-        mode = VTE_TEXT_BLINK_NEVER;
-        break;
+    case TERMINAL_TEXT_BLINK_MODE_NEVER:
+      mode = VTE_TEXT_BLINK_NEVER;
+      break;
 
-      case TERMINAL_TEXT_BLINK_MODE_FOCUSED:
-        mode = VTE_TEXT_BLINK_FOCUSED;
-        break;
+    case TERMINAL_TEXT_BLINK_MODE_FOCUSED:
+      mode = VTE_TEXT_BLINK_FOCUSED;
+      break;
 
-      case TERMINAL_TEXT_BLINK_MODE_UNFOCUSED:
-        mode = VTE_TEXT_BLINK_UNFOCUSED;
-        break;
+    case TERMINAL_TEXT_BLINK_MODE_UNFOCUSED:
+      mode = VTE_TEXT_BLINK_UNFOCUSED;
+      break;
 
-      default:
-        g_assert_not_reached ();
+    default:
+      g_assert_not_reached ();
     }
 
   vte_terminal_set_text_blink_mode (VTE_TERMINAL (screen->terminal), mode);
@@ -1464,8 +1509,8 @@ terminal_screen_update_word_chars (TerminalScreen *screen)
 
 
 static void
-relaunch_bar_response (GtkInfoBar     *info_bar,
-                       gint            response_id,
+relaunch_bar_response (GtkInfoBar *info_bar,
+                       gint response_id,
                        TerminalScreen *screen)
 {
   /* relaunch the process or remember to not show it anymore */
@@ -1476,8 +1521,8 @@ relaunch_bar_response (GtkInfoBar     *info_bar,
     }
   else
     {
-      GtkWidget       *content_area = gtk_info_bar_get_content_area (info_bar);
-      GList           *children = gtk_container_get_children (GTK_CONTAINER (content_area));
+      GtkWidget *content_area = gtk_info_bar_get_content_area (info_bar);
+      GList *children = gtk_container_get_children (GTK_CONTAINER (content_area));
       GtkToggleButton *checkbox = g_list_nth_data (children, 1);
 
       if (GTK_IS_TOGGLE_BUTTON (checkbox) && gtk_toggle_button_get_active (checkbox))
@@ -1490,8 +1535,8 @@ relaunch_bar_response (GtkInfoBar     *info_bar,
 
 
 static void
-terminal_screen_vte_child_exited (VteTerminal    *terminal,
-                                  gint            status,
+terminal_screen_vte_child_exited (VteTerminal *terminal,
+                                  gint status,
                                   TerminalScreen *screen)
 {
   gboolean show_relaunch_dialog;
@@ -1540,7 +1585,7 @@ terminal_screen_vte_child_exited (VteTerminal    *terminal,
 
 
 static void
-terminal_screen_vte_eof (VteTerminal    *terminal,
+terminal_screen_vte_eof (VteTerminal *terminal,
                          TerminalScreen *screen)
 {
   g_return_if_fail (VTE_IS_TERMINAL (terminal));
@@ -1552,9 +1597,9 @@ terminal_screen_vte_eof (VteTerminal    *terminal,
 
 
 
-static GtkWidget*
-terminal_screen_vte_get_context_menu (TerminalWidget  *widget,
-                                      TerminalScreen  *screen)
+static GtkWidget *
+terminal_screen_vte_get_context_menu (TerminalWidget *widget,
+                                      TerminalScreen *screen)
 {
   GtkWidget *menu = NULL;
   g_signal_emit (G_OBJECT (screen), screen_signals[GET_CONTEXT_MENU], 0, &menu);
@@ -1564,7 +1609,7 @@ terminal_screen_vte_get_context_menu (TerminalWidget  *widget,
 
 
 static void
-terminal_screen_vte_selection_changed (VteTerminal    *terminal,
+terminal_screen_vte_selection_changed (VteTerminal *terminal,
                                        TerminalScreen *screen)
 {
   gboolean copy_on_select;
@@ -1584,7 +1629,7 @@ terminal_screen_vte_selection_changed (VteTerminal    *terminal,
 
 
 static void
-terminal_screen_vte_window_title_changed (VteTerminal    *terminal,
+terminal_screen_vte_window_title_changed (VteTerminal *terminal,
                                           TerminalScreen *screen)
 {
   g_return_if_fail (VTE_IS_TERMINAL (terminal));
@@ -1596,9 +1641,9 @@ terminal_screen_vte_window_title_changed (VteTerminal    *terminal,
 
 
 static void
-terminal_screen_vte_resize_window (VteTerminal    *terminal,
-                                   guint           width,
-                                   guint           height,
+terminal_screen_vte_resize_window (VteTerminal *terminal,
+                                   guint width,
+                                   guint height,
                                    TerminalScreen *screen)
 {
   GtkWidget *toplevel;
@@ -1610,7 +1655,8 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
   if (!gtk_widget_get_realized (toplevel)
       || (gdk_window_get_state (gtk_widget_get_window (toplevel))
-          & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) != 0)
+          & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN))
+           != 0)
     return;
 
   /* set the terminal size and resize the window if it is active */
@@ -1625,9 +1671,9 @@ static gboolean
 terminal_screen_reset_activity_timeout (gpointer user_data)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (user_data);
-  GdkRGBA         active_color;
-  GdkRGBA         fg_color;
-  GdkRGBA         label_color;
+  GdkRGBA active_color;
+  GdkRGBA fg_color;
+  GdkRGBA label_color;
 
   if (G_UNLIKELY (screen->tab_label == NULL))
     return FALSE;
@@ -1667,10 +1713,10 @@ terminal_screen_reset_activity_destroyed (gpointer user_data)
 static void
 terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 {
-  guint           timeout;
-  GdkRGBA         color;
-  GdkRGBA         label_color;
-  gboolean        has_color;
+  guint timeout;
+  GdkRGBA color;
+  GdkRGBA label_color;
+  gboolean has_color;
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   g_return_if_fail (GTK_IS_LABEL (screen->tab_label));
@@ -1702,9 +1748,9 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 
   /* start new timeout to unset the activity */
   screen->activity_timeout_id =
-      gdk_threads_add_timeout_seconds_full (G_PRIORITY_DEFAULT, timeout,
-                                            terminal_screen_reset_activity_timeout,
-                                            screen, terminal_screen_reset_activity_destroyed);
+    gdk_threads_add_timeout_seconds_full (G_PRIORITY_DEFAULT, timeout,
+                                          terminal_screen_reset_activity_timeout,
+                                          screen, terminal_screen_reset_activity_destroyed);
 }
 
 
@@ -1721,10 +1767,10 @@ terminal_screen_vte_window_contents_resized (TerminalScreen *screen)
 static void
 terminal_screen_update_label_orientation (TerminalScreen *screen)
 {
-  GtkPositionType     position;
-  gdouble             angle;
-  PangoEllipsizeMode  ellipsize;
-  GtkWidget          *box;
+  GtkPositionType position;
+  gdouble angle;
+  PangoEllipsizeMode ellipsize;
+  GtkWidget *box;
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   g_return_if_fail (screen->tab_label == NULL || GTK_IS_LABEL (screen->tab_label));
@@ -1761,7 +1807,7 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
   box = gtk_widget_get_parent (screen->tab_label);
   g_return_if_fail (GTK_IS_ORIENTABLE (box));
   gtk_orientable_set_orientation (GTK_ORIENTABLE (box),
-    angle == 0.0 ? GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL);
+                                  angle == 0.0 ? GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL);
 }
 
 
@@ -1784,7 +1830,7 @@ terminal_screen_urgent_bell (TerminalWidget *widget,
 
 static void
 terminal_screen_set_custom_command (TerminalScreen *screen,
-                                    gchar         **command)
+                                    gchar **command)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -1801,12 +1847,12 @@ terminal_screen_set_custom_command (TerminalScreen *screen,
 
 static void
 terminal_screen_set_tab_label_color (TerminalScreen *screen,
-                                     const GdkRGBA  *color)
+                                     const GdkRGBA *color)
 {
   PangoAttrList *attrs = pango_attr_list_new ();
-  PangoAttribute *foreground = pango_attr_foreground_new ((guint16)(color->red*65535),
-                                                          (guint16)(color->green*65535),
-                                                          (guint16)(color->blue*65535));
+  PangoAttribute *foreground = pango_attr_foreground_new ((guint16) (color->red * 65535),
+                                                          (guint16) (color->green * 65535),
+                                                          (guint16) (color->blue * 65535));
   pango_attr_list_insert (attrs, foreground);
   gtk_label_set_attributes (GTK_LABEL (screen->tab_label), attrs);
   pango_attr_list_unref (attrs);
@@ -1822,20 +1868,20 @@ terminal_screen_is_text_unsafe (const gchar *text)
 
 
 
-static GtkWidget*
+static GtkWidget *
 terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
-                                         const gchar    *text)
+                                         const gchar *text)
 {
-  GtkWindow     *parent = GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen)));
+  GtkWindow *parent = GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen)));
   GtkTextBuffer *buffer = gtk_text_buffer_new (gtk_text_tag_table_new ());
-  GtkWidget     *tv = gtk_text_view_new_with_buffer (buffer);
-  GtkWidget     *sw = gtk_scrolled_window_new (NULL, NULL);
-  GtkWidget     *dialog = xfce_titled_dialog_new ();
-  GtkWidget     *infobar = gtk_info_bar_new ();
-  GtkWidget     *box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  GtkWidget     *button, *label;
-  GtkWidget     *combo;
-  gint           parent_w, parent_h;
+  GtkWidget *tv = gtk_text_view_new_with_buffer (buffer);
+  GtkWidget *sw = gtk_scrolled_window_new (NULL, NULL);
+  GtkWidget *dialog = xfce_titled_dialog_new ();
+  GtkWidget *infobar = gtk_info_bar_new ();
+  GtkWidget *box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+  GtkWidget *button, *label;
+  GtkWidget *combo;
+  gint parent_w, parent_h;
 
   gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
   gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
@@ -1853,7 +1899,7 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   gtk_container_set_border_width (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), 0);
   gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), box);
 
-#if !LIBXFCE4UI_CHECK_VERSION (4, 19, 3)
+#if !LIBXFCE4UI_CHECK_VERSION(4, 19, 3)
   xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (dialog));
 #endif
 
@@ -1907,8 +1953,8 @@ enable_unsafe_paste_dialog (gpointer ptr)
 
 static void
 terminal_screen_paste_unsafe_text (TerminalScreen *screen,
-                                   const gchar    *text,
-                                   GdkAtom         original_clipboard)
+                                   const gchar *text,
+                                   GdkAtom original_clipboard)
 {
   GtkWidget *dialog;
 
@@ -1923,17 +1969,17 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
 
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
     {
-      GtkWidget     *content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
-      GtkWidget     *box;
-      GtkWidget     *sw;
-      GtkTextView   *tv;
+      GtkWidget *content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+      GtkWidget *box;
+      GtkWidget *sw;
+      GtkTextView *tv;
       GtkTextBuffer *buffer;
-      GtkWidget     *combo;
-      GtkTextIter    start, end;
-      GList         *children;
-      gchar         *res_text;
-      gchar         *combo_text;
-      gint           i;
+      GtkWidget *combo;
+      GtkTextIter start, end;
+      GList *children;
+      gchar *res_text;
+      gchar *combo_text;
+      gint i;
 
       children = gtk_container_get_children (GTK_CONTAINER (content_area));
       box = children->data;
@@ -1958,11 +2004,14 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
           gtk_clipboard_set_text (clipboard, res_text, strlen (res_text));
           g_free (res_text);
 
-          if (original_clipboard == GDK_SELECTION_CLIPBOARD) {
-            vte_terminal_paste_clipboard (VTE_TERMINAL (screen->terminal));
-          } else {
-            vte_terminal_paste_primary (VTE_TERMINAL (screen->terminal));
-          }
+          if (original_clipboard == GDK_SELECTION_CLIPBOARD)
+            {
+              vte_terminal_paste_clipboard (VTE_TERMINAL (screen->terminal));
+            }
+          else
+            {
+              vte_terminal_paste_primary (VTE_TERMINAL (screen->terminal));
+            }
 
           /* restore original clipboard contents */
           gtk_clipboard_set_text (clipboard, text, strlen (text));
@@ -1979,27 +2028,27 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
 
       switch (i)
         {
-          case DISABLE_PASTE_DIALOG_NOT:
-            break;
-          case DISABLE_PASTE_DIALOG_5:
-            disable_paste_dialog_temporarily = TRUE;
-            g_timeout_add_seconds (300, enable_unsafe_paste_dialog, NULL);
-            break;
-          case DISABLE_PASTE_DIALOG_15:
-            disable_paste_dialog_temporarily = TRUE;
-            g_timeout_add_seconds (900, enable_unsafe_paste_dialog, NULL);
-            break;
-          case DISABLE_PASTE_DIALOG_RESTART:
-            disable_paste_dialog_until_restart = TRUE;
-            break;
-          case DISABLE_PASTE_DIALOG_PERMANENT:
-            g_object_set (G_OBJECT (screen->preferences),
-                          "misc-show-unsafe-paste-dialog", FALSE,
-                          NULL);
-            break;
+        case DISABLE_PASTE_DIALOG_NOT:
+          break;
+        case DISABLE_PASTE_DIALOG_5:
+          disable_paste_dialog_temporarily = TRUE;
+          g_timeout_add_seconds (300, enable_unsafe_paste_dialog, NULL);
+          break;
+        case DISABLE_PASTE_DIALOG_15:
+          disable_paste_dialog_temporarily = TRUE;
+          g_timeout_add_seconds (900, enable_unsafe_paste_dialog, NULL);
+          break;
+        case DISABLE_PASTE_DIALOG_RESTART:
+          disable_paste_dialog_until_restart = TRUE;
+          break;
+        case DISABLE_PASTE_DIALOG_PERMANENT:
+          g_object_set (G_OBJECT (screen->preferences),
+                        "misc-show-unsafe-paste-dialog", FALSE,
+                        NULL);
+          break;
 
-          default:
-            break;
+        default:
+          break;
         }
     }
 
@@ -2010,9 +2059,9 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
 
 static void
 terminal_screen_spawn_async_cb (VteTerminal *terminal,
-                                GPid         pid,
-                                GError      *error,
-                                gpointer     user_data)
+                                GPid pid,
+                                GError *error,
+                                gpointer user_data)
 {
   TerminalScreen *screen = user_data;
 
@@ -2052,8 +2101,8 @@ terminal_screen_spawn_async_cb (VteTerminal *terminal,
  **/
 TerminalScreen *
 terminal_screen_new (TerminalTabAttr *attr,
-                     glong            columns,
-                     glong            rows)
+                     glong columns,
+                     glong rows)
 {
   TerminalScreen *screen = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
 
@@ -2090,14 +2139,14 @@ terminal_screen_new (TerminalTabAttr *attr,
 void
 terminal_screen_launch_child (TerminalScreen *screen)
 {
-  GError       *error = NULL;
-  gchar        *command;
-  gchar       **argv;
-  gchar       **env;
-  gchar       **argv2;
-  guint         i, argc;
-  VtePtyFlags   pty_flags = VTE_PTY_DEFAULT;
-  GSpawnFlags   spawn_flags = G_SPAWN_SEARCH_PATH;
+  GError *error = NULL;
+  gchar *command;
+  gchar **argv;
+  gchar **env;
+  gchar **argv2;
+  guint i, argc;
+  VtePtyFlags pty_flags = VTE_PTY_DEFAULT;
+  GSpawnFlags spawn_flags = G_SPAWN_SEARCH_PATH;
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -2165,7 +2214,7 @@ terminal_screen_get_custom_title (TerminalScreen *screen)
  **/
 void
 terminal_screen_set_custom_title (TerminalScreen *screen,
-                                  const gchar    *title)
+                                  const gchar *title)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -2187,8 +2236,8 @@ terminal_screen_set_custom_title (TerminalScreen *screen,
  **/
 void
 terminal_screen_get_size (TerminalScreen *screen,
-                          glong          *width_chars,
-                          glong          *height_chars)
+                          glong *width_chars,
+                          glong *height_chars)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -2205,8 +2254,8 @@ terminal_screen_get_size (TerminalScreen *screen,
  **/
 void
 terminal_screen_set_size (TerminalScreen *screen,
-                          glong           width_chars,
-                          glong           height_chars)
+                          glong width_chars,
+                          glong height_chars)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -2218,10 +2267,10 @@ terminal_screen_set_size (TerminalScreen *screen,
 
 void
 terminal_screen_get_geometry (TerminalScreen *screen,
-                              glong          *char_width,
-                              glong          *char_height,
-                              gint           *xpad,
-                              gint           *ypad)
+                              glong *char_width,
+                              glong *char_height,
+                              gint *xpad,
+                              gint *ypad)
 {
   GtkBorder border;
 
@@ -2258,14 +2307,14 @@ terminal_screen_get_geometry (TerminalScreen *screen,
  **/
 void
 terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
-                                           GtkWindow      *window)
+                                           GtkWindow *window)
 {
-  glong          char_width, char_height;
+  glong char_width, char_height;
   GtkRequisition vbox_request;
-  GtkAllocation  toplevel_allocation, vbox_allocation;
-  glong          grid_width, grid_height;
-  glong          chrome_width, chrome_height;
-  gint           csd_width, csd_height;
+  GtkAllocation toplevel_allocation, vbox_allocation;
+  glong grid_width, grid_height;
+  glong chrome_width, chrome_height;
+  gint csd_width, csd_height;
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   g_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
@@ -2296,8 +2345,8 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
                                  NULL,
                                  &screen->hints,
                                  GDK_HINT_RESIZE_INC
-                                 | GDK_HINT_MIN_SIZE
-                                 | GDK_HINT_BASE_SIZE);
+                                   | GDK_HINT_MIN_SIZE
+                                   | GDK_HINT_BASE_SIZE);
 }
 
 
@@ -2310,17 +2359,17 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
  **/
 void
 terminal_screen_force_resize_window (TerminalScreen *screen,
-                                     GtkWindow      *window,
-                                     glong           columns,
-                                     glong           rows)
+                                     GtkWindow *window,
+                                     glong columns,
+                                     glong rows)
 {
   GtkRequisition terminal_requisition;
   GtkRequisition vbox_requisition;
-  gint           width;
-  gint           height;
-  gint           xpad, ypad;
-  glong          char_width;
-  glong          char_height;
+  gint width;
+  gint height;
+  gint xpad, ypad;
+  glong char_width;
+  glong char_height;
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   g_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
@@ -2366,13 +2415,13 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
  *                The returned string should be freed when
  *                no longer needed.
  **/
-gchar*
+gchar *
 terminal_screen_get_title (TerminalScreen *screen)
 {
-  TerminalTitle  mode;
-  const gchar   *vte_title;
-  gchar         *initial, *tmp;
-  gchar         *title;
+  TerminalTitle mode;
+  const gchar *vte_title;
+  gchar *initial, *tmp;
+  gchar *title;
 
   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
@@ -2444,10 +2493,10 @@ terminal_screen_get_title (TerminalScreen *screen)
  *
  * Return value : The current working directory of @screen.
  **/
-const gchar*
+const gchar *
 terminal_screen_get_working_directory (TerminalScreen *screen)
 {
-  gchar       *cwd = NULL;
+  gchar *cwd = NULL;
   const gchar *uri;
 
   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
@@ -2481,7 +2530,7 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
  **/
 void
 terminal_screen_set_working_directory (TerminalScreen *screen,
-                                       const gchar    *directory)
+                                       const gchar *directory)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   g_return_if_fail (directory != NULL);
@@ -2552,8 +2601,8 @@ terminal_screen_copy_clipboard_html (TerminalScreen *screen)
 void
 terminal_screen_paste_clipboard (TerminalScreen *screen)
 {
-  gboolean  show_dialog;
-  gchar    *text = gtk_clipboard_wait_for_text (gtk_clipboard_get (GDK_SELECTION_CLIPBOARD));
+  gboolean show_dialog;
+  gchar *text = gtk_clipboard_wait_for_text (gtk_clipboard_get (GDK_SELECTION_CLIPBOARD));
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -2581,8 +2630,8 @@ terminal_screen_paste_clipboard (TerminalScreen *screen)
 void
 terminal_screen_paste_primary (TerminalScreen *screen)
 {
-  gboolean  show_dialog;
-  gchar    *text = gtk_clipboard_wait_for_text (gtk_clipboard_get (GDK_SELECTION_PRIMARY));
+  gboolean show_dialog;
+  gchar *text = gtk_clipboard_wait_for_text (gtk_clipboard_get (GDK_SELECTION_PRIMARY));
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -2622,7 +2671,7 @@ terminal_screen_select_all (TerminalScreen *screen)
  **/
 void
 terminal_screen_reset (TerminalScreen *screen,
-                       gboolean        clear)
+                       gboolean clear)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_reset (VTE_TERMINAL (screen->terminal), TRUE, clear);
@@ -2639,11 +2688,11 @@ terminal_screen_reset (TerminalScreen *screen,
  *
  * Return value: Command to restore @screen, arguments are in reversed order.
  **/
-GSList*
+GSList *
 terminal_screen_get_restart_command (TerminalScreen *screen)
 {
   const gchar *directory;
-  GSList      *result = NULL;
+  GSList *result = NULL;
 
   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
@@ -2716,7 +2765,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
 
   screen->tab_label = gtk_label_new (NULL);
   gtk_widget_set_margin_start (screen->tab_label, 2);
-  gtk_box_pack_start  (GTK_BOX (hbox), screen->tab_label, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), screen->tab_label, TRUE, TRUE, 0);
   g_object_bind_property (G_OBJECT (screen), "title",
                           G_OBJECT (screen->tab_label), "label",
                           G_BINDING_SYNC_CREATE);
@@ -2777,7 +2826,7 @@ terminal_screen_get_encoding (TerminalScreen *screen)
 
 void
 terminal_screen_set_encoding (TerminalScreen *screen,
-                              const gchar    *charset)
+                              const gchar *charset)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   if (!IS_STRING (charset))
@@ -2790,8 +2839,8 @@ terminal_screen_set_encoding (TerminalScreen *screen,
 
 void
 terminal_screen_search_set_gregex (TerminalScreen *screen,
-                                   VteRegex       *regex,
-                                   gboolean        wrap_around)
+                                   VteRegex *regex,
+                                   gboolean wrap_around)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_search_set_regex (VTE_TERMINAL (screen->terminal), regex, 0);
@@ -2830,11 +2879,11 @@ terminal_screen_search_find_previous (TerminalScreen *screen)
 void
 terminal_screen_update_scrolling_bar (TerminalScreen *screen)
 {
-  TerminalScrollbar  scrollbar;
-  gboolean           overlay_scrolling;
+  TerminalScrollbar scrollbar;
+  gboolean overlay_scrolling;
   TerminalVisibility visibility = TERMINAL_VISIBILITY_DEFAULT;
-  glong              grid_w = 0, grid_h = 0;
-  GtkWidget         *toplevel;
+  glong grid_w = 0, grid_h = 0;
+  GtkWidget *toplevel;
 
   g_object_get (G_OBJECT (screen->preferences), "scrolling-bar", &scrollbar, NULL);
   g_object_get (G_OBJECT (screen->preferences), "overlay-scrolling", &overlay_scrolling, NULL);
@@ -2889,15 +2938,15 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
 void
 terminal_screen_update_font (TerminalScreen *screen)
 {
-  GtkWidget            *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-  gboolean              font_use_system, font_allow_bold, resize_on_zoom;
-  gchar                *font_name = NULL;
+  GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+  gboolean font_use_system, font_allow_bold, resize_on_zoom;
+  gchar *font_name = NULL;
   PangoFontDescription *font_desc;
-  glong                 grid_w = 0, grid_h = 0;
-  GSettings            *settings;
-  gdouble               font_scale = PANGO_SCALE_MEDIUM;
-  gdouble               cell_width_scale, cell_height_scale;
-  gboolean              font_change = FALSE;
+  glong grid_w = 0, grid_h = 0;
+  GSettings *settings;
+  gdouble font_scale = PANGO_SCALE_MEDIUM;
+  gdouble cell_width_scale, cell_height_scale;
+  gboolean font_change = FALSE;
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   g_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
@@ -2909,8 +2958,7 @@ terminal_screen_update_font (TerminalScreen *screen)
                 "misc-resize-on-zoom", &resize_on_zoom,
                 NULL);
 
-  if (TERMINAL_IS_WINDOW (toplevel) &&
-      terminal_window_get_font (TERMINAL_WINDOW (toplevel)) != NULL)
+  if (TERMINAL_IS_WINDOW (toplevel) && terminal_window_get_font (TERMINAL_WINDOW (toplevel)) != NULL)
     {
       font_name = g_strdup (terminal_window_get_font (TERMINAL_WINDOW (toplevel)));
     }
@@ -2952,6 +3000,7 @@ terminal_screen_update_font (TerminalScreen *screen)
       if (font_change)
         terminal_window_set_zoom_level (TERMINAL_WINDOW (toplevel), TERMINAL_ZOOM_LEVEL_DEFAULT);
 
+      // clang-format off
       switch (terminal_window_get_zoom_level (TERMINAL_WINDOW (toplevel)))
         {
         case TERMINAL_ZOOM_LEVEL_MINIMUM:     font_scale = PANGO_SCALE_XX_SMALL/1.2/1.2/1.2/1.2; break;
@@ -2970,6 +3019,7 @@ terminal_screen_update_font (TerminalScreen *screen)
         case TERMINAL_ZOOM_LEVEL_MAXIMUM:     font_scale = PANGO_SCALE_XX_LARGE*1.2*1.2*1.2*1.2; break;
         default:                              font_scale = PANGO_SCALE_MEDIUM;                   break;
         }
+      // clang-format on
     }
 
   vte_terminal_set_font_scale (VTE_TERMINAL (screen->terminal), font_scale);
@@ -2983,11 +3033,11 @@ terminal_screen_update_font (TerminalScreen *screen)
   vte_terminal_set_cell_height_scale (VTE_TERMINAL (screen->terminal), cell_height_scale);
 
   /* update window geometry if required: not needed for drop-down, optional when only zoomed in/out */
-  if ((font_change || resize_on_zoom) &&
-      TERMINAL_IS_WINDOW (toplevel) &&
-      !terminal_window_is_drop_down (TERMINAL_WINDOW (toplevel)) &&
-      screen->hints.width_inc > 0 &&
-      screen->hints.height_inc > 0)
+  if ((font_change || resize_on_zoom)
+      && TERMINAL_IS_WINDOW (toplevel)
+      && !terminal_window_is_drop_down (TERMINAL_WINDOW (toplevel))
+      && screen->hints.width_inc > 0
+      && screen->hints.height_inc > 0)
     {
       GtkAllocation toplevel_allocation;
       gtk_widget_get_allocation (GTK_WIDGET (toplevel), &toplevel_allocation);
@@ -3010,7 +3060,7 @@ terminal_screen_get_input_enabled (TerminalScreen *screen)
 
 void
 terminal_screen_set_input_enabled (TerminalScreen *screen,
-                                   gboolean        enabled)
+                                   gboolean enabled)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_set_input_enabled (VTE_TERMINAL (screen->terminal), enabled);
@@ -3029,7 +3079,7 @@ terminal_screen_get_scroll_on_output (TerminalScreen *screen)
 
 void
 terminal_screen_set_scroll_on_output (TerminalScreen *screen,
-                                      gboolean        enabled)
+                                      gboolean enabled)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_set_scroll_on_output (VTE_TERMINAL (screen->terminal), enabled);
@@ -3039,8 +3089,8 @@ terminal_screen_set_scroll_on_output (TerminalScreen *screen,
 
 void
 terminal_screen_save_contents (TerminalScreen *screen,
-                               GOutputStream  *stream,
-                               GError         *error)
+                               GOutputStream *stream,
+                               GError *error)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_write_contents_sync (VTE_TERMINAL (screen->terminal),
@@ -3059,8 +3109,8 @@ gboolean
 terminal_screen_has_foreground_process (TerminalScreen *screen)
 {
   VtePty *pty;
-  int     fd;
-  int     fgpid;
+  int fd;
+  int fgpid;
 
   if (screen == NULL || screen->pid == -1)
     return FALSE;
@@ -3084,7 +3134,7 @@ terminal_screen_has_foreground_process (TerminalScreen *screen)
 
 void
 terminal_screen_feed_text (TerminalScreen *screen,
-                           const char     *text)
+                           const char *text)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_feed_child (VTE_TERMINAL (screen->terminal), text, strlen (text));
@@ -3121,7 +3171,7 @@ terminal_screen_get_custom_title_color (TerminalScreen *screen)
 
 void
 terminal_screen_set_custom_title_color (TerminalScreen *screen,
-                                        const gchar    *color)
+                                        const gchar *color)
 {
   GdkRGBA label_color;
 
@@ -3143,7 +3193,7 @@ terminal_screen_set_custom_title_color (TerminalScreen *screen,
 
 void
 terminal_screen_send_signal (TerminalScreen *screen,
-                             int             signum)
+                             int signum)
 {
   int fgpid;
 
@@ -3160,7 +3210,7 @@ terminal_screen_send_signal (TerminalScreen *screen,
 
 void
 terminal_screen_widget_append_accels (TerminalScreen *screen,
-                                      GtkAccelGroup  *accel_group)
+                                      GtkAccelGroup *accel_group)
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -3169,9 +3219,10 @@ terminal_screen_widget_append_accels (TerminalScreen *screen,
 
 
 
-void terminal_screen_update_sixel (TerminalScreen *screen)
+void
+terminal_screen_update_sixel (TerminalScreen *screen)
 {
-#if VTE_CHECK_VERSION (0, 61, 90)
+#if VTE_CHECK_VERSION(0, 61, 90)
   gboolean enable_sixel;
   g_object_get (G_OBJECT (screen->preferences),
                 "enable-sixel", &enable_sixel,

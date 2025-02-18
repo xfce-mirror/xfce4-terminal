@@ -77,20 +77,20 @@
 #define S6_DEF "(?(DEFINE)(?<S6>[[:xdigit:]]{1,4})(?<CS6>:(?&S6))(?<S6C>(?&S6):))"
 
 /* No :: shorthand */
-#define IPV6_FULL  "(?x: (?&S6C){7} (?&S6) )"
+#define IPV6_FULL "(?x: (?&S6C){7} (?&S6) )"
 /* Begins with :: */
-#define IPV6_LEFT  "(?x: : (?&CS6){1,7} )"
+#define IPV6_LEFT "(?x: : (?&CS6){1,7} )"
 /* :: somewhere in the middle - use negative lookahead to make sure there aren't too many colons in total */
-#define IPV6_MID   "(?x: (?! (?: [[:xdigit:]]*: ){8} ) (?&S6C){1,6} (?&CS6){1,6} )"
+#define IPV6_MID "(?x: (?! (?: [[:xdigit:]]*: ){8} ) (?&S6C){1,6} (?&CS6){1,6} )"
 /* Ends with :: */
 #define IPV6_RIGHT "(?x: (?&S6C){1,7} : )"
 /* Is "::" and nothing more */
-#define IPV6_NULL  "(?x: :: )"
+#define IPV6_NULL "(?x: :: )"
 
 /* The same ones for IPv4-embedded notation, without the actual IPv4 part */
-#define IPV6V4_FULL  "(?x: (?&S6C){6} )"
-#define IPV6V4_LEFT  "(?x: :: (?&S6C){0,5} )"  /* includes "::<ipv4>" */
-#define IPV6V4_MID   "(?x: (?! (?: [[:xdigit:]]*: ){7} ) (?&S6C){1,4} (?&CS6){1,4} ) :"
+#define IPV6V4_FULL "(?x: (?&S6C){6} )"
+#define IPV6V4_LEFT "(?x: :: (?&S6C){0,5} )" /* includes "::<ipv4>" */
+#define IPV6V4_MID "(?x: (?! (?: [[:xdigit:]]*: ){7} ) (?&S6C){1,4} (?&CS6){1,4} ) :"
 #define IPV6V4_RIGHT "(?x: (?&S6C){1,5} : )"
 
 /* IPV6: An IPv6 address (possibly with an embedded IPv4).
@@ -128,7 +128,7 @@
 /* Omit the parentheses, see below */
 #define PATHCHARS_CLASS "[-[:alnum:]\\Q_$.+!*,:;@&=?/~#|%'\\E]"
 /* Chars to end a URL. Apostrophe only allowed if there wasn't one in front of the URL, see bug 448044 */
-#define PATHTERM_CLASS        "[-[:alnum:]\\Q_$+*:@&=/~#|%'\\E]"
+#define PATHTERM_CLASS "[-[:alnum:]\\Q_$+*:@&=/~#|%'\\E]"
 #define PATHTERM_NOAPOS_CLASS "[-[:alnum:]\\Q_$+*:@&=/~#|%\\E]"
 
 /* Recursive definition of PATH that allows parentheses and square brackets only if balanced, see bug 763980. */
@@ -143,13 +143,13 @@
 
 #define DEFS APOS_START_DEF IP_DEF PATH_INNER_DEF PATH_DEF
 
-#define REGEX_URL_AS_IS  DEFS SCHEME "://" USERPASS URL_HOST PORT URLPATH
+#define REGEX_URL_AS_IS DEFS SCHEME "://" USERPASS URL_HOST PORT URLPATH
 /* TODO: also support file:/etc/passwd */
-#define REGEX_URL_FILE   DEFS "(?ix: file:/ (?: / (?: " HOSTNAME1 " )? / )? (?! / ) )(?&PATH)"
+#define REGEX_URL_FILE DEFS "(?ix: file:/ (?: / (?: " HOSTNAME1 " )? / )? (?! / ) )(?&PATH)"
 /* Lookbehind so that we don't catch "abc.www.foo.bar", bug 739757. Lookahead for www/ftp for convenience (so that we can reuse HOSTNAME1). */
-#define REGEX_URL_HTTP   DEFS "(?<!(?:" HOSTNAMESEGMENTCHARS_CLASS "|[.]))(?=(?i:www|ftp))" HOSTNAME1 PORT URLPATH
-#define REGEX_URL_VOIP   DEFS "(?i:h323:|sips?:)" USERPASS URL_HOST PORT VOIP_PATH
-#define REGEX_EMAIL      DEFS "(?i:mailto:)?" USER "@" EMAIL_HOST
-#define REGEX_NEWS_MAN   "(?i:news:|man:|info:|magnet:)[-[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
+#define REGEX_URL_HTTP DEFS "(?<!(?:" HOSTNAMESEGMENTCHARS_CLASS "|[.]))(?=(?i:www|ftp))" HOSTNAME1 PORT URLPATH
+#define REGEX_URL_VOIP DEFS "(?i:h323:|sips?:)" USERPASS URL_HOST PORT VOIP_PATH
+#define REGEX_EMAIL DEFS "(?i:mailto:)?" USER "@" EMAIL_HOST
+#define REGEX_NEWS_MAN "(?i:news:|man:|info:|magnet:)[-[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
 
 #endif /* !TERMINAL_REGEX_H */

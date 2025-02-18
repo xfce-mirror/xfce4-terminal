@@ -56,30 +56,41 @@
 
 
 
-static void     terminal_app_finalize                 (GObject            *object);
-static void     terminal_app_update_accels            (TerminalApp        *app);
-static void     terminal_app_update_windows_accels    (gpointer            user_data);
-static gboolean terminal_app_accel_map_load           (gpointer            user_data);
-static gboolean terminal_app_accel_map_save           (gpointer            user_data);
-static gboolean terminal_app_unset_urgent_bell        (TerminalWindow     *window,
-                                                       GdkEvent           *event,
-                                                       TerminalApp        *app);
-static void     terminal_app_new_window               (TerminalWindow     *window,
-                                                       const gchar        *working_directory,
-                                                       TerminalApp        *app);
-static void     terminal_app_new_window_with_terminal (TerminalWindow     *existing,
-                                                       TerminalScreen     *terminal,
-                                                       gint                x,
-                                                       gint                y,
-                                                       TerminalApp        *app);
-static void     terminal_app_window_destroyed         (GtkWidget          *window,
-                                                       TerminalApp        *app);
+static void
+terminal_app_finalize (GObject *object);
+static void
+terminal_app_update_accels (TerminalApp *app);
+static void
+terminal_app_update_windows_accels (gpointer user_data);
+static gboolean
+terminal_app_accel_map_load (gpointer user_data);
+static gboolean
+terminal_app_accel_map_save (gpointer user_data);
+static gboolean
+terminal_app_unset_urgent_bell (TerminalWindow *window,
+                                GdkEvent *event,
+                                TerminalApp *app);
+static void
+terminal_app_new_window (TerminalWindow *window,
+                         const gchar *working_directory,
+                         TerminalApp *app);
+static void
+terminal_app_new_window_with_terminal (TerminalWindow *existing,
+                                       TerminalScreen *terminal,
+                                       gint x,
+                                       gint y,
+                                       TerminalApp *app);
+static void
+terminal_app_window_destroyed (GtkWidget *window,
+                               TerminalApp *app);
 #ifdef ENABLE_X11
-static void     terminal_app_save_yourself            (XfceSMClient       *client,
-                                                       TerminalApp        *app);
+static void
+terminal_app_save_yourself (XfceSMClient *client,
+                            TerminalApp *app);
 #endif
-static void     terminal_app_open_window              (TerminalApp        *app,
-                                                       TerminalWindowAttr *attr);
+static void
+terminal_app_open_window (TerminalApp *app,
+                          TerminalWindowAttr *attr);
 
 
 
@@ -90,17 +101,17 @@ struct _TerminalAppClass
 
 struct _TerminalApp
 {
-  GObject              parent_instance;
+  GObject parent_instance;
   TerminalPreferences *preferences;
 #ifdef ENABLE_X11
-  XfceSMClient        *session_client;
+  XfceSMClient *session_client;
 #endif
-  gchar               *initial_menu_bar_accel;
-  GSList              *windows;
+  gchar *initial_menu_bar_accel;
+  GSList *windows;
 
-  guint                accel_map_load_id;
-  guint                accel_map_save_id;
-  GtkAccelMap         *accel_map;
+  guint accel_map_load_id;
+  guint accel_map_save_id;
+  GtkAccelMap *accel_map;
 };
 
 
@@ -156,7 +167,7 @@ static void
 terminal_app_finalize (GObject *object)
 {
   TerminalApp *app = TERMINAL_APP (object);
-  GSList      *lp;
+  GSList *lp;
 
   /* stop accel map stuff */
   if (G_UNLIKELY (app->accel_map_load_id != 0))
@@ -215,7 +226,7 @@ static void
 terminal_app_update_windows_accels (gpointer user_data)
 {
   TerminalApp *app = TERMINAL_APP (user_data);
-  GSList      *lp;
+  GSList *lp;
 
   for (lp = app->windows; lp != NULL; lp = lp->next)
     {
@@ -232,7 +243,7 @@ static gboolean
 terminal_app_accel_map_save (gpointer user_data)
 {
   TerminalApp *app = TERMINAL_APP (user_data);
-  gchar       *path;
+  gchar *path;
 
   app->accel_map_save_id = 0;
 
@@ -273,7 +284,7 @@ static gboolean
 terminal_app_accel_map_load (gpointer user_data)
 {
   TerminalApp *app = TERMINAL_APP (user_data);
-  gchar       *path;
+  gchar *path;
 
   path = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, ACCEL_MAP_PATH);
   if (G_LIKELY (path != NULL))
@@ -286,7 +297,7 @@ terminal_app_accel_map_load (gpointer user_data)
   /* watch for changes */
   app->accel_map = gtk_accel_map_get ();
   g_signal_connect_swapped (G_OBJECT (app->accel_map), "changed",
-      G_CALLBACK (terminal_app_accel_map_changed), app);
+                            G_CALLBACK (terminal_app_accel_map_changed), app);
 
   return FALSE;
 }
@@ -307,8 +318,8 @@ terminal_app_load_accels (TerminalApp *app)
 
 static gboolean
 terminal_app_unset_urgent_bell (TerminalWindow *window,
-                                GdkEvent       *event,
-                                TerminalApp    *app)
+                                GdkEvent *event,
+                                TerminalApp *app)
 {
   GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (window));
   gtk_window_set_urgency_hint (GTK_WINDOW (toplevel), FALSE);
@@ -320,7 +331,7 @@ terminal_app_unset_urgent_bell (TerminalWindow *window,
 
 static void
 terminal_app_take_window (TerminalApp *app,
-                          GtkWindow   *window)
+                          GtkWindow *window)
 {
   GtkWindowGroup *group;
 
@@ -345,16 +356,16 @@ terminal_app_take_window (TerminalApp *app,
 
 
 
-static GtkWidget*
-terminal_app_create_window (TerminalApp       *app,
-                            const gchar       *role,
-                            gboolean           fullscreen,
+static GtkWidget *
+terminal_app_create_window (TerminalApp *app,
+                            const gchar *role,
+                            gboolean fullscreen,
                             TerminalVisibility menubar,
                             TerminalVisibility borders,
                             TerminalVisibility toolbar)
 {
   GtkWidget *window;
-  gchar     *new_role = NULL;
+  gchar *new_role = NULL;
 
   if (role == NULL)
     {
@@ -373,13 +384,13 @@ terminal_app_create_window (TerminalApp       *app,
 
 
 
-static GtkWidget*
-terminal_app_create_drop_down (TerminalApp        *app,
-                               const gchar        *role,
-                               const gchar        *icon,
-                               gboolean            fullscreen,
-                               TerminalVisibility  menubar,
-                               TerminalVisibility  toolbar)
+static GtkWidget *
+terminal_app_create_drop_down (TerminalApp *app,
+                               const gchar *role,
+                               const gchar *icon,
+                               gboolean fullscreen,
+                               TerminalVisibility menubar,
+                               TerminalVisibility toolbar)
 {
   GtkWidget *window;
 
@@ -394,15 +405,15 @@ terminal_app_create_drop_down (TerminalApp        *app,
 
 static void
 terminal_app_new_window (TerminalWindow *window,
-                         const gchar    *working_directory,
-                         TerminalApp    *app)
+                         const gchar *working_directory,
+                         TerminalApp *app)
 {
   TerminalWindowAttr *win_attr;
-  TerminalTabAttr    *tab_attr;
-  TerminalScreen     *terminal;
-  GdkScreen          *screen;
-  gboolean            inherit_geometry;
-  glong               w, h;
+  TerminalTabAttr *tab_attr;
+  TerminalScreen *terminal;
+  GdkScreen *screen;
+  gboolean inherit_geometry;
+  glong w, h;
 
   screen = gtk_window_get_screen (GTK_WINDOW (window));
 
@@ -437,7 +448,7 @@ terminal_app_new_window (TerminalWindow *window,
 
 
 /*
-  Derived from XParseGeometry() in XFree86  
+  Derived from XParseGeometry() in XFree86
 
   Copyright 1985, 1986, 1987,1998  The Open Group
 
@@ -470,7 +481,7 @@ terminal_app_new_window (TerminalWindow *window,
  *   It returns a bitmask that indicates which of the four values
  *   were actually found in the string.  For each value found,
  *   the corresponding argument is updated;  for each value
- *   not found, the corresponding argument is left unchanged. 
+ *   not found, the corresponding argument is left unchanged.
  */
 
 /* The following code is from Xlib, and is minimally modified, so we
@@ -480,12 +491,12 @@ terminal_app_new_window (TerminalWindow *window,
  */
 
 static int
-read_int (gchar   *string,
-          gchar  **next)
+read_int (gchar *string,
+          gchar **next)
 {
   int result = 0;
   int sign = 1;
-  
+
   if (*string == '+')
     string++;
   else if (*string == '-')
@@ -507,28 +518,28 @@ read_int (gchar   *string,
     return (-result);
 }
 
-/* 
+/*
  * Bitmask returned by XParseGeometry().  Each bit tells if the corresponding
  * value (x, y, width, height) was found in the parsed string.
  */
 #ifndef ENABLE_X11
-#define NoValue         0x0000
-#define XValue          0x0001
-#define YValue          0x0002
-#define WidthValue      0x0004
-#define HeightValue     0x0008
-#define AllValues       0x000F
-#define XNegative       0x0010
-#define YNegative       0x0020
+#define NoValue 0x0000
+#define XValue 0x0001
+#define YValue 0x0002
+#define WidthValue 0x0004
+#define HeightValue 0x0008
+#define AllValues 0x000F
+#define XNegative 0x0010
+#define YNegative 0x0020
 #endif
 
 /* Try not to reformat/modify, so we can compare/sync with X sources */
 static int
-gtk_XParseGeometry (const char   *string,
-                    int          *x,
-                    int          *y,
-                    unsigned int *width,   
-                    unsigned int *height)  
+gtk_XParseGeometry (const char *string,
+                    int *x,
+                    int *y,
+                    unsigned int *width,
+                    unsigned int *height)
 {
   int mask = NoValue;
   char *strind;
@@ -541,73 +552,78 @@ gtk_XParseGeometry (const char   *string,
   tempHeight = 0;
   tempX = 0;
   tempY = 0;
-  
-  if ( (string == NULL) || (*string == '\0')) return(mask);
+
+  if ((string == NULL) || (*string == '\0'))
+    return (mask);
   if (*string == '=')
-    string++;  /* ignore possible '=' at beg of geometry spec */
+    string++; /* ignore possible '=' at beg of geometry spec */
 
-  strind = (char *)string;
-  if (*strind != '+' && *strind != '-' && *strind != 'x') {
-    tempWidth = read_int(strind, &nextCharacter);
-    if (strind == nextCharacter) 
-      return (0);
-    strind = nextCharacter;
-    mask |= WidthValue;
-  }
-
-  if (*strind == 'x' || *strind == 'X') {	
-    strind++;
-    tempHeight = read_int(strind, &nextCharacter);
-    if (strind == nextCharacter)
-      return (0);
-    strind = nextCharacter;
-    mask |= HeightValue;
-  }
-
-  if ((*strind == '+') || (*strind == '-')) {
-    if (*strind == '-') {
-      strind++;
-      tempX = -read_int(strind, &nextCharacter);
+  strind = (char *) string;
+  if (*strind != '+' && *strind != '-' && *strind != 'x')
+    {
+      tempWidth = read_int (strind, &nextCharacter);
       if (strind == nextCharacter)
         return (0);
       strind = nextCharacter;
-      mask |= XNegative;
-
+      mask |= WidthValue;
     }
-    else
-      {	strind++;
-      tempX = read_int(strind, &nextCharacter);
-      if (strind == nextCharacter)
-        return(0);
-      strind = nextCharacter;
-      }
-    mask |= XValue;
-    if ((*strind == '+') || (*strind == '-')) {
-      if (*strind == '-') {
-        strind++;
-        tempY = -read_int(strind, &nextCharacter);
-        if (strind == nextCharacter)
-          return(0);
-        strind = nextCharacter;
-        mask |= YNegative;
 
-      }
+  if (*strind == 'x' || *strind == 'X')
+    {
+      strind++;
+      tempHeight = read_int (strind, &nextCharacter);
+      if (strind == nextCharacter)
+        return (0);
+      strind = nextCharacter;
+      mask |= HeightValue;
+    }
+
+  if ((*strind == '+') || (*strind == '-'))
+    {
+      if (*strind == '-')
+        {
+          strind++;
+          tempX = -read_int (strind, &nextCharacter);
+          if (strind == nextCharacter)
+            return (0);
+          strind = nextCharacter;
+          mask |= XNegative;
+        }
       else
         {
           strind++;
-          tempY = read_int(strind, &nextCharacter);
+          tempX = read_int (strind, &nextCharacter);
           if (strind == nextCharacter)
-            return(0);
+            return (0);
           strind = nextCharacter;
         }
-      mask |= YValue;
+      mask |= XValue;
+      if ((*strind == '+') || (*strind == '-'))
+        {
+          if (*strind == '-')
+            {
+              strind++;
+              tempY = -read_int (strind, &nextCharacter);
+              if (strind == nextCharacter)
+                return (0);
+              strind = nextCharacter;
+              mask |= YNegative;
+            }
+          else
+            {
+              strind++;
+              tempY = read_int (strind, &nextCharacter);
+              if (strind == nextCharacter)
+                return (0);
+              strind = nextCharacter;
+            }
+          mask |= YValue;
+        }
     }
-  }
-	
-  /* If strind isn't at the end of the string the it's an invalid
-		geometry specification. */
 
-  if (*strind != '\0') return (0);
+  /* If strind isn't at the end of the string the it's an invalid geometry specification */
+  if (*strind != '\0')
+    return (0);
 
   if (mask & XValue)
     *x = tempX;
@@ -621,9 +637,9 @@ gtk_XParseGeometry (const char   *string,
 }
 
 static int
-parse_geometry (const char   *string,
-                int          *x,
-                int          *y,
+parse_geometry (const char *string,
+                int *x,
+                int *y,
                 unsigned int *width,
                 unsigned int *height)
 {
@@ -658,13 +674,13 @@ parse_geometry (const char   *string,
 static void
 terminal_app_new_window_with_terminal (TerminalWindow *existing,
                                        TerminalScreen *terminal,
-                                       gint            x,
-                                       gint            y,
-                                       TerminalApp    *app)
+                                       gint x,
+                                       gint y,
+                                       TerminalApp *app)
 {
   GtkWidget *window;
   GdkScreen *screen;
-  glong      width, height;
+  glong width, height;
 
   g_return_if_fail (TERMINAL_IS_WINDOW (existing));
   g_return_if_fail (TERMINAL_IS_SCREEN (terminal));
@@ -697,7 +713,7 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
     {
       /* resize new window to the default geometry */
       gchar *geo;
-      guint  w, h;
+      guint w, h;
       g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geo, NULL);
       if (G_LIKELY (geo != NULL))
         {
@@ -719,7 +735,7 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
 
 
 static void
-terminal_app_window_destroyed (GtkWidget   *window,
+terminal_app_window_destroyed (GtkWidget *window,
                                TerminalApp *app)
 {
   g_return_if_fail (g_slist_find (app->windows, window) != NULL);
@@ -735,14 +751,14 @@ terminal_app_window_destroyed (GtkWidget   *window,
 #ifdef ENABLE_X11
 static void
 terminal_app_save_yourself (XfceSMClient *client,
-                            TerminalApp  *app)
+                            TerminalApp *app)
 {
-  GSList               *result = NULL;
-  GSList               *lp;
-  const gchar * const  *oargv;
-  gchar               **argv;
-  gint                  argc;
-  gint                  n;
+  GSList *result = NULL;
+  GSList *lp;
+  const gchar *const *oargv;
+  gchar **argv;
+  gint argc;
+  gint n;
 
   for (lp = app->windows, n = 0; lp != NULL; lp = lp->next)
     {
@@ -761,7 +777,7 @@ terminal_app_save_yourself (XfceSMClient *client,
     return;
 
   argc = g_slist_length (result) + 1;
-  argv = g_new (gchar*, argc + 1);
+  argv = g_new (gchar *, argc + 1);
   for (lp = result, n = 1; n < argc && lp != NULL; lp = lp->next, ++n)
     argv[n] = lp->data;
   argv[n] = NULL;
@@ -788,17 +804,17 @@ terminal_app_save_yourself (XfceSMClient *client,
 
 static GdkDisplay *
 terminal_app_find_display (const gchar *display_name,
-                           gint        *screen_num)
+                           gint *screen_num)
 {
   const gchar *other_name;
-  GdkDisplay  *display = NULL;
-  GSList      *displays;
-  GSList      *dp;
-  gulong       n;
-  gchar       *period;
-  gchar       *name;
-  gchar       *end;
-  gint         num = -1;
+  GdkDisplay *display = NULL;
+  GSList *displays;
+  GSList *dp;
+  gulong n;
+  gchar *period;
+  gchar *name;
+  gchar *end;
+  gint num = -1;
 
   if (display_name != NULL)
     {
@@ -847,7 +863,7 @@ terminal_app_find_display (const gchar *display_name,
 
 static GdkScreen *
 terminal_app_find_screen (GdkDisplay *display,
-                          gint        screen_num)
+                          gint screen_num)
 {
   GdkScreen *screen = NULL;
 
@@ -875,7 +891,7 @@ static GdkScreen *
 terminal_app_find_screen_by_name (const gchar *display_name)
 {
   GdkDisplay *display;
-  gint        screen_num;
+  gint screen_num;
 
   display = terminal_app_find_display (display_name, &screen_num);
   return terminal_app_find_screen (display, screen_num);
@@ -885,16 +901,16 @@ terminal_app_find_screen_by_name (const gchar *display_name)
 
 static void
 move_window_to_saved_workspace (GtkWidget *window,
-                                gpointer   user_data)
+                                gpointer user_data)
 {
 #ifdef ENABLE_X11
   GdkDisplay *gdk_display;
-  GdkScreen  *gdk_screen;
-  Display    *display;
-  Window      xwin;
-  Window      rootwin;
-  Atom        message;
-  XEvent      event;
+  GdkScreen *gdk_screen;
+  Display *display;
+  Window xwin;
+  Window rootwin;
+  Atom message;
+  XEvent event;
 #endif
 
   g_signal_handlers_disconnect_by_func (window,
@@ -929,7 +945,7 @@ move_window_to_saved_workspace (GtkWidget *window,
       event.xclient.message_type = message;
       event.xclient.format = 32;
       event.xclient.data.l[0] = GPOINTER_TO_INT (user_data);
-      event.xclient.data.l[1] = 1;  // Source type: application
+      event.xclient.data.l[1] = 1; // Source type: application
       event.xclient.data.l[2] = 0;
       event.xclient.data.l[3] = 0;
       event.xclient.data.l[4] = 0;
@@ -946,25 +962,25 @@ move_window_to_saved_workspace (GtkWidget *window,
 
 
 static void
-terminal_app_open_window (TerminalApp        *app,
+terminal_app_open_window (TerminalApp *app,
                           TerminalWindowAttr *attr)
 {
-  GtkWidget       *window;
-  GtkNotebook     *notebook;
-  TerminalScreen  *terminal;
-  GdkScreen       *screen;
-  gchar           *geometry;
-  GSList          *lp;
-  gboolean         reuse_window = FALSE;
-  GdkDisplay      *attr_display;
-  gint             attr_screen_num;
-  gint             active_tab = -1, i, existing_tabs = 0;
-  guint            width = 80, height = 24;
-  GdkGravity       gravity = GDK_GRAVITY_NORTH_WEST;
-  gint             mask = NoValue, x, y, new_x, new_y;
-  guint            new_width, new_height;
-  gint             screen_width = 0, screen_height = 0;
-  gint             window_width, window_height;
+  GtkWidget *window;
+  GtkNotebook *notebook;
+  TerminalScreen *terminal;
+  GdkScreen *screen;
+  gchar *geometry;
+  GSList *lp;
+  gboolean reuse_window = FALSE;
+  GdkDisplay *attr_display;
+  gint attr_screen_num;
+  gint active_tab = -1, i, existing_tabs = 0;
+  guint width = 80, height = 24;
+  GdkGravity gravity = GDK_GRAVITY_NORTH_WEST;
+  gint mask = NoValue, x, y, new_x, new_y;
+  guint new_width, new_height;
+  gint screen_width = 0, screen_height = 0;
+  gint window_width, window_height;
 
   g_return_if_fail (TERMINAL_IS_APP (app));
   g_return_if_fail (attr != NULL);
@@ -1198,12 +1214,12 @@ terminal_app_open_window (TerminalApp        *app,
  * Return value:
  **/
 gboolean
-terminal_app_process (TerminalApp  *app,
-                      gchar       **argv,
-                      gint          argc,
-                      GError      **error)
+terminal_app_process (TerminalApp *app,
+                      gchar **argv,
+                      gint argc,
+                      GError **error)
 {
-  GSList             *attrs, *lp;
+  GSList *attrs, *lp;
   TerminalWindowAttr *attr;
 
   attrs = terminal_window_attr_parse (argc, argv, app->windows != NULL, error);

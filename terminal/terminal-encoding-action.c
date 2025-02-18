@@ -42,10 +42,13 @@ enum
 
 
 
-static void       terminal_encoding_action_finalize         (GObject                *object);
-static GtkWidget *terminal_encoding_action_create_menu_item (GtkAction              *action);
-static void       terminal_encoding_action_menu_shown       (GtkWidget              *menu,
-                                                             TerminalEncodingAction *action);
+static void
+terminal_encoding_action_finalize (GObject *object);
+static GtkWidget *
+terminal_encoding_action_create_menu_item (GtkAction *action);
+static void
+terminal_encoding_action_menu_shown (GtkWidget *menu,
+                                     TerminalEncodingAction *action);
 
 
 
@@ -56,42 +59,40 @@ struct _TerminalEncodingActionClass
 
 struct _TerminalEncodingAction
 {
-  GtkAction  parent_instance;
-  gchar     *current;
+  GtkAction parent_instance;
+  gchar *current;
 };
 
 
 
 /* group names for the charsets below, order matters! */
-static const gchar *terminal_encodings_names[] =
-{
-  N_("Western European"),
-  N_("Central European"),
-  N_("Baltic"),
-  N_("South-Eastern Europe"),
-  N_("Turkish"),
-  N_("Cyrillic"),
-  N_("Chinese Traditional"),
-  N_("Chinese Simplified"),
-  N_("Korean"),
-  N_("Japanese"),
-  N_("Greek"),
-  N_("Arabic"),
-  N_("Hebrew"),
-  N_("Thai"),
-  N_("Vietnamese"),
-  N_("Nordic"),
-  N_("Celtic"),
-  N_("Romanian"),
-  N_("Armenian"),
-  N_("Georgian"),
-  N_("Unicode"),
-  N_("Other"),
+static const gchar *terminal_encodings_names[] = {
+  N_ ("Western European"),
+  N_ ("Central European"),
+  N_ ("Baltic"),
+  N_ ("South-Eastern Europe"),
+  N_ ("Turkish"),
+  N_ ("Cyrillic"),
+  N_ ("Chinese Traditional"),
+  N_ ("Chinese Simplified"),
+  N_ ("Korean"),
+  N_ ("Japanese"),
+  N_ ("Greek"),
+  N_ ("Arabic"),
+  N_ ("Hebrew"),
+  N_ ("Thai"),
+  N_ ("Vietnamese"),
+  N_ ("Nordic"),
+  N_ ("Celtic"),
+  N_ ("Romanian"),
+  N_ ("Armenian"),
+  N_ ("Georgian"),
+  N_ ("Unicode"),
+  N_ ("Other"),
 };
 
 /* charsets for the groups above, order matters! */
-static const gchar *terminal_encodings_charsets[][8] =
-{
+static const gchar *terminal_encodings_charsets[][8] = {
   /* Western European */
   { "ISO-8859-1", "ISO-8859-15", "WINDOWS-1252", "IBM850", NULL },
   /* Central European */
@@ -140,7 +141,7 @@ static const gchar *terminal_encodings_charsets[][8] =
 
 
 
-static guint  encoding_action_signals[LAST_SIGNAL];
+static guint encoding_action_signals[LAST_SIGNAL];
 static GQuark encoding_action_quark = 0;
 
 
@@ -155,20 +156,20 @@ static void
 terminal_encoding_action_class_init (TerminalEncodingActionClass *klass)
 {
   GtkActionClass *gtkaction_class;
-  GObjectClass   *gobject_class;
+  GObjectClass *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_encoding_action_finalize;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gtkaction_class = GTK_ACTION_CLASS (klass);
-G_GNUC_END_IGNORE_DEPRECATIONS
+  G_GNUC_END_IGNORE_DEPRECATIONS
   gtkaction_class->create_menu_item = terminal_encoding_action_create_menu_item;
 
   encoding_action_quark = g_quark_from_static_string ("encoding-action-quark");
 
   encoding_action_signals[ENCODING_CHANGED] =
-    g_signal_new (I_("encoding-changed"),
+    g_signal_new (I_ ("encoding-changed"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
@@ -181,7 +182,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 terminal_encoding_action_init (TerminalEncodingAction *action)
 {
-
 }
 
 
@@ -207,9 +207,9 @@ terminal_encoding_action_create_menu_item (GtkAction *action)
   g_return_val_if_fail (TERMINAL_IS_ENCODING_ACTION (action), NULL);
 
   /* let GtkAction allocate the menu item */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   item = (*GTK_ACTION_CLASS (terminal_encoding_action_parent_class)->create_menu_item) (action);
-G_GNUC_END_IGNORE_DEPRECATIONS
+  G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* associate an empty submenu with the item (will be filled when shown) */
   menu = gtk_menu_new ();
@@ -222,7 +222,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 
 static void
-terminal_encoding_action_activated (GtkWidget              *item,
+terminal_encoding_action_activated (GtkWidget *item,
                                     TerminalEncodingAction *encoding_action)
 {
   const gchar *charset;
@@ -241,22 +241,22 @@ terminal_encoding_action_activated (GtkWidget              *item,
 
 
 static void
-terminal_encoding_action_menu_shown (GtkWidget              *menu,
+terminal_encoding_action_menu_shown (GtkWidget *menu,
                                      TerminalEncodingAction *action)
 {
-  GList         *children;
-  guint          n, k;
-  GtkWidget     *item;
-  GtkWidget     *item2;
-  GtkWidget     *submenu;
-  const gchar   *charset;
-  GSList        *groups = NULL;
-  gboolean       found;
-  GtkWidget     *label;
-  GtkWidget     *bold_item = NULL;
+  GList *children;
+  guint n, k;
+  GtkWidget *item;
+  GtkWidget *item2;
+  GtkWidget *submenu;
+  const gchar *charset;
+  GSList *groups = NULL;
+  gboolean found;
+  GtkWidget *label;
+  GtkWidget *bold_item = NULL;
   PangoAttrList *attrs;
-  const gchar   *default_charset;
-  gchar         *default_label;
+  const gchar *default_charset;
+  gchar *default_label;
 
   g_return_if_fail (TERMINAL_IS_ENCODING_ACTION (action));
   g_return_if_fail (GTK_IS_MENU_SHELL (menu));
@@ -276,7 +276,7 @@ terminal_encoding_action_menu_shown (GtkWidget              *menu,
   gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
   gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), found);
   g_signal_connect (G_OBJECT (item), "activate",
-      G_CALLBACK (terminal_encoding_action_activated), action);
+                    G_CALLBACK (terminal_encoding_action_activated), action);
   g_free (default_label);
 
   /*add the groups */
@@ -311,7 +311,7 @@ terminal_encoding_action_menu_shown (GtkWidget              *menu,
             }
 
           g_signal_connect (G_OBJECT (item2), "activate",
-              G_CALLBACK (terminal_encoding_action_activated), action);
+                            G_CALLBACK (terminal_encoding_action_activated), action);
         }
     }
 
@@ -324,7 +324,7 @@ terminal_encoding_action_menu_shown (GtkWidget              *menu,
       gtk_menu_shell_append (GTK_MENU_SHELL (submenu), item2);
       gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item2), TRUE);
       g_signal_connect (G_OBJECT (item2), "activate",
-        G_CALLBACK (terminal_encoding_action_activated), action);
+                        G_CALLBACK (terminal_encoding_action_activated), action);
 
       /* other group */
       bold_item = item;
@@ -344,7 +344,7 @@ terminal_encoding_action_menu_shown (GtkWidget              *menu,
 
 
 
-GtkAction*
+GtkAction *
 terminal_encoding_action_new (const gchar *name,
                               const gchar *label)
 {
@@ -361,7 +361,7 @@ terminal_encoding_action_new (const gchar *name,
 
 
 void
-terminal_encoding_action_set_charset (GtkAction   *gtkaction,
+terminal_encoding_action_set_charset (GtkAction *gtkaction,
                                       const gchar *charset)
 {
   TerminalEncodingAction *action = TERMINAL_ENCODING_ACTION (gtkaction);
@@ -374,22 +374,18 @@ terminal_encoding_action_set_charset (GtkAction   *gtkaction,
 
 
 
-
-
-
-
 GtkTreeModel *
 terminal_encoding_model_new (const gchar *current,
                              GtkTreeIter *current_iter)
 {
   GtkTreeStore *store;
-  guint         n;
-  guint         k;
-  GtkTreeIter   parent;
-  const gchar  *charset;
-  gboolean      found;
-  GtkTreeIter   iter;
-  gchar        *default_label;
+  guint n;
+  guint k;
+  GtkTreeIter parent;
+  const gchar *charset;
+  gboolean found;
+  GtkTreeIter iter;
+  gchar *default_label;
 
   store = gtk_tree_store_new (N_ENCODING_COLUMNS,
                               G_TYPE_STRING,

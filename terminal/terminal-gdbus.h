@@ -24,11 +24,13 @@
 
 G_BEGIN_DECLS
 
-gboolean  terminal_gdbus_register_service  (TerminalApp  *app,
-                                            GError      **error);
-gboolean  terminal_gdbus_invoke_launch     (gint          argc,
-                                            gchar       **argv,
-                                            GError      **error);
+gboolean
+terminal_gdbus_register_service (TerminalApp *app,
+                                 GError **error);
+gboolean
+terminal_gdbus_invoke_launch (gint argc,
+                              gchar **argv,
+                              GError **error);
 
 G_END_DECLS
 

@@ -25,12 +25,12 @@
 
 G_BEGIN_DECLS
 
-#define TERMINAL_TYPE_WIDGET            (terminal_widget_get_type ())
-#define TERMINAL_WIDGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_WIDGET, TerminalWidget))
-#define TERMINAL_WIDGET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_WIDGET, TerminalWidgetClass))
-#define TERMINAL_IS_WIDGET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_WIDGET))
+#define TERMINAL_TYPE_WIDGET (terminal_widget_get_type ())
+#define TERMINAL_WIDGET(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_WIDGET, TerminalWidget))
+#define TERMINAL_WIDGET_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_WIDGET, TerminalWidgetClass))
+#define TERMINAL_IS_WIDGET(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_WIDGET))
 #define TERMINAL_IS_WIDGET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_WIDGET))
-#define TERMINAL_WIDGET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_WIDGET, TerminalWidgetClass))
+#define TERMINAL_WIDGET_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_WIDGET, TerminalWidgetClass))
 
 enum
 {
@@ -54,12 +54,14 @@ typedef enum
   TERMINAL_WIDGET_ACTION_N
 } TerminalWidgetAction;
 
-typedef struct _TerminalWidget      TerminalWidget;
+typedef struct _TerminalWidget TerminalWidget;
 typedef struct _TerminalWidgetClass TerminalWidgetClass;
 
-GType               terminal_widget_get_type           (void) G_GNUC_CONST;
+GType
+terminal_widget_get_type (void) G_GNUC_CONST;
 
-XfceGtkActionEntry *terminal_widget_get_action_entries (void);
+XfceGtkActionEntry *
+terminal_widget_get_action_entries (void);
 
 G_END_DECLS
 

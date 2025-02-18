@@ -35,6 +35,7 @@
 
 
 
+// clang-format off
 static const gchar terminal_gdbus_introspection_xml[] =
   "<node>"
     "<interface name='" TERMINAL_DBUS_INTERFACE "'>"
@@ -45,6 +46,7 @@ static const gchar terminal_gdbus_introspection_xml[] =
       "</method>"
     "</interface>"
   "</node>";
+// clang-format on
 
 
 
@@ -52,8 +54,8 @@ static gchar *
 terminal_gdbus_display_name (void)
 {
   const gchar *display_name;
-  gchar       *name;
-  gchar       *period;
+  gchar *name;
+  gchar *period;
 
   display_name = g_getenv ("DISPLAY");
   if (G_UNLIKELY (display_name == NULL))
@@ -70,21 +72,21 @@ terminal_gdbus_display_name (void)
 
 
 static void
-terminal_gdbus_method_call (GDBusConnection       *connection,
-                            const gchar           *sender,
-                            const gchar           *object_path,
-                            const gchar           *interface_name,
-                            const gchar           *method_name,
-                            GVariant              *parameters,
+terminal_gdbus_method_call (GDBusConnection *connection,
+                            const gchar *sender,
+                            const gchar *object_path,
+                            const gchar *interface_name,
+                            const gchar *method_name,
+                            GVariant *parameters,
                             GDBusMethodInvocation *invocation,
-                            gpointer               user_data)
+                            gpointer user_data)
 {
-  TerminalApp  *app = TERMINAL_APP (user_data);
-  guint32       uid = G_MAXUINT32;
-  gchar        *display_name = NULL;
-  gchar       **argv = NULL;
-  GError       *error = NULL;
-  gchar        *display_name2;
+  TerminalApp *app = TERMINAL_APP (user_data);
+  guint32 uid = G_MAXUINT32;
+  gchar *display_name = NULL;
+  gchar **argv = NULL;
+  GError *error = NULL;
+  gchar *display_name2;
 
   g_return_if_fail (TERMINAL_IS_APP (app));
   g_return_if_fail (!g_strcmp0 (object_path, TERMINAL_DBUS_PATH));
@@ -100,20 +102,20 @@ terminal_gdbus_method_call (GDBusConnection       *connection,
       if (uid != getuid ())
         {
           g_dbus_method_invocation_return_error (invocation,
-              TERMINAL_ERROR, TERMINAL_ERROR_USER_MISMATCH,
-              _("User id mismatch"));
+                                                 TERMINAL_ERROR, TERMINAL_ERROR_USER_MISMATCH,
+                                                 _("User id mismatch"));
         }
       else if (g_strcmp0 (display_name, display_name2) != 0)
         {
           g_dbus_method_invocation_return_error (invocation,
-              TERMINAL_ERROR, TERMINAL_ERROR_DISPLAY_MISMATCH,
-              _("Display mismatch"));
+                                                 TERMINAL_ERROR, TERMINAL_ERROR_DISPLAY_MISMATCH,
+                                                 _("Display mismatch"));
         }
       else if (!terminal_app_process (app, argv, g_strv_length (argv), &error))
         {
           g_dbus_method_invocation_return_error (invocation,
-              TERMINAL_ERROR, TERMINAL_ERROR_OPTIONS,
-              "%s", error->message);
+                                                 TERMINAL_ERROR, TERMINAL_ERROR_OPTIONS,
+                                                 "%s", error->message);
           g_error_free (error);
         }
       else
@@ -129,15 +131,14 @@ terminal_gdbus_method_call (GDBusConnection       *connection,
   else
     {
       g_dbus_method_invocation_return_error (invocation,
-          G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD,
-          "Unknown method for DBus service " TERMINAL_DBUS_SERVICE);
+                                             G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD,
+                                             "Unknown method for DBus service " TERMINAL_DBUS_SERVICE);
     }
 }
 
 
 
-static const GDBusInterfaceVTable terminal_gdbus_vtable =
-{
+static const GDBusInterfaceVTable terminal_gdbus_vtable = {
   .method_call = terminal_gdbus_method_call,
   .get_property = NULL,
   .set_property = NULL
@@ -147,12 +148,12 @@ static const GDBusInterfaceVTable terminal_gdbus_vtable =
 
 static void
 terminal_gdbus_bus_acquired (GDBusConnection *connection,
-                             const gchar     *name,
-                             gpointer         user_data)
+                             const gchar *name,
+                             gpointer user_data)
 {
-  guint          register_id;
+  guint register_id;
   GDBusNodeInfo *info;
-  GError        *error = NULL;
+  GError *error = NULL;
 
   info = g_dbus_node_info_new_for_xml (terminal_gdbus_introspection_xml, NULL);
   g_assert (info != NULL);
@@ -179,7 +180,7 @@ terminal_gdbus_bus_acquired (GDBusConnection *connection,
 
 gboolean
 terminal_gdbus_register_service (TerminalApp *app,
-                                 GError     **error)
+                                 GError **error)
 {
   guint owner_id;
 
@@ -200,16 +201,16 @@ terminal_gdbus_register_service (TerminalApp *app,
 
 
 gboolean
-terminal_gdbus_invoke_launch (gint     argc,
-                              gchar  **argv,
+terminal_gdbus_invoke_launch (gint argc,
+                              gchar **argv,
                               GError **error)
 {
-  GVariant        *reply;
+  GVariant *reply;
   GDBusConnection *connection;
-  GError          *err = NULL;
-  gboolean         result;
-  guint32          uid;
-  gchar           *display_name;
+  GError *err = NULL;
+  gboolean result;
+  guint32 uid;
+  gchar *display_name;
 
   g_return_val_if_fail (argc == (gint) g_strv_length (argv), FALSE);
 

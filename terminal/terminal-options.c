@@ -53,15 +53,15 @@
  * Return value: %TRUE if @long_name or @short_name was found.
  **/
 static gboolean
-terminal_option_cmp (const gchar   *long_name,
-                     gchar          short_name,
-                     gint           argc,
-                     gchar        **argv,
-                     gint          *argv_offset,
-                     gchar        **return_string,
-                     gint          *short_offset)
+terminal_option_cmp (const gchar *long_name,
+                     gchar short_name,
+                     gint argc,
+                     gchar **argv,
+                     gint *argv_offset,
+                     gchar **return_string,
+                     gint *short_offset)
 {
-  gint   len, offset;
+  gint len, offset;
   gchar *arg = argv[*argv_offset];
   gboolean short_option = FALSE;
 
@@ -117,11 +117,11 @@ terminal_option_cmp (const gchar   *long_name,
 
 
 static gboolean
-terminal_option_show_hide_cmp (const gchar         *long_name,
-                               gint                 argc,
-                               gchar              **argv,
-                               gint                *argv_offset,
-                               TerminalVisibility  *return_visibility)
+terminal_option_show_hide_cmp (const gchar *long_name,
+                               gint argc,
+                               gchar **argv,
+                               gint *argv_offset,
+                               TerminalVisibility *return_visibility)
 {
   gchar *arg = argv[*argv_offset];
   const size_t pref_len = strlen ("--show-");
@@ -146,9 +146,9 @@ terminal_option_show_hide_cmp (const gchar         *long_name,
 
 
 void
-terminal_options_parse (gint              argc,
-                        gchar           **argv,
-                        TerminalOptions  *options)
+terminal_options_parse (gint argc,
+                        gchar **argv,
+                        TerminalOptions *options)
 {
   gint n, short_offset = 0;
 
@@ -212,22 +212,22 @@ terminal_options_parse (gint              argc,
  * Return value: a list of %TerminalWindowAttr or %NULL on failure.
  **/
 GSList *
-terminal_window_attr_parse (gint              argc,
-                            gchar           **argv,
-                            gboolean          can_reuse_window,
-                            GError          **error)
+terminal_window_attr_parse (gint argc,
+                            gchar **argv,
+                            gboolean can_reuse_window,
+                            GError **error)
 {
   TerminalWindowAttr *win_attr;
-  TerminalTabAttr    *tab_attr;
-  gchar              *default_directory = NULL;
-  gchar              *default_display = NULL;
-  gchar              *s;
-  GSList             *tp, *wp;
-  GSList             *attrs;
-  gint                n, short_offset = 0;
-  gchar              *end_ptr = NULL;
-  TerminalVisibility  visible;
-  gboolean            ignore_window_option = TRUE;
+  TerminalTabAttr *tab_attr;
+  gchar *default_directory = NULL;
+  gchar *default_display = NULL;
+  gchar *s;
+  GSList *tp, *wp;
+  GSList *attrs;
+  gint n, short_offset = 0;
+  gchar *end_ptr = NULL;
+  TerminalVisibility visible;
+  gboolean ignore_window_option = TRUE;
 
   win_attr = terminal_window_attr_new ();
   tab_attr = win_attr->tabs->data;
@@ -395,8 +395,8 @@ terminal_window_attr_parse (gint              argc,
           if (G_UNLIKELY (s == NULL))
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"%s\" requires specifying "
-                             "the color as its parameter"), "--color-text");
+                           _("Option \"%s\" requires specifying the color as its parameter"),
+                           "--color-text");
               goto failed;
             }
           else if (!gdk_rgba_parse (&color, s))
@@ -414,8 +414,8 @@ terminal_window_attr_parse (gint              argc,
           if (G_UNLIKELY (s == NULL))
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"%s\" requires specifying "
-                             "the color as its parameter"), "--color-bg");
+                           _("Option \"%s\" requires specifying the color as its parameter"),
+                           "--color-bg");
               goto failed;
             }
           else if (!gdk_rgba_parse (&color, s))
@@ -617,9 +617,9 @@ terminal_window_attr_parse (gint              argc,
         }
       else if (terminal_option_cmp ("zoom", 0, argc, argv, &n, &s, &short_offset))
         {
-          if (G_UNLIKELY (s == NULL) ||
-              strtol (s, &end_ptr, 0) < TERMINAL_ZOOM_LEVEL_MINIMUM ||
-              strtol (s, &end_ptr, 0) > TERMINAL_ZOOM_LEVEL_MAXIMUM)
+          if (G_UNLIKELY (s == NULL)
+              || strtol (s, &end_ptr, 0) < TERMINAL_ZOOM_LEVEL_MINIMUM
+              || strtol (s, &end_ptr, 0) > TERMINAL_ZOOM_LEVEL_MAXIMUM)
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
                            _("Option \"--zoom\" requires specifying "
@@ -642,7 +642,7 @@ terminal_window_attr_parse (gint              argc,
                              "the class name as its parameter"));
               goto failed;
             }
-            /* This option is handled elsewhere; no need to handle the success case */
+          /* This option is handled elsewhere; no need to handle the success case */
         }
       else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL, &short_offset)
                || terminal_option_cmp ("sync", 0, argc, argv, &n, NULL, &short_offset)
@@ -704,7 +704,7 @@ failed:
 
 /**
  **/
-TerminalWindowAttr*
+TerminalWindowAttr *
 terminal_window_attr_new (void)
 {
   TerminalWindowAttr *win_attr = g_slice_new0 (TerminalWindowAttr);
@@ -725,7 +725,7 @@ terminal_window_attr_new (void)
 
 /**
  **/
-TerminalTabAttr*
+TerminalTabAttr *
 terminal_tab_attr_new (void)
 {
   TerminalTabAttr *tab_attr = g_slice_new0 (TerminalTabAttr);

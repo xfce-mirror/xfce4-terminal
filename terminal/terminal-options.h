@@ -35,60 +35,60 @@ typedef enum
 
 typedef enum
 {
-  TERMINAL_ZOOM_LEVEL_MINIMUM     = -7,
+  TERMINAL_ZOOM_LEVEL_MINIMUM = -7,
   TERMINAL_ZOOM_LEVEL_XXXXX_SMALL = -6,
-  TERMINAL_ZOOM_LEVEL_XXXX_SMALL  = -5,
-  TERMINAL_ZOOM_LEVEL_XXX_SMALL   = -4,
-  TERMINAL_ZOOM_LEVEL_XX_SMALL    = -3,
-  TERMINAL_ZOOM_LEVEL_X_SMALL     = -2,
-  TERMINAL_ZOOM_LEVEL_SMALL       = -1,
-  TERMINAL_ZOOM_LEVEL_MEDIUM      = 0,
-  TERMINAL_ZOOM_LEVEL_LARGE       = +1,
-  TERMINAL_ZOOM_LEVEL_X_LARGE     = +2,
-  TERMINAL_ZOOM_LEVEL_XX_LARGE    = +3,
-  TERMINAL_ZOOM_LEVEL_XXX_LARGE   = +4,
-  TERMINAL_ZOOM_LEVEL_XXXX_LARGE  = +5,
+  TERMINAL_ZOOM_LEVEL_XXXX_SMALL = -5,
+  TERMINAL_ZOOM_LEVEL_XXX_SMALL = -4,
+  TERMINAL_ZOOM_LEVEL_XX_SMALL = -3,
+  TERMINAL_ZOOM_LEVEL_X_SMALL = -2,
+  TERMINAL_ZOOM_LEVEL_SMALL = -1,
+  TERMINAL_ZOOM_LEVEL_MEDIUM = 0,
+  TERMINAL_ZOOM_LEVEL_LARGE = +1,
+  TERMINAL_ZOOM_LEVEL_X_LARGE = +2,
+  TERMINAL_ZOOM_LEVEL_XX_LARGE = +3,
+  TERMINAL_ZOOM_LEVEL_XXX_LARGE = +4,
+  TERMINAL_ZOOM_LEVEL_XXXX_LARGE = +5,
   TERMINAL_ZOOM_LEVEL_XXXXX_LARGE = +6,
-  TERMINAL_ZOOM_LEVEL_MAXIMUM     = +7,
-  TERMINAL_ZOOM_LEVEL_DEFAULT     = TERMINAL_ZOOM_LEVEL_MEDIUM
+  TERMINAL_ZOOM_LEVEL_MAXIMUM = +7,
+  TERMINAL_ZOOM_LEVEL_DEFAULT = TERMINAL_ZOOM_LEVEL_MEDIUM
 } TerminalZoomLevel;
 
 typedef struct
 {
-  gchar         **command;
-  gchar          *directory;
-  gchar          *title;
-  gchar          *initial_title;
-  gchar          *color_text;
-  gchar          *color_bg;
-  gchar          *color_title;
-  TerminalTitle   dynamic_title_mode;
-  gint            position;
-  guint           hold : 1;
-  guint           active : 1;
+  gchar **command;
+  gchar *directory;
+  gchar *title;
+  gchar *initial_title;
+  gchar *color_text;
+  gchar *color_bg;
+  gchar *color_title;
+  TerminalTitle dynamic_title_mode;
+  gint position;
+  guint hold : 1;
+  guint active : 1;
 } TerminalTabAttr;
 
 typedef struct
 {
-  GSList             *tabs;
-  gchar              *display;
-  gchar              *geometry;
-  gchar              *role;
-  gint                workspace;
-  gchar              *startup_id;
-  gchar              *sm_client_id;
-  gchar              *icon;
-  gchar              *font;
-  guint               drop_down : 1;
-  guint               fullscreen : 1;
-  guint               maximize : 1;
-  guint               minimize : 1;
-  guint               reuse_last_window : 1;
-  TerminalVisibility  menubar;
-  TerminalVisibility  borders;
-  TerminalVisibility  toolbar;
-  TerminalVisibility  scrollbar;
-  TerminalZoomLevel   zoom;
+  GSList *tabs;
+  gchar *display;
+  gchar *geometry;
+  gchar *role;
+  gint workspace;
+  gchar *startup_id;
+  gchar *sm_client_id;
+  gchar *icon;
+  gchar *font;
+  guint drop_down : 1;
+  guint fullscreen : 1;
+  guint maximize : 1;
+  guint minimize : 1;
+  guint reuse_last_window : 1;
+  TerminalVisibility menubar;
+  TerminalVisibility borders;
+  TerminalVisibility toolbar;
+  TerminalVisibility scrollbar;
+  TerminalZoomLevel zoom;
 } TerminalWindowAttr;
 
 typedef struct
@@ -100,22 +100,28 @@ typedef struct
   guint disable_server : 1;
 } TerminalOptions;
 
-void                terminal_options_parse     (gint                 argc,
-                                                gchar              **argv,
-                                                TerminalOptions     *options);
+void
+terminal_options_parse (gint argc,
+                        gchar **argv,
+                        TerminalOptions *options);
 
-GSList             *terminal_window_attr_parse (gint                 argc,
-                                                gchar              **argv,
-                                                gboolean             can_reuse_window,
-                                                GError             **error);
+GSList *
+terminal_window_attr_parse (gint argc,
+                            gchar **argv,
+                            gboolean can_reuse_window,
+                            GError **error);
 
-TerminalWindowAttr *terminal_window_attr_new   (void);
+TerminalWindowAttr *
+terminal_window_attr_new (void);
 
-TerminalTabAttr    *terminal_tab_attr_new      (void);
+TerminalTabAttr *
+terminal_tab_attr_new (void);
 
-void                terminal_tab_attr_free     (TerminalTabAttr     *attr);
+void
+terminal_tab_attr_free (TerminalTabAttr *attr);
 
-void                terminal_window_attr_free  (TerminalWindowAttr  *attr);
+void
+terminal_window_attr_free (TerminalWindowAttr *attr);
 
 G_END_DECLS
 

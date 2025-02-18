@@ -23,35 +23,41 @@
 
 G_BEGIN_DECLS
 
-#define TERMINAL_TYPE_WINDOW_DROPDOWN            (terminal_window_dropdown_get_type ())
-#define TERMINAL_WINDOW_DROPDOWN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_WINDOW_DROPDOWN, TerminalWindowDropdown))
-#define TERMINAL_WINDOW_DROPDOWN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_WINDOW_DROPDOWN, TerminalWindowDropdownClass))
-#define TERMINAL_IS_WINDOW_DROPDOWN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_WINDOW_DROPDOWN))
+#define TERMINAL_TYPE_WINDOW_DROPDOWN (terminal_window_dropdown_get_type ())
+#define TERMINAL_WINDOW_DROPDOWN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_WINDOW_DROPDOWN, TerminalWindowDropdown))
+#define TERMINAL_WINDOW_DROPDOWN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_WINDOW_DROPDOWN, TerminalWindowDropdownClass))
+#define TERMINAL_IS_WINDOW_DROPDOWN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_WINDOW_DROPDOWN))
 #define TERMINAL_IS_WINDOW_DROPDOWN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_WINDOW_DROPDOWN))
-#define TERMINAL_WINDOW_DROPDOWN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_WINDOW_DROPDOWN, TerminalWindowDropdownClass))
+#define TERMINAL_WINDOW_DROPDOWN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_WINDOW_DROPDOWN, TerminalWindowDropdownClass))
 
 typedef struct _TerminalWindowDropdownClass TerminalWindowDropdownClass;
-typedef struct _TerminalWindowDropdown      TerminalWindowDropdown;
+typedef struct _TerminalWindowDropdown TerminalWindowDropdown;
 
-GType      terminal_window_dropdown_get_type        (void) G_GNUC_CONST;
+GType
+terminal_window_dropdown_get_type (void) G_GNUC_CONST;
 
-GtkWidget *terminal_window_dropdown_new             (const gchar            *role,
-                                                     const gchar            *icon,
-                                                     gboolean                fullscreen,
-                                                     TerminalVisibility      menubar,
-                                                     TerminalVisibility      toolbar);
+GtkWidget *
+terminal_window_dropdown_new (const gchar *role,
+                              const gchar *icon,
+                              gboolean fullscreen,
+                              TerminalVisibility menubar,
+                              TerminalVisibility toolbar);
 
-void       terminal_window_dropdown_toggle          (TerminalWindowDropdown *dropdown,
-                                                     const gchar            *startup_id,
-                                                     gboolean                force_show);
+void
+terminal_window_dropdown_toggle (TerminalWindowDropdown *dropdown,
+                                 const gchar *startup_id,
+                                 gboolean force_show);
 
-void       terminal_window_dropdown_get_size        (TerminalWindowDropdown *dropdown,
-                                                     TerminalScreen         *screen,
-                                                     glong                  *grid_width,
-                                                     glong                  *grid_height);
+void
+terminal_window_dropdown_get_size (TerminalWindowDropdown *dropdown,
+                                   TerminalScreen *screen,
+                                   glong *grid_width,
+                                   glong *grid_height);
 
-void       terminal_window_dropdown_update_geometry (TerminalWindowDropdown *dropdown);
-void       terminal_window_dropdown_ignore_next_focus_out_event (TerminalWindowDropdown *dropdown);
+void
+terminal_window_dropdown_update_geometry (TerminalWindowDropdown *dropdown);
+void
+terminal_window_dropdown_ignore_next_focus_out_event (TerminalWindowDropdown *dropdown);
 
 G_END_DECLS
 

@@ -34,41 +34,58 @@
 
 
 
-static void      terminal_preferences_dialog_finalize                    (GObject                    *object);
-static void      terminal_preferences_dialog_response                    (GtkDialog                  *dialog,
-                                                                          gint                        response);
-static void      terminal_preferences_dialog_new_section                 (GtkWidget                 **frame,
-                                                                          GtkWidget                 **vbox,
-                                                                          GtkWidget                 **grid,
-                                                                          GtkWidget                 **label,
-                                                                          gint                       *row,
-                                                                          const gchar                *header);
-static void      terminal_preferences_dialog_background_notify           (TerminalPreferencesDialog  *dialog);
-static void      terminal_preferences_dialog_background_set              (TerminalPreferencesDialog  *dialog,
-                                                                          GtkWidget                  *widget);
-static void      terminal_preferences_dialog_geometry_notify             (TerminalPreferencesDialog  *dialog);
-static void      terminal_preferences_dialog_geometry_changed            (TerminalPreferencesDialog  *dialog,
-                                                                          GtkWidget                  *widget);
-static void      terminal_preferences_dialog_palette_notify              (TerminalPreferencesDialog  *dialog);
-static void      terminal_preferences_dialog_palette_changed             (TerminalPreferencesDialog  *dialog,
-                                                                          GtkWidget                  *widget);
-static void      terminal_preferences_dialog_presets_changed             (TerminalPreferencesDialog  *dialog,
-                                                                          GtkWidget                  *widget);
-static void      terminal_preferences_dialog_presets_load                (TerminalPreferencesDialog  *dialog,
-                                                                          GtkWidget                  *widget);
-static void      terminal_preferences_dialog_reset_cell_scale            (TerminalPreferencesDialog  *dialog,
-                                                                          GtkWidget                  *widget);
-static void      terminal_preferences_dialog_reset_compatibility_options (TerminalPreferencesDialog  *dialog,
-                                                                          GtkWidget                  *widget);
-static void      terminal_preferences_dialog_reset_double_click_select   (TerminalPreferencesDialog  *dialog,
-                                                                          GtkWidget                  *widget);
-static void      terminal_preferences_dialog_encoding_changed            (TerminalPreferencesDialog  *dialog,
-                                                                          GtkWidget                  *widget);
-static void      terminal_gtk_label_set_a11y_relation                    (GtkLabel                   *label,
-                                                                          GtkWidget                  *widget);
-static gboolean  monospace_filter                                        (const PangoFontFamily      *family,
-                                                                          const PangoFontFace        *face,
-                                                                          gpointer                    data);
+static void
+terminal_preferences_dialog_finalize (GObject *object);
+static void
+terminal_preferences_dialog_response (GtkDialog *dialog,
+                                      gint response);
+static void
+terminal_preferences_dialog_new_section (GtkWidget **frame,
+                                         GtkWidget **vbox,
+                                         GtkWidget **grid,
+                                         GtkWidget **label,
+                                         gint *row,
+                                         const gchar *header);
+static void
+terminal_preferences_dialog_background_notify (TerminalPreferencesDialog *dialog);
+static void
+terminal_preferences_dialog_background_set (TerminalPreferencesDialog *dialog,
+                                            GtkWidget *widget);
+static void
+terminal_preferences_dialog_geometry_notify (TerminalPreferencesDialog *dialog);
+static void
+terminal_preferences_dialog_geometry_changed (TerminalPreferencesDialog *dialog,
+                                              GtkWidget *widget);
+static void
+terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog);
+static void
+terminal_preferences_dialog_palette_changed (TerminalPreferencesDialog *dialog,
+                                             GtkWidget *widget);
+static void
+terminal_preferences_dialog_presets_changed (TerminalPreferencesDialog *dialog,
+                                             GtkWidget *widget);
+static void
+terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog,
+                                          GtkWidget *widget);
+static void
+terminal_preferences_dialog_reset_cell_scale (TerminalPreferencesDialog *dialog,
+                                              GtkWidget *widget);
+static void
+terminal_preferences_dialog_reset_compatibility_options (TerminalPreferencesDialog *dialog,
+                                                         GtkWidget *widget);
+static void
+terminal_preferences_dialog_reset_double_click_select (TerminalPreferencesDialog *dialog,
+                                                       GtkWidget *widget);
+static void
+terminal_preferences_dialog_encoding_changed (TerminalPreferencesDialog *dialog,
+                                              GtkWidget *widget);
+static void
+terminal_gtk_label_set_a11y_relation (GtkLabel *label,
+                                      GtkWidget *widget);
+static gboolean
+monospace_filter (const PangoFontFamily *family,
+                  const PangoFontFace *face,
+                  gpointer data);
 
 
 
@@ -105,22 +122,22 @@ struct _TerminalPreferencesDialogClass
 
 struct _TerminalPreferencesDialog
 {
-  XfceTitledDialog     __parent__;
+  XfceTitledDialog __parent__;
   TerminalPreferences *preferences;
 
-  GtkColorButton      *palette_button[N_PALETTE_BUTTONS];
-  GtkSpinButton       *geometry_button[N_GEOMETRY_BUTTONS];
-  GtkLabel            *dropdown_label;
-  GtkBox              *dropdown_vbox;
-  GtkNotebook         *dropdown_notebook;
-  GtkWidget           *file_chooser;
-  gint                 n_presets;
+  GtkColorButton *palette_button[N_PALETTE_BUTTONS];
+  GtkSpinButton *geometry_button[N_GEOMETRY_BUTTONS];
+  GtkLabel *dropdown_label;
+  GtkBox *dropdown_vbox;
+  GtkNotebook *dropdown_notebook;
+  GtkWidget *file_chooser;
+  gint n_presets;
 
-  gulong               bg_image_signal_id;
-  gulong               palette_notify_signal_id;
-  gulong               palette_set_signal_id[N_PALETTE_BUTTONS];
-  gulong               geometry_notify_signal_id;
-  gulong               geometry_set_signal_id[N_GEOMETRY_BUTTONS];
+  gulong bg_image_signal_id;
+  gulong palette_notify_signal_id;
+  gulong palette_set_signal_id[N_PALETTE_BUTTONS];
+  gulong geometry_notify_signal_id;
+  gulong geometry_set_signal_id[N_GEOMETRY_BUTTONS];
 };
 
 
@@ -133,7 +150,7 @@ static void
 terminal_preferences_dialog_class_init (TerminalPreferencesDialogClass *klass)
 {
   GtkDialogClass *gtkdialog_class;
-  GObjectClass   *gobject_class;
+  GObjectClass *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_preferences_dialog_finalize;
@@ -145,12 +162,12 @@ terminal_preferences_dialog_class_init (TerminalPreferencesDialogClass *klass)
 
 
 static gboolean
-transform_combo_show_image_options (GBinding     *binding,
+transform_combo_show_image_options (GBinding *binding,
                                     const GValue *src_value,
-                                    GValue       *dst_value,
-                                    gpointer      user_data)
+                                    GValue *dst_value,
+                                    gpointer user_data)
 {
-  gint     active_id;
+  gint active_id;
   gboolean show = FALSE;
 
   active_id = g_value_get_int (src_value);
@@ -163,12 +180,12 @@ transform_combo_show_image_options (GBinding     *binding,
 
 
 static gboolean
-transform_combo_show_opacity_options (GBinding     *binding,
+transform_combo_show_opacity_options (GBinding *binding,
                                       const GValue *src_value,
-                                      GValue       *dst_value,
-                                      gpointer      user_data)
+                                      GValue *dst_value,
+                                      gpointer user_data)
 {
-  gint     active_id;
+  gint active_id;
   gboolean show = FALSE;
 
   active_id = g_value_get_int (src_value);
@@ -185,23 +202,23 @@ static void
 terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 {
   GtkFileFilter *filter;
-  GtkTreeModel  *model;
-  GtkTreeIter    current_iter;
-  GtkWidget     *notebook;
-  GtkWidget     *button;
-  GtkWidget     *image;
-  GtkWidget     *frame;
-  GtkWidget     *label;
-  GtkWidget     *vbox;
-  GtkWidget     *box;
-  GtkWidget     *infobar;
-  GtkWidget     *grid;
-  GtkWidget     *background_grid;
-  GtkWidget     *entry;
-  GtkWidget     *combo;
-  gchar         *current;
-  gint           row = 0;
-  const gchar   *text;
+  GtkTreeModel *model;
+  GtkTreeIter current_iter;
+  GtkWidget *notebook;
+  GtkWidget *button;
+  GtkWidget *image;
+  GtkWidget *frame;
+  GtkWidget *label;
+  GtkWidget *vbox;
+  GtkWidget *box;
+  GtkWidget *infobar;
+  GtkWidget *grid;
+  GtkWidget *background_grid;
+  GtkWidget *entry;
+  GtkWidget *combo;
+  gchar *current;
+  gint row = 0;
+  const gchar *text;
 
   /* grab a reference on the preferences */
   dialog->preferences = terminal_preferences_get ();
@@ -211,7 +228,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
   gtk_window_set_title (GTK_WINDOW (dialog), _("Terminal Preferences"));
 
-#if !LIBXFCE4UI_CHECK_VERSION (4, 19, 3)
+#if !LIBXFCE4UI_CHECK_VERSION(4, 19, 3)
   xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (dialog));
 #endif
 
@@ -389,9 +406,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
-  if (vte_get_major_version () > 0 ||
-      (vte_get_major_version () == 0 && vte_get_minor_version () > 69) ||
-      (vte_get_major_version () == 0 && vte_get_minor_version () == 69 && vte_get_micro_version () >= 90))
+  if (vte_get_major_version () > 0
+      || (vte_get_major_version () == 0 && vte_get_minor_version () > 69)
+      || (vte_get_major_version () == 0 && vte_get_minor_version () == 69 && vte_get_micro_version () >= 90))
     {
       button = gtk_check_button_new_with_mnemonic (_("_Enable kinetic scrolling"));
       g_object_bind_property (G_OBJECT (dialog->preferences), "kinetic-scrolling",
@@ -1653,16 +1670,18 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
 
-  grid = xfce_shortcuts_editor_new (7,
-                                    _("Window"), terminal_window_get_action_entries (), (size_t) TERMINAL_WINDOW_ACTION_N,
-                                    _("Terminal"), terminal_widget_get_action_entries (), (size_t) TERMINAL_WIDGET_ACTION_N);
+  grid = xfce_shortcuts_editor_new (7, _("Window"),
+                                    terminal_window_get_action_entries (),
+                                    (size_t) TERMINAL_WINDOW_ACTION_N, _("Terminal"),
+                                    terminal_widget_get_action_entries (),
+                                    (size_t) TERMINAL_WIDGET_ACTION_N);
   gtk_container_add (GTK_CONTAINER (frame), grid);
   gtk_widget_show (grid);
 }
 
 
 
-static PangoAttrList*
+static PangoAttrList *
 terminal_pango_attr_list_bold (void)
 {
   static PangoAttrList *attr_list = NULL;
@@ -1677,12 +1696,12 @@ terminal_pango_attr_list_bold (void)
 
 
 static void
-terminal_preferences_dialog_new_section (GtkWidget   **frame,
-                                         GtkWidget   **vbox,
-                                         GtkWidget   **grid,
-                                         GtkWidget   **label,
-                                         gint         *row,
-                                         const gchar  *header)
+terminal_preferences_dialog_new_section (GtkWidget **frame,
+                                         GtkWidget **vbox,
+                                         GtkWidget **grid,
+                                         GtkWidget **label,
+                                         gint *row,
+                                         const gchar *header)
 {
   *frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (*vbox), *frame, FALSE, TRUE, 0);
@@ -1727,7 +1746,7 @@ terminal_preferences_dialog_background_notify (TerminalPreferencesDialog *dialog
 
 static void
 terminal_preferences_dialog_background_set (TerminalPreferencesDialog *dialog,
-                                            GtkWidget                 *widget)
+                                            GtkWidget *widget)
 {
   gchar *filename;
 
@@ -1746,7 +1765,7 @@ terminal_preferences_dialog_background_set (TerminalPreferencesDialog *dialog,
 static void
 terminal_preferences_dialog_geometry_notify (TerminalPreferencesDialog *dialog)
 {
-  gchar  *geometry = NULL;
+  gchar *geometry = NULL;
   gchar **split = NULL;
 
   g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
@@ -1779,10 +1798,10 @@ terminal_preferences_dialog_geometry_notify (TerminalPreferencesDialog *dialog)
 
 static void
 terminal_preferences_dialog_geometry_changed (TerminalPreferencesDialog *dialog,
-                                              GtkWidget                 *widget)
+                                              GtkWidget *widget)
 {
-  gint   rows;
-  gint   cols;
+  gint rows;
+  gint cols;
   gchar *geometry;
 
   g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
@@ -1809,10 +1828,10 @@ terminal_preferences_dialog_geometry_changed (TerminalPreferencesDialog *dialog,
 static void
 terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
 {
-  guint     i;
-  GdkRGBA   color;
-  gchar    *color_str = NULL;
-  gchar   **colors = NULL;
+  guint i;
+  GdkRGBA color;
+  gchar *color_str = NULL;
+  gchar **colors = NULL;
 
   g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
 
@@ -1846,11 +1865,11 @@ terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
 
 static void
 terminal_preferences_dialog_palette_changed (TerminalPreferencesDialog *dialog,
-                                             GtkWidget                 *widget)
+                                             GtkWidget *widget)
 {
-  guint    i;
-  GdkRGBA  color;
-  gchar   *color_str;
+  guint i;
+  GdkRGBA color;
+  gchar *color_str;
   GString *array;
 
   g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
@@ -1886,8 +1905,8 @@ terminal_preferences_dialog_palette_changed (TerminalPreferencesDialog *dialog,
 
 static gboolean
 terminal_preferences_dialog_presets_sepfunc (GtkTreeModel *model,
-                                             GtkTreeIter  *iter,
-                                             gpointer      user_data)
+                                             GtkTreeIter *iter,
+                                             gpointer user_data)
 {
   gboolean is_separator;
   gtk_tree_model_get (model, iter, PRESET_COLUMN_IS_SEPARATOR, &is_separator, -1);
@@ -1898,21 +1917,21 @@ terminal_preferences_dialog_presets_sepfunc (GtkTreeModel *model,
 
 static void
 terminal_preferences_dialog_presets_changed (TerminalPreferencesDialog *dialog,
-                                             GtkWidget                 *widget)
+                                             GtkWidget *widget)
 {
   GtkTreeModel *model;
-  GtkTreeIter   iter;
-  GtkComboBox  *combobox;
-  gchar        *path;
-  XfceRc       *rc;
-  GParamSpec  **pspecs, *pspec;
-  guint         nspecs;
-  guint         n;
-  const gchar  *blurb;
-  const gchar  *name;
-  const gchar  *str;
-  GValue        src = { 0, };
-  GValue        dst = { 0, };
+  GtkTreeIter iter;
+  GtkComboBox *combobox;
+  gchar *path;
+  XfceRc *rc;
+  GParamSpec **pspecs, *pspec;
+  guint nspecs;
+  guint n;
+  const gchar *blurb;
+  const gchar *name;
+  const gchar *str;
+  GValue src = G_VALUE_INIT;
+  GValue dst = G_VALUE_INIT;
 
   g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
   g_return_if_fail (GTK_IS_COMBO_BOX (widget));
@@ -1991,16 +2010,16 @@ terminal_preferences_dialog_presets_changed (TerminalPreferencesDialog *dialog,
 
 static void
 terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog,
-                                          GtkWidget                 *widget)
+                                          GtkWidget *widget)
 {
-  gchar       **global, **user, **presets;
-  guint         n_global, n_user, n_presets = 0, n;
-  XfceRc       *rc;
+  gchar **global, **user, **presets;
+  guint n_global, n_user, n_presets = 0, n;
+  XfceRc *rc;
   GtkListStore *store;
-  GtkTreeIter   iter;
-  GtkComboBox  *combobox;
-  const gchar  *title;
-  gchar        *path;
+  GtkTreeIter iter;
+  GtkComboBox *combobox;
+  const gchar *title;
+  gchar *path;
 
   g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
   g_return_if_fail (GTK_IS_COMBO_BOX (widget));
@@ -2084,16 +2103,16 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog,
 
 
 static void
-terminal_preferences_dialog_reset_properties (TerminalPreferencesDialog  *dialog,
-                                              guint                       props_n,
-                                              const gchar               **props)
+terminal_preferences_dialog_reset_properties (TerminalPreferencesDialog *dialog,
+                                              guint props_n,
+                                              const gchar **props)
 {
   for (guint i = 0; i < props_n; i++)
     {
       GParamSpec *spec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), props[i]);
       if (G_LIKELY (spec != NULL))
         {
-          GValue value = { 0, };
+          GValue value = G_VALUE_INIT;
           g_value_init (&value, spec->value_type);
           g_param_value_set_default (spec, &value);
           g_object_set_property (G_OBJECT (dialog->preferences), props[i], &value);
@@ -2106,7 +2125,7 @@ terminal_preferences_dialog_reset_properties (TerminalPreferencesDialog  *dialog
 
 static void
 terminal_preferences_dialog_reset_cell_scale (TerminalPreferencesDialog *dialog,
-                                              GtkWidget                 *widget)
+                                              GtkWidget *widget)
 {
   const gchar *properties[] = { "cell-width-scale", "cell-height-scale" };
   terminal_preferences_dialog_reset_properties (dialog, G_N_ELEMENTS (properties), properties);
@@ -2116,7 +2135,7 @@ terminal_preferences_dialog_reset_cell_scale (TerminalPreferencesDialog *dialog,
 
 static void
 terminal_preferences_dialog_reset_compatibility_options (TerminalPreferencesDialog *dialog,
-                                                         GtkWidget                 *widget)
+                                                         GtkWidget *widget)
 {
   const gchar *properties[] = { "binding-backspace", "binding-delete", "binding-ambiguous-width" };
   terminal_preferences_dialog_reset_properties (dialog, G_N_ELEMENTS (properties), properties);
@@ -2126,7 +2145,7 @@ terminal_preferences_dialog_reset_compatibility_options (TerminalPreferencesDial
 
 static void
 terminal_preferences_dialog_reset_double_click_select (TerminalPreferencesDialog *dialog,
-                                                       GtkWidget                 *widget)
+                                                       GtkWidget *widget)
 {
   const gchar *properties[] = { "word-chars" };
   terminal_preferences_dialog_reset_properties (dialog, G_N_ELEMENTS (properties), properties);
@@ -2136,14 +2155,14 @@ terminal_preferences_dialog_reset_double_click_select (TerminalPreferencesDialog
 
 static void
 terminal_preferences_dialog_encoding_changed (TerminalPreferencesDialog *dialog,
-                                              GtkWidget                 *widget)
+                                              GtkWidget *widget)
 {
-  GtkTreeIter   iter;
-  gchar        *encoding;
+  GtkTreeIter iter;
+  gchar *encoding;
   GtkTreeModel *model;
-  gboolean      is_charset;
-  GtkTreeIter   child_iter;
-  GtkComboBox  *combobox;
+  gboolean is_charset;
+  GtkTreeIter child_iter;
+  GtkComboBox *combobox;
 
   g_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
   g_return_if_fail (GTK_IS_COMBO_BOX (widget));
@@ -2172,12 +2191,12 @@ terminal_preferences_dialog_encoding_changed (TerminalPreferencesDialog *dialog,
 
 
 static void
-terminal_gtk_label_set_a11y_relation (GtkLabel  *label,
+terminal_gtk_label_set_a11y_relation (GtkLabel *label,
                                       GtkWidget *widget)
 {
   AtkRelationSet *relations;
-  AtkRelation    *relation;
-  AtkObject      *object;
+  AtkRelation *relation;
+  AtkObject *object;
 
   g_return_if_fail (GTK_IS_WIDGET (widget));
   g_return_if_fail (GTK_IS_LABEL (label));
@@ -2194,8 +2213,8 @@ terminal_gtk_label_set_a11y_relation (GtkLabel  *label,
 
 static gboolean
 monospace_filter (const PangoFontFamily *family,
-                  const PangoFontFace   *face,
-                  gpointer               data)
+                  const PangoFontFace *face,
+                  gpointer data)
 {
   return pango_font_family_is_monospace ((PangoFontFamily *) family);
 }
@@ -2215,7 +2234,7 @@ terminal_preferences_dialog_finalize (GObject *object)
   if (G_LIKELY (dialog->geometry_notify_signal_id != 0))
     g_signal_handler_disconnect (dialog->preferences, dialog->geometry_notify_signal_id);
 
-  /* other signals like the set-signals do not need to be disconnected since the 
+  /* other signals like the set-signals do not need to be disconnected since the
    * instances have already been released and the respective signals taken care of */
 
   /* release our reference on the preferences */
@@ -2228,7 +2247,7 @@ terminal_preferences_dialog_finalize (GObject *object)
 
 static void
 terminal_preferences_dialog_response (GtkDialog *dialog,
-                                      gint       response)
+                                      gint response)
 {
   if (G_UNLIKELY (response == GTK_RESPONSE_HELP))
     {
@@ -2244,7 +2263,7 @@ terminal_preferences_dialog_response (GtkDialog *dialog,
 
 
 
-GtkWidget*
+GtkWidget *
 terminal_preferences_dialog_new (gboolean show_drop_down,
                                  gboolean drop_down_mode)
 {

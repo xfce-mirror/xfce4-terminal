@@ -24,15 +24,15 @@
 
 G_BEGIN_DECLS
 
-#define TERMINAL_TYPE_PREFERENCES             (terminal_preferences_get_type ())
-#define TERMINAL_PREFERENCES(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_PREFERENCES, TerminalPreferences))
-#define TERMINAL_PREFERENCES_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_PREFERENCES, TerminalPreferencesClass))
-#define TERMINAL_IS_PREFERENCES(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_PREFERENCES))
-#define TERMINAL_IS_PREFERENCES_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_PREFERENCES))
-#define TERMINAL_PREFERENCES_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_PREFERENCES, TerminalPreferencesClass))
+#define TERMINAL_TYPE_PREFERENCES (terminal_preferences_get_type ())
+#define TERMINAL_PREFERENCES(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_PREFERENCES, TerminalPreferences))
+#define TERMINAL_PREFERENCES_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_PREFERENCES, TerminalPreferencesClass))
+#define TERMINAL_IS_PREFERENCES(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_PREFERENCES))
+#define TERMINAL_IS_PREFERENCES_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_PREFERENCES))
+#define TERMINAL_PREFERENCES_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_PREFERENCES, TerminalPreferencesClass))
 
 typedef struct _TerminalPreferencesClass TerminalPreferencesClass;
-typedef struct _TerminalPreferences      TerminalPreferences;
+typedef struct _TerminalPreferences TerminalPreferences;
 
 typedef enum /*< enum,prefix=TERMINAL_SCROLLBAR >*/
 {
@@ -69,10 +69,10 @@ typedef enum /*< enum,prefix=TERMINAL_BACKGROUND_STYLE >*/
 typedef enum /*< enum,prefix=TERMINAL_ERASE_BINDING >*/
 {
   TERMINAL_ERASE_BINDING_AUTO,
-  TERMINAL_ERASE_BINDING_ASCII_DELETE,    /* ASCII DEL */
+  TERMINAL_ERASE_BINDING_ASCII_DELETE, /* ASCII DEL */
   TERMINAL_ERASE_BINDING_DELETE_SEQUENCE, /* Escape Sequence */
   TERMINAL_ERASE_BINDING_ASCII_BACKSPACE, /* Control-H */
-  TERMINAL_ERASE_BINDING_ERASE_TTY        /* TTY Erase */
+  TERMINAL_ERASE_BINDING_ERASE_TTY /* TTY Erase */
 } TerminalEraseBinding;
 
 typedef enum /*< enum,prefix=TERMINAL_AMBIGUOUS_WIDTH_BINDING >*/
@@ -98,18 +98,21 @@ typedef enum /*< enum,prefix=TERMINAL_TEXT_BLINK_MODE >*/
 
 typedef enum /*< enum,prefix=TERMINAL_RIGHT_CLICK_ACTION >*/
 {
-    TERMINAL_RIGHT_CLICK_ACTION_CONTEXT_MENU,
-    TERMINAL_RIGHT_CLICK_ACTION_PASTE_CLIPBOARD,
-    TERMINAL_RIGHT_CLICK_ACTION_PASTE_SELECTION
+  TERMINAL_RIGHT_CLICK_ACTION_CONTEXT_MENU,
+  TERMINAL_RIGHT_CLICK_ACTION_PASTE_CLIPBOARD,
+  TERMINAL_RIGHT_CLICK_ACTION_PASTE_SELECTION
 } TerminalRightClickAction;
 
-GType                terminal_preferences_get_type            (void) G_GNUC_CONST;
+GType
+terminal_preferences_get_type (void) G_GNUC_CONST;
 
-TerminalPreferences *terminal_preferences_get                 (void);
+TerminalPreferences *
+terminal_preferences_get (void);
 
-gboolean             terminal_preferences_get_color           (TerminalPreferences *preferences,
-                                                               const gchar         *property,
-                                                               GdkRGBA             *color_return);
+gboolean
+terminal_preferences_get_color (TerminalPreferences *preferences,
+                                const gchar *property,
+                                GdkRGBA *color_return);
 
 G_END_DECLS
 
