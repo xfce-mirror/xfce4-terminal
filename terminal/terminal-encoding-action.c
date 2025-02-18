@@ -16,7 +16,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_MEMORY_H
@@ -28,8 +28,8 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include <terminal/terminal-encoding-action.h>
-#include <terminal/terminal-private.h>
+#include "terminal-encoding-action.h"
+#include "terminal-private.h"
 
 
 
@@ -449,4 +449,3 @@ terminal_encoding_model_new (const gchar *current,
 
   return GTK_TREE_MODEL (store);
 }
-

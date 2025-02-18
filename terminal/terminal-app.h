@@ -22,7 +22,7 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <terminal/terminal-options.h>
+#include "terminal-options.h"
 
 G_BEGIN_DECLS
 

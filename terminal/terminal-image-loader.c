@@ -19,11 +19,11 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
-#include <terminal/terminal-image-loader.h>
-#include <terminal/terminal-private.h>
+#include "terminal-image-loader.h"
+#include "terminal-private.h"
 
 /* max image resolution is 8K */
 #define MAX_IMAGE_WIDTH  7680
@@ -485,5 +485,3 @@ terminal_image_loader_load (TerminalImageLoader *loader,
 
   return GDK_PIXBUF (g_object_ref (G_OBJECT (pixbuf)));
 }
-
-

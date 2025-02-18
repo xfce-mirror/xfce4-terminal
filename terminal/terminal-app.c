@@ -18,7 +18,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_ERRNO_H
@@ -35,21 +35,21 @@
 #include <string.h>
 #endif
 
-#include <libxfce4ui/libxfce4ui.h>
-
-#include <gdk/gdk.h>
 #ifdef ENABLE_X11
-#include <X11/Xlib.h>
 #include <X11/Xatom.h>
+#include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #endif
 
-#include <terminal/terminal-app.h>
-#include <terminal/terminal-config.h>
-#include <terminal/terminal-preferences.h>
-#include <terminal/terminal-private.h>
-#include <terminal/terminal-window.h>
-#include <terminal/terminal-window-dropdown.h>
+#include <gdk/gdk.h>
+#include <libxfce4ui/libxfce4ui.h>
+
+#include "terminal-app.h"
+#include "terminal-config.h"
+#include "terminal-preferences.h"
+#include "terminal-private.h"
+#include "terminal-window-dropdown.h"
+#include "terminal-window.h"
 
 #define ACCEL_MAP_PATH "xfce4/terminal/accels.scm"
 #define TERMINAL_DESKTOP_FILE (DATADIR "/applications/xfce4-terminal.desktop")

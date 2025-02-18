@@ -20,9 +20,8 @@
 #ifndef TERMINAL_WIDGET_H
 #define TERMINAL_WIDGET_H
 
-#include <vte/vte.h>
-
 #include <libxfce4ui/libxfce4ui.h>
+#include <vte/vte.h>
 
 G_BEGIN_DECLS
 

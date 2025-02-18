@@ -18,7 +18,7 @@
 #ifndef TERMINAL_SEARCH_DIALOG_H
 #define TERMINAL_SEARCH_DIALOG_H
 
-#include <terminal-private.h>
+#include "terminal-private.h"
 
 G_BEGIN_DECLS
 

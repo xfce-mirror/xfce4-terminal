@@ -20,9 +20,9 @@
 #ifndef TERMINAL_WINDOW_H
 #define TERMINAL_WINDOW_H
 
-#include <terminal/terminal-screen.h>
-#include <terminal/terminal-options.h>
-#include <terminal/terminal-preferences.h>
+#include "terminal-options.h"
+#include "terminal-preferences.h"
+#include "terminal-screen.h"
 
 G_BEGIN_DECLS
 

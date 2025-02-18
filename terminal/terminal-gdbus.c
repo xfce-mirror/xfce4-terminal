@@ -16,7 +16,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_SYS_TYPES_H
@@ -29,9 +29,9 @@
 
 #include <gio/gio.h>
 
-#include <terminal/terminal-config.h>
-#include <terminal/terminal-gdbus.h>
-#include <terminal/terminal-private.h>
+#include "terminal-config.h"
+#include "terminal-gdbus.h"
+#include "terminal-private.h"
 
 
 
@@ -247,4 +247,3 @@ terminal_gdbus_invoke_launch (gint     argc,
 
   return result;
 }
-

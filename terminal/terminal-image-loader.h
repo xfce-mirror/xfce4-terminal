@@ -20,7 +20,7 @@
 #ifndef TERMINAL_IMAGE_LOADER_H
 #define TERMINAL_IMAGE_LOADER_H
 
-#include <terminal/terminal-preferences.h>
+#include "terminal-preferences.h"
 
 G_BEGIN_DECLS
 

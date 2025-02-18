@@ -18,19 +18,19 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
-#include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4kbd-private/xfce-shortcuts-editor.h>
+#include <libxfce4ui/libxfce4ui.h>
 
-#include <terminal/terminal-util.h>
-#include <terminal/terminal-enum-types.h>
-#include <terminal/terminal-preferences-dialog.h>
-#include <terminal/terminal-encoding-action.h>
-#include <terminal/terminal-private.h>
-#include <terminal/terminal-window.h>
-#include <terminal/terminal-widget.h>
+#include "terminal-encoding-action.h"
+#include "terminal-enum-types.h"
+#include "terminal-preferences-dialog.h"
+#include "terminal-private.h"
+#include "terminal-util.h"
+#include "terminal-widget.h"
+#include "terminal-window.h"
 
 
 

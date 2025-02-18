@@ -18,16 +18,17 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
+#include <stdlib.h>
+#include <sys/wait.h>
 #ifdef HAVE_MEMORY_H
 #include <memory.h>
 #endif
 #ifdef HAVE_PWD_H
 #include <pwd.h>
 #endif
-#include <stdlib.h>
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
@@ -44,22 +45,19 @@
 #include <signal.h>
 #endif
 
-#include <sys/wait.h>
-
+#include <glib/gstdio.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <xfconf/xfconf.h>
 
-#include <terminal/terminal-private.h>
-#include <terminal/terminal-util.h>
-#include <terminal/terminal-enum-types.h>
-#include <terminal/terminal-image-loader.h>
-#include <terminal/terminal-marshal.h>
-#include <terminal/terminal-screen.h>
-#include <terminal/terminal-widget.h>
-#include <terminal/terminal-window.h>
-#include <terminal/terminal-window-dropdown.h>
-
-#include <glib/gstdio.h>
+#include "terminal-enum-types.h"
+#include "terminal-image-loader.h"
+#include "terminal-marshal.h"
+#include "terminal-private.h"
+#include "terminal-screen.h"
+#include "terminal-util.h"
+#include "terminal-widget.h"
+#include "terminal-window-dropdown.h"
+#include "terminal-window.h"
 
 /* offset of saturation random value */
 #define SATURATION_WINDOW 0.20

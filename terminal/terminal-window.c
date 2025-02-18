@@ -18,13 +18,12 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif
-
 #ifdef HAVE_TIME_H
 #include <time.h>
 #endif
@@ -32,25 +31,25 @@
 #include <unistd.h>
 #endif
 
-#include <gdk/gdk.h>
 #ifdef ENABLE_X11
-#include <X11/Xlib.h>
 #include <X11/Xatom.h>
+#include <X11/Xlib.h>
 #endif
 
+#include <gdk/gdk.h>
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <terminal/terminal-util.h>
-#include <terminal/terminal-enum-types.h>
-#include <terminal/terminal-options.h>
-#include <terminal/terminal-preferences-dialog.h>
-#include <terminal/terminal-search-dialog.h>
-#include <terminal/terminal-private.h>
-#include <terminal/terminal-marshal.h>
-#include <terminal/terminal-encoding-action.h>
-#include <terminal/terminal-window.h>
-#include <terminal/terminal-window-dropdown.h>
-#include <terminal/terminal-widget.h>
+#include "terminal-encoding-action.h"
+#include "terminal-enum-types.h"
+#include "terminal-marshal.h"
+#include "terminal-options.h"
+#include "terminal-preferences-dialog.h"
+#include "terminal-private.h"
+#include "terminal-search-dialog.h"
+#include "terminal-util.h"
+#include "terminal-widget.h"
+#include "terminal-window-dropdown.h"
+#include "terminal-window.h"
 
 
 

@@ -18,8 +18,8 @@
 #ifndef TERMINAL_WINDOW_DROPDOWN_DROPDOWN_H
 #define TERMINAL_WINDOW_DROPDOWN_DROPDOWN_H
 
-#include <terminal/terminal-screen.h>
-#include <terminal/terminal-options.h>
+#include "terminal-options.h"
+#include "terminal-screen.h"
 
 G_BEGIN_DECLS
 

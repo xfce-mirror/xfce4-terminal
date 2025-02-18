@@ -18,7 +18,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 #ifdef HAVE_XFCE_REVISION_H
 #include "xfce-revision.h"
@@ -34,12 +34,12 @@
 #include <stdlib.h>
 #endif
 
-#include <terminal/terminal-app.h>
-#include <terminal/terminal-private.h>
-#include <terminal/terminal-gdbus.h>
-#include <terminal/terminal-preferences-dialog.h>
-#include <terminal/terminal-window.h>
-#include <terminal/terminal-widget.h>
+#include "terminal-app.h"
+#include "terminal-gdbus.h"
+#include "terminal-preferences-dialog.h"
+#include "terminal-private.h"
+#include "terminal-widget.h"
+#include "terminal-window.h"
 
 
 

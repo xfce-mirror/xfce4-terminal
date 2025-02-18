@@ -16,7 +16,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 #ifdef HAVE_XFCE_REVISION_H
 #include "xfce-revision.h"
@@ -29,27 +29,28 @@
 #include <locale.h>
 #endif
 
-#include <libxfce4util/libxfce4util.h>
-
-#ifdef ENABLE_X11
-#include <X11/Xlib.h>
-#endif
-#ifdef HAVE_GTK_LAYER_SHELL
-#include <gtk-layer-shell.h>
-#endif
-
-#include <terminal/terminal-util.h>
-#include <terminal/terminal-private.h>
-
 #ifdef __FreeBSD__
+#include <libprocstat.h>
+#include <libutil.h>
 #include <sys/param.h>
 #include <sys/queue.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/user.h>
-#include <libprocstat.h>
-#include <libutil.h>
 #endif
+
+#ifdef ENABLE_X11
+#include <X11/Xlib.h>
+#endif
+
+#ifdef HAVE_GTK_LAYER_SHELL
+#include <gtk-layer-shell.h>
+#endif
+
+#include <libxfce4util/libxfce4util.h>
+
+#include "terminal-private.h"
+#include "terminal-util.h"
 
 
 /**

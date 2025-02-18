@@ -21,7 +21,8 @@
 #define TERMINAL_OPTIONS_H
 
 #include <glib.h>
-#include <terminal/terminal-preferences.h>
+
+#include "terminal-preferences.h"
 
 G_BEGIN_DECLS
 

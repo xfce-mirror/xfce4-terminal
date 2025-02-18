@@ -20,7 +20,7 @@
 #ifndef TERMINAL_GDBUS_H
 #define TERMINAL_GDBUS_H
 
-#include <terminal/terminal-app.h>
+#include "terminal-app.h"
 
 G_BEGIN_DECLS
 

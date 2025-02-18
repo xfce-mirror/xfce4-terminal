@@ -18,13 +18,13 @@
 #ifndef TERMINAL_PRIVATE_H
 #define TERMINAL_PRIVATE_H
 
-#include <gtk/gtk.h>
 #ifdef ENABLE_X11
 #include <gdk/gdkx.h>
 #define WINDOWING_IS_X11() GDK_IS_X11_DISPLAY (gdk_display_get_default ())
 #else
 #define WINDOWING_IS_X11() FALSE
 #endif
+
 #ifdef ENABLE_WAYLAND
 #include <gdk/gdkwayland.h>
 #define WINDOWING_IS_WAYLAND() GDK_IS_WAYLAND_DISPLAY (gdk_display_get_default ())
@@ -32,6 +32,7 @@
 #define WINDOWING_IS_WAYLAND() FALSE
 #endif
 
+#include <gtk/gtk.h>
 #include <vte/vte.h>
 
 #define PCRE2_CODE_UNIT_WIDTH 0

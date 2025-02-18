@@ -20,7 +20,7 @@
 #ifndef TERMINAL_PREFERENCES_DIALOG_H
 #define TERMINAL_PREFERENCES_DIALOG_H
 
-#include <terminal/terminal-preferences.h>
+#include "terminal-preferences.h"
 
 G_BEGIN_DECLS
 

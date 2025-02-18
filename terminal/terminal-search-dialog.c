@@ -16,7 +16,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_MEMORY_H
@@ -28,8 +28,8 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <terminal/terminal-search-dialog.h>
-#include <terminal/terminal-preferences.h>
+#include "terminal-preferences.h"
+#include "terminal-search-dialog.h"
 
 
 

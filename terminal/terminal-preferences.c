@@ -18,7 +18,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_LIMITS_H
@@ -32,10 +32,11 @@
 #include <string.h>
 #endif
 
-#include <terminal/terminal-enum-types.h>
-#include <terminal/terminal-preferences.h>
-#include <terminal/terminal-private.h>
 #include <xfconf/xfconf.h>
+
+#include "terminal-enum-types.h"
+#include "terminal-preferences.h"
+#include "terminal-private.h"
 
 #define TERMINALRC     "xfce4/terminal/terminalrc"
 #define TERMINALRC_OLD "Terminal/terminalrc"

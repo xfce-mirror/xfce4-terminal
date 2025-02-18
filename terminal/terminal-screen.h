@@ -21,8 +21,9 @@
 #define TERMINAL_SCREEN_H
 
 #include <gtk/gtk.h>
-#include <terminal/terminal-private.h>
-#include <terminal/terminal-options.h>
+
+#include "terminal-options.h"
+#include "terminal-private.h"
 
 G_BEGIN_DECLS
 

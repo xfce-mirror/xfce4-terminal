@@ -16,13 +16,12 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif
-
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -39,10 +38,10 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <terminal/terminal-private.h>
-#include <terminal/terminal-window.h>
-#include <terminal/terminal-util.h>
-#include <terminal/terminal-window-dropdown.h>
+#include "terminal-private.h"
+#include "terminal-util.h"
+#include "terminal-window-dropdown.h"
+#include "terminal-window.h"
 
 /* animation fps */
 #define ANIMATION_FPS (1000 / 20)

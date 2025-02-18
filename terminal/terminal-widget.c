@@ -18,7 +18,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_MEMORY_H
@@ -33,13 +33,13 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <terminal/terminal-util.h>
-#include <terminal/terminal-enum-types.h>
-#include <terminal/terminal-marshal.h>
-#include <terminal/terminal-preferences.h>
-#include <terminal/terminal-widget.h>
-#include <terminal/terminal-private.h>
-#include <terminal/terminal-regex.h>
+#include "terminal-enum-types.h"
+#include "terminal-marshal.h"
+#include "terminal-preferences.h"
+#include "terminal-private.h"
+#include "terminal-regex.h"
+#include "terminal-util.h"
+#include "terminal-widget.h"
 
 
 
