@@ -22,14 +22,18 @@
 
 G_BEGIN_DECLS
 
-void terminal_util_show_about_dialog  (GtkWindow    *parent);
+void
+terminal_util_show_about_dialog (GtkWindow *parent);
 
-void terminal_util_activate_window    (GtkWindow    *window);
+void
+terminal_util_activate_window (GtkWindow *window);
 
-void terminal_util_free_data          (gpointer      data,
-                                       GClosure     *closure);
+void
+terminal_util_free_data (gpointer data,
+                         GClosure *closure);
 
-gchar* terminal_util_get_process_cwd  (GPid pid);
+gchar *
+terminal_util_get_process_cwd (GPid pid);
 
 G_END_DECLS
 

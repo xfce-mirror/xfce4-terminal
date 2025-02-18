@@ -18,13 +18,13 @@
 #ifndef TERMINAL_PRIVATE_H
 #define TERMINAL_PRIVATE_H
 
-#include <gtk/gtk.h>
 #ifdef ENABLE_X11
 #include <gdk/gdkx.h>
 #define WINDOWING_IS_X11() GDK_IS_X11_DISPLAY (gdk_display_get_default ())
 #else
 #define WINDOWING_IS_X11() FALSE
 #endif
+
 #ifdef ENABLE_WAYLAND
 #include <gdk/gdkwayland.h>
 #define WINDOWING_IS_WAYLAND() GDK_IS_WAYLAND_DISPLAY (gdk_display_get_default ())
@@ -32,6 +32,7 @@
 #define WINDOWING_IS_WAYLAND() FALSE
 #endif
 
+#include <gtk/gtk.h>
 #include <vte/vte.h>
 
 #define PCRE2_CODE_UNIT_WIDTH 0
@@ -45,32 +46,34 @@ G_BEGIN_DECLS
 /* macro for some debugging */
 #define F64 "%" G_GINT64_FORMAT
 #define PRINT_TIME(desc) \
-  G_BEGIN_DECLS { \
-    gint64 __time = g_get_real_time ();                               \
-    g_print (F64 "." F64 ": %s\n",                                    \
+  G_BEGIN_DECLS \
+  { \
+    gint64 __time = g_get_real_time (); \
+    g_print (F64 "." F64 ": %s\n", \
              __time / G_USEC_PER_SEC, __time % G_USEC_PER_SEC, desc); \
-  } G_END_DECLS
+  } \
+  G_END_DECLS
 
 /* avoid trivial g_value_get_*() function calls */
 #ifdef NDEBUG
-#define g_value_get_boolean(v)  (((const GValue *) (v))->data[0].v_int)
-#define g_value_get_char(v)     (((const GValue *) (v))->data[0].v_int)
-#define g_value_get_uchar(v)    (((const GValue *) (v))->data[0].v_uint)
-#define g_value_get_int(v)      (((const GValue *) (v))->data[0].v_int)
-#define g_value_get_uint(v)     (((const GValue *) (v))->data[0].v_uint)
-#define g_value_get_long(v)     (((const GValue *) (v))->data[0].v_long)
-#define g_value_get_ulong(v)    (((const GValue *) (v))->data[0].v_ulong)
-#define g_value_get_int64(v)    (((const GValue *) (v))->data[0].v_int64)
-#define g_value_get_uint64(v)   (((const GValue *) (v))->data[0].v_uint64)
-#define g_value_get_enum(v)     (((const GValue *) (v))->data[0].v_long)
-#define g_value_get_flags(v)    (((const GValue *) (v))->data[0].v_ulong)
-#define g_value_get_float(v)    (((const GValue *) (v))->data[0].v_float)
-#define g_value_get_double(v)   (((const GValue *) (v))->data[0].v_double)
-#define g_value_get_string(v)   (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_param(v)    (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_boxed(v)    (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_pointer(v)  (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_object(v)   (((const GValue *) (v))->data[0].v_pointer)
+#define g_value_get_boolean(v) (((const GValue *) (v))->data[0].v_int)
+#define g_value_get_char(v) (((const GValue *) (v))->data[0].v_int)
+#define g_value_get_uchar(v) (((const GValue *) (v))->data[0].v_uint)
+#define g_value_get_int(v) (((const GValue *) (v))->data[0].v_int)
+#define g_value_get_uint(v) (((const GValue *) (v))->data[0].v_uint)
+#define g_value_get_long(v) (((const GValue *) (v))->data[0].v_long)
+#define g_value_get_ulong(v) (((const GValue *) (v))->data[0].v_ulong)
+#define g_value_get_int64(v) (((const GValue *) (v))->data[0].v_int64)
+#define g_value_get_uint64(v) (((const GValue *) (v))->data[0].v_uint64)
+#define g_value_get_enum(v) (((const GValue *) (v))->data[0].v_long)
+#define g_value_get_flags(v) (((const GValue *) (v))->data[0].v_ulong)
+#define g_value_get_float(v) (((const GValue *) (v))->data[0].v_float)
+#define g_value_get_double(v) (((const GValue *) (v))->data[0].v_double)
+#define g_value_get_string(v) (((const GValue *) (v))->data[0].v_pointer)
+#define g_value_get_param(v) (((const GValue *) (v))->data[0].v_pointer)
+#define g_value_get_boxed(v) (((const GValue *) (v))->data[0].v_pointer)
+#define g_value_get_pointer(v) (((const GValue *) (v))->data[0].v_pointer)
+#define g_value_get_object(v) (((const GValue *) (v))->data[0].v_pointer)
 #endif
 
 #define I_(string) (g_intern_static_string ((string)))

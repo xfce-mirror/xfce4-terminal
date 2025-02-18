@@ -23,22 +23,25 @@
 G_BEGIN_DECLS
 
 typedef struct _TerminalEncodingActionClass TerminalEncodingActionClass;
-typedef struct _TerminalEncodingAction      TerminalEncodingAction;
+typedef struct _TerminalEncodingAction TerminalEncodingAction;
 
-#define TERMINAL_TYPE_ENCODING_ACTION            (terminal_encoding_action_get_type ())
-#define TERMINAL_ENCODING_ACTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_ENCODING_ACTION, TerminalEncodingAction))
-#define TERMINAL_ENCODING_ACTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_ENCODING_ACTION, TerminalEncodingActionClass))
-#define TERMINAL_IS_ENCODING_ACTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_ENCODING_ACTION))
+#define TERMINAL_TYPE_ENCODING_ACTION (terminal_encoding_action_get_type ())
+#define TERMINAL_ENCODING_ACTION(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_ENCODING_ACTION, TerminalEncodingAction))
+#define TERMINAL_ENCODING_ACTION_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_ENCODING_ACTION, TerminalEncodingActionClass))
+#define TERMINAL_IS_ENCODING_ACTION(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_ENCODING_ACTION))
 #define TERMINAL_IS_ENCODING_ACTION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_ENCODING_ACTION))
-#define TERMINAL_ENCODING_ACTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_ENCODING_ACTION, TerminalEncodingActionClass))
+#define TERMINAL_ENCODING_ACTION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_ENCODING_ACTION, TerminalEncodingActionClass))
 
-GType         terminal_encoding_action_get_type    (void) G_GNUC_CONST;
+GType
+terminal_encoding_action_get_type (void) G_GNUC_CONST;
 
-GtkAction    *terminal_encoding_action_new         (const gchar *name,
-                                                    const gchar *label) G_GNUC_MALLOC;
+GtkAction *
+terminal_encoding_action_new (const gchar *name,
+                              const gchar *label) G_GNUC_MALLOC;
 
-void          terminal_encoding_action_set_charset (GtkAction   *gtkaction,
-                                                    const gchar *charset);
+void
+terminal_encoding_action_set_charset (GtkAction *gtkaction,
+                                      const gchar *charset);
 
 enum
 {
@@ -48,8 +51,9 @@ enum
   N_ENCODING_COLUMNS
 };
 
-GtkTreeModel *terminal_encoding_model_new          (const gchar *current,
-                                                    GtkTreeIter *current_iter);
+GtkTreeModel *
+terminal_encoding_model_new (const gchar *current,
+                             GtkTreeIter *current_iter);
 
 G_END_DECLS
 

@@ -16,7 +16,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 #ifdef HAVE_XFCE_REVISION_H
 #include "xfce-revision.h"
@@ -29,27 +29,28 @@
 #include <locale.h>
 #endif
 
-#include <libxfce4util/libxfce4util.h>
-
-#ifdef ENABLE_X11
-#include <X11/Xlib.h>
-#endif
-#ifdef HAVE_GTK_LAYER_SHELL
-#include <gtk-layer-shell.h>
-#endif
-
-#include <terminal/terminal-util.h>
-#include <terminal/terminal-private.h>
-
 #ifdef __FreeBSD__
+#include <libprocstat.h>
+#include <libutil.h>
 #include <sys/param.h>
 #include <sys/queue.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/user.h>
-#include <libprocstat.h>
-#include <libutil.h>
 #endif
+
+#ifdef ENABLE_X11
+#include <X11/Xlib.h>
+#endif
+
+#ifdef HAVE_GTK_LAYER_SHELL
+#include <gtk-layer-shell.h>
+#endif
+
+#include <libxfce4util/libxfce4util.h>
+
+#include "terminal-private.h"
+#include "terminal-util.h"
 
 
 /**
@@ -64,8 +65,7 @@
 void
 terminal_util_show_about_dialog (GtkWindow *parent)
 {
-  static const gchar *authors[] =
-  {
+  static const gchar *authors[] = {
     "Benedikt Meurer <benny@xfce.org>",
     "Nick Schermer <nick@xfce.org>",
     "Igor Zakharov <f2404@yandex.ru>",
@@ -73,14 +73,12 @@ terminal_util_show_about_dialog (GtkWindow *parent)
     NULL,
   };
 
-  static const gchar *artists[] =
-  {
+  static const gchar *artists[] = {
     "Francois Le Clainche <fleclainche@wanadoo.fr>",
     NULL,
   };
 
-  static const gchar *documenters[] =
-  {
+  static const gchar *documenters[] = {
     "Benedikt Meurer <benny@xfce.org>",
     "Andrew Conkling <andrewski@fr.st>",
     "Nick Schermer <nick@xfce.org>",
@@ -130,10 +128,10 @@ terminal_util_activate_window (GtkWindow *window)
 #ifdef ENABLE_X11
   if (WINDOWING_IS_X11 ())
     {
-      guint32              timestamp;
-      XClientMessageEvent  event;
-      GdkWindow           *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
-      GdkDisplay          *display = gdk_window_get_display (gdk_window);
+      guint32 timestamp;
+      XClientMessageEvent event;
+      GdkWindow *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+      GdkDisplay *display = gdk_window_get_display (gdk_window);
 
       timestamp = gtk_get_current_event_time ();
       if (timestamp == 0)
@@ -164,7 +162,7 @@ terminal_util_activate_window (GtkWindow *window)
   else
 #endif
 #ifdef HAVE_GTK_LAYER_SHELL
-  if (gtk_layer_is_supported () && gtk_layer_is_layer_window (window))
+    if (gtk_layer_is_supported () && gtk_layer_is_layer_window (window))
     {
       gtk_layer_set_keyboard_mode (window, GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
       g_signal_connect (window, "notify::is-active", G_CALLBACK (is_active_changed), NULL);
@@ -178,7 +176,7 @@ terminal_util_activate_window (GtkWindow *window)
 
 
 void
-terminal_util_free_data (gpointer  data,
+terminal_util_free_data (gpointer data,
                          GClosure *closure)
 {
   g_free (data);
@@ -186,7 +184,7 @@ terminal_util_free_data (gpointer  data,
 
 
 
-gchar*
+gchar *
 terminal_util_get_process_cwd (GPid pid)
 {
 #ifdef __FreeBSD__
@@ -204,13 +202,13 @@ terminal_util_get_process_cwd (GPid pid)
     goto cleanup;
 
   STAILQ_FOREACH (fst, head, next)
-    {
-      if ((fst->fs_uflags & PS_FST_UFLAG_CDIR) && (fst->fs_path != NULL))
-        {
-          cwd = g_strdup (fst->fs_path);
-          goto cleanup;
-        }
-    }
+  {
+    if ((fst->fs_uflags & PS_FST_UFLAG_CDIR) && (fst->fs_path != NULL))
+      {
+        cwd = g_strdup (fst->fs_path);
+        goto cleanup;
+      }
+  }
 
 cleanup:
   if (head != NULL)
