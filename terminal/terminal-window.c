@@ -393,6 +393,12 @@ static gchar *signal_names[] = {
 
 
 
+static const GtkTargetEntry targets[] = {
+  { "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, TARGET_GTK_NOTEBOOK_TAB },
+};
+
+
+
 static XfceGtkActionEntry action_entries[] = {
   /* Use old accelerator paths for backwards compatibility */
   {
@@ -1083,6 +1089,14 @@ terminal_window_init (TerminalWindow *window)
   window->priv->font = NULL;
   window->priv->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
   window->priv->closed_tabs_list = g_queue_new ();
+
+  /* setup dnd support for widgets other than screen: menubar, toolbar, etc.*/
+  gtk_drag_dest_set (GTK_WIDGET (window),
+                     GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT | GTK_DEST_DEFAULT_DROP,
+                     targets, G_N_ELEMENTS (targets),
+                     GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_MOVE);
+  g_signal_connect_swapped (G_OBJECT (window), "drag-data-received",
+                            G_CALLBACK (terminal_window_notebook_drag_data_received), NULL);
 
   /* try to set the rgba colormap so vte can use real transparency */
   screen = gtk_window_get_screen (GTK_WINDOW (window));
@@ -1980,11 +1994,15 @@ terminal_window_notebook_drag_data_received (GtkWidget *widget,
   gboolean succeed = FALSE;
 
   g_return_if_fail (TERMINAL_IS_WINDOW (window));
-  g_return_if_fail (TERMINAL_IS_SCREEN (widget));
+  g_return_if_fail (widget == NULL || TERMINAL_IS_SCREEN (widget));
 
   /* check */
   if (G_LIKELY (info == TARGET_GTK_NOTEBOOK_TAB))
     {
+      /* drag data received on window widget other than screen */
+      if (widget == NULL)
+        widget = GTK_WIDGET (window->priv->active);
+
       /* get the source notebook (other window) */
       notebook = gtk_drag_get_source_widget (context);
       g_return_if_fail (GTK_IS_NOTEBOOK (notebook));
