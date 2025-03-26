@@ -1,7 +1,7 @@
 project(
   'xfce4-terminal',
   'c',
-version : '1.1.4-dev',
+version : '1.1.5',
   license : 'GPL-2.0-or-later',
   meson_version : '>= 0.54.0',
   default_options : ['c_std=gnu11', 'buildtype=debugoptimized', 'warning_level=2']
