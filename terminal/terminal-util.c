@@ -30,13 +30,15 @@
 #endif
 
 #ifdef __FreeBSD__
-#include <libprocstat.h>
-#include <libutil.h>
 #include <sys/param.h>
 #include <sys/queue.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/user.h>
+// clang-format off: sys/queue.h need to be included before libprocstat.h
+#include <libprocstat.h>
+#include <libutil.h>
+// clang-format on
 #endif
 
 #ifdef ENABLE_X11
