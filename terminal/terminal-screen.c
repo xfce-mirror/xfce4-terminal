@@ -2608,7 +2608,10 @@ terminal_screen_paste_clipboard (TerminalScreen *screen)
 
   g_object_get (G_OBJECT (screen->preferences), "misc-show-unsafe-paste-dialog", &show_dialog, NULL);
 
-  if (show_dialog && terminal_screen_is_text_unsafe (text) && disable_paste_dialog_temporarily == FALSE && disable_paste_dialog_until_restart == FALSE)
+  if (show_dialog
+      && terminal_screen_is_text_unsafe (text)
+      && !disable_paste_dialog_temporarily
+      && !disable_paste_dialog_until_restart)
     terminal_screen_paste_unsafe_text (screen, text, GDK_SELECTION_CLIPBOARD);
   else
     vte_terminal_paste_clipboard (VTE_TERMINAL (screen->terminal));
@@ -2637,7 +2640,10 @@ terminal_screen_paste_primary (TerminalScreen *screen)
 
   g_object_get (G_OBJECT (screen->preferences), "misc-show-unsafe-paste-dialog", &show_dialog, NULL);
 
-  if (show_dialog && terminal_screen_is_text_unsafe (text) && disable_paste_dialog_temporarily == FALSE && disable_paste_dialog_until_restart == FALSE)
+  if (show_dialog
+      && terminal_screen_is_text_unsafe (text)
+      && !disable_paste_dialog_temporarily
+      && !disable_paste_dialog_until_restart)
     terminal_screen_paste_unsafe_text (screen, text, GDK_SELECTION_PRIMARY);
   else
     vte_terminal_paste_primary (VTE_TERMINAL (screen->terminal));

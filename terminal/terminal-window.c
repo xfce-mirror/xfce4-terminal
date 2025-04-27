@@ -1414,7 +1414,7 @@ terminal_window_key_press_event (GtkWidget *widget,
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
 
-  if (xfce_gtk_handle_tab_accels (event, window->priv->accel_group, window, action_entries, G_N_ELEMENTS (action_entries)) == TRUE)
+  if (xfce_gtk_handle_tab_accels (event, window->priv->accel_group, window, action_entries, G_N_ELEMENTS (action_entries)))
     return TRUE;
 
   return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->key_press_event) (widget, event);
@@ -2549,7 +2549,7 @@ terminal_window_action_show_menubar (TerminalWindow *window)
 
   terminal_window_size_push (window);
 
-  if (gtk_widget_is_visible (window->menubar) == FALSE)
+  if (!gtk_widget_is_visible (window->menubar))
     gtk_widget_show (window->menubar);
   else
     gtk_widget_hide (window->menubar);
@@ -2566,7 +2566,7 @@ terminal_window_action_toggle_toolbar (TerminalWindow *window)
 {
   terminal_window_size_push (window);
 
-  if (gtk_widget_is_visible (window->toolbar) == FALSE)
+  if (!gtk_widget_is_visible (window->toolbar))
     gtk_widget_show (window->toolbar);
   else
     gtk_widget_hide (window->toolbar);
@@ -2672,7 +2672,7 @@ terminal_window_action_zoom_reset (TerminalWindow *window)
 static gboolean
 terminal_window_action_prev_tab (TerminalWindow *window)
 {
-  if (terminal_window_can_go_left (window) == TRUE)
+  if (terminal_window_can_go_left (window))
     {
       terminal_window_switch_tab (GTK_NOTEBOOK (window->priv->notebook), TRUE);
       return TRUE;
@@ -2686,7 +2686,7 @@ terminal_window_action_prev_tab (TerminalWindow *window)
 static gboolean
 terminal_window_action_next_tab (TerminalWindow *window)
 {
-  if (terminal_window_can_go_right (window) == TRUE)
+  if (terminal_window_can_go_right (window))
     {
       terminal_window_switch_tab (GTK_NOTEBOOK (window->priv->notebook), FALSE);
       return TRUE;
@@ -2715,7 +2715,7 @@ terminal_window_action_last_active_tab (TerminalWindow *window)
 static gboolean
 terminal_window_action_move_tab_left (TerminalWindow *window)
 {
-  if (terminal_window_can_go_left (window) == TRUE)
+  if (terminal_window_can_go_left (window))
     {
       terminal_window_move_tab (GTK_NOTEBOOK (window->priv->notebook), TRUE);
       return TRUE;
@@ -2729,7 +2729,7 @@ terminal_window_action_move_tab_left (TerminalWindow *window)
 static gboolean
 terminal_window_action_move_tab_right (TerminalWindow *window)
 {
-  if (terminal_window_can_go_right (window) == TRUE)
+  if (terminal_window_can_go_right (window))
     {
       terminal_window_move_tab (GTK_NOTEBOOK (window->priv->notebook), FALSE);
       return TRUE;

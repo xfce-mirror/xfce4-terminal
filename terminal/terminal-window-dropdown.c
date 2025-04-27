@@ -640,7 +640,7 @@ terminal_window_dropdown_focus_out_event (GtkWidget *widget,
   retval = (*GTK_WIDGET_CLASS (terminal_window_dropdown_parent_class)->focus_out_event) (widget, event);
 
   /* ignore this event and reset the flag */
-  if (dropdown->ignore_next_focus_out_event == TRUE)
+  if (dropdown->ignore_next_focus_out_event)
     {
       dropdown->ignore_next_focus_out_event = FALSE;
       return retval;

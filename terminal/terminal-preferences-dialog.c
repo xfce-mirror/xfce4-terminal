@@ -1576,8 +1576,31 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* next row */
   row++;
 
+  button = gtk_check_button_new_with_mnemonic (_("Underline urls on mouseover"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-highlight-urls",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
+  gtk_widget_show (button);
+
+  /* next row */
+  row++;
+
   button = gtk_check_button_new_with_mnemonic (_("_Use middle mouse click to open urls"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "misc-middle-click-opens-uri",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-highlight-urls",
+                          G_OBJECT (button), "visible",
+                          G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
+
+  /* next row */
+  row++;
+
+  button = gtk_check_button_new_with_mnemonic (_("Enable OSC 8 Hyperlinks"));
+  gtk_widget_set_tooltip_text (button, _("These are the links displayed when you run the 'ls --hyperlink' command, or by any other means using the OSC 8 escape sequence."));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-hyperlinks-enabled",
                           G_OBJECT (button), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
@@ -1643,17 +1666,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   terminal_gtk_label_set_a11y_relation (GTK_LABEL (label), combo);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
-
-  /* next row */
-  row++;
-
-  button = gtk_check_button_new_with_mnemonic (_("Enable Hyperlinks"));
-  gtk_widget_set_tooltip_text (button, _("Enable support for hyperlinks."));
-  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-hyperlinks-enabled",
-                          G_OBJECT (button), "active",
-                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 2, 1);
-  gtk_widget_show (button);
 
 
 

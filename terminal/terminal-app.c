@@ -1006,7 +1006,7 @@ terminal_app_open_window (TerminalApp *app,
 
           g_object_get (G_OBJECT (app->preferences), "dropdown-parameters-once", &parameters_once, NULL);
 
-          if (G_UNLIKELY (attr->reuse_last_window) && parameters_once == FALSE)
+          if (G_UNLIKELY (attr->reuse_last_window) && !parameters_once)
             {
               /* use the drop-down window to insert the tab */
               window = lp->data;
