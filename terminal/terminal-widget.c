@@ -862,7 +862,7 @@ terminal_widget_open_uri (TerminalWidget *widget,
     }
 
   /* try to open the URI with the responsible application */
-  if (gtk_show_uri_on_window (window, uri, gtk_get_current_event_time (), &error) == FALSE)
+  if (!gtk_show_uri_on_window (window, uri, gtk_get_current_event_time (), &error))
     {
       /* tell the user that we were unable to open the responsible application */
       xfce_dialog_show_error (window, error, _("Failed to open the URL '%s'"), uri);
@@ -1133,7 +1133,7 @@ terminal_widget_hyperlink_hover_uri_changed (TerminalWidget *widget,
                                              const char *uri,
                                              const GdkRectangle *bbox G_GNUC_UNUSED)
 {
-  if (gtk_widget_get_realized (GTK_WIDGET (widget)) == FALSE)
+  if (!gtk_widget_get_realized (GTK_WIDGET (widget)))
     return;
 
   gtk_widget_set_tooltip_text (GTK_WIDGET (widget), uri);
