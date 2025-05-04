@@ -173,10 +173,6 @@ static gboolean
 terminal_window_notebook_button_release_event (GtkNotebook *notebook,
                                                GdkEventButton *event,
                                                TerminalWindow *window);
-static gboolean
-terminal_window_notebook_scroll_event (GtkNotebook *notebook,
-                                       GdkEventScroll *event,
-                                       TerminalWindow *window);
 static void
 terminal_window_notebook_drag_data_received (GtkWidget *widget,
                                              GdkDragContext *context,
@@ -1157,7 +1153,7 @@ terminal_window_init (TerminalWindow *window)
 
   /* allocate the notebook for the terminal screens */
   g_object_get (G_OBJECT (window->priv->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
-  window->priv->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
+  window->priv->notebook = g_object_new (XFCE_TYPE_NOTEBOOK,
                                          "scrollable", TRUE,
                                          "show-border", FALSE,
                                          "show-tabs", always_show_tabs,
@@ -1186,8 +1182,6 @@ terminal_window_init (TerminalWindow *window)
                     G_CALLBACK (terminal_window_notebook_button_press_event), window);
   g_signal_connect (G_OBJECT (window->priv->notebook), "button-release-event",
                     G_CALLBACK (terminal_window_notebook_button_release_event), window);
-  g_signal_connect (G_OBJECT (window->priv->notebook), "scroll-event",
-                    G_CALLBACK (terminal_window_notebook_scroll_event), window);
 
   gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->menubar, FALSE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->toolbar, FALSE, FALSE, 0);
@@ -1926,57 +1920,6 @@ terminal_window_notebook_button_release_event (GtkNotebook *notebook,
 
   return FALSE;
 }
-
-
-
-static gboolean
-terminal_window_notebook_scroll_event (GtkNotebook *notebook,
-                                       GdkEventScroll *event,
-                                       TerminalWindow *window)
-{
-  g_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
-  g_return_val_if_fail (GTK_IS_NOTEBOOK (notebook), FALSE);
-
-  if ((event->state & gtk_accelerator_get_default_mod_mask ()) != 0)
-    return FALSE;
-
-  switch (event->direction)
-    {
-    case GDK_SCROLL_RIGHT:
-    case GDK_SCROLL_DOWN:
-      gtk_notebook_next_page (notebook);
-      return TRUE;
-
-    case GDK_SCROLL_LEFT:
-    case GDK_SCROLL_UP:
-      gtk_notebook_prev_page (notebook);
-      return TRUE;
-
-    default: /* GDK_SCROLL_SMOOTH */
-      switch (gtk_notebook_get_tab_pos (notebook))
-        {
-        case GTK_POS_LEFT:
-        case GTK_POS_RIGHT:
-          if (event->delta_y > 0)
-            gtk_notebook_next_page (notebook);
-          else if (event->delta_y < 0)
-            gtk_notebook_prev_page (notebook);
-          break;
-
-        default: /* GTK_POS_TOP or GTK_POS_BOTTOM */
-          if (event->delta_x > 0)
-            gtk_notebook_next_page (notebook);
-          else if (event->delta_x < 0)
-            gtk_notebook_prev_page (notebook);
-          break;
-        }
-      return TRUE;
-    }
-
-  return FALSE;
-}
-
-
 
 static void
 terminal_window_notebook_drag_data_received (GtkWidget *widget,
