@@ -3,12 +3,18 @@
 # This file is distributed under the same license as the xfce-apps.xfce4-terminal package.
 # 
 # Translators:
+# Attila SZERVÁC <sas@321.hu>, 2005
 # Balázs Meskó <meskobalazs@mailbox.org>, 2018-2019
 # Balázs Meskó <meskobalazs@mailbox.org>, 2022,2025
+# ef06d5cbf35386ff2203d186eeff7923_fc5bdc4 <3b4340729d39520cef20e48ccdc2f16a_153038>, 2018
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2009-2010
 # Gábor P., 2017,2019
+# Gábor P., 2017,2019
+# gyeben <gyonkibendeguz@gmail.com>, 2013,2016
 # gyeben <gyonkibendeguz@gmail.com>, 2013,2016
 # kelemeng <kelemeng@ubuntu.com>, 2015
+# kelemeng <kelemeng@ubuntu.com>, 2015
+# László Varga, 2024
 # László Varga, 2024
 # ef06d5cbf35386ff2203d186eeff7923_fc5bdc4 <3b4340729d39520cef20e48ccdc2f16a_153038>, 2018
 # Attila SZERVÁC <sas@321.hu>, 2005
@@ -110,7 +116,7 @@ msgstr "mód"
 #. parameter of --color-bg
 #: terminal/main.c:142 terminal/main.c:144
 msgid "color"
-msgstr "Szín"
+msgstr "szín"
 
 #: terminal/main.c:152
 msgid "Window Options"
@@ -174,7 +180,7 @@ msgstr "Nick Schermer <nick@xfce.org>,"
 
 #: terminal/main.c:219
 msgid "Igor Zakharov <f2404@yandex.ru>,"
-msgstr "Igor Zakharov <f2404@yandex.ru>."
+msgstr "Igor Zakharov <f2404@yandex.ru>,"
 
 #: terminal/main.c:220
 msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
@@ -493,7 +499,7 @@ msgstr "Egyéni parancs:"
 
 #: terminal/terminal-preferences-dialog.c:362
 msgid "_Working directory:"
-msgstr "Munka_könyvtár"
+msgstr "Munka_könyvtár:"
 
 #: terminal/terminal-preferences-dialog.c:366
 msgid ""
@@ -535,7 +541,7 @@ msgstr "Kinetikus görgetés _engedélyezése"
 msgid ""
 "This controls whether scrolling \"coasts\" to a stop when releasing a "
 "touchpad or touchscreen."
-msgstr ""
+msgstr "Ez szabályozza, hogy a görgetés az érintőpad vagy az érintőképernyő elengedésekor lassan álljon-e meg."
 
 #: terminal/terminal-preferences-dialog.c:426
 msgid "Scrollbar is:"
@@ -563,16 +569,16 @@ msgstr "_Korlátlan visszagörgetés"
 
 #: terminal/terminal-preferences-dialog.c:467
 msgid "This controls whether the terminal will have no limits on scrollback."
-msgstr "Ez azt állítja be, hogy a terminál korlátlanul visszagörgethető legyen."
+msgstr "Ez szabályozza, hogy a terminál korlátlanul visszagörgethető legyen-e."
 
 #: terminal/terminal-preferences-dialog.c:474
 msgid "_Enable overlay scrolling (Requires restart)"
-msgstr ""
+msgstr "Átfedéses görgetés _engedélyezése (újraindítást igényel)"
 
 #: terminal/terminal-preferences-dialog.c:478
 msgid ""
 "This controls whether scrollbar is drawn as an overlay (auto-hide) or not."
-msgstr ""
+msgstr "Ez szabályozza, hogy a görgetősáv átfedésként jelenjen-e meg (automatikus elrejtés) vagy sem."
 
 #. section: Cursor
 #: terminal/terminal-preferences-dialog.c:485
@@ -610,22 +616,22 @@ msgstr "Vágólap"
 
 #: terminal/terminal-preferences-dialog.c:518
 msgid "Automatically copy selection to clipboard"
-msgstr ""
+msgstr "Kijelölés automatikus másolása a vágólapra"
 
 #: terminal/terminal-preferences-dialog.c:525
 msgid "Show unsafe paste dialog"
-msgstr ""
+msgstr "Nem biztonságos beillesztés párbeszédablakának megjelenítése"
 
 #: terminal/terminal-preferences-dialog.c:529
 msgid ""
 "Show a dialog that allows one to edit text that is considered unsafe for "
 "pasting"
-msgstr ""
+msgstr "Egy párbeszédablakot jelenít meg, amellyel szerkeszthető a nem biztonságosnak tekintett beillesztendő szöveg"
 
 #. * Drop-down
 #: terminal/terminal-preferences-dialog.c:538
 msgid "Drop-down"
-msgstr ""
+msgstr "Legördülő"
 
 #. section: Behavior
 #: terminal/terminal-preferences-dialog.c:547
@@ -638,22 +644,22 @@ msgstr "Ablak _nyitva tartása, ha elveszti a fókuszt"
 
 #: terminal/terminal-preferences-dialog.c:559
 msgid "_Use app shortcut to focus the window"
-msgstr ""
+msgstr "Alkalmazásikon _használata az ablakra fókuszálásra"
 
 #: terminal/terminal-preferences-dialog.c:563
 msgid ""
 "If enabled, the app shortcut for 'xfce4-terminal --drop-down', which "
 "normally opens and closes the window, will give it focus if the option to "
 "keep the window open is checked."
-msgstr ""
+msgstr "Ha engedélyezve van, akkor az az „xfce4-terminal --drop-down” alkalmazásikonja, amely normális esetben megnyitja és bezárja az ablakot, ehelyett fókuszt ad, ha az ablak nyitva tartása be van kapcsolva."
 
 #: terminal/terminal-preferences-dialog.c:574
 msgid "_Always keep window above"
-msgstr ""
+msgstr "Az ablak _mindig felül tartása"
 
 #: terminal/terminal-preferences-dialog.c:587
 msgid "_Show status icon in notification area"
-msgstr ""
+msgstr "Állapotikon meg_jelenítése az értesítési területen"
 
 #. section: Appearance & Animation
 #: terminal/terminal-preferences-dialog.c:596
@@ -708,7 +714,7 @@ msgstr "Le"
 
 #: terminal/terminal-preferences-dialog.c:759
 msgid "_Move to monitor with pointer"
-msgstr ""
+msgstr "Á_thelyezés a kurzorral rendelkező monitorra"
 
 #. * Appearance
 #: terminal/terminal-preferences-dialog.c:771
@@ -726,17 +732,17 @@ msgstr "_Rendszer betűkészletének használata"
 
 #: terminal/terminal-preferences-dialog.c:785
 msgid "Enable this to use system-wide monospace font."
-msgstr ""
+msgstr "Engedélyezze a rendszer rögzített szélességű betűkészletének használatához."
 
 #: terminal/terminal-preferences-dialog.c:805
 msgid "_Allow bold text"
-msgstr ""
+msgstr "Félkövér szöveg _engedélyezése"
 
 #: terminal/terminal-preferences-dialog.c:809
 msgid ""
 "Enable this to allow applications running inside the terminal windows to use"
 " bold font."
-msgstr ""
+msgstr "Engedélyezze, hogy a terminálablakokban futó alkalmazások félkövér betűket használjanak."
 
 #: terminal/terminal-preferences-dialog.c:816
 msgid "Text blinks:"
@@ -845,23 +851,23 @@ msgstr "Új ablakok megnyitása"
 
 #: terminal/terminal-preferences-dialog.c:1025
 msgid "_Display menubar in new windows"
-msgstr ""
+msgstr "Menüsáv meg_jelenítése az új ablakokban"
 
 #: terminal/terminal-preferences-dialog.c:1029
 msgid "Enable this option to show menubars in newly created terminal windows."
-msgstr ""
+msgstr "Engedélyezze ezt a beállítást a menüsáv megjelenítéséhez a frissen létrehozott terminálablakokban."
 
 #: terminal/terminal-preferences-dialog.c:1036
 msgid "_Display toolbar in new windows"
-msgstr ""
+msgstr "Eszköztár meg_jelenítése az új ablakokban"
 
 #: terminal/terminal-preferences-dialog.c:1040
 msgid "Enable this option to show toolbar in newly created terminal windows."
-msgstr ""
+msgstr "Engedélyezze ezt a beállítást az eszköztár megjelenítéséhez a frissen létrehozott terminálablakokban."
 
 #: terminal/terminal-preferences-dialog.c:1047
 msgid "_Display borders around new windows"
-msgstr ""
+msgstr "Keret meg_jelenítése az új ablakok körül"
 
 #: terminal/terminal-preferences-dialog.c:1051
 msgid ""
@@ -875,11 +881,11 @@ msgstr "Új ablakok teljes _méretűvé tétele"
 
 #: terminal/terminal-preferences-dialog.c:1062
 msgid "Enable this option to maximize newly created terminal windows."
-msgstr ""
+msgstr "Engedélyezze ezt a beállítást a frissen létrehozott terminálablakok maximalizásához."
 
 #: terminal/terminal-preferences-dialog.c:1069
 msgid "Default geometry"
-msgstr "Alapértelmezett geometria:"
+msgstr "Alapértelmezett geometria"
 
 #: terminal/terminal-preferences-dialog.c:1087
 msgid "columns"
@@ -939,7 +945,7 @@ msgstr "A véletlenszerű szín a kiválasztott háttértől függ, ugyanazt a f
 
 #: terminal/terminal-preferences-dialog.c:1234
 msgid "_Enable sixel graphics"
-msgstr ""
+msgstr "Sixel grafika _engedélyezése"
 
 #. section: Custom colors
 #: terminal/terminal-preferences-dialog.c:1244
@@ -978,14 +984,14 @@ msgstr "Paletta"
 
 #: terminal/terminal-preferences-dialog.c:1358
 msgid "_Show bold text in bright colors:"
-msgstr ""
+msgstr "_Félkövér szöveg megjelenítése világos színekkel:"
 
 #: terminal/terminal-preferences-dialog.c:1362
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
 "intact."
-msgstr ""
+msgstr "Engedélyezze ezt a beállítást, hogy a „\\e[1;35m” és hasonló dzsókerkarakter-sorozatok világos színre váltsanak a félkövér formázás mellett. Ha le van tiltva, akkor a szövegszín érintetlen marad."
 
 #. section: Presets
 #: terminal/terminal-preferences-dialog.c:1368
@@ -1003,11 +1009,11 @@ msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
-msgstr ""
+msgstr "Ezek a beállítások egyes alkalmazások helytelen működését okozhatják.\nCsak azért vannak itt, hogy kerülőmegoldást biztosítsanak egyes alkalmazások\nés operációs rendszerek számára, melyek más viselkedést várnának el."
 
 #: terminal/terminal-preferences-dialog.c:1408
 msgid "Backspace key generates:"
-msgstr ""
+msgstr "A Backspace billentyű ezt állítja elő:"
 
 #: terminal/terminal-preferences-dialog.c:1414
 #: terminal/terminal-preferences-dialog.c:1437
@@ -1022,7 +1028,7 @@ msgstr "ASCII Del"
 #: terminal/terminal-preferences-dialog.c:1416
 #: terminal/terminal-preferences-dialog.c:1439
 msgid "Escape sequence"
-msgstr ""
+msgstr "Dzsókerkarakter-sorozat"
 
 #: terminal/terminal-preferences-dialog.c:1417
 #: terminal/terminal-preferences-dialog.c:1440
@@ -1066,7 +1072,7 @@ msgstr "Dupla kattintás"
 
 #: terminal/terminal-preferences-dialog.c:1496
 msgid "Consider the following characters part of a word when double clicking:"
-msgstr ""
+msgstr "A következő karakterek a szó részének tekintése dupla kattintáskor:"
 
 #. section: Encoding
 #: terminal/terminal-preferences-dialog.c:1520
@@ -1075,7 +1081,7 @@ msgstr "Kódolás"
 
 #: terminal/terminal-preferences-dialog.c:1522
 msgid "Default character encoding"
-msgstr ""
+msgstr "Alapértelmezett karakterkódolás"
 
 #. section: Shortcuts
 #. * Shortcuts
@@ -1086,11 +1092,11 @@ msgstr "Gyorsbillentyűk"
 
 #: terminal/terminal-preferences-dialog.c:1548
 msgid "_Disable all menu access keys (such as Alt + f)"
-msgstr ""
+msgstr "Összes menüelérési billentyű (mint az Alt + f) le_tiltása"
 
 #: terminal/terminal-preferences-dialog.c:1558
 msgid "_Disable menu shortcut key (F10 by default)"
-msgstr ""
+msgstr "Menüelérés billentyűjének (alapértelmezetten F10) le_tiltása"
 
 #. section: Misc
 #: terminal/terminal-preferences-dialog.c:1567
@@ -1099,33 +1105,33 @@ msgstr "Egyéb"
 
 #: terminal/terminal-preferences-dialog.c:1569
 msgid "_Use middle mouse click to close tabs"
-msgstr ""
+msgstr "Középső egérgombkattintás a lapok _bezárásához"
 
 #: terminal/terminal-preferences-dialog.c:1579
 msgid "Underline urls on mouseover"
-msgstr ""
+msgstr "Webcímek aláhúzása az egér ráhúzáskor"
 
 #: terminal/terminal-preferences-dialog.c:1589
 msgid "_Use middle mouse click to open urls"
-msgstr ""
+msgstr "Középső egérgombkattintás a webcímek _megnyitásához"
 
 #: terminal/terminal-preferences-dialog.c:1601
 msgid "Enable OSC 8 Hyperlinks"
-msgstr ""
+msgstr "OSC 8 hiperhivatkozások engedélyezése"
 
 #: terminal/terminal-preferences-dialog.c:1602
 msgid ""
 "These are the links displayed when you run the 'ls --hyperlink' command, or "
 "by any other means using the OSC 8 escape sequence."
-msgstr ""
+msgstr "Ezek az „ls --hyperlink” parancs futtatásakor (vagy az OSC 8 dzsókerkarakter-sorozat egyéb használatkor) megjelenített hiperhivatkozások."
 
 #: terminal/terminal-preferences-dialog.c:1612
 msgid "_Auto-hide mouse pointer"
-msgstr ""
+msgstr "Egérmutató _automatikus elrejtése"
 
 #: terminal/terminal-preferences-dialog.c:1622
 msgid "_Open new tab to the right of the active tab"
-msgstr ""
+msgstr "Új lap _megnyitása az aktív lap jobb oldalán"
 
 #: terminal/terminal-preferences-dialog.c:1632
 msgid "_Audible bell"
@@ -1377,7 +1383,7 @@ msgstr "Fájlkezelő megnyitása _itt"
 
 #: terminal/terminal-window.c:440
 msgid "Open the current directory"
-msgstr "A jelenlegi mappa megnyitása"
+msgstr "Jelenlegi mappa megnyitása"
 
 #: terminal/terminal-window.c:449
 msgid "_Undo Close Tab"
@@ -1425,7 +1431,7 @@ msgstr "Beillesztés vágólapról"
 
 #: terminal/terminal-window.c:539
 msgid "_Paste Alt"
-msgstr ""
+msgstr "_Beillesztés (alternatív)"
 
 #: terminal/terminal-window.c:549
 msgid "Paste _Selection"
@@ -1433,7 +1439,7 @@ msgstr "_Kijelölés beillesztése"
 
 #: terminal/terminal-window.c:559
 msgid "Paste _Selection Alt"
-msgstr ""
+msgstr "_Kijelölés beillesztése (alternatív)"
 
 #: terminal/terminal-window.c:569
 msgid "Select _All"
@@ -1465,7 +1471,7 @@ msgstr "Nagyítás nagyobb betűmérettel"
 
 #: terminal/terminal-window.c:619
 msgid "Zoom In Alt"
-msgstr ""
+msgstr "Nagyítás (alternatív)"
 
 #: terminal/terminal-window.c:629
 msgid "Zoom _Out"
@@ -1477,7 +1483,7 @@ msgstr "Kicsinyítés kisebb betűmérettel"
 
 #: terminal/terminal-window.c:639
 msgid "Zoom Out Alt"
-msgstr ""
+msgstr "Kicsinyítés (alternatív)"
 
 #: terminal/terminal-window.c:649
 msgid "_Normal Size"
@@ -1489,7 +1495,7 @@ msgstr "Visszaállítás alapértékekre"
 
 #: terminal/terminal-window.c:659
 msgid "_Normal Size Alt"
-msgstr ""
+msgstr "_Normál méret (alternatív)"
 
 #: terminal/terminal-window.c:669
 msgid "_Terminal"
@@ -1501,11 +1507,11 @@ msgstr "_Cím beállítása…"
 
 #: terminal/terminal-window.c:689
 msgid "Set Title Co_lor..."
-msgstr "Az ablakcím színének beállítása..."
+msgstr "Az ablakcím színének beállítása…"
 
 #: terminal/terminal-window.c:699
 msgid "_Find..."
-msgstr "_Keresés..."
+msgstr "_Keresés…"
 
 #: terminal/terminal-window.c:700
 msgid "Search terminal contents"
@@ -1731,7 +1737,7 @@ msgstr "_Bemenet másolása:"
 
 #: terminal/terminal-window.c:2463
 msgid "Enter the text to be copied to all tabs"
-msgstr "Adja meg az összes lapra másolandó szöveget."
+msgstr "Adja meg az összes lapra másolandó szöveget"
 
 #: terminal/terminal-window.c:2471
 msgid "Copy input"
