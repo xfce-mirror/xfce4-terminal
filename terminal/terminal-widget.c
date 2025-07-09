@@ -423,12 +423,15 @@ terminal_widget_context_menu_copy (TerminalWidget *widget,
           wlink = modified_wlink;
         }
 
-      /* copy the URI to "CLIPBOARD" */
-      clipboard = gtk_clipboard_get_for_display (display, GDK_SELECTION_CLIPBOARD);
-      gtk_clipboard_set_text (clipboard, wlink, -1);
+      // The order of setting the clipboard does matter, see:
+      // https://gitlab.xfce.org/apps/xfce4-terminal/-/issues/367
 
       /* copy the URI to "PRIMARY" */
       clipboard = gtk_clipboard_get_for_display (display, GDK_SELECTION_PRIMARY);
+      gtk_clipboard_set_text (clipboard, wlink, -1);
+
+      /* copy the URI to "CLIPBOARD" */
+      clipboard = gtk_clipboard_get_for_display (display, GDK_SELECTION_CLIPBOARD);
       gtk_clipboard_set_text (clipboard, wlink, -1);
 
       g_free (modified_wlink);
