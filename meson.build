@@ -23,7 +23,7 @@ dependency_versions = {
   'gtk': '>= 3.22.0',
   'vte': '>= 0.51.3',
   'pcre2': '>= 10.00',
-  'libxfce4ui': '>= 4.21.1',
+  'libxfce4ui': '>= 4.17.5',
   'libxfce4util': '>= 4.16.0',
   'xfconf': '>= 4.16.0',
 
