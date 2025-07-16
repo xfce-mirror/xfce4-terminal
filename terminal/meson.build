@@ -58,7 +58,7 @@ terminal_sources += gnome.mkenums(
   'terminal-enum-types.c',
   install_header: false,
   sources: 'terminal-preferences.h',
-  fhead: '#ifdef HAVE_CONFIG_H\n#include "config.h"\n#endif\n#include "terminal-enum-types.h"\n#include "terminal-app.h"\n#include "terminal-preferences.h"',
+  fhead: '#include "terminal-enum-types.h"\n#include "terminal-app.h"\n#include "terminal-preferences.h"',
   fprod: ' \n/* enumerations from "@filename@" */',
   vhead: 'GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {',
   vprod: ' \t{ @VALUENAME@, "@VALUENAME@", "@valuenick@" },',
