@@ -17,10 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <libxfce4kbd-private/xfce-shortcuts-editor.h>
 #include <libxfce4ui/libxfce4ui.h>
 
