@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-apps.xfce4-terminal package.
 # 
 # Translators:
 # Hydonsingore Cia <hydonsingore@educities.edu.tw>, 2005
@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-17 12:51+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2025-07-18 11:05+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2020-2025\n"
 "Language-Team: Chinese (Taiwan) (http://app.transifex.com/xfce/xfce-apps/language/zh_TW/)\n"
@@ -22,436 +22,450 @@ msgstr ""
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../terminal/main.c:107
+#: colorschemes/black-on-white.desktop.in:3
+msgid "Black on White"
+msgstr "白底黑字"
+
+#: colorschemes/dark-pastels.desktop.in:3
+msgid "Dark Pastels"
+msgstr "深色粉蠟筆"
+
+#: colorschemes/green-on-black.desktop.in:3
+msgid "Green on Black"
+msgstr "黑底綠字"
+
+#: colorschemes/solarized-dark.desktop.in:3
+msgid "Solarized (dark)"
+msgstr "Solarized（深色）"
+
+#: colorschemes/solarized-light.desktop.in:3
+msgid "Solarized (light)"
+msgstr "Solarized（淺色）"
+
+#: colorschemes/tango.desktop.in:3
+msgid "Tango"
+msgstr "Tango"
+
+#: colorschemes/white-on-black.desktop.in:3
+msgid "White on Black"
+msgstr "黑底白字"
+
+#: colorschemes/xterm.desktop.in:3
+msgid "XTerm"
+msgstr "XTerm"
+
+#: terminal/main.c:107
 msgid "Usage:"
 msgstr "用法："
 
-#: ../terminal/main.c:107
+#: terminal/main.c:107
 msgid "OPTION"
 msgstr "選項"
 
-#: ../terminal/main.c:112
+#: terminal/main.c:112
 msgid "General Options"
 msgstr "一般選項"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:114 ../terminal/main.c:151
+#: terminal/main.c:114 terminal/main.c:151
 msgid "display"
 msgstr "display"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:116 ../terminal/main.c:137
+#: terminal/main.c:116 terminal/main.c:137
 msgid "directory"
 msgstr "directory"
 
-#: ../terminal/main.c:120
+#: terminal/main.c:120
 msgid "Window or Tab Separators"
 msgstr "視窗或分頁分隔符"
 
-#: ../terminal/main.c:127
+#: terminal/main.c:127
 msgid "Tab Options"
 msgstr "分頁選項"
 
 #. parameter of --command
-#: ../terminal/main.c:129
+#: terminal/main.c:129
 msgid "command"
 msgstr "command"
 
 #. parameter of --title
 #. parameter of --initial-title
-#: ../terminal/main.c:131 ../terminal/main.c:135
+#: terminal/main.c:131 terminal/main.c:135
 msgid "title"
 msgstr "title"
 
 #. parameter of --dynamic-title-mode
-#: ../terminal/main.c:133
+#: terminal/main.c:133
 msgid "mode"
 msgstr "模式"
 
 #. parameter of --color-text
 #. parameter of --color-bg
-#: ../terminal/main.c:139 ../terminal/main.c:141
+#: terminal/main.c:139 terminal/main.c:141
 msgid "color"
 msgstr "色彩"
 
-#: ../terminal/main.c:149
+#: terminal/main.c:149
 msgid "Window Options"
 msgstr "視窗選項"
 
 #. parameter of --geometry
-#: ../terminal/main.c:153
+#: terminal/main.c:153
 msgid "geometry"
 msgstr "geometry"
 
 #. parameter of --role
-#: ../terminal/main.c:155
+#: terminal/main.c:155
 msgid "role"
 msgstr "role"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:157
+#: terminal/main.c:157
 msgid "string"
 msgstr "string"
 
 #. parameter of --icon
-#: ../terminal/main.c:159
+#: terminal/main.c:159
 msgid "icon"
 msgstr "icon"
 
 #. parameter of --font
-#: ../terminal/main.c:161
+#: terminal/main.c:161
 msgid "font"
 msgstr "字型"
 
 #. parameter of --zoom
-#: ../terminal/main.c:163
+#: terminal/main.c:163
 msgid "zoom"
 msgstr "縮放"
 
 #. parameter of --class
-#: ../terminal/main.c:165
+#: terminal/main.c:165
 msgid "class"
 msgstr "class"
 
-#: ../terminal/main.c:167
+#: terminal/main.c:167
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "查看 %s 手冊頁面以了解上述選項的完整解釋。"
 
-#: ../terminal/main.c:201
+#: terminal/main.c:201 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
 msgstr "Xfce 終端機"
 
-#: ../terminal/main.c:213
+#: terminal/main.c:213
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 開發團隊。保留所有權利。"
 
-#: ../terminal/main.c:214
+#: terminal/main.c:214
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "撰寫者：Benedikt Meurer <benny@xfce.org>，"
 
-#: ../terminal/main.c:215
+#: terminal/main.c:215
 msgid "Nick Schermer <nick@xfce.org>,"
 msgstr "Nick Schermer <nick@xfce.org>,"
 
-#: ../terminal/main.c:216
+#: terminal/main.c:216
 msgid "Igor Zakharov <f2404@yandex.ru>,"
 msgstr "Igor Zakharov <f2404@yandex.ru>,"
 
-#: ../terminal/main.c:217
+#: terminal/main.c:217
 msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 msgstr "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 
-#: ../terminal/main.c:218
+#: terminal/main.c:218
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "請回報臭蟲至 <%s>。"
 
-#: ../terminal/terminal-encoding-action.c:66
+#: terminal/terminal-encoding-action.c:66
 msgid "Western European"
 msgstr "西歐文字"
 
-#: ../terminal/terminal-encoding-action.c:67
+#: terminal/terminal-encoding-action.c:67
 msgid "Central European"
 msgstr "中歐文字"
 
-#: ../terminal/terminal-encoding-action.c:68
+#: terminal/terminal-encoding-action.c:68
 msgid "Baltic"
 msgstr "波羅的海文字"
 
-#: ../terminal/terminal-encoding-action.c:69
+#: terminal/terminal-encoding-action.c:69
 msgid "South-Eastern Europe"
 msgstr "東南歐文字"
 
-#: ../terminal/terminal-encoding-action.c:70
+#: terminal/terminal-encoding-action.c:70
 msgid "Turkish"
 msgstr "土耳其文"
 
-#: ../terminal/terminal-encoding-action.c:71
+#: terminal/terminal-encoding-action.c:71
 msgid "Cyrillic"
 msgstr "西里爾文字"
 
-#: ../terminal/terminal-encoding-action.c:72
+#: terminal/terminal-encoding-action.c:72
 msgid "Chinese Traditional"
 msgstr "中文正體"
 
-#: ../terminal/terminal-encoding-action.c:73
+#: terminal/terminal-encoding-action.c:73
 msgid "Chinese Simplified"
 msgstr "中文簡體"
 
-#: ../terminal/terminal-encoding-action.c:74
+#: terminal/terminal-encoding-action.c:74
 msgid "Korean"
 msgstr "韓文"
 
-#: ../terminal/terminal-encoding-action.c:75
+#: terminal/terminal-encoding-action.c:75
 msgid "Japanese"
 msgstr "日文"
 
-#: ../terminal/terminal-encoding-action.c:76
+#: terminal/terminal-encoding-action.c:76
 msgid "Greek"
 msgstr "希臘文"
 
-#: ../terminal/terminal-encoding-action.c:77
+#: terminal/terminal-encoding-action.c:77
 msgid "Arabic"
 msgstr "阿拉伯文"
 
-#: ../terminal/terminal-encoding-action.c:78
+#: terminal/terminal-encoding-action.c:78
 msgid "Hebrew"
 msgstr "希伯來文"
 
-#: ../terminal/terminal-encoding-action.c:79
+#: terminal/terminal-encoding-action.c:79
 msgid "Thai"
 msgstr "泰文"
 
-#: ../terminal/terminal-encoding-action.c:80
+#: terminal/terminal-encoding-action.c:80
 msgid "Vietnamese"
 msgstr "越南文"
 
-#: ../terminal/terminal-encoding-action.c:81
+#: terminal/terminal-encoding-action.c:81
 msgid "Nordic"
 msgstr "北歐語言"
 
-#: ../terminal/terminal-encoding-action.c:82
+#: terminal/terminal-encoding-action.c:82
 msgid "Celtic"
 msgstr "塞爾特文"
 
-#: ../terminal/terminal-encoding-action.c:83
+#: terminal/terminal-encoding-action.c:83
 msgid "Romanian"
 msgstr "羅馬尼亞文"
 
-#: ../terminal/terminal-encoding-action.c:84
+#: terminal/terminal-encoding-action.c:84
 msgid "Armenian"
 msgstr "亞美尼亞文"
 
-#: ../terminal/terminal-encoding-action.c:85
+#: terminal/terminal-encoding-action.c:85
 msgid "Georgian"
 msgstr "喬治亞文"
 
-#: ../terminal/terminal-encoding-action.c:86
+#: terminal/terminal-encoding-action.c:86
 msgid "Unicode"
 msgstr "統一碼"
 
-#: ../terminal/terminal-encoding-action.c:87
+#: terminal/terminal-encoding-action.c:87
 msgid "Other"
 msgstr "其他"
 
 #. action to reset to the default
-#: ../terminal/terminal-encoding-action.c:269
-#: ../terminal/terminal-encoding-action.c:393
+#: terminal/terminal-encoding-action.c:269
+#: terminal/terminal-encoding-action.c:393
 #, c-format
 msgid "Default (%s)"
 msgstr "預設 (%s)"
 
-#: ../terminal/terminal-gdbus.c:102
+#: terminal/terminal-gdbus.c:102
 msgid "User id mismatch"
 msgstr "使用者 ID 不符"
 
-#: ../terminal/terminal-gdbus.c:108
+#: terminal/terminal-gdbus.c:108
 msgid "Display mismatch"
 msgstr "顯示不相符"
 
-#: ../terminal/terminal-options.c:247
-#, c-format
+#: terminal/terminal-options.c:247
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "選項 \"--default-display\" 需要指定預設的 X 螢幕作為其參數"
 
-#: ../terminal/terminal-options.c:263
-#, c-format
+#: terminal/terminal-options.c:263
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "選項 \"--default-working-directory\" 需要指定預設的工作目錄作為其參數"
 
-#: ../terminal/terminal-options.c:280
-#, c-format
+#: terminal/terminal-options.c:280
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line separated from \"--execute/-x\""
 msgstr "選項 \"--execute/-x\" 需要指定剩下的命令列中所要執行的命令，與 \"--execute/-x\" 分開。"
 
-#: ../terminal/terminal-options.c:298
-#, c-format
+#: terminal/terminal-options.c:298
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "選項 \"--command/-e\" 需要指定命令作為其參數"
 
-#: ../terminal/terminal-options.c:315
-#, c-format
+#: terminal/terminal-options.c:315
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "選項 \"--working-directory\" 需要指定工作目錄作為其參數"
 
-#: ../terminal/terminal-options.c:330
-#, c-format
+#: terminal/terminal-options.c:330
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "選項 \"--title/-T\" 需要指定標題作為其參數"
 
-#: ../terminal/terminal-options.c:345
-#, c-format
+#: terminal/terminal-options.c:345
 msgid ""
 "Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
 "as its parameter"
 msgstr "選項 \"--dynamic-title-mode\" 需要指定動態標題模式作為其參數"
 
-#: ../terminal/terminal-options.c:360
+#: terminal/terminal-options.c:360
 #, c-format
 msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
 msgstr "選項 \"--dynamic-title-mode\" 有無效的參數：%s"
 
-#: ../terminal/terminal-options.c:370
-#, c-format
+#: terminal/terminal-options.c:370
 msgid ""
 "Option \"--initial-title\" requires specifying the initial title as its "
 "parameter"
 msgstr "選項 \"--initial-title\" 需要指定初始標題作為其參數"
 
-#: ../terminal/terminal-options.c:394 ../terminal/terminal-options.c:413
+#: terminal/terminal-options.c:394 terminal/terminal-options.c:413
 #, c-format
 msgid "Option \"%s\" requires specifying the color as its parameter"
 msgstr "選項「%s」必須指定顏色為其參數"
 
-#: ../terminal/terminal-options.c:401 ../terminal/terminal-options.c:420
+#: terminal/terminal-options.c:401 terminal/terminal-options.c:420
 #, c-format
 msgid "Unable to parse color: %s"
 msgstr "無法解析顏色：%s"
 
-#: ../terminal/terminal-options.c:431
-#, c-format
+#: terminal/terminal-options.c:431
 msgid "Option \"--display\" requires specifying the X display as its parameter"
 msgstr "\"--display\" 選項必須指定 X 顯示做為其參數"
 
-#: ../terminal/terminal-options.c:446
-#, c-format
+#: terminal/terminal-options.c:446
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "選項 \"--geometry\" 需要指定視窗大小作為其參數"
 
-#: ../terminal/terminal-options.c:461
-#, c-format
+#: terminal/terminal-options.c:461
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "選項 \"--role\" 需要指定視窗識別碼作為其參數"
 
-#: ../terminal/terminal-options.c:476
-#, c-format
+#: terminal/terminal-options.c:476
 msgid ""
 "Option \"--workspace\" requires specifying the workspace number as its "
 "parameter"
 msgstr "選項「--workspace」必須指定工作空間數量作為其參數"
 
-#: ../terminal/terminal-options.c:490
-#, c-format
+#: terminal/terminal-options.c:490
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "選項 \"--sm-client-id\" 需要指定獨一的 session id 作為其參數"
 
-#: ../terminal/terminal-options.c:505
-#, c-format
+#: terminal/terminal-options.c:505
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "選項 \"--startup-id\" 需要指定啟動 id 作為其參數"
 
-#: ../terminal/terminal-options.c:521
-#, c-format
+#: terminal/terminal-options.c:521
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "選項 \"--icon/-I\" 需要指定圖示名稱或檔名作為其參數"
 
-#: ../terminal/terminal-options.c:603
-#, c-format
+#: terminal/terminal-options.c:603
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "選項 \"--font\" 需要指定字型名稱作為其參數"
 
-#: ../terminal/terminal-options.c:621
+#: terminal/terminal-options.c:621
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "選項 \"--zoom\" 需要指定縮放等級 (%d .. %d) 作為其參數"
 
-#: ../terminal/terminal-options.c:637
-#, c-format
+#: terminal/terminal-options.c:637
 msgid "Option \"--class\" requires specifying the class name as its parameter"
 msgstr "選項「--class」必須指定 class 名稱作為其參數"
 
-#: ../terminal/terminal-options.c:655
+#: terminal/terminal-options.c:655
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr "未知的選項 \"-%c\""
 
-#: ../terminal/terminal-options.c:658
+#: terminal/terminal-options.c:658
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "未知的選項 \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:225
+#: terminal/terminal-preferences-dialog.c:225 xfce4-terminal.desktop.in:17
 msgid "Terminal Preferences"
 msgstr "終端機偏好設定"
 
 #. add the "Close" button
-#: ../terminal/terminal-preferences-dialog.c:232
-#: ../terminal/terminal-search-dialog.c:111
+#: terminal/terminal-preferences-dialog.c:232
+#: terminal/terminal-search-dialog.c:111
 msgid "_Close"
 msgstr "關閉(_C)"
 
 #. add the "Help" button
-#: ../terminal/terminal-preferences-dialog.c:240
-#: ../terminal/terminal-window.c:817
+#: terminal/terminal-preferences-dialog.c:240 terminal/terminal-window.c:817
 msgid "_Help"
 msgstr "說明(_H)"
 
 #. * General
 #. section: General
-#: ../terminal/terminal-preferences-dialog.c:257
-#: ../terminal/terminal-preferences-dialog.c:1156
+#: terminal/terminal-preferences-dialog.c:257
+#: terminal/terminal-preferences-dialog.c:1156
 msgid "General"
 msgstr "一般"
 
 #. section: Title
-#: ../terminal/terminal-preferences-dialog.c:265
+#: terminal/terminal-preferences-dialog.c:265
 msgid "Title"
 msgstr "標題"
 
-#: ../terminal/terminal-preferences-dialog.c:267
+#: terminal/terminal-preferences-dialog.c:267
 msgid "_Initial title:"
 msgstr "初始標題(_I)："
 
-#: ../terminal/terminal-preferences-dialog.c:283
+#: terminal/terminal-preferences-dialog.c:283
 msgid "Dynamically-set title:"
 msgstr "動態設定標題(_S)："
 
-#: ../terminal/terminal-preferences-dialog.c:289
+#: terminal/terminal-preferences-dialog.c:289
 msgid "Replaces initial title"
 msgstr "取代初始標題"
 
-#: ../terminal/terminal-preferences-dialog.c:290
+#: terminal/terminal-preferences-dialog.c:290
 msgid "Goes before initial title"
 msgstr "在初始標題之前"
 
-#: ../terminal/terminal-preferences-dialog.c:291
+#: terminal/terminal-preferences-dialog.c:291
 msgid "Goes after initial title"
 msgstr "在初始標題之後"
 
-#: ../terminal/terminal-preferences-dialog.c:292
+#: terminal/terminal-preferences-dialog.c:292
 msgid "Isn't displayed"
 msgstr "不顯示"
 
 #. section: Command
-#: ../terminal/terminal-preferences-dialog.c:304
+#: terminal/terminal-preferences-dialog.c:304
 msgid "Command"
 msgstr "指令"
 
-#: ../terminal/terminal-preferences-dialog.c:306
+#: terminal/terminal-preferences-dialog.c:306
 msgid "_Run command as login shell"
 msgstr "如 login shell 般執行指令(_R)"
 
-#: ../terminal/terminal-preferences-dialog.c:310
+#: terminal/terminal-preferences-dialog.c:310
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when"
 " you open new terminals. See the documentation of your shell for details "
@@ -459,511 +473,510 @@ msgid ""
 "login shell."
 msgstr "選擇此項會強制「終端機」程式在開啟新終端機時，會以 login shell 的方式來運作您的 shell，詳情請見您的 shell 的文件，以得知以 interactive shell 和 login shell 方式運作的差異。"
 
-#: ../terminal/terminal-preferences-dialog.c:321
+#: terminal/terminal-preferences-dialog.c:321
 msgid "_Run a custom command instead of my shell"
 msgstr "執行自訂指令而非我的 shell (_R)"
 
-#: ../terminal/terminal-preferences-dialog.c:325
+#: terminal/terminal-preferences-dialog.c:325
 msgid ""
 "Select this option to force Terminal to run a custom command instead of your"
 " shell when you open new terminals"
 msgstr "選取此選項來強制終端機在您開啟新的終端機時，執行自訂的指令而非您的 shell"
 
-#: ../terminal/terminal-preferences-dialog.c:333
+#: terminal/terminal-preferences-dialog.c:333
 msgid "Custom command:"
 msgstr "自訂指令："
 
-#: ../terminal/terminal-preferences-dialog.c:358
+#: terminal/terminal-preferences-dialog.c:358
 msgid "_Working directory:"
 msgstr "工作目錄(_W)："
 
-#: ../terminal/terminal-preferences-dialog.c:362
+#: terminal/terminal-preferences-dialog.c:362
 msgid ""
 "Select this option to make new terminals (tabs or windows) use custom "
 "working directory. Otherwise, current working directory will be used."
 msgstr "選擇這個選項來讓新的終端機（分頁或視窗）使用自訂的工作目錄。否則就會使用目前的工作目錄。"
 
 #. section: Scrolling
-#: ../terminal/terminal-preferences-dialog.c:383
+#: terminal/terminal-preferences-dialog.c:383
 msgid "Scrolling"
 msgstr "捲動"
 
-#: ../terminal/terminal-preferences-dialog.c:385
+#: terminal/terminal-preferences-dialog.c:385
 msgid "_Scroll on output"
 msgstr "輸出時捲動(_S)"
 
-#: ../terminal/terminal-preferences-dialog.c:389
+#: terminal/terminal-preferences-dialog.c:389
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the "
 "terminal."
 msgstr "這個選項控制終端機是否自動捲動到最底下。(不論新的輸出是否是由終端機機內執行的指令所產生)"
 
-#: ../terminal/terminal-preferences-dialog.c:395
+#: terminal/terminal-preferences-dialog.c:395
 msgid "_Scroll on keystroke"
 msgstr "按鍵時捲動(_S)"
 
-#: ../terminal/terminal-preferences-dialog.c:399
+#: terminal/terminal-preferences-dialog.c:399
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal to "
 "the command prompt."
 msgstr "讓您能夠在按下任意鍵時將終端機向下捲動到指令提示。"
 
-#: ../terminal/terminal-preferences-dialog.c:409
+#: terminal/terminal-preferences-dialog.c:409
 msgid "_Enable kinetic scrolling"
 msgstr "啟用動態捲動(_E)"
 
-#: ../terminal/terminal-preferences-dialog.c:413
+#: terminal/terminal-preferences-dialog.c:413
 msgid ""
 "This controls whether scrolling \"coasts\" to a stop when releasing a "
 "touchpad or touchscreen."
 msgstr "這控制在放開觸控板或觸控螢幕時捲動是否「滑行」到停止。"
 
-#: ../terminal/terminal-preferences-dialog.c:422
+#: terminal/terminal-preferences-dialog.c:422
 msgid "Scrollbar is:"
 msgstr "捲動軸位於："
 
-#: ../terminal/terminal-preferences-dialog.c:428
+#: terminal/terminal-preferences-dialog.c:428
 msgid "Disabled"
 msgstr "已停用"
 
-#: ../terminal/terminal-preferences-dialog.c:429
+#: terminal/terminal-preferences-dialog.c:429
 msgid "On the left side"
 msgstr "在左邊"
 
-#: ../terminal/terminal-preferences-dialog.c:430
+#: terminal/terminal-preferences-dialog.c:430
 msgid "On the right side"
 msgstr "在右邊"
 
-#: ../terminal/terminal-preferences-dialog.c:443
+#: terminal/terminal-preferences-dialog.c:443
 msgid "Scrollback:"
 msgstr "往回捲動："
 
-#: ../terminal/terminal-preferences-dialog.c:459
+#: terminal/terminal-preferences-dialog.c:459
 msgid "_Unlimited Scrollback"
 msgstr "無限制往回捲動(_U)"
 
-#: ../terminal/terminal-preferences-dialog.c:463
+#: terminal/terminal-preferences-dialog.c:463
 msgid "This controls whether the terminal will have no limits on scrollback."
 msgstr "這控制了終端機是否可無限制的往回捲動。"
 
-#: ../terminal/terminal-preferences-dialog.c:470
+#: terminal/terminal-preferences-dialog.c:470
 msgid "_Enable overlay scrolling (Requires restart)"
 msgstr "啟用覆蓋層捲動（需要重新啟動）(_E)"
 
-#: ../terminal/terminal-preferences-dialog.c:474
+#: terminal/terminal-preferences-dialog.c:474
 msgid ""
 "This controls whether scrollbar is drawn as an overlay (auto-hide) or not."
 msgstr "這會控制是否要將捲軸繪製為覆蓋層（自動隱藏）。"
 
 #. section: Cursor
-#: ../terminal/terminal-preferences-dialog.c:481
+#: terminal/terminal-preferences-dialog.c:481
 msgid "Cursor"
 msgstr "游標"
 
-#: ../terminal/terminal-preferences-dialog.c:483
+#: terminal/terminal-preferences-dialog.c:483
 msgid "Cursor shape:"
 msgstr "游標形狀："
 
-#: ../terminal/terminal-preferences-dialog.c:489
+#: terminal/terminal-preferences-dialog.c:489
 msgid "Block"
 msgstr "區塊"
 
-#: ../terminal/terminal-preferences-dialog.c:490
+#: terminal/terminal-preferences-dialog.c:490
 msgid "I-Beam"
 msgstr "I-Beam"
 
-#: ../terminal/terminal-preferences-dialog.c:491
+#: terminal/terminal-preferences-dialog.c:491
 msgid "Underline"
 msgstr "底線"
 
-#: ../terminal/terminal-preferences-dialog.c:501
+#: terminal/terminal-preferences-dialog.c:501
 msgid "Cursor blinks"
 msgstr "游標閃爍"
 
-#: ../terminal/terminal-preferences-dialog.c:505
+#: terminal/terminal-preferences-dialog.c:505
 msgid "This option controls whether the cursor will be blinking or not."
 msgstr "此選項控制游標是否會閃爍。"
 
 #. section: Clipboard
-#: ../terminal/terminal-preferences-dialog.c:512
+#: terminal/terminal-preferences-dialog.c:512
 msgid "Clipboard"
 msgstr "剪貼簿"
 
-#: ../terminal/terminal-preferences-dialog.c:514
+#: terminal/terminal-preferences-dialog.c:514
 msgid "Automatically copy selection to clipboard"
 msgstr "自動複製選取的部份到剪貼簿中"
 
-#: ../terminal/terminal-preferences-dialog.c:521
+#: terminal/terminal-preferences-dialog.c:521
 msgid "Show unsafe paste dialog"
 msgstr "顯示不安全的貼上對話方塊"
 
-#: ../terminal/terminal-preferences-dialog.c:525
+#: terminal/terminal-preferences-dialog.c:525
 msgid ""
 "Show a dialog that allows one to edit text that is considered unsafe for "
 "pasting"
 msgstr "顯示對話方塊，允許編輯被認為是貼上不安全的文字"
 
 #. * Drop-down
-#: ../terminal/terminal-preferences-dialog.c:534
+#: terminal/terminal-preferences-dialog.c:534
 msgid "Drop-down"
 msgstr "下拉式選單"
 
 #. section: Behavior
-#: ../terminal/terminal-preferences-dialog.c:543
+#: terminal/terminal-preferences-dialog.c:543
 msgid "Behavior"
 msgstr "行為"
 
-#: ../terminal/terminal-preferences-dialog.c:545
+#: terminal/terminal-preferences-dialog.c:545
 msgid "_Keep window open when it loses focus"
 msgstr "當視窗失去焦點時仍保持視窗開啟(_K)"
 
-#: ../terminal/terminal-preferences-dialog.c:555
+#: terminal/terminal-preferences-dialog.c:555
 msgid "_Use app shortcut to focus the window"
 msgstr "使用應用程式快捷鍵取得視窗焦點(_U)"
 
-#: ../terminal/terminal-preferences-dialog.c:559
+#: terminal/terminal-preferences-dialog.c:559
 msgid ""
 "If enabled, the app shortcut for 'xfce4-terminal --drop-down', which "
 "normally opens and closes the window, will give it focus if the option to "
 "keep the window open is checked."
 msgstr "若啟用，「xfce4-terminal --drop-down」的應用程式快捷鍵將在選取維持視窗開啟的選項時為其提供的焦點。"
 
-#: ../terminal/terminal-preferences-dialog.c:570
+#: terminal/terminal-preferences-dialog.c:570
 msgid "_Always keep window above"
 msgstr "一律維持視窗在上層(_A)"
 
-#: ../terminal/terminal-preferences-dialog.c:583
+#: terminal/terminal-preferences-dialog.c:583
 msgid "_Show status icon in notification area"
 msgstr "在通知區域中顯示狀態圖示(_S)"
 
 #. section: Appearance & Animation
-#: ../terminal/terminal-preferences-dialog.c:592
+#: terminal/terminal-preferences-dialog.c:592
 msgid "Appearance and Animation"
 msgstr "外觀與動畫"
 
-#: ../terminal/terminal-preferences-dialog.c:594
+#: terminal/terminal-preferences-dialog.c:594
 msgid "Width:"
 msgstr "寬度："
 
-#: ../terminal/terminal-preferences-dialog.c:616
+#: terminal/terminal-preferences-dialog.c:616
 msgid "Height:"
 msgstr "高度："
 
-#: ../terminal/terminal-preferences-dialog.c:638
-#: ../terminal/terminal-preferences-dialog.c:916
+#: terminal/terminal-preferences-dialog.c:638
+#: terminal/terminal-preferences-dialog.c:916
 msgid "Opacity:"
 msgstr "不透明度："
 
-#: ../terminal/terminal-preferences-dialog.c:660
+#: terminal/terminal-preferences-dialog.c:660
 msgid "Duration:"
 msgstr "持續時間："
 
-#: ../terminal/terminal-preferences-dialog.c:682
+#: terminal/terminal-preferences-dialog.c:682
 msgid "_Always show tabs"
 msgstr "總是顯示分頁(_A)"
 
-#: ../terminal/terminal-preferences-dialog.c:692
+#: terminal/terminal-preferences-dialog.c:692
 msgid "_Show window borders"
 msgstr "顯示視窗邊框(_S)"
 
 #. section: Position
-#: ../terminal/terminal-preferences-dialog.c:701
+#: terminal/terminal-preferences-dialog.c:701
 msgid "Position"
 msgstr "位置"
 
-#: ../terminal/terminal-preferences-dialog.c:703
+#: terminal/terminal-preferences-dialog.c:703
 msgid "Left"
 msgstr "左"
 
-#: ../terminal/terminal-preferences-dialog.c:725
+#: terminal/terminal-preferences-dialog.c:725
 msgid "Right"
 msgstr "右"
 
-#: ../terminal/terminal-preferences-dialog.c:733
+#: terminal/terminal-preferences-dialog.c:733
 msgid "Up"
 msgstr "上"
 
-#: ../terminal/terminal-preferences-dialog.c:747
+#: terminal/terminal-preferences-dialog.c:747
 msgid "Down"
 msgstr "下"
 
-#: ../terminal/terminal-preferences-dialog.c:755
+#: terminal/terminal-preferences-dialog.c:755
 msgid "_Move to monitor with pointer"
 msgstr "移至指標所在的螢幕(_M)"
 
 #. * Appearance
-#: ../terminal/terminal-preferences-dialog.c:767
+#: terminal/terminal-preferences-dialog.c:767
 msgid "Appearance"
 msgstr "外觀"
 
 #. section: Font
-#: ../terminal/terminal-preferences-dialog.c:775
+#: terminal/terminal-preferences-dialog.c:775
 msgid "Font"
 msgstr "字型"
 
-#: ../terminal/terminal-preferences-dialog.c:777
+#: terminal/terminal-preferences-dialog.c:777
 msgid "_Use system font"
 msgstr "使用系統字型(_U)"
 
-#: ../terminal/terminal-preferences-dialog.c:781
+#: terminal/terminal-preferences-dialog.c:781
 msgid "Enable this to use system-wide monospace font."
 msgstr "啟用此選項以使用系統設定的等寬字型。"
 
-#: ../terminal/terminal-preferences-dialog.c:801
+#: terminal/terminal-preferences-dialog.c:801
 msgid "_Allow bold text"
 msgstr "允許粗體字(_A)"
 
-#: ../terminal/terminal-preferences-dialog.c:805
+#: terminal/terminal-preferences-dialog.c:805
 msgid ""
 "Enable this to allow applications running inside the terminal windows to use"
 " bold font."
 msgstr "啟用此項使在終端機視窗中執行的應用程式可以使用粗體字"
 
-#: ../terminal/terminal-preferences-dialog.c:812
+#: terminal/terminal-preferences-dialog.c:812
 msgid "Text blinks:"
 msgstr "文字閃爍："
 
-#: ../terminal/terminal-preferences-dialog.c:813
+#: terminal/terminal-preferences-dialog.c:813
 msgid ""
 "Controls whether text in the terminal is allowed to blink when '\\e[5m' "
 "escape codes are used."
 msgstr "控制在終端機內的文字在使用 '\\e[5m' 跳脫字元時是否應該閃爍。"
 
-#: ../terminal/terminal-preferences-dialog.c:820
+#: terminal/terminal-preferences-dialog.c:820
 msgid "Never"
 msgstr "從不"
 
-#: ../terminal/terminal-preferences-dialog.c:821
+#: terminal/terminal-preferences-dialog.c:821
 msgid "When focused"
 msgstr "當取得焦點時"
 
-#: ../terminal/terminal-preferences-dialog.c:822
+#: terminal/terminal-preferences-dialog.c:822
 msgid "When unfocused"
 msgstr "當失去焦點時"
 
-#: ../terminal/terminal-preferences-dialog.c:823
+#: terminal/terminal-preferences-dialog.c:823
 msgid "Always"
 msgstr "總是"
 
-#: ../terminal/terminal-preferences-dialog.c:837
+#: terminal/terminal-preferences-dialog.c:837
 msgid "Cell spacing:"
 msgstr "單位間距："
 
-#: ../terminal/terminal-preferences-dialog.c:850
+#: terminal/terminal-preferences-dialog.c:850
 msgid "x width"
 msgstr "x 寬度"
 
-#: ../terminal/terminal-preferences-dialog.c:863
+#: terminal/terminal-preferences-dialog.c:863
 msgid "x height"
 msgstr "x 高度"
 
-#: ../terminal/terminal-preferences-dialog.c:868
-#: ../terminal/terminal-preferences-dialog.c:1508
-#: ../terminal/terminal-window.c:2848
+#: terminal/terminal-preferences-dialog.c:868
+#: terminal/terminal-preferences-dialog.c:1508 terminal/terminal-window.c:2848
 msgid "Reset"
 msgstr "重設"
 
 #. section: Background
-#: ../terminal/terminal-preferences-dialog.c:877
+#: terminal/terminal-preferences-dialog.c:877
 msgid "Background"
 msgstr "背景"
 
-#: ../terminal/terminal-preferences-dialog.c:880
+#: terminal/terminal-preferences-dialog.c:880
 msgid "None (use solid color)"
 msgstr "無(使用固定顏色)"
 
-#: ../terminal/terminal-preferences-dialog.c:881
+#: terminal/terminal-preferences-dialog.c:881
 msgid "Background image"
 msgstr "背景圖像"
 
-#: ../terminal/terminal-preferences-dialog.c:882
+#: terminal/terminal-preferences-dialog.c:882
 msgid "Transparent Background"
 msgstr "透明背景"
 
-#: ../terminal/terminal-preferences-dialog.c:951
+#: terminal/terminal-preferences-dialog.c:951
 msgid "File:"
 msgstr "檔案："
 
-#: ../terminal/terminal-preferences-dialog.c:968
+#: terminal/terminal-preferences-dialog.c:968
 msgid "All Files"
 msgstr "所有檔案"
 
-#: ../terminal/terminal-preferences-dialog.c:974
+#: terminal/terminal-preferences-dialog.c:974
 msgid "Image Files"
 msgstr "影像檔"
 
-#: ../terminal/terminal-preferences-dialog.c:982
+#: terminal/terminal-preferences-dialog.c:982
 msgid "Adjustment:"
 msgstr "調整："
 
-#: ../terminal/terminal-preferences-dialog.c:988
+#: terminal/terminal-preferences-dialog.c:988
 msgid "Tiled"
 msgstr "鋪排"
 
-#: ../terminal/terminal-preferences-dialog.c:989
+#: terminal/terminal-preferences-dialog.c:989
 msgid "Centered"
 msgstr "置中"
 
-#: ../terminal/terminal-preferences-dialog.c:990
+#: terminal/terminal-preferences-dialog.c:990
 msgid "Scaled"
 msgstr "縮放"
 
-#: ../terminal/terminal-preferences-dialog.c:991
+#: terminal/terminal-preferences-dialog.c:991
 msgid "Stretched"
 msgstr "延伸"
 
-#: ../terminal/terminal-preferences-dialog.c:992
+#: terminal/terminal-preferences-dialog.c:992
 msgid "Filled"
 msgstr "已填充"
 
-#: ../terminal/terminal-preferences-dialog.c:1003
+#: terminal/terminal-preferences-dialog.c:1003
 msgid "Shading:"
 msgstr "陰影："
 
 #. section: Opening new windows
-#: ../terminal/terminal-preferences-dialog.c:1019
+#: terminal/terminal-preferences-dialog.c:1019
 msgid "Opening New Windows"
 msgstr "正在開啟新視窗"
 
-#: ../terminal/terminal-preferences-dialog.c:1021
+#: terminal/terminal-preferences-dialog.c:1021
 msgid "_Display menubar in new windows"
 msgstr "在新視窗顯示選單列(_D)"
 
-#: ../terminal/terminal-preferences-dialog.c:1025
+#: terminal/terminal-preferences-dialog.c:1025
 msgid "Enable this option to show menubars in newly created terminal windows."
 msgstr "啟用此項使新開啟的視窗顯示選單列"
 
-#: ../terminal/terminal-preferences-dialog.c:1032
+#: terminal/terminal-preferences-dialog.c:1032
 msgid "_Display toolbar in new windows"
 msgstr "在新視窗中顯示工具列(_D)"
 
-#: ../terminal/terminal-preferences-dialog.c:1036
+#: terminal/terminal-preferences-dialog.c:1036
 msgid "Enable this option to show toolbar in newly created terminal windows."
 msgstr "啟用此項使新建的終端機視窗顯示工具列。"
 
-#: ../terminal/terminal-preferences-dialog.c:1043
+#: terminal/terminal-preferences-dialog.c:1043
 msgid "_Display borders around new windows"
 msgstr "在新視窗中顯示邊框(_D)"
 
-#: ../terminal/terminal-preferences-dialog.c:1047
+#: terminal/terminal-preferences-dialog.c:1047
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "啟用此項使新開啟的視窗顯示邊框"
 
-#: ../terminal/terminal-preferences-dialog.c:1054
+#: terminal/terminal-preferences-dialog.c:1054
 msgid "_Maximize new windows"
 msgstr "最大化新視窗(_M)"
 
-#: ../terminal/terminal-preferences-dialog.c:1058
+#: terminal/terminal-preferences-dialog.c:1058
 msgid "Enable this option to maximize newly created terminal windows."
 msgstr "啟用此選項以最大會新建立的終端機視窗。"
 
-#: ../terminal/terminal-preferences-dialog.c:1065
+#: terminal/terminal-preferences-dialog.c:1065
 msgid "Default geometry"
 msgstr "預設幾何"
 
-#: ../terminal/terminal-preferences-dialog.c:1083
+#: terminal/terminal-preferences-dialog.c:1083
 msgid "columns"
 msgstr "欄數"
 
-#: ../terminal/terminal-preferences-dialog.c:1101
+#: terminal/terminal-preferences-dialog.c:1101
 msgid "rows"
 msgstr "列數"
 
 #. section: Tabs
-#: ../terminal/terminal-preferences-dialog.c:1113
+#: terminal/terminal-preferences-dialog.c:1113
 msgid "Tabs"
 msgstr "分頁"
 
-#: ../terminal/terminal-preferences-dialog.c:1115
+#: terminal/terminal-preferences-dialog.c:1115
 msgid "Reset tab activity indicator after"
 msgstr "在多久後重設分頁活動指示器"
 
-#: ../terminal/terminal-preferences-dialog.c:1128
+#: terminal/terminal-preferences-dialog.c:1128
 msgid "seconds"
 msgstr "秒"
 
-#: ../terminal/terminal-preferences-dialog.c:1136
+#: terminal/terminal-preferences-dialog.c:1136
 msgid "_Use custom styling to make tabs slim (restart required)"
 msgstr "使用自訂樣式讓分頁更輕薄（需要重新啟動）(_U)"
 
 #. * Colors
-#: ../terminal/terminal-preferences-dialog.c:1148
+#: terminal/terminal-preferences-dialog.c:1148
 msgid "Colors"
 msgstr "顏色"
 
-#: ../terminal/terminal-preferences-dialog.c:1158
+#: terminal/terminal-preferences-dialog.c:1158
 msgid "Text Color:"
 msgstr "文字色彩："
 
-#: ../terminal/terminal-preferences-dialog.c:1173
+#: terminal/terminal-preferences-dialog.c:1173
 msgid "Background Color:"
 msgstr "背景色彩："
 
-#: ../terminal/terminal-preferences-dialog.c:1188
+#: terminal/terminal-preferences-dialog.c:1188
 msgid "Tab activity color:"
 msgstr "分頁活動色彩："
 
-#: ../terminal/terminal-preferences-dialog.c:1206
+#: terminal/terminal-preferences-dialog.c:1206
 msgid "_Use system theme colors for text and background"
 msgstr "為文字與背景使用系統主題色彩(_U)"
 
-#: ../terminal/terminal-preferences-dialog.c:1216
+#: terminal/terminal-preferences-dialog.c:1216
 msgid "_Vary the background color for each tab"
 msgstr "各分頁背景色彩不同(_V)"
 
-#: ../terminal/terminal-preferences-dialog.c:1220
+#: terminal/terminal-preferences-dialog.c:1220
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness."
 msgstr "根據所選的背景色彩，在維持相同亮度下的隨機色彩。"
 
-#: ../terminal/terminal-preferences-dialog.c:1230
+#: terminal/terminal-preferences-dialog.c:1230
 msgid "_Enable sixel graphics"
 msgstr "啟用六畫素圖形(_E)"
 
 #. section: Custom colors
-#: ../terminal/terminal-preferences-dialog.c:1240
+#: terminal/terminal-preferences-dialog.c:1240
 msgid "Custom Colors"
 msgstr "自訂色彩"
 
-#: ../terminal/terminal-preferences-dialog.c:1242
+#: terminal/terminal-preferences-dialog.c:1242
 msgid "_Cursor color:"
 msgstr "游標色彩(_C)："
 
-#: ../terminal/terminal-preferences-dialog.c:1246
-#: ../terminal/terminal-preferences-dialog.c:1280
+#: terminal/terminal-preferences-dialog.c:1246
+#: terminal/terminal-preferences-dialog.c:1280
 msgid ""
 "Enable this option to set custom text and background colors for cursor. If "
 "disabled the background and text colors will be reversed."
 msgstr "啟用此選項來為游標設定自訂文字與背景色彩。如果停用，則背景與文字色彩會回復。"
 
-#: ../terminal/terminal-preferences-dialog.c:1276
+#: terminal/terminal-preferences-dialog.c:1276
 msgid "_Text selection color:"
 msgstr "文字選取色彩(_T)："
 
-#: ../terminal/terminal-preferences-dialog.c:1310
+#: terminal/terminal-preferences-dialog.c:1310
 msgid "_Bold selection color:"
 msgstr "粗體選取色彩(_B)："
 
-#: ../terminal/terminal-preferences-dialog.c:1314
+#: terminal/terminal-preferences-dialog.c:1314
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "啟用此選項可設定自訂粗體色彩。如果停用，則會使用文字色彩。"
 
 #. section: Palette
-#: ../terminal/terminal-preferences-dialog.c:1331
+#: terminal/terminal-preferences-dialog.c:1331
 msgid "Palette"
 msgstr "調色盤"
 
-#: ../terminal/terminal-preferences-dialog.c:1354
+#: terminal/terminal-preferences-dialog.c:1354
 msgid "_Show bold text in bright colors:"
 msgstr "在亮色中顯示粗體字(_S)："
 
-#: ../terminal/terminal-preferences-dialog.c:1358
+#: terminal/terminal-preferences-dialog.c:1358
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
@@ -971,808 +984,827 @@ msgid ""
 msgstr "啟用此選項以允許跳脫序列，如 '\\e[1;35m' 將文字在切換至亮色時外加粗體。若停用，文字色彩將保持不變。"
 
 #. section: Presets
-#: ../terminal/terminal-preferences-dialog.c:1364
+#: terminal/terminal-preferences-dialog.c:1364
 msgid "Presets"
 msgstr "預置設定"
 
 #. * Compatibility
-#: ../terminal/terminal-preferences-dialog.c:1380
-#: ../terminal/terminal-preferences-dialog.c:1386
+#: terminal/terminal-preferences-dialog.c:1380
+#: terminal/terminal-preferences-dialog.c:1386
 msgid "Compatibility"
 msgstr "相容性"
 
-#: ../terminal/terminal-preferences-dialog.c:1391
+#: terminal/terminal-preferences-dialog.c:1391
 msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
 msgstr "這些選項可能導致某些應用程式運作不正常。\n它們只是讓您處理某些特定的應用程式\n與作業系統中對終端機的行為有不同的預期這件事。"
 
-#: ../terminal/terminal-preferences-dialog.c:1404
+#: terminal/terminal-preferences-dialog.c:1404
 msgid "Backspace key generates:"
 msgstr "Backspace 鍵產生："
 
-#: ../terminal/terminal-preferences-dialog.c:1410
-#: ../terminal/terminal-preferences-dialog.c:1433
+#: terminal/terminal-preferences-dialog.c:1410
+#: terminal/terminal-preferences-dialog.c:1433
 msgid "Auto-detect"
 msgstr "自動偵測"
 
-#: ../terminal/terminal-preferences-dialog.c:1411
-#: ../terminal/terminal-preferences-dialog.c:1434
+#: terminal/terminal-preferences-dialog.c:1411
+#: terminal/terminal-preferences-dialog.c:1434
 msgid "ASCII Del"
 msgstr "ASCII Del"
 
-#: ../terminal/terminal-preferences-dialog.c:1412
-#: ../terminal/terminal-preferences-dialog.c:1435
+#: terminal/terminal-preferences-dialog.c:1412
+#: terminal/terminal-preferences-dialog.c:1435
 msgid "Escape sequence"
 msgstr "Escape sequence"
 
-#: ../terminal/terminal-preferences-dialog.c:1413
-#: ../terminal/terminal-preferences-dialog.c:1436
+#: terminal/terminal-preferences-dialog.c:1413
+#: terminal/terminal-preferences-dialog.c:1436
 msgid "Control-H"
 msgstr "Control-H"
 
-#: ../terminal/terminal-preferences-dialog.c:1414
-#: ../terminal/terminal-preferences-dialog.c:1437
+#: terminal/terminal-preferences-dialog.c:1414
+#: terminal/terminal-preferences-dialog.c:1437
 msgid "Erase TTY"
 msgstr "抹除 TTY"
 
-#: ../terminal/terminal-preferences-dialog.c:1427
+#: terminal/terminal-preferences-dialog.c:1427
 msgid "Delete key generates:"
 msgstr "Delete 鍵產生："
 
-#: ../terminal/terminal-preferences-dialog.c:1450
+#: terminal/terminal-preferences-dialog.c:1450
 msgid "Ambiguous-width characters:"
 msgstr "非固定寬度字元："
 
-#: ../terminal/terminal-preferences-dialog.c:1456
+#: terminal/terminal-preferences-dialog.c:1456
 msgid "Narrow"
 msgstr "窄"
 
-#: ../terminal/terminal-preferences-dialog.c:1457
+#: terminal/terminal-preferences-dialog.c:1457
 msgid "Wide"
 msgstr "寬"
 
-#: ../terminal/terminal-preferences-dialog.c:1471
+#: terminal/terminal-preferences-dialog.c:1471
 msgid "Reset compatibility options to defaults"
 msgstr "將相容性選項重設回預設值"
 
 #. * Advanced
-#: ../terminal/terminal-preferences-dialog.c:1482
+#: terminal/terminal-preferences-dialog.c:1482
 msgid "Advanced"
 msgstr "進階"
 
 #. section: Double Click
-#: ../terminal/terminal-preferences-dialog.c:1490
+#: terminal/terminal-preferences-dialog.c:1490
 msgid "Double Click"
 msgstr "雙擊"
 
-#: ../terminal/terminal-preferences-dialog.c:1492
+#: terminal/terminal-preferences-dialog.c:1492
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "雙擊時將下列字元視為一個單詞的一部分："
 
 #. section: Encoding
-#: ../terminal/terminal-preferences-dialog.c:1516
+#: terminal/terminal-preferences-dialog.c:1516
 msgid "Encoding"
 msgstr "編碼"
 
-#: ../terminal/terminal-preferences-dialog.c:1518
+#: terminal/terminal-preferences-dialog.c:1518
 msgid "Default character encoding"
 msgstr "預設字元編碼"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: ../terminal/terminal-preferences-dialog.c:1542
-#: ../terminal/terminal-preferences-dialog.c:1671
+#: terminal/terminal-preferences-dialog.c:1542
+#: terminal/terminal-preferences-dialog.c:1671
 msgid "Shortcuts"
 msgstr "快捷鍵"
 
-#: ../terminal/terminal-preferences-dialog.c:1544
+#: terminal/terminal-preferences-dialog.c:1544
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "停用所有選單列存取按鍵(像是 Alt+f)(_D)"
 
-#: ../terminal/terminal-preferences-dialog.c:1554
+#: terminal/terminal-preferences-dialog.c:1554
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "停用選單快捷鍵（預設為 F10）(_D)"
 
 #. section: Misc
-#: ../terminal/terminal-preferences-dialog.c:1563
+#: terminal/terminal-preferences-dialog.c:1563
 msgid "Misc"
 msgstr "雜項"
 
-#: ../terminal/terminal-preferences-dialog.c:1565
+#: terminal/terminal-preferences-dialog.c:1565
 msgid "_Use middle mouse click to close tabs"
 msgstr "使用滑鼠中鍵點選以關閉分頁(_U)"
 
-#: ../terminal/terminal-preferences-dialog.c:1575
+#: terminal/terminal-preferences-dialog.c:1575
 msgid "Underline urls on mouseover"
 msgstr "滑鼠游標移動到 URL 上時顯示底線"
 
-#: ../terminal/terminal-preferences-dialog.c:1585
+#: terminal/terminal-preferences-dialog.c:1585
 msgid "_Use middle mouse click to open urls"
 msgstr "使用滑鼠中鍵點選以開啟 URL (_U)"
 
-#: ../terminal/terminal-preferences-dialog.c:1597
+#: terminal/terminal-preferences-dialog.c:1597
 msgid "Enable OSC 8 Hyperlinks"
 msgstr "啟用 OSC 8 超連結"
 
-#: ../terminal/terminal-preferences-dialog.c:1598
+#: terminal/terminal-preferences-dialog.c:1598
 msgid ""
 "These are the links displayed when you run the 'ls --hyperlink' command, or "
 "by any other means using the OSC 8 escape sequence."
 msgstr "這些是您執行「ls --hyperlink」命令或使用 OSC 8 跳脫序列的任何其他方式時，顯示的連結。"
 
-#: ../terminal/terminal-preferences-dialog.c:1608
+#: terminal/terminal-preferences-dialog.c:1608
 msgid "_Auto-hide mouse pointer"
 msgstr "自動隱藏滑鼠游標(_A)"
 
-#: ../terminal/terminal-preferences-dialog.c:1618
+#: terminal/terminal-preferences-dialog.c:1618
 msgid "_Open new tab to the right of the active tab"
 msgstr "在作用中分頁的右邊開啟新分頁(_O)"
 
-#: ../terminal/terminal-preferences-dialog.c:1628
+#: terminal/terminal-preferences-dialog.c:1628
 msgid "_Audible bell"
 msgstr "響鈴(_A)"
 
-#: ../terminal/terminal-preferences-dialog.c:1638
+#: terminal/terminal-preferences-dialog.c:1638
 msgid "_Visual bell"
 msgstr "視覺響鈴(_V)"
 
-#: ../terminal/terminal-preferences-dialog.c:1648
+#: terminal/terminal-preferences-dialog.c:1648
 msgid "Right click action:"
 msgstr "右鍵點擊動作："
 
-#: ../terminal/terminal-preferences-dialog.c:1654
+#: terminal/terminal-preferences-dialog.c:1654
 msgid "Context Menu"
 msgstr "情境選單"
 
-#: ../terminal/terminal-preferences-dialog.c:1655
+#: terminal/terminal-preferences-dialog.c:1655
 msgid "Paste clipboard"
 msgstr "貼上剪貼簿"
 
-#: ../terminal/terminal-preferences-dialog.c:1656
+#: terminal/terminal-preferences-dialog.c:1656
 msgid "Paste selection"
 msgstr "貼上選取內容"
 
-#: ../terminal/terminal-preferences-dialog.c:1681
+#: terminal/terminal-preferences-dialog.c:1681
 msgid "Window"
 msgstr "視窗"
 
-#: ../terminal/terminal-preferences-dialog.c:1683
-#: ../terminal/terminal-preferences.c:1220
+#: terminal/terminal-preferences-dialog.c:1683
+#: terminal/terminal-preferences.c:1220
 msgid "Terminal"
 msgstr "終端機"
 
 #. default item + separator
-#: ../terminal/terminal-preferences-dialog.c:2092
+#: terminal/terminal-preferences-dialog.c:2092
 msgid "Select Preset"
 msgstr "選取預先設定集"
 
-#: ../terminal/terminal-screen.c:280
+#: terminal/terminal-screen.c:280
 msgid "Do not disable dialog"
 msgstr "不要停用對話方塊"
 
-#: ../terminal/terminal-screen.c:281
+#: terminal/terminal-screen.c:281
 msgid "Disable for 5 minutes"
 msgstr "停用5分鐘"
 
-#: ../terminal/terminal-screen.c:282
+#: terminal/terminal-screen.c:282
 msgid "Disable for 15 minutes"
 msgstr "停用15分鐘"
 
-#: ../terminal/terminal-screen.c:283
+#: terminal/terminal-screen.c:283
 msgid "Disable until program restart"
 msgstr "停用至程式重新啟動"
 
-#: ../terminal/terminal-screen.c:284
+#: terminal/terminal-screen.c:284
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "停用對話方塊（可在偏好設定中重新啟用）"
 
-#: ../terminal/terminal-screen.c:536 ../terminal/terminal-screen.c:931
-#: ../terminal/terminal-screen.c:2451
+#: terminal/terminal-screen.c:536 terminal/terminal-screen.c:931
+#: terminal/terminal-screen.c:2451
 msgid "Untitled"
 msgstr "無標題"
 
-#: ../terminal/terminal-screen.c:784
+#: terminal/terminal-screen.c:784
 msgid "Empty custom command in the terminal preferences"
 msgstr "清空終端機偏好設定中的自訂命令"
 
-#: ../terminal/terminal-screen.c:834
-#, c-format
+#: terminal/terminal-screen.c:834
 msgid "Unable to determine your login shell."
 msgstr "無法決定您登入的 shell。"
 
-#: ../terminal/terminal-screen.c:1553
+#: terminal/terminal-screen.c:1553
 msgid "_Relaunch"
 msgstr "重新啟動(_R)"
 
-#: ../terminal/terminal-screen.c:1559
+#: terminal/terminal-screen.c:1559
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "子行程以狀態 %d 正常結束。"
 
-#: ../terminal/terminal-screen.c:1561
+#: terminal/terminal-screen.c:1561
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "子行程已被訊號 %d 中斷。"
 
-#: ../terminal/terminal-screen.c:1563
+#: terminal/terminal-screen.c:1563
 msgid "The child process was aborted."
 msgstr "子行程已被中斷。"
 
-#: ../terminal/terminal-screen.c:1569 ../terminal/terminal-window.c:1550
+#: terminal/terminal-screen.c:1569 terminal/terminal-window.c:1550
 msgid "Do _not ask me again"
 msgstr "不要再問我(_n)"
 
-#: ../terminal/terminal-screen.c:1884
+#: terminal/terminal-screen.c:1884
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "警告：可能不安全的貼上"
 
-#: ../terminal/terminal-screen.c:1887
+#: terminal/terminal-screen.c:1887
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "將此文字貼上至終端機中可能有危險，因為它看起來可能會執行某些指令，可能會使用 root 權限 ('sudo')。"
 
-#: ../terminal/terminal-screen.c:1890
+#: terminal/terminal-screen.c:1890
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "將此文字貼上至終端機中可能有危險，因為它看起來可能會執行某些指令。"
 
-#: ../terminal/terminal-screen.c:1902 ../terminal/terminal-window.c:1472
-#: ../terminal/terminal-window.c:3024
+#: terminal/terminal-screen.c:1902 terminal/terminal-window.c:1472
+#: terminal/terminal-window.c:3024
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: ../terminal/terminal-screen.c:1905 ../terminal/terminal-window.c:527
+#: terminal/terminal-screen.c:1905 terminal/terminal-window.c:527
 msgid "_Paste"
 msgstr "貼上(_P)"
 
-#: ../terminal/terminal-screen.c:2075 ../terminal/terminal-screen.c:2153
+#: terminal/terminal-screen.c:2075 terminal/terminal-screen.c:2153
 msgid "Failed to execute child"
 msgstr "無法執行子程序"
 
-#: ../terminal/terminal-screen.c:2784
+#: terminal/terminal-screen.c:2784
 msgid "Close this tab"
 msgstr "關閉此分頁"
 
-#: ../terminal/terminal-search-dialog.c:103
+#: terminal/terminal-search-dialog.c:103
 msgid "Find"
 msgstr "尋找"
 
-#: ../terminal/terminal-search-dialog.c:114
+#: terminal/terminal-search-dialog.c:114
 msgid "_Previous"
 msgstr "上一個(_P)"
 
-#: ../terminal/terminal-search-dialog.c:119
+#: terminal/terminal-search-dialog.c:119
 msgid "_Next"
 msgstr "下一個(_N)"
 
-#: ../terminal/terminal-search-dialog.c:136
+#: terminal/terminal-search-dialog.c:136
 msgid "_Search for:"
 msgstr "搜尋(_S)："
 
-#: ../terminal/terminal-search-dialog.c:149
+#: terminal/terminal-search-dialog.c:149
 msgid "C_ase sensitive"
 msgstr "區分字母大小寫(_A)"
 
-#: ../terminal/terminal-search-dialog.c:154
+#: terminal/terminal-search-dialog.c:154
 msgid "Match as _regular expression"
 msgstr "比對正規表述式(_R)"
 
-#: ../terminal/terminal-search-dialog.c:159
+#: terminal/terminal-search-dialog.c:159
 msgid "Match _entire word only"
 msgstr "僅比對整個單字(_E)"
 
-#: ../terminal/terminal-search-dialog.c:164
+#: terminal/terminal-search-dialog.c:164
 msgid "_Wrap around"
 msgstr "自動換列(_W)"
 
-#: ../terminal/terminal-search-dialog.c:173
+#: terminal/terminal-search-dialog.c:173
 msgid "_Opacity:"
 msgstr "不透明度(_O)："
 
-#: ../terminal/terminal-util.c:91
+#: terminal/terminal-util.c:91
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce 終端機模擬器"
 
-#: ../terminal/terminal-util.c:97
+#: terminal/terminal-util.c:97
 msgid "translator-credits"
 msgstr "Cheng-Chia Tseng <pswo10680@gmail.com>, 2011"
 
-#: ../terminal/terminal-util.c:100
+#: terminal/terminal-util.c:100
 msgid "Visit Xfce Terminal website"
 msgstr "造訪 Xfce 終端機網頁"
 
-#: ../terminal/terminal-widget.c:186
+#: terminal/terminal-widget.c:186
 msgid "Scroll one line Up"
 msgstr "向上捲動ㄧ行"
 
-#: ../terminal/terminal-widget.c:196
+#: terminal/terminal-widget.c:196
 msgid "Scroll one line Down"
 msgstr "向下捲動ㄧ行"
 
-#: ../terminal/terminal-widget.c:206
+#: terminal/terminal-widget.c:206
 msgid "Scroll one Page Up"
 msgstr "向上捲動一頁"
 
-#: ../terminal/terminal-widget.c:216
+#: terminal/terminal-widget.c:216
 msgid "Scroll one Page Down"
 msgstr "向下捲動一頁"
 
-#: ../terminal/terminal-widget.c:493
+#: terminal/terminal-widget.c:493
 msgid "Copy Email Address"
 msgstr "複製電子郵件位址"
 
-#: ../terminal/terminal-widget.c:494
+#: terminal/terminal-widget.c:494
 msgid "Compose Email"
 msgstr "寫電子郵件"
 
-#: ../terminal/terminal-widget.c:498 ../terminal/terminal-widget.c:504
+#: terminal/terminal-widget.c:498 terminal/terminal-widget.c:504
 msgid "Copy Link Address"
 msgstr "複製連結網址"
 
-#: ../terminal/terminal-widget.c:500 ../terminal/terminal-widget.c:505
+#: terminal/terminal-widget.c:500 terminal/terminal-widget.c:505
 msgid "Open Link"
 msgstr "開啟連結"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:867
+#: terminal/terminal-widget.c:867
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "無法開啟網址「%s」"
 
-#: ../terminal/terminal-window-dropdown.c:434
+#: terminal/terminal-window-dropdown.c:434
 msgid "Keep window open when it loses focus"
 msgstr "當視窗失去焦點時仍保持視窗開啟"
 
-#: ../terminal/terminal-window-dropdown.c:559
+#: terminal/terminal-window-dropdown.c:559
 msgid "Drop-down Terminal"
 msgstr "下拉式終端機"
 
-#: ../terminal/terminal-window-dropdown.c:560
+#: terminal/terminal-window-dropdown.c:560
 msgid "Toggle Drop-down Terminal"
 msgstr "切換下拉式終端機"
 
-#: ../terminal/terminal-window.c:407
+#: terminal/terminal-window.c:407
 msgid "_File"
 msgstr "檔案(_F)"
 
-#: ../terminal/terminal-window.c:417
+#: terminal/terminal-window.c:417
 msgid "Open _Tab"
 msgstr "開啟分頁(_T)"
 
-#: ../terminal/terminal-window.c:418
+#: terminal/terminal-window.c:418
 msgid "Open a new terminal tab"
 msgstr "開啟新的終端機分頁"
 
-#: ../terminal/terminal-window.c:427
+#: terminal/terminal-window.c:427
 msgid "Open T_erminal"
 msgstr "開啟終端機(_E)"
 
-#: ../terminal/terminal-window.c:428
+#: terminal/terminal-window.c:428
 msgid "Open a new terminal window"
 msgstr "開啟新的終端機視窗"
 
-#: ../terminal/terminal-window.c:437
+#: terminal/terminal-window.c:437
 msgid "_Open File Manager Here"
 msgstr "在此開啟檔案管理程式(_O)"
 
-#: ../terminal/terminal-window.c:438
+#: terminal/terminal-window.c:438
 msgid "Open the current directory"
 msgstr "開啟目前目錄"
 
-#: ../terminal/terminal-window.c:447
+#: terminal/terminal-window.c:447
 msgid "_Undo Close Tab"
 msgstr "復原關閉分頁(_U)"
 
-#: ../terminal/terminal-window.c:457
+#: terminal/terminal-window.c:457
 msgid "_Detach Tab"
 msgstr "脫離分頁(_D)"
 
-#: ../terminal/terminal-window.c:467 ../terminal/terminal-window.c:1514
+#: terminal/terminal-window.c:467 terminal/terminal-window.c:1514
 msgid "Close T_ab"
 msgstr "關閉分頁(_A)"
 
-#: ../terminal/terminal-window.c:477
+#: terminal/terminal-window.c:477
 msgid "Close Other Ta_bs"
 msgstr "關閉其他分頁(_B)"
 
-#: ../terminal/terminal-window.c:487 ../terminal/terminal-window.c:1521
+#: terminal/terminal-window.c:487 terminal/terminal-window.c:1521
 msgid "Close _Window"
 msgstr "關閉視窗(_W)"
 
-#: ../terminal/terminal-window.c:497
+#: terminal/terminal-window.c:497
 msgid "_Edit"
 msgstr "編輯(_E)"
 
-#: ../terminal/terminal-window.c:507
+#: terminal/terminal-window.c:507
 msgid "_Copy"
 msgstr "複製(_C)"
 
-#: ../terminal/terminal-window.c:508
+#: terminal/terminal-window.c:508
 msgid "Copy to clipboard"
 msgstr "複製到剪貼簿"
 
-#: ../terminal/terminal-window.c:517
+#: terminal/terminal-window.c:517
 msgid "Copy as _HTML"
 msgstr "複製為 HTML (_H)"
 
-#: ../terminal/terminal-window.c:518
+#: terminal/terminal-window.c:518
 msgid "Copy to clipboard as HTML"
 msgstr "複製到剪貼簿為 HTML"
 
-#: ../terminal/terminal-window.c:528
+#: terminal/terminal-window.c:528
 msgid "Paste from clipboard"
 msgstr "從剪貼簿貼上"
 
-#: ../terminal/terminal-window.c:537
+#: terminal/terminal-window.c:537
 msgid "_Paste Alt"
 msgstr "貼上 Alt(_P)"
 
-#: ../terminal/terminal-window.c:547
+#: terminal/terminal-window.c:547
 msgid "Paste _Selection"
 msgstr "貼上選取內容(_S)"
 
-#: ../terminal/terminal-window.c:557
+#: terminal/terminal-window.c:557
 msgid "Paste _Selection Alt"
 msgstr "貼上選取內容 Alt(_S)"
 
-#: ../terminal/terminal-window.c:567
+#: terminal/terminal-window.c:567
 msgid "Select _All"
 msgstr "全選(_A)"
 
-#: ../terminal/terminal-window.c:577
+#: terminal/terminal-window.c:577
 msgid "Copy _Input To All Tabs..."
 msgstr "複製輸入到所有分頁……(_I)"
 
-#: ../terminal/terminal-window.c:587
+#: terminal/terminal-window.c:587
 msgid "Pr_eferences..."
 msgstr "偏好設定(_E)..."
 
-#: ../terminal/terminal-window.c:588
+#: terminal/terminal-window.c:588
 msgid "Open the preferences dialog"
 msgstr "開啟偏好設定對話窗"
 
-#: ../terminal/terminal-window.c:597
+#: terminal/terminal-window.c:597
 msgid "_View"
 msgstr "檢視(_V)"
 
-#: ../terminal/terminal-window.c:607
+#: terminal/terminal-window.c:607
 msgid "Zoom _In"
 msgstr "拉近(_I)"
 
-#: ../terminal/terminal-window.c:608
+#: terminal/terminal-window.c:608
 msgid "Zoom in with larger font"
 msgstr "以較大的字型拉近"
 
-#: ../terminal/terminal-window.c:617
+#: terminal/terminal-window.c:617
 msgid "Zoom In Alt"
 msgstr "放大 Alt"
 
-#: ../terminal/terminal-window.c:627
+#: terminal/terminal-window.c:627
 msgid "Zoom _Out"
 msgstr "拉遠(_O)"
 
-#: ../terminal/terminal-window.c:628
+#: terminal/terminal-window.c:628
 msgid "Zoom out with smaller font"
 msgstr "以較小的字型拉遠"
 
-#: ../terminal/terminal-window.c:637
+#: terminal/terminal-window.c:637
 msgid "Zoom Out Alt"
 msgstr "縮小 Alt"
 
-#: ../terminal/terminal-window.c:647
+#: terminal/terminal-window.c:647
 msgid "_Normal Size"
 msgstr "正常大小(_N)"
 
-#: ../terminal/terminal-window.c:648
+#: terminal/terminal-window.c:648
 msgid "Zoom to default size"
 msgstr "縮放至預設大小"
 
-#: ../terminal/terminal-window.c:657
+#: terminal/terminal-window.c:657
 msgid "_Normal Size Alt"
 msgstr "正常大小 Alt(_N)"
 
-#: ../terminal/terminal-window.c:667
+#: terminal/terminal-window.c:667
 msgid "_Terminal"
 msgstr "終端機(_T)"
 
-#: ../terminal/terminal-window.c:677
+#: terminal/terminal-window.c:677
 msgid "_Set Title..."
 msgstr "設定標題(_S)..."
 
-#: ../terminal/terminal-window.c:687
+#: terminal/terminal-window.c:687
 msgid "Set Title Co_lor..."
 msgstr "設定標題色彩……"
 
-#: ../terminal/terminal-window.c:697
+#: terminal/terminal-window.c:697
 msgid "_Find..."
 msgstr "尋找(_F)..."
 
-#: ../terminal/terminal-window.c:698
+#: terminal/terminal-window.c:698
 msgid "Search terminal contents"
 msgstr "搜尋終端機內容"
 
-#: ../terminal/terminal-window.c:707
+#: terminal/terminal-window.c:707
 msgid "Find Ne_xt"
 msgstr "尋找下一個(_X)"
 
-#: ../terminal/terminal-window.c:717
+#: terminal/terminal-window.c:717
 msgid "Find Pre_vious"
 msgstr "尋找上一個(_V)"
 
-#: ../terminal/terminal-window.c:727
+#: terminal/terminal-window.c:727
 msgid "Sa_ve Contents..."
 msgstr "儲存內容... (_V)"
 
-#: ../terminal/terminal-window.c:737 ../terminal/terminal-window.c:2888
+#: terminal/terminal-window.c:737 terminal/terminal-window.c:2888
 msgid "_Reset"
 msgstr "重設(_R)"
 
-#: ../terminal/terminal-window.c:747
+#: terminal/terminal-window.c:747
 msgid "_Clear Scrollback and Reset"
 msgstr "清除向回捲動並重設(_C)"
 
-#: ../terminal/terminal-window.c:757
+#: terminal/terminal-window.c:757
 msgid "T_abs"
 msgstr "分頁(_A)"
 
-#: ../terminal/terminal-window.c:767
+#: terminal/terminal-window.c:767
 msgid "_Previous Tab"
 msgstr "上一個分頁(_P)"
 
-#: ../terminal/terminal-window.c:768
+#: terminal/terminal-window.c:768
 msgid "Switch to previous tab"
 msgstr "切換到上一個分頁"
 
-#: ../terminal/terminal-window.c:777
+#: terminal/terminal-window.c:777
 msgid "_Next Tab"
 msgstr "下一個分頁(_N)"
 
-#: ../terminal/terminal-window.c:778
+#: terminal/terminal-window.c:778
 msgid "Switch to next tab"
 msgstr "切換到下一個分頁"
 
-#: ../terminal/terminal-window.c:787
+#: terminal/terminal-window.c:787
 msgid "Last _Active Tab"
 msgstr "上一個作用中的分頁(_A)"
 
-#: ../terminal/terminal-window.c:788
+#: terminal/terminal-window.c:788
 msgid "Switch to last active tab"
 msgstr "切換到上一個作用中的分頁"
 
-#: ../terminal/terminal-window.c:797
+#: terminal/terminal-window.c:797
 msgid "Move Tab _Left"
 msgstr "左移分頁(_L)"
 
-#: ../terminal/terminal-window.c:807
+#: terminal/terminal-window.c:807
 msgid "Move Tab _Right"
 msgstr "右移分頁(_R)"
 
-#: ../terminal/terminal-window.c:827
+#: terminal/terminal-window.c:827
 msgid "_Contents"
 msgstr "目錄(_C)"
 
-#: ../terminal/terminal-window.c:828
+#: terminal/terminal-window.c:828
 msgid "Display help contents"
 msgstr "顯示說明目錄"
 
-#: ../terminal/terminal-window.c:837
+#: terminal/terminal-window.c:837
 msgid "_About"
 msgstr "關於(_A)"
 
-#: ../terminal/terminal-window.c:847
+#: terminal/terminal-window.c:847
 msgid "_Zoom"
 msgstr "縮放(_Z)"
 
-#: ../terminal/terminal-window.c:857
+#: terminal/terminal-window.c:857
 msgid "Show Menubar Temporarily"
 msgstr "暫時顯示選單列"
 
-#: ../terminal/terminal-window.c:867
+#: terminal/terminal-window.c:867
 msgid "Show _Menubar"
 msgstr "顯示選單列(_M)"
 
-#: ../terminal/terminal-window.c:868
+#: terminal/terminal-window.c:868
 msgid "Show/hide the menubar"
 msgstr "顯示/隱藏選單列"
 
-#: ../terminal/terminal-window.c:877
+#: terminal/terminal-window.c:877
 msgid "Show _Toolbar"
 msgstr "顯示工作列(_T)"
 
-#: ../terminal/terminal-window.c:878
+#: terminal/terminal-window.c:878
 msgid "Show/hide the toolbar"
 msgstr "顯示/隱藏工具列"
 
-#: ../terminal/terminal-window.c:887
+#: terminal/terminal-window.c:887
 msgid "Show Window _Borders"
 msgstr "顯示視窗邊框(_B)"
 
-#: ../terminal/terminal-window.c:888
+#: terminal/terminal-window.c:888
 msgid "Show/hide the window decorations"
 msgstr "顯示/隱藏視窗裝飾"
 
-#: ../terminal/terminal-window.c:897
+#: terminal/terminal-window.c:897
 msgid "_Fullscreen"
 msgstr "全螢幕(_F)"
 
-#: ../terminal/terminal-window.c:898
+#: terminal/terminal-window.c:898
 msgid "Toggle fullscreen mode"
 msgstr "切換全螢幕模式"
 
-#: ../terminal/terminal-window.c:907
+#: terminal/terminal-window.c:907
 msgid "_Read-Only"
 msgstr "唯讀(_R)"
 
-#: ../terminal/terminal-window.c:908
+#: terminal/terminal-window.c:908
 msgid "Toggle read-only mode"
 msgstr "切換唯讀模式"
 
-#: ../terminal/terminal-window.c:917
+#: terminal/terminal-window.c:917
 msgid "Scroll on _Output"
 msgstr "捲動至輸出處(_O)"
 
-#: ../terminal/terminal-window.c:918
+#: terminal/terminal-window.c:918
 msgid "Toggle scroll on output"
 msgstr "切換捲動至輸出處"
 
-#: ../terminal/terminal-window.c:928
+#: terminal/terminal-window.c:928
 msgid "Go to Tab 1"
 msgstr "跳至分頁 1"
 
-#: ../terminal/terminal-window.c:938
+#: terminal/terminal-window.c:938
 msgid "Go to Tab 2"
 msgstr "跳至分頁 2"
 
-#: ../terminal/terminal-window.c:948
+#: terminal/terminal-window.c:948
 msgid "Go to Tab 3"
 msgstr "跳至分頁 3"
 
-#: ../terminal/terminal-window.c:958
+#: terminal/terminal-window.c:958
 msgid "Go to Tab 4"
 msgstr "跳至分頁 4"
 
-#: ../terminal/terminal-window.c:968
+#: terminal/terminal-window.c:968
 msgid "Go to Tab 5"
 msgstr "跳至分頁 5"
 
-#: ../terminal/terminal-window.c:978
+#: terminal/terminal-window.c:978
 msgid "Go to Tab 6"
 msgstr "跳至分頁 6"
 
-#: ../terminal/terminal-window.c:988
+#: terminal/terminal-window.c:988
 msgid "Go to Tab 7"
 msgstr "跳至分頁 7"
 
-#: ../terminal/terminal-window.c:998
+#: terminal/terminal-window.c:998
 msgid "Go to Tab 8"
 msgstr "跳至分頁 8"
 
-#: ../terminal/terminal-window.c:1008
+#: terminal/terminal-window.c:1008
 msgid "Go to Tab 9"
 msgstr "跳至分頁 9"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:1202
+#: terminal/terminal-window.c:1202
 msgid "Set _Encoding"
 msgstr "設定編碼(_E)"
 
-#: ../terminal/terminal-window.c:1470
+#: terminal/terminal-window.c:1470
 msgid "Warning"
 msgstr "警告"
 
 #. and process running
-#: ../terminal/terminal-window.c:1481
+#: terminal/terminal-window.c:1481
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "在某些分頁中仍有行程在執行。\n關閉此視窗將會將它們全部砍除。"
 
 #. and no process running
-#: ../terminal/terminal-window.c:1487
+#: terminal/terminal-window.c:1487
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "這個視窗中有 %d 個分頁。關閉這個視窗會把\n其下分頁全都關閉。"
 
-#: ../terminal/terminal-window.c:1492
+#: terminal/terminal-window.c:1492
 msgid "Close all tabs?"
 msgstr "關閉所有分頁？"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:1499
+#: terminal/terminal-window.c:1499
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "仍有行程在執行。\n關閉此分頁將會將它砍除。"
 
-#: ../terminal/terminal-window.c:1501
+#: terminal/terminal-window.c:1501
 msgid "Close tab?"
 msgstr "關閉分頁？"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:1506
+#: terminal/terminal-window.c:1506
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "仍有行程在執行。\n關閉此視窗將會將它砍除。"
 
-#: ../terminal/terminal-window.c:1508
+#: terminal/terminal-window.c:1508
 msgid "Close window?"
 msgstr "關閉視窗？"
 
-#: ../terminal/terminal-window.c:2263
+#: terminal/terminal-window.c:2263
 msgid "Failed to open directory"
 msgstr "開啟目前目錄失敗"
 
-#: ../terminal/terminal-window.c:2465
+#: terminal/terminal-window.c:2465
 msgid "Copy _Input:"
 msgstr "複製輸入(_I)"
 
-#: ../terminal/terminal-window.c:2469
+#: terminal/terminal-window.c:2469
 msgid "Enter the text to be copied to all tabs"
 msgstr "輸入要複製到所有分頁的文字"
 
-#: ../terminal/terminal-window.c:2477
+#: terminal/terminal-window.c:2477
 msgid "Copy input"
 msgstr "複製輸入"
 
-#: ../terminal/terminal-window.c:2839
+#: terminal/terminal-window.c:2839
 msgid "_Title:"
 msgstr "標題(_T)："
 
-#: ../terminal/terminal-window.c:2843
+#: terminal/terminal-window.c:2843
 msgid "Enter the title for the current terminal tab"
 msgstr "請輸入目前終端機分頁的標題"
 
-#: ../terminal/terminal-window.c:2858
+#: terminal/terminal-window.c:2858
 msgid "Help"
 msgstr "說明"
 
-#: ../terminal/terminal-window.c:2864
+#: terminal/terminal-window.c:2864
 msgid "Close"
 msgstr "關閉"
 
-#: ../terminal/terminal-window.c:2887
+#: terminal/terminal-window.c:2887
 msgid "Choose title color"
 msgstr "選擇標題色彩"
 
-#: ../terminal/terminal-window.c:2982
+#: terminal/terminal-window.c:2982
 msgid "Failed to create the regular expression"
 msgstr "無法建立正規表述式"
 
-#: ../terminal/terminal-window.c:3022
+#: terminal/terminal-window.c:3022
 msgid "Save contents..."
 msgstr "儲存內容..."
 
-#: ../terminal/terminal-window.c:3025
+#: terminal/terminal-window.c:3025
 msgid "_Save"
 msgstr "儲存(_S)"
 
-#: ../terminal/terminal-window.c:3063
+#: terminal/terminal-window.c:3063
 msgid "Failed to save terminal contents"
 msgstr "儲存終端機內容失敗"
 
-#: ../terminal/terminal-window.c:3837
+#: terminal/terminal-window.c:3837
 msgid "Send Signal"
 msgstr "傳送訊號"
 
-#: ../terminal/terminal-window.c:3855
+#: terminal/terminal-window.c:3855
 msgid "Zoom"
 msgstr "縮放"
 
-#: ../terminal/terminal-window.c:3867
+#: terminal/terminal-window.c:3867
 msgid "Copy"
 msgstr "複製"
 
-#: ../terminal/terminal-window.c:3878
+#: terminal/terminal-window.c:3878
 msgid "Paste"
 msgstr "貼上"
 
-#: ../terminal/terminal-window.c:3889
+#: terminal/terminal-window.c:3889
 msgid "View Options"
 msgstr "檢視選項"
+
+#: xfce4-terminal.desktop.in:5 xfce4-terminal.desktop.in:6
+msgid "Terminal Emulator"
+msgstr "終端機程式"
+
+#: xfce4-terminal.desktop.in:7
+msgid "terminal;command line;prompt;cli;cmd;xterm;bash;shell;dos;"
+msgstr "terminal;command line;prompt;cli;cmd;xterm;bash;shell;dos;"
+
+#: xfce4-terminal-settings.desktop.in:4
+msgid "Xfce Terminal Settings"
+msgstr "Xfce 終端機設定"
+
+#: xfce4-terminal-settings.desktop.in:5
+msgid "Configure Xfce Terminal"
+msgstr "設定 Xfce 終端機"
+
+#: xfce4-terminal-settings.desktop.in:6
+msgid "terminal;settings;preferences;configuration;configure;"
+msgstr "terminal;settings;preferences;configuration;configure;"
