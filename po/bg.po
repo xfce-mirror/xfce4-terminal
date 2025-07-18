@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-apps.xfce4-terminal package.
 # 
 # Translators:
 # Georgi Georgiev (RacerBG) <g.georgiev.shumen@gmail.com>, 2016
@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-17 12:51+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2025-07-18 11:05+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>, 2013,2016-2025\n"
 "Language-Team: Bulgarian (http://app.transifex.com/xfce/xfce-apps/language/bg/)\n"
@@ -21,436 +21,450 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../terminal/main.c:107
+#: colorschemes/black-on-white.desktop.in:3
+msgid "Black on White"
+msgstr "Черно на Бяло"
+
+#: colorschemes/dark-pastels.desktop.in:3
+msgid "Dark Pastels"
+msgstr "Тъмни пастели"
+
+#: colorschemes/green-on-black.desktop.in:3
+msgid "Green on Black"
+msgstr "Зелено на Черно"
+
+#: colorschemes/solarized-dark.desktop.in:3
+msgid "Solarized (dark)"
+msgstr "Избледнял (тъмен)"
+
+#: colorschemes/solarized-light.desktop.in:3
+msgid "Solarized (light)"
+msgstr "Избледнял (светъл)"
+
+#: colorschemes/tango.desktop.in:3
+msgid "Tango"
+msgstr "Танго"
+
+#: colorschemes/white-on-black.desktop.in:3
+msgid "White on Black"
+msgstr "Бяло на Черно"
+
+#: colorschemes/xterm.desktop.in:3
+msgid "XTerm"
+msgstr "XТерминал"
+
+#: terminal/main.c:107
 msgid "Usage:"
 msgstr "Употреба:"
 
-#: ../terminal/main.c:107
+#: terminal/main.c:107
 msgid "OPTION"
 msgstr "ОПЦИЯ"
 
-#: ../terminal/main.c:112
+#: terminal/main.c:112
 msgid "General Options"
 msgstr "Основни опции"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:114 ../terminal/main.c:151
+#: terminal/main.c:114 terminal/main.c:151
 msgid "display"
 msgstr "екран"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:116 ../terminal/main.c:137
+#: terminal/main.c:116 terminal/main.c:137
 msgid "directory"
 msgstr "папка"
 
-#: ../terminal/main.c:120
+#: terminal/main.c:120
 msgid "Window or Tab Separators"
 msgstr "Разделители за подпрозорец или прозорец"
 
-#: ../terminal/main.c:127
+#: terminal/main.c:127
 msgid "Tab Options"
 msgstr "Опции на подпрозореца"
 
 #. parameter of --command
-#: ../terminal/main.c:129
+#: terminal/main.c:129
 msgid "command"
 msgstr "команда"
 
 #. parameter of --title
 #. parameter of --initial-title
-#: ../terminal/main.c:131 ../terminal/main.c:135
+#: terminal/main.c:131 terminal/main.c:135
 msgid "title"
 msgstr "заглавие"
 
 #. parameter of --dynamic-title-mode
-#: ../terminal/main.c:133
+#: terminal/main.c:133
 msgid "mode"
 msgstr "режим"
 
 #. parameter of --color-text
 #. parameter of --color-bg
-#: ../terminal/main.c:139 ../terminal/main.c:141
+#: terminal/main.c:139 terminal/main.c:141
 msgid "color"
 msgstr "цвят"
 
-#: ../terminal/main.c:149
+#: terminal/main.c:149
 msgid "Window Options"
 msgstr "Опции на прозореца"
 
 #. parameter of --geometry
-#: ../terminal/main.c:153
+#: terminal/main.c:153
 msgid "geometry"
 msgstr "геометрия"
 
 #. parameter of --role
-#: ../terminal/main.c:155
+#: terminal/main.c:155
 msgid "role"
 msgstr "роля"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:157
+#: terminal/main.c:157
 msgid "string"
 msgstr "поредица"
 
 #. parameter of --icon
-#: ../terminal/main.c:159
+#: terminal/main.c:159
 msgid "icon"
 msgstr "икона"
 
 #. parameter of --font
-#: ../terminal/main.c:161
+#: terminal/main.c:161
 msgid "font"
 msgstr "шрифт"
 
 #. parameter of --zoom
-#: ../terminal/main.c:163
+#: terminal/main.c:163
 msgid "zoom"
 msgstr "мащаб"
 
 #. parameter of --class
-#: ../terminal/main.c:165
+#: terminal/main.c:165
 msgid "class"
 msgstr "клас"
 
-#: ../terminal/main.c:167
+#: terminal/main.c:167
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Виж %s помощна страница за пълно обяснение на горните опции."
 
-#: ../terminal/main.c:201
+#: terminal/main.c:201 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
 msgstr "Xfce Терминал"
 
-#: ../terminal/main.c:213
+#: terminal/main.c:213
 msgid "The Xfce development team. All rights reserved."
 msgstr "Екипът за разработка на Xfce. Всички права запазени."
 
-#: ../terminal/main.c:214
+#: terminal/main.c:214
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Написано от  Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:215
+#: terminal/main.c:215
 msgid "Nick Schermer <nick@xfce.org>,"
 msgstr "Nick Schermer <nick@xfce.org>,"
 
-#: ../terminal/main.c:216
+#: terminal/main.c:216
 msgid "Igor Zakharov <f2404@yandex.ru>,"
 msgstr "Igor Zakharov <f2404@yandex.ru>,"
 
-#: ../terminal/main.c:217
+#: terminal/main.c:217
 msgid "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 msgstr "Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."
 
-#: ../terminal/main.c:218
+#: terminal/main.c:218
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Докладвайте за грешки на <%s>."
 
-#: ../terminal/terminal-encoding-action.c:66
+#: terminal/terminal-encoding-action.c:66
 msgid "Western European"
 msgstr "Източно-Европейски"
 
-#: ../terminal/terminal-encoding-action.c:67
+#: terminal/terminal-encoding-action.c:67
 msgid "Central European"
 msgstr "Централно-Европейски"
 
-#: ../terminal/terminal-encoding-action.c:68
+#: terminal/terminal-encoding-action.c:68
 msgid "Baltic"
 msgstr "Прибалтийски"
 
-#: ../terminal/terminal-encoding-action.c:69
+#: terminal/terminal-encoding-action.c:69
 msgid "South-Eastern Europe"
 msgstr "Югоизточно-Европейски"
 
-#: ../terminal/terminal-encoding-action.c:70
+#: terminal/terminal-encoding-action.c:70
 msgid "Turkish"
 msgstr "Турски"
 
-#: ../terminal/terminal-encoding-action.c:71
+#: terminal/terminal-encoding-action.c:71
 msgid "Cyrillic"
 msgstr "Кирилица"
 
-#: ../terminal/terminal-encoding-action.c:72
+#: terminal/terminal-encoding-action.c:72
 msgid "Chinese Traditional"
 msgstr "Китайски традиционен"
 
-#: ../terminal/terminal-encoding-action.c:73
+#: terminal/terminal-encoding-action.c:73
 msgid "Chinese Simplified"
 msgstr "Китайски опростен"
 
-#: ../terminal/terminal-encoding-action.c:74
+#: terminal/terminal-encoding-action.c:74
 msgid "Korean"
 msgstr "Корейски"
 
-#: ../terminal/terminal-encoding-action.c:75
+#: terminal/terminal-encoding-action.c:75
 msgid "Japanese"
 msgstr "Японски"
 
-#: ../terminal/terminal-encoding-action.c:76
+#: terminal/terminal-encoding-action.c:76
 msgid "Greek"
 msgstr "Гръцки"
 
-#: ../terminal/terminal-encoding-action.c:77
+#: terminal/terminal-encoding-action.c:77
 msgid "Arabic"
 msgstr "Арабски"
 
-#: ../terminal/terminal-encoding-action.c:78
+#: terminal/terminal-encoding-action.c:78
 msgid "Hebrew"
 msgstr "Иврит"
 
-#: ../terminal/terminal-encoding-action.c:79
+#: terminal/terminal-encoding-action.c:79
 msgid "Thai"
 msgstr "Тайландски"
 
-#: ../terminal/terminal-encoding-action.c:80
+#: terminal/terminal-encoding-action.c:80
 msgid "Vietnamese"
 msgstr "Виетнамски"
 
-#: ../terminal/terminal-encoding-action.c:81
+#: terminal/terminal-encoding-action.c:81
 msgid "Nordic"
 msgstr "Скандинавски"
 
-#: ../terminal/terminal-encoding-action.c:82
+#: terminal/terminal-encoding-action.c:82
 msgid "Celtic"
 msgstr "Келтски"
 
-#: ../terminal/terminal-encoding-action.c:83
+#: terminal/terminal-encoding-action.c:83
 msgid "Romanian"
 msgstr "Румънски"
 
-#: ../terminal/terminal-encoding-action.c:84
+#: terminal/terminal-encoding-action.c:84
 msgid "Armenian"
 msgstr "Арменски"
 
-#: ../terminal/terminal-encoding-action.c:85
+#: terminal/terminal-encoding-action.c:85
 msgid "Georgian"
 msgstr "Грузински"
 
-#: ../terminal/terminal-encoding-action.c:86
+#: terminal/terminal-encoding-action.c:86
 msgid "Unicode"
 msgstr "Уникод"
 
-#: ../terminal/terminal-encoding-action.c:87
+#: terminal/terminal-encoding-action.c:87
 msgid "Other"
 msgstr "Други"
 
 #. action to reset to the default
-#: ../terminal/terminal-encoding-action.c:269
-#: ../terminal/terminal-encoding-action.c:393
+#: terminal/terminal-encoding-action.c:269
+#: terminal/terminal-encoding-action.c:393
 #, c-format
 msgid "Default (%s)"
 msgstr "По подразбиране (%s)"
 
-#: ../terminal/terminal-gdbus.c:102
+#: terminal/terminal-gdbus.c:102
 msgid "User id mismatch"
 msgstr "id на потребителя не съвпада"
 
-#: ../terminal/terminal-gdbus.c:108
+#: terminal/terminal-gdbus.c:108
 msgid "Display mismatch"
 msgstr "Екранът не съвпада"
 
-#: ../terminal/terminal-options.c:247
-#, c-format
+#: terminal/terminal-options.c:247
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "Опцията „--default-display“ изисква задаване на X дисплей по подразбиране като параметър"
 
-#: ../terminal/terminal-options.c:263
-#, c-format
+#: terminal/terminal-options.c:263
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "Опцията „--default-working-directory“ изисква задаване на работна директория по подразбиране като параметър"
 
-#: ../terminal/terminal-options.c:280
-#, c-format
+#: terminal/terminal-options.c:280
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line separated from \"--execute/-x\""
 msgstr "Опция \"--execute/-x\" изисква да се посочи командата, която да се изпълнява в останалата част от командния ред, отделена от \"--execute/-x\""
 
-#: ../terminal/terminal-options.c:298
-#, c-format
+#: terminal/terminal-options.c:298
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "Опцията „--command/-e“ изисква задаване на команда за стартиране като параметър"
 
-#: ../terminal/terminal-options.c:315
-#, c-format
+#: terminal/terminal-options.c:315
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "Опцията „--working-directory“ изисква задаване на работна директория като параметър"
 
-#: ../terminal/terminal-options.c:330
-#, c-format
+#: terminal/terminal-options.c:330
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Опцията „--title/-T“ изисква задаване на заглавие като параметър"
 
-#: ../terminal/terminal-options.c:345
-#, c-format
+#: terminal/terminal-options.c:345
 msgid ""
 "Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
 "as its parameter"
 msgstr "Опцията \"--dynamic-title-mode\" изисква задаване на динамичен режим на заглавието, като параметър"
 
-#: ../terminal/terminal-options.c:360
+#: terminal/terminal-options.c:360
 #, c-format
 msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
 msgstr "Невалиден аргумент за опция \"--dynamic-title-mode\": %s "
 
-#: ../terminal/terminal-options.c:370
-#, c-format
+#: terminal/terminal-options.c:370
 msgid ""
 "Option \"--initial-title\" requires specifying the initial title as its "
 "parameter"
 msgstr "Опцията \"--initial-title\" изисква задаване на първоначално заглавие, като параметър "
 
-#: ../terminal/terminal-options.c:394 ../terminal/terminal-options.c:413
+#: terminal/terminal-options.c:394 terminal/terminal-options.c:413
 #, c-format
 msgid "Option \"%s\" requires specifying the color as its parameter"
 msgstr "Опцията \"%s\" изисква задаване на цвят, като параметър"
 
-#: ../terminal/terminal-options.c:401 ../terminal/terminal-options.c:420
+#: terminal/terminal-options.c:401 terminal/terminal-options.c:420
 #, c-format
 msgid "Unable to parse color: %s"
 msgstr "Не може да се анализира цвета: %s"
 
-#: ../terminal/terminal-options.c:431
-#, c-format
+#: terminal/terminal-options.c:431
 msgid "Option \"--display\" requires specifying the X display as its parameter"
 msgstr "Опцията \"--display\" изисква задаване на X дисплей, като парамерът"
 
-#: ../terminal/terminal-options.c:446
-#, c-format
+#: terminal/terminal-options.c:446
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Опцията „--geometry“ изисква задаване на геометрия на прозорец като параметър"
 
-#: ../terminal/terminal-options.c:461
-#, c-format
+#: terminal/terminal-options.c:461
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Опцията „--role“ изисква задаване на роля на прозорец като параметър"
 
-#: ../terminal/terminal-options.c:476
-#, c-format
+#: terminal/terminal-options.c:476
 msgid ""
 "Option \"--workspace\" requires specifying the workspace number as its "
 "parameter"
 msgstr "Опцията \"--workspace\" изисква посочване на номера на работното място като неин параметър"
 
-#: ../terminal/terminal-options.c:490
-#, c-format
+#: terminal/terminal-options.c:490
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "Опцията „--sm-client-id“ изисква задаване на уникален идентификатор на сесията като параметър"
 
-#: ../terminal/terminal-options.c:505
-#, c-format
+#: terminal/terminal-options.c:505
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Опцията „--startup-id“ изисква задаване на стартовия идентификационен номер като параметър"
 
-#: ../terminal/terminal-options.c:521
-#, c-format
+#: terminal/terminal-options.c:521
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "Опцията „--icon/-I“ изисква задаване на име на икона или име на файл като параметър"
 
-#: ../terminal/terminal-options.c:603
-#, c-format
+#: terminal/terminal-options.c:603
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "Опцията \"--font\" изисква задавене името на шрифта, като параметър"
 
-#: ../terminal/terminal-options.c:621
+#: terminal/terminal-options.c:621
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Опцията \"--zoom\" изисква задаване размер на шрифта (%d .. %d) като параметър"
 
-#: ../terminal/terminal-options.c:637
-#, c-format
+#: terminal/terminal-options.c:637
 msgid "Option \"--class\" requires specifying the class name as its parameter"
 msgstr "Опцията \"--class\" изисква да посочите името на класа като свой параметър"
 
-#: ../terminal/terminal-options.c:655
+#: terminal/terminal-options.c:655
 #, c-format
 msgid "Unknown option \"-%c\""
 msgstr "Непозната опция \"-%c\""
 
-#: ../terminal/terminal-options.c:658
+#: terminal/terminal-options.c:658
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Непозната опция „%s“"
 
-#: ../terminal/terminal-preferences-dialog.c:225
+#: terminal/terminal-preferences-dialog.c:225 xfce4-terminal.desktop.in:17
 msgid "Terminal Preferences"
 msgstr "Настройки на терминала"
 
 #. add the "Close" button
-#: ../terminal/terminal-preferences-dialog.c:232
-#: ../terminal/terminal-search-dialog.c:111
+#: terminal/terminal-preferences-dialog.c:232
+#: terminal/terminal-search-dialog.c:111
 msgid "_Close"
 msgstr "Затваряне"
 
 #. add the "Help" button
-#: ../terminal/terminal-preferences-dialog.c:240
-#: ../terminal/terminal-window.c:817
+#: terminal/terminal-preferences-dialog.c:240 terminal/terminal-window.c:817
 msgid "_Help"
 msgstr "Помощ"
 
 #. * General
 #. section: General
-#: ../terminal/terminal-preferences-dialog.c:257
-#: ../terminal/terminal-preferences-dialog.c:1156
+#: terminal/terminal-preferences-dialog.c:257
+#: terminal/terminal-preferences-dialog.c:1156
 msgid "General"
 msgstr "Общи"
 
 #. section: Title
-#: ../terminal/terminal-preferences-dialog.c:265
+#: terminal/terminal-preferences-dialog.c:265
 msgid "Title"
 msgstr "Заглавие"
 
-#: ../terminal/terminal-preferences-dialog.c:267
+#: terminal/terminal-preferences-dialog.c:267
 msgid "_Initial title:"
 msgstr "Начално заглавие"
 
-#: ../terminal/terminal-preferences-dialog.c:283
+#: terminal/terminal-preferences-dialog.c:283
 msgid "Dynamically-set title:"
 msgstr "Динамично зададено заглавие:"
 
-#: ../terminal/terminal-preferences-dialog.c:289
+#: terminal/terminal-preferences-dialog.c:289
 msgid "Replaces initial title"
 msgstr "Заменяне на началното заглавие"
 
-#: ../terminal/terminal-preferences-dialog.c:290
+#: terminal/terminal-preferences-dialog.c:290
 msgid "Goes before initial title"
 msgstr "Преди началното заглавие"
 
-#: ../terminal/terminal-preferences-dialog.c:291
+#: terminal/terminal-preferences-dialog.c:291
 msgid "Goes after initial title"
 msgstr "След началното заглавие"
 
-#: ../terminal/terminal-preferences-dialog.c:292
+#: terminal/terminal-preferences-dialog.c:292
 msgid "Isn't displayed"
 msgstr "Не е показано"
 
 #. section: Command
-#: ../terminal/terminal-preferences-dialog.c:304
+#: terminal/terminal-preferences-dialog.c:304
 msgid "Command"
 msgstr "Команда"
 
-#: ../terminal/terminal-preferences-dialog.c:306
+#: terminal/terminal-preferences-dialog.c:306
 msgid "_Run command as login shell"
 msgstr "Стартиране на команда като обвивка"
 
-#: ../terminal/terminal-preferences-dialog.c:310
+#: terminal/terminal-preferences-dialog.c:310
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when"
 " you open new terminals. See the documentation of your shell for details "
@@ -458,511 +472,510 @@ msgid ""
 "login shell."
 msgstr "Изберете тази опция, за да принудите терминал да стартира като екран за вход, когато отваряте нови терминали. Вижте документацията на обвивката за повече подробности за разликите между работата като интерактивна обвивка и екран за вход."
 
-#: ../terminal/terminal-preferences-dialog.c:321
+#: terminal/terminal-preferences-dialog.c:321
 msgid "_Run a custom command instead of my shell"
 msgstr "_Изпълняване на потребителска команда команда, вместо моята обвивка"
 
-#: ../terminal/terminal-preferences-dialog.c:325
+#: terminal/terminal-preferences-dialog.c:325
 msgid ""
 "Select this option to force Terminal to run a custom command instead of your"
 " shell when you open new terminals"
 msgstr "Изберете тази опция, за да принудите терминала да изпълнява персонализирана команда вместо вашата обвивка, когато отворите нови терминали"
 
-#: ../terminal/terminal-preferences-dialog.c:333
+#: terminal/terminal-preferences-dialog.c:333
 msgid "Custom command:"
 msgstr "Потребителска команда:"
 
-#: ../terminal/terminal-preferences-dialog.c:358
+#: terminal/terminal-preferences-dialog.c:358
 msgid "_Working directory:"
 msgstr "_Работна директория:"
 
-#: ../terminal/terminal-preferences-dialog.c:362
+#: terminal/terminal-preferences-dialog.c:362
 msgid ""
 "Select this option to make new terminals (tabs or windows) use custom "
 "working directory. Otherwise, current working directory will be used."
 msgstr "Избирайки тази опция ще създадете нови терминали (раздели или прозорци), като използвате потребителска работна директория. В противен случай ще бъде използвана текущата директория."
 
 #. section: Scrolling
-#: ../terminal/terminal-preferences-dialog.c:383
+#: terminal/terminal-preferences-dialog.c:383
 msgid "Scrolling"
 msgstr "Превъртане"
 
-#: ../terminal/terminal-preferences-dialog.c:385
+#: terminal/terminal-preferences-dialog.c:385
 msgid "_Scroll on output"
 msgstr "_Превъртане на изхода"
 
-#: ../terminal/terminal-preferences-dialog.c:389
+#: terminal/terminal-preferences-dialog.c:389
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the "
 "terminal."
 msgstr "Автоматично превъртане, при какъвто да е изход от стартираните програми в терминала."
 
-#: ../terminal/terminal-preferences-dialog.c:395
+#: terminal/terminal-preferences-dialog.c:395
 msgid "_Scroll on keystroke"
 msgstr "_Превъртане при натискане на клавиш"
 
-#: ../terminal/terminal-preferences-dialog.c:399
+#: terminal/terminal-preferences-dialog.c:399
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal to "
 "the command prompt."
 msgstr "Позволява ви да натиснете произволен клавиш на клавиатурата, за да превъртите надолу терминала до командния ред."
 
-#: ../terminal/terminal-preferences-dialog.c:409
+#: terminal/terminal-preferences-dialog.c:409
 msgid "_Enable kinetic scrolling"
 msgstr "_Актиниране на кинетичното превъртане"
 
-#: ../terminal/terminal-preferences-dialog.c:413
+#: terminal/terminal-preferences-dialog.c:413
 msgid ""
 "This controls whether scrolling \"coasts\" to a stop when releasing a "
 "touchpad or touchscreen."
 msgstr "Това контролира дали превъртането да се спре при освобождаване на тъчпада или сензорния екран."
 
-#: ../terminal/terminal-preferences-dialog.c:422
+#: terminal/terminal-preferences-dialog.c:422
 msgid "Scrollbar is:"
 msgstr "Лентата за превъртане е:"
 
-#: ../terminal/terminal-preferences-dialog.c:428
+#: terminal/terminal-preferences-dialog.c:428
 msgid "Disabled"
 msgstr "Изключено"
 
-#: ../terminal/terminal-preferences-dialog.c:429
+#: terminal/terminal-preferences-dialog.c:429
 msgid "On the left side"
 msgstr "От ляво"
 
-#: ../terminal/terminal-preferences-dialog.c:430
+#: terminal/terminal-preferences-dialog.c:430
 msgid "On the right side"
 msgstr "От дясно"
 
-#: ../terminal/terminal-preferences-dialog.c:443
+#: terminal/terminal-preferences-dialog.c:443
 msgid "Scrollback:"
 msgstr "Превъртане назад:"
 
-#: ../terminal/terminal-preferences-dialog.c:459
+#: terminal/terminal-preferences-dialog.c:459
 msgid "_Unlimited Scrollback"
 msgstr "_Неограничено превъртане назад"
 
-#: ../terminal/terminal-preferences-dialog.c:463
+#: terminal/terminal-preferences-dialog.c:463
 msgid "This controls whether the terminal will have no limits on scrollback."
 msgstr "Това, контролира, дали терминалът има ограничение за превъртане назад."
 
-#: ../terminal/terminal-preferences-dialog.c:470
+#: terminal/terminal-preferences-dialog.c:470
 msgid "_Enable overlay scrolling (Requires restart)"
 msgstr "_Активиране на превъртане с наслагване (изисква рестартиране)"
 
-#: ../terminal/terminal-preferences-dialog.c:474
+#: terminal/terminal-preferences-dialog.c:474
 msgid ""
 "This controls whether scrollbar is drawn as an overlay (auto-hide) or not."
 msgstr "Това, контролира, дали лентата за превъртане се изчертава, като наслагване (автоматично скриване) или не."
 
 #. section: Cursor
-#: ../terminal/terminal-preferences-dialog.c:481
+#: terminal/terminal-preferences-dialog.c:481
 msgid "Cursor"
 msgstr "Курсор"
 
-#: ../terminal/terminal-preferences-dialog.c:483
+#: terminal/terminal-preferences-dialog.c:483
 msgid "Cursor shape:"
 msgstr "Вид на курсора:"
 
-#: ../terminal/terminal-preferences-dialog.c:489
+#: terminal/terminal-preferences-dialog.c:489
 msgid "Block"
 msgstr "Блок"
 
-#: ../terminal/terminal-preferences-dialog.c:490
+#: terminal/terminal-preferences-dialog.c:490
 msgid "I-Beam"
 msgstr "Релса"
 
-#: ../terminal/terminal-preferences-dialog.c:491
+#: terminal/terminal-preferences-dialog.c:491
 msgid "Underline"
 msgstr "Подчертан"
 
-#: ../terminal/terminal-preferences-dialog.c:501
+#: terminal/terminal-preferences-dialog.c:501
 msgid "Cursor blinks"
 msgstr "Мигане на курсора"
 
-#: ../terminal/terminal-preferences-dialog.c:505
+#: terminal/terminal-preferences-dialog.c:505
 msgid "This option controls whether the cursor will be blinking or not."
 msgstr "Тази опция, задава, дали курсора да мига или не."
 
 #. section: Clipboard
-#: ../terminal/terminal-preferences-dialog.c:512
+#: terminal/terminal-preferences-dialog.c:512
 msgid "Clipboard"
 msgstr "Системен буфер"
 
-#: ../terminal/terminal-preferences-dialog.c:514
+#: terminal/terminal-preferences-dialog.c:514
 msgid "Automatically copy selection to clipboard"
 msgstr "Автоматично копиране на избраното в системния буфер."
 
-#: ../terminal/terminal-preferences-dialog.c:521
+#: terminal/terminal-preferences-dialog.c:521
 msgid "Show unsafe paste dialog"
 msgstr "Показване на диалогов прозорец за поставяне на опасно съдържание"
 
-#: ../terminal/terminal-preferences-dialog.c:525
+#: terminal/terminal-preferences-dialog.c:525
 msgid ""
 "Show a dialog that allows one to edit text that is considered unsafe for "
 "pasting"
 msgstr "Показване на диалогов прозорец, който позволява редактиране на текст, който се счита за опасен за поставяне"
 
 #. * Drop-down
-#: ../terminal/terminal-preferences-dialog.c:534
+#: terminal/terminal-preferences-dialog.c:534
 msgid "Drop-down"
 msgstr "Падащо меню"
 
 #. section: Behavior
-#: ../terminal/terminal-preferences-dialog.c:543
+#: terminal/terminal-preferences-dialog.c:543
 msgid "Behavior"
 msgstr "Поведение"
 
-#: ../terminal/terminal-preferences-dialog.c:545
+#: terminal/terminal-preferences-dialog.c:545
 msgid "_Keep window open when it loses focus"
 msgstr "Запазване на прозореца отворен, когато изгуби фокус"
 
-#: ../terminal/terminal-preferences-dialog.c:555
+#: terminal/terminal-preferences-dialog.c:555
 msgid "_Use app shortcut to focus the window"
 msgstr "_Използване на клавишна комбинация за приложение за фокусиране на прозореца."
 
-#: ../terminal/terminal-preferences-dialog.c:559
+#: terminal/terminal-preferences-dialog.c:559
 msgid ""
 "If enabled, the app shortcut for 'xfce4-terminal --drop-down', which "
 "normally opens and closes the window, will give it focus if the option to "
 "keep the window open is checked."
 msgstr "Ако е активиран, клавишната комбинация за приложението за 'xfce4-terminal --drop-down', която обикновено отваря и затваря прозореца, ще му даде фокус, ако опцията за запазване на прозореца отворен е отметната."
 
-#: ../terminal/terminal-preferences-dialog.c:570
+#: terminal/terminal-preferences-dialog.c:570
 msgid "_Always keep window above"
 msgstr "Прозорецът, _винаги да се държи отгоре"
 
-#: ../terminal/terminal-preferences-dialog.c:583
+#: terminal/terminal-preferences-dialog.c:583
 msgid "_Show status icon in notification area"
 msgstr "_Покажи иконата за състоянието в зоната за уведомяване"
 
 #. section: Appearance & Animation
-#: ../terminal/terminal-preferences-dialog.c:592
+#: terminal/terminal-preferences-dialog.c:592
 msgid "Appearance and Animation"
 msgstr "Външен вид и анимация"
 
-#: ../terminal/terminal-preferences-dialog.c:594
+#: terminal/terminal-preferences-dialog.c:594
 msgid "Width:"
 msgstr "Ширина:"
 
-#: ../terminal/terminal-preferences-dialog.c:616
+#: terminal/terminal-preferences-dialog.c:616
 msgid "Height:"
 msgstr "Височина:"
 
-#: ../terminal/terminal-preferences-dialog.c:638
-#: ../terminal/terminal-preferences-dialog.c:916
+#: terminal/terminal-preferences-dialog.c:638
+#: terminal/terminal-preferences-dialog.c:916
 msgid "Opacity:"
 msgstr "Прозрачност:"
 
-#: ../terminal/terminal-preferences-dialog.c:660
+#: terminal/terminal-preferences-dialog.c:660
 msgid "Duration:"
 msgstr "Продължителност:"
 
-#: ../terminal/terminal-preferences-dialog.c:682
+#: terminal/terminal-preferences-dialog.c:682
 msgid "_Always show tabs"
 msgstr "Винаги показвай подпрозорците"
 
-#: ../terminal/terminal-preferences-dialog.c:692
+#: terminal/terminal-preferences-dialog.c:692
 msgid "_Show window borders"
 msgstr "_Показване на границите на прозореца"
 
 #. section: Position
-#: ../terminal/terminal-preferences-dialog.c:701
+#: terminal/terminal-preferences-dialog.c:701
 msgid "Position"
 msgstr "Позиция"
 
-#: ../terminal/terminal-preferences-dialog.c:703
+#: terminal/terminal-preferences-dialog.c:703
 msgid "Left"
 msgstr "Ляво"
 
-#: ../terminal/terminal-preferences-dialog.c:725
+#: terminal/terminal-preferences-dialog.c:725
 msgid "Right"
 msgstr "Дясно"
 
-#: ../terminal/terminal-preferences-dialog.c:733
+#: terminal/terminal-preferences-dialog.c:733
 msgid "Up"
 msgstr "Нагоре"
 
-#: ../terminal/terminal-preferences-dialog.c:747
+#: terminal/terminal-preferences-dialog.c:747
 msgid "Down"
 msgstr "Надолу"
 
-#: ../terminal/terminal-preferences-dialog.c:755
+#: terminal/terminal-preferences-dialog.c:755
 msgid "_Move to monitor with pointer"
 msgstr "_Преместване към монитор с курсора"
 
 #. * Appearance
-#: ../terminal/terminal-preferences-dialog.c:767
+#: terminal/terminal-preferences-dialog.c:767
 msgid "Appearance"
 msgstr "Външен вид"
 
 #. section: Font
-#: ../terminal/terminal-preferences-dialog.c:775
+#: terminal/terminal-preferences-dialog.c:775
 msgid "Font"
 msgstr "Шрифт"
 
-#: ../terminal/terminal-preferences-dialog.c:777
+#: terminal/terminal-preferences-dialog.c:777
 msgid "_Use system font"
 msgstr "_Използване на системен шрифт"
 
-#: ../terminal/terminal-preferences-dialog.c:781
+#: terminal/terminal-preferences-dialog.c:781
 msgid "Enable this to use system-wide monospace font."
 msgstr "Активирайте това, за да използвате равно-широк шрифт за цялата система."
 
-#: ../terminal/terminal-preferences-dialog.c:801
+#: terminal/terminal-preferences-dialog.c:801
 msgid "_Allow bold text"
 msgstr "_Разрешаване на удебелен текст"
 
-#: ../terminal/terminal-preferences-dialog.c:805
+#: terminal/terminal-preferences-dialog.c:805
 msgid ""
 "Enable this to allow applications running inside the terminal windows to use"
 " bold font."
 msgstr "Активирайте това, за да позволите на приложенията, работещи в прозорците на терминала, да използват удебелен шрифт."
 
-#: ../terminal/terminal-preferences-dialog.c:812
+#: terminal/terminal-preferences-dialog.c:812
 msgid "Text blinks:"
 msgstr "Мигане на текста:"
 
-#: ../terminal/terminal-preferences-dialog.c:813
+#: terminal/terminal-preferences-dialog.c:813
 msgid ""
 "Controls whether text in the terminal is allowed to blink when '\\e[5m' "
 "escape codes are used."
 msgstr "Контролира, дали текстът в терминала може да мига, когато се използват '\\ e [5m' изходни кодове."
 
-#: ../terminal/terminal-preferences-dialog.c:820
+#: terminal/terminal-preferences-dialog.c:820
 msgid "Never"
 msgstr "Никога"
 
-#: ../terminal/terminal-preferences-dialog.c:821
+#: terminal/terminal-preferences-dialog.c:821
 msgid "When focused"
 msgstr "Когато е фокусиран"
 
-#: ../terminal/terminal-preferences-dialog.c:822
+#: terminal/terminal-preferences-dialog.c:822
 msgid "When unfocused"
 msgstr "Когато не е фокусиран"
 
-#: ../terminal/terminal-preferences-dialog.c:823
+#: terminal/terminal-preferences-dialog.c:823
 msgid "Always"
 msgstr "Винаги"
 
-#: ../terminal/terminal-preferences-dialog.c:837
+#: terminal/terminal-preferences-dialog.c:837
 msgid "Cell spacing:"
 msgstr "Разстояние между клетките:"
 
-#: ../terminal/terminal-preferences-dialog.c:850
+#: terminal/terminal-preferences-dialog.c:850
 msgid "x width"
 msgstr "x ширина"
 
-#: ../terminal/terminal-preferences-dialog.c:863
+#: terminal/terminal-preferences-dialog.c:863
 msgid "x height"
 msgstr "x височина"
 
-#: ../terminal/terminal-preferences-dialog.c:868
-#: ../terminal/terminal-preferences-dialog.c:1508
-#: ../terminal/terminal-window.c:2848
+#: terminal/terminal-preferences-dialog.c:868
+#: terminal/terminal-preferences-dialog.c:1508 terminal/terminal-window.c:2848
 msgid "Reset"
 msgstr "Нулиране"
 
 #. section: Background
-#: ../terminal/terminal-preferences-dialog.c:877
+#: terminal/terminal-preferences-dialog.c:877
 msgid "Background"
 msgstr "Фон"
 
-#: ../terminal/terminal-preferences-dialog.c:880
+#: terminal/terminal-preferences-dialog.c:880
 msgid "None (use solid color)"
 msgstr "Без (използване на плътен цвят)"
 
-#: ../terminal/terminal-preferences-dialog.c:881
+#: terminal/terminal-preferences-dialog.c:881
 msgid "Background image"
 msgstr "Картинка за фон"
 
-#: ../terminal/terminal-preferences-dialog.c:882
+#: terminal/terminal-preferences-dialog.c:882
 msgid "Transparent Background"
 msgstr "Прозрачност на фона"
 
-#: ../terminal/terminal-preferences-dialog.c:951
+#: terminal/terminal-preferences-dialog.c:951
 msgid "File:"
 msgstr "Файл:"
 
-#: ../terminal/terminal-preferences-dialog.c:968
+#: terminal/terminal-preferences-dialog.c:968
 msgid "All Files"
 msgstr "Всички файлове"
 
-#: ../terminal/terminal-preferences-dialog.c:974
+#: terminal/terminal-preferences-dialog.c:974
 msgid "Image Files"
 msgstr "Файлове с изображения"
 
-#: ../terminal/terminal-preferences-dialog.c:982
+#: terminal/terminal-preferences-dialog.c:982
 msgid "Adjustment:"
 msgstr "Регулиране:"
 
-#: ../terminal/terminal-preferences-dialog.c:988
+#: terminal/terminal-preferences-dialog.c:988
 msgid "Tiled"
 msgstr "На плочки"
 
-#: ../terminal/terminal-preferences-dialog.c:989
+#: terminal/terminal-preferences-dialog.c:989
 msgid "Centered"
 msgstr "Центрирано"
 
-#: ../terminal/terminal-preferences-dialog.c:990
+#: terminal/terminal-preferences-dialog.c:990
 msgid "Scaled"
 msgstr "Мащабирано"
 
-#: ../terminal/terminal-preferences-dialog.c:991
+#: terminal/terminal-preferences-dialog.c:991
 msgid "Stretched"
 msgstr "Разпънато"
 
-#: ../terminal/terminal-preferences-dialog.c:992
+#: terminal/terminal-preferences-dialog.c:992
 msgid "Filled"
 msgstr "Изпълнено"
 
-#: ../terminal/terminal-preferences-dialog.c:1003
+#: terminal/terminal-preferences-dialog.c:1003
 msgid "Shading:"
 msgstr "Засенчване:"
 
 #. section: Opening new windows
-#: ../terminal/terminal-preferences-dialog.c:1019
+#: terminal/terminal-preferences-dialog.c:1019
 msgid "Opening New Windows"
 msgstr "Отваря се нов прозорец"
 
-#: ../terminal/terminal-preferences-dialog.c:1021
+#: terminal/terminal-preferences-dialog.c:1021
 msgid "_Display menubar in new windows"
 msgstr "_Показване на лентата с менюта в новите прозорци"
 
-#: ../terminal/terminal-preferences-dialog.c:1025
+#: terminal/terminal-preferences-dialog.c:1025
 msgid "Enable this option to show menubars in newly created terminal windows."
 msgstr "Активирайте тази опция, за да се показват лентите с менюта в новосъздадените терминални прозорци."
 
-#: ../terminal/terminal-preferences-dialog.c:1032
+#: terminal/terminal-preferences-dialog.c:1032
 msgid "_Display toolbar in new windows"
 msgstr "_Показване на лентата с инструменти в новите прозорци"
 
-#: ../terminal/terminal-preferences-dialog.c:1036
+#: terminal/terminal-preferences-dialog.c:1036
 msgid "Enable this option to show toolbar in newly created terminal windows."
 msgstr "Активирайте тази опция, за да се показва лентата с инструменти в новосъздадените терминални прозорци."
 
-#: ../terminal/terminal-preferences-dialog.c:1043
+#: terminal/terminal-preferences-dialog.c:1043
 msgid "_Display borders around new windows"
 msgstr "_Показване на граници около новите прозорци"
 
-#: ../terminal/terminal-preferences-dialog.c:1047
+#: terminal/terminal-preferences-dialog.c:1047
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Опция за показване на декорациите на новоотворените прозорци."
 
-#: ../terminal/terminal-preferences-dialog.c:1054
+#: terminal/terminal-preferences-dialog.c:1054
 msgid "_Maximize new windows"
 msgstr "_Максимизиране на новите прозорци"
 
-#: ../terminal/terminal-preferences-dialog.c:1058
+#: terminal/terminal-preferences-dialog.c:1058
 msgid "Enable this option to maximize newly created terminal windows."
 msgstr "Активирайте тази опция, за да максимизирате новосъздадените терминални прозорци."
 
-#: ../terminal/terminal-preferences-dialog.c:1065
+#: terminal/terminal-preferences-dialog.c:1065
 msgid "Default geometry"
 msgstr "Стандартна геометрия"
 
-#: ../terminal/terminal-preferences-dialog.c:1083
+#: terminal/terminal-preferences-dialog.c:1083
 msgid "columns"
 msgstr "колони"
 
-#: ../terminal/terminal-preferences-dialog.c:1101
+#: terminal/terminal-preferences-dialog.c:1101
 msgid "rows"
 msgstr "редове"
 
 #. section: Tabs
-#: ../terminal/terminal-preferences-dialog.c:1113
+#: terminal/terminal-preferences-dialog.c:1113
 msgid "Tabs"
 msgstr "Раздели"
 
-#: ../terminal/terminal-preferences-dialog.c:1115
+#: terminal/terminal-preferences-dialog.c:1115
 msgid "Reset tab activity indicator after"
 msgstr "Нулиране на индикатора за активност след превключване на раздела"
 
-#: ../terminal/terminal-preferences-dialog.c:1128
+#: terminal/terminal-preferences-dialog.c:1128
 msgid "seconds"
 msgstr "секунди"
 
-#: ../terminal/terminal-preferences-dialog.c:1136
+#: terminal/terminal-preferences-dialog.c:1136
 msgid "_Use custom styling to make tabs slim (restart required)"
 msgstr "_Използване на персонализиран стил, за да направите разделите тънки (изисква се рестартиране)"
 
 #. * Colors
-#: ../terminal/terminal-preferences-dialog.c:1148
+#: terminal/terminal-preferences-dialog.c:1148
 msgid "Colors"
 msgstr "Цветове"
 
-#: ../terminal/terminal-preferences-dialog.c:1158
+#: terminal/terminal-preferences-dialog.c:1158
 msgid "Text Color:"
 msgstr "Цвят на текста:"
 
-#: ../terminal/terminal-preferences-dialog.c:1173
+#: terminal/terminal-preferences-dialog.c:1173
 msgid "Background Color:"
 msgstr "Цвят на фона:"
 
-#: ../terminal/terminal-preferences-dialog.c:1188
+#: terminal/terminal-preferences-dialog.c:1188
 msgid "Tab activity color:"
 msgstr "Цвят на активния раздел:"
 
-#: ../terminal/terminal-preferences-dialog.c:1206
+#: terminal/terminal-preferences-dialog.c:1206
 msgid "_Use system theme colors for text and background"
 msgstr "_Използване на цветовете от системната тема за текста и фона"
 
-#: ../terminal/terminal-preferences-dialog.c:1216
+#: terminal/terminal-preferences-dialog.c:1216
 msgid "_Vary the background color for each tab"
 msgstr "Различен цвят за фона на всеки подпрозорец"
 
-#: ../terminal/terminal-preferences-dialog.c:1220
+#: terminal/terminal-preferences-dialog.c:1220
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness."
 msgstr "Произволният цвят се основава на избрания фонов цвят, като се запазва същата яркост."
 
-#: ../terminal/terminal-preferences-dialog.c:1230
+#: terminal/terminal-preferences-dialog.c:1230
 msgid "_Enable sixel graphics"
 msgstr "_Активиране на шестелни графики"
 
 #. section: Custom colors
-#: ../terminal/terminal-preferences-dialog.c:1240
+#: terminal/terminal-preferences-dialog.c:1240
 msgid "Custom Colors"
 msgstr "Цветове по подразбиране"
 
-#: ../terminal/terminal-preferences-dialog.c:1242
+#: terminal/terminal-preferences-dialog.c:1242
 msgid "_Cursor color:"
 msgstr "Цвят на _курсора:"
 
-#: ../terminal/terminal-preferences-dialog.c:1246
-#: ../terminal/terminal-preferences-dialog.c:1280
+#: terminal/terminal-preferences-dialog.c:1246
+#: terminal/terminal-preferences-dialog.c:1280
 msgid ""
 "Enable this option to set custom text and background colors for cursor. If "
 "disabled the background and text colors will be reversed."
 msgstr "Активирайте тази опция, за да зададете персонализиран текст и цветове на фона за курсора. Ако е деактивирано, цветовете на фона и текста ще бъдат контрастни."
 
-#: ../terminal/terminal-preferences-dialog.c:1276
+#: terminal/terminal-preferences-dialog.c:1276
 msgid "_Text selection color:"
 msgstr "Избран цвят за _текст:"
 
-#: ../terminal/terminal-preferences-dialog.c:1310
+#: terminal/terminal-preferences-dialog.c:1310
 msgid "_Bold selection color:"
 msgstr "Избран цвят за _удебелен текст:"
 
-#: ../terminal/terminal-preferences-dialog.c:1314
+#: terminal/terminal-preferences-dialog.c:1314
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Активирайте тази опция за да зададете по подразбиране открояващ се цвят. Ако я изключите ще бъде използван цветът на текста."
 
 #. section: Palette
-#: ../terminal/terminal-preferences-dialog.c:1331
+#: terminal/terminal-preferences-dialog.c:1331
 msgid "Palette"
 msgstr "Палитра"
 
-#: ../terminal/terminal-preferences-dialog.c:1354
+#: terminal/terminal-preferences-dialog.c:1354
 msgid "_Show bold text in bright colors:"
 msgstr "_Показване на удебеленият текст в ярки цветове:"
 
-#: ../terminal/terminal-preferences-dialog.c:1358
+#: terminal/terminal-preferences-dialog.c:1358
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text bright colors in addition to bold. If disabled, text color will remain "
@@ -970,808 +983,827 @@ msgid ""
 msgstr "Активирайте тази опция, за да позволите на escape-последователности като „\\e[1;35m“ за превключване на ярки цветове на текста в допълнение към удебеления. Ако е деактивиран, цветът на текста ще остане непокътнат."
 
 #. section: Presets
-#: ../terminal/terminal-preferences-dialog.c:1364
+#: terminal/terminal-preferences-dialog.c:1364
 msgid "Presets"
 msgstr "Готови комплекти"
 
 #. * Compatibility
-#: ../terminal/terminal-preferences-dialog.c:1380
-#: ../terminal/terminal-preferences-dialog.c:1386
+#: terminal/terminal-preferences-dialog.c:1380
+#: terminal/terminal-preferences-dialog.c:1386
 msgid "Compatibility"
 msgstr "Съвместимост"
 
-#: ../terminal/terminal-preferences-dialog.c:1391
+#: terminal/terminal-preferences-dialog.c:1391
 msgid ""
 "These options may cause some applications to behave incorrectly.\n"
 "They are only here to allow you to work around certain applications\n"
 "and operating systems that expect different terminal behavior."
 msgstr "Тези опции могат да доведат до неправилно поведение на някои приложения.\nТе са тук само, за да ви позволят да работите около определени приложения\nи операционни системи, които очакват различно поведение на терминала."
 
-#: ../terminal/terminal-preferences-dialog.c:1404
+#: terminal/terminal-preferences-dialog.c:1404
 msgid "Backspace key generates:"
 msgstr "Клавишът Backspace генерира:"
 
-#: ../terminal/terminal-preferences-dialog.c:1410
-#: ../terminal/terminal-preferences-dialog.c:1433
+#: terminal/terminal-preferences-dialog.c:1410
+#: terminal/terminal-preferences-dialog.c:1433
 msgid "Auto-detect"
 msgstr "Автоматично"
 
-#: ../terminal/terminal-preferences-dialog.c:1411
-#: ../terminal/terminal-preferences-dialog.c:1434
+#: terminal/terminal-preferences-dialog.c:1411
+#: terminal/terminal-preferences-dialog.c:1434
 msgid "ASCII Del"
 msgstr "ASCII Del"
 
-#: ../terminal/terminal-preferences-dialog.c:1412
-#: ../terminal/terminal-preferences-dialog.c:1435
+#: terminal/terminal-preferences-dialog.c:1412
+#: terminal/terminal-preferences-dialog.c:1435
 msgid "Escape sequence"
 msgstr "Условия за изход"
 
-#: ../terminal/terminal-preferences-dialog.c:1413
-#: ../terminal/terminal-preferences-dialog.c:1436
+#: terminal/terminal-preferences-dialog.c:1413
+#: terminal/terminal-preferences-dialog.c:1436
 msgid "Control-H"
 msgstr "Control-H"
 
-#: ../terminal/terminal-preferences-dialog.c:1414
-#: ../terminal/terminal-preferences-dialog.c:1437
+#: terminal/terminal-preferences-dialog.c:1414
+#: terminal/terminal-preferences-dialog.c:1437
 msgid "Erase TTY"
 msgstr "Изтрий TTY"
 
-#: ../terminal/terminal-preferences-dialog.c:1427
+#: terminal/terminal-preferences-dialog.c:1427
 msgid "Delete key generates:"
 msgstr "Ключът Delete генерира:"
 
-#: ../terminal/terminal-preferences-dialog.c:1450
+#: terminal/terminal-preferences-dialog.c:1450
 msgid "Ambiguous-width characters:"
 msgstr "Знаци с променлива ширина"
 
-#: ../terminal/terminal-preferences-dialog.c:1456
+#: terminal/terminal-preferences-dialog.c:1456
 msgid "Narrow"
 msgstr "Тесен"
 
-#: ../terminal/terminal-preferences-dialog.c:1457
+#: terminal/terminal-preferences-dialog.c:1457
 msgid "Wide"
 msgstr "Широк"
 
-#: ../terminal/terminal-preferences-dialog.c:1471
+#: terminal/terminal-preferences-dialog.c:1471
 msgid "Reset compatibility options to defaults"
 msgstr "Нулиране опциите за съвместимост до стойностите по подразбиране"
 
 #. * Advanced
-#: ../terminal/terminal-preferences-dialog.c:1482
+#: terminal/terminal-preferences-dialog.c:1482
 msgid "Advanced"
 msgstr "Разширен"
 
 #. section: Double Click
-#: ../terminal/terminal-preferences-dialog.c:1490
+#: terminal/terminal-preferences-dialog.c:1490
 msgid "Double Click"
 msgstr "Двойно кликване"
 
-#: ../terminal/terminal-preferences-dialog.c:1492
+#: terminal/terminal-preferences-dialog.c:1492
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Помислете за следните знаци като част от дума, когато щракнете двукратно:"
 
 #. section: Encoding
-#: ../terminal/terminal-preferences-dialog.c:1516
+#: terminal/terminal-preferences-dialog.c:1516
 msgid "Encoding"
 msgstr "Кодировка"
 
-#: ../terminal/terminal-preferences-dialog.c:1518
+#: terminal/terminal-preferences-dialog.c:1518
 msgid "Default character encoding"
 msgstr "Кодиране на символите по подразбиране"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: ../terminal/terminal-preferences-dialog.c:1542
-#: ../terminal/terminal-preferences-dialog.c:1671
+#: terminal/terminal-preferences-dialog.c:1542
+#: terminal/terminal-preferences-dialog.c:1671
 msgid "Shortcuts"
 msgstr "Бързи клавиши"
 
-#: ../terminal/terminal-preferences-dialog.c:1544
+#: terminal/terminal-preferences-dialog.c:1544
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "_Деактивиране на всички клавиши за достъп до менюто (като Alt + f)"
 
-#: ../terminal/terminal-preferences-dialog.c:1554
+#: terminal/terminal-preferences-dialog.c:1554
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "_Деактивиране на клавиш за бърз достъп до менюто (F10 по подразбиране)"
 
 #. section: Misc
-#: ../terminal/terminal-preferences-dialog.c:1563
+#: terminal/terminal-preferences-dialog.c:1563
 msgid "Misc"
 msgstr "Разни"
 
-#: ../terminal/terminal-preferences-dialog.c:1565
+#: terminal/terminal-preferences-dialog.c:1565
 msgid "_Use middle mouse click to close tabs"
 msgstr "_Използване на кликване със средният бутон на мишката за затваряне на раздели"
 
-#: ../terminal/terminal-preferences-dialog.c:1575
+#: terminal/terminal-preferences-dialog.c:1575
 msgid "Underline urls on mouseover"
 msgstr "Подчертаване на URL адресите при задържане на курсора на мишката"
 
-#: ../terminal/terminal-preferences-dialog.c:1585
+#: terminal/terminal-preferences-dialog.c:1585
 msgid "_Use middle mouse click to open urls"
 msgstr "_Използване на кликване със средният бутон на мишката за отваряне на url адреси"
 
-#: ../terminal/terminal-preferences-dialog.c:1597
+#: terminal/terminal-preferences-dialog.c:1597
 msgid "Enable OSC 8 Hyperlinks"
 msgstr "Активиране на хипервръзки в OSC 8"
 
-#: ../terminal/terminal-preferences-dialog.c:1598
+#: terminal/terminal-preferences-dialog.c:1598
 msgid ""
 "These are the links displayed when you run the 'ls --hyperlink' command, or "
 "by any other means using the OSC 8 escape sequence."
 msgstr "Това са връзките, които се показват, когато изпълните командата „ls --hyperlink“ или по друг начин, използвайки OSC 8 escape последователността."
 
-#: ../terminal/terminal-preferences-dialog.c:1608
+#: terminal/terminal-preferences-dialog.c:1608
 msgid "_Auto-hide mouse pointer"
 msgstr "_Автоматично скриване на курсора на мишката"
 
-#: ../terminal/terminal-preferences-dialog.c:1618
+#: terminal/terminal-preferences-dialog.c:1618
 msgid "_Open new tab to the right of the active tab"
 msgstr "_Отворяне на нов раздел вдясно от активния раздел"
 
-#: ../terminal/terminal-preferences-dialog.c:1628
+#: terminal/terminal-preferences-dialog.c:1628
 msgid "_Audible bell"
 msgstr "_Звуково известяване"
 
-#: ../terminal/terminal-preferences-dialog.c:1638
+#: terminal/terminal-preferences-dialog.c:1638
 msgid "_Visual bell"
 msgstr "_Визуално уведомяване"
 
-#: ../terminal/terminal-preferences-dialog.c:1648
+#: terminal/terminal-preferences-dialog.c:1648
 msgid "Right click action:"
 msgstr "Действие при кликване с десен бутон:"
 
-#: ../terminal/terminal-preferences-dialog.c:1654
+#: terminal/terminal-preferences-dialog.c:1654
 msgid "Context Menu"
 msgstr "Контекстно меню"
 
-#: ../terminal/terminal-preferences-dialog.c:1655
+#: terminal/terminal-preferences-dialog.c:1655
 msgid "Paste clipboard"
 msgstr "Поставяне в клипборда"
 
-#: ../terminal/terminal-preferences-dialog.c:1656
+#: terminal/terminal-preferences-dialog.c:1656
 msgid "Paste selection"
 msgstr "Поставяне на избраното"
 
-#: ../terminal/terminal-preferences-dialog.c:1681
+#: terminal/terminal-preferences-dialog.c:1681
 msgid "Window"
 msgstr "Прозорец"
 
-#: ../terminal/terminal-preferences-dialog.c:1683
-#: ../terminal/terminal-preferences.c:1220
+#: terminal/terminal-preferences-dialog.c:1683
+#: terminal/terminal-preferences.c:1220
 msgid "Terminal"
 msgstr "Терминал"
 
 #. default item + separator
-#: ../terminal/terminal-preferences-dialog.c:2092
+#: terminal/terminal-preferences-dialog.c:2092
 msgid "Select Preset"
 msgstr "Избиране на Предварително зададени"
 
-#: ../terminal/terminal-screen.c:280
+#: terminal/terminal-screen.c:280
 msgid "Do not disable dialog"
 msgstr "Да не се деактивира диалога"
 
-#: ../terminal/terminal-screen.c:281
+#: terminal/terminal-screen.c:281
 msgid "Disable for 5 minutes"
 msgstr "Деактивиране за 5 минути"
 
-#: ../terminal/terminal-screen.c:282
+#: terminal/terminal-screen.c:282
 msgid "Disable for 15 minutes"
 msgstr "Деактивиране за 15 минути"
 
-#: ../terminal/terminal-screen.c:283
+#: terminal/terminal-screen.c:283
 msgid "Disable until program restart"
 msgstr "Деактивиране при рестартиране на програмата"
 
-#: ../terminal/terminal-screen.c:284
+#: terminal/terminal-screen.c:284
 msgid "Disable dialog (can be re-enabled in the Preferences)"
 msgstr "Деактивиране на диалога (може да бъде активиран отново от настройките)"
 
-#: ../terminal/terminal-screen.c:536 ../terminal/terminal-screen.c:931
-#: ../terminal/terminal-screen.c:2451
+#: terminal/terminal-screen.c:536 terminal/terminal-screen.c:931
+#: terminal/terminal-screen.c:2451
 msgid "Untitled"
 msgstr "Без име"
 
-#: ../terminal/terminal-screen.c:784
+#: terminal/terminal-screen.c:784
 msgid "Empty custom command in the terminal preferences"
 msgstr "Празна потребителска команда в предпочитанията на терминала"
 
-#: ../terminal/terminal-screen.c:834
-#, c-format
+#: terminal/terminal-screen.c:834
 msgid "Unable to determine your login shell."
 msgstr "Не може да се определи средата за вход."
 
-#: ../terminal/terminal-screen.c:1553
+#: terminal/terminal-screen.c:1553
 msgid "_Relaunch"
 msgstr "_Рестартиране"
 
-#: ../terminal/terminal-screen.c:1559
+#: terminal/terminal-screen.c:1559
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Дъщерният процес се изключи нормално със статус %d."
 
-#: ../terminal/terminal-screen.c:1561
+#: terminal/terminal-screen.c:1561
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Дъщерният процес беше отхвърлен от сигнал %d."
 
-#: ../terminal/terminal-screen.c:1563
+#: terminal/terminal-screen.c:1563
 msgid "The child process was aborted."
 msgstr "Дъщерният процес беше отхвърлен."
 
-#: ../terminal/terminal-screen.c:1569 ../terminal/terminal-window.c:1550
+#: terminal/terminal-screen.c:1569 terminal/terminal-window.c:1550
 msgid "Do _not ask me again"
 msgstr "Не ме питай отново"
 
-#: ../terminal/terminal-screen.c:1884
+#: terminal/terminal-screen.c:1884
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Предупреждение: Потенциално опасно Поставяне"
 
-#: ../terminal/terminal-screen.c:1887
+#: terminal/terminal-screen.c:1887
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Поставянето на този текст в терминала може да бъде опасно, тъй като изглежда, че някои команди могат да бъдат изпълнени, потенциално включващи root достъп ('sudo'). "
 
-#: ../terminal/terminal-screen.c:1890
+#: terminal/terminal-screen.c:1890
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Поставянето на този текст в терминала може да бъде опасно, защото някои команди могат да бъдат изпълнени."
 
-#: ../terminal/terminal-screen.c:1902 ../terminal/terminal-window.c:1472
-#: ../terminal/terminal-window.c:3024
+#: terminal/terminal-screen.c:1902 terminal/terminal-window.c:1472
+#: terminal/terminal-window.c:3024
 msgid "_Cancel"
 msgstr "_Отмяна"
 
-#: ../terminal/terminal-screen.c:1905 ../terminal/terminal-window.c:527
+#: terminal/terminal-screen.c:1905 terminal/terminal-window.c:527
 msgid "_Paste"
 msgstr "Поставяне"
 
-#: ../terminal/terminal-screen.c:2075 ../terminal/terminal-screen.c:2153
+#: terminal/terminal-screen.c:2075 terminal/terminal-screen.c:2153
 msgid "Failed to execute child"
 msgstr "Не може да се изпълни дъщерен процес"
 
-#: ../terminal/terminal-screen.c:2784
+#: terminal/terminal-screen.c:2784
 msgid "Close this tab"
 msgstr "Затваряне този подпрозорец"
 
-#: ../terminal/terminal-search-dialog.c:103
+#: terminal/terminal-search-dialog.c:103
 msgid "Find"
 msgstr "Намиране"
 
-#: ../terminal/terminal-search-dialog.c:114
+#: terminal/terminal-search-dialog.c:114
 msgid "_Previous"
 msgstr "Предишно"
 
-#: ../terminal/terminal-search-dialog.c:119
+#: terminal/terminal-search-dialog.c:119
 msgid "_Next"
 msgstr "Следващо"
 
-#: ../terminal/terminal-search-dialog.c:136
+#: terminal/terminal-search-dialog.c:136
 msgid "_Search for:"
 msgstr "Търсене за:"
 
-#: ../terminal/terminal-search-dialog.c:149
+#: terminal/terminal-search-dialog.c:149
 msgid "C_ase sensitive"
 msgstr "Чувствителен регистър (главни и малки букви)"
 
-#: ../terminal/terminal-search-dialog.c:154
+#: terminal/terminal-search-dialog.c:154
 msgid "Match as _regular expression"
 msgstr "Съвпадение като регулярен израз"
 
-#: ../terminal/terminal-search-dialog.c:159
+#: terminal/terminal-search-dialog.c:159
 msgid "Match _entire word only"
 msgstr "Съвпадение само на цели думи"
 
-#: ../terminal/terminal-search-dialog.c:164
+#: terminal/terminal-search-dialog.c:164
 msgid "_Wrap around"
 msgstr "Ограждане"
 
-#: ../terminal/terminal-search-dialog.c:173
+#: terminal/terminal-search-dialog.c:173
 msgid "_Opacity:"
 msgstr "Непрозрачност:"
 
-#: ../terminal/terminal-util.c:91
+#: terminal/terminal-util.c:91
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce Терминален Емулатор"
 
-#: ../terminal/terminal-util.c:97
+#: terminal/terminal-util.c:97
 msgid "translator-credits"
 msgstr "Милен Милев <fanfolet@gmail.com>Kiril Kirilov <cybercop_montana@abv.bg>"
 
-#: ../terminal/terminal-util.c:100
+#: terminal/terminal-util.c:100
 msgid "Visit Xfce Terminal website"
 msgstr "Посетете уеб сайта на Xfce Терминал"
 
-#: ../terminal/terminal-widget.c:186
+#: terminal/terminal-widget.c:186
 msgid "Scroll one line Up"
 msgstr "Превъртане с един ред нагоре"
 
-#: ../terminal/terminal-widget.c:196
+#: terminal/terminal-widget.c:196
 msgid "Scroll one line Down"
 msgstr "Превъртане с един ред надолу"
 
-#: ../terminal/terminal-widget.c:206
+#: terminal/terminal-widget.c:206
 msgid "Scroll one Page Up"
 msgstr "Превъртане една страница нагоре"
 
-#: ../terminal/terminal-widget.c:216
+#: terminal/terminal-widget.c:216
 msgid "Scroll one Page Down"
 msgstr "Превъртане една страница надолу"
 
-#: ../terminal/terminal-widget.c:493
+#: terminal/terminal-widget.c:493
 msgid "Copy Email Address"
 msgstr "Копиране на пощенския адрес"
 
-#: ../terminal/terminal-widget.c:494
+#: terminal/terminal-widget.c:494
 msgid "Compose Email"
 msgstr "Напиши писмо"
 
-#: ../terminal/terminal-widget.c:498 ../terminal/terminal-widget.c:504
+#: terminal/terminal-widget.c:498 terminal/terminal-widget.c:504
 msgid "Copy Link Address"
 msgstr "Копиране на адреса на връзката"
 
-#: ../terminal/terminal-widget.c:500 ../terminal/terminal-widget.c:505
+#: terminal/terminal-widget.c:500 terminal/terminal-widget.c:505
 msgid "Open Link"
 msgstr "Отваряне на връзка"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:867
+#: terminal/terminal-widget.c:867
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Неуспешно отваряне на URL '%s'"
 
-#: ../terminal/terminal-window-dropdown.c:434
+#: terminal/terminal-window-dropdown.c:434
 msgid "Keep window open when it loses focus"
 msgstr "Запазване на прозореца отворен, когато изгуби фокус"
 
-#: ../terminal/terminal-window-dropdown.c:559
+#: terminal/terminal-window-dropdown.c:559
 msgid "Drop-down Terminal"
 msgstr "Падащ терминал"
 
-#: ../terminal/terminal-window-dropdown.c:560
+#: terminal/terminal-window-dropdown.c:560
 msgid "Toggle Drop-down Terminal"
 msgstr "Превключване на терминал с падащо меню"
 
-#: ../terminal/terminal-window.c:407
+#: terminal/terminal-window.c:407
 msgid "_File"
 msgstr "Файл"
 
-#: ../terminal/terminal-window.c:417
+#: terminal/terminal-window.c:417
 msgid "Open _Tab"
 msgstr "Отваряне на подпрозорец"
 
-#: ../terminal/terminal-window.c:418
+#: terminal/terminal-window.c:418
 msgid "Open a new terminal tab"
 msgstr "Отваряне на нов подпрозорец"
 
-#: ../terminal/terminal-window.c:427
+#: terminal/terminal-window.c:427
 msgid "Open T_erminal"
 msgstr "Отваряне на нов терминал"
 
-#: ../terminal/terminal-window.c:428
+#: terminal/terminal-window.c:428
 msgid "Open a new terminal window"
 msgstr "Отваряне на нов прозорец"
 
-#: ../terminal/terminal-window.c:437
+#: terminal/terminal-window.c:437
 msgid "_Open File Manager Here"
 msgstr "_Отваряне на файлов мениджър тук"
 
-#: ../terminal/terminal-window.c:438
+#: terminal/terminal-window.c:438
 msgid "Open the current directory"
 msgstr "Отваряне на текущата директория"
 
-#: ../terminal/terminal-window.c:447
+#: terminal/terminal-window.c:447
 msgid "_Undo Close Tab"
 msgstr "_Отмени затварянето на раздела"
 
-#: ../terminal/terminal-window.c:457
+#: terminal/terminal-window.c:457
 msgid "_Detach Tab"
 msgstr "Откачване на подпрозореца"
 
-#: ../terminal/terminal-window.c:467 ../terminal/terminal-window.c:1514
+#: terminal/terminal-window.c:467 terminal/terminal-window.c:1514
 msgid "Close T_ab"
 msgstr "Затваряне на раздела"
 
-#: ../terminal/terminal-window.c:477
+#: terminal/terminal-window.c:477
 msgid "Close Other Ta_bs"
 msgstr "Затвори другите раздели"
 
-#: ../terminal/terminal-window.c:487 ../terminal/terminal-window.c:1521
+#: terminal/terminal-window.c:487 terminal/terminal-window.c:1521
 msgid "Close _Window"
 msgstr "Затваряне на прозореца"
 
-#: ../terminal/terminal-window.c:497
+#: terminal/terminal-window.c:497
 msgid "_Edit"
 msgstr "Редактиране"
 
-#: ../terminal/terminal-window.c:507
+#: terminal/terminal-window.c:507
 msgid "_Copy"
 msgstr "Копиране"
 
-#: ../terminal/terminal-window.c:508
+#: terminal/terminal-window.c:508
 msgid "Copy to clipboard"
 msgstr "Копиране в системния буфер"
 
-#: ../terminal/terminal-window.c:517
+#: terminal/terminal-window.c:517
 msgid "Copy as _HTML"
 msgstr "Копиране като _HTML"
 
-#: ../terminal/terminal-window.c:518
+#: terminal/terminal-window.c:518
 msgid "Copy to clipboard as HTML"
 msgstr "Копиране в системния буфер като HTML"
 
-#: ../terminal/terminal-window.c:528
+#: terminal/terminal-window.c:528
 msgid "Paste from clipboard"
 msgstr "Поставяне от системния буфер"
 
-#: ../terminal/terminal-window.c:537
+#: terminal/terminal-window.c:537
 msgid "_Paste Alt"
 msgstr "_Поставяне Alt"
 
-#: ../terminal/terminal-window.c:547
+#: terminal/terminal-window.c:547
 msgid "Paste _Selection"
 msgstr "Поставяне на избраното"
 
-#: ../terminal/terminal-window.c:557
+#: terminal/terminal-window.c:557
 msgid "Paste _Selection Alt"
 msgstr "Поставяне на _избраното Alt"
 
-#: ../terminal/terminal-window.c:567
+#: terminal/terminal-window.c:567
 msgid "Select _All"
 msgstr "Избор на всичко"
 
-#: ../terminal/terminal-window.c:577
+#: terminal/terminal-window.c:577
 msgid "Copy _Input To All Tabs..."
 msgstr "Копирай _входа във всички раздели..."
 
-#: ../terminal/terminal-window.c:587
+#: terminal/terminal-window.c:587
 msgid "Pr_eferences..."
 msgstr "Настройки..."
 
-#: ../terminal/terminal-window.c:588
+#: terminal/terminal-window.c:588
 msgid "Open the preferences dialog"
 msgstr "Отваряне на прозореца с настройки"
 
-#: ../terminal/terminal-window.c:597
+#: terminal/terminal-window.c:597
 msgid "_View"
 msgstr "Преглед"
 
-#: ../terminal/terminal-window.c:607
+#: terminal/terminal-window.c:607
 msgid "Zoom _In"
 msgstr "_Увеличаване"
 
-#: ../terminal/terminal-window.c:608
+#: terminal/terminal-window.c:608
 msgid "Zoom in with larger font"
 msgstr "Увеличи с по- голям шрифт"
 
-#: ../terminal/terminal-window.c:617
+#: terminal/terminal-window.c:617
 msgid "Zoom In Alt"
 msgstr "Увеличаване Alt"
 
-#: ../terminal/terminal-window.c:627
+#: terminal/terminal-window.c:627
 msgid "Zoom _Out"
 msgstr "_Намаляване"
 
-#: ../terminal/terminal-window.c:628
+#: terminal/terminal-window.c:628
 msgid "Zoom out with smaller font"
 msgstr "Намали с по- малък шрифт"
 
-#: ../terminal/terminal-window.c:637
+#: terminal/terminal-window.c:637
 msgid "Zoom Out Alt"
 msgstr "Намаляване Alt"
 
-#: ../terminal/terminal-window.c:647
+#: terminal/terminal-window.c:647
 msgid "_Normal Size"
 msgstr "_Нормален размер"
 
-#: ../terminal/terminal-window.c:648
+#: terminal/terminal-window.c:648
 msgid "Zoom to default size"
 msgstr "Мащабиране в стандартен размер"
 
-#: ../terminal/terminal-window.c:657
+#: terminal/terminal-window.c:657
 msgid "_Normal Size Alt"
 msgstr "_Нормален размер Alt"
 
-#: ../terminal/terminal-window.c:667
+#: terminal/terminal-window.c:667
 msgid "_Terminal"
 msgstr "Терминал"
 
-#: ../terminal/terminal-window.c:677
+#: terminal/terminal-window.c:677
 msgid "_Set Title..."
 msgstr "Задаване на заглавие..."
 
-#: ../terminal/terminal-window.c:687
+#: terminal/terminal-window.c:687
 msgid "Set Title Co_lor..."
 msgstr "Задаване цвят на заглавие"
 
-#: ../terminal/terminal-window.c:697
+#: terminal/terminal-window.c:697
 msgid "_Find..."
 msgstr "Намиране..."
 
-#: ../terminal/terminal-window.c:698
+#: terminal/terminal-window.c:698
 msgid "Search terminal contents"
 msgstr "Търсене в съдържанието на терминала"
 
-#: ../terminal/terminal-window.c:707
+#: terminal/terminal-window.c:707
 msgid "Find Ne_xt"
 msgstr "Намиране на следващото..."
 
-#: ../terminal/terminal-window.c:717
+#: terminal/terminal-window.c:717
 msgid "Find Pre_vious"
 msgstr "Намиране на предишното"
 
-#: ../terminal/terminal-window.c:727
+#: terminal/terminal-window.c:727
 msgid "Sa_ve Contents..."
 msgstr "Запази съдържанието..."
 
-#: ../terminal/terminal-window.c:737 ../terminal/terminal-window.c:2888
+#: terminal/terminal-window.c:737 terminal/terminal-window.c:2888
 msgid "_Reset"
 msgstr "Възстановяване"
 
-#: ../terminal/terminal-window.c:747
+#: terminal/terminal-window.c:747
 msgid "_Clear Scrollback and Reset"
 msgstr "Връщане назад и рестартиране"
 
-#: ../terminal/terminal-window.c:757
+#: terminal/terminal-window.c:757
 msgid "T_abs"
 msgstr "Подпрозорци"
 
-#: ../terminal/terminal-window.c:767
+#: terminal/terminal-window.c:767
 msgid "_Previous Tab"
 msgstr "Предишен подпрозорец"
 
-#: ../terminal/terminal-window.c:768
+#: terminal/terminal-window.c:768
 msgid "Switch to previous tab"
 msgstr "Към предишният подпрозорец"
 
-#: ../terminal/terminal-window.c:777
+#: terminal/terminal-window.c:777
 msgid "_Next Tab"
 msgstr "Следващ подпрозорец"
 
-#: ../terminal/terminal-window.c:778
+#: terminal/terminal-window.c:778
 msgid "Switch to next tab"
 msgstr "Към следващият подпрозорец"
 
-#: ../terminal/terminal-window.c:787
+#: terminal/terminal-window.c:787
 msgid "Last _Active Tab"
 msgstr "Последният _активен раздел"
 
-#: ../terminal/terminal-window.c:788
+#: terminal/terminal-window.c:788
 msgid "Switch to last active tab"
 msgstr "Преминаване към последният активен раздел"
 
-#: ../terminal/terminal-window.c:797
+#: terminal/terminal-window.c:797
 msgid "Move Tab _Left"
 msgstr "Преместване на подпрозореца наляво"
 
-#: ../terminal/terminal-window.c:807
+#: terminal/terminal-window.c:807
 msgid "Move Tab _Right"
 msgstr "Преместване на подпрозореца надясно"
 
-#: ../terminal/terminal-window.c:827
+#: terminal/terminal-window.c:827
 msgid "_Contents"
 msgstr "Съдържание"
 
-#: ../terminal/terminal-window.c:828
+#: terminal/terminal-window.c:828
 msgid "Display help contents"
 msgstr "Показване на съдържанието на помощта"
 
-#: ../terminal/terminal-window.c:837
+#: terminal/terminal-window.c:837
 msgid "_About"
 msgstr "Относно"
 
-#: ../terminal/terminal-window.c:847
+#: terminal/terminal-window.c:847
 msgid "_Zoom"
 msgstr "_Мащабиране"
 
-#: ../terminal/terminal-window.c:857
+#: terminal/terminal-window.c:857
 msgid "Show Menubar Temporarily"
 msgstr "Временно показване на лентата с менюта"
 
-#: ../terminal/terminal-window.c:867
+#: terminal/terminal-window.c:867
 msgid "Show _Menubar"
 msgstr "Показване на лентата на менюто"
 
-#: ../terminal/terminal-window.c:868
+#: terminal/terminal-window.c:868
 msgid "Show/hide the menubar"
 msgstr "Показване/скриване на лентата на менюто"
 
-#: ../terminal/terminal-window.c:877
+#: terminal/terminal-window.c:877
 msgid "Show _Toolbar"
 msgstr "Показване на лентата с инструменти"
 
-#: ../terminal/terminal-window.c:878
+#: terminal/terminal-window.c:878
 msgid "Show/hide the toolbar"
 msgstr "Показване/скриване на лентата с инструменти"
 
-#: ../terminal/terminal-window.c:887
+#: terminal/terminal-window.c:887
 msgid "Show Window _Borders"
 msgstr "Показване на рамките на прозореца"
 
-#: ../terminal/terminal-window.c:888
+#: terminal/terminal-window.c:888
 msgid "Show/hide the window decorations"
 msgstr "Показване/скриване декорациите на прозореца"
 
-#: ../terminal/terminal-window.c:897
+#: terminal/terminal-window.c:897
 msgid "_Fullscreen"
 msgstr "На цял екран"
 
-#: ../terminal/terminal-window.c:898
+#: terminal/terminal-window.c:898
 msgid "Toggle fullscreen mode"
 msgstr "Превключване в режим на цял екран"
 
-#: ../terminal/terminal-window.c:907
+#: terminal/terminal-window.c:907
 msgid "_Read-Only"
 msgstr "Само за четене"
 
-#: ../terminal/terminal-window.c:908
+#: terminal/terminal-window.c:908
 msgid "Toggle read-only mode"
 msgstr "Превключи в режим само за четене"
 
-#: ../terminal/terminal-window.c:917
+#: terminal/terminal-window.c:917
 msgid "Scroll on _Output"
 msgstr "Превъртане на изходна позиция"
 
-#: ../terminal/terminal-window.c:918
+#: terminal/terminal-window.c:918
 msgid "Toggle scroll on output"
 msgstr "Превключване превъртането на изходна позиция"
 
-#: ../terminal/terminal-window.c:928
+#: terminal/terminal-window.c:928
 msgid "Go to Tab 1"
 msgstr "Отиди до раздел 1"
 
-#: ../terminal/terminal-window.c:938
+#: terminal/terminal-window.c:938
 msgid "Go to Tab 2"
 msgstr "Отиди до раздел 2"
 
-#: ../terminal/terminal-window.c:948
+#: terminal/terminal-window.c:948
 msgid "Go to Tab 3"
 msgstr "Отиди до раздел 3"
 
-#: ../terminal/terminal-window.c:958
+#: terminal/terminal-window.c:958
 msgid "Go to Tab 4"
 msgstr "Отиди до раздел 4"
 
-#: ../terminal/terminal-window.c:968
+#: terminal/terminal-window.c:968
 msgid "Go to Tab 5"
 msgstr "Отиди до раздел 5"
 
-#: ../terminal/terminal-window.c:978
+#: terminal/terminal-window.c:978
 msgid "Go to Tab 6"
 msgstr "Отиди до раздел 6"
 
-#: ../terminal/terminal-window.c:988
+#: terminal/terminal-window.c:988
 msgid "Go to Tab 7"
 msgstr "Отиди до раздел 7"
 
-#: ../terminal/terminal-window.c:998
+#: terminal/terminal-window.c:998
 msgid "Go to Tab 8"
 msgstr "Отиди до раздел 8"
 
-#: ../terminal/terminal-window.c:1008
+#: terminal/terminal-window.c:1008
 msgid "Go to Tab 9"
 msgstr "Отиди до раздел 9"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:1202
+#: terminal/terminal-window.c:1202
 msgid "Set _Encoding"
 msgstr "Задаване на кодировка"
 
-#: ../terminal/terminal-window.c:1470
+#: terminal/terminal-window.c:1470
 msgid "Warning"
 msgstr "Предупреждение"
 
 #. and process running
-#: ../terminal/terminal-window.c:1481
+#: terminal/terminal-window.c:1481
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Все още има стартирани процеси в някои раздели.\nЗатварянето на този прозорец ще ги прекрати всички."
 
 #. and no process running
-#: ../terminal/terminal-window.c:1487
+#: terminal/terminal-window.c:1487
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Този прозорец съдържа %d отворени раздела. Затварянето\nна този прозорец ще затвори и тях."
 
-#: ../terminal/terminal-window.c:1492
+#: terminal/terminal-window.c:1492
 msgid "Close all tabs?"
 msgstr "Затваряне на всички подпрозорци?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:1499
+#: terminal/terminal-window.c:1499
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Все още има стартирани процеси.\nЗатварянето на този раздел ще ги убие."
 
-#: ../terminal/terminal-window.c:1501
+#: terminal/terminal-window.c:1501
 msgid "Close tab?"
 msgstr "Затваряне на раздела?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:1506
+#: terminal/terminal-window.c:1506
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Все още има стартирани процеси.\nЗатварянето на този прозорец ще ги убие."
 
-#: ../terminal/terminal-window.c:1508
+#: terminal/terminal-window.c:1508
 msgid "Close window?"
 msgstr "Затваряне на прозореца ?"
 
-#: ../terminal/terminal-window.c:2263
+#: terminal/terminal-window.c:2263
 msgid "Failed to open directory"
 msgstr "Неуспешно отваряне на директорията"
 
-#: ../terminal/terminal-window.c:2465
+#: terminal/terminal-window.c:2465
 msgid "Copy _Input:"
 msgstr "Копиране на _входа:"
 
-#: ../terminal/terminal-window.c:2469
+#: terminal/terminal-window.c:2469
 msgid "Enter the text to be copied to all tabs"
 msgstr "Въведете текста, който ще се копира във всички раздели"
 
-#: ../terminal/terminal-window.c:2477
+#: terminal/terminal-window.c:2477
 msgid "Copy input"
 msgstr "Копирай входа"
 
-#: ../terminal/terminal-window.c:2839
+#: terminal/terminal-window.c:2839
 msgid "_Title:"
 msgstr "Заглавие:"
 
-#: ../terminal/terminal-window.c:2843
+#: terminal/terminal-window.c:2843
 msgid "Enter the title for the current terminal tab"
 msgstr "Въвеждане на заглавие на текущият подпрозорец"
 
-#: ../terminal/terminal-window.c:2858
+#: terminal/terminal-window.c:2858
 msgid "Help"
 msgstr "Помощ"
 
-#: ../terminal/terminal-window.c:2864
+#: terminal/terminal-window.c:2864
 msgid "Close"
 msgstr "Затваряне"
 
-#: ../terminal/terminal-window.c:2887
+#: terminal/terminal-window.c:2887
 msgid "Choose title color"
 msgstr "Избор на цвят на заглавие"
 
-#: ../terminal/terminal-window.c:2982
+#: terminal/terminal-window.c:2982
 msgid "Failed to create the regular expression"
 msgstr "Грешка при създаването на регулярен израз"
 
-#: ../terminal/terminal-window.c:3022
+#: terminal/terminal-window.c:3022
 msgid "Save contents..."
 msgstr "Запази съдържанието..."
 
-#: ../terminal/terminal-window.c:3025
+#: terminal/terminal-window.c:3025
 msgid "_Save"
 msgstr "_Запази"
 
-#: ../terminal/terminal-window.c:3063
+#: terminal/terminal-window.c:3063
 msgid "Failed to save terminal contents"
 msgstr "Не може да бъде запазено съдържанието на терминала"
 
-#: ../terminal/terminal-window.c:3837
+#: terminal/terminal-window.c:3837
 msgid "Send Signal"
 msgstr "Изпращане на сигнал"
 
-#: ../terminal/terminal-window.c:3855
+#: terminal/terminal-window.c:3855
 msgid "Zoom"
 msgstr "Увеличаване"
 
-#: ../terminal/terminal-window.c:3867
+#: terminal/terminal-window.c:3867
 msgid "Copy"
 msgstr "Копиране"
 
-#: ../terminal/terminal-window.c:3878
+#: terminal/terminal-window.c:3878
 msgid "Paste"
 msgstr "Поставяне"
 
-#: ../terminal/terminal-window.c:3889
+#: terminal/terminal-window.c:3889
 msgid "View Options"
 msgstr "Преглед на опциите"
+
+#: xfce4-terminal.desktop.in:5 xfce4-terminal.desktop.in:6
+msgid "Terminal Emulator"
+msgstr "Терминален Емулатор"
+
+#: xfce4-terminal.desktop.in:7
+msgid "terminal;command line;prompt;cli;cmd;xterm;bash;shell;dos;"
+msgstr "терминал;команден ред;подкана;cli;cmd;xterm;bash;shell;dos;"
+
+#: xfce4-terminal-settings.desktop.in:4
+msgid "Xfce Terminal Settings"
+msgstr "Настройки на терминала на Xfce"
+
+#: xfce4-terminal-settings.desktop.in:5
+msgid "Configure Xfce Terminal"
+msgstr "Конфигуриране на Xfce Терминал"
+
+#: xfce4-terminal-settings.desktop.in:6
+msgid "terminal;settings;preferences;configuration;configure;"
+msgstr "терминал;настройки;предпочитания;конфигурация;конфигуриране;"
