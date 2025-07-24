@@ -1058,6 +1058,8 @@ terminal_widget_get_link (TerminalWidget *widget,
 
           match_data = pcre2_match_data_create_from_pattern_8 (widget->regex_pcre[i], NULL);
           rc = pcre2_match_8 (widget->regex_pcre[i], (PCRE2_SPTR8) uri, strlen (uri), 0, 0, match_data, NULL);
+          pcre2_match_data_free_8 (match_data);
+
           if (rc >= 0)
             {
               result.uri = uri;
@@ -1066,9 +1068,8 @@ terminal_widget_get_link (TerminalWidget *widget,
             }
           else if (rc != PCRE2_ERROR_NOMATCH)
             g_warning ("pcre2_match returned error code \"%d\".", rc);
-
-          pcre2_match_data_free_8 (match_data);
         }
+      g_free (uri);
     }
 
   /* check if we have a regex match */
@@ -1084,11 +1085,8 @@ terminal_widget_get_link (TerminalWidget *widget,
               return result;
             }
         }
+      g_free (uri);
     }
-
-  /* freeing the uri if regex didn't match */
-  if (uri != NULL && result.uri == NULL)
-    g_free (uri);
 
   return result;
 }
