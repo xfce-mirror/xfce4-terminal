@@ -574,6 +574,7 @@ terminal_widget_button_press_event (GtkWidget *widget,
 {
   const GdkModifierType modifiers = gtk_accelerator_get_default_mod_mask ();
   gboolean committed = FALSE;
+  gboolean intercept = FALSE;
   gboolean middle_click_opens_uri;
   guint signal_id = 0;
 
@@ -604,21 +605,26 @@ terminal_widget_button_press_event (GtkWidget *widget,
         }
       else if (event->button == 3)
         {
-          signal_id = g_signal_connect (G_OBJECT (widget), "commit",
-                                        G_CALLBACK (terminal_widget_commit), &committed);
+          if ((event->state & modifiers) == GDK_SHIFT_MASK)
+            intercept = TRUE;
+          else
+            signal_id = g_signal_connect (G_OBJECT (widget), "commit",
+                                          G_CALLBACK (terminal_widget_commit), &committed);
         }
     }
 
-  (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->button_press_event) (widget, event);
+  if (!intercept)
+    (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->button_press_event) (widget, event);
 
   if (event->button == 3 && event->type == GDK_BUTTON_PRESS)
     {
-      g_signal_handler_disconnect (G_OBJECT (widget), signal_id);
+      if (signal_id != 0)
+        g_signal_handler_disconnect (G_OBJECT (widget), signal_id);
 
       /* no data (mouse actions) was committed to the terminal application
        * which means, we can safely popup a context menu now.
        */
-      if (!committed || (event->state & modifiers) == GDK_SHIFT_MASK)
+      if (!committed)
         {
           TerminalRightClickAction action;
 
