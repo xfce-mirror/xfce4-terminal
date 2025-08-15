@@ -574,6 +574,8 @@ terminal_widget_button_press_event (GtkWidget *widget,
 {
   const GdkModifierType modifiers = gtk_accelerator_get_default_mod_mask ();
   gboolean committed = FALSE;
+  gboolean intercept = FALSE;
+  gboolean handled;
   gboolean middle_click_opens_uri;
   guint signal_id = 0;
 
@@ -596,29 +598,41 @@ terminal_widget_button_press_event (GtkWidget *widget,
             }
         }
 
-      /* intercept middle button click that would paste the selection */
-      if (event->button == 2)
+      if (event->button == 3)
         {
-          g_signal_emit (G_OBJECT (widget), widget_signals[PASTE_SELECTION_REQUEST], 0, NULL);
-          return TRUE;
-        }
-      else if (event->button == 3)
-        {
-          signal_id = g_signal_connect (G_OBJECT (widget), "commit",
-                                        G_CALLBACK (terminal_widget_commit), &committed);
+          if ((event->state & modifiers) == GDK_SHIFT_MASK)
+            intercept = TRUE;
+          else
+            signal_id = g_signal_connect (G_OBJECT (widget), "commit",
+                                          G_CALLBACK (terminal_widget_commit), &committed);
         }
     }
 
-  (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->button_press_event) (widget, event);
+  if (!intercept)
+    handled = (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->button_press_event) (widget, event);
+
+  if (event->button == 2 && event->type == GDK_BUTTON_PRESS)
+    {
+      /* if handled is true, it means the VteTerminal's handler either already
+       * pasted the selection on its own or passed the middle button click event
+       * to the terminal application. In both cases we are done. Otherwise,
+       * we need to paste the selection now.
+       */
+      if (!handled)
+        {
+          g_signal_emit (G_OBJECT (widget), widget_signals[PASTE_SELECTION_REQUEST], 0, NULL);
+        }
+    }
 
   if (event->button == 3 && event->type == GDK_BUTTON_PRESS)
     {
-      g_signal_handler_disconnect (G_OBJECT (widget), signal_id);
+      if (signal_id != 0)
+        g_signal_handler_disconnect (G_OBJECT (widget), signal_id);
 
       /* no data (mouse actions) was committed to the terminal application
        * which means, we can safely popup a context menu now.
        */
-      if (!committed || (event->state & modifiers) == GDK_SHIFT_MASK)
+      if (!committed)
         {
           TerminalRightClickAction action;
 
