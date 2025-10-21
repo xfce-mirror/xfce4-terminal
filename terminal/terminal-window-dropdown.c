@@ -88,7 +88,7 @@ static gboolean
 terminal_window_dropdown_can_grab (gpointer data);
 static void
 terminal_window_dropdown_can_grab_destroyed (gpointer data);
-static void
+static gboolean
 terminal_window_dropdown_get_monitor_geometry (GdkScreen *screen,
                                                gint monitor_num,
                                                GdkRectangle *geometry);
@@ -157,6 +157,8 @@ struct _TerminalWindowDropdown
 #ifdef HAVE_GTK_LAYER_SHELL
   GdkMonitor *monitor;
   gboolean move_to_active;
+  guint set_monitor_idle_id;
+  guint monitor_removed_idle_id;
 #endif
 
   /* server time of focus out with grab */
@@ -279,10 +281,10 @@ monitor_changed (TerminalWindowDropdown *dropdown)
 
 
 
-static void
-set_monitor (TerminalWindowDropdown *dropdown)
+static gboolean
+set_monitor_idle (gpointer data)
 {
-  g_signal_handlers_disconnect_by_func (dropdown, set_monitor, NULL);
+  TerminalWindowDropdown *dropdown = data;
 
   if (dropdown->move_to_active)
     {
@@ -296,6 +298,22 @@ set_monitor (TerminalWindowDropdown *dropdown)
       g_signal_handlers_disconnect_by_func (dropdown, monitor_changed, NULL);
       gtk_layer_set_monitor (GTK_WINDOW (dropdown), dropdown->monitor);
     }
+
+  dropdown->set_monitor_idle_id = 0;
+  return FALSE;
+}
+
+
+
+static void
+set_monitor (TerminalWindowDropdown *dropdown)
+{
+  g_signal_handlers_disconnect_by_func (dropdown, set_monitor, NULL);
+
+  /* avoid interactions with gtk-layer-shell signal handlers */
+  if (dropdown->set_monitor_idle_id != 0)
+    g_source_remove (dropdown->set_monitor_idle_id);
+  dropdown->set_monitor_idle_id = g_idle_add (set_monitor_idle, dropdown);
 }
 
 
@@ -325,6 +343,64 @@ move_to_active_changed (TerminalWindowDropdown *dropdown)
        * times before gdk_display_get_monitor_at_window() returns the correct result */
       if (dropdown->monitor == NULL)
         g_signal_connect_after (dropdown, "draw", G_CALLBACK (monitor_changed), NULL);
+    }
+}
+
+
+
+static void
+monitor_added (GdkDisplay *display,
+               GdkMonitor *monitor,
+               TerminalWindowDropdown *dropdown)
+{
+  if (dropdown->move_to_active
+      && gtk_widget_get_visible (GTK_WIDGET (dropdown)))
+    monitor_changed (dropdown);
+}
+
+
+
+static gboolean
+monitor_removed_idle (gpointer data)
+{
+  TerminalWindowDropdown *dropdown = data;
+
+  dropdown->monitor = NULL;
+  dropdown->monitor_num = 0;
+  gtk_layer_set_monitor (GTK_WINDOW (dropdown), NULL);
+  if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
+    {
+      terminal_window_dropdown_hide (dropdown);
+      move_to_active_changed (dropdown);
+      terminal_window_dropdown_show (dropdown, 0, TRUE);
+    }
+  else
+    {
+      move_to_active_changed (dropdown);
+    }
+
+  dropdown->monitor_removed_idle_id = 0;
+  return FALSE;
+}
+
+
+
+static void
+monitor_removed (GdkDisplay *display,
+                 GdkMonitor *monitor,
+                 TerminalWindowDropdown *dropdown)
+{
+  if (monitor == dropdown->monitor)
+    {
+      /* avoid interactions with gtk-layer-shell signal handlers */
+      if (dropdown->monitor_removed_idle_id != 0)
+        g_source_remove (dropdown->monitor_removed_idle_id);
+      dropdown->monitor_removed_idle_id = g_idle_add (monitor_removed_idle, dropdown);
+    }
+  else if (dropdown->move_to_active
+           && gtk_widget_get_visible (GTK_WIDGET (dropdown)))
+    {
+      monitor_changed (dropdown);
     }
 }
 
@@ -394,6 +470,10 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
       g_signal_connect_object (preferences, "notify::dropdown-move-to-active",
                                G_CALLBACK (move_to_active_changed), dropdown, G_CONNECT_SWAPPED);
       move_to_active_changed (dropdown);
+
+      GdkDisplay *display = gdk_display_get_default ();
+      g_signal_connect_object (display, "monitor-added", G_CALLBACK (monitor_added), dropdown, 0);
+      g_signal_connect_object (display, "monitor-removed", G_CALLBACK (monitor_removed), dropdown, 0);
     }
   else
 #endif
@@ -484,6 +564,12 @@ terminal_window_dropdown_finalize (GObject *object)
 
   if (dropdown->animation_timeout_id != 0)
     g_source_remove (dropdown->animation_timeout_id);
+
+  if (dropdown->set_monitor_idle_id != 0)
+    g_source_remove (dropdown->set_monitor_idle_id);
+
+  if (dropdown->monitor_removed_idle_id != 0)
+    g_source_remove (dropdown->monitor_removed_idle_id);
 
   if (dropdown->status_icon != NULL)
     g_object_unref (G_OBJECT (dropdown->status_icon));
@@ -750,14 +836,21 @@ terminal_window_dropdown_can_grab_destroyed (gpointer data)
 
 
 
-static void
+static gboolean
 terminal_window_dropdown_get_monitor_geometry (GdkScreen *screen,
                                                gint monitor_num,
                                                GdkRectangle *geometry)
 {
   GdkDisplay *display = gdk_screen_get_display (screen);
   GdkMonitor *monitor = gdk_display_get_monitor (display, monitor_num);
-  gdk_monitor_get_geometry (monitor, geometry);
+  if (monitor != NULL)
+    {
+      gdk_monitor_get_geometry (monitor, geometry);
+      if (geometry->width > 0 && geometry->height > 0)
+        return TRUE;
+    }
+
+  return FALSE;
 }
 
 
@@ -772,9 +865,10 @@ terminal_window_dropdown_animate_down (gpointer data)
   gint step_size, vbox_h;
   gboolean fullscreen;
 
-  /* get window size */
-  terminal_window_dropdown_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
+  if (!terminal_window_dropdown_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect))
+    return FALSE;
 
+  /* get window size */
   fullscreen = window->is_fullscreen;
   if (!fullscreen)
     {
@@ -822,9 +916,10 @@ terminal_window_dropdown_animate_up (gpointer data)
   gint step_size, vbox_h, min_size;
   gboolean fullscreen;
 
-  /* get window size */
-  terminal_window_dropdown_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
+  if (!terminal_window_dropdown_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect))
+    return FALSE;
 
+  /* get window size */
   fullscreen = window->is_fullscreen;
   if (!fullscreen)
     {
@@ -988,7 +1083,8 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
     }
 
   /* get the active monitor size */
-  terminal_window_dropdown_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &monitor_geo);
+  if (!terminal_window_dropdown_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &monitor_geo))
+    return;
 
   /* move window to correct screen */
   gtk_window_set_screen (GTK_WINDOW (dropdown), dropdown->screen);
@@ -1238,7 +1334,8 @@ terminal_window_dropdown_get_size (TerminalWindowDropdown *dropdown,
 
   /* get the active monitor size */
   gdkscreen = xfce_gdk_screen_get_active (&monitor_num);
-  terminal_window_dropdown_get_monitor_geometry (gdkscreen, monitor_num, &monitor_geo);
+  if (!terminal_window_dropdown_get_monitor_geometry (gdkscreen, monitor_num, &monitor_geo))
+    return;
 
   /* get terminal size */
   terminal_screen_get_geometry (screen, &char_width, &char_height, &xpad, &ypad);
