@@ -41,6 +41,10 @@ terminal_search_dialog_entry_icon_release (GtkWidget *entry,
 static void
 terminal_search_dialog_entry_changed (GtkWidget *entry,
                                       TerminalSearchDialog *dialog);
+static gboolean
+terminal_search_dialog_entry_key_press (GtkWidget *entry,
+                                        GdkEventKey *event,
+                                        TerminalSearchDialog *dialog);
 
 
 struct _TerminalSearchDialogClass
@@ -139,8 +143,9 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
   dialog->entry = gtk_entry_new ();
   gtk_box_pack_start (GTK_BOX (hbox), dialog->entry, TRUE, TRUE, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), dialog->entry);
-  gtk_entry_set_activates_default (GTK_ENTRY (dialog->entry), TRUE);
   gtk_entry_set_icon_from_icon_name (GTK_ENTRY (dialog->entry), GTK_ENTRY_ICON_SECONDARY, "edit-clear");
+  g_signal_connect (G_OBJECT (dialog->entry), "key-press-event",
+                    G_CALLBACK (terminal_search_dialog_entry_key_press), dialog);
   g_signal_connect (G_OBJECT (dialog->entry), "icon-release",
                     G_CALLBACK (terminal_search_dialog_entry_icon_release), NULL);
   g_signal_connect (G_OBJECT (dialog->entry), "changed",
@@ -262,6 +267,24 @@ terminal_search_dialog_entry_changed (GtkWidget *entry,
 
   xfce_titled_dialog_set_default_response (XFCE_TITLED_DIALOG (dialog),
                                            has_text ? TERMINAL_RESPONSE_SEARCH_PREV : GTK_RESPONSE_CLOSE);
+}
+
+
+
+static gboolean
+terminal_search_dialog_entry_key_press (GtkWidget *entry,
+                                        GdkEventKey *event,
+                                        TerminalSearchDialog *dialog)
+{
+  if (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter)
+    {
+      if (event->state & GDK_SHIFT_MASK)
+        gtk_dialog_response (GTK_DIALOG (dialog), TERMINAL_RESPONSE_SEARCH_NEXT);
+      else
+        gtk_dialog_response (GTK_DIALOG (dialog), TERMINAL_RESPONSE_SEARCH_PREV);
+      return TRUE;
+    }
+  return FALSE;
 }
 
 
