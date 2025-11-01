@@ -276,7 +276,7 @@ terminal_search_dialog_entry_key_press (GtkWidget *entry,
                                         GdkEventKey *event,
                                         TerminalSearchDialog *dialog)
 {
-  if ((event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter))
+  if (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter)
     {
       if (event->state & GDK_SHIFT_MASK)
         gtk_dialog_response (GTK_DIALOG (dialog), TERMINAL_RESPONSE_SEARCH_NEXT);
