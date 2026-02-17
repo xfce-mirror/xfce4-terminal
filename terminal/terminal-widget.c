@@ -756,6 +756,9 @@ terminal_widget_drag_data_received (GtkWidget *widget,
                   /* quote the file name (for the shell) */
                   uris[n] = g_shell_quote (filename);
                   g_free (filename);
+                  filename = g_strescape (uris[n], "\"\\");
+                  g_free (uris[n]);
+                  uris[n] = filename;
                 }
             }
 
