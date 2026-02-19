@@ -219,7 +219,9 @@ foreach file : desktop_files
 endforeach
 
 subdir('colorschemes')
-subdir('doc')
+if get_option('doc')
+  subdir('doc')
+endif
 subdir('icons')
 subdir('po')
 subdir('terminal')
