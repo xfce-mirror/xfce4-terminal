@@ -219,7 +219,6 @@ foreach file : desktop_files
 endforeach
 
 subdir('colorschemes')
-
 if get_option('doc')
   subdir('doc')
 endif
