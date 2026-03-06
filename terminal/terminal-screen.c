@@ -2054,6 +2054,20 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
 
 
 static void
+terminal_screen_update_sixel (TerminalScreen *screen)
+{
+#if VTE_CHECK_VERSION(0, 61, 90)
+  gboolean enable_sixel;
+  g_object_get (G_OBJECT (screen->preferences),
+                "enable-sixel", &enable_sixel,
+                NULL);
+  vte_terminal_set_enable_sixel (VTE_TERMINAL (screen->terminal), enable_sixel);
+#endif
+}
+
+
+
+static void
 terminal_screen_spawn_async_cb (VteTerminal *terminal,
                                 GPid pid,
                                 GError *error,
@@ -3217,18 +3231,4 @@ terminal_screen_widget_append_accels (TerminalScreen *screen,
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   g_object_set (G_OBJECT (screen->terminal), "accel-group", accel_group, NULL);
-}
-
-
-
-void
-terminal_screen_update_sixel (TerminalScreen *screen)
-{
-#if VTE_CHECK_VERSION(0, 61, 90)
-  gboolean enable_sixel;
-  g_object_get (G_OBJECT (screen->preferences),
-                "enable-sixel", &enable_sixel,
-                NULL);
-  vte_terminal_set_enable_sixel (VTE_TERMINAL (screen->terminal), enable_sixel);
-#endif
 }
