@@ -1689,9 +1689,6 @@ terminal_window_notebook_page_switched (GtkNotebook *notebook,
       /* store last and set new active tab */
       window->priv->last_active = window->priv->active;
       window->priv->active = active;
-      gtk_widget_show (GTK_WIDGET (window->priv->active));
-      if (window->priv->last_active != NULL)
-        gtk_widget_hide (GTK_WIDGET (window->priv->last_active));
 
       /* set the new window title */
       terminal_window_notify_title (active, NULL, window);
