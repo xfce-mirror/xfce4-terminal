@@ -258,6 +258,7 @@ struct _TerminalScreen
   guint hold : 1;
   guint has_random_bg_color : 1;
 
+  guint contents_changed_id;
   guint activity_timeout_id;
   time_t activity_resize_time;
 
@@ -454,6 +455,8 @@ terminal_screen_finalize (GObject *object)
 
   if (screen->activity_timeout_id != 0)
     g_source_remove (screen->activity_timeout_id);
+  if (screen->contents_changed_id != 0)
+    g_source_remove (screen->contents_changed_id);
 
   /* detach from preferences */
   g_signal_handlers_disconnect_by_func (screen->preferences,
@@ -1706,28 +1709,27 @@ terminal_screen_reset_activity_destroyed (gpointer user_data)
 
 
 
-static void
-terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
+static gboolean
+contents_changed_idle (gpointer data)
 {
+  TerminalScreen *screen = data;
   guint timeout;
   GdkRGBA color;
   GdkRGBA label_color;
   gboolean has_color;
 
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  g_return_if_fail (GTK_IS_LABEL (screen->tab_label));
-  g_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
+  screen->contents_changed_id = 0;
 
   /* leave if we should not start an update */
   if (screen->tab_label == NULL
       || (gtk_widget_get_state_flags (screen->terminal) & GTK_STATE_FLAG_FOCUSED) != 0
       || time (NULL) - screen->activity_resize_time <= 1)
-    return;
+    return FALSE;
 
   /* get the reset time, leave if this feature is disabled */
   g_object_get (G_OBJECT (screen->preferences), "tab-activity-timeout", &timeout, NULL);
   if (timeout < 1)
-    return;
+    return FALSE;
 
   /* set label color */
   has_color = terminal_preferences_get_color (screen->preferences, "tab-activity-color", &color);
@@ -1747,6 +1749,22 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
     gdk_threads_add_timeout_seconds_full (G_PRIORITY_DEFAULT, timeout,
                                           terminal_screen_reset_activity_timeout,
                                           screen, terminal_screen_reset_activity_destroyed);
+
+  return FALSE;
+}
+
+
+
+static void
+terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
+{
+  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  g_return_if_fail (GTK_IS_LABEL (screen->tab_label));
+  g_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
+
+  /* don't react on each change to avoid high cpu usage */
+  if (screen->contents_changed_id == 0)
+    screen->contents_changed_id = g_timeout_add_seconds (1, contents_changed_idle, screen);
 }
 
 
