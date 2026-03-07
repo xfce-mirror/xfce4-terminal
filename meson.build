@@ -41,8 +41,6 @@ libxfce4kbd = dependency('libxfce4kbd-private-3', version: dependency_versions['
 libxfce4util = dependency('libxfce4util-1.0', version: dependency_versions['libxfce4util'])
 xfconf = dependency('libxfconf-0', version: dependency_versions['xfconf'])
 
-xsltproc = find_program('xsltproc', required: true)
-
 # Feature: 'x11'
 x11_deps = []
 x11_deps += dependency('gdk-x11-3.0', version: dependency_versions['gtk'], required: get_option('x11'))
@@ -79,6 +77,8 @@ endif
 if not enable_x11 and not enable_wayland
   error('At least one of the X11 and Wayland backends must be enabled')
 endif
+
+xsltproc = find_program('xsltproc', required: get_option('doc'))
 
 headers = [
   'sys/types.h',
