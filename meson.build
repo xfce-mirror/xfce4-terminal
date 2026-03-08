@@ -1,7 +1,7 @@
 project(
   'xfce4-terminal',
   'c',
-version : '1.1.5-dev',
+version : '1.2.0',
   license : 'GPL-2.0-or-later',
   meson_version : '>= 0.54.0',
   default_options : ['c_std=gnu11', 'buildtype=debugoptimized', 'warning_level=2']
@@ -9,7 +9,7 @@ version : '1.1.5-dev',
 
 project_namespace = 'apps'
 pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
-copyright_year = '2025'
+copyright_year = '2026'
 terminal_version_dbus = '5'
 
 cc = meson.get_compiler('c')
