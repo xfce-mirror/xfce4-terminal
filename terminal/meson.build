@@ -50,7 +50,7 @@ terminal_sources += gnome.mkenums(
   install_header: false,
   sources: 'terminal-preferences.h',
   fhead: '#ifndef TERMINAL_ENUM_TYPES_H\n#define TERMINAL_ENUM_TYPES_H\n#include <gtk/gtk.h>\nG_BEGIN_DECLS\n',
-  fprod: '/* enumerations from "@filename@" */\n',
+  fprod: '/* enumerations from "@basename@" */\n',
   vhead: 'GType @enum_name@_get_type (void);\n#define TERMINAL_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n',
   ftail: 'G_END_DECLS\n\n#endif /* !TERMINAL_ENUM_TYPES_H */',
 )
@@ -59,7 +59,7 @@ terminal_sources += gnome.mkenums(
   install_header: false,
   sources: 'terminal-preferences.h',
   fhead: '#include "terminal-enum-types.h"\n#include "terminal-app.h"\n#include "terminal-preferences.h"',
-  fprod: ' \n/* enumerations from "@filename@" */',
+  fprod: ' \n/* enumerations from "@basename@" */',
   vhead: 'GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {',
   vprod: ' \t{ @VALUENAME@, "@VALUENAME@", "@valuenick@" },',
   vtail: ' \t{ 0, NULL, NULL }\n\t};\n\ttype = g_@type@_register_static ("@EnumName@", values);\n  }\n\treturn type;\n}\n',
