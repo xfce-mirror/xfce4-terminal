@@ -609,7 +609,17 @@ terminal_widget_button_press_event (GtkWidget *widget,
     }
 
   if (!intercept)
-    handled = (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->button_press_event) (widget, event);
+    {
+      GtkSettings *settings = gtk_settings_get_default ();
+      gboolean primary_paste_enabled;
+      g_object_get (settings, "gtk-enable-primary-paste", &primary_paste_enabled, NULL);
+
+      /* don't let vte handle primary paste; we want to do it ourselves later, especially
+       * to trigger the unsafe paste dialog if necessary */
+      g_object_set (settings, "gtk-enable-primary-paste", FALSE, NULL);
+      handled = (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->button_press_event) (widget, event);
+      g_object_set (settings, "gtk-enable-primary-paste", primary_paste_enabled, NULL);
+    }
 
   if (event->button == 2 && event->type == GDK_BUTTON_PRESS)
     {
