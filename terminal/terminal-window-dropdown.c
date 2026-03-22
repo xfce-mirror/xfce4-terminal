@@ -589,6 +589,24 @@ terminal_window_dropdown_finalize (GObject *object)
 
 
 static void
+icon_theme_changed (GtkIconTheme *icon_theme,
+                    TerminalWindowDropdown *dropdown)
+{
+  const gchar *icon_name = gtk_window_get_icon_name (GTK_WINDOW (dropdown));
+  if (icon_name != NULL)
+    {
+      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+      if (g_path_is_absolute (icon_name))
+        gtk_status_icon_set_from_file (dropdown->status_icon, icon_name);
+      else
+        gtk_status_icon_set_from_icon_name (dropdown->status_icon, icon_name);
+      G_GNUC_END_IGNORE_DEPRECATIONS
+    }
+}
+
+
+
+static void
 terminal_window_dropdown_set_property (GObject *object,
                                        guint prop_id,
                                        const GValue *value,
@@ -653,6 +671,8 @@ terminal_window_dropdown_set_property (GObject *object,
                                 G_CALLBACK (terminal_window_dropdown_status_icon_press_event), dropdown);
               g_signal_connect (G_OBJECT (dropdown->status_icon), "popup-menu",
                                 G_CALLBACK (terminal_window_dropdown_status_icon_popup_menu), dropdown);
+              g_signal_connect_object (gtk_icon_theme_get_default (), "changed",
+                                       G_CALLBACK (icon_theme_changed), dropdown, 0);
             }
         }
       else if (dropdown->status_icon != NULL)
