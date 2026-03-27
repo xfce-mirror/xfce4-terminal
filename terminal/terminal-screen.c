@@ -260,7 +260,7 @@ struct _TerminalScreen
 
   guint contents_changed_id;
   guint activity_timeout_id;
-  gboolean resized;
+  time_t activity_resize_time;
 
   GdkGeometry hints;
 };
@@ -1764,10 +1764,8 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
   /* leave if we should not start an update */
   if (screen->tab_label == NULL
       || (gtk_widget_get_state_flags (screen->terminal) & GTK_STATE_FLAG_FOCUSED) != 0
-      || screen->resized)
+      || time (NULL) - screen->activity_resize_time <= 1)
     {
-      if (screen->resized)
-        screen->resized = FALSE;
       return;
     }
 
@@ -1782,7 +1780,7 @@ static void
 terminal_screen_vte_window_contents_resized (TerminalScreen *screen)
 {
   /* avoid a content changed when the window is resized */
-  screen->resized = TRUE;
+  screen->activity_resize_time = time (NULL);
 }
 
 
