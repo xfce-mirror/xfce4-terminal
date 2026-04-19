@@ -2941,19 +2941,17 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
       switch (scrollbar)
         {
         case TERMINAL_SCROLLBAR_NONE:
-          gtk_widget_hide (screen->scrollbar);
           break;
 
         case TERMINAL_SCROLLBAR_LEFT:
           gtk_scrolled_window_set_placement (GTK_SCROLLED_WINDOW (screen->swin), GTK_CORNER_TOP_RIGHT);
-          gtk_widget_show (screen->scrollbar);
           break;
 
         default: /* TERMINAL_SCROLLBAR_RIGHT */
           gtk_scrolled_window_set_placement (GTK_SCROLLED_WINDOW (screen->swin), GTK_CORNER_TOP_LEFT);
-          gtk_widget_show (screen->scrollbar);
           break;
         }
+      gtk_widget_show (screen->scrollbar);
       gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (screen->swin), GTK_POLICY_NEVER, scrollbar != TERMINAL_SCROLLBAR_NONE ? GTK_POLICY_ALWAYS : GTK_POLICY_NEVER);
     }
   else if (visibility == TERMINAL_VISIBILITY_HIDE)
