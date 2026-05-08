@@ -598,13 +598,15 @@ terminal_widget_button_press_event (GtkWidget *widget,
             }
         }
 
-      if (event->button == 3)
+      if ((event->state & modifiers) == GDK_SHIFT_MASK
+          && (event->button == 2 || event->button == 3))
         {
-          if ((event->state & modifiers) == GDK_SHIFT_MASK)
-            intercept = TRUE;
-          else
-            signal_id = g_signal_connect (G_OBJECT (widget), "commit",
-                                          G_CALLBACK (terminal_widget_commit), &committed);
+          intercept = TRUE;
+        }
+      else if (event->button == 3)
+        {
+          signal_id = g_signal_connect (G_OBJECT (widget), "commit",
+                                        G_CALLBACK (terminal_widget_commit), &committed);
         }
     }
 
