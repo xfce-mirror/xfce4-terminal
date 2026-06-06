@@ -8,7 +8,7 @@
 # Alois Nešpor <info@aloisnespor.info>, 2014
 # hsn <kolar.radim@gmail.com>, 2013
 # Martin Šiška <martin-siska@email.cz>, 2024
-# Michal Várady <miko.vaji@gmail.com>, 2014,2016-2022,2024-2025
+# Michal Várady <miko.vaji@gmail.com>, 2014,2016-2022,2024-2026
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018
 msgid ""
 msgstr ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-07-18 11:05+0200\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
-"Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2014,2016-2022,2024-2025\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2014,2016-2022,2024-2026\n"
 "Language-Team: Czech (http://app.transifex.com/xfce/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +66,7 @@ msgstr "VOLBA"
 
 #: terminal/main.c:112
 msgid "General Options"
-msgstr "Obecné"
+msgstr "Obecné volby"
 
 #. parameter of --default-display
 #. parameter of --display
@@ -142,7 +142,7 @@ msgstr "písmo"
 #. parameter of --zoom
 #: terminal/main.c:163
 msgid "zoom"
-msgstr "příblížení"
+msgstr "přiblížení"
 
 #. parameter of --class
 #: terminal/main.c:165
@@ -152,7 +152,7 @@ msgstr "třída"
 #: terminal/main.c:167
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
-msgstr "Kompletní dokumentaci k volbám uvedeným výše, naleznete v manuálové stránce aplikace %s."
+msgstr "Úplné vysvětlení výše uvedených voleb najdete v manuálové stránce %s."
 
 #: terminal/main.c:201 xfce4-terminal.desktop.in:4
 msgid "Xfce Terminal"
@@ -302,7 +302,7 @@ msgstr "Volba \"--default-working-directory\" vyžaduje zadání výchozího pra
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line separated from \"--execute/-x\""
-msgstr "Volba \"--execute/-x\" vyžaduje zadání příkazu ke spuštění na zbytku příkazového řádku oddělené od \"--execute/-x\""
+msgstr "Volba \"--execute/-x\" vyžaduje zadání příkazu, který se má spustit ze zbytku příkazového řádku odděleného od \"--execute/-x\"."
 
 #: terminal/terminal-options.c:298
 msgid ""
@@ -335,7 +335,7 @@ msgstr "Neplatný argument pro volbu \"--dynamic-title-mode\": %s"
 msgid ""
 "Option \"--initial-title\" requires specifying the initial title as its "
 "parameter"
-msgstr "Volby \"--initial-title\" vyžaduje zadání úvodního titulku jako parametru"
+msgstr "Volba \"--initial-title\" vyžaduje zadání počátečního titulku jako parametru"
 
 #: terminal/terminal-options.c:394 terminal/terminal-options.c:413
 #, c-format
@@ -365,7 +365,7 @@ msgstr "Volba \"--role\" vyžaduje zadání úlohy okna jako jeho parametru"
 msgid ""
 "Option \"--workspace\" requires specifying the workspace number as its "
 "parameter"
-msgstr "Možnost \"--workspace\" vyžaduje určení pracovní plochy jako parametru"
+msgstr "Volba \"--workspace\" vyžaduje zadání čísla pracovní plochy jako parametru."
 
 #: terminal/terminal-options.c:490
 msgid ""
@@ -409,7 +409,7 @@ msgstr "Neznámá volba \"%s\""
 
 #: terminal/terminal-preferences-dialog.c:225 xfce4-terminal.desktop.in:17
 msgid "Terminal Preferences"
-msgstr "Nastavení aplikace Terminal"
+msgstr "Předvolby terminálu"
 
 #. add the "Close" button
 #: terminal/terminal-preferences-dialog.c:232
@@ -436,7 +436,7 @@ msgstr "Titulek"
 
 #: terminal/terminal-preferences-dialog.c:267
 msgid "_Initial title:"
-msgstr "Výchozí t_itulek"
+msgstr "Počáteční t_itulek:"
 
 #: terminal/terminal-preferences-dialog.c:283
 msgid "Dynamically-set title:"
@@ -444,15 +444,15 @@ msgstr "_Dynamicky nastavitelný titulek:"
 
 #: terminal/terminal-preferences-dialog.c:289
 msgid "Replaces initial title"
-msgstr "Nahradí výchozí titulek"
+msgstr "Nahradí počáteční titulek:"
 
 #: terminal/terminal-preferences-dialog.c:290
 msgid "Goes before initial title"
-msgstr "Bude umístěn před původní titulek"
+msgstr "Bude umístěn před počáteční titulek"
 
 #: terminal/terminal-preferences-dialog.c:291
 msgid "Goes after initial title"
-msgstr "Bude umístěn za původní titulek"
+msgstr "Bude umístěn za počáteční titulek"
 
 #: terminal/terminal-preferences-dialog.c:292
 msgid "Isn't displayed"
@@ -553,11 +553,11 @@ msgstr "Napravo"
 
 #: terminal/terminal-preferences-dialog.c:443
 msgid "Scrollback:"
-msgstr "Posun zpět:"
+msgstr "Historie posunu:"
 
 #: terminal/terminal-preferences-dialog.c:459
 msgid "_Unlimited Scrollback"
-msgstr "_Neomezená historie"
+msgstr "_Neomezená historie posunu"
 
 #: terminal/terminal-preferences-dialog.c:463
 msgid "This controls whether the terminal will have no limits on scrollback."
@@ -570,7 +570,7 @@ msgstr "Povolit překrývací posun (vyžaduje restart)"
 #: terminal/terminal-preferences-dialog.c:474
 msgid ""
 "This controls whether scrollbar is drawn as an overlay (auto-hide) or not."
-msgstr "Tato volby určuje, zda bude posuvník vykreslen jako překryvný prvek (automaticky skrývaný) nebo ne."
+msgstr "Tato volba určuje, zda bude posuvník vykreslen jako překryvný prvek (automaticky skrývaný) nebo ne."
 
 #. section: Cursor
 #: terminal/terminal-preferences-dialog.c:481
@@ -612,7 +612,7 @@ msgstr "Automaticky zkopírovat výběr do schránky"
 
 #: terminal/terminal-preferences-dialog.c:521
 msgid "Show unsafe paste dialog"
-msgstr "Zobrazit dialogové okno pro nebezpečné vkládání"
+msgstr "Zobrazovat upozornění na potenciálně nebezpečné vložení"
 
 #: terminal/terminal-preferences-dialog.c:525
 msgid ""
@@ -623,7 +623,7 @@ msgstr "Zobrazí dialogové okno které umožní upravit text považovaný za ne
 #. * Drop-down
 #: terminal/terminal-preferences-dialog.c:534
 msgid "Drop-down"
-msgstr "Rozevírací"
+msgstr "Vysouvací"
 
 #. section: Behavior
 #: terminal/terminal-preferences-dialog.c:543
@@ -843,15 +843,15 @@ msgstr "Otevření nových oken"
 
 #: terminal/terminal-preferences-dialog.c:1021
 msgid "_Display menubar in new windows"
-msgstr "Zo_brazovat hlavní nabídku v nových oknech"
+msgstr "Zo_brazovat panel nabídek v nových oknech"
 
 #: terminal/terminal-preferences-dialog.c:1025
 msgid "Enable this option to show menubars in newly created terminal windows."
-msgstr "Povolte tuto možnost pro zobrazení hlavního menu v nově vytvořených oknech terminálu."
+msgstr "Povolte tuto možnost pro zobrazení panelu nabídek v nově vytvořených oknech terminálu."
 
 #: terminal/terminal-preferences-dialog.c:1032
 msgid "_Display toolbar in new windows"
-msgstr "Zobrazit _panely nástrojů v nových oknech"
+msgstr "Zobrazovat _panel nástrojů v nových oknech"
 
 #: terminal/terminal-preferences-dialog.c:1036
 msgid "Enable this option to show toolbar in newly created terminal windows."
@@ -976,7 +976,7 @@ msgstr "Paleta"
 
 #: terminal/terminal-preferences-dialog.c:1354
 msgid "_Show bold text in bright colors:"
-msgstr "Zob_razit tučný text světlými barvami"
+msgstr "Zob_razit tučný text světlými barvami:"
 
 #: terminal/terminal-preferences-dialog.c:1358
 msgid ""
@@ -1190,7 +1190,7 @@ msgstr "Bez názvu"
 
 #: terminal/terminal-screen.c:784
 msgid "Empty custom command in the terminal preferences"
-msgstr "Vyprázdní vlastní příkaz v předvolbách terminálu"
+msgstr "V předvolbách terminálu je prázdný vlastní příkaz"
 
 #: terminal/terminal-screen.c:834
 msgid "Unable to determine your login shell."
@@ -1220,7 +1220,7 @@ msgstr "Příště se již _nedotazovat"
 
 #: terminal/terminal-screen.c:1884
 msgid "Warning: Potentially Unsafe Paste"
-msgstr "Varování: Možné nebezpečné vložení"
+msgstr "Varování: potenciálně nebezpečné vložení"
 
 #: terminal/terminal-screen.c:1887
 msgid ""
@@ -1281,7 +1281,7 @@ msgstr "Pouze _celá slova"
 
 #: terminal/terminal-search-dialog.c:164
 msgid "_Wrap around"
-msgstr "_Orámování"
+msgstr "_Pokračovat od začátku"
 
 #: terminal/terminal-search-dialog.c:173
 msgid "_Opacity:"
@@ -1297,7 +1297,7 @@ msgstr "translator-credits"
 
 #: terminal/terminal-util.c:100
 msgid "Visit Xfce Terminal website"
-msgstr "Navštívit webovou stránku aplikace Xfce Terminal"
+msgstr "Navštívit webovou stránku Terminálu Xfce"
 
 #: terminal/terminal-widget.c:186
 msgid "Scroll one line Up"
@@ -1343,11 +1343,11 @@ msgstr "Nechat okno otevřené i po ztrátě zaměření"
 
 #: terminal/terminal-window-dropdown.c:559
 msgid "Drop-down Terminal"
-msgstr "Otevřít T_erminál"
+msgstr "Vysouvací t_erminál"
 
 #: terminal/terminal-window-dropdown.c:560
 msgid "Toggle Drop-down Terminal"
-msgstr "Přepnout drop-down terminál"
+msgstr "Přepnout vysouvací terminál"
 
 #: terminal/terminal-window.c:407
 msgid "_File"
@@ -1423,7 +1423,7 @@ msgstr "Vložit ze schránky"
 
 #: terminal/terminal-window.c:537
 msgid "_Paste Alt"
-msgstr "Vložit _alt"
+msgstr "Vlož_it Alt"
 
 #: terminal/terminal-window.c:547
 msgid "Paste _Selection"
@@ -1431,7 +1431,7 @@ msgstr "Vložit _výběr"
 
 #: terminal/terminal-window.c:557
 msgid "Paste _Selection Alt"
-msgstr "Vložit _výběr"
+msgstr "Vložit _výběr Alt"
 
 #: terminal/terminal-window.c:567
 msgid "Select _All"
@@ -1463,7 +1463,7 @@ msgstr "Přiblížení větším písmem"
 
 #: terminal/terminal-window.c:617
 msgid "Zoom In Alt"
-msgstr "Přiblížit"
+msgstr "Přiblížit Alt"
 
 #: terminal/terminal-window.c:627
 msgid "Zoom _Out"
@@ -1475,7 +1475,7 @@ msgstr "Oddálení menším písmem"
 
 #: terminal/terminal-window.c:637
 msgid "Zoom Out Alt"
-msgstr "Oddálit"
+msgstr "Oddálit Alt"
 
 #: terminal/terminal-window.c:647
 msgid "_Normal Size"
@@ -1487,7 +1487,7 @@ msgstr "Obnovit výchozí přiblížení"
 
 #: terminal/terminal-window.c:657
 msgid "_Normal Size Alt"
-msgstr "_Běžná velikost"
+msgstr "_Běžná velikost Alt"
 
 #: terminal/terminal-window.c:667
 msgid "_Terminal"
@@ -1499,7 +1499,7 @@ msgstr "Na_stavit titulek…"
 
 #: terminal/terminal-window.c:687
 msgid "Set Title Co_lor..."
-msgstr "Nastavit ba_rvu titulku"
+msgstr "Nastavit ba_rvu titulku..."
 
 #: terminal/terminal-window.c:697
 msgid "_Find..."
@@ -1527,7 +1527,7 @@ msgstr "_Inicializovat"
 
 #: terminal/terminal-window.c:747
 msgid "_Clear Scrollback and Reset"
-msgstr "_Smazat historii a obnovit nastavení"
+msgstr "_Vymazat historii posunu a resetovat"
 
 #: terminal/terminal-window.c:757
 msgid "T_abs"
@@ -1583,15 +1583,15 @@ msgstr "_Přiblížení"
 
 #: terminal/terminal-window.c:857
 msgid "Show Menubar Temporarily"
-msgstr "Dočasně ukázat lištu nabídek"
+msgstr "Dočasně zobrazit panel nabídek"
 
 #: terminal/terminal-window.c:867
 msgid "Show _Menubar"
-msgstr "Zo_brazovat panel s nabídkou"
+msgstr "Zo_brazovat panel nabídek"
 
 #: terminal/terminal-window.c:868
 msgid "Show/hide the menubar"
-msgstr "Skrýt/zobrazit panel nabídky"
+msgstr "Zobrazit/skrýt panel nabídek"
 
 #: terminal/terminal-window.c:877
 msgid "Show _Toolbar"
@@ -1599,7 +1599,7 @@ msgstr "Zobrazit _panel nástrojů"
 
 #: terminal/terminal-window.c:878
 msgid "Show/hide the toolbar"
-msgstr "Zobrazit/Skrýt panely nástrojů"
+msgstr "Zobrazit/skrýt panel nástrojů"
 
 #: terminal/terminal-window.c:887
 msgid "Show Window _Borders"
@@ -1741,7 +1741,7 @@ msgstr "_Titulek:"
 
 #: terminal/terminal-window.c:2843
 msgid "Enter the title for the current terminal tab"
-msgstr "Vložte název pro aktuální kartu terminálu"
+msgstr "Zadejte titulek pro aktuální kartu terminálu"
 
 #: terminal/terminal-window.c:2858
 msgid "Help"
@@ -1753,7 +1753,7 @@ msgstr "Zavřít"
 
 #: terminal/terminal-window.c:2887
 msgid "Choose title color"
-msgstr "Nastavte barvu titulku"
+msgstr "Zvolte barvu titulku"
 
 #: terminal/terminal-window.c:2982
 msgid "Failed to create the regular expression"
@@ -1797,7 +1797,7 @@ msgstr "Emulátor terminálu"
 
 #: xfce4-terminal.desktop.in:7
 msgid "terminal;command line;prompt;cli;cmd;xterm;bash;shell;dos;"
-msgstr "terminál;příkazová řádka;vstup;cli;cmd;xterm;bash;shell;dos;"
+msgstr "terminál;příkazový řádek;příkazová řádka;výzva;cli;cmd;xterm;bash;shell;dos;"
 
 #: xfce4-terminal-settings.desktop.in:4
 msgid "Xfce Terminal Settings"
@@ -1805,7 +1805,7 @@ msgstr "Nastavení Terminálu Xfce"
 
 #: xfce4-terminal-settings.desktop.in:5
 msgid "Configure Xfce Terminal"
-msgstr "Konfigurovat Terminál Xfce"
+msgstr "Nastavit Terminál Xfce"
 
 #: xfce4-terminal-settings.desktop.in:6
 msgid "terminal;settings;preferences;configuration;configure;"
