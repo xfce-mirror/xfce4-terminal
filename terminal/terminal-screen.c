@@ -223,11 +223,6 @@ terminal_screen_update_sixel (TerminalScreen *screen);
 
 
 
-struct _TerminalScreenClass
-{
-  GtkOverlayClass parent_class;
-};
-
 struct _TerminalScreen
 {
   GtkOverlay parent_instance;
@@ -327,7 +322,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
                                                         "title",
                                                         "title",
                                                         NULL,
-                                                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+                                                        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
 
   /**
    * TerminalScreen::get-context-menu
@@ -1036,8 +1031,7 @@ terminal_screen_update_background (TerminalScreen *screen)
   if (screen->loader != NULL)
     {
       g_signal_handlers_disconnect_by_func (screen->terminal, terminal_screen_draw, screen);
-      g_object_unref (screen->loader);
-      screen->loader = NULL;
+      g_clear_object (&screen->loader);
     }
 
   g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
@@ -3218,8 +3212,7 @@ terminal_screen_set_custom_title_color (TerminalScreen *screen,
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
-  g_free (screen->custom_title_color);
-  screen->custom_title_color = NULL;
+  g_clear_pointer (&screen->custom_title_color, g_free);
 
   if (color == NULL)
     gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);

@@ -22,8 +22,6 @@
 #include <string.h>
 #endif
 
-#include <libxfce4ui/libxfce4ui.h>
-
 #include "terminal-preferences.h"
 #include "terminal-search-dialog.h"
 
@@ -47,10 +45,12 @@ terminal_search_dialog_entry_key_press (GtkWidget *entry,
                                         TerminalSearchDialog *dialog);
 
 
+#if !LIBXFCE4UI_CHECK_VERSION(4, 21, 8)
 struct _TerminalSearchDialogClass
 {
   XfceTitledDialogClass parent_class;
 };
+#endif
 
 struct _TerminalSearchDialog
 {

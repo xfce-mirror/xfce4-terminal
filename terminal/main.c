@@ -58,17 +58,17 @@ colortable_sub (const gchar *bright,
         fg = n;
 
       /* blank */
-      g_print (" %*s%2dm |",
+      g_print (" %*s%2um |",
                2, bright, fg);
 
       /* without background color */
-      g_print ("\e[%s%dm %*s%2dm ",
+      g_print ("\e[%s%um %*s%2um ",
                bright, fg, 2, bright, fg);
 
       /* with background color */
       for (bg = 40; bg <= 47; bg++)
         {
-          g_print ("\e[%s%d;%dm %*s%2dm ",
+          g_print ("\e[%s%u;%um %*s%2um ",
                    bright, fg, bg, 2, bright, fg);
         }
 
@@ -86,7 +86,7 @@ colortable (void)
   /* header */
   g_print ("%*s|%*s", 7, "", 7, "");
   for (bg = 40; bg <= 47; bg++)
-    g_print ("   %dm ", bg);
+    g_print ("   %um ", bg);
   g_print ("\n");
 
   /* normal */

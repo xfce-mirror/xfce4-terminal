@@ -37,7 +37,6 @@
 #include "terminal-private.h"
 #include "terminal-util.h"
 #include "terminal-window-dropdown.h"
-#include "terminal-window.h"
 
 /* animation fps */
 #define ANIMATION_FPS (1000 / 20)
@@ -115,11 +114,6 @@ terminal_dropdown_window_screen_size_changed (GdkScreen *screen,
                                               TerminalWindowDropdown *dropdown);
 
 
-
-struct _TerminalWindowDropdownClass
-{
-  TerminalWindowClass parent_class;
-};
 
 typedef enum
 {
@@ -675,10 +669,9 @@ terminal_window_dropdown_set_property (GObject *object,
                                        G_CALLBACK (icon_theme_changed), dropdown, 0);
             }
         }
-      else if (dropdown->status_icon != NULL)
+      else
         {
-          g_object_unref (G_OBJECT (dropdown->status_icon));
-          dropdown->status_icon = NULL;
+          g_clear_object (&dropdown->status_icon);
         }
       return;
 

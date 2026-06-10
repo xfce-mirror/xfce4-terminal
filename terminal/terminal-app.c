@@ -90,11 +90,6 @@ terminal_app_open_window (TerminalApp *app,
 
 
 
-struct _TerminalAppClass
-{
-  GObjectClass parent_class;
-};
-
 struct _TerminalApp
 {
   GObject parent_instance;
@@ -261,11 +256,7 @@ static void
 terminal_app_accel_map_changed (TerminalApp *app)
 {
   /* stop pending save */
-  if (app->accel_map_save_id != 0)
-    {
-      g_source_remove (app->accel_map_save_id);
-      app->accel_map_save_id = 0;
-    }
+  g_clear_handle_id (&app->accel_map_save_id, g_source_remove);
 
   /* schedule new save */
   app->accel_map_save_id = gdk_threads_add_timeout_seconds (10, terminal_app_accel_map_save, app);
@@ -301,12 +292,7 @@ terminal_app_accel_map_load (gpointer user_data)
 void
 terminal_app_load_accels (TerminalApp *app)
 {
-  if (G_UNLIKELY (app->accel_map_load_id != 0))
-    {
-      g_source_remove (app->accel_map_load_id);
-      app->accel_map_load_id = 0;
-    }
-
+  g_clear_handle_id (&app->accel_map_load_id, g_source_remove);
   terminal_app_accel_map_load (app);
 }
 
@@ -865,9 +851,7 @@ terminal_app_find_screen (GdkDisplay *display,
 
   if (display != NULL)
     {
-      if (screen == NULL)
-        screen = gdk_display_get_default_screen (display);
-
+      screen = gdk_display_get_default_screen (display);
       if (screen != NULL)
         g_object_ref (G_OBJECT (screen));
     }

@@ -301,8 +301,7 @@ terminal_window_attr_parse (gint argc,
             }
           else
             {
-              g_strfreev (tab_attr->command);
-              tab_attr->command = NULL;
+              g_clear_pointer (&tab_attr->command, g_strfreev);
               if (!g_shell_parse_argv (s, NULL, &tab_attr->command, error))
                 goto failed;
             }

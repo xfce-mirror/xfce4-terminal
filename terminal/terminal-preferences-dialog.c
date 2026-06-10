@@ -18,7 +18,6 @@
  */
 
 #include <libxfce4kbd-private/xfce-shortcuts-editor.h>
-#include <libxfce4ui/libxfce4ui.h>
 
 #include "terminal-encoding-action.h"
 #include "terminal-enum-types.h"
@@ -111,10 +110,12 @@ enum
   N_PALETTE_BUTTONS = 16,
 };
 
+#if !LIBXFCE4UI_CHECK_VERSION(4, 21, 8)
 struct _TerminalPreferencesDialogClass
 {
   XfceTitledDialogClass __parent__;
 };
+#endif
 
 struct _TerminalPreferencesDialog
 {
@@ -671,7 +672,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
-  label = gtk_label_new ("ms");
+  /* TRANSLATORS: the unit for milliseconds */
+  label = gtk_label_new (_("ms"));
   gtk_widget_set_halign (label, GTK_ALIGN_START);
   gtk_grid_attach (GTK_GRID (grid), label, 2, row, 1, 1);
   gtk_widget_show (label);

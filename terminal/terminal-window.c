@@ -87,11 +87,7 @@ const gchar *CSS_SLIM_TABS =
   "}\n";
 
 /* See gnome-terminal bug #789356 */
-#if GTK_CHECK_VERSION(3, 22, 23)
 #define WINDOW_STATE_TILED (GDK_WINDOW_STATE_TILED | GDK_WINDOW_STATE_LEFT_TILED | GDK_WINDOW_STATE_RIGHT_TILED | GDK_WINDOW_STATE_TOP_TILED | GDK_WINDOW_STATE_BOTTOM_TILED)
-#else
-#define WINDOW_STATE_TILED (GDK_WINDOW_STATE_TILED)
-#endif
 
 
 
@@ -348,7 +344,6 @@ struct _TerminalWindowPrivate
   /* for the drop-down to keep open with dialogs */
   guint n_child_windows;
 
-  guint tabs_menu_merge_id;
   GSList *tabs_menu_actions;
 
   TerminalPreferences *preferences;
@@ -2778,8 +2773,7 @@ title_popover_close (GtkWidget *popover,
     terminal_util_activate_window (GTK_WINDOW (window));
 
   /* close the dialog */
-  gtk_widget_destroy (window->priv->title_popover);
-  window->priv->title_popover = NULL;
+  g_clear_pointer (&window->priv->title_popover, gtk_widget_destroy);
 
   /* focus the terminal: bug #13754 */
   if (TERMINAL_IS_SCREEN (window->priv->active))

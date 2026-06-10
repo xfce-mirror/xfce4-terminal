@@ -20,21 +20,12 @@
 
 #include "terminal-options.h"
 #include "terminal-screen.h"
+#include "terminal-window.h"
 
 G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_WINDOW_DROPDOWN (terminal_window_dropdown_get_type ())
-#define TERMINAL_WINDOW_DROPDOWN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_WINDOW_DROPDOWN, TerminalWindowDropdown))
-#define TERMINAL_WINDOW_DROPDOWN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_WINDOW_DROPDOWN, TerminalWindowDropdownClass))
-#define TERMINAL_IS_WINDOW_DROPDOWN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_WINDOW_DROPDOWN))
-#define TERMINAL_IS_WINDOW_DROPDOWN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_WINDOW_DROPDOWN))
-#define TERMINAL_WINDOW_DROPDOWN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_WINDOW_DROPDOWN, TerminalWindowDropdownClass))
-
-typedef struct _TerminalWindowDropdownClass TerminalWindowDropdownClass;
-typedef struct _TerminalWindowDropdown TerminalWindowDropdown;
-
-GType
-terminal_window_dropdown_get_type (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (TerminalWindowDropdown, terminal_window_dropdown, TERMINAL, WINDOW_DROPDOWN, TerminalWindow)
 
 GtkWidget *
 terminal_window_dropdown_new (const gchar *role,

@@ -28,17 +28,7 @@
 G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_SCREEN (terminal_screen_get_type ())
-#define TERMINAL_SCREEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_SCREEN, TerminalScreen))
-#define TERMINAL_SCREEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_SCREEN, TerminalScreenClass))
-#define TERMINAL_IS_SCREEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_SCREEN))
-#define TERMINAL_IS_SCREEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_SCREEN))
-#define TERMINAL_SCREEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_SCREEN, TerminalScreenClass))
-
-typedef struct _TerminalScreenClass TerminalScreenClass;
-typedef struct _TerminalScreen TerminalScreen;
-
-GType
-terminal_screen_get_type (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (TerminalScreen, terminal_screen, TERMINAL, SCREEN, GtkOverlay)
 
 TerminalScreen *
 terminal_screen_new (TerminalTabAttr *attr,

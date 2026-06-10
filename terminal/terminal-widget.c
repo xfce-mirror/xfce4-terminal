@@ -141,11 +141,6 @@ terminal_widget_hyperlink_hover_uri_changed (TerminalWidget *widget,
 
 
 
-struct _TerminalWidgetClass
-{
-  VteTerminalClass parent_class;
-};
-
 struct _TerminalWidget
 {
   VteTerminal parent_instance;
@@ -287,7 +282,7 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
                          "accel-group",
                          "accel-group",
                          GTK_TYPE_ACCEL_GROUP,
-                         G_PARAM_WRITABLE);
+                         G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
 
   g_object_class_install_properties (gobject_class, N_PROPERTIES, terminal_widget_props);
 }
@@ -962,7 +957,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
             }
           if (G_UNLIKELY (error != NULL))
             {
-              g_critical ("Failed to parse regular expression pattern %d: %s", i, error->message);
+              g_critical ("Failed to parse regular expression pattern %u: %s", i, error->message);
               g_error_free (error);
               continue;
             }
@@ -1059,8 +1054,7 @@ terminal_widget_disconnect_accelerators (TerminalWidget *widget)
                                                   G_N_ELEMENTS (action_entries));
 
   /* and release the accel group */
-  g_object_unref (widget->accel_group);
-  widget->accel_group = NULL;
+  g_clear_object (&widget->accel_group);
 }
 
 
