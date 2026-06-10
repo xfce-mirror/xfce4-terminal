@@ -2778,8 +2778,7 @@ title_popover_close (GtkWidget *popover,
     terminal_util_activate_window (GTK_WINDOW (window));
 
   /* close the dialog */
-  gtk_widget_destroy (window->priv->title_popover);
-  window->priv->title_popover = NULL;
+  g_clear_pointer (&window->priv->title_popover, gtk_widget_destroy);
 
   /* focus the terminal: bug #13754 */
   if (TERMINAL_IS_SCREEN (window->priv->active))

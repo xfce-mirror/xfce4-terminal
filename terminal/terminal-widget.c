@@ -1059,8 +1059,7 @@ terminal_widget_disconnect_accelerators (TerminalWidget *widget)
                                                   G_N_ELEMENTS (action_entries));
 
   /* and release the accel group */
-  g_object_unref (widget->accel_group);
-  widget->accel_group = NULL;
+  g_clear_object (&widget->accel_group);
 }
 
 

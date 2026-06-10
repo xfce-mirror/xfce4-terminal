@@ -261,11 +261,7 @@ static void
 terminal_app_accel_map_changed (TerminalApp *app)
 {
   /* stop pending save */
-  if (app->accel_map_save_id != 0)
-    {
-      g_source_remove (app->accel_map_save_id);
-      app->accel_map_save_id = 0;
-    }
+  g_clear_handle_id (&app->accel_map_save_id, g_source_remove);
 
   /* schedule new save */
   app->accel_map_save_id = gdk_threads_add_timeout_seconds (10, terminal_app_accel_map_save, app);
@@ -301,12 +297,7 @@ terminal_app_accel_map_load (gpointer user_data)
 void
 terminal_app_load_accels (TerminalApp *app)
 {
-  if (G_UNLIKELY (app->accel_map_load_id != 0))
-    {
-      g_source_remove (app->accel_map_load_id);
-      app->accel_map_load_id = 0;
-    }
-
+  g_clear_handle_id (&app->accel_map_load_id, g_source_remove);
   terminal_app_accel_map_load (app);
 }
 

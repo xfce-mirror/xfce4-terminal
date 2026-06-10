@@ -249,8 +249,7 @@ cleanup:
         }
       else
         {
-          g_free (cwd);
-          cwd = NULL;
+          g_clear_pointer (&cwd, g_free);
         }
     }
 

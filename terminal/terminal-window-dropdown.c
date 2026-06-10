@@ -675,10 +675,9 @@ terminal_window_dropdown_set_property (GObject *object,
                                        G_CALLBACK (icon_theme_changed), dropdown, 0);
             }
         }
-      else if (dropdown->status_icon != NULL)
+      else
         {
-          g_object_unref (G_OBJECT (dropdown->status_icon));
-          dropdown->status_icon = NULL;
+          g_clear_object (&dropdown->status_icon);
         }
       return;
 

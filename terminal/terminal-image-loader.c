@@ -177,8 +177,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
 
   if (invalidate)
     {
-      g_slist_free_full (loader->cache, g_object_unref);
-      loader->cache = NULL;
+      g_clear_slist (&loader->cache, g_object_unref);
     }
 
   g_free (selected_color_spec);
