@@ -282,7 +282,7 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
                          "accel-group",
                          "accel-group",
                          GTK_TYPE_ACCEL_GROUP,
-                         G_PARAM_WRITABLE);
+                         G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
 
   g_object_class_install_properties (gobject_class, N_PROPERTIES, terminal_widget_props);
 }
