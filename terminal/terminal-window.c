@@ -344,7 +344,6 @@ struct _TerminalWindowPrivate
   /* for the drop-down to keep open with dialogs */
   guint n_child_windows;
 
-  guint tabs_menu_merge_id;
   GSList *tabs_menu_actions;
 
   TerminalPreferences *preferences;
