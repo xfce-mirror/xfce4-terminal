@@ -19,13 +19,11 @@ i18n = import('i18n')
 fs = import('fs')
 
 dependency_versions = {
-  'glib': '>= 2.44.0',
-  'gtk': '>= 3.22.0',
+  'glib': '>= 2.66.0',
+  'gtk': '>= 3.24.0',
   'vte': '>= 0.51.3',
   'pcre2': '>= 10.00',
-  'libxfce4ui': '>= 4.17.5',
-  'libxfce4util': '>= 4.16.0',
-  'xfconf': '>= 4.16.0',
+  'xfce4': '>= 4.18.0',
 
   'libx11': '>= 1.6.7',
   'gtk-layer-shell': '>= 0.7.0',
@@ -36,10 +34,10 @@ gio = dependency('gio-2.0', version: dependency_versions['glib'])
 gtk = dependency('gtk+-3.0', version: dependency_versions['gtk'])
 vte = dependency('vte-2.91', version: dependency_versions['vte'])
 pcre2 = dependency('libpcre2-8', version: dependency_versions['pcre2'])
-libxfce4ui = dependency('libxfce4ui-2', version: dependency_versions['libxfce4ui'])
-libxfce4kbd = dependency('libxfce4kbd-private-3', version: dependency_versions['libxfce4ui'])
-libxfce4util = dependency('libxfce4util-1.0', version: dependency_versions['libxfce4util'])
-xfconf = dependency('libxfconf-0', version: dependency_versions['xfconf'])
+libxfce4ui = dependency('libxfce4ui-2', version: dependency_versions['xfce4'])
+libxfce4kbd = dependency('libxfce4kbd-private-3', version: dependency_versions['xfce4'])
+libxfce4util = dependency('libxfce4util-1.0', version: dependency_versions['xfce4'])
+xfconf = dependency('libxfconf-0', version: dependency_versions['xfce4'])
 
 # Feature: 'x11'
 x11_deps = []
