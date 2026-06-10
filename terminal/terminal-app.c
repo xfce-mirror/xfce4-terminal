@@ -851,9 +851,7 @@ terminal_app_find_screen (GdkDisplay *display,
 
   if (display != NULL)
     {
-      if (screen == NULL)
-        screen = gdk_display_get_default_screen (display);
-
+      screen = gdk_display_get_default_screen (display);
       if (screen != NULL)
         g_object_ref (G_OBJECT (screen));
     }
