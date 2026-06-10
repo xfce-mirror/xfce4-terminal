@@ -37,7 +37,6 @@
 #include "terminal-private.h"
 #include "terminal-util.h"
 #include "terminal-window-dropdown.h"
-#include "terminal-window.h"
 
 /* animation fps */
 #define ANIMATION_FPS (1000 / 20)
@@ -115,11 +114,6 @@ terminal_dropdown_window_screen_size_changed (GdkScreen *screen,
                                               TerminalWindowDropdown *dropdown);
 
 
-
-struct _TerminalWindowDropdownClass
-{
-  TerminalWindowClass parent_class;
-};
 
 typedef enum
 {

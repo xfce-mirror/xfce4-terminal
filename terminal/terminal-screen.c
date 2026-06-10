@@ -223,11 +223,6 @@ terminal_screen_update_sixel (TerminalScreen *screen);
 
 
 
-struct _TerminalScreenClass
-{
-  GtkOverlayClass parent_class;
-};
-
 struct _TerminalScreen
 {
   GtkOverlay parent_instance;

@@ -20,22 +20,27 @@
 #ifndef TERMINAL_PREFERENCES_DIALOG_H
 #define TERMINAL_PREFERENCES_DIALOG_H
 
+#include <libxfce4ui/libxfce4ui.h>
+
 #include "terminal-preferences.h"
 
 G_BEGIN_DECLS
 
+#if !LIBXFCE4UI_CHECK_VERSION(4, 21, 8)
 #define TERMINAL_TYPE_PREFERENCES_DIALOG (terminal_preferences_dialog_get_type ())
 #define TERMINAL_PREFERENCES_DIALOG(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG, TerminalPreferencesDialog))
 #define TERMINAL_PREFERENCES_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_PREFERENCES_DIALOG, TerminalPreferencesDialogClass))
 #define TERMINAL_IS_PREFERENCES_DIALOG(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG))
 #define TERMINAL_IS_PREFERENCES_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG))
 #define TERMINAL_PREFERENCES_DIALOG_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG, TerminalPreferencesDialogClass))
-
 typedef struct _TerminalPreferencesDialogClass TerminalPreferencesDialogClass;
 typedef struct _TerminalPreferencesDialog TerminalPreferencesDialog;
-
 GType
 terminal_preferences_dialog_get_type (void) G_GNUC_CONST;
+#else
+#define TERMINAL_TYPE_PREFERENCES_DIALOG (terminal_preferences_dialog_get_type ())
+G_DECLARE_FINAL_TYPE (TerminalPreferencesDialog, terminal_preferences_dialog, TERMINAL, PREFERENCES_DIALOG, XfceTitledDialog)
+#endif
 
 GtkWidget *
 terminal_preferences_dialog_new (gboolean show_drop_down,

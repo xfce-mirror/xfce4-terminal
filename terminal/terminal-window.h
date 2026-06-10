@@ -26,12 +26,15 @@
 
 G_BEGIN_DECLS
 
+typedef struct _TerminalWindow TerminalWindow;
+
 #define TERMINAL_TYPE_WINDOW (terminal_window_get_type ())
 #define TERMINAL_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_WINDOW, TerminalWindow))
 #define TERMINAL_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_WINDOW, TerminalWindowClass))
 #define TERMINAL_IS_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_WINDOW))
 #define TERMINAL_IS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_WINDOW))
 #define TERMINAL_WINDOW_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_WINDOW, TerminalWindowClass))
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (TerminalWindow, g_object_unref)
 
 typedef struct _TerminalWindowPrivate TerminalWindowPrivate;
 
@@ -114,12 +117,12 @@ typedef enum
   MENU_SECTION_VIEW = 1 << 4,
 } MenuSections;
 
-typedef struct
+typedef struct _TerminalWindowClass
 {
   GtkWindowClass parent_class;
 } TerminalWindowClass;
 
-typedef struct
+typedef struct _TerminalWindow
 {
   GtkWindow parent_instance;
 

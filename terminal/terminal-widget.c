@@ -141,11 +141,6 @@ terminal_widget_hyperlink_hover_uri_changed (TerminalWidget *widget,
 
 
 
-struct _TerminalWidgetClass
-{
-  VteTerminalClass parent_class;
-};
-
 struct _TerminalWidget
 {
   VteTerminal parent_instance;

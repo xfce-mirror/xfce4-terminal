@@ -59,11 +59,6 @@ terminal_image_loader_fill (TerminalImageLoader *loader,
                             gint height);
 
 
-struct _TerminalImageLoaderClass
-{
-  GObjectClass parent_class;
-};
-
 struct _TerminalImageLoader
 {
   GObject parent_instance;

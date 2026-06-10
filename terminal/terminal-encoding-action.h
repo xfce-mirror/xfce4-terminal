@@ -31,6 +31,7 @@ typedef struct _TerminalEncodingAction TerminalEncodingAction;
 #define TERMINAL_IS_ENCODING_ACTION(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_ENCODING_ACTION))
 #define TERMINAL_IS_ENCODING_ACTION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_ENCODING_ACTION))
 #define TERMINAL_ENCODING_ACTION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_ENCODING_ACTION, TerminalEncodingActionClass))
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (TerminalEncodingAction, g_object_unref)
 
 GType
 terminal_encoding_action_get_type (void) G_GNUC_CONST;

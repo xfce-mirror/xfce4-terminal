@@ -18,7 +18,6 @@
  */
 
 #include <libxfce4kbd-private/xfce-shortcuts-editor.h>
-#include <libxfce4ui/libxfce4ui.h>
 
 #include "terminal-encoding-action.h"
 #include "terminal-enum-types.h"
@@ -111,10 +110,12 @@ enum
   N_PALETTE_BUTTONS = 16,
 };
 
+#if !LIBXFCE4UI_CHECK_VERSION(4, 21, 8)
 struct _TerminalPreferencesDialogClass
 {
   XfceTitledDialogClass __parent__;
 };
+#endif
 
 struct _TerminalPreferencesDialog
 {

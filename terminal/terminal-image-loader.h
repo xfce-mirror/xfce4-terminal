@@ -25,17 +25,7 @@
 G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_IMAGE_LOADER (terminal_image_loader_get_type ())
-#define TERMINAL_IMAGE_LOADER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_IMAGE_LOADER, TerminalImageLoader))
-#define TERMINAL_IMAGE_LOADER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_IMAGE_LOADER, TerminalImageLoaderClass))
-#define TERMINAL_IS_IMAGE_LOADER(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_IMAGE_LOADER))
-#define TERMINAL_IS_IMAGE_LOADER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_IMAGE_LOADER))
-#define TERMINAL_IMAGE_LOADER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_IMAGE_LOADER, TerminalImageLoaderClass))
-
-typedef struct _TerminalImageLoaderClass TerminalImageLoaderClass;
-typedef struct _TerminalImageLoader TerminalImageLoader;
-
-GType
-terminal_image_loader_get_type (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (TerminalImageLoader, terminal_image_loader, TERMINAL, IMAGE_LOADER, GObject)
 
 TerminalImageLoader *
 terminal_image_loader_get (void);

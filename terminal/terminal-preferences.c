@@ -162,11 +162,6 @@ terminal_preferences_load_rc_file (TerminalPreferences *preferences);
 
 
 
-struct _TerminalPreferencesClass
-{
-  GObjectClass __parent__;
-};
-
 struct _TerminalPreferences
 {
   GObject __parent__;

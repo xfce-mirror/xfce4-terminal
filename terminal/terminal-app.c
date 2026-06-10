@@ -90,11 +90,6 @@ terminal_app_open_window (TerminalApp *app,
 
 
 
-struct _TerminalAppClass
-{
-  GObjectClass parent_class;
-};
-
 struct _TerminalApp
 {
   GObject parent_instance;
