@@ -1507,7 +1507,7 @@ terminal_preferences_load_rc_file (TerminalPreferences *preferences)
       array = g_string_sized_new (225);
       for (n = 1; n <= 16; n++)
         {
-          g_snprintf (color_name, sizeof (color_name), "ColorPalette%d", n);
+          g_snprintf (color_name, sizeof (color_name), "ColorPalette%u", n);
           string = xfce_rc_read_entry (rc, color_name, NULL);
           if (string == NULL)
             break;

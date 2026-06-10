@@ -957,7 +957,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
             }
           if (G_UNLIKELY (error != NULL))
             {
-              g_critical ("Failed to parse regular expression pattern %d: %s", i, error->message);
+              g_critical ("Failed to parse regular expression pattern %u: %s", i, error->message);
               g_error_free (error);
               continue;
             }
