@@ -322,7 +322,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
                                                         "title",
                                                         "title",
                                                         NULL,
-                                                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+                                                        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
 
   /**
    * TerminalScreen::get-context-menu
