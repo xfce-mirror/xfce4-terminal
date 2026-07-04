@@ -34,7 +34,7 @@ G_BEGIN_DECLS
 typedef struct _TerminalSearchDialog TerminalSearchDialog;
 typedef struct _TerminalSearchDialogClass TerminalSearchDialogClass;
 GType
-terminal_search_dialog_get_type (void) G_GNUC_CONST;
+terminal_search_dialog_get_type (void);
 #else
 #define TERMINAL_TYPE_SEARCH_DIALOG (terminal_search_dialog_get_type ())
 G_DECLARE_FINAL_TYPE (TerminalSearchDialog, terminal_search_dialog, TERMINAL, SEARCH_DIALOG, XfceTitledDialog)

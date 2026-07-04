@@ -36,7 +36,7 @@ G_BEGIN_DECLS
 typedef struct _TerminalPreferencesDialogClass TerminalPreferencesDialogClass;
 typedef struct _TerminalPreferencesDialog TerminalPreferencesDialog;
 GType
-terminal_preferences_dialog_get_type (void) G_GNUC_CONST;
+terminal_preferences_dialog_get_type (void);
 #else
 #define TERMINAL_TYPE_PREFERENCES_DIALOG (terminal_preferences_dialog_get_type ())
 G_DECLARE_FINAL_TYPE (TerminalPreferencesDialog, terminal_preferences_dialog, TERMINAL, PREFERENCES_DIALOG, XfceTitledDialog)

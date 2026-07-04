@@ -28,7 +28,7 @@ G_BEGIN_DECLS
 
 #define TERMINAL_ERROR (terminal_error_quark ())
 GQuark
-terminal_error_quark (void) G_GNUC_CONST;
+terminal_error_quark (void);
 
 typedef enum
 {

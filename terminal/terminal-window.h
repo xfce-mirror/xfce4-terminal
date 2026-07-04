@@ -142,7 +142,7 @@ typedef struct
 } TerminalAccel;
 
 GType
-terminal_window_get_type (void) G_GNUC_CONST;
+terminal_window_get_type (void);
 
 GtkWidget *
 terminal_window_new (const gchar *role,

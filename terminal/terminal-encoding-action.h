@@ -34,7 +34,7 @@ typedef struct _TerminalEncodingAction TerminalEncodingAction;
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (TerminalEncodingAction, g_object_unref)
 
 GType
-terminal_encoding_action_get_type (void) G_GNUC_CONST;
+terminal_encoding_action_get_type (void);
 
 GtkAction *
 terminal_encoding_action_new (const gchar *name,
