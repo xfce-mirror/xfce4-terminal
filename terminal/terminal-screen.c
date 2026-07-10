@@ -2657,17 +2657,22 @@ terminal_screen_paste_clipboard (TerminalScreen *screen)
  * Sends the contents of the #GDK_SELECTION_PRIMARY selection to the terminal's child.
  * If necessary, the data is converted from UTF-8 to the terminal's current encoding.
  * The terminal will call also paste the #GDK_SELECTION_PRIMARY selection when the user
- * clicks with the the second mouse button.
+ * clicks with the second mouse button.
  **/
 void
 terminal_screen_paste_primary (TerminalScreen *screen)
 {
-  gboolean show_dialog;
-  gchar *text = gtk_clipboard_wait_for_text (gtk_clipboard_get (GDK_SELECTION_PRIMARY));
+  gboolean primary_paste_enabled;
+  g_object_get (gtk_settings_get_default (), "gtk-enable-primary-paste", &primary_paste_enabled, NULL);
+  if (!primary_paste_enabled)
+    return;
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
+  gboolean show_dialog;
   g_object_get (G_OBJECT (screen->preferences), "misc-show-unsafe-paste-dialog", &show_dialog, NULL);
+
+  gchar *text = gtk_clipboard_wait_for_text (gtk_clipboard_get (GDK_SELECTION_PRIMARY));
 
   if (show_dialog
       && terminal_screen_is_text_unsafe (text)
