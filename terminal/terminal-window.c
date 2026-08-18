@@ -1102,10 +1102,20 @@ terminal_window_init (TerminalWindow *window)
 
   window->priv->accel_group = gtk_accel_group_new ();
   xfce_gtk_accel_map_add_entries (action_entries, G_N_ELEMENTS (action_entries));
-  xfce_gtk_accel_group_connect_action_entries (window->priv->accel_group,
-                                               action_entries,
-                                               G_N_ELEMENTS (action_entries),
-                                               window);
+
+  /* the 'copy' combo is a conditional accelerator: we want to enforce it only when text is selected
+   * and let the combo (typically Ctrl-C) reach the terminal when no selection exists.
+   * This accelerator must therefore be filtered from the GtkAccelGroup to prevent GTK from consuming
+   * the event before it reaches our handling code later below. -- Pierre-Marie Baty <pm@pmbaty.com> */
+  {
+    const XfceGtkActionEntry *copy_entry = get_action_entry (TERMINAL_WINDOW_ACTION_COPY);
+    const gsize copy_index = copy_entry - action_entries;
+    const gsize remaining = G_N_ELEMENTS (action_entries) - copy_index - 1;
+    if (copy_index > 0)
+      xfce_gtk_accel_group_connect_action_entries (window->priv->accel_group, action_entries, copy_index, window);
+    if (remaining > 0)
+      xfce_gtk_accel_group_connect_action_entries (window->priv->accel_group, copy_entry + 1, remaining, window);
+  }
 
   gtk_window_add_accel_group (GTK_WINDOW (window), window->priv->accel_group);
 
@@ -1412,6 +1422,19 @@ terminal_window_key_press_event (GtkWidget *widget,
                                  GdkEventKey *event)
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
+ 
+  /* The 'copy' accelerator combo was filtered out of the GtkAccelGroup to handle it conditionally.
+   * Enforce it when text is selected, else let it through. -- Pierre-Marie Baty <pm@pmbaty.com> */
+  GtkAccelKey copy_combo;
+  if (gtk_accel_map_lookup_entry ("<Actions>/terminal-window/copy", &copy_combo)
+      && event->keyval == copy_combo.accel_key
+      && (event->state & gtk_accelerator_get_default_mod_mask ()) == copy_combo.accel_mods
+      && G_LIKELY (window->priv->active != NULL)
+      && terminal_screen_has_selection (window->priv->active))
+    {
+      terminal_window_action_copy (window);
+      return TRUE;
+    }
 
   if (xfce_gtk_handle_tab_accels (event, window->priv->accel_group, window, action_entries, G_N_ELEMENTS (action_entries)))
     return TRUE;
