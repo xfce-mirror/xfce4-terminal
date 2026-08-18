@@ -1422,7 +1422,7 @@ terminal_window_key_press_event (GtkWidget *widget,
                                  GdkEventKey *event)
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
- 
+
   /* The 'copy' accelerator combo was filtered out of the GtkAccelGroup to handle it conditionally.
    * Enforce it when text is selected, else let it through. -- Pierre-Marie Baty <pm@pmbaty.com> */
   GtkAccelKey copy_combo;
