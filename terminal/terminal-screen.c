@@ -1640,6 +1640,8 @@ terminal_screen_vte_resize_window (VteTerminal *terminal,
                                    TerminalScreen *screen)
 {
   GtkWidget *toplevel;
+  GtkNotebook *notebook;
+  gint n;
 
   g_return_if_fail (VTE_IS_TERMINAL (terminal));
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
@@ -1652,10 +1654,17 @@ terminal_screen_vte_resize_window (VteTerminal *terminal,
            != 0)
     return;
 
-  /* set the terminal size and resize the window if it is active */
-  vte_terminal_set_size (terminal, width, height);
-  if (screen == terminal_window_get_active (TERMINAL_WINDOW (toplevel)))
-    terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), width, height);
+  /* only the active screen may resize the window */
+  if (screen != terminal_window_get_active (TERMINAL_WINDOW (toplevel)))
+    return;
+
+  /* like new tabs, keep all tabs at the active tab's grid size,
+   * the window size calculation relies on it */
+  notebook = GTK_NOTEBOOK (terminal_window_get_notebook (TERMINAL_WINDOW (toplevel)));
+  for (n = 0; n < gtk_notebook_get_n_pages (notebook); ++n)
+    terminal_screen_set_size (TERMINAL_SCREEN (gtk_notebook_get_nth_page (notebook, n)), width, height);
+
+  terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), width, height);
 }
 
 
