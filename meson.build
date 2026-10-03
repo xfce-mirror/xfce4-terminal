@@ -24,6 +24,7 @@ dependency_versions = {
   'vte': '>= 0.51.3',
   'pcre2': '>= 10.00',
   'xfce4': '>= 4.18.0',
+  'libxfce4session-client': '>= 4.21.1-dev',
 
   'libx11': '>= 1.6.7',
   'gtk-layer-shell': '>= 0.7.0',
@@ -37,6 +38,7 @@ pcre2 = dependency('libpcre2-8', version: dependency_versions['pcre2'])
 libxfce4ui = dependency('libxfce4ui-2', version: dependency_versions['xfce4'])
 libxfce4kbd = dependency('libxfce4kbd-private-3', version: dependency_versions['xfce4'])
 libxfce4util = dependency('libxfce4util-1.0', version: dependency_versions['xfce4'])
+libxfce4session_client = dependency('libxfce4session-client-1', version: dependency_versions['libxfce4session-client'])
 xfconf = dependency('libxfconf-0', version: dependency_versions['xfce4'])
 
 # Feature: 'x11'

@@ -38,6 +38,7 @@
 #endif
 
 #include <gdk/gdk.h>
+#include <libxfce4session-client/libxfce4session-client.h>
 #include <libxfce4ui/libxfce4ui.h>
 
 #include "terminal-app.h"
@@ -79,11 +80,9 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
 static void
 terminal_app_window_destroyed (GtkWidget *window,
                                TerminalApp *app);
-#ifdef ENABLE_X11
 static void
-terminal_app_save_yourself (XfceSMClient *client,
+terminal_app_save_yourself (XfceSessionClient *client,
                             TerminalApp *app);
-#endif
 static void
 terminal_app_open_window (TerminalApp *app,
                           TerminalWindowAttr *attr);
@@ -94,9 +93,7 @@ struct _TerminalApp
 {
   GObject parent_instance;
   TerminalPreferences *preferences;
-#ifdef ENABLE_X11
-  XfceSMClient *session_client;
-#endif
+  XfceSessionClient *session_client;
   gchar *initial_menu_bar_accel;
   GSList *windows;
 
@@ -187,10 +184,8 @@ terminal_app_finalize (GObject *object)
   if (app->initial_menu_bar_accel != NULL)
     g_free (app->initial_menu_bar_accel);
 
-#ifdef ENABLE_X11
   if (app->session_client != NULL)
     g_object_unref (G_OBJECT (app->session_client));
-#endif
 
   (*G_OBJECT_CLASS (terminal_app_parent_class)->finalize) (object);
 }
@@ -730,9 +725,8 @@ terminal_app_window_destroyed (GtkWidget *window,
 
 
 
-#ifdef ENABLE_X11
 static void
-terminal_app_save_yourself (XfceSMClient *client,
+terminal_app_save_yourself (XfceSessionClient *client,
                             TerminalApp *app)
 {
   GSList *result = NULL;
@@ -764,7 +758,7 @@ terminal_app_save_yourself (XfceSMClient *client,
     argv[n] = lp->data;
   argv[n] = NULL;
 
-  oargv = xfce_sm_client_get_restart_command (client);
+  oargv = xfce_session_client_get_restart_command (client);
   if (oargv != NULL)
     {
       g_assert (oargv[0] != NULL);
@@ -775,12 +769,11 @@ terminal_app_save_yourself (XfceSMClient *client,
       argv[0] = g_strdup (PACKAGE_NAME);
     }
 
-  xfce_sm_client_set_restart_command (client, argv);
+  xfce_session_client_set_restart_command (client, (const gchar *const *) argv);
 
   g_slist_free (result);
   g_strfreev (argv);
 }
-#endif
 
 
 
@@ -1206,9 +1199,8 @@ terminal_app_process (TerminalApp *app,
   if (G_UNLIKELY (attrs == NULL))
     return FALSE;
 
-#ifdef ENABLE_X11
   /* Connect to session manager first before starting any other windows */
-  if (app->session_client == NULL && WINDOWING_IS_X11 ())
+  if (app->session_client == NULL)
     {
       GError *err = NULL;
       gchar *sm_client_id = NULL;
@@ -1224,15 +1216,15 @@ terminal_app_process (TerminalApp *app,
             }
         }
 
-      app->session_client = xfce_sm_client_get_full (XFCE_SM_CLIENT_RESTART_NORMAL,
-                                                     XFCE_SM_CLIENT_PRIORITY_DEFAULT,
-                                                     sm_client_id,
-                                                     xfce_get_homedir (),
-                                                     NULL,
-                                                     PACKAGE_NAME ".desktop");
-      if (xfce_sm_client_connect (app->session_client, &err))
+      app->session_client = xfce_session_client_new_full (XFCE_SESSION_CLIENT_RESTART_NORMAL,
+                                                          XFCE_SESSION_CLIENT_PRIORITY_DEFAULT,
+                                                          sm_client_id,
+                                                          xfce_get_homedir (),
+                                                          NULL,
+                                                          PACKAGE_NAME ".desktop");
+      if (xfce_session_client_connect (app->session_client, &err))
         {
-          xfce_sm_client_set_desktop_file (app->session_client, TERMINAL_DESKTOP_FILE);
+          xfce_session_client_set_desktop_file (app->session_client, TERMINAL_DESKTOP_FILE);
           g_signal_connect (G_OBJECT (app->session_client), "save-state",
                             G_CALLBACK (terminal_app_save_yourself), app);
           g_signal_connect (G_OBJECT (app->session_client), "quit",
@@ -1245,7 +1237,6 @@ terminal_app_process (TerminalApp *app,
         }
       g_free (sm_client_id);
     }
-#endif
 
   for (lp = attrs; lp != NULL; lp = lp->next)
     {
