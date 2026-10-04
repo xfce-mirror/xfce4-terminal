@@ -101,6 +101,7 @@ struct _TerminalApp
   guint accel_map_save_id;
   GtkAccelMap *accel_map;
 
+  guint session_reconnect_id;
   gboolean discard_session_on_exit;
 };
 
@@ -187,6 +188,9 @@ terminal_app_finalize (GObject *object)
 
   if (app->initial_menu_bar_accel != NULL)
     g_free (app->initial_menu_bar_accel);
+
+  if (app->session_reconnect_id != 0)
+    g_source_remove (app->session_reconnect_id);
 
   if (app->session_client != NULL)
     {
@@ -791,6 +795,67 @@ terminal_app_save_yourself (XfceSessionClient *client,
 
 
 
+static gboolean
+terminal_app_session_reconnect_timeout (gpointer data)
+{
+  TerminalApp *app = TERMINAL_APP (data);
+
+  GError *err = NULL;
+  if (!xfce_session_client_is_connected (app->session_client)
+      && !xfce_session_client_connect (app->session_client, &err))
+    {
+      g_debug ("failed to reconnect to the session manager: %s", err->message);
+      g_error_free (err);
+      return TRUE;
+    }
+  else
+    {
+      app->session_reconnect_id = 0;
+      return FALSE;
+    }
+}
+
+
+
+static void
+terminal_app_session_disconnected (XfceSessionClient *client,
+                                   XfceSessionClientDisconnectReason reason,
+                                   TerminalApp *app)
+{
+  switch (reason)
+    {
+    case XFCE_SESSION_CLIENT_DISCONNECT_REPLACED:
+      {
+        g_debug ("another instance stole our session ID; reconnecting with a new ID");
+
+        /* some other instance of xfce4-terminal has taken over our session
+         * ID, so register with no client ID in order to get a new one. */
+        xfce_session_client_set_client_id (app->session_client, NULL);
+
+        GError *err = NULL;
+        if (!xfce_session_client_connect (app->session_client, &err))
+          {
+            g_message ("Failed to reconnect to the session manager: %s", err->message);
+            g_error_free (err);
+          }
+
+        break;
+      }
+
+    case XFCE_SESSION_CLIENT_DISCONNECT_MANAGER_LOST:
+      g_debug ("session manager disappeared; waiting and attempting to reconnect");
+      g_clear_handle_id (&app->session_reconnect_id, g_source_remove);
+      app->session_reconnect_id = g_timeout_add (5000, terminal_app_session_reconnect_timeout, app);
+      break;
+
+    default:
+      g_debug ("session manager disconnected for unknown reason");
+      break;
+    }
+}
+
+
+
 static void
 terminal_app_session_quit (XfceSessionClient *client,
                            TerminalApp *app)
@@ -1246,7 +1311,18 @@ terminal_app_process (TerminalApp *app,
                                                           xfce_get_homedir (),
                                                           NULL,
                                                           PACKAGE_NAME ".desktop");
-      if (xfce_session_client_connect (app->session_client, &err))
+      g_signal_connect (G_OBJECT (app->session_client), "disconnected",
+                        G_CALLBACK (terminal_app_session_disconnected), app);
+
+      gboolean success = xfce_session_client_connect (app->session_client, &err);
+      if (!success && g_error_matches (err, XFCE_SESSION_CLIENT_ERROR, XFCE_SESSION_CLIENT_ERROR_SESSION_REPLACED))
+        {
+          g_clear_error (&err);
+          xfce_session_client_set_client_id (app->session_client, NULL);
+          success = xfce_session_client_connect (app->session_client, &err);
+        }
+
+      if (success)
         {
           xfce_session_client_set_desktop_file (app->session_client, TERMINAL_DESKTOP_FILE);
           g_signal_connect (G_OBJECT (app->session_client), "save-state",
