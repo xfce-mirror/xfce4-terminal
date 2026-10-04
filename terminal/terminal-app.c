@@ -100,6 +100,8 @@ struct _TerminalApp
   guint accel_map_load_id;
   guint accel_map_save_id;
   GtkAccelMap *accel_map;
+
+  gboolean discard_session_on_exit;
 };
 
 
@@ -147,6 +149,8 @@ terminal_app_init (TerminalApp *app)
   /* schedule accel map load and update windows when finished */
   app->accel_map_load_id = gdk_threads_add_idle_full (G_PRIORITY_LOW, terminal_app_accel_map_load, app,
                                                       terminal_app_update_windows_accels);
+
+  app->discard_session_on_exit = TRUE;
 }
 
 
@@ -185,7 +189,11 @@ terminal_app_finalize (GObject *object)
     g_free (app->initial_menu_bar_accel);
 
   if (app->session_client != NULL)
-    g_object_unref (G_OBJECT (app->session_client));
+    {
+      if (app->discard_session_on_exit)
+        xfce_session_client_discard (app->session_client);
+      g_object_unref (G_OBJECT (app->session_client));
+    }
 
   (*G_OBJECT_CLASS (terminal_app_parent_class)->finalize) (object);
 }
@@ -783,6 +791,16 @@ terminal_app_save_yourself (XfceSessionClient *client,
 
 
 
+static void
+terminal_app_session_quit (XfceSessionClient *client,
+                           TerminalApp *app)
+{
+  app->discard_session_on_exit = FALSE;
+  gtk_main_quit ();
+}
+
+
+
 static GdkDisplay *
 terminal_app_find_display (const gchar *display_name,
                            gint *screen_num)
@@ -1234,7 +1252,7 @@ terminal_app_process (TerminalApp *app,
           g_signal_connect (G_OBJECT (app->session_client), "save-state",
                             G_CALLBACK (terminal_app_save_yourself), app);
           g_signal_connect (G_OBJECT (app->session_client), "quit",
-                            G_CALLBACK (gtk_main_quit), NULL);
+                            G_CALLBACK (terminal_app_session_quit), app);
         }
       else
         {
