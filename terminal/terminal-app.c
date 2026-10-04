@@ -352,6 +352,12 @@ terminal_app_create_window (TerminalApp *app,
     }
 
   window = terminal_window_new (role, fullscreen, menubar, borders, toolbar);
+
+  if (new_role != NULL)
+    xfce_session_client_add_window (app->session_client, GTK_WINDOW (window), new_role);
+  else
+    xfce_session_client_restore_window (app->session_client, GTK_WINDOW (window), role);
+
   g_free (new_role);
 
   terminal_app_take_window (app, GTK_WINDOW (window));
