@@ -352,7 +352,14 @@ terminal_app_create_window (TerminalApp *app,
     }
 
   window = terminal_window_new (role, fullscreen, menubar, borders, toolbar);
-  g_free (new_role);
+
+  if (new_role != NULL)
+    {
+      xfce_session_client_add_window (app->session_client, GTK_WINDOW (window), new_role);
+      g_free (new_role);
+    }
+  else
+    xfce_session_client_restore_window (app->session_client, GTK_WINDOW (window), role);
 
   terminal_app_take_window (app, GTK_WINDOW (window));
 
@@ -718,6 +725,13 @@ terminal_app_window_destroyed (GtkWidget *window,
   g_return_if_fail (g_slist_find (app->windows, window) != NULL);
 
   app->windows = g_slist_remove (app->windows, window);
+
+  if (app->session_client != NULL)
+    {
+      const gchar *role = gtk_window_get_role (GTK_WINDOW (window));
+      if (role != NULL)
+        xfce_session_client_remove_window (app->session_client, role);
+    }
 
   if (G_UNLIKELY (app->windows == NULL))
     gtk_main_quit ();
