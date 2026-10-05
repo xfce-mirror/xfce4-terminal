@@ -31,6 +31,8 @@
 #include <stdlib.h>
 #endif
 
+#include <libxfce4util/libxfce4util.h>
+
 #include "terminal-app.h"
 #include "terminal-gdbus.h"
 #include "terminal-preferences-dialog.h"
@@ -170,6 +172,15 @@ usage (void)
   g_print ("\n\n");
 }
 // clang-format on
+
+
+
+static void
+quit_signal_handler (int signum,
+                     gpointer user_data)
+{
+  gtk_main_quit ();
+}
 
 
 
@@ -349,6 +360,12 @@ main (int argc, char **argv)
 
   /* free temporary arguments */
   g_strfreev (nargv);
+
+  if (xfce_posix_signal_handler_init (NULL))
+    {
+      xfce_posix_signal_handler_set_handler (SIGINT, quit_signal_handler, NULL, NULL);
+      xfce_posix_signal_handler_set_handler (SIGQUIT, quit_signal_handler, NULL, NULL);
+    }
 
   gtk_main ();
 
