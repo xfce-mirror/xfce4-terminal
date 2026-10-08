@@ -38,7 +38,6 @@ pcre2 = dependency('libpcre2-8', version: dependency_versions['pcre2'])
 libxfce4ui = dependency('libxfce4ui-2', version: dependency_versions['xfce4'])
 libxfce4kbd = dependency('libxfce4kbd-private-3', version: dependency_versions['xfce4'])
 libxfce4util = dependency('libxfce4util-1.0', version: dependency_versions['xfce4'])
-libxfce4session_client = dependency('libxfce4session-client-1', version: dependency_versions['libxfce4session-client'])
 xfconf = dependency('libxfconf-0', version: dependency_versions['xfce4'])
 
 # Feature: 'x11'
@@ -73,6 +72,15 @@ if enable_wayland
 else
   gtk_layer_shell = dependency('', required: false)
 endif
+
+# Until libxfce4session-client 4.22.0 is released let's fall back to XfceSMClient
+libxfce4session_client = dependency('libxfce4session-client-1', version: dependency_versions['libxfce4session-client'], required: false)
+if libxfce4session_client.found()
+  feature_cflags += '-DHAVE_LIBXFCE4SESSION_CLIENT'
+elif enable_wayland
+  warning('libxfce4session-client is not found; session management will not fully function on Wayland')
+endif
+
 
 if not enable_x11 and not enable_wayland
   error('At least one of the X11 and Wayland backends must be enabled')
