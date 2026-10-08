@@ -50,6 +50,27 @@
 #define ACCEL_MAP_PATH "xfce4/terminal/accels.scm"
 #define TERMINAL_DESKTOP_FILE (DATADIR "/applications/xfce4-terminal.desktop")
 
+#ifdef HAVE_LIBXFCE4SESSION_CLIENT
+#include <libxfce4session-client/libxfce4session-client.h>
+#else
+/* remove this half after xfce 4.22.0 is released */
+#define XfceSessionClient XfceSMClient
+
+#define XFCE_SESSION_CLIENT_RESTART_NORMAL XFCE_SM_CLIENT_RESTART_NORMAL
+#define XFCE_SESSION_CLIENT_PRIORITY_DEFAULT XFCE_SM_CLIENT_PRIORITY_DEFAULT
+
+#define xfce_session_client_new_full(a, b, c, d, e, f) xfce_sm_client_get_full ((a), (b), (c), (d), (e), (f))
+#define xfce_session_client_connect(a, b) xfce_sm_client_connect ((a), (b))
+#define xfce_session_client_get_restart_command(a) xfce_sm_client_get_restart_command ((a))
+#define xfce_session_client_set_restart_command(a, b) xfce_sm_client_set_restart_command ((a), (gchar **) (b))
+// clang-format off
+#define xfce_session_client_discard(a) G_STMT_START{ }G_STMT_END
+#define xfce_session_client_add_window(a, b, c) G_STMT_START{ }G_STMT_END
+#define xfce_session_client_restore_window(a, b, c) G_STMT_START{ }G_STMT_END
+#define xfce_session_client_remove_window(a, b) G_STMT_START{ }G_STMT_END
+// clang-format on
+#endif /* !HAVE_LIBXFCE4SESSION_CLIENT */
+
 
 
 static void
@@ -79,11 +100,9 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
 static void
 terminal_app_window_destroyed (GtkWidget *window,
                                TerminalApp *app);
-#ifdef ENABLE_X11
 static void
-terminal_app_save_yourself (XfceSMClient *client,
+terminal_app_save_yourself (XfceSessionClient *client,
                             TerminalApp *app);
-#endif
 static void
 terminal_app_open_window (TerminalApp *app,
                           TerminalWindowAttr *attr);
@@ -94,15 +113,15 @@ struct _TerminalApp
 {
   GObject parent_instance;
   TerminalPreferences *preferences;
-#ifdef ENABLE_X11
-  XfceSMClient *session_client;
-#endif
+  XfceSessionClient *session_client;
   gchar *initial_menu_bar_accel;
   GSList *windows;
 
   guint accel_map_load_id;
   guint accel_map_save_id;
   GtkAccelMap *accel_map;
+
+  gboolean discard_session_on_exit;
 };
 
 
@@ -150,6 +169,8 @@ terminal_app_init (TerminalApp *app)
   /* schedule accel map load and update windows when finished */
   app->accel_map_load_id = gdk_threads_add_idle_full (G_PRIORITY_LOW, terminal_app_accel_map_load, app,
                                                       terminal_app_update_windows_accels);
+
+  app->discard_session_on_exit = TRUE;
 }
 
 
@@ -187,10 +208,12 @@ terminal_app_finalize (GObject *object)
   if (app->initial_menu_bar_accel != NULL)
     g_free (app->initial_menu_bar_accel);
 
-#ifdef ENABLE_X11
   if (app->session_client != NULL)
-    g_object_unref (G_OBJECT (app->session_client));
-#endif
+    {
+      if (app->discard_session_on_exit)
+        xfce_session_client_discard (app->session_client);
+      g_object_unref (G_OBJECT (app->session_client));
+    }
 
   (*G_OBJECT_CLASS (terminal_app_parent_class)->finalize) (object);
 }
@@ -357,7 +380,14 @@ terminal_app_create_window (TerminalApp *app,
     }
 
   window = terminal_window_new (role, fullscreen, menubar, borders, toolbar);
-  g_free (new_role);
+
+  if (new_role != NULL)
+    {
+      xfce_session_client_add_window (app->session_client, GTK_WINDOW (window), new_role);
+      g_free (new_role);
+    }
+  else
+    xfce_session_client_restore_window (app->session_client, GTK_WINDOW (window), role);
 
   terminal_app_take_window (app, GTK_WINDOW (window));
 
@@ -724,15 +754,21 @@ terminal_app_window_destroyed (GtkWidget *window,
 
   app->windows = g_slist_remove (app->windows, window);
 
+  if (app->session_client != NULL)
+    {
+      const gchar *role = gtk_window_get_role (GTK_WINDOW (window));
+      if (role != NULL)
+        xfce_session_client_remove_window (app->session_client, role);
+    }
+
   if (G_UNLIKELY (app->windows == NULL))
     gtk_main_quit ();
 }
 
 
 
-#ifdef ENABLE_X11
 static void
-terminal_app_save_yourself (XfceSMClient *client,
+terminal_app_save_yourself (XfceSessionClient *client,
                             TerminalApp *app)
 {
   GSList *result = NULL;
@@ -764,7 +800,7 @@ terminal_app_save_yourself (XfceSMClient *client,
     argv[n] = lp->data;
   argv[n] = NULL;
 
-  oargv = xfce_sm_client_get_restart_command (client);
+  oargv = xfce_session_client_get_restart_command (client);
   if (oargv != NULL)
     {
       g_assert (oargv[0] != NULL);
@@ -775,12 +811,21 @@ terminal_app_save_yourself (XfceSMClient *client,
       argv[0] = g_strdup (PACKAGE_NAME);
     }
 
-  xfce_sm_client_set_restart_command (client, argv);
+  xfce_session_client_set_restart_command (client, (const gchar *const *) argv);
 
   g_slist_free (result);
   g_strfreev (argv);
 }
-#endif
+
+
+
+static void
+terminal_app_session_quit (XfceSessionClient *client,
+                           TerminalApp *app)
+{
+  app->discard_session_on_exit = FALSE;
+  gtk_main_quit ();
+}
 
 
 
@@ -1206,9 +1251,8 @@ terminal_app_process (TerminalApp *app,
   if (G_UNLIKELY (attrs == NULL))
     return FALSE;
 
-#ifdef ENABLE_X11
   /* Connect to session manager first before starting any other windows */
-  if (app->session_client == NULL && WINDOWING_IS_X11 ())
+  if (app->session_client == NULL)
     {
       GError *err = NULL;
       gchar *sm_client_id = NULL;
@@ -1224,19 +1268,18 @@ terminal_app_process (TerminalApp *app,
             }
         }
 
-      app->session_client = xfce_sm_client_get_full (XFCE_SM_CLIENT_RESTART_NORMAL,
-                                                     XFCE_SM_CLIENT_PRIORITY_DEFAULT,
-                                                     sm_client_id,
-                                                     xfce_get_homedir (),
-                                                     NULL,
-                                                     PACKAGE_NAME ".desktop");
-      if (xfce_sm_client_connect (app->session_client, &err))
+      app->session_client = xfce_session_client_new_full (XFCE_SESSION_CLIENT_RESTART_NORMAL,
+                                                          XFCE_SESSION_CLIENT_PRIORITY_DEFAULT,
+                                                          sm_client_id,
+                                                          xfce_get_homedir (),
+                                                          NULL,
+                                                          TERMINAL_DESKTOP_FILE);
+      if (xfce_session_client_connect (app->session_client, &err))
         {
-          xfce_sm_client_set_desktop_file (app->session_client, TERMINAL_DESKTOP_FILE);
           g_signal_connect (G_OBJECT (app->session_client), "save-state",
                             G_CALLBACK (terminal_app_save_yourself), app);
           g_signal_connect (G_OBJECT (app->session_client), "quit",
-                            G_CALLBACK (gtk_main_quit), NULL);
+                            G_CALLBACK (terminal_app_session_quit), app);
         }
       else
         {
@@ -1245,7 +1288,6 @@ terminal_app_process (TerminalApp *app,
         }
       g_free (sm_client_id);
     }
-#endif
 
   for (lp = attrs; lp != NULL; lp = lp->next)
     {

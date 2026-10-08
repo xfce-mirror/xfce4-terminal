@@ -24,6 +24,7 @@ dependency_versions = {
   'vte': '>= 0.51.3',
   'pcre2': '>= 10.00',
   'xfce4': '>= 4.18.0',
+  'libxfce4session-client': '>= 4.21.2',
 
   'libx11': '>= 1.6.7',
   'gtk-layer-shell': '>= 0.7.0',
@@ -71,6 +72,15 @@ if enable_wayland
 else
   gtk_layer_shell = dependency('', required: false)
 endif
+
+# Until libxfce4session-client 4.22.0 is released let's fall back to XfceSMClient
+libxfce4session_client = dependency('libxfce4session-client-1', version: dependency_versions['libxfce4session-client'], required: false)
+if libxfce4session_client.found()
+  feature_cflags += '-DHAVE_LIBXFCE4SESSION_CLIENT'
+elif enable_wayland
+  warning('libxfce4session-client is not found; session management will not fully function on Wayland')
+endif
+
 
 if not enable_x11 and not enable_wayland
   error('At least one of the X11 and Wayland backends must be enabled')
