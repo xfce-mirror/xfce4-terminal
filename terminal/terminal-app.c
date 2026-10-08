@@ -38,7 +38,6 @@
 #endif
 
 #include <gdk/gdk.h>
-#include <libxfce4session-client/libxfce4session-client.h>
 #include <libxfce4ui/libxfce4ui.h>
 
 #include "terminal-app.h"
@@ -50,6 +49,26 @@
 
 #define ACCEL_MAP_PATH "xfce4/terminal/accels.scm"
 #define TERMINAL_DESKTOP_FILE (DATADIR "/applications/xfce4-terminal.desktop")
+
+#ifdef HAVE_LIBXFCE4SESSION_CLIENT
+#include <libxfce4session-client/libxfce4session-client.h>
+#else
+/* remove this half after xfce 4.22.0 is released */
+#define XfceSessionClient XfceSMClient
+
+#define XFCE_SESSION_CLIENT_RESTART_NORMAL XFCE_SM_CLIENT_RESTART_NORMAL
+#define XFCE_SESSION_CLIENT_PRIORITY_DEFAULT XFCE_SM_CLIENT_PRIORITY_DEFAULT
+
+#define xfce_session_client_new_full(a, b, c, d, e, f) xfce_sm_client_get_full ((a), (b), (c), (d), (e), (f))
+#define xfce_session_client_connect(a, b) xfce_sm_client_connect ((a), (b))
+#define xfce_session_client_set_desktop_file(a, b) xfce_sm_client_set_desktop_file ((a), (b))
+#define xfce_session_client_get_restart_command(a) xfce_sm_client_get_restart_command ((a))
+#define xfce_session_client_set_restart_command(a, b) xfce_sm_client_set_restart_command ((a), (gchar **) (b))
+#define xfce_session_client_discard(a) G_STMT_START{ }G_STMT_END
+#define xfce_session_client_add_window(a, b, c) G_STMT_START{ }G_STMT_END
+#define xfce_session_client_restore_window(a, b, c) G_STMT_START{ }G_STMT_END
+#define xfce_session_client_remove_window(a, b) G_STMT_START{ }G_STMT_END
+#endif /* !HAVE_LIBXFCE4SESSION_CLIENT */
 
 
 
