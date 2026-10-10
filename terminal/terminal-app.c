@@ -121,7 +121,7 @@ struct _TerminalApp
   guint accel_map_save_id;
   GtkAccelMap *accel_map;
 
-  gboolean discard_session_on_exit;
+  gboolean session_shutting_down;
 };
 
 
@@ -169,8 +169,6 @@ terminal_app_init (TerminalApp *app)
   /* schedule accel map load and update windows when finished */
   app->accel_map_load_id = gdk_threads_add_idle_full (G_PRIORITY_LOW, terminal_app_accel_map_load, app,
                                                       terminal_app_update_windows_accels);
-
-  app->discard_session_on_exit = TRUE;
 }
 
 
@@ -210,7 +208,7 @@ terminal_app_finalize (GObject *object)
 
   if (app->session_client != NULL)
     {
-      if (app->discard_session_on_exit)
+      if (!app->session_shutting_down)
         xfce_session_client_discard (app->session_client);
       g_object_unref (G_OBJECT (app->session_client));
     }
@@ -754,7 +752,7 @@ terminal_app_window_destroyed (GtkWidget *window,
 
   app->windows = g_slist_remove (app->windows, window);
 
-  if (app->session_client != NULL)
+  if (app->session_client != NULL && !app->session_shutting_down)
     {
       const gchar *role = gtk_window_get_role (GTK_WINDOW (window));
       if (role != NULL)
@@ -823,7 +821,7 @@ static void
 terminal_app_session_quit (XfceSessionClient *client,
                            TerminalApp *app)
 {
-  app->discard_session_on_exit = FALSE;
+  app->session_shutting_down = TRUE;
   gtk_main_quit ();
 }
 
