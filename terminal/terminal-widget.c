@@ -117,6 +117,9 @@ terminal_widget_open_uri (TerminalWidget *widget,
 static void
 terminal_widget_update_highlight_urls (TerminalWidget *widget);
 static gboolean
+terminal_widget_action_mods_held (TerminalWidget *widget,
+                                  TerminalWidgetAction action);
+static gboolean
 terminal_widget_action_shift_scroll_up (TerminalWidget *widget);
 static gboolean
 terminal_widget_action_shift_scroll_down (TerminalWidget *widget);
@@ -978,10 +981,42 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
 
 
 
+/* GTK may activate an accelerator although not all of its modifiers are held:
+ * modifiers "consumed" by the key translation are ignored when matching, so
+ * with a key type that also uses Shift, ISO_Level5_Shift + e producing Up
+ * activates <Shift>Up. Check the actual modifier state, and let the key fall
+ * through to VTE otherwise. See
+ * https://gitlab.xfce.org/apps/xfce4-terminal/-/issues/261 */
+static gboolean
+terminal_widget_action_mods_held (TerminalWidget *widget,
+                                  TerminalWidgetAction action)
+{
+  const XfceGtkActionEntry *entry = get_action_entry (action);
+  GdkModifierType accel_mods;
+  GdkModifierType state;
+  GtkAccelKey key;
+
+  if (entry == NULL || !gtk_accel_map_lookup_entry (entry->accel_path, &key))
+    return TRUE;
+
+  if (!gtk_get_current_event_state (&state))
+    return TRUE;
+
+  gdk_keymap_add_virtual_modifiers (gdk_keymap_get_for_display (gtk_widget_get_display (GTK_WIDGET (widget))), &state);
+  accel_mods = key.accel_mods & gtk_accelerator_get_default_mod_mask ();
+
+  return (state & accel_mods) == accel_mods;
+}
+
+
+
 static gboolean
 terminal_widget_action_scroll_page_up (TerminalWidget *widget)
 {
   GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
+
+  if (!terminal_widget_action_mods_held (widget, TERMINAL_WIDGET_ACTION_SCROLL_PAGE_UP))
+    return FALSE;
 
   gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - gtk_adjustment_get_page_size (adjustment));
   return TRUE;
@@ -994,6 +1029,9 @@ terminal_widget_action_scroll_page_down (TerminalWidget *widget)
 {
   GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
 
+  if (!terminal_widget_action_mods_held (widget, TERMINAL_WIDGET_ACTION_SCROLL_PAGE_DOWN))
+    return FALSE;
+
   gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) + gtk_adjustment_get_page_size (adjustment));
   return TRUE;
 }
@@ -1004,6 +1042,9 @@ static gboolean
 terminal_widget_action_shift_scroll_up (TerminalWidget *widget)
 {
   GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
+
+  if (!terminal_widget_action_mods_held (widget, TERMINAL_WIDGET_ACTION_SCROLL_UP))
+    return FALSE;
 
   gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - 1);
   return TRUE;
@@ -1016,6 +1057,9 @@ terminal_widget_action_shift_scroll_down (TerminalWidget *widget)
 {
   GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
   gdouble value;
+
+  if (!terminal_widget_action_mods_held (widget, TERMINAL_WIDGET_ACTION_SCROLL_DOWN))
+    return FALSE;
 
   value = MIN (gtk_adjustment_get_value (adjustment) + 1, gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
   gtk_adjustment_set_value (adjustment, value);
