@@ -231,11 +231,7 @@ terminal_search_dialog_opacity_changed (TerminalSearchDialog *dialog)
 static void
 terminal_search_dialog_clear_gregex (TerminalSearchDialog *dialog)
 {
-  if (dialog->last_gregex != NULL)
-    {
-      vte_regex_unref (dialog->last_gregex);
-      dialog->last_gregex = NULL;
-    }
+  g_clear_pointer (&dialog->last_gregex, vte_regex_unref);
 }
 
 
