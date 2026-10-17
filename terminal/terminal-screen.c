@@ -1857,8 +1857,7 @@ terminal_screen_set_custom_command (TerminalScreen *screen,
 {
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
-  if (G_UNLIKELY (screen->custom_command != NULL))
-    g_strfreev (screen->custom_command);
+  g_strfreev (screen->custom_command);
 
   if (G_LIKELY (command != NULL && *command != NULL))
     screen->custom_command = g_strdupv (command);

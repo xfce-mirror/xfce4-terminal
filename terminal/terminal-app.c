@@ -203,8 +203,7 @@ terminal_app_finalize (GObject *object)
   g_signal_handlers_disconnect_by_func (G_OBJECT (app->preferences), G_CALLBACK (terminal_app_update_accels), app);
   g_object_unref (G_OBJECT (app->preferences));
 
-  if (app->initial_menu_bar_accel != NULL)
-    g_free (app->initial_menu_bar_accel);
+  g_free (app->initial_menu_bar_accel);
 
   if (app->session_client != NULL)
     {
