@@ -37,6 +37,7 @@
 
 #include "terminal-encoding-action.h"
 #include "terminal-enum-types.h"
+#include "terminal-keys.h"
 #include "terminal-marshal.h"
 #include "terminal-options.h"
 #include "terminal-preferences-dialog.h"
@@ -1407,11 +1408,78 @@ terminal_window_focus_in_event (GtkWidget *widget,
 
 
 
+/* Guake-style layout normalization for the accelerators of this window.
+ *
+ * Under a non-latin layout a key press such as Ctrl+Shift+T produces a cyrillic
+ * keysym, so the accelerators of the window (which are stored as latin keysyms)
+ * never match and they look dead. Map the key press back to the latin symbol of
+ * the same physical key and run the action, the same way Guake does it in
+ * Keybindings.activate().
+ *
+ * This runs before the accelerators of the window are consulted, but only for
+ * key presses that really are layout dependent: a latin key press is returned
+ * untouched, so on a latin layout nothing changes at all. */
+static gboolean
+terminal_window_activate_layout_accel (TerminalWindow *window,
+                                       GdkEventKey *event)
+{
+  guint32 keyval = 0;
+  guint mods = 0;
+  guint mask;
+  gint e;
+
+  if (!terminal_keys_normalize_layout_accel (event, &keyval, &mods))
+    return FALSE;
+
+  mask = gtk_accelerator_get_default_mod_mask ();
+
+  for (e = 0; e < (gint) G_N_ELEMENTS (action_entries); e++)
+    {
+      const XfceGtkActionEntry *entry = &action_entries[e];
+      const gchar *name;
+      const gchar *slash;
+      GtkAccelKey current;
+      gboolean matched;
+
+      if (entry->callback == NULL || entry->accel_path == NULL)
+        continue;
+
+      /* the accelerator map is keyed by the action name, i.e. the last
+       * component of the accel path */
+      slash = strrchr (entry->accel_path, '/');
+      name = slash != NULL ? slash + 1 : entry->accel_path;
+
+      /* prefer the accelerator the user has bound in the keyboard shortcuts
+       * dialog, fall back to the one from the action entry */
+      memset (&current, 0, sizeof (current));
+      matched = gtk_accel_map_lookup_entry (name, &current)
+                && current.accel_key != 0
+                && current.accel_key == keyval
+                && (current.accel_mods & mask) == mods;
+
+      if (!matched)
+        matched = terminal_keys_accel_matches (entry->default_accelerator, keyval, mods);
+
+      if (matched)
+        {
+          ((void (*) (TerminalWindow *, gpointer)) entry->callback) (window, NULL);
+          return TRUE;
+        }
+    }
+
+  return FALSE;
+}
+
+
+
 static gboolean
 terminal_window_key_press_event (GtkWidget *widget,
                                  GdkEventKey *event)
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
+
+  if (terminal_window_activate_layout_accel (window, event))
+    return TRUE;
 
   if (xfce_gtk_handle_tab_accels (event, window->priv->accel_group, window, action_entries, G_N_ELEMENTS (action_entries)))
     return TRUE;
