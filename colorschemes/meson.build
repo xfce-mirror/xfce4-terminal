@@ -2,6 +2,7 @@ preset_files = [
   'black-on-white.desktop.in',
   'dark-pastels.desktop.in',
   'green-on-black.desktop.in',
+  'orange-green.desktop.in',
   'solarized-dark.desktop.in',
   'solarized-light.desktop.in',
   'tango.desktop.in',
