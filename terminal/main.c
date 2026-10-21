@@ -33,6 +33,10 @@
 
 #include <libxfce4util/libxfce4util.h>
 
+#ifdef ENABLE_WAYLAND
+#include <gdk/gdkwayland.h>
+#endif
+
 #include "terminal-app.h"
 #include "terminal-gdbus.h"
 #include "terminal-preferences-dialog.h"
@@ -189,7 +193,7 @@ main (int argc, char **argv)
 {
   TerminalOptions options;
   TerminalApp *app;
-  const gchar *startup_id;
+  const gchar *startup_id = NULL;
   GdkDisplay *display;
   GError *error = NULL;
   gchar **nargv;
@@ -210,6 +214,18 @@ main (int argc, char **argv)
     g_warning ("Locale not supported by C library.");
 
   g_set_application_name (_("Xfce Terminal"));
+
+  /* gtk_init() will unset these, so read them early */
+#ifdef ENABLE_WAYLAND
+  if (GDK_IS_WAYLAND_DISPLAY (gdk_display_get_default ()))
+    startup_id = g_getenv ("XDG_ACTIVATION_TOKEN");
+#endif
+  if (startup_id == NULL)
+    startup_id = g_getenv ("DESKTOP_STARTUP_ID");
+
+  /* gtk3 doesn't support XDG_ACTIVATION_TOKEN, so unset it so it doesn't get
+   * passed to children. */
+  g_unsetenv ("XDG_ACTIVATION_TOKEN");
 
   /* initialize GTK: do this before our parsing so GTK parses its options first */
   gtk_init (&argc, &argv);
@@ -272,7 +288,6 @@ main (int argc, char **argv)
   nargv[nargc++] = g_get_current_dir ();
 
   /* append startup if given */
-  startup_id = g_getenv ("DESKTOP_STARTUP_ID");
   if (G_LIKELY (startup_id != NULL))
     {
       nargv[nargc++] = g_strdup_printf ("--startup-id=%s", startup_id);
