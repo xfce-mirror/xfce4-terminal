@@ -33,6 +33,7 @@
 #include "terminal-enum-types.h"
 #include "terminal-preferences.h"
 #include "terminal-private.h"
+#include "terminal-tmux.h"
 
 #define TERMINALRC "xfce4/terminal/terminalrc"
 #define TERMINALRC_OLD "Terminal/terminalrc"
@@ -117,6 +118,7 @@ enum
   PROP_MISC_SHOW_UNSAFE_PASTE_DIALOG,
   PROP_MISC_RIGHT_CLICK_ACTION,
   PROP_MISC_HYPERLINKS_ENABLED,
+  PROP_MISC_TMUX_COMMAND,
   PROP_SCROLLING_BAR,
   PROP_OVERLAY_SCROLLING,
   PROP_SCROLLING_LINES,
@@ -1111,6 +1113,18 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                           "MiscHyperlinksEnabled",
                           TRUE,
                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-tmux-command:
+   *
+   * Command typed into the pane by the "Start tmux Session" action.
+   **/
+  preferences_props[PROP_MISC_TMUX_COMMAND] =
+    g_param_spec_string ("misc-tmux-command",
+                         NULL,
+                         "MiscTmuxCommand",
+                         TERMINAL_TMUX_DEFAULT_COMMAND,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:scrolling-bar:
