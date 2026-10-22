@@ -127,6 +127,7 @@ struct _TerminalPreferencesDialog
   GtkLabel *dropdown_label;
   GtkBox *dropdown_vbox;
   GtkNotebook *dropdown_notebook;
+  gint dropdown_page;
   GtkWidget *file_chooser;
   gint n_presets;
 
@@ -203,6 +204,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GtkTreeIter current_iter;
   GtkWidget *notebook;
   GtkWidget *button;
+  GtkWidget *spin;
   GtkWidget *image;
   GtkWidget *frame;
   GtkWidget *label;
@@ -509,6 +511,15 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
 
+  /*
+   * Session
+   */
+  label = gtk_label_new (_("Session"));
+  vbox = g_object_new (GTK_TYPE_BOX, "orientation", GTK_ORIENTATION_VERTICAL, "border-width", 12, "spacing", 18, NULL);
+  gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
+  gtk_widget_show (label);
+  gtk_widget_show (vbox);
+
   /* section: Clipboard */
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, _("Clipboard"));
 
@@ -527,6 +538,49 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
+  /* the slots of their own: one check box turns the whole thing on, and the
+   * number of them only makes sense with it, so the spin button is greyed
+   * out otherwise */
+  row++;
+
+  button = gtk_check_button_new_with_mnemonic (_("_Use clipboard slots"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-clipboard-slots-enabled",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_tooltip_text (button,
+                               _("Keep a few slots of their own next to the system clipboard,"
+                                 " so that more than one string can be held at a time.\n"
+                                 "The slots live in memory: they are gone when the last"
+                                 " window is closed."));
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
+  gtk_widget_show (button);
+
+  spin = gtk_spin_button_new_with_range (2, 10, 1);
+  gtk_widget_set_tooltip_text (spin, _("How many slots of their own the terminal keeps"
+                                      " next to the system clipboard"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-clipboard-slots",
+                          G_OBJECT (spin), "value",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-clipboard-slots-enabled",
+                          G_OBJECT (spin), "sensitive",
+                          G_BINDING_SYNC_CREATE);
+  gtk_grid_attach (GTK_GRID (grid), spin, 1, row, 1, 1);
+  gtk_widget_show (spin);
+
+  row++;
+
+  button = gtk_check_button_new_with_mnemonic (_("_Nested submenu"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-clipboard-slots-nested",
+                          G_OBJECT (button), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-clipboard-slots-enabled",
+                          G_OBJECT (button), "sensitive",
+                          G_BINDING_SYNC_CREATE);
+  gtk_widget_set_tooltip_text (button, _("Put the slots of each direction under a submenu of"
+                                         " their own instead of an entry per slot."));
+  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
+  gtk_widget_show (button);
+
 
 
   /*
@@ -538,6 +592,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   dialog->dropdown_label = GTK_LABEL (label);
   dialog->dropdown_vbox = GTK_BOX (vbox);
   dialog->dropdown_notebook = GTK_NOTEBOOK (notebook);
+  dialog->dropdown_page = gtk_notebook_page_num (GTK_NOTEBOOK (notebook), vbox);
 
 
   /* section: Behavior */
@@ -2289,7 +2344,7 @@ terminal_preferences_dialog_new (gboolean show_drop_down,
   gtk_widget_set_visible (GTK_WIDGET (dialog->dropdown_vbox), show_drop_down);
 
   if (drop_down_mode)
-    gtk_notebook_set_current_page (GTK_NOTEBOOK (dialog->dropdown_notebook), 1);
+    gtk_notebook_set_current_page (GTK_NOTEBOOK (dialog->dropdown_notebook), dialog->dropdown_page);
 
   return GTK_WIDGET (dialog);
 }
