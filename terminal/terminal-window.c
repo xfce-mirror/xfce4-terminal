@@ -37,6 +37,7 @@
 
 #include "terminal-encoding-action.h"
 #include "terminal-enum-types.h"
+#include "terminal-keys.h"
 #include "terminal-marshal.h"
 #include "terminal-options.h"
 #include "terminal-preferences-dialog.h"
@@ -120,8 +121,14 @@ static gboolean
 terminal_window_focus_in_event (GtkWidget *widget,
                                 GdkEventFocus *event);
 static gboolean
+terminal_window_focus_out_event (GtkWidget *widget,
+                                 GdkEventFocus *event);
+static gboolean
 terminal_window_key_press_event (GtkWidget *widget,
                                  GdkEventKey *event);
+static gboolean
+terminal_window_key_release_event (GtkWidget *widget,
+                                   GdkEventKey *event);
 static gint
 terminal_window_confirm_close (TerminalScreen *screen,
                                TerminalWindow *window);
@@ -1031,7 +1038,9 @@ terminal_window_class_init (TerminalWindowClass *klass)
   gtkwidget_class->scroll_event = terminal_window_scroll_event;
   gtkwidget_class->map_event = terminal_window_map_event;
   gtkwidget_class->focus_in_event = terminal_window_focus_in_event;
+  gtkwidget_class->focus_out_event = terminal_window_focus_out_event;
   gtkwidget_class->key_press_event = terminal_window_key_press_event;
+  gtkwidget_class->key_release_event = terminal_window_key_release_event;
 
   xfce_gtk_translate_action_entries (action_entries, G_N_ELEMENTS (action_entries));
 
@@ -1402,7 +1411,23 @@ terminal_window_focus_in_event (GtkWidget *widget,
   /* reset activity indicator for the active tab when focusing window */
   terminal_screen_reset_activity (window->priv->active);
 
+  /* the modifier keys may have been pressed while another window had the
+   * focus */
+  terminal_keys_focus_in ();
+
   return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->focus_in_event) (widget, event);
+}
+
+
+
+static gboolean
+terminal_window_focus_out_event (GtkWidget *widget,
+                                 GdkEventFocus *event)
+{
+  /* the modifier keys may be released while another window has the focus */
+  terminal_keys_focus_out ();
+
+  return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->focus_out_event) (widget, event);
 }
 
 
@@ -1413,10 +1438,28 @@ terminal_window_key_press_event (GtkWidget *widget,
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
 
+  /* The layout group switch eats one of the modifiers of its chord: with
+   * Ctrl+Shift as the switch the control or the shift is consumed, with
+   * Alt+Shift the alt or the shift is. The key press that follows arrives
+   * without that modifier in the state, and the accelerator that needs it
+   * never matches. Put the eaten modifier back. */
+  terminal_keys_key_press (event);
+
   if (xfce_gtk_handle_tab_accels (event, window->priv->accel_group, window, action_entries, G_N_ELEMENTS (action_entries)))
     return TRUE;
 
   return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->key_press_event) (widget, event);
+}
+
+
+
+static gboolean
+terminal_window_key_release_event (GtkWidget *widget,
+                                   GdkEventKey *event)
+{
+  terminal_keys_key_release (event);
+
+  return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->key_release_event) (widget, event);
 }
 
 
