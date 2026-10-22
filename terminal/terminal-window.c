@@ -37,6 +37,7 @@
 
 #include "terminal-encoding-action.h"
 #include "terminal-enum-types.h"
+#include "terminal-keys.h"
 #include "terminal-marshal.h"
 #include "terminal-options.h"
 #include "terminal-preferences-dialog.h"
@@ -1412,6 +1413,20 @@ terminal_window_key_press_event (GtkWidget *widget,
                                  GdkEventKey *event)
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
+
+  /* The layout group switch eats one of the modifiers of its chord: with
+   * Ctrl+Shift as the switch the control or the shift is consumed, with
+   * Alt+Shift the alt or the shift is. The key press that follows arrives
+   * without that modifier in the state, and the accelerator that needs it
+   * never matches. The X server still knows the real state of the physical
+   * keys, so ask it and put the eaten modifier back. */
+  if (event->state & gtk_accelerator_get_default_mod_mask ())
+    {
+      guint mods_held = terminal_keys_modifiers_held ();
+      guint swallowed = terminal_keys_swallowed_modifiers (event, mods_held);
+
+      event->state |= swallowed;
+    }
 
   if (xfce_gtk_handle_tab_accels (event, window->priv->accel_group, window, action_entries, G_N_ELEMENTS (action_entries)))
     return TRUE;
