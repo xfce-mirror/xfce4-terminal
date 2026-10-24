@@ -1390,9 +1390,11 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   infobar = gtk_info_bar_new ();
   gtk_container_set_border_width (GTK_CONTAINER (infobar), 1);
   label = gtk_label_new (NULL);
-  gtk_label_set_markup (GTK_LABEL (label), _("These options may cause some applications to behave incorrectly.\n"
-                                              "They are only here to allow you to work around certain applications\n"
-                                              "and operating systems that expect different terminal behavior."));
+  gtk_label_set_text (GTK_LABEL (label), _("These options may cause some applications to behave incorrectly."
+                                           " They are only here to allow you to work around certain applications"
+                                           " and operating systems that expect different terminal behavior."));
+  gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+  gtk_label_set_max_width_chars (GTK_LABEL (label), 80);
   box = gtk_info_bar_get_content_area (GTK_INFO_BAR (infobar));
   gtk_container_add (GTK_CONTAINER (box), label);
   gtk_info_bar_set_message_type (GTK_INFO_BAR (infobar), GTK_MESSAGE_WARNING);
