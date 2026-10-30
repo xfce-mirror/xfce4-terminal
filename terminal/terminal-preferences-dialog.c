@@ -1451,6 +1451,29 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* next row */
   row++;
 
+  label = gtk_label_new_with_mnemonic (_("Shift+Enter generates:"));
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
+  gtk_widget_show (label);
+
+  combo = gtk_combo_box_text_new ();
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("No special treatment"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("CSI u"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("LF (Control-J)"));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "binding-shift-enter",
+                          G_OBJECT (combo), "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  gtk_widget_set_tooltip_text (combo, _("CSI u sends a distinct Shift+Enter key sequence. LF sends the same character as Control-J."
+                                      " The application determines whether this inserts a newline or submits input."));
+  gtk_widget_set_hexpand (combo, TRUE);
+  gtk_grid_attach (GTK_GRID (grid), combo, 1, row, 1, 1);
+  terminal_gtk_label_set_a11y_relation (GTK_LABEL (label), combo);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
+  gtk_widget_show (combo);
+
+  /* next row */
+  row++;
+
   label = gtk_label_new_with_mnemonic (_("Ambiguous-width characters:"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
@@ -2149,7 +2172,7 @@ static void
 terminal_preferences_dialog_reset_compatibility_options (TerminalPreferencesDialog *dialog,
                                                          GtkWidget *widget)
 {
-  const gchar *properties[] = { "binding-backspace", "binding-delete", "binding-ambiguous-width" };
+  const gchar *properties[] = { "binding-backspace", "binding-delete", "binding-shift-enter", "binding-ambiguous-width" };
   terminal_preferences_dialog_reset_properties (dialog, G_N_ELEMENTS (properties), properties);
 }
 
