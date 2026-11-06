@@ -8,6 +8,8 @@ terminal_sources = [
   'terminal-gdbus.h',
   'terminal-image-loader.c',
   'terminal-image-loader.h',
+  'terminal-keys.c',
+  'terminal-keys.h',
   'terminal-options.c',
   'terminal-options.h',
   'terminal-preferences-dialog.c',
