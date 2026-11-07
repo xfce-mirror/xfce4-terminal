@@ -107,6 +107,9 @@ enum
   PROP_MISC_HIGHLIGHT_URLS,
   PROP_MISC_MIDDLE_CLICK_OPENS_URI,
   PROP_MISC_COPY_ON_SELECT,
+  PROP_MISC_CLIPBOARD_SLOTS,
+  PROP_MISC_CLIPBOARD_SLOTS_ENABLED,
+  PROP_MISC_CLIPBOARD_SLOTS_NESTED,
   PROP_MISC_SHOW_RELAUNCH_DIALOG,
   PROP_USE_DEFAULT_WORKING_DIR,
   PROP_DEFAULT_WORKING_DIR,
@@ -1028,6 +1031,36 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
     g_param_spec_boolean ("misc-copy-on-select",
                           NULL,
                           "MiscCopyOnSelect",
+                          FALSE,
+                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-clipboard-slots:
+   **/
+  preferences_props[PROP_MISC_CLIPBOARD_SLOTS] =
+    g_param_spec_uint ("misc-clipboard-slots",
+                       NULL,
+                       "MiscClipboardSlots",
+                       2, 10, 3,
+                       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-clipboard-slots-enabled:
+   **/
+  preferences_props[PROP_MISC_CLIPBOARD_SLOTS_ENABLED] =
+    g_param_spec_boolean ("misc-clipboard-slots-enabled",
+                          NULL,
+                          "MiscClipboardSlotsEnabled",
+                          TRUE,
+                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-clipboard-slots-nested:
+   **/
+  preferences_props[PROP_MISC_CLIPBOARD_SLOTS_NESTED] =
+    g_param_spec_boolean ("misc-clipboard-slots-nested",
+                          NULL,
+                          "MiscClipboardSlotsNested",
                           FALSE,
                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 

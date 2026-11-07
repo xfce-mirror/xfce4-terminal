@@ -200,6 +200,9 @@ terminal_app_finalize (GObject *object)
     }
   g_slist_free (app->windows);
 
+  /* the clipboard slots are of the application, not of a window */
+  terminal_window_free_clipboard_slots ();
+
   g_signal_handlers_disconnect_by_func (G_OBJECT (app->preferences), G_CALLBACK (terminal_app_update_accels), app);
   g_object_unref (G_OBJECT (app->preferences));
 
