@@ -862,6 +862,40 @@ terminal_widget_key_press_event (GtkWidget *widget,
       return TRUE;
     }
 
+  /* Only override Shift+Enter; leave other modified Enter keys to VTE. */
+  const GdkModifierType modifiers = gtk_accelerator_get_default_mod_mask ()
+                                    | GDK_SUPER_MASK | GDK_HYPER_MASK | GDK_META_MASK | GDK_MOD4_MASK;
+  if ((event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter)
+      && (event->state & modifiers) == GDK_SHIFT_MASK
+      && vte_terminal_get_input_enabled (VTE_TERMINAL (widget)))
+    {
+      TerminalShiftEnterBinding binding;
+      const gchar *sequence = NULL;
+
+      g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
+                    "binding-shift-enter", &binding, NULL);
+
+      switch (binding)
+        {
+        case TERMINAL_SHIFT_ENTER_BINDING_CSI_U:
+          sequence = "\033[13;2u";
+          break;
+
+        case TERMINAL_SHIFT_ENTER_BINDING_LF:
+          sequence = "\n";
+          break;
+
+        default:
+          break;
+        }
+
+      if (sequence != NULL)
+        {
+          vte_terminal_feed_child (VTE_TERMINAL (widget), sequence, strlen (sequence));
+          return TRUE;
+        }
+    }
+
   return (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->key_press_event) (widget, event);
 }
 
