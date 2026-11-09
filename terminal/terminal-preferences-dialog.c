@@ -1451,14 +1451,14 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* next row */
   row++;
 
-  label = gtk_label_new_with_mnemonic (_("Shift+Enter generates:"));
+  label = gtk_label_new_with_mnemonic (_("Shift-Enter generates:"));
   gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
   combo = gtk_combo_box_text_new ();
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("No special treatment"));
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("CSI u"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "CSI u");
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("LF (Control-J)"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "binding-shift-enter",
                           G_OBJECT (combo), "active",
