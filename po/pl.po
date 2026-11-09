@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-10-25 01:01+0200\n"
+"POT-Creation-Date: 2026-11-09 12:59+0100\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Marek Adamski, 2021-2026\n"
 "Language-Team: Polish (http://app.transifex.com/xfce/xfce-apps/language/pl/)\n"
@@ -788,7 +788,7 @@ msgid "x height"
 msgstr "x wysokość"
 
 #: terminal/terminal-preferences-dialog.c:870
-#: terminal/terminal-preferences-dialog.c:1512 terminal/terminal-window.c:2842
+#: terminal/terminal-preferences-dialog.c:1535 terminal/terminal-window.c:2842
 msgid "Reset"
 msgstr "Resetuj"
 
@@ -1050,129 +1050,148 @@ msgid "Delete key generates:"
 msgstr "Działanie klawisza Delete:"
 
 #: terminal/terminal-preferences-dialog.c:1454
+msgid "Shift-Enter generates:"
+msgstr "Działanie kombinacji Shift-Enter:"
+
+#: terminal/terminal-preferences-dialog.c:1460
+msgid "No special treatment"
+msgstr "Brak specjalnego traktowania"
+
+#: terminal/terminal-preferences-dialog.c:1462
+msgid "LF (Control-J)"
+msgstr "LF (Control-J)"
+
+#: terminal/terminal-preferences-dialog.c:1466
+msgid ""
+"CSI u sends a distinct Shift+Enter key sequence. LF sends the same character"
+" as Control-J. The application determines whether this inserts a newline or "
+"submits input."
+msgstr "„CSI u” wysyła odrębną sekwencję klawiszy Shift+Enter. „LF” wysyła ten sam znak co „Control-J”. To, czy spowoduje to wstawienie nowego wiersza, czy zatwierdzenie danych wejściowych, zależy od programu."
+
+#: terminal/terminal-preferences-dialog.c:1477
 msgid "Ambiguous-width characters:"
 msgstr "Znaki o różnej szerokości:"
 
-#: terminal/terminal-preferences-dialog.c:1460
+#: terminal/terminal-preferences-dialog.c:1483
 msgid "Narrow"
 msgstr "Wąskie"
 
-#: terminal/terminal-preferences-dialog.c:1461
+#: terminal/terminal-preferences-dialog.c:1484
 msgid "Wide"
 msgstr "Szerokie"
 
-#: terminal/terminal-preferences-dialog.c:1475
+#: terminal/terminal-preferences-dialog.c:1498
 msgid "Reset compatibility options to defaults"
 msgstr "Przywróć domyślne"
 
 #. * Advanced
-#: terminal/terminal-preferences-dialog.c:1486
+#: terminal/terminal-preferences-dialog.c:1509
 msgid "Advanced"
 msgstr "Zaawansowane"
 
 #. section: Double Click
-#: terminal/terminal-preferences-dialog.c:1494
+#: terminal/terminal-preferences-dialog.c:1517
 msgid "Double Click"
 msgstr "Dwukrotne kliknięcie"
 
-#: terminal/terminal-preferences-dialog.c:1496
+#: terminal/terminal-preferences-dialog.c:1519
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Zestaw znaków rozpoznawanych jako słowo podczas zaznaczania:"
 
 #. section: Encoding
-#: terminal/terminal-preferences-dialog.c:1520
+#: terminal/terminal-preferences-dialog.c:1543
 msgid "Encoding"
 msgstr "Kodowanie"
 
-#: terminal/terminal-preferences-dialog.c:1522
+#: terminal/terminal-preferences-dialog.c:1545
 msgid "Default character encoding"
 msgstr "Domyślne kodowanie znaków:"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: terminal/terminal-preferences-dialog.c:1546
-#: terminal/terminal-preferences-dialog.c:1675
+#: terminal/terminal-preferences-dialog.c:1569
+#: terminal/terminal-preferences-dialog.c:1698
 msgid "Shortcuts"
 msgstr "Skróty"
 
-#: terminal/terminal-preferences-dialog.c:1548
+#: terminal/terminal-preferences-dialog.c:1571
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "Wyłączenie wszystkich klawiszy dostępu do _menu (np. Alt + f)"
 
-#: terminal/terminal-preferences-dialog.c:1558
+#: terminal/terminal-preferences-dialog.c:1581
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "Wyłączenie klawisza skrótu do m_enu (domyślnie F10)"
 
 #. section: Misc
-#: terminal/terminal-preferences-dialog.c:1567
+#: terminal/terminal-preferences-dialog.c:1590
 msgid "Misc"
 msgstr "Różne"
 
-#: terminal/terminal-preferences-dialog.c:1569
+#: terminal/terminal-preferences-dialog.c:1592
 msgid "_Use middle mouse click to close tabs"
 msgstr "Zamykanie kart ś_rodkowym przyciskiem myszy"
 
-#: terminal/terminal-preferences-dialog.c:1579
+#: terminal/terminal-preferences-dialog.c:1602
 msgid "Underline urls on mouseover"
 msgstr "Podkreślanie adresów URL po najechaniu myszką"
 
-#: terminal/terminal-preferences-dialog.c:1589
+#: terminal/terminal-preferences-dialog.c:1612
 msgid "_Use middle mouse click to open urls"
 msgstr "Otwieranie adresów _URL środkowym przyciskiem myszy"
 
-#: terminal/terminal-preferences-dialog.c:1601
+#: terminal/terminal-preferences-dialog.c:1624
 msgid "Enable OSC 8 Hyperlinks"
 msgstr "Włączenie hiperłączy OSC 8"
 
-#: terminal/terminal-preferences-dialog.c:1602
+#: terminal/terminal-preferences-dialog.c:1625
 msgid ""
 "These are the links displayed when you run the 'ls --hyperlink' command, or "
 "by any other means using the OSC 8 escape sequence."
 msgstr "Są to łącza wyświetlane po uruchomieniu polecenia „ls --hyperlink” lub w inny sposób wykorzystujący sekwencję wyjścia OSC 8."
 
-#: terminal/terminal-preferences-dialog.c:1612
+#: terminal/terminal-preferences-dialog.c:1635
 msgid "_Auto-hide mouse pointer"
 msgstr "Automatycznie _ukrywanie wskaźnika myszy"
 
-#: terminal/terminal-preferences-dialog.c:1622
+#: terminal/terminal-preferences-dialog.c:1645
 msgid "_Open new tab to the right of the active tab"
 msgstr "Otwieranie nowej karty na _prawo od aktywnej karty"
 
-#: terminal/terminal-preferences-dialog.c:1632
+#: terminal/terminal-preferences-dialog.c:1655
 msgid "_Audible bell"
 msgstr "_Słyszalny dzwonek"
 
-#: terminal/terminal-preferences-dialog.c:1642
+#: terminal/terminal-preferences-dialog.c:1665
 msgid "_Visual bell"
 msgstr "_Wizualny dzwonek"
 
-#: terminal/terminal-preferences-dialog.c:1652
+#: terminal/terminal-preferences-dialog.c:1675
 msgid "Right click action:"
 msgstr "Czynność kliknięcia prawym przyciskiem:"
 
-#: terminal/terminal-preferences-dialog.c:1658
+#: terminal/terminal-preferences-dialog.c:1681
 msgid "Context Menu"
 msgstr "Menu kontekstowe"
 
-#: terminal/terminal-preferences-dialog.c:1659
+#: terminal/terminal-preferences-dialog.c:1682
 msgid "Paste clipboard"
 msgstr "Wklej schowek"
 
-#: terminal/terminal-preferences-dialog.c:1660
+#: terminal/terminal-preferences-dialog.c:1683
 msgid "Paste selection"
 msgstr "Wklej zaznaczenie"
 
-#: terminal/terminal-preferences-dialog.c:1685
+#: terminal/terminal-preferences-dialog.c:1708
 msgid "Window"
 msgstr "Okno"
 
-#: terminal/terminal-preferences-dialog.c:1687
-#: terminal/terminal-preferences.c:1215
+#: terminal/terminal-preferences-dialog.c:1710
+#: terminal/terminal-preferences.c:1228
 msgid "Terminal"
 msgstr "Terminal"
 
 #. default item + separator
-#: terminal/terminal-preferences-dialog.c:2096
+#: terminal/terminal-preferences-dialog.c:2119
 msgid "Select Preset"
 msgstr "Wybierz profil"
 
@@ -1345,7 +1364,7 @@ msgid "Open Link"
 msgstr "Otwórz odnośnik"
 
 #. tell the user that we were unable to open the responsible application
-#: terminal/terminal-widget.c:906
+#: terminal/terminal-widget.c:940
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Nie udało się otworzyć adresu URL „%s”."
