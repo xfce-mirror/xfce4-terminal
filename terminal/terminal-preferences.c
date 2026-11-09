@@ -48,6 +48,7 @@ enum
   PROP_BACKGROUND_IMAGE_SHADING,
   PROP_BINDING_BACKSPACE,
   PROP_BINDING_DELETE,
+  PROP_BINDING_SHIFT_ENTER,
   PROP_BINDING_AMBIGUOUS_WIDTH,
   PROP_COLOR_FOREGROUND,
   PROP_COLOR_BACKGROUND,
@@ -272,6 +273,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
     TERMINAL_TYPE_SCROLLBAR,
     TERMINAL_TYPE_TITLE,
     TERMINAL_TYPE_ERASE_BINDING,
+    TERMINAL_TYPE_SHIFT_ENTER_BINDING,
     TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING,
     TERMINAL_TYPE_CURSOR_SHAPE,
     TERMINAL_TYPE_TEXT_BLINK_MODE,
@@ -376,6 +378,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                        "BindingDelete",
                        TERMINAL_TYPE_ERASE_BINDING,
                        TERMINAL_ERASE_BINDING_AUTO,
+                       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:binding-shift-enter:
+   **/
+  preferences_props[PROP_BINDING_SHIFT_ENTER] =
+    g_param_spec_enum ("binding-shift-enter",
+                       NULL,
+                       "BindingShiftEnter",
+                       TERMINAL_TYPE_SHIFT_ENTER_BINDING,
+                       TERMINAL_SHIFT_ENTER_BINDING_DEFAULT,
                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
