@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-10-25 01:01+0200\n"
+"POT-Creation-Date: 2026-11-09 12:59+0100\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>, 2013-2014,2016-2026\n"
 "Language-Team: Dutch (http://app.transifex.com/xfce/xfce-apps/language/nl/)\n"
@@ -776,7 +776,7 @@ msgid "x height"
 msgstr "x hoogte"
 
 #: terminal/terminal-preferences-dialog.c:870
-#: terminal/terminal-preferences-dialog.c:1512 terminal/terminal-window.c:2842
+#: terminal/terminal-preferences-dialog.c:1535 terminal/terminal-window.c:2842
 msgid "Reset"
 msgstr "Terugzetten"
 
@@ -1038,129 +1038,148 @@ msgid "Delete key generates:"
 msgstr "De Deletetoets genereert:"
 
 #: terminal/terminal-preferences-dialog.c:1454
+msgid "Shift-Enter generates:"
+msgstr "Shift-Enter roept op:"
+
+#: terminal/terminal-preferences-dialog.c:1460
+msgid "No special treatment"
+msgstr "Geen speciale behandeling"
+
+#: terminal/terminal-preferences-dialog.c:1462
+msgid "LF (Control-J)"
+msgstr "LF (Ctrl-J)"
+
+#: terminal/terminal-preferences-dialog.c:1466
+msgid ""
+"CSI u sends a distinct Shift+Enter key sequence. LF sends the same character"
+" as Control-J. The application determines whether this inserts a newline or "
+"submits input."
+msgstr "CSI u verzendt een specifieke Shift + Enter-toetscombinatie. LF verzendt hetzelfde teken als Ctrl-J. De toepassing bepaalt of dit een nieuwe regel invoegt of invoer indient."
+
+#: terminal/terminal-preferences-dialog.c:1477
 msgid "Ambiguous-width characters:"
 msgstr "Tekens met dynamische breedte:"
 
-#: terminal/terminal-preferences-dialog.c:1460
+#: terminal/terminal-preferences-dialog.c:1483
 msgid "Narrow"
 msgstr "Smal"
 
-#: terminal/terminal-preferences-dialog.c:1461
+#: terminal/terminal-preferences-dialog.c:1484
 msgid "Wide"
 msgstr "Breed"
 
-#: terminal/terminal-preferences-dialog.c:1475
+#: terminal/terminal-preferences-dialog.c:1498
 msgid "Reset compatibility options to defaults"
 msgstr "Zet verenigbaarheidsopties terug op de standaard"
 
 #. * Advanced
-#: terminal/terminal-preferences-dialog.c:1486
+#: terminal/terminal-preferences-dialog.c:1509
 msgid "Advanced"
 msgstr "Geavanceerd"
 
 #. section: Double Click
-#: terminal/terminal-preferences-dialog.c:1494
+#: terminal/terminal-preferences-dialog.c:1517
 msgid "Double Click"
 msgstr "Dubbelklikken"
 
-#: terminal/terminal-preferences-dialog.c:1496
+#: terminal/terminal-preferences-dialog.c:1519
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Beschouw de volgende tekens als deel van een woord bij dubbelklikken:"
 
 #. section: Encoding
-#: terminal/terminal-preferences-dialog.c:1520
+#: terminal/terminal-preferences-dialog.c:1543
 msgid "Encoding"
 msgstr "Codering"
 
-#: terminal/terminal-preferences-dialog.c:1522
+#: terminal/terminal-preferences-dialog.c:1545
 msgid "Default character encoding"
 msgstr "Standaard-tekencodering"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: terminal/terminal-preferences-dialog.c:1546
-#: terminal/terminal-preferences-dialog.c:1675
+#: terminal/terminal-preferences-dialog.c:1569
+#: terminal/terminal-preferences-dialog.c:1698
 msgid "Shortcuts"
 msgstr "Sneltoetsen"
 
-#: terminal/terminal-preferences-dialog.c:1548
+#: terminal/terminal-preferences-dialog.c:1571
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "Schakel alle menutoegangstoetsen uit (zoals Alt + f)"
 
-#: terminal/terminal-preferences-dialog.c:1558
+#: terminal/terminal-preferences-dialog.c:1581
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "Schakel de menusneltoets uit (standaard F10)"
 
 #. section: Misc
-#: terminal/terminal-preferences-dialog.c:1567
+#: terminal/terminal-preferences-dialog.c:1590
 msgid "Misc"
 msgstr "Divers"
 
-#: terminal/terminal-preferences-dialog.c:1569
+#: terminal/terminal-preferences-dialog.c:1592
 msgid "_Use middle mouse click to close tabs"
 msgstr "Gebruik middelste muisklik voor het sluiten van tabbladen"
 
-#: terminal/terminal-preferences-dialog.c:1579
+#: terminal/terminal-preferences-dialog.c:1602
 msgid "Underline urls on mouseover"
 msgstr "Webadressen onderstrepen als muispijl erop rust"
 
-#: terminal/terminal-preferences-dialog.c:1589
+#: terminal/terminal-preferences-dialog.c:1612
 msgid "_Use middle mouse click to open urls"
 msgstr "Gebruik middelste muisklik om webadressen te openen"
 
-#: terminal/terminal-preferences-dialog.c:1601
+#: terminal/terminal-preferences-dialog.c:1624
 msgid "Enable OSC 8 Hyperlinks"
 msgstr "OSC 8-snelkoppelingen inschakelen"
 
-#: terminal/terminal-preferences-dialog.c:1602
+#: terminal/terminal-preferences-dialog.c:1625
 msgid ""
 "These are the links displayed when you run the 'ls --hyperlink' command, or "
 "by any other means using the OSC 8 escape sequence."
 msgstr "Dit zijn de koppelingen die worden getoond wanneer u de opdracht 'ls --hyperlink' uitvoert, of met elke andere manier die de OSC 8-escapesequentie gebruikt."
 
-#: terminal/terminal-preferences-dialog.c:1612
+#: terminal/terminal-preferences-dialog.c:1635
 msgid "_Auto-hide mouse pointer"
 msgstr "Verberg de muisaanwijzer automatisch"
 
-#: terminal/terminal-preferences-dialog.c:1622
+#: terminal/terminal-preferences-dialog.c:1645
 msgid "_Open new tab to the right of the active tab"
 msgstr "Open een nieuw tabblad rechts van het actieve tabblad"
 
-#: terminal/terminal-preferences-dialog.c:1632
+#: terminal/terminal-preferences-dialog.c:1655
 msgid "_Audible bell"
 msgstr "_Hoorbare bel"
 
-#: terminal/terminal-preferences-dialog.c:1642
+#: terminal/terminal-preferences-dialog.c:1665
 msgid "_Visual bell"
 msgstr "_Zichtbare bel"
 
-#: terminal/terminal-preferences-dialog.c:1652
+#: terminal/terminal-preferences-dialog.c:1675
 msgid "Right click action:"
 msgstr "Actie bij rechtsklik:"
 
-#: terminal/terminal-preferences-dialog.c:1658
+#: terminal/terminal-preferences-dialog.c:1681
 msgid "Context Menu"
 msgstr "Contextmenu"
 
-#: terminal/terminal-preferences-dialog.c:1659
+#: terminal/terminal-preferences-dialog.c:1682
 msgid "Paste clipboard"
 msgstr "Plak de inhoud van het klembord"
 
-#: terminal/terminal-preferences-dialog.c:1660
+#: terminal/terminal-preferences-dialog.c:1683
 msgid "Paste selection"
 msgstr "Plak selectie"
 
-#: terminal/terminal-preferences-dialog.c:1685
+#: terminal/terminal-preferences-dialog.c:1708
 msgid "Window"
 msgstr "Venster"
 
-#: terminal/terminal-preferences-dialog.c:1687
-#: terminal/terminal-preferences.c:1215
+#: terminal/terminal-preferences-dialog.c:1710
+#: terminal/terminal-preferences.c:1228
 msgid "Terminal"
 msgstr "Terminalvenster"
 
 #. default item + separator
-#: terminal/terminal-preferences-dialog.c:2096
+#: terminal/terminal-preferences-dialog.c:2119
 msgid "Select Preset"
 msgstr "Kies vooraf bepaalde instellingen"
 
@@ -1333,7 +1352,7 @@ msgid "Open Link"
 msgstr "Open koppeling"
 
 #. tell the user that we were unable to open the responsible application
-#: terminal/terminal-widget.c:906
+#: terminal/terminal-widget.c:940
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Kon het webadres '%s' niet openen"
