@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-10-25 01:01+0200\n"
+"POT-Creation-Date: 2026-11-09 12:59+0100\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020-2026\n"
 "Language-Team: Japanese (http://app.transifex.com/xfce/xfce-apps/language/ja/)\n"
@@ -778,7 +778,7 @@ msgid "x height"
 msgstr "x 高さ"
 
 #: terminal/terminal-preferences-dialog.c:870
-#: terminal/terminal-preferences-dialog.c:1512 terminal/terminal-window.c:2842
+#: terminal/terminal-preferences-dialog.c:1535 terminal/terminal-window.c:2842
 msgid "Reset"
 msgstr "リセット"
 
@@ -1040,129 +1040,148 @@ msgid "Delete key generates:"
 msgstr "Delete キーが生成するもの:"
 
 #: terminal/terminal-preferences-dialog.c:1454
+msgid "Shift-Enter generates:"
+msgstr "Shift-Enter が生成するもの:"
+
+#: terminal/terminal-preferences-dialog.c:1460
+msgid "No special treatment"
+msgstr "特別な処理なし"
+
+#: terminal/terminal-preferences-dialog.c:1462
+msgid "LF (Control-J)"
+msgstr "LF (Control-J)"
+
+#: terminal/terminal-preferences-dialog.c:1466
+msgid ""
+"CSI u sends a distinct Shift+Enter key sequence. LF sends the same character"
+" as Control-J. The application determines whether this inserts a newline or "
+"submits input."
+msgstr "CSI u は、Shift+Enter のキーシーケンスを別個のものとして送信します。LF は Control-J と同じ文字を送信します。これが改行の挿入になるか入力の送信になるかは、アプリケーションが判断します。"
+
+#: terminal/terminal-preferences-dialog.c:1477
 msgid "Ambiguous-width characters:"
 msgstr "幅があいまいな文字:"
 
-#: terminal/terminal-preferences-dialog.c:1460
+#: terminal/terminal-preferences-dialog.c:1483
 msgid "Narrow"
 msgstr "半角"
 
-#: terminal/terminal-preferences-dialog.c:1461
+#: terminal/terminal-preferences-dialog.c:1484
 msgid "Wide"
 msgstr "全角"
 
-#: terminal/terminal-preferences-dialog.c:1475
+#: terminal/terminal-preferences-dialog.c:1498
 msgid "Reset compatibility options to defaults"
 msgstr "互換性オプションをデフォルトにリセットする"
 
 #. * Advanced
-#: terminal/terminal-preferences-dialog.c:1486
+#: terminal/terminal-preferences-dialog.c:1509
 msgid "Advanced"
 msgstr "詳細"
 
 #. section: Double Click
-#: terminal/terminal-preferences-dialog.c:1494
+#: terminal/terminal-preferences-dialog.c:1517
 msgid "Double Click"
 msgstr "ダブルクリック"
 
-#: terminal/terminal-preferences-dialog.c:1496
+#: terminal/terminal-preferences-dialog.c:1519
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "以下の文字をダブルクリックすると、単語の一部とみなす:"
 
 #. section: Encoding
-#: terminal/terminal-preferences-dialog.c:1520
+#: terminal/terminal-preferences-dialog.c:1543
 msgid "Encoding"
 msgstr "エンコーディング"
 
-#: terminal/terminal-preferences-dialog.c:1522
+#: terminal/terminal-preferences-dialog.c:1545
 msgid "Default character encoding"
 msgstr "デフォルトの文字エンコーディング"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: terminal/terminal-preferences-dialog.c:1546
-#: terminal/terminal-preferences-dialog.c:1675
+#: terminal/terminal-preferences-dialog.c:1569
+#: terminal/terminal-preferences-dialog.c:1698
 msgid "Shortcuts"
 msgstr "ショートカット"
 
-#: terminal/terminal-preferences-dialog.c:1548
+#: terminal/terminal-preferences-dialog.c:1571
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "すべてのメニューアクセスキー（Alt + F など）を無効にする(_D)"
 
-#: terminal/terminal-preferences-dialog.c:1558
+#: terminal/terminal-preferences-dialog.c:1581
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "メニューショートカットキー（デフォルトでは F10）を無効にする(_D)"
 
 #. section: Misc
-#: terminal/terminal-preferences-dialog.c:1567
+#: terminal/terminal-preferences-dialog.c:1590
 msgid "Misc"
 msgstr "その他"
 
-#: terminal/terminal-preferences-dialog.c:1569
+#: terminal/terminal-preferences-dialog.c:1592
 msgid "_Use middle mouse click to close tabs"
 msgstr "マウスの中クリックでタブを閉じる(_U)"
 
-#: terminal/terminal-preferences-dialog.c:1579
+#: terminal/terminal-preferences-dialog.c:1602
 msgid "Underline urls on mouseover"
 msgstr "マウスオーバー時に URL に下線を表示"
 
-#: terminal/terminal-preferences-dialog.c:1589
+#: terminal/terminal-preferences-dialog.c:1612
 msgid "_Use middle mouse click to open urls"
 msgstr "マウスの中クリックで URL を開く(_U)"
 
-#: terminal/terminal-preferences-dialog.c:1601
+#: terminal/terminal-preferences-dialog.c:1624
 msgid "Enable OSC 8 Hyperlinks"
 msgstr "OSC 8 ハイパーリンクを有効にする"
 
-#: terminal/terminal-preferences-dialog.c:1602
+#: terminal/terminal-preferences-dialog.c:1625
 msgid ""
 "These are the links displayed when you run the 'ls --hyperlink' command, or "
 "by any other means using the OSC 8 escape sequence."
 msgstr "これらは「ls --hyperlink」コマンドか、OSC 8 エスケープシーケンスを使用した他の手段を実行したときに表示されるリンクです。"
 
-#: terminal/terminal-preferences-dialog.c:1612
+#: terminal/terminal-preferences-dialog.c:1635
 msgid "_Auto-hide mouse pointer"
 msgstr "マウスポインタを自動的に非表示にする(_A)"
 
-#: terminal/terminal-preferences-dialog.c:1622
+#: terminal/terminal-preferences-dialog.c:1645
 msgid "_Open new tab to the right of the active tab"
 msgstr "アクティブなタブの右側に新しいタブを開く"
 
-#: terminal/terminal-preferences-dialog.c:1632
+#: terminal/terminal-preferences-dialog.c:1655
 msgid "_Audible bell"
 msgstr "オーディオベル(_A)"
 
-#: terminal/terminal-preferences-dialog.c:1642
+#: terminal/terminal-preferences-dialog.c:1665
 msgid "_Visual bell"
 msgstr "ビジュアルベル(_V)"
 
-#: terminal/terminal-preferences-dialog.c:1652
+#: terminal/terminal-preferences-dialog.c:1675
 msgid "Right click action:"
 msgstr "右クリックの動作:"
 
-#: terminal/terminal-preferences-dialog.c:1658
+#: terminal/terminal-preferences-dialog.c:1681
 msgid "Context Menu"
 msgstr "コンテキストメニュー"
 
-#: terminal/terminal-preferences-dialog.c:1659
+#: terminal/terminal-preferences-dialog.c:1682
 msgid "Paste clipboard"
 msgstr "クリップボードを貼り付ける"
 
-#: terminal/terminal-preferences-dialog.c:1660
+#: terminal/terminal-preferences-dialog.c:1683
 msgid "Paste selection"
 msgstr "選択範囲を貼り付ける"
 
-#: terminal/terminal-preferences-dialog.c:1685
+#: terminal/terminal-preferences-dialog.c:1708
 msgid "Window"
 msgstr "ウィンドウ"
 
-#: terminal/terminal-preferences-dialog.c:1687
-#: terminal/terminal-preferences.c:1215
+#: terminal/terminal-preferences-dialog.c:1710
+#: terminal/terminal-preferences.c:1228
 msgid "Terminal"
 msgstr "端末"
 
 #. default item + separator
-#: terminal/terminal-preferences-dialog.c:2096
+#: terminal/terminal-preferences-dialog.c:2119
 msgid "Select Preset"
 msgstr "プリセットを選択"
 
@@ -1335,7 +1354,7 @@ msgid "Open Link"
 msgstr "リンクを開く"
 
 #. tell the user that we were unable to open the responsible application
-#: terminal/terminal-widget.c:906
+#: terminal/terminal-widget.c:940
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "URL '%s' をブラウザーで開けませんでした"
