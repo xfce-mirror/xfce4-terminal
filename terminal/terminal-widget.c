@@ -862,7 +862,7 @@ terminal_widget_key_press_event (GtkWidget *widget,
       return TRUE;
     }
 
-  /* Only override Shift+Enter; leave other modified Enter keys to VTE. */
+  /* Only override Shift-Enter; leave other modified Enter keys to VTE. */
   const GdkModifierType modifiers = gtk_accelerator_get_default_mod_mask ()
                                     | GDK_SUPER_MASK | GDK_HYPER_MASK | GDK_META_MASK | GDK_MOD4_MASK;
   if ((event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter)

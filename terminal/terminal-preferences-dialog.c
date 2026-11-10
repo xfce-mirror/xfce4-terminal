@@ -1463,7 +1463,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_object_bind_property (G_OBJECT (dialog->preferences), "binding-shift-enter",
                           G_OBJECT (combo), "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  gtk_widget_set_tooltip_text (combo, _("CSI u sends a distinct Shift+Enter key sequence. LF sends the same character as Control-J."
+  gtk_widget_set_tooltip_text (combo, _("CSI u sends a distinct Shift-Enter key sequence. LF sends the same character as Control-J."
                                       " The application determines whether this inserts a newline or submits input."));
   gtk_widget_set_hexpand (combo, TRUE);
   gtk_grid_attach (GTK_GRID (grid), combo, 1, row, 1, 1);
