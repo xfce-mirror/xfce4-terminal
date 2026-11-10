@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-10-25 01:01+0200\n"
+"POT-Creation-Date: 2026-11-09 12:59+0100\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
 "Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2020-2026\n"
 "Language-Team: Chinese (Taiwan) (http://app.transifex.com/xfce/xfce-apps/language/zh_TW/)\n"
@@ -778,7 +778,7 @@ msgid "x height"
 msgstr "x 高度"
 
 #: terminal/terminal-preferences-dialog.c:870
-#: terminal/terminal-preferences-dialog.c:1512 terminal/terminal-window.c:2842
+#: terminal/terminal-preferences-dialog.c:1535 terminal/terminal-window.c:2842
 msgid "Reset"
 msgstr "重設"
 
@@ -1040,129 +1040,148 @@ msgid "Delete key generates:"
 msgstr "Delete 鍵產生："
 
 #: terminal/terminal-preferences-dialog.c:1454
+msgid "Shift-Enter generates:"
+msgstr "Shift-Enter 鍵產生："
+
+#: terminal/terminal-preferences-dialog.c:1460
+msgid "No special treatment"
+msgstr "不做特殊處理"
+
+#: terminal/terminal-preferences-dialog.c:1462
+msgid "LF (Control-J)"
+msgstr "LF (Control-J)"
+
+#: terminal/terminal-preferences-dialog.c:1466
+msgid ""
+"CSI u sends a distinct Shift+Enter key sequence. LF sends the same character"
+" as Control-J. The application determines whether this inserts a newline or "
+"submits input."
+msgstr "CSI u 會傳送一個獨特的 Shift+Enter 鍵盤組合。LF 傳送的字元與 Control-J 相同。由應用程式決定這會插入換行字元，還是提交輸入。"
+
+#: terminal/terminal-preferences-dialog.c:1477
 msgid "Ambiguous-width characters:"
 msgstr "非固定寬度字元："
 
-#: terminal/terminal-preferences-dialog.c:1460
+#: terminal/terminal-preferences-dialog.c:1483
 msgid "Narrow"
 msgstr "窄"
 
-#: terminal/terminal-preferences-dialog.c:1461
+#: terminal/terminal-preferences-dialog.c:1484
 msgid "Wide"
 msgstr "寬"
 
-#: terminal/terminal-preferences-dialog.c:1475
+#: terminal/terminal-preferences-dialog.c:1498
 msgid "Reset compatibility options to defaults"
 msgstr "將相容性選項重設回預設值"
 
 #. * Advanced
-#: terminal/terminal-preferences-dialog.c:1486
+#: terminal/terminal-preferences-dialog.c:1509
 msgid "Advanced"
 msgstr "進階"
 
 #. section: Double Click
-#: terminal/terminal-preferences-dialog.c:1494
+#: terminal/terminal-preferences-dialog.c:1517
 msgid "Double Click"
 msgstr "雙擊"
 
-#: terminal/terminal-preferences-dialog.c:1496
+#: terminal/terminal-preferences-dialog.c:1519
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "雙擊時將下列字元視為一個單詞的一部分："
 
 #. section: Encoding
-#: terminal/terminal-preferences-dialog.c:1520
+#: terminal/terminal-preferences-dialog.c:1543
 msgid "Encoding"
 msgstr "編碼"
 
-#: terminal/terminal-preferences-dialog.c:1522
+#: terminal/terminal-preferences-dialog.c:1545
 msgid "Default character encoding"
 msgstr "預設字元編碼"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: terminal/terminal-preferences-dialog.c:1546
-#: terminal/terminal-preferences-dialog.c:1675
+#: terminal/terminal-preferences-dialog.c:1569
+#: terminal/terminal-preferences-dialog.c:1698
 msgid "Shortcuts"
 msgstr "快捷鍵"
 
-#: terminal/terminal-preferences-dialog.c:1548
+#: terminal/terminal-preferences-dialog.c:1571
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "停用所有選單列存取按鍵(像是 Alt+f)(_D)"
 
-#: terminal/terminal-preferences-dialog.c:1558
+#: terminal/terminal-preferences-dialog.c:1581
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "停用選單快捷鍵（預設為 F10）(_D)"
 
 #. section: Misc
-#: terminal/terminal-preferences-dialog.c:1567
+#: terminal/terminal-preferences-dialog.c:1590
 msgid "Misc"
 msgstr "雜項"
 
-#: terminal/terminal-preferences-dialog.c:1569
+#: terminal/terminal-preferences-dialog.c:1592
 msgid "_Use middle mouse click to close tabs"
 msgstr "使用滑鼠中鍵點選以關閉分頁(_U)"
 
-#: terminal/terminal-preferences-dialog.c:1579
+#: terminal/terminal-preferences-dialog.c:1602
 msgid "Underline urls on mouseover"
 msgstr "滑鼠游標移動到 URL 上時顯示底線"
 
-#: terminal/terminal-preferences-dialog.c:1589
+#: terminal/terminal-preferences-dialog.c:1612
 msgid "_Use middle mouse click to open urls"
 msgstr "使用滑鼠中鍵點選以開啟 URL (_U)"
 
-#: terminal/terminal-preferences-dialog.c:1601
+#: terminal/terminal-preferences-dialog.c:1624
 msgid "Enable OSC 8 Hyperlinks"
 msgstr "啟用 OSC 8 超連結"
 
-#: terminal/terminal-preferences-dialog.c:1602
+#: terminal/terminal-preferences-dialog.c:1625
 msgid ""
 "These are the links displayed when you run the 'ls --hyperlink' command, or "
 "by any other means using the OSC 8 escape sequence."
 msgstr "這些是您執行「ls --hyperlink」命令或使用 OSC 8 跳脫序列的任何其他方式時，顯示的連結。"
 
-#: terminal/terminal-preferences-dialog.c:1612
+#: terminal/terminal-preferences-dialog.c:1635
 msgid "_Auto-hide mouse pointer"
 msgstr "自動隱藏滑鼠游標(_A)"
 
-#: terminal/terminal-preferences-dialog.c:1622
+#: terminal/terminal-preferences-dialog.c:1645
 msgid "_Open new tab to the right of the active tab"
 msgstr "在作用中分頁的右邊開啟新分頁(_O)"
 
-#: terminal/terminal-preferences-dialog.c:1632
+#: terminal/terminal-preferences-dialog.c:1655
 msgid "_Audible bell"
 msgstr "響鈴(_A)"
 
-#: terminal/terminal-preferences-dialog.c:1642
+#: terminal/terminal-preferences-dialog.c:1665
 msgid "_Visual bell"
 msgstr "視覺響鈴(_V)"
 
-#: terminal/terminal-preferences-dialog.c:1652
+#: terminal/terminal-preferences-dialog.c:1675
 msgid "Right click action:"
 msgstr "右鍵點擊動作："
 
-#: terminal/terminal-preferences-dialog.c:1658
+#: terminal/terminal-preferences-dialog.c:1681
 msgid "Context Menu"
 msgstr "情境選單"
 
-#: terminal/terminal-preferences-dialog.c:1659
+#: terminal/terminal-preferences-dialog.c:1682
 msgid "Paste clipboard"
 msgstr "貼上剪貼簿"
 
-#: terminal/terminal-preferences-dialog.c:1660
+#: terminal/terminal-preferences-dialog.c:1683
 msgid "Paste selection"
 msgstr "貼上選取內容"
 
-#: terminal/terminal-preferences-dialog.c:1685
+#: terminal/terminal-preferences-dialog.c:1708
 msgid "Window"
 msgstr "視窗"
 
-#: terminal/terminal-preferences-dialog.c:1687
-#: terminal/terminal-preferences.c:1215
+#: terminal/terminal-preferences-dialog.c:1710
+#: terminal/terminal-preferences.c:1228
 msgid "Terminal"
 msgstr "終端機"
 
 #. default item + separator
-#: terminal/terminal-preferences-dialog.c:2096
+#: terminal/terminal-preferences-dialog.c:2119
 msgid "Select Preset"
 msgstr "選取預先設定集"
 
@@ -1335,7 +1354,7 @@ msgid "Open Link"
 msgstr "開啟連結"
 
 #. tell the user that we were unable to open the responsible application
-#: terminal/terminal-widget.c:906
+#: terminal/terminal-widget.c:940
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "無法開啟網址「%s」"
