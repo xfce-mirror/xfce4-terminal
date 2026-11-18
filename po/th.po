@@ -5,14 +5,14 @@
 # Translators:
 # Theppitak Karoonboonyanan <thep@linux.thai.net>, 2013
 # Theppitak Karoonboonyanan <theppitak@gmail.com>, 2016-2019
-# Warut Bunprasert <warut.b@disroot.org>, 2025
+# Warut Bunprasert <warut.b@disroot.org>, 2025-2026
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-10-25 01:01+0200\n"
+"POT-Creation-Date: 2026-11-11 00:57+0100\n"
 "PO-Revision-Date: 2013-07-03 18:42+0000\n"
-"Last-Translator: Warut Bunprasert <warut.b@disroot.org>, 2025\n"
+"Last-Translator: Warut Bunprasert <warut.b@disroot.org>, 2025-2026\n"
 "Language-Team: Thai (http://app.transifex.com/xfce/xfce-apps/language/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -776,7 +776,7 @@ msgid "x height"
 msgstr "x ความสูง"
 
 #: terminal/terminal-preferences-dialog.c:870
-#: terminal/terminal-preferences-dialog.c:1512 terminal/terminal-window.c:2842
+#: terminal/terminal-preferences-dialog.c:1535 terminal/terminal-window.c:2842
 msgid "Reset"
 msgstr "คืนค่าเดิม"
 
@@ -1002,7 +1002,7 @@ msgid ""
 "These options may cause some applications to behave incorrectly. They are "
 "only here to allow you to work around certain applications and operating "
 "systems that expect different terminal behavior."
-msgstr ""
+msgstr "ตัวเลือกต่างๆ เหล่านี้อาจทำให้แอปพลิเคชันบางตัวทำงานผิดได้ แต่มีไว้เพื่อให้คุณแก้ขัดปัญหาแอปพลิเคชันและระบบปฏิบัติการบางตัว ที่ต้องการเทอร์มินัลที่มีพฤติกรรมต่างออกไปเท่านั้น"
 
 #: terminal/terminal-preferences-dialog.c:1408
 msgid "Backspace key generates:"
@@ -1038,129 +1038,148 @@ msgid "Delete key generates:"
 msgstr "ปุ่ม Delete ส่ง:"
 
 #: terminal/terminal-preferences-dialog.c:1454
+msgid "Shift-Enter generates:"
+msgstr "ปุ่ม Shift-Enter ส่ง:"
+
+#: terminal/terminal-preferences-dialog.c:1460
+msgid "No special treatment"
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:1462
+msgid "LF (Control-J)"
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:1466
+msgid ""
+"CSI u sends a distinct Shift-Enter key sequence. LF sends the same character"
+" as Control-J. The application determines whether this inserts a newline or "
+"submits input."
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:1477
 msgid "Ambiguous-width characters:"
 msgstr "อักขระที่ความกว้างคลุมเครือ:"
 
-#: terminal/terminal-preferences-dialog.c:1460
+#: terminal/terminal-preferences-dialog.c:1483
 msgid "Narrow"
 msgstr "แคบ"
 
-#: terminal/terminal-preferences-dialog.c:1461
+#: terminal/terminal-preferences-dialog.c:1484
 msgid "Wide"
 msgstr "กว้าง"
 
-#: terminal/terminal-preferences-dialog.c:1475
+#: terminal/terminal-preferences-dialog.c:1498
 msgid "Reset compatibility options to defaults"
 msgstr "ล้างตัวเลือกความเข้ากันได้กลับเป็นค่าปริยาย"
 
 #. * Advanced
-#: terminal/terminal-preferences-dialog.c:1486
+#: terminal/terminal-preferences-dialog.c:1509
 msgid "Advanced"
 msgstr "ขั้นสูง"
 
 #. section: Double Click
-#: terminal/terminal-preferences-dialog.c:1494
+#: terminal/terminal-preferences-dialog.c:1517
 msgid "Double Click"
 msgstr "ดับเบิลคลิก"
 
-#: terminal/terminal-preferences-dialog.c:1496
+#: terminal/terminal-preferences-dialog.c:1519
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "ถือว่าอักขระต่อไปนี้เป็นส่วนหนึ่งของคำเมื่อดับเบิลคลิก:"
 
 #. section: Encoding
-#: terminal/terminal-preferences-dialog.c:1520
+#: terminal/terminal-preferences-dialog.c:1543
 msgid "Encoding"
 msgstr "รหัสอักขระ"
 
-#: terminal/terminal-preferences-dialog.c:1522
+#: terminal/terminal-preferences-dialog.c:1545
 msgid "Default character encoding"
 msgstr "รหัสอักขระปริยาย"
 
 #. section: Shortcuts
 #. * Shortcuts
-#: terminal/terminal-preferences-dialog.c:1546
-#: terminal/terminal-preferences-dialog.c:1675
+#: terminal/terminal-preferences-dialog.c:1569
+#: terminal/terminal-preferences-dialog.c:1698
 msgid "Shortcuts"
 msgstr "ปุ่มลัด"
 
-#: terminal/terminal-preferences-dialog.c:1548
+#: terminal/terminal-preferences-dialog.c:1571
 msgid "_Disable all menu access keys (such as Alt + f)"
 msgstr "ปิดปุ่มเข้า_ถึงเมนูทั้งหมด (เช่น Alt+ฟ)"
 
-#: terminal/terminal-preferences-dialog.c:1558
+#: terminal/terminal-preferences-dialog.c:1581
 msgid "_Disable menu shortcut key (F10 by default)"
 msgstr "ปิดการใช้ปุ่มลัดเ_มนู (ค่าปริยายคือ F10)"
 
 #. section: Misc
-#: terminal/terminal-preferences-dialog.c:1567
+#: terminal/terminal-preferences-dialog.c:1590
 msgid "Misc"
 msgstr "จิปาถะ"
 
-#: terminal/terminal-preferences-dialog.c:1569
+#: terminal/terminal-preferences-dialog.c:1592
 msgid "_Use middle mouse click to close tabs"
 msgstr "ใช้เมาส์ปุ่ม_กลางปิดแท็บ"
 
-#: terminal/terminal-preferences-dialog.c:1579
+#: terminal/terminal-preferences-dialog.c:1602
 msgid "Underline urls on mouseover"
 msgstr "ขีดเส้นใต้ URL เมื่อเมาส์ชี้"
 
-#: terminal/terminal-preferences-dialog.c:1589
+#: terminal/terminal-preferences-dialog.c:1612
 msgid "_Use middle mouse click to open urls"
 msgstr "ใช้เมาส์ปุ่มกลางเปิด _URL"
 
-#: terminal/terminal-preferences-dialog.c:1601
+#: terminal/terminal-preferences-dialog.c:1624
 msgid "Enable OSC 8 Hyperlinks"
 msgstr "เปิดใช้ OSC 8 ไฮเพอร์ลิงก์"
 
-#: terminal/terminal-preferences-dialog.c:1602
+#: terminal/terminal-preferences-dialog.c:1625
 msgid ""
 "These are the links displayed when you run the 'ls --hyperlink' command, or "
 "by any other means using the OSC 8 escape sequence."
 msgstr "ลิงก์เหล่านี้จะปรากฏขึ้นเมื่อคุณใช้คำสั่ง 'ls --hyperlink' หรืออาจจะเป็นการใช้ลำดับควบคุม OSC 8 ก็ได้"
 
-#: terminal/terminal-preferences-dialog.c:1612
+#: terminal/terminal-preferences-dialog.c:1635
 msgid "_Auto-hide mouse pointer"
 msgstr "ซ่อน_ตัวชี้เมาส์โดยอัตโนมัติ"
 
-#: terminal/terminal-preferences-dialog.c:1622
+#: terminal/terminal-preferences-dialog.c:1645
 msgid "_Open new tab to the right of the active tab"
 msgstr "เปิดแท็บใหม่ทาง_ขวาถัดจากแท็บที่ทำงานอยู่"
 
-#: terminal/terminal-preferences-dialog.c:1632
+#: terminal/terminal-preferences-dialog.c:1655
 msgid "_Audible bell"
 msgstr "ใช้_เสียงบี๊บ"
 
-#: terminal/terminal-preferences-dialog.c:1642
+#: terminal/terminal-preferences-dialog.c:1665
 msgid "_Visual bell"
 msgstr "แทนเสียงบี๊บด้วย_ภาพ"
 
-#: terminal/terminal-preferences-dialog.c:1652
+#: terminal/terminal-preferences-dialog.c:1675
 msgid "Right click action:"
 msgstr "การกระทำเมื่อคลิกขวา:"
 
-#: terminal/terminal-preferences-dialog.c:1658
+#: terminal/terminal-preferences-dialog.c:1681
 msgid "Context Menu"
 msgstr "เมนูบริบท"
 
-#: terminal/terminal-preferences-dialog.c:1659
+#: terminal/terminal-preferences-dialog.c:1682
 msgid "Paste clipboard"
 msgstr "แปะจากคลิปบอร์ด"
 
-#: terminal/terminal-preferences-dialog.c:1660
+#: terminal/terminal-preferences-dialog.c:1683
 msgid "Paste selection"
 msgstr "แปะข้อความที่เลือก"
 
-#: terminal/terminal-preferences-dialog.c:1685
+#: terminal/terminal-preferences-dialog.c:1708
 msgid "Window"
 msgstr "หน้าต่าง"
 
-#: terminal/terminal-preferences-dialog.c:1687
-#: terminal/terminal-preferences.c:1215
+#: terminal/terminal-preferences-dialog.c:1710
+#: terminal/terminal-preferences.c:1228
 msgid "Terminal"
 msgstr "เทอร์มินัล"
 
 #. default item + separator
-#: terminal/terminal-preferences-dialog.c:2096
+#: terminal/terminal-preferences-dialog.c:2119
 msgid "Select Preset"
 msgstr "เลือกชุดที่จัดไว้"
 
@@ -1333,7 +1352,7 @@ msgid "Open Link"
 msgstr "เปิดลิงก์"
 
 #. tell the user that we were unable to open the responsible application
-#: terminal/terminal-widget.c:906
+#: terminal/terminal-widget.c:940
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "เปิด URL '%s' ไม่สำเร็จ"
