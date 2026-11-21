@@ -18,6 +18,8 @@ terminal_sources = [
   'terminal-search-dialog.h',
   'terminal-screen.c',
   'terminal-screen.h',
+  'terminal-tmux.c',
+  'terminal-tmux.h',
   'terminal-util.c',
   'terminal-util.h',
   'terminal-widget.c',

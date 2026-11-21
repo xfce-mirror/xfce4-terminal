@@ -42,6 +42,7 @@
 #include "terminal-preferences-dialog.h"
 #include "terminal-private.h"
 #include "terminal-search-dialog.h"
+#include "terminal-tmux.h"
 #include "terminal-util.h"
 #include "terminal-widget.h"
 #include "terminal-window-dropdown.h"
@@ -320,6 +321,9 @@ terminal_window_update_edit_menu (TerminalWindow *window,
 static void
 terminal_window_update_view_menu (TerminalWindow *window,
                                   GtkWidget *menu);
+static gboolean
+terminal_window_action_start_tmux (TerminalWindow *window);
+
 static void
 terminal_window_update_terminal_menu (TerminalWindow *window,
                                       GtkWidget *menu);
@@ -723,6 +727,16 @@ static XfceGtkActionEntry action_entries[] = {
     NULL,
     "document-save-as",
     G_CALLBACK (terminal_window_action_save_contents),
+  },
+  {
+    TERMINAL_WINDOW_ACTION_START_TMUX,
+    "<Actions>/terminal-window/start-tmux",
+    "<control><shift>m",
+    XFCE_GTK_IMAGE_MENU_ITEM,
+    N_ ("Start tmux Session"),
+    N_ ("Run the configured tmux start command in this pane"),
+    "utilities-terminal",
+    G_CALLBACK (terminal_window_action_start_tmux),
   },
   {
     TERMINAL_WINDOW_ACTION_RESET,
@@ -2128,6 +2142,12 @@ terminal_window_get_context_menu (TerminalScreen *screen,
   terminal_window_menu_add_section (window, context_menu, MENU_SECTION_ZOOM | MENU_SECTION_SIGNAL, TRUE);
 
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SAVE_CONTENTS), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (context_menu));
+
+  /* Start tmux: a detour from the window menu, and in the terminal context
+   * menu that is where it is looked for. */
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_START_TMUX), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
+
   xfce_gtk_menu_append_separator (GTK_MENU_SHELL (context_menu));
 
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
@@ -3963,6 +3983,46 @@ terminal_window_update_view_menu (TerminalWindow *window,
 
 
 
+/* The line that puts a pane into tmux, built out of the settings. An empty
+ * command field in the preferences means "build it", a line there is the
+ * user's own and is used as it is. */
+static gchar *
+terminal_window_build_tmux_command (void)
+{
+  TerminalPreferences *preferences = terminal_preferences_get ();
+  gchar *command = NULL;
+  gchar *line;
+
+  g_object_get (G_OBJECT (preferences), "misc-tmux-command", &command, NULL);
+  line = terminal_tmux_build_command (command);
+  g_free (command);
+
+  return line;
+}
+
+
+
+static gboolean
+terminal_window_action_start_tmux (TerminalWindow *window)
+{
+  TerminalScreen *active;
+  gchar *cmd;
+
+  g_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
+
+  active = window->priv->active;
+  if (active == NULL)
+    return TRUE;
+
+  cmd = terminal_window_build_tmux_command ();
+  terminal_screen_feed_text (active, cmd);
+  terminal_screen_feed_text (active, "\n");
+  g_free (cmd);
+
+  return TRUE;
+}
+
+
 static void
 terminal_window_update_terminal_menu (TerminalWindow *window,
                                       GtkWidget *menu)
@@ -3973,6 +4033,9 @@ terminal_window_update_terminal_menu (TerminalWindow *window,
   g_return_if_fail (TERMINAL_IS_WINDOW (window));
 
   terminal_window_menu_clean (GTK_MENU (menu));
+  /* tmux stands by itself here: in one menu it is looked for by itself, and
+   * every entry must occur once */
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_START_TMUX), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SET_TITLE), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SET_TITLE_COLOR), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
