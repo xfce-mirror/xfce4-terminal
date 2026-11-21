@@ -53,6 +53,8 @@ typedef enum
   TERMINAL_WINDOW_ACTION_EDIT_MENU,
   TERMINAL_WINDOW_ACTION_COPY,
   TERMINAL_WINDOW_ACTION_COPY_HTML,
+  TERMINAL_WINDOW_ACTION_COPY_TO_SLOT,
+  TERMINAL_WINDOW_ACTION_PASTE_FROM_SLOT,
   TERMINAL_WINDOW_ACTION_PASTE,
   TERMINAL_WINDOW_ACTION_PASTE_ALT,
   TERMINAL_WINDOW_ACTION_PASTE_SELECTION,
@@ -222,6 +224,9 @@ terminal_window_get_action_entry (TerminalWindow *window,
 
 XfceGtkActionEntry *
 terminal_window_get_action_entries (void);
+
+void
+terminal_window_free_clipboard_slots (void);
 
 G_END_DECLS
 
